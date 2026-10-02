@@ -57,7 +57,7 @@ function onFilterChange() {
 }
 
 function questionTitle(q) {
-  return q.label ? `${q.name} (${q.label})` : q.name;
+  return q.label ? `${q.name}: ${q.label}` : q.name;
 }
 
 function nextQuestion() {

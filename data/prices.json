@@ -171,18 +171,19 @@
     {
       "id": "iphone",
       "name": "Yeni iPhone",
-      "unit": "1 adet, en düşük depolama, Türkiye çıkış fiyatı",
+      "unit": "1 adet, Türkiye çıkış fiyatı",
       "region": null,
       "current": {
         "date": "2024-09",
         "price": 64999,
         "status": "verified",
-        "label": "iPhone 16 (128 GB)",
+        "label": "iPhone 16",
         "source": {
           "title": "Apple Türkiye iPhone 16 Çıkış Fiyatı",
           "url": "https://www.apple.com/tr/iphone/",
           "accessed": "2026-10-03"
-        }
+        },
+        "unit": "1 adet, 128 GB, Türkiye çıkış fiyatı"
       },
       "prices": [
         {
@@ -195,19 +196,21 @@
             "title": "Haber Arşivi (iPhone 4 Türkiye Satış Fiyatı)",
             "url": "https://www.hurriyet.com.tr/ekonomi/iphone-4-turkiyede-ne-kadara-satilacak-15843405",
             "accessed": "2026-10-03"
-          }
+          },
+          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı"
         },
         {
           "date": "2014-09",
           "price": 2349,
           "status": "verified",
-          "label": "iPhone 6 (16 GB)",
+          "label": "iPhone 6",
           "note": "Resmi Türkiye çıkış fiyatı",
           "source": {
             "title": "Haber Arşivi (iPhone 6 Türkiye Fiyatı)",
             "url": "https://t24.com.tr/haber/iphone-6-ve-iphone-6-plusin-turkiye-fiyatlari-belli-oldu,271295",
             "accessed": "2026-10-03"
-          }
+          },
+          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı"
         }
       ]
     },
