@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ne Kadardı? · Fiyat tahmin oyunu</title>
+  <meta name="description" content="Geçmiş yıllarda benzin, altın, ekmek ne kadardı? Tahmin et, gerçek fiyatla karşılaştır.">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="logo">Ne Kadardı?</h1>
+    <div class="year-filter">
+      <label>Yıllar
+        <select id="year-from" aria-label="Başlangıç yılı"></select>
+      </label>
+      <span aria-hidden="true">–</span>
+      <select id="year-to" aria-label="Bitiş yılı"></select>
+    </div>
+  </header>
+
+  <main>
+    <section id="message-screen" class="card">
+      <p id="message-text">Yükleniyor…</p>
+    </section>
+
+    <section id="question-screen" class="card" hidden>
+      <p id="q-period" class="period"></p>
+      <h2 id="q-name" class="product"></h2>
+      <p id="q-unit" class="unit"></p>
+      <form id="guess-form" novalidate>
+        <label for="guess-input" class="visually-hidden">Tahminin (TL)</label>
+        <div class="guess-field">
+          <input id="guess-input" type="text" inputmode="decimal" autocomplete="off"
+                 placeholder="Tahminin" aria-describedby="guess-error">
+          <span class="currency">₺</span>
+        </div>
+        <p id="guess-error" class="error" role="alert"></p>
+        <button type="submit" class="btn primary">Tahmin et</button>
+      </form>
+    </section>
+
+    <section id="result-screen" hidden>
+      <article class="receipt" aria-live="polite">
+        <p class="receipt-head">*** NE KADARDI? ***</p>
+        <p id="r-title" class="receipt-title"></p>
+        <p id="r-unit" class="receipt-unit"></p>
+        <hr>
+        <dl>
+          <div class="row"><dt>Tahminin</dt><dd id="r-guess"></dd></div>
+          <div class="row"><dt>Gerçek fiyat</dt><dd id="r-actual"></dd></div>
+        </dl>
+        <p id="r-verdict" class="verdict"></p>
+        <hr>
+        <dl id="r-current-row">
+          <div class="row"><dt id="r-current-label">Bugün</dt><dd id="r-current"></dd></div>
+          <div class="row"><dt>Artış</dt><dd id="r-increase"></dd></div>
+        </dl>
+        <p class="score">PUAN <span id="r-score"></span></p>
+        <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a></p>
+      </article>
+      <p id="r-session" class="session"></p>
+      <div class="actions">
+        <button id="share-btn" type="button" class="btn">Paylaş</button>
+        <button id="next-btn" type="button" class="btn primary">Sonraki</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Tüm fiyatlar kaynaklıdır. Hata görürsen
+      <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a>.</p>
+  </footer>
+</body>
+</html>

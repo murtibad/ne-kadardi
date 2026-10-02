@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "currency": "TRY",
+    "schema_version": 1,
+    "updated": "2026-10",
+    "policy": "Every verified price must have a source. Unverified values stay null with status 'todo'. See docs/DATA.md."
+  },
+  "products": [
+    {
+      "id": "gram-altin",
+      "name": "Gram altın",
+      "unit": "1 gram (24 ayar, satış)",
+      "region": null,
+      "source_hint": "TODO: kaynak gerekli. Aday: TCMB EVDS külçe altın (TL/gr) serisi; aylık veya yıllık ortalama, hangisi seçildiyse kayıtta belirt.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "dolar",
+      "name": "Amerikan doları",
+      "unit": "1 USD (TCMB döviz satış kuru)",
+      "region": null,
+      "source_hint": "TODO: kaynak gerekli. Aday: TCMB EVDS gösterge niteliğindeki döviz kurları.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "benzin",
+      "name": "Benzin (kurşunsuz 95)",
+      "unit": "1 litre",
+      "region": "İstanbul (Avrupa)",
+      "source_hint": "TODO: kaynak gerekli. Aday: EPDK fiyat bültenleri, dağıtıcı firmaların geçmiş fiyat arşivleri. Fiyat yıl içinde çok değişir; her kayıt ay düzeyinde tarihli olmalı.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "motorin",
+      "name": "Motorin",
+      "unit": "1 litre",
+      "region": "İstanbul (Avrupa)",
+      "source_hint": "TODO: kaynak gerekli. Benzinle aynı kaynak ve aynı tarihler.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "asgari-ucret",
+      "name": "Asgari ücret (net, aylık)",
+      "unit": "1 ay, bekâr işçi",
+      "region": null,
+      "source_hint": "TODO: kaynak gerekli. Aday: ÇSGB / Resmî Gazete. Dikkat: 2022 öncesinde AGİ ayrı ödeniyordu; AGİ dahil mi hariç mi, tek tanım seç ve docs/DATA.md'de yaz. Yılda iki artış olan yıllarda ay düzeyinde tarih kullan.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "big-mac",
+      "name": "Big Mac",
+      "unit": "1 adet sandviç (menü değil)",
+      "region": null,
+      "source_hint": "TODO: kaynak gerekli. Aday: The Economist Big Mac Index açık veri deposu (github.com/TheEconomist/big-mac-data), Türkiye satırı, yerel fiyat.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "iphone",
+      "name": "Yeni iPhone",
+      "unit": "1 adet, en düşük depolama, Türkiye çıkış fiyatı",
+      "region": null,
+      "source_hint": "TODO: kaynak gerekli. Aday: Apple Türkiye duyuruları, haber arşivleri. Her kayıtta label alanına model adı yazılmalı (ör. \"iPhone 5\").",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "istanbul-ulasim",
+      "name": "İstanbul toplu taşıma",
+      "unit": "1 biniş, tam bilet (elektronik kart)",
+      "region": "İstanbul",
+      "source_hint": "TODO: kaynak gerekli. Aday: İBB UKOME kararları, haber arşivleri.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "ekmek",
+      "name": "Ekmek",
+      "unit": "1 adet (gramaj kayıtta)",
+      "region": "İstanbul",
+      "source_hint": "TODO: kaynak gerekli. Aday: İstanbul Ekmek Fiyat Tarifesi kararları, haber arşivleri. Gramaj yıllar içinde değişti; her kayıtta unit alanını override et (ör. \"250 gr\").",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    },
+    {
+      "id": "cay",
+      "name": "Çay (Çaykur Rize Turist)",
+      "unit": "1 kg paket",
+      "region": null,
+      "source_hint": "TODO: kaynak gerekli. Aday: Çaykur fiyat duyuruları, zam haberleri.",
+      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "prices": []
+    }
+  ]
+}
