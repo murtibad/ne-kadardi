@@ -1,27 +1,27 @@
-/* Placeholder styles. The final look ("receipt" theme) will be designed with Google Stitch;
-   see docs/DESIGN-BRIEF.md. Keep colors as tokens so dark mode is a token swap. */
-
 :root {
+  /* Warm off-white background and slightly creamy receipt paper */
   --bg: #f4f1ea;
-  --paper: #fffdf8;
-  --ink: #1d1d1b;
-  --text: #1d1d1b; /* page text outside the paper */
-  --muted: #6b675f;
-  --accent: #c8322b;
-  --line: #d8d2c4;
-  --radius: 12px;
-  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --paper: #fffcf5;
+  --ink: #181818;
+  --text: #181818;
+  --muted: #737068;
+  --accent: #d32f2f; /* Bold red */
+  --line: #d6d3cb;
+  
+  --font-ui: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161614;
-    --paper: #f5f1e6; /* the receipt stays light, like real paper */
-    --ink: #1d1d1b;
-    --text: #ece8de;
-    --muted: #9b968b;
-    --line: #3a3833;
+    --bg: #1a1917;
+    /* In dark mode, the receipt stays relatively light (like a real paper receipt in the dark),
+       but we dim it slightly to avoid blinding contrast. */
+    --paper: #e8e4db;
+    --ink: #181818;
+    --text: #e8e4db;
+    --muted: #8b887f;
+    --line: #b5b1a8; /* Darker dashes on the light receipt */
   }
 }
 
@@ -35,6 +35,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-ui);
+  line-height: 1.5;
 }
 
 .site-header, main, .site-footer {
@@ -44,62 +45,261 @@ body {
   padding: 16px;
 }
 
-main { flex: 1; }
+main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 
-.site-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.logo { font-size: 1.25rem; margin: 0; color: var(--accent); }
-
-.year-filter { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; }
-select { font: inherit; padding: 4px; }
-
-.card, .receipt {
-  background: var(--paper);
-  border-radius: var(--radius);
-  padding: 24px 20px;
-  color: var(--ink);
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
+/* Header */
+.site-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 12px; 
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.logo { 
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1.5rem; 
+  margin: 0; 
+  color: var(--accent); 
+  letter-spacing: -0.02em;
 }
 
-.period { margin: 0; color: var(--accent); font-weight: 700; }
-.product { margin: 4px 0; font-size: 1.75rem; }
-.unit { margin: 0 0 20px; color: var(--muted); }
+.year-filter { 
+  display: flex; 
+  align-items: center; 
+  gap: 4px; 
+  font-size: 0.875rem; 
+}
+select { 
+  font: inherit; 
+  padding: 6px 4px; 
+  border: 1px solid var(--text);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+}
+select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-.guess-field { display: flex; align-items: center; border: 2px solid var(--ink); border-radius: var(--radius); }
+/* The Ripped Receipt Base (Variant B) */
+.receipt-card {
+  background: var(--paper);
+  color: var(--ink);
+  position: relative;
+  padding: 32px 24px;
+  /* Keep overflow visible so pseudo-elements show */
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.08));
+}
+
+/* Zigzag borders logic using linear gradients */
+.receipt-card::before, .receipt-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-size: 16px 16px;
+  background-repeat: repeat-x;
+}
+
+/* Bottom rip (applied to both Question and Result screens) */
+.receipt-card::after {
+  bottom: -8px;
+  background-image: 
+    linear-gradient(135deg, var(--paper) 25%, transparent 25%), 
+    linear-gradient(-135deg, var(--paper) 25%, transparent 25%);
+  background-position: 0 0;
+}
+
+/* Top rip (applied only to Result screen for full thermal receipt look) */
+.result-receipt::before {
+  top: -8px;
+  background-image: 
+    linear-gradient(45deg, var(--paper) 25%, transparent 25%), 
+    linear-gradient(-45deg, var(--paper) 25%, transparent 25%);
+  background-position: 0 100%;
+}
+
+/* Question Screen specific styles */
+.question-card {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.period-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.product { 
+  margin: 0 0 4px; 
+  font-size: 2rem; 
+  font-weight: 700; 
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.unit { 
+  margin: 0 0 32px; 
+  color: var(--muted); 
+  font-size: 1rem;
+}
+
+.guess-field { 
+  display: flex; 
+  align-items: center; 
+  border: 3px solid var(--ink); 
+  border-radius: 8px; 
+  background: var(--paper);
+  margin-bottom: 12px;
+}
 .guess-field input {
-  flex: 1; min-width: 0; border: 0; background: transparent; padding: 14px 16px;
-  font: 700 1.75rem var(--font-mono); color: var(--ink);
+  flex: 1; 
+  min-width: 0; 
+  border: 0; 
+  background: transparent; 
+  padding: 16px 20px;
+  font: 700 2rem var(--font-mono); 
+  color: var(--ink);
 }
 .guess-field input:focus { outline: none; }
 .guess-field:focus-within { outline: 3px solid var(--accent); outline-offset: 2px; }
-.currency { padding-right: 16px; font: 700 1.5rem var(--font-mono); }
-.error { min-height: 1.25em; color: var(--accent); font-size: 0.875rem; }
-
-.btn {
-  font: 600 1rem var(--font-ui); padding: 14px 20px; border-radius: var(--radius);
-  border: 2px solid currentColor; background: transparent; color: inherit; cursor: pointer;
+.currency { 
+  padding-right: 20px; 
+  font: 700 1.5rem var(--font-mono); 
 }
-.btn.primary { background: var(--text); border-color: var(--text); color: var(--bg); width: 100%; }
-.card .btn.primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.error { 
+  min-height: 1.5em; 
+  color: var(--accent); 
+  font-size: 0.875rem; 
+  font-weight: 600;
+  margin-bottom: 24px;
+}
 
-.receipt { font-family: var(--font-mono); border-radius: 4px; }
-.receipt-head { text-align: center; margin-top: 0; }
-.receipt-title { font-weight: 700; margin-bottom: 0; }
-.receipt-unit { color: var(--muted); margin-top: 4px; }
-.receipt hr { border: 0; border-top: 2px dashed var(--line); }
-.receipt dl { margin: 0; }
-.row { display: flex; justify-content: space-between; padding: 4px 0; }
+/* Result Receipt specific styles */
+.receipt-wrapper {
+  margin: 16px 0 32px; /* Extra margin for the torn edges */
+}
+
+.result-receipt {
+  font-family: var(--font-mono);
+  padding: 24px 24px 32px;
+}
+
+.receipt-head { 
+  text-align: center; 
+  margin: 0 0 24px; 
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.receipt-title { 
+  font-weight: 700; 
+  margin: 0 0 4px; 
+  font-size: 1.125rem;
+}
+.receipt-unit { 
+  color: var(--muted); 
+  margin: 0 0 16px; 
+  font-size: 0.875rem;
+}
+.result-receipt hr { 
+  border: 0; 
+  border-top: 2px dashed var(--line); 
+  margin: 16px 0;
+}
+.result-receipt dl { margin: 0; }
+.row { 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 6px 0; 
+  font-size: 1rem;
+}
 .row dd { margin: 0; font-weight: 700; }
-.verdict { color: var(--accent); font-weight: 700; font-size: 1.25rem; text-align: center; }
-.score { text-align: center; font-size: 1.125rem; }
-.source { font-size: 0.75rem; color: var(--muted); }
-.source a { color: inherit; }
 
-.session { text-align: center; font-size: 0.875rem; color: var(--muted); }
-.actions { display: flex; gap: 12px; }
-.actions .btn.primary { flex: 1; }
+.verdict-box {
+  border: 2px solid var(--accent);
+  padding: 16px;
+  margin: 24px 0;
+  text-align: center;
+}
+.verdict { 
+  color: var(--accent); 
+  font-weight: 700; 
+  font-size: 1.25rem; 
+  margin: 0;
+}
 
-.site-footer { font-size: 0.75rem; color: var(--muted); text-align: center; }
-.site-footer a { color: inherit; }
+.score-box {
+  text-align: center;
+  margin: 24px 0 16px;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.source { 
+  font-size: 0.75rem; 
+  color: var(--muted); 
+  text-align: center;
+  margin: 0;
+}
+.source a { color: inherit; text-decoration: underline; }
+
+/* Actions & Session */
+.session-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.session { 
+  text-align: center; 
+  font-size: 0.875rem; 
+  color: var(--muted); 
+  margin: 0;
+}
+
+.actions { 
+  display: flex; 
+  gap: 12px; 
+}
+.btn {
+  font: 700 1.125rem var(--font-ui); 
+  padding: 16px 20px; 
+  border-radius: 8px;
+  border: 2px solid var(--text); 
+  background: transparent; 
+  color: var(--text); 
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.1s;
+}
+.btn:active { transform: scale(0.98); }
+.btn.primary { 
+  background: var(--text); 
+  color: var(--bg); 
+  flex: 1; 
+}
+.receipt-card .btn.primary { 
+  background: var(--ink); 
+  border-color: var(--ink); 
+  color: var(--paper); 
+  width: 100%;
+}
+
+/* Footer */
+.site-footer { 
+  font-size: 0.75rem; 
+  color: var(--muted); 
+  text-align: center; 
+  margin-top: auto;
+}
+.site-footer a { color: inherit; font-weight: 600; }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;

@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ne Kadardı? · Fiyat tahmin oyunu</title>
   <meta name="description" content="Geçmiş yıllarda benzin, altın, ekmek ne kadardı? Tahmin et, gerçek fiyatla karşılaştır.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script type="module" src="js/main.js"></script>
 </head>
@@ -12,58 +15,72 @@
   <header class="site-header">
     <h1 class="logo">Ne Kadardı?</h1>
     <div class="year-filter">
-      <label>Yıllar
-        <select id="year-from" aria-label="Başlangıç yılı"></select>
-      </label>
+      <label class="visually-hidden" for="year-from">Başlangıç yılı</label>
+      <select id="year-from" aria-label="Başlangıç yılı"></select>
       <span aria-hidden="true">–</span>
+      <label class="visually-hidden" for="year-to">Bitiş yılı</label>
       <select id="year-to" aria-label="Bitiş yılı"></select>
     </div>
   </header>
 
   <main>
-    <section id="message-screen" class="card">
-      <p id="message-text">Yükleniyor…</p>
+    <section id="message-screen">
+      <div class="receipt-card">
+        <p id="message-text">Yükleniyor…</p>
+      </div>
     </section>
 
-    <section id="question-screen" class="card" hidden>
-      <p id="q-period" class="period"></p>
-      <h2 id="q-name" class="product"></h2>
-      <p id="q-unit" class="unit"></p>
-      <form id="guess-form" novalidate>
-        <label for="guess-input" class="visually-hidden">Tahminin (TL)</label>
-        <div class="guess-field">
-          <input id="guess-input" type="text" inputmode="decimal" autocomplete="off"
-                 placeholder="Tahminin" aria-describedby="guess-error">
-          <span class="currency">₺</span>
-        </div>
-        <p id="guess-error" class="error" role="alert"></p>
-        <button type="submit" class="btn primary">Tahmin et</button>
-      </form>
+    <section id="question-screen" hidden>
+      <div class="receipt-card question-card">
+        <div class="period-badge"><span id="q-period"></span></div>
+        <h2 id="q-name" class="product"></h2>
+        <p id="q-unit" class="unit"></p>
+        
+        <form id="guess-form" novalidate>
+          <label for="guess-input" class="visually-hidden">Tahminin (TL)</label>
+          <div class="guess-field">
+            <input id="guess-input" type="text" inputmode="decimal" autocomplete="off"
+                   placeholder="Tahminin" aria-describedby="guess-error">
+            <span class="currency">₺</span>
+          </div>
+          <p id="guess-error" class="error" role="alert"></p>
+          <button type="submit" class="btn primary">Tahmin et</button>
+        </form>
+      </div>
     </section>
 
     <section id="result-screen" hidden>
-      <article class="receipt" aria-live="polite">
-        <p class="receipt-head">*** NE KADARDI? ***</p>
-        <p id="r-title" class="receipt-title"></p>
-        <p id="r-unit" class="receipt-unit"></p>
-        <hr>
-        <dl>
-          <div class="row"><dt>Tahminin</dt><dd id="r-guess"></dd></div>
-          <div class="row"><dt>Gerçek fiyat</dt><dd id="r-actual"></dd></div>
-        </dl>
-        <p id="r-verdict" class="verdict"></p>
-        <hr>
-        <dl id="r-current-row">
-          <div class="row"><dt id="r-current-label">Bugün</dt><dd id="r-current"></dd></div>
-          <div class="row"><dt>Artış</dt><dd id="r-increase"></dd></div>
-        </dl>
-        <p class="score">PUAN <span id="r-score"></span></p>
-        <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a></p>
-      </article>
-      <p id="r-session" class="session"></p>
-      <div class="actions">
-        <button id="share-btn" type="button" class="btn">Paylaş</button>
-        <button id="next-btn" type="button" class="btn primary">Sonraki</button>
+      <div class="receipt-wrapper">
+        <article class="receipt-card result-receipt" aria-live="polite">
+          <p class="receipt-head">*** NE KADARDI? ***</p>
+          <p id="r-title" class="receipt-title"></p>
+          <p id="r-unit" class="receipt-unit"></p>
+          <hr>
+          <dl>
+            <div class="row"><dt>Tahminin</dt><dd id="r-guess"></dd></div>
+            <div class="row"><dt>Gerçek Fiyat</dt><dd id="r-actual" class="highlight-price"></dd></div>
+          </dl>
+          <div class="verdict-box">
+            <p id="r-verdict" class="verdict"></p>
+          </div>
+          <hr>
+          <dl id="r-current-row">
+            <div class="row"><dt id="r-current-label">Bugün</dt><dd id="r-current"></dd></div>
+            <div class="row"><dt>Artış</dt><dd id="r-increase"></dd></div>
+          </dl>
+          <div class="score-box">
+            <p class="score">PUAN <span id="r-score"></span></p>
+          </div>
+          <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a></p>
+        </article>
+      </div>
+      
+      <div class="session-actions">
+        <p id="r-session" class="session"></p>
+        <div class="actions">
+          <button id="share-btn" type="button" class="btn">Paylaş</button>
+          <button id="next-btn" type="button" class="btn primary">Sonraki</button>
+        </div>
       </div>
     </section>
   </main>
