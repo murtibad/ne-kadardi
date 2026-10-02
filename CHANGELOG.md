@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.1] - 2026-10-03
+### Fixed
+- data: Audited all verified data. Moved unverified links (Sabah, Hürriyet, T24, ITO) to todo.
+- data: Fixed minimum wage definition to be strictly net (AGİ included before 2022) with official sources.
+- data: Updated USD sources to use TCMB daily XML archive exactly at the date.
+- code: Moved context line calculation to game.js pure function and added tests.
+- code: Context line now handles expensive items ("1 iPhone = X asgari ücret") and never outputs 0.
+- code: Context line now strictly filters by matching half-year.
+- code: Fixed double "₺" bug in share text.
+- ui: Changed persistent counter label from "Bu oturum" to "Toplam".
+- ui: Added `prefers-reduced-motion` for accessibility.
+- ui: Replaced social.jpg with a clean vector-like mockup image without fake prices and added og dimension tags.
+
 ## [0.4.0] - 2026-10-03
 ### Added
 - LocalStorage integration to persist session stats (questions played, average score).

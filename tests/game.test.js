@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, filterByYears, pickRandom, scoreGuess } from '../js/game.js';
+import { buildQuestions, filterByYears, pickRandom, scoreGuess, buildContextLine } from '../js/game.js';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -53,4 +53,44 @@ test('scoreGuess gives 100 within 10% and 0 at 5x', () => {
   assert.equal(scoreGuess(10.5, 10).direction, 'exact');
   assert.equal(scoreGuess(50, 10).score, 0);
   assert.equal(scoreGuess(1, 10).score, 0);
+});
+
+test('buildContextLine for cheap product', () => {
+  const qs = [
+    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
+    { productId: 'asgari-ucret', current: { price: 17000 } } // A fake one to trigger current branch
+  ];
+  const q = { productId: 'ekmek', date: '2010-01', price: 0.5, unit: '1 adet', name: 'Ekmek', current: { price: 10 } };
+  const line = buildContextLine(q, qs);
+  assert.equal(line.includes('1000 adet'), true);
+});
+
+test('buildContextLine for expensive product', () => {
+  const qs = [
+    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
+    { productId: 'asgari-ucret', current: { price: 17000 } }
+  ];
+  const q = { productId: 'iphone', date: '2010-05', price: 1500, unit: '1 adet', name: 'iPhone', current: { price: 60000 } };
+  const line = buildContextLine(q, qs);
+  assert.equal(line.includes('3 asgari ücret'), true);
+});
+
+test('buildContextLine for cheap product', () => {
+  const qs = [
+    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
+    { productId: 'asgari-ucret', current: { price: 17000 } } // A fake one to trigger current branch
+  ];
+  const q = { productId: 'ekmek', date: '2010-01', price: 0.5, unit: '1 adet', name: 'Ekmek', current: { price: 10 } };
+  const line = buildContextLine(q, qs);
+  assert.equal(line.includes('1000 adet'), true);
+});
+
+test('buildContextLine for expensive product', () => {
+  const qs = [
+    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
+    { productId: 'asgari-ucret', current: { price: 17000 } }
+  ];
+  const q = { productId: 'iphone', date: '2010-05', price: 1500, unit: '1 adet', name: 'iPhone', current: { price: 60000 } };
+  const line = buildContextLine(q, qs);
+  assert.equal(line.includes('3 asgari ücret'), true);
 });

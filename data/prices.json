@@ -26,25 +26,25 @@
       "unit": "1 USD (TCMB döviz satış kuru)",
       "region": null,
       "current": {
-        "date": "2026-09",
-        "price": 49.01,
+        "date": "2024-09-30",
+        "price": 34.1825,
         "status": "verified",
-        "note": "TCMB döviz satış kuru, 30 Eylül 2026",
+        "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
           "title": "TCMB Kurlar Arşivi",
-          "url": "https://www.tcmb.gov.tr/kurlar/kurlar_tr.html",
+          "url": "https://www.tcmb.gov.tr/kurlar/202409/30092024.xml",
           "accessed": "2026-10-03"
         }
       },
       "prices": [
         {
-          "date": "2010-01",
-          "price": 1.47,
+          "date": "2010-01-04",
+          "price": 1.4881,
           "status": "verified",
-          "note": "TCMB döviz satış kuru, 2010 Ocak ortalaması",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
           "source": {
             "title": "TCMB EVDS Döviz Kurları",
-            "url": "https://evds2.tcmb.gov.tr/",
+            "url": "https://www.tcmb.gov.tr/kurlar/201001/04012010.xml",
             "accessed": "2026-10-03"
           }
         }
@@ -85,24 +85,20 @@
       "region": null,
       "current": {
         "date": "2026-01",
-        "price": 28075.5,
-        "status": "verified",
-        "note": "Bekâr işçi, AGİ dahil net",
-        "source": {
-          "title": "ÇSGB Asgari Ücret İstatistikleri",
-          "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
-          "accessed": "2026-10-03"
-        }
+        "price": null,
+        "status": "todo",
+        "note": "TODO: kaynak gerekli",
+        "source": null
       },
       "prices": [
         {
           "date": "2010-01",
-          "price": 521.89,
+          "price": 576.57,
           "status": "verified",
-          "note": "Ocak - Haziran dönemi, net",
+          "note": "Net, AGİ dahil (16 yaşından büyük bekâr işçi)",
           "source": {
             "title": "ÇSGB Asgari Ücret İstatistikleri",
-            "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
+            "url": "https://www.csgb.gov.tr/Media/qm3pvi1z/2010_birincialtiay.pdf",
             "accessed": "2026-10-03"
           }
         },
@@ -110,10 +106,10 @@
           "date": "2015-01",
           "price": 949.07,
           "status": "verified",
-          "note": "Ocak - Haziran dönemi, net",
+          "note": "Net, AGİ dahil (bekâr işçi)",
           "source": {
             "title": "ÇSGB Asgari Ücret İstatistikleri",
-            "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
+            "url": "https://www.csgb.gov.tr/Media/iekd3tkc/2015_birincialtiay.pdf",
             "accessed": "2026-10-03"
           }
         },
@@ -124,7 +120,7 @@
           "note": "Net asgari ücret",
           "source": {
             "title": "ÇSGB Asgari Ücret İstatistikleri",
-            "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
+            "url": "https://www.csgb.gov.tr/Media/pbqphfb4/2024-asgari-%C3%BCcret.pdf",
             "accessed": "2026-10-03"
           }
         }
@@ -175,23 +171,18 @@
       "region": null,
       "current": {
         "date": "2024-09",
-        "price": 64999,
-        "status": "verified",
-        "label": "iPhone 16",
-        "source": {
-          "title": "Apple Türkiye iPhone 16 Çıkış Fiyatı",
-          "url": "https://www.apple.com/tr/iphone/",
-          "accessed": "2026-10-03"
-        },
-        "unit": "1 adet, 128 GB, Türkiye çıkış fiyatı"
+        "price": null,
+        "status": "todo",
+        "note": "TODO: kaynak gerekli",
+        "source": null
       },
       "prices": [
         {
           "date": "2010-09",
-          "price": 1600,
-          "status": "verified",
+          "price": null,
+          "status": "todo",
           "label": "iPhone 4",
-          "note": "Türkiye çıkış fiyatı (yaklaşık perakende)",
+          "note": "TODO: kaynak gerekli",
           "source": {
             "title": "Haber Arşivi (iPhone 4 Türkiye Satış Fiyatı)",
             "url": "https://www.hurriyet.com.tr/ekonomi/iphone-4-turkiyede-ne-kadara-satilacak-15843405",
@@ -201,10 +192,10 @@
         },
         {
           "date": "2014-09",
-          "price": 2349,
-          "status": "verified",
+          "price": null,
+          "status": "todo",
           "label": "iPhone 6",
-          "note": "Resmi Türkiye çıkış fiyatı",
+          "note": "TODO: kaynak gerekli",
           "source": {
             "title": "Haber Arşivi (iPhone 6 Türkiye Fiyatı)",
             "url": "https://t24.com.tr/haber/iphone-6-ve-iphone-6-plusin-turkiye-fiyatlari-belli-oldu,271295",
@@ -235,23 +226,18 @@
       "region": "İstanbul",
       "current": {
         "date": "2024-06",
-        "price": 10,
-        "status": "verified",
-        "unit": "200 gr",
-        "note": "İstanbul Ticaret Odası (İTO) azami fiyat tarifesi",
-        "source": {
-          "title": "İTO Ekmek Fiyat Tarifesi Duyurusu (2024)",
-          "url": "https://ito.org.tr/",
-          "accessed": "2026-10-03"
-        }
+        "price": null,
+        "status": "todo",
+        "note": "TODO: kaynak gerekli",
+        "source": null
       },
       "prices": [
         {
           "date": "2010-10",
-          "price": 0.85,
-          "status": "verified",
+          "price": null,
+          "status": "todo",
           "unit": "300 gr",
-          "note": "İstanbul Fırıncılar Odası tarifesi",
+          "note": "TODO: kaynak gerekli",
           "source": {
             "title": "Haber Arşivi (2010 Ekmek Fiyatları)",
             "url": "https://www.sabah.com.tr/ekonomi/2010/10/26/ekmege_zam_yok",
@@ -260,10 +246,10 @@
         },
         {
           "date": "2015-01",
-          "price": 1,
-          "status": "verified",
+          "price": null,
+          "status": "todo",
           "unit": "250 gr",
-          "note": "İstanbul Fırıncılar Odası tarifesi",
+          "note": "TODO: kaynak gerekli",
           "source": {
             "title": "İSTFO Tarife Arşivi",
             "url": "https://istfo.org/",
