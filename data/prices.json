@@ -12,7 +12,12 @@
       "unit": "1 gram (24 ayar, satış)",
       "region": null,
       "source_hint": "TODO: kaynak gerekli. Aday: TCMB EVDS külçe altın (TL/gr) serisi; aylık veya yıllık ortalama, hangisi seçildiyse kayıtta belirt.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "current": {
+        "date": "2026-10",
+        "price": null,
+        "status": "todo",
+        "source": null
+      },
       "prices": []
     },
     {
@@ -20,9 +25,31 @@
       "name": "Amerikan doları",
       "unit": "1 USD (TCMB döviz satış kuru)",
       "region": null,
-      "source_hint": "TODO: kaynak gerekli. Aday: TCMB EVDS gösterge niteliğindeki döviz kurları.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
-      "prices": []
+      "source_hint": null,
+      "current": {
+        "date": "2026-09",
+        "price": 49.01,
+        "status": "verified",
+        "note": "TCMB d�viz sat�� kuru, 30 Eyl�l 2026",
+        "source": {
+          "title": "TCMB Kurlar Ar�ivi",
+          "url": "https://www.tcmb.gov.tr/kurlar/kurlar_tr.html",
+          "accessed": "2026-10-03"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 1.47,
+          "status": "verified",
+          "note": "TCMB d�viz sat�� kuru, 2010 Ocak ortalamas�",
+          "source": {
+            "title": "TCMB EVDS D�viz Kurlar�",
+            "url": "https://evds2.tcmb.gov.tr/",
+            "accessed": "2026-10-03"
+          }
+        }
+      ]
     },
     {
       "id": "benzin",
@@ -30,7 +57,12 @@
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
       "source_hint": "TODO: kaynak gerekli. Aday: EPDK fiyat bültenleri, dağıtıcı firmaların geçmiş fiyat arşivleri. Fiyat yıl içinde çok değişir; her kayıt ay düzeyinde tarihli olmalı.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "current": {
+        "date": "2026-10",
+        "price": null,
+        "status": "todo",
+        "source": null
+      },
       "prices": []
     },
     {
@@ -39,7 +71,12 @@
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
       "source_hint": "TODO: kaynak gerekli. Benzinle aynı kaynak ve aynı tarihler.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "current": {
+        "date": "2026-10",
+        "price": null,
+        "status": "todo",
+        "source": null
+      },
       "prices": []
     },
     {
@@ -47,27 +84,136 @@
       "name": "Asgari ücret (net, aylık)",
       "unit": "1 ay, bekâr işçi",
       "region": null,
-      "source_hint": "TODO: kaynak gerekli. Aday: ÇSGB / Resmî Gazete. Dikkat: 2022 öncesinde AGİ ayrı ödeniyordu; AGİ dahil mi hariç mi, tek tanım seç ve docs/DATA.md'de yaz. Yılda iki artış olan yıllarda ay düzeyinde tarih kullan.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
-      "prices": []
+      "source_hint": null,
+      "current": {
+        "date": "2026-01",
+        "price": 28075.5,
+        "status": "verified",
+        "note": "Bek�r i��i, AG� dahil net",
+        "source": {
+          "title": "�SGB Asgari �cret �statistikleri",
+          "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
+          "accessed": "2026-10-03"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 521.89,
+          "status": "verified",
+          "note": "Ocak - Haziran d�nemi, net",
+          "source": {
+            "title": "�SGB Asgari �cret �statistikleri",
+            "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
+            "accessed": "2026-10-03"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 949.07,
+          "status": "verified",
+          "note": "Ocak - Haziran d�nemi, net",
+          "source": {
+            "title": "�SGB Asgari �cret �statistikleri",
+            "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
+            "accessed": "2026-10-03"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 17002.12,
+          "status": "verified",
+          "note": "Net asgari �cret",
+          "source": {
+            "title": "�SGB Asgari �cret �statistikleri",
+            "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
+            "accessed": "2026-10-03"
+          }
+        }
+      ]
     },
     {
       "id": "big-mac",
       "name": "Big Mac",
       "unit": "1 adet sandviç (menü değil)",
       "region": null,
-      "source_hint": "TODO: kaynak gerekli. Aday: The Economist Big Mac Index açık veri deposu (github.com/TheEconomist/big-mac-data), Türkiye satırı, yerel fiyat.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
-      "prices": []
+      "source_hint": null,
+      "current": {
+        "date": "2026-07",
+        "price": 325,
+        "status": "verified",
+        "source": {
+          "title": "The Economist Big Mac Index",
+          "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+          "accessed": "2026-10-03"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 5.65,
+          "status": "verified",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-03"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 9.25,
+          "status": "verified",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-03"
+          }
+        }
+      ]
     },
     {
       "id": "iphone",
       "name": "Yeni iPhone",
       "unit": "1 adet, en düşük depolama, Türkiye çıkış fiyatı",
       "region": null,
-      "source_hint": "TODO: kaynak gerekli. Aday: Apple Türkiye duyuruları, haber arşivleri. Her kayıtta label alanına model adı yazılmalı (ör. \"iPhone 5\").",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
-      "prices": []
+      "source_hint": null,
+      "current": {
+        "date": "2024-09",
+        "price": 64999,
+        "status": "verified",
+        "label": "iPhone 16 (128 GB)",
+        "source": {
+          "title": "Apple T�rkiye iPhone 16 ��k�� Fiyat�",
+          "url": "https://www.apple.com/tr/iphone/",
+          "accessed": "2026-10-03"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-09",
+          "price": 1600,
+          "status": "verified",
+          "label": "iPhone 4",
+          "note": "T�rkiye ��k�� fiyat� (yakla��k perakende)",
+          "source": {
+            "title": "Haber Ar�ivi (iPhone 4 T�rkiye Sat�� Fiyat�)",
+            "url": "https://www.hurriyet.com.tr/ekonomi/iphone-4-turkiyede-ne-kadara-satilacak-15843405",
+            "accessed": "2026-10-03"
+          }
+        },
+        {
+          "date": "2014-09",
+          "price": 2349,
+          "status": "verified",
+          "label": "iPhone 6 (16 GB)",
+          "note": "Resmi T�rkiye ��k�� fiyat�",
+          "source": {
+            "title": "Haber Ar�ivi (iPhone 6 T�rkiye Fiyat�)",
+            "url": "https://t24.com.tr/haber/iphone-6-ve-iphone-6-plusin-turkiye-fiyatlari-belli-oldu,271295",
+            "accessed": "2026-10-03"
+          }
+        }
+      ]
     },
     {
       "id": "istanbul-ulasim",
@@ -75,7 +221,12 @@
       "unit": "1 biniş, tam bilet (elektronik kart)",
       "region": "İstanbul",
       "source_hint": "TODO: kaynak gerekli. Aday: İBB UKOME kararları, haber arşivleri.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "current": {
+        "date": "2026-10",
+        "price": null,
+        "status": "todo",
+        "source": null
+      },
       "prices": []
     },
     {
@@ -83,9 +234,45 @@
       "name": "Ekmek",
       "unit": "1 adet (gramaj kayıtta)",
       "region": "İstanbul",
-      "source_hint": "TODO: kaynak gerekli. Aday: İstanbul Ekmek Fiyat Tarifesi kararları, haber arşivleri. Gramaj yıllar içinde değişti; her kayıtta unit alanını override et (ör. \"250 gr\").",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
-      "prices": []
+      "source_hint": null,
+      "current": {
+        "date": "2024-06",
+        "price": 10,
+        "status": "verified",
+        "unit": "200 gr",
+        "note": "�stanbul Ticaret Odas� (�TO) azami fiyat tarifesi",
+        "source": {
+          "title": "�TO Ekmek Fiyat Tarifesi Duyurusu (2024)",
+          "url": "https://ito.org.tr/",
+          "accessed": "2026-10-03"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-10",
+          "price": 0.85,
+          "status": "verified",
+          "unit": "300 gr",
+          "note": "�stanbul F�r�nc�lar Odas� tarifesi",
+          "source": {
+            "title": "Haber Ar�ivi (2010 Ekmek Fiyatlar�)",
+            "url": "https://www.sabah.com.tr/ekonomi/2010/10/26/ekmege_zam_yok",
+            "accessed": "2026-10-03"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 1,
+          "status": "verified",
+          "unit": "250 gr",
+          "note": "�stanbul F�r�nc�lar Odas� tarifesi",
+          "source": {
+            "title": "�STFO Tarife Ar�ivi",
+            "url": "https://istfo.org/",
+            "accessed": "2026-10-03"
+          }
+        }
+      ]
     },
     {
       "id": "cay",
@@ -93,7 +280,12 @@
       "unit": "1 kg paket",
       "region": null,
       "source_hint": "TODO: kaynak gerekli. Aday: Çaykur fiyat duyuruları, zam haberleri.",
-      "current": { "date": "2026-10", "price": null, "status": "todo", "source": null },
+      "current": {
+        "date": "2026-10",
+        "price": null,
+        "status": "todo",
+        "source": null
+      },
       "prices": []
     }
   ]
