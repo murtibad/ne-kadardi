@@ -1,4 +1,5 @@
 // Game logic: question selection and scoring. Pure functions, no DOM access.
+import { formatRatio } from './format.js';
 
 const PERFECT_FACTOR = 1.1; // within 10% counts as a perfect guess
 const ZERO_FACTOR = 5; // 5x off (either way) scores zero
@@ -65,4 +66,52 @@ export function scoreGuess(guess, actual) {
     score = Math.round(100 * Math.max(0, 1 - t));
   }
   return { ratio, factor, direction, score };
+}
+
+
+export function getHalfYear(dateStr) {
+  if (!dateStr || dateStr.length < 4) return null;
+  const year = dateStr.slice(0, 4);
+  const month = dateStr.length >= 7 ? parseInt(dateStr.slice(5, 7), 10) : null;
+  if (month === null) return null; // We need a month to determine half year reliably
+  return `${year}-H${month <= 6 ? 1 : 2}`;
+}
+
+export function getShortUnit(unit) {
+  if (!unit) return 'adet';
+  const lower = unit.toLowerCase();
+  if (lower.includes('litre')) return 'litre';
+  if (lower.includes('gram') || lower.includes('gr')) return 'adet';
+  if (lower.includes('usd')) return 'dolar';
+  return 'adet';
+}
+
+/**
+ * Purchasing-power line for the result receipt, based on the net minimum wage of the
+ * same half-year. Cheap items are counted ("102 adet"); items costing more than a wage
+ * are expressed as wage multiples ("2,6 asgari ücret"), so the line never says "0 adet".
+ */
+export function buildContextLine(q, allQuestions) {
+  if (q.productId === 'asgari-ucret') return null;
+  const wages = allQuestions.filter((x) => x.productId === 'asgari-ucret');
+  const half = getHalfYear(q.date);
+  const pastWage = half && wages.find((x) => getHalfYear(x.date) === half);
+  if (!pastWage) return null;
+
+  const unit = getShortUnit(q.unit);
+  const currentWage = wages.find((x) => x.current)?.current.price;
+  const hasNow = Boolean(q.current && currentWage);
+
+  if (q.price <= pastWage.price) {
+    const past = `O tarihte 1 asgari ücretle ${Math.floor(pastWage.price / q.price)} ${unit} alınabiliyordu`;
+    if (!hasNow) return `${past}.`;
+    const now = Math.floor(currentWage / q.current.price);
+    return now >= 1
+      ? `${past}, bugün ${now} ${unit}.`
+      : `${past}; bugün 1 asgari ücret yetmiyor.`;
+  }
+
+  const past = `O tarihte bir ${q.name} ${formatRatio(q.price / pastWage.price)} asgari ücret ediyordu`;
+  if (!hasNow) return `${past}.`;
+  return `${past}, bugün ${formatRatio(q.current.price / currentWage)} asgari ücret.`;
 }

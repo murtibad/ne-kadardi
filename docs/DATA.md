@@ -57,7 +57,7 @@ Entry:
 |---|---|---|---|
 | gram-altin | 1 g, 24k | TCMB EVDS gold series | very high |
 | dolar | 1 USD | TCMB EVDS exchange rates | very high |
-| asgari-ucret | net monthly, single worker | ÇSGB, Resmî Gazete (decide AGİ handling once) | very high |
+| asgari-ucret | net, AGİ dahil (2022 öncesi) | ÇSGB, Resmî Gazete (bekâr işçi ele geçen tutar) | very high |
 | big-mac | 1 sandwich | The Economist big-mac-data (GitHub) | high |
 | benzin / motorin | 1 L, İstanbul | EPDK bulletins, distributor price archives | high (date it) |
 | iphone | launch price, base storage | Apple TR, news archives | medium-high |

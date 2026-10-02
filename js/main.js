@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
-import { buildQuestions, yearRange, filterByYears, pickRandom, scoreGuess } from './game.js';
+import { buildQuestions, buildContextLine, yearRange, filterByYears, pickRandom, scoreGuess } from './game.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -96,45 +96,6 @@ function verdictText(r) {
   return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
 }
 
-function getShortUnit(unit) {
-  if (!unit) return 'adet';
-  const lower = unit.toLowerCase();
-  if (lower.includes('litre')) return 'litre';
-  if (lower.includes('gram') || lower.includes('gr')) return 'adet'; // for bread or gold it's usually pieces of that weight
-  if (lower.includes('usd')) return 'dolar';
-  return 'adet';
-}
-
-function buildContextLine(q) {
-  if (q.productId === 'asgari-ucret') return null;
-  
-  const wages = state.all.filter(x => x.productId === 'asgari-ucret');
-  if (wages.length === 0) return null;
-  
-  // Try exact month, or fallback to same year
-  let pastWage = wages.find(x => x.date === q.date) || wages.find(x => x.year === q.year);
-  if (!pastWage) return null;
-
-  const pastAmount = Math.floor(pastWage.price / q.price);
-  const shortUnit = getShortUnit(q.unit);
-  
-  let text = `O tarihte 1 asgari ücretle ${pastAmount} ${shortUnit} alınabiliyordu`;
-
-  if (q.current) {
-    // find a current wage
-    const currentWageList = wages.filter(x => x.current);
-    if (currentWageList.length > 0) {
-      const currentWage = currentWageList[0].current.price;
-      const currentAmount = Math.floor(currentWage / q.current.price);
-      text = `O tarihte 1 asgari ücretle ${pastAmount} ${shortUnit} alınabiliyorken, bugün ${currentAmount} ${shortUnit} alınabiliyor.`;
-    } else {
-      text += '.';
-    }
-  } else {
-    text += '.';
-  }
-  return text;
-}
 
 function renderResult(q, r) {
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
@@ -152,13 +113,13 @@ function renderResult(q, r) {
     $('r-increase').textContent = `${formatRatio(q.current.price / q.price)} kat arttı`;
   }
 
-  const contextText = buildContextLine(q);
+  const contextText = buildContextLine(q, state.all);
   $('r-context').textContent = contextText || '';
   $('r-context').hidden = !contextText;
 
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
-  $('r-session').textContent = `Bu oturum: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
+  $('r-session').textContent = `Toplam: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
   show('result-screen');
 }
 
@@ -168,8 +129,8 @@ async function share() {
   const text = [
     'Ne Kadardı? 🤔',
     `${formatPeriod(q.date)} · ${questionTitle(q)}`,
-    `Tahminim: ${formatPrice(r.guess)} ₺`,
-    `Gerçek: ${formatPrice(q.price)} ₺`,
+    `Tahminim: ${formatPrice(r.guess)}`,
+    `Gerçek: ${formatPrice(q.price)}`,
     `Puanım: ${r.score}/100`,
     location.href,
   ].join('\n');

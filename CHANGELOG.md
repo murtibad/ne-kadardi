@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.1] - 2026-10-03
+### Fixed
+- data: Audited all verified data. Moved unverified links (Sabah, Hürriyet, T24, ITO) to todo.
+- data: Fixed minimum wage definition to be strictly net (AGİ included before 2022) with official sources.
+- data: Updated USD sources to use TCMB daily XML archive exactly at the date.
+- code: Moved context line calculation to game.js pure function and added tests.
+- code: Context line now expresses expensive items as wage multiples and never outputs 0; rewritten without string replacements.
+- code: Context line now strictly filters by matching half-year.
+- code: Fixed double "₺" bug in share text.
+- ui: Changed persistent counter label from "Bu oturum" to "Toplam".
+- data: Current USD (02.10.2026) and 2026 net minimum wage verified from TCMB XML and ÇSGB PDF.
+- meta: og:image size matches the actual image (1376x768).
+- tests: Removed duplicated context line tests.
+- ui: Added `prefers-reduced-motion` for accessibility.
+- ui: Replaced social.jpg with a clean vector-like mockup image without fake prices and added og dimension tags.
+
 ## [0.4.0] - 2026-10-03
 ### Added
 - LocalStorage integration to persist session stats (questions played, average score).

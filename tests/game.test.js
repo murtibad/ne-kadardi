@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, filterByYears, pickRandom, scoreGuess } from '../js/game.js';
+import { buildQuestions, filterByYears, pickRandom, scoreGuess, buildContextLine } from '../js/game.js';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -53,4 +53,27 @@ test('scoreGuess gives 100 within 10% and 0 at 5x', () => {
   assert.equal(scoreGuess(10.5, 10).direction, 'exact');
   assert.equal(scoreGuess(50, 10).score, 0);
   assert.equal(scoreGuess(1, 10).score, 0);
+});
+
+// Fake wage fixtures for the context line; never copy into data/prices.json.
+const wageNow = { price: 20000 };
+const wages = [
+  { productId: 'asgari-ucret', date: '2010-01', price: 500, current: wageNow },
+  { productId: 'asgari-ucret', date: '2015-01', price: 1000, current: wageNow },
+];
+
+test('buildContextLine counts cheap items and compares with today', () => {
+  const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-03', price: 1, current: { price: 10 } };
+  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu, bugün 2000 adet.');
+});
+
+test('buildContextLine expresses expensive items as wage multiples, never "0 adet"', () => {
+  const q = { productId: 'x', name: 'iPhone', unit: '1 adet', date: '2010-05', price: 1300, current: { price: 60000 } };
+  assert.equal(buildContextLine(q, wages), 'O tarihte bir iPhone 2,6 asgari ücret ediyordu, bugün 3 asgari ücret.');
+});
+
+test('buildContextLine needs a wage from the same half-year', () => {
+  const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-08', price: 1, current: null };
+  assert.equal(buildContextLine(q, wages), null);
+  assert.equal(buildContextLine({ ...q, date: '2015-02' }, wages), 'O tarihte 1 asgari ücretle 1000 adet alınabiliyordu.');
 });
