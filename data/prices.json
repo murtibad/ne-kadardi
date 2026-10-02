@@ -25,14 +25,13 @@
       "name": "Amerikan doları",
       "unit": "1 USD (TCMB döviz satış kuru)",
       "region": null,
-      "source_hint": null,
       "current": {
         "date": "2026-09",
         "price": 49.01,
         "status": "verified",
-        "note": "TCMB d�viz sat�� kuru, 30 Eyl�l 2026",
+        "note": "TCMB döviz satış kuru, 30 Eylül 2026",
         "source": {
-          "title": "TCMB Kurlar Ar�ivi",
+          "title": "TCMB Kurlar Arşivi",
           "url": "https://www.tcmb.gov.tr/kurlar/kurlar_tr.html",
           "accessed": "2026-10-03"
         }
@@ -42,9 +41,9 @@
           "date": "2010-01",
           "price": 1.47,
           "status": "verified",
-          "note": "TCMB d�viz sat�� kuru, 2010 Ocak ortalamas�",
+          "note": "TCMB döviz satış kuru, 2010 Ocak ortalaması",
           "source": {
-            "title": "TCMB EVDS D�viz Kurlar�",
+            "title": "TCMB EVDS Döviz Kurları",
             "url": "https://evds2.tcmb.gov.tr/",
             "accessed": "2026-10-03"
           }
@@ -84,14 +83,13 @@
       "name": "Asgari ücret (net, aylık)",
       "unit": "1 ay, bekâr işçi",
       "region": null,
-      "source_hint": null,
       "current": {
         "date": "2026-01",
         "price": 28075.5,
         "status": "verified",
-        "note": "Bek�r i��i, AG� dahil net",
+        "note": "Bekâr işçi, AGİ dahil net",
         "source": {
-          "title": "�SGB Asgari �cret �statistikleri",
+          "title": "ÇSGB Asgari Ücret İstatistikleri",
           "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
           "accessed": "2026-10-03"
         }
@@ -101,9 +99,9 @@
           "date": "2010-01",
           "price": 521.89,
           "status": "verified",
-          "note": "Ocak - Haziran d�nemi, net",
+          "note": "Ocak - Haziran dönemi, net",
           "source": {
-            "title": "�SGB Asgari �cret �statistikleri",
+            "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
             "accessed": "2026-10-03"
           }
@@ -112,9 +110,9 @@
           "date": "2015-01",
           "price": 949.07,
           "status": "verified",
-          "note": "Ocak - Haziran d�nemi, net",
+          "note": "Ocak - Haziran dönemi, net",
           "source": {
-            "title": "�SGB Asgari �cret �statistikleri",
+            "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
             "accessed": "2026-10-03"
           }
@@ -123,9 +121,9 @@
           "date": "2024-01",
           "price": 17002.12,
           "status": "verified",
-          "note": "Net asgari �cret",
+          "note": "Net asgari ücret",
           "source": {
-            "title": "�SGB Asgari �cret �statistikleri",
+            "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/istatistikler/calisma-hayati-istatistikleri/asgari-ucret/",
             "accessed": "2026-10-03"
           }
@@ -137,7 +135,6 @@
       "name": "Big Mac",
       "unit": "1 adet sandviç (menü değil)",
       "region": null,
-      "source_hint": null,
       "current": {
         "date": "2026-07",
         "price": 325,
@@ -176,14 +173,13 @@
       "name": "Yeni iPhone",
       "unit": "1 adet, en düşük depolama, Türkiye çıkış fiyatı",
       "region": null,
-      "source_hint": null,
       "current": {
         "date": "2024-09",
         "price": 64999,
         "status": "verified",
         "label": "iPhone 16 (128 GB)",
         "source": {
-          "title": "Apple T�rkiye iPhone 16 ��k�� Fiyat�",
+          "title": "Apple Türkiye iPhone 16 Çıkış Fiyatı",
           "url": "https://www.apple.com/tr/iphone/",
           "accessed": "2026-10-03"
         }
@@ -194,9 +190,9 @@
           "price": 1600,
           "status": "verified",
           "label": "iPhone 4",
-          "note": "T�rkiye ��k�� fiyat� (yakla��k perakende)",
+          "note": "Türkiye çıkış fiyatı (yaklaşık perakende)",
           "source": {
-            "title": "Haber Ar�ivi (iPhone 4 T�rkiye Sat�� Fiyat�)",
+            "title": "Haber Arşivi (iPhone 4 Türkiye Satış Fiyatı)",
             "url": "https://www.hurriyet.com.tr/ekonomi/iphone-4-turkiyede-ne-kadara-satilacak-15843405",
             "accessed": "2026-10-03"
           }
@@ -206,9 +202,9 @@
           "price": 2349,
           "status": "verified",
           "label": "iPhone 6 (16 GB)",
-          "note": "Resmi T�rkiye ��k�� fiyat�",
+          "note": "Resmi Türkiye çıkış fiyatı",
           "source": {
-            "title": "Haber Ar�ivi (iPhone 6 T�rkiye Fiyat�)",
+            "title": "Haber Arşivi (iPhone 6 Türkiye Fiyatı)",
             "url": "https://t24.com.tr/haber/iphone-6-ve-iphone-6-plusin-turkiye-fiyatlari-belli-oldu,271295",
             "accessed": "2026-10-03"
           }
@@ -234,15 +230,14 @@
       "name": "Ekmek",
       "unit": "1 adet (gramaj kayıtta)",
       "region": "İstanbul",
-      "source_hint": null,
       "current": {
         "date": "2024-06",
         "price": 10,
         "status": "verified",
         "unit": "200 gr",
-        "note": "�stanbul Ticaret Odas� (�TO) azami fiyat tarifesi",
+        "note": "İstanbul Ticaret Odası (İTO) azami fiyat tarifesi",
         "source": {
-          "title": "�TO Ekmek Fiyat Tarifesi Duyurusu (2024)",
+          "title": "İTO Ekmek Fiyat Tarifesi Duyurusu (2024)",
           "url": "https://ito.org.tr/",
           "accessed": "2026-10-03"
         }
@@ -253,9 +248,9 @@
           "price": 0.85,
           "status": "verified",
           "unit": "300 gr",
-          "note": "�stanbul F�r�nc�lar Odas� tarifesi",
+          "note": "İstanbul Fırıncılar Odası tarifesi",
           "source": {
-            "title": "Haber Ar�ivi (2010 Ekmek Fiyatlar�)",
+            "title": "Haber Arşivi (2010 Ekmek Fiyatları)",
             "url": "https://www.sabah.com.tr/ekonomi/2010/10/26/ekmege_zam_yok",
             "accessed": "2026-10-03"
           }
@@ -265,9 +260,9 @@
           "price": 1,
           "status": "verified",
           "unit": "250 gr",
-          "note": "�stanbul F�r�nc�lar Odas� tarifesi",
+          "note": "İstanbul Fırıncılar Odası tarifesi",
           "source": {
-            "title": "�STFO Tarife Ar�ivi",
+            "title": "İSTFO Tarife Arşivi",
             "url": "https://istfo.org/",
             "accessed": "2026-10-03"
           }
