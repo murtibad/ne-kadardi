@@ -26,13 +26,13 @@
       "unit": "1 USD (TCMB döviz satış kuru)",
       "region": null,
       "current": {
-        "date": "2024-09-30",
-        "price": 34.1825,
+        "date": "2026-10-02",
+        "price": 49.0582,
         "status": "verified",
         "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
-          "title": "TCMB Kurlar Arşivi",
-          "url": "https://www.tcmb.gov.tr/kurlar/202409/30092024.xml",
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.10.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202610/02102026.xml",
           "accessed": "2026-10-03"
         }
       },
@@ -85,10 +85,14 @@
       "region": null,
       "current": {
         "date": "2026-01",
-        "price": null,
-        "status": "todo",
-        "note": "TODO: kaynak gerekli",
-        "source": null
+        "price": 28075.5,
+        "status": "verified",
+        "note": "Net asgari ücret, 01.01.2026-31.12.2026",
+        "source": {
+          "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyeti 2026",
+          "url": "https://www.csgb.gov.tr/Media/gm2fekds/asgari-%C3%BCcret-2026.pdf",
+          "accessed": "2026-10-03"
+        }
       },
       "prices": [
         {

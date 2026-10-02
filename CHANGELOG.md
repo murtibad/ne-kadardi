@@ -8,10 +8,13 @@ All notable changes to this project will be documented in this file.
 - data: Fixed minimum wage definition to be strictly net (AGİ included before 2022) with official sources.
 - data: Updated USD sources to use TCMB daily XML archive exactly at the date.
 - code: Moved context line calculation to game.js pure function and added tests.
-- code: Context line now handles expensive items ("1 iPhone = X asgari ücret") and never outputs 0.
+- code: Context line now expresses expensive items as wage multiples and never outputs 0; rewritten without string replacements.
 - code: Context line now strictly filters by matching half-year.
 - code: Fixed double "₺" bug in share text.
 - ui: Changed persistent counter label from "Bu oturum" to "Toplam".
+- data: Current USD (02.10.2026) and 2026 net minimum wage verified from TCMB XML and ÇSGB PDF.
+- meta: og:image size matches the actual image (1376x768).
+- tests: Removed duplicated context line tests.
 - ui: Added `prefers-reduced-motion` for accessibility.
 - ui: Replaced social.jpg with a clean vector-like mockup image without fake prices and added og dimension tags.
 

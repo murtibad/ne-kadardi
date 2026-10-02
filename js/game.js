@@ -1,4 +1,5 @@
 // Game logic: question selection and scoring. Pure functions, no DOM access.
+import { formatRatio } from './format.js';
 
 const PERFECT_FACTOR = 1.1; // within 10% counts as a perfect guess
 const ZERO_FACTOR = 5; // 5x off (either way) scores zero
@@ -85,46 +86,32 @@ export function getShortUnit(unit) {
   return 'adet';
 }
 
+/**
+ * Purchasing-power line for the result receipt, based on the net minimum wage of the
+ * same half-year. Cheap items are counted ("102 adet"); items costing more than a wage
+ * are expressed as wage multiples ("2,6 asgari ücret"), so the line never says "0 adet".
+ */
 export function buildContextLine(q, allQuestions) {
   if (q.productId === 'asgari-ucret') return null;
-  const wages = allQuestions.filter(x => x.productId === 'asgari-ucret');
-  if (wages.length === 0) return null;
-  
-  const qHalf = getHalfYear(q.date);
-  if (!qHalf) return null;
-  
-  let pastWage = wages.find(x => getHalfYear(x.date) === qHalf);
-  if (!pastWage) return null; // Must be same half-year
+  const wages = allQuestions.filter((x) => x.productId === 'asgari-ucret');
+  const half = getHalfYear(q.date);
+  const pastWage = half && wages.find((x) => getHalfYear(x.date) === half);
+  if (!pastWage) return null;
 
-  const formatAmount = (wage, price, name) => {
-    if (price <= wage) {
-      const amount = Math.max(1, Math.floor(wage / price)); // Never 0
-      return `1 asgari ücretle ${amount} ${getShortUnit(q.unit)}`;
-    } else {
-      const amount = (price / wage).toLocaleString('tr-TR', { maximumFractionDigits: 1 });
-      return `1 ${name || 'ürün'} = ${amount} asgari ücret`;
-    }
-  };
+  const unit = getShortUnit(q.unit);
+  const currentWage = wages.find((x) => x.current)?.current.price;
+  const hasNow = Boolean(q.current && currentWage);
 
-  let text = `O tarihte ${formatAmount(pastWage.price, q.price, q.name)}`;
-
-  if (q.current) {
-    const currentWageList = wages.filter(x => x.current);
-    if (currentWageList.length > 0) {
-      const currentWage = currentWageList[0].current.price;
-      text += ` alınabiliyorken, bugün ${formatAmount(currentWage, q.current.price, q.name)} alınabiliyor.`;
-    } else {
-      text += ' alınabiliyordu.';
-    }
-  } else {
-    text += ' alınabiliyordu.';
+  if (q.price <= pastWage.price) {
+    const past = `O tarihte 1 asgari ücretle ${Math.floor(pastWage.price / q.price)} ${unit} alınabiliyordu`;
+    if (!hasNow) return `${past}.`;
+    const now = Math.floor(currentWage / q.current.price);
+    return now >= 1
+      ? `${past}, bugün ${now} ${unit}.`
+      : `${past}; bugün 1 asgari ücret yetmiyor.`;
   }
-  
-  // Clean up wording
-  text = text.replace('alınabiliyorken, bugün 1 ', 'alınabiliyorken, bugün ');
-  if (q.price > pastWage.price) {
-    text = text.replace('O tarihte 1', 'O tarihte bir').replace('alınabiliyordu.', 'ediyordu.');
-    text = text.replace('alınabiliyorken, bugün', 'ederken, bugün');
-  }
-  return text;
+
+  const past = `O tarihte bir ${q.name} ${formatRatio(q.price / pastWage.price)} asgari ücret ediyordu`;
+  if (!hasNow) return `${past}.`;
+  return `${past}, bugün ${formatRatio(q.current.price / currentWage)} asgari ücret.`;
 }

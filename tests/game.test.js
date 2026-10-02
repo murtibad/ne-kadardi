@@ -55,42 +55,25 @@ test('scoreGuess gives 100 within 10% and 0 at 5x', () => {
   assert.equal(scoreGuess(1, 10).score, 0);
 });
 
-test('buildContextLine for cheap product', () => {
-  const qs = [
-    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
-    { productId: 'asgari-ucret', current: { price: 17000 } } // A fake one to trigger current branch
-  ];
-  const q = { productId: 'ekmek', date: '2010-01', price: 0.5, unit: '1 adet', name: 'Ekmek', current: { price: 10 } };
-  const line = buildContextLine(q, qs);
-  assert.equal(line.includes('1000 adet'), true);
+// Fake wage fixtures for the context line; never copy into data/prices.json.
+const wageNow = { price: 20000 };
+const wages = [
+  { productId: 'asgari-ucret', date: '2010-01', price: 500, current: wageNow },
+  { productId: 'asgari-ucret', date: '2015-01', price: 1000, current: wageNow },
+];
+
+test('buildContextLine counts cheap items and compares with today', () => {
+  const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-03', price: 1, current: { price: 10 } };
+  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu, bugün 2000 adet.');
 });
 
-test('buildContextLine for expensive product', () => {
-  const qs = [
-    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
-    { productId: 'asgari-ucret', current: { price: 17000 } }
-  ];
-  const q = { productId: 'iphone', date: '2010-05', price: 1500, unit: '1 adet', name: 'iPhone', current: { price: 60000 } };
-  const line = buildContextLine(q, qs);
-  assert.equal(line.includes('3 asgari ücret'), true);
+test('buildContextLine expresses expensive items as wage multiples, never "0 adet"', () => {
+  const q = { productId: 'x', name: 'iPhone', unit: '1 adet', date: '2010-05', price: 1300, current: { price: 60000 } };
+  assert.equal(buildContextLine(q, wages), 'O tarihte bir iPhone 2,6 asgari ücret ediyordu, bugün 3 asgari ücret.');
 });
 
-test('buildContextLine for cheap product', () => {
-  const qs = [
-    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
-    { productId: 'asgari-ucret', current: { price: 17000 } } // A fake one to trigger current branch
-  ];
-  const q = { productId: 'ekmek', date: '2010-01', price: 0.5, unit: '1 adet', name: 'Ekmek', current: { price: 10 } };
-  const line = buildContextLine(q, qs);
-  assert.equal(line.includes('1000 adet'), true);
-});
-
-test('buildContextLine for expensive product', () => {
-  const qs = [
-    { productId: 'asgari-ucret', date: '2010-01', price: 500, unit: '1 ay', name: 'Asgari' },
-    { productId: 'asgari-ucret', current: { price: 17000 } }
-  ];
-  const q = { productId: 'iphone', date: '2010-05', price: 1500, unit: '1 adet', name: 'iPhone', current: { price: 60000 } };
-  const line = buildContextLine(q, qs);
-  assert.equal(line.includes('3 asgari ücret'), true);
+test('buildContextLine needs a wage from the same half-year', () => {
+  const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-08', price: 1, current: null };
+  assert.equal(buildContextLine(q, wages), null);
+  assert.equal(buildContextLine({ ...q, date: '2015-02' }, wages), 'O tarihte 1 asgari ücretle 1000 adet alınabiliyordu.');
 });
