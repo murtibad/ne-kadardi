@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2026-10-03
+### Added
+- LocalStorage integration to persist session stats (questions played, average score).
+- Dynamic context line cross-referencing minimum wage data ("O tarihte 1 asgari ücretle X adet...").
+- Share functionality using Web Share API and Clipboard fallback.
+- Open Graph meta tags, social preview image (`social.jpg`), and an SVG favicon.
+
 ## [0.3.0] - 2026-10-03
 ### Added
 - Verified historical and current prices for Big Mac, USD (Dolar), Minimum Wage (Asgari Ücret), iPhone, and Bread (Ekmek) for years including 2010, 2014/2015, 2024, and 2026.
