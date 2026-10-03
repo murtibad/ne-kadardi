@@ -8,9 +8,10 @@ the real price, how many times off you were, and what it costs today.
 
 ## Features
 
-- Random questions with a year range filter
+- Random questions from all verified prices
 - Turkish number input (`4,5`, `1.250,75`)
 - Fair, ratio-based scoring on a log scale: being 2× too high costs the same as 2× too low
+- "Zaman makinesi" screen to explore the verified price history of each product
 - Every price is sourced; unverified data never reaches the game
 
 ## Tech

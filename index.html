@@ -22,6 +22,7 @@
 <body>
   <header class="site-header">
     <h1 class="logo">Ne Kadardı?</h1>
+    <a href="#zaman-makinesi" class="header-link">Zaman makinesi</a>
   </header>
 
   <main>
@@ -86,11 +87,32 @@
         </div>
       </div>
     </section>
+
+    <section id="timeline-screen" hidden>
+      <div class="timeline-header">
+        <h2>Zaman makinesi</h2>
+        <p>Doğrulanmış tüm fiyatlar, kaynaklarıyla.</p>
+        <a href="#" class="btn primary timeline-back-btn">Oyuna dön</a>
+      </div>
+      
+      <div class="timeline-picker" role="group" aria-label="Ürün seç" id="timeline-picker">
+      </div>
+      
+      <div class="receipt-wrapper">
+        <article class="receipt-card result-receipt timeline-receipt">
+          <p id="t-title" class="receipt-title"></p>
+          <p id="t-unit" class="receipt-unit"></p>
+          <hr>
+          <div id="t-rows-container"></div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <p>Tüm fiyatlar kaynaklıdır. Hata görürsen
       <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a>.</p>
+    <p><a href="#zaman-makinesi" class="footer-link">Zaman makinesi</a></p>
   </footer>
 </body>
 </html>

@@ -1,11 +1,16 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
 import { buildQuestions, buildContextLine, pickRandom, scoreGuess } from './game.js';
+import { buildTimelines } from './timeline.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
 
-const state = { all: [], question: null, result: null, played: 0, total: 0 };
+const state = { 
+  all: [], timelines: [], question: null, result: null, 
+  played: 0, total: 0, 
+  lastGameScreen: 'question-screen', selectedTimelineProduct: null 
+};
 let shareOriginalLabel = '';
 let shareTimeoutId = null;
 
@@ -29,9 +34,14 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'question-screen', 'result-screen']) {
+  for (const id of ['message-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
     $(id).hidden = id !== screenId;
   }
+}
+
+function showGameScreen(screenId) {
+  state.lastGameScreen = screenId;
+  show(screenId);
 }
 
 function showMessage(text) {
@@ -78,7 +88,7 @@ function nextQuestion() {
   $('q-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('guess-input').value = '';
   $('guess-error').textContent = '';
-  show('question-screen');
+  showGameScreen('question-screen');
   $('guess-input').focus();
 }
 
@@ -125,7 +135,7 @@ function renderResult(q, r) {
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
   $('r-session').textContent = `Toplam: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
-  show('result-screen');
+  showGameScreen('result-screen');
 }
 
 async function share() {
@@ -155,12 +165,114 @@ async function share() {
   }
 }
 
+function renderTimelineScreen(focusProductId = null) {
+  show('timeline-screen');
+  if (state.timelines.length === 0) return;
+  
+  if (!state.selectedTimelineProduct) {
+    state.selectedTimelineProduct = state.timelines[0].id;
+  }
+  
+  const product = state.timelines.find(t => t.id === state.selectedTimelineProduct) || state.timelines[0];
+  
+  const picker = $('timeline-picker');
+  picker.innerHTML = '';
+  for (const t of state.timelines) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'picker-chip';
+    btn.setAttribute('aria-pressed', t.id === product.id ? 'true' : 'false');
+    btn.dataset.id = t.id;
+    
+    if (t.image) {
+      const img = document.createElement('img');
+      img.src = t.image.src;
+      img.alt = '';
+      btn.appendChild(img);
+    }
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = t.name;
+    btn.appendChild(nameSpan);
+    
+    btn.onclick = () => {
+      state.selectedTimelineProduct = t.id;
+      renderTimelineScreen(t.id); // the picker is rebuilt, so put keyboard focus back on the chosen chip
+    };
+    picker.appendChild(btn);
+  }
+  
+  if (focusProductId) picker.querySelector(`[data-id="${focusProductId}"]`)?.focus();
+
+  $('t-title').textContent = product.name;
+  $('t-unit').textContent = product.region ? `${product.unit} · ${product.region}` : product.unit;
+  
+  let html = `<table class="timeline-table">
+    <caption class="visually-hidden">Fiyat geçmişi</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="visually-hidden">Tarih</th>
+        <th scope="col" class="visually-hidden">Fiyat ve Artış</th>
+      </tr>
+    </thead>
+    <tbody>`;
+    
+  const escapeHTML = str => str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
+
+  for (const r of product.rows) {
+    const period = r.isCurrent ? `Güncel (${formatPeriod(r.date)})` : formatPeriod(r.date);
+    const priceStr = formatPrice(r.price);
+    const ratioStr = r.ratioToCurrent ? `${formatRatio(r.ratioToCurrent)} kat arttı` : '';
+    
+    const bar = `<div class="timeline-bar-track" aria-hidden="true">
+                   <div class="timeline-bar-fill" style="width: ${r.barPercent}%"></div>
+                 </div>`;
+                 
+    const sourceLink = r.source ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>` : '';
+    const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${escapeHTML(r.note)}</p></details>` : '';
+    
+    html += `<tr>
+      <th scope="row">${period}</th>
+      <td>
+        <div class="timeline-price-row">
+          <span class="timeline-price">${priceStr}</span>
+          ${ratioStr ? `<span class="timeline-ratio">${ratioStr}</span>` : ''}
+        </div>
+        ${bar}
+        <div class="timeline-meta">
+          ${sourceLink}
+          ${note}
+        </div>
+      </td>
+    </tr>`;
+  }
+  html += `</tbody></table>`;
+  
+  $('t-rows-container').innerHTML = html;
+}
+
+function onHashChange() {
+  if (location.hash === '#zaman-makinesi') {
+    if (state.timelines.length > 0) renderTimelineScreen();
+  } else {
+    if (state.all.length > 0) {
+      if (!state.question) {
+        nextQuestion();
+      } else {
+        show(state.lastGameScreen);
+      }
+    }
+  }
+}
+window.addEventListener('hashchange', onHashChange);
+
 async function init() {
   loadSession();
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    state.all = buildQuestions(await res.json());
+    const rawData = await res.json();
+    state.all = buildQuestions(rawData);
+    state.timelines = buildTimelines(rawData);
   } catch (err) {
     console.error(err);
     showMessage('Veri yüklenemedi. Sayfayı yerel bir sunucuyla açtığından emin ol.');
@@ -177,7 +289,8 @@ async function init() {
     nextQuestion();
   });
   $('share-btn').addEventListener('click', share);
-  nextQuestion();
+  
+  onHashChange();
 }
 
 init();
