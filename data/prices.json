@@ -55,28 +55,282 @@
       "name": "Benzin (kurşunsuz 95)",
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
-      "source_hint": "TODO: kaynak gerekli. Aday: EPDK fiyat bültenleri, dağıtıcı firmaların geçmiş fiyat arşivleri. Fiyat yıl içinde çok değişir; her kayıt ay düzeyinde tarihli olmalı.",
+      "source_hint": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni (bildirim.epdk.gov.tr, bültenSorgula; tarih girilir). Portal 01.01.2016'dan başlıyor; öncesi için başka kaynak gerekir (TODO).",
       "current": {
         "date": "2026-10",
-        "price": null,
-        "status": "todo",
-        "source": null
+        "price": 84.625,
+        "status": "verified",
+        "note": "EPDK günlük bülten, 04.10.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+        "source": {
+          "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 04.10.2026",
+          "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+          "accessed": "2026-10-04"
+        }
       },
-      "prices": []
+      "prices": [
+        {
+          "date": "2016-01",
+          "price": 4.27764,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2016: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2016",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 5.1734,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2017: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2017",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 5.57274,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2018: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2018",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 5.83065,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2019: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2019",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 6.98475,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2020: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2020",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 7.18433,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2021: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2021",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 12.91307,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2022: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2022",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 19.47857,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2023: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2023",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 34.53286,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2024: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2024",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 44.0075,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2025: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2025",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 52.235,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2026",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        }
+      ]
     },
     {
       "id": "motorin",
       "name": "Motorin",
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
-      "source_hint": "TODO: kaynak gerekli. Benzinle aynı kaynak ve aynı tarihler.",
+      "source_hint": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni (bildirim.epdk.gov.tr, bültenSorgula; tarih girilir). Portal 01.01.2016'dan başlıyor; öncesi için başka kaynak gerekir (TODO).",
       "current": {
         "date": "2026-10",
-        "price": null,
-        "status": "todo",
-        "source": null
+        "price": 94.995,
+        "status": "verified",
+        "note": "EPDK günlük bülten, 04.10.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+        "source": {
+          "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 04.10.2026",
+          "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+          "accessed": "2026-10-04"
+        }
       },
-      "prices": []
+      "prices": [
+        {
+          "date": "2016-01",
+          "price": 3.4632,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2016: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2016",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 4.5644,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2017: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2017",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 5.03073,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2018: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2018",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 5.63585,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2019: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2019",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 6.51081,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2020: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2020",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 6.57045,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2021: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2021",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 12.72746,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2022: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2022",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 22.03875,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2023: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2023",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 37.15,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2024: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2024",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 44.725,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2025: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2025",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 53.635,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 02.01.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2026",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-04"
+          }
+        }
+      ]
     },
     {
       "id": "asgari-ucret",
