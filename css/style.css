@@ -278,6 +278,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .actions { 
   display: flex; 
   gap: 12px; 
+  flex-wrap: wrap;
 }
 .btn {
   font: 700 1.125rem var(--font-ui); 
@@ -289,12 +290,13 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   cursor: pointer;
   text-align: center;
   transition: transform 0.1s;
+  flex: 1;
 }
 .btn:active { transform: scale(0.98); }
 .btn.primary { 
   background: var(--text); 
   color: var(--bg); 
-  flex: 1; 
+  flex: 1 1 100%; 
 }
 .receipt-card .btn.primary { 
   background: var(--ink); 

@@ -90,7 +90,7 @@ The `stitch` CLI is installed and logged in. Design direction: `docs/DESIGN-BRIE
       ("O tarihte asgari ücretle X litre benzin alınıyordu, bugün Y") using only verified data,
       Open Graph meta + social preview image, favicon.
 - [x] Later: "Zaman makinesi" browse screen.
-- [ ] Later: Shareable result image (canvas).
+- [x] Later: Shareable result image (canvas).
 
 ## Commands
 

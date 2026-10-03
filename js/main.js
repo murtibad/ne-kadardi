@@ -2,6 +2,7 @@
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
 import { buildQuestions, buildContextLine, pickRandom, scoreGuess } from './game.js';
 import { buildTimelines } from './timeline.js';
+import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -49,9 +50,7 @@ function showMessage(text) {
   show('message-screen');
 }
 
-function questionTitle(q) {
-  return q.label ? `${q.name}: ${q.label}` : q.name;
-}
+let downloadOriginalLabel = '';
 
 function resetShareBtn() {
   if (shareTimeoutId !== null) {
@@ -60,7 +59,21 @@ function resetShareBtn() {
   }
   if (shareOriginalLabel) {
     $('share-btn').textContent = shareOriginalLabel;
+    $('share-btn').removeAttribute('aria-busy');
   }
+  if (downloadOriginalLabel) {
+    $('download-btn').textContent = downloadOriginalLabel;
+    $('download-btn').removeAttribute('aria-busy');
+  }
+}
+
+function setBtnStatus(btnId, text) {
+  if (shareTimeoutId !== null) clearTimeout(shareTimeoutId);
+  $(btnId).textContent = text;
+  $(btnId).removeAttribute('aria-busy');
+  shareTimeoutId = setTimeout(() => {
+    resetShareBtn();
+  }, 2000);
 }
 
 function nextQuestion() {
@@ -107,11 +120,6 @@ function onGuess(event) {
   renderResult(q, state.result);
 }
 
-function verdictText(r) {
-  if (r.direction === 'exact') return 'Neredeyse tam isabet!';
-  return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
-}
-
 function renderResult(q, r) {
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
@@ -138,31 +146,94 @@ function renderResult(q, r) {
   showGameScreen('result-screen');
 }
 
+async function prepareShareImage(btnId) {
+  const btn = $(btnId);
+  if (btn.hasAttribute('aria-busy')) return null;
+  
+  btn.setAttribute('aria-busy', 'true');
+  btn.textContent = 'Hazırlanıyor…';
+  
+  const q = state.question;
+  const r = state.result;
+  const contextText = buildContextLine(q, state.all);
+  const model = buildShareImageModel(q, r, { contextLine: contextText });
+  
+  try {
+    const { renderShareImage } = await import('./share-image.js');
+    return await renderShareImage(model);
+  } catch (err) {
+    console.warn('Görsel hazırlanamadı', err);
+    return null;
+  }
+}
+
+function canShareImageFiles() {
+  try {
+    return Boolean(navigator.canShare?.({ files: [new File([''], 'x.png', { type: 'image/png' })] }));
+  } catch {
+    return false;
+  }
+}
+
 async function share() {
   const q = state.question;
   const r = state.result;
-  const text = [
-    'Ne Kadardı? 🤔',
-    `${formatPeriod(q.date)} · ${questionTitle(q)}`,
-    `Tahminim: ${formatPrice(r.guess)}`,
-    `Gerçek: ${formatPrice(q.price)}`,
-    `Puanım: ${r.score}/100`,
-    location.href,
-  ].join('\n');
+  const text = buildShareText(q, r, location.href);
+  if ($('share-btn').hasAttribute('aria-busy')) return;
+
+  // Only draw the image when the browser can actually share files (mostly phones).
+  const filesSupported = canShareImageFiles();
+  const blob = filesSupported ? await prepareShareImage('share-btn') : null;
+
+  if (blob) {
+    const file = new File([blob], buildShareFileName(q), { type: 'image/png' });
+    if (navigator.canShare({ files: [file] })) {
+      resetShareBtn();
+      try {
+        await navigator.share({ files: [file], text });
+      } catch (err) {
+        if (err.name !== 'AbortError') console.warn(err);
+      }
+      return;
+    }
+  }
+
+  // Text fallback: share sheet without files, or copy to the clipboard.
   try {
     if (navigator.share) {
+      resetShareBtn();
       await navigator.share({ text });
     } else {
       await navigator.clipboard.writeText(text);
-      if (shareTimeoutId !== null) clearTimeout(shareTimeoutId);
-      $('share-btn').textContent = 'Kopyalandı!';
-      shareTimeoutId = setTimeout(() => {
-        resetShareBtn();
-      }, 2000);
+      setBtnStatus('share-btn', filesSupported ? 'Görsel hazırlanamadı, metin kopyalandı.' : 'Kopyalandı!');
     }
   } catch (err) {
-    console.warn(err);
+    if (err.name !== 'AbortError') console.warn(err);
+    resetShareBtn();
   }
+}
+
+async function downloadImage() {
+  const btn = $('download-btn');
+  if (btn.hasAttribute('aria-busy')) return;
+  
+  const blob = await prepareShareImage('download-btn');
+  if (!blob) {
+    setBtnStatus('download-btn', 'Görsel hazırlanamadı.');
+    return;
+  }
+  
+  const q = state.question;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = buildShareFileName(q);
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  
+  setBtnStatus('download-btn', 'İndiriliyor…');
 }
 
 function renderTimelineScreen(focusProductId = null) {
@@ -283,12 +354,14 @@ async function init() {
     return;
   }
   shareOriginalLabel = $('share-btn').textContent;
+  downloadOriginalLabel = $('download-btn').textContent;
   $('guess-form').addEventListener('submit', onGuess);
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
     nextQuestion();
   });
   $('share-btn').addEventListener('click', share);
+  $('download-btn').addEventListener('click', downloadImage);
   
   onHashChange();
 }
