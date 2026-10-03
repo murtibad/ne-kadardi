@@ -1,6 +1,10 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [0.11.0] - 2026-10-04
+### Added
+- feature: Shareable result image. On the result screen, players can download a PNG image of their receipt using the Canvas 2D API or share it directly using the Web Share API on mobile.
+
 
 ## [0.10.0] - 2026-10-04
 ### Added
