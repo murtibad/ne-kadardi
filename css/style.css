@@ -126,6 +126,14 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin-bottom: 12px;
 }
 
+.product-image {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
 .product { 
   margin: 0 0 4px; 
   font-size: 2rem; 

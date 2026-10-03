@@ -1,7 +1,7 @@
 // Guards the data policy: no verified price without a source, no value in a TODO entry.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 
 const data = JSON.parse(readFileSync(new URL('../data/prices.json', import.meta.url), 'utf8'));
 const DATE = /^\d{4}(-\d{2}(-\d{2})?)?$/;
@@ -30,6 +30,14 @@ test('prices.json follows the data policy', () => {
     assert.ok(p.id && !ids.has(p.id), `duplicate or missing product id: ${p.id}`);
     ids.add(p.id);
     assert.ok(p.name && p.unit, `${p.id}: name and unit are required`);
+    
+    if (p.image) {
+      assert.ok(p.image.src.startsWith('img/') && p.image.src.endsWith('.svg'), `${p.id}: image.src must be in img/ and be an .svg`);
+      assert.ok(existsSync(new URL(`../${p.image.src}`, import.meta.url)), `${p.id}: image file must exist`);
+      assert.ok(typeof p.image.alt === 'string' && p.image.alt.trim() !== '', `${p.id}: image.alt must be a non-empty string`);
+      assert.ok(typeof p.image.credit === 'string' && p.image.credit.trim() !== '', `${p.id}: image.credit must be a non-empty string`);
+    }
+
     checkEntry(p.current, `${p.id}.current`);
 
     const dates = new Set();

@@ -24,6 +24,16 @@ test('buildQuestions keeps only verified entries', () => {
   assert.equal(qs[0].year, 2010);
 });
 
+test('buildQuestions carries product image', () => {
+  const f = { products: [{ id: 'p1', name: 'A', unit: 'U', image: { src: 'img/test.svg', alt: 'Test', credit: 'C' }, prices: [{ date: '2010-01', price: 1, status: 'verified', source: {} }] }] };
+  const qs = buildQuestions(f);
+  assert.equal(qs[0].image.src, 'img/test.svg');
+  
+  const f2 = { products: [{ id: 'p2', name: 'B', unit: 'U', prices: [{ date: '2010-01', price: 1, status: 'verified', source: {} }] }] };
+  const qs2 = buildQuestions(f2);
+  assert.equal(qs2[0].image, null);
+});
+
 test('getShortUnit matches units precisely', () => {
   assert.equal(getShortUnit('1 litre'), 'litre');
   assert.equal(getShortUnit('1 gram'), 'gram');

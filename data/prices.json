@@ -25,6 +25,7 @@
       "name": "Amerikan doları",
       "unit": "1 USD (TCMB döviz satış kuru)",
       "region": null,
+      "image": { "src": "img/dolar.svg", "alt": "Dolar banknotu", "credit": "Original illustration, CC0" },
       "current": {
         "date": "2026-10-02",
         "price": 49.0582,
@@ -232,6 +233,7 @@
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
       "source_hint": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni (bildirim.epdk.gov.tr, bültenSorgula; tarih girilir). Portal 01.01.2016'dan başlıyor; öncesi için başka kaynak gerekir (TODO).",
+      "image": { "src": "img/benzin.svg", "alt": "Benzin pompası", "credit": "Original illustration, CC0" },
       "current": {
         "date": "2026-10",
         "price": 84.625,
@@ -373,6 +375,7 @@
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
       "source_hint": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni (bildirim.epdk.gov.tr, bültenSorgula; tarih girilir). Portal 01.01.2016'dan başlıyor; öncesi için başka kaynak gerekir (TODO).",
+      "image": { "src": "img/motorin.svg", "alt": "Motorin pompası", "credit": "Original illustration, CC0" },
       "current": {
         "date": "2026-10",
         "price": 94.995,
@@ -513,6 +516,7 @@
       "name": "Asgari ücret (net, aylık)",
       "unit": "1 ay, bekâr işçi",
       "region": null,
+      "image": { "src": "img/asgari-ucret.svg", "alt": "Cüzdan", "credit": "Original illustration, CC0" },
       "current": {
         "date": "2026-01",
         "price": 28075.5,
@@ -708,6 +712,7 @@
       "name": "Big Mac",
       "unit": "1 adet sandviç (menü değil)",
       "region": null,
+      "image": { "src": "img/big-mac.svg", "alt": "Hamburger", "credit": "Original illustration, CC0" },
       "current": {
         "date": "2026-07",
         "price": 325,
