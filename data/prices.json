@@ -47,6 +47,182 @@
             "url": "https://www.tcmb.gov.tr/kurlar/201001/04012010.xml",
             "accessed": "2026-10-03"
           }
+        },
+        {
+          "date": "2011-01-03",
+          "price": 1.5551,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2011",
+            "url": "https://www.tcmb.gov.tr/kurlar/201101/03012011.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2012-01-02",
+          "price": 1.8859,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2012",
+            "url": "https://www.tcmb.gov.tr/kurlar/201201/02012012.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2013-01-02",
+          "price": 1.7793,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2013",
+            "url": "https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2014-01-02",
+          "price": 2.1757,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2014",
+            "url": "https://www.tcmb.gov.tr/kurlar/201401/02012014.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2015-01-02",
+          "price": 2.3491,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2015",
+            "url": "https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2016-01-04",
+          "price": 2.9475,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2016",
+            "url": "https://www.tcmb.gov.tr/kurlar/201601/04012016.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2017-01-02",
+          "price": 3.5402,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2017",
+            "url": "https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2018-01-02",
+          "price": 3.7719,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2018",
+            "url": "https://www.tcmb.gov.tr/kurlar/201801/02012018.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2019-01-02",
+          "price": 5.3412,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2019",
+            "url": "https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2020-01-02",
+          "price": 5.9585,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2020",
+            "url": "https://www.tcmb.gov.tr/kurlar/202001/02012020.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2021-01-04",
+          "price": 7.3734,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2021",
+            "url": "https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2022-01-03",
+          "price": 13.4463,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2022",
+            "url": "https://www.tcmb.gov.tr/kurlar/202201/03012022.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2023-01-02",
+          "price": 18.7366,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2023",
+            "url": "https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2024-01-02",
+          "price": 29.7209,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2024",
+            "url": "https://www.tcmb.gov.tr/kurlar/202401/02012024.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2025-01-02",
+          "price": 35.316,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2025",
+            "url": "https://www.tcmb.gov.tr/kurlar/202501/02012025.xml",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2026-01-02",
+          "price": 42.9582,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Ocak ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2026",
+            "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
+            "accessed": "2026-10-04"
+          }
         }
       ]
     },
@@ -361,6 +537,50 @@
           }
         },
         {
+          "date": "2011-01",
+          "price": 629.96,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 59,74 TL AGİ ilave edilmiştir. Dönem: 01.01.2011-30.06.2011.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2011-30.06.2011",
+            "url": "https://www.csgb.gov.tr/Media/a2bp4yjf/2011_birincialtiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 701.13,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 66,49 TL AGİ ilave edilmiştir. Dönem: 01.01.2012-30.06.2012.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2012-30.06.2012",
+            "url": "https://www.csgb.gov.tr/Media/bxfewasy/2012_birincialtiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 773.01,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 73,40 TL AGİ ilave edilmiştir. Dönem: 01.01.2013-30.06.2013.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2013-30.06.2013",
+            "url": "https://www.csgb.gov.tr/Media/2b3hqq11/2013_birincialtiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 846.0,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 80,33 TL AGİ ilave edilmiştir. Dönem: 01.01.2014-30.06.2014.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2014-30.06.2014",
+            "url": "https://www.csgb.gov.tr/Media/a2zobjd3/2014_birincialtiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
           "date": "2015-01",
           "price": 949.07,
           "status": "verified",
@@ -372,6 +592,94 @@
           }
         },
         {
+          "date": "2016-01",
+          "price": 1300.99,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 123,53 TL AGİ ilave edilmiştir. Dönem: 01.01.2016-31.12.2016.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2016-31.12.2016",
+            "url": "https://www.csgb.gov.tr/Media/rjrp0du4/2016_onikiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 1404.06,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 133,31 TL AGİ ilave edilmiştir. Dönem: 01.01.2017-31.12.2017.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2017-31.12.2017",
+            "url": "https://www.csgb.gov.tr/Media/onlm0nvg/2017_onikiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 1603.12,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 152,21 TL AGİ ilave edilmiştir. Dönem: 01.01.2018-31.12.2018.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2018-31.12.2018",
+            "url": "https://www.csgb.gov.tr/Media/l3lb3fyv/2018_onikiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 2020.9,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 191,88 TL AGİ ilave edilmiştir. Dönem: 01.01.2019-31.12.2019.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2019-31.12.2019",
+            "url": "https://www.csgb.gov.tr/Media/v31hhspp/2019_onikiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 2324.71,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 220,73 TL AGİ ilave edilmiştir. Dönem: 01.01.2020-31.12.2020.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2020-31.12.2020",
+            "url": "https://www.csgb.gov.tr/Media/hy2jxzps/2020_onikiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 2825.9,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 268,31 TL AGİ ilave edilmiştir. Dönem: 01.01.2021-31.12.2021.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2021-31.12.2021",
+            "url": "https://www.csgb.gov.tr/Media/xddbty3t/asgari-ucret-2021.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 4253.4,
+          "status": "verified",
+          "note": "Net asgari ücret; gelir vergisi ve damga vergisi hesaplanmamıştır (AGİ uygulanmaz). Dönem: 01.01.2022-30.06.2022.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2022-30.06.2022",
+            "url": "https://www.csgb.gov.tr/Media/e1yly2qe/2022_birincialtiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 8506.8,
+          "status": "verified",
+          "note": "Net asgari ücret; gelir vergisi ve damga vergisi hesaplanmamıştır (AGİ uygulanmaz). Dönem: 01.01.2023-30.06.2023.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2023-30.06.2023",
+            "url": "https://www.csgb.gov.tr/Media/fqvbfpd0/2023_birincialtiay.pdf",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
           "date": "2024-01",
           "price": 17002.12,
           "status": "verified",
@@ -380,6 +688,17 @@
             "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/Media/pbqphfb4/2024-asgari-%C3%BCcret.pdf",
             "accessed": "2026-10-03"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 22104.67,
+          "status": "verified",
+          "note": "Net asgari ücret; gelir vergisi ve damga vergisi hesaplanmamıştır (AGİ uygulanmaz). Dönem: 01.01.2025-31.12.2025.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2025-31.12.2025",
+            "url": "https://www.csgb.gov.tr/Media/f4xjys1e/2025-asgari-%C3%BCcret_.pdf",
+            "accessed": "2026-10-04"
           }
         }
       ]
@@ -411,6 +730,28 @@
           }
         },
         {
+          "date": "2012-01",
+          "price": 6.6,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2012 gözlemi (CSV satırı 2012-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 8.45,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2013 gözlemi (CSV satırı 2013-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
           "date": "2015-01",
           "price": 9.25,
           "status": "verified",
@@ -418,6 +759,83 @@
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
             "accessed": "2026-10-03"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 12.99,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2020 gözlemi (CSV satırı 2020-01-14). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 14.99,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2021 gözlemi (CSV satırı 2021-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 24.99,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2022 gözlemi (CSV satırı 2022-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 75,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2023 gözlemi (CSV satırı 2023-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 120,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2024 gözlemi (CSV satırı 2024-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 190,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2025 gözlemi (CSV satırı 2025-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 255,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Ocak 2026 gözlemi (CSV satırı 2026-01-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-04"
           }
         }
       ]
