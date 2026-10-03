@@ -80,3 +80,25 @@ Source: EPDK "Petrol Piyasası Bayi Satış Fiyatı Bülteni"
 - Take the standard rows "Kurşunsuz Benzin 95 Oktan" and "Motorin". Older bulletins also list
   "(Diğer)" rows (differentiated fuels); do not use them.
 - The URL does not encode the date, so the entry title and `note` carry the bulletin date.
+
+## TCMB exchange rates (dolar)
+
+- File per day: `https://www.tcmb.gov.tr/kurlar/YYYYMM/DDMMYYYY.xml`. The files are ISO-8859-9 encoded.
+- Take USD `ForexSelling` ("döviz satış"). Weekends and holidays have no file, so the entry uses the
+  first business day of January and its real date.
+
+## ÇSGB minimum wage
+
+- One PDF per period on https://www.csgb.gov.tr/poco-pages/asgari-ucret/ . Take the net amount of a
+  single worker. Up to 2021 the PDF marks it "(**) Net ele geçen asgari ücrete X TL asgari geçim
+  indirimi ilave edilmiştir", so the number is net with AGİ. From 2022 no income or stamp tax is
+  calculated, so net is simply gross minus SGK and unemployment premiums.
+- 2016-2021 PDFs cover the whole year, earlier ones and 2022/2023 cover the first half. July
+  changes (2022, 2023, 2025) are not in the data yet.
+
+## Economist Big Mac Index (Türkiye)
+
+- The Turkey series repeats the same price for several consecutive observations (for example
+  10.75 from 2017 to 2019). We cannot tell a real unchanged price from a carried-forward value,
+  so only January observations that differ from the previous one are used. Existing entries stay.
+
