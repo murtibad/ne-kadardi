@@ -89,7 +89,8 @@ The `stitch` CLI is installed and logged in. Design direction: `docs/DESIGN-BRIE
 - [ ] v0.4 Polish: session stats in `localStorage`, share text, context line on the result
       ("O tarihte asgari ücretle X litre benzin alınıyordu, bugün Y") using only verified data,
       Open Graph meta + social preview image, favicon.
-- [ ] Later: "Zaman makinesi" browse screen, shareable result image (canvas).
+- [x] Later: "Zaman makinesi" browse screen.
+- [ ] Later: Shareable result image (canvas).
 
 ## Commands
 

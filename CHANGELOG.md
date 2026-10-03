@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.10.0] - 2026-10-04
+### Added
+- ui: "Zaman makinesi" screen to browse historical price data of all products in one place.
+- code: Extracted timeline processing into a pure `buildTimelines` module with unit tests.
+### Fixed
+- docs: README no longer mentions the year filter removed in 0.5.0.
+
 ## [0.9.0] - 2026-10-04
 ### Added
 - data: Gram altın for every January 2010-2026 plus the current value (September 2026): 18 derived values, 83 playable questions in total. The values are market values from the World Bank monthly gold price and the TCMB monthly average dollar rate, not jeweller selling prices; the method is in each entry's `note` and in `docs/DATA.md`.
