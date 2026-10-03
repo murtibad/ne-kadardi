@@ -1,11 +1,13 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
-import { buildQuestions, buildContextLine, yearRange, filterByYears, pickRandom, scoreGuess } from './game.js';
+import { buildQuestions, buildContextLine, pickRandom, scoreGuess } from './game.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
 
-const state = { all: [], pool: [], question: null, result: null, played: 0, total: 0 };
+const state = { all: [], question: null, result: null, played: 0, total: 0 };
+let shareOriginalLabel = '';
+let shareTimeoutId = null;
 
 function loadSession() {
   try {
@@ -37,33 +39,25 @@ function showMessage(text) {
   show('message-screen');
 }
 
-function setupYearFilter() {
-  const { min, max } = yearRange(state.all);
-  for (const select of [$('year-from'), $('year-to')]) {
-    for (let y = min; y <= max; y++) select.add(new Option(String(y), String(y)));
-  }
-  $('year-from').value = String(min);
-  $('year-to').value = String(max);
-  $('year-from').addEventListener('change', onFilterChange);
-  $('year-to').addEventListener('change', onFilterChange);
-}
-
-function onFilterChange() {
-  let from = Number($('year-from').value);
-  let to = Number($('year-to').value);
-  if (from > to) [from, to] = [to, from];
-  state.pool = filterByYears(state.all, from, to);
-  nextQuestion();
-}
-
 function questionTitle(q) {
   return q.label ? `${q.name}: ${q.label}` : q.name;
 }
 
+function resetShareBtn() {
+  if (shareTimeoutId !== null) {
+    clearTimeout(shareTimeoutId);
+    shareTimeoutId = null;
+  }
+  if (shareOriginalLabel) {
+    $('share-btn').textContent = shareOriginalLabel;
+  }
+}
+
 function nextQuestion() {
-  const q = pickRandom(state.pool, state.question?.id);
+  resetShareBtn();
+  const q = pickRandom(state.all, state.question?.id);
   if (!q) {
-    showMessage('Bu yıl aralığında soru yok. Aralığı genişlet.');
+    showMessage('Gösterilecek soru yok.');
     return;
   }
   state.question = q;
@@ -96,7 +90,6 @@ function verdictText(r) {
   return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
 }
 
-
 function renderResult(q, r) {
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
@@ -108,7 +101,7 @@ function renderResult(q, r) {
   const hasCurrent = q.current !== null;
   $('r-current-row').hidden = !hasCurrent;
   if (hasCurrent) {
-    $('r-current-label').textContent = `Bugün (${formatPeriod(q.current.date)})`;
+    $('r-current-label').textContent = `Güncel (${formatPeriod(q.current.date)})`;
     $('r-current').textContent = formatPrice(q.current.price);
     $('r-increase').textContent = `${formatRatio(q.current.price / q.price)} kat arttı`;
   }
@@ -139,7 +132,11 @@ async function share() {
       await navigator.share({ text });
     } else {
       await navigator.clipboard.writeText(text);
+      if (shareTimeoutId !== null) clearTimeout(shareTimeoutId);
       $('share-btn').textContent = 'Kopyalandı!';
+      shareTimeoutId = setTimeout(() => {
+        resetShareBtn();
+      }, 2000);
     }
   } catch (err) {
     console.warn(err);
@@ -161,11 +158,10 @@ async function init() {
     showMessage('Henüz doğrulanmış fiyat yok. Kaynaklı veri eklendiğinde sorular burada görünecek.');
     return;
   }
-  state.pool = state.all;
-  setupYearFilter();
+  shareOriginalLabel = $('share-btn').textContent;
   $('guess-form').addEventListener('submit', onGuess);
   $('next-btn').addEventListener('click', () => {
-    $('share-btn').textContent = 'Paylaş';
+    resetShareBtn();
     nextQuestion();
   });
   $('share-btn').addEventListener('click', share);
