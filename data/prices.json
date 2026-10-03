@@ -9,23 +9,225 @@
     {
       "id": "gram-altin",
       "name": "Gram altın",
-      "unit": "1 gram (24 ayar, satış)",
+      "unit": "1 gram (24 ayar, piyasa değeri)",
       "region": null,
-      "source_hint": "TODO: kaynak gerekli. Aday: TCMB EVDS külçe altın (TL/gr) serisi; aylık veya yıllık ortalama, hangisi seçildiyse kayıtta belirt.",
-      "current": {
-        "date": "2026-10",
-        "price": null,
-        "status": "todo",
-        "source": null
+      "source_hint": "Türetilmiş: Dünya Bankası Pink Sheet aylık ortalama ons altın ($/troy ons) ÷ 31,1034768 × TCMB döviz satış kurunun aylık ortalaması. Kuyumcu satış fiyatı değildir. Ayrıntı: docs/DATA.md.",
+      "image": {
+        "src": "img/gram-altin.svg",
+        "alt": "Altın külçe",
+        "credit": "Original illustration, CC0"
       },
-      "prices": []
+      "current": {
+        "date": "2026-09",
+        "price": 6754.17,
+        "status": "verified",
+        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-09 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 4319 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 48.6405 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+        "source": {
+          "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-09",
+          "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+          "accessed": "2026-10-04"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 52.95,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2010-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1118 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.4732 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 68.4,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2011-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1360 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.5643 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 97.96,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2012-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1654 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.8421 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2012-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 95.22,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2013-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1672 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.7713 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 89.08,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2014-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1244 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.2272 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2014-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 93.99,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2015-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1251 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.3369 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 106.42,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2016-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1098 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.0145 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2016-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 143.86,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2017-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1192 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.7538 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 161.68,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2018-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1331 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.7783 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2018-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 223.31,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2019-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1292 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 5.3759 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 297.63,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2020-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1561 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 5.9303 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2020-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 444.33,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2021-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1867 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 7.4024 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 790.96,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2022-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1816 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 13.5471 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2022-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 1146.94,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2023-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1898 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 18.7954 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 1967.91,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2024-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 2034 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 30.0928 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2024-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 3096.71,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2025-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 2710 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 35.5418 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2025-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 6603.61,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-01 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 4753 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 43.2138 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04"
+          }
+        }
+      ]
     },
     {
       "id": "dolar",
       "name": "Amerikan doları",
       "unit": "1 USD (TCMB döviz satış kuru)",
       "region": null,
-      "image": { "src": "img/dolar.svg", "alt": "Dolar banknotu", "credit": "Original illustration, CC0" },
+      "image": {
+        "src": "img/dolar.svg",
+        "alt": "Dolar banknotu",
+        "credit": "Original illustration, CC0"
+      },
       "current": {
         "date": "2026-10-02",
         "price": 49.0582,
@@ -233,7 +435,11 @@
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
       "source_hint": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni (bildirim.epdk.gov.tr, bültenSorgula; tarih girilir). Portal 01.01.2016'dan başlıyor; öncesi için başka kaynak gerekir (TODO).",
-      "image": { "src": "img/benzin.svg", "alt": "Benzin pompası", "credit": "Original illustration, CC0" },
+      "image": {
+        "src": "img/benzin.svg",
+        "alt": "Benzin pompası",
+        "credit": "Original illustration, CC0"
+      },
       "current": {
         "date": "2026-10",
         "price": 84.625,
@@ -375,7 +581,11 @@
       "unit": "1 litre",
       "region": "İstanbul (Avrupa)",
       "source_hint": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni (bildirim.epdk.gov.tr, bültenSorgula; tarih girilir). Portal 01.01.2016'dan başlıyor; öncesi için başka kaynak gerekir (TODO).",
-      "image": { "src": "img/motorin.svg", "alt": "Motorin pompası", "credit": "Original illustration, CC0" },
+      "image": {
+        "src": "img/motorin.svg",
+        "alt": "Motorin pompası",
+        "credit": "Original illustration, CC0"
+      },
       "current": {
         "date": "2026-10",
         "price": 94.995,
@@ -516,7 +726,11 @@
       "name": "Asgari ücret (net, aylık)",
       "unit": "1 ay, bekâr işçi",
       "region": null,
-      "image": { "src": "img/asgari-ucret.svg", "alt": "Cüzdan", "credit": "Original illustration, CC0" },
+      "image": {
+        "src": "img/asgari-ucret.svg",
+        "alt": "Cüzdan",
+        "credit": "Original illustration, CC0"
+      },
       "current": {
         "date": "2026-01",
         "price": 28075.5,
@@ -712,7 +926,11 @@
       "name": "Big Mac",
       "unit": "1 adet sandviç (menü değil)",
       "region": null,
-      "image": { "src": "img/big-mac.svg", "alt": "Hamburger", "credit": "Original illustration, CC0" },
+      "image": {
+        "src": "img/big-mac.svg",
+        "alt": "Hamburger",
+        "credit": "Original illustration, CC0"
+      },
       "current": {
         "date": "2026-07",
         "price": 325,

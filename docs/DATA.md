@@ -62,7 +62,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 
 | id | Unit | Candidate source | Expected reliability |
 |---|---|---|---|
-| gram-altin | 1 g, 24k | TCMB EVDS gold series | very high |
+| gram-altin | 1 g, 24k | World Bank gold price x TCMB rate (derived, see below) | high (market value) |
 | dolar | 1 USD | TCMB EVDS exchange rates | very high |
 | asgari-ucret | net, AGİ dahil (2022 öncesi) | ÇSGB, Resmî Gazete (bekâr işçi ele geçen tutar) | very high |
 | big-mac | 1 sandwich | The Economist big-mac-data (GitHub) | high |
@@ -108,4 +108,23 @@ Source: EPDK "Petrol Piyasası Bayi Satış Fiyatı Bülteni"
 - The Turkey series repeats the same price for several consecutive observations (for example
   10.75 from 2017 to 2019). We cannot tell a real unchanged price from a carried-forward value,
   so only January observations that differ from the previous one are used. Existing entries stay.
+
+## Gram altın (derived value)
+
+There is no free, primary daily source for the Turkish gram gold price (TCMB EVDS needs a personal
+API key, Kapalıçarşı and jeweller prices are only in news). So the value is derived, as the data
+policy allows when the method and both sources are documented:
+
+`gram altın (TL) = ons altın ($/troy ons) / 31.1034768 x TCMB döviz satış kurunun aylık ortalaması`
+
+- Gold: World Bank Commodity Price Data ("Pink Sheet"), sheet "Monthly Prices", column Gold, in $/troy
+  oz. The workbook describes it as the average of daily rates (London afternoon fixing, 99.5% fine,
+  until May 2025; spot average from June 2025). Whole dollars. Download page:
+  https://www.worldbank.org/en/research/commodity-markets
+- Exchange rate: average of the TCMB USD "ForexSelling" over every business day of the same month,
+  from the daily XML files (see the TCMB section above); the entry note lists the number of days.
+- It is a market value, not a jeweller's selling price (which adds a spread). With ratio-based
+  scoring this difference does not matter for the game, and the product unit says "piyasa değeri".
+- The XLSX link in the entries is versioned by the World Bank and may change; the download page above
+  stays valid.
 
