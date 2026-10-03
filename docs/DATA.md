@@ -52,6 +52,18 @@ Entry:
   Nothing before 2005.
 - `current` is "today's price" and goes stale. Update it with its date; the UI shows the date.
 
+## Source kind
+
+`source.kind` is optional and tells players what type of source backs a price. The UI shows a short
+Turkish label next to the source; a missing or unknown value shows nothing.
+
+| `kind` | Label | Use when |
+|---|---|---|
+| `official` | resmî kayıt | A public institution published it: Resmî Gazete, ministries, EPDK, TCMB, ÇSGB, KGM, İBB. |
+| `dataset` | yayımlanmış veri | A published third-party dataset, e.g. the Economist Big Mac Index. |
+| `news` | haber kaynaklı | News articles, only when no official source exists; use two independent outlets that agree. |
+| `derived` | türetilmiş değer | Computed from sourced inputs; the method and inputs go in `note`. |
+
 ## Product images
 
 The `image` field in a product is optional. When present, it shows an icon on the question card.

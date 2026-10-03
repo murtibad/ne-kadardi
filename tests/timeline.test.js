@@ -109,3 +109,16 @@ test('buildTimelines bar width grows with price on a log scale', () => {
   assert.equal(c, 100);
   assert.ok(Math.abs(b - 54) < 1e-9, 'a price between 1 and 100 sits halfway on a log scale');
 });
+
+test('buildTimelines passes source.kind through to the rows', () => {
+  const f = {
+    products: [{
+      id: 'p', name: 'P', unit: 'U',
+      current: { date: '2026', price: 20, status: 'verified', source: { title: 't', url: 'https://x', kind: 'news' } },
+      prices: [{ date: '2010', price: 2, status: 'verified', source: { title: 't', url: 'https://x', kind: 'official' } }],
+    }],
+  };
+  const rows = buildTimelines(f)[0].rows;
+  assert.equal(rows[0].source.kind, 'official');
+  assert.equal(rows[1].source.kind, 'news');
+});

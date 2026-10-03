@@ -25,7 +25,8 @@
         "source": {
           "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-09",
           "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-          "accessed": "2026-10-04"
+          "accessed": "2026-10-04",
+          "kind": "derived"
         }
       },
       "prices": [
@@ -37,7 +38,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -48,7 +50,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -59,7 +62,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2012-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -70,7 +74,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -81,7 +86,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2014-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -92,7 +98,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -103,7 +110,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2016-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -114,7 +122,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -125,7 +134,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2018-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -136,7 +146,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -147,7 +158,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2020-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -158,7 +170,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -169,7 +182,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2022-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -180,7 +194,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -191,7 +206,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2024-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -202,7 +218,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2025-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         },
         {
@@ -213,7 +230,8 @@
           "source": {
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "derived"
           }
         }
       ]
@@ -236,7 +254,8 @@
         "source": {
           "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.10.2026",
           "url": "https://www.tcmb.gov.tr/kurlar/202610/02102026.xml",
-          "accessed": "2026-10-03"
+          "accessed": "2026-10-03",
+          "kind": "official"
         }
       },
       "prices": [
@@ -248,7 +267,8 @@
           "source": {
             "title": "TCMB EVDS Döviz Kurları",
             "url": "https://www.tcmb.gov.tr/kurlar/201001/04012010.xml",
-            "accessed": "2026-10-03"
+            "accessed": "2026-10-03",
+            "kind": "official"
           }
         },
         {
@@ -259,7 +279,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2011",
             "url": "https://www.tcmb.gov.tr/kurlar/201101/03012011.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -270,7 +291,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2012",
             "url": "https://www.tcmb.gov.tr/kurlar/201201/02012012.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -281,7 +303,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2013",
             "url": "https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -292,7 +315,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2014",
             "url": "https://www.tcmb.gov.tr/kurlar/201401/02012014.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -303,7 +327,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2015",
             "url": "https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -314,7 +339,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2016",
             "url": "https://www.tcmb.gov.tr/kurlar/201601/04012016.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -325,7 +351,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2017",
             "url": "https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -336,7 +363,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2018",
             "url": "https://www.tcmb.gov.tr/kurlar/201801/02012018.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -347,7 +375,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2019",
             "url": "https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -358,7 +387,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2020",
             "url": "https://www.tcmb.gov.tr/kurlar/202001/02012020.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -369,7 +399,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2021",
             "url": "https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -380,7 +411,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2022",
             "url": "https://www.tcmb.gov.tr/kurlar/202201/03012022.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -391,7 +423,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2023",
             "url": "https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -402,7 +435,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2024",
             "url": "https://www.tcmb.gov.tr/kurlar/202401/02012024.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -413,7 +447,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2025",
             "url": "https://www.tcmb.gov.tr/kurlar/202501/02012025.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -424,7 +459,8 @@
           "source": {
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2026",
             "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         }
       ]
@@ -448,7 +484,8 @@
         "source": {
           "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 04.10.2026",
           "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-          "accessed": "2026-10-04"
+          "accessed": "2026-10-04",
+          "kind": "official"
         }
       },
       "prices": [
@@ -460,7 +497,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2016",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -471,7 +509,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2017",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -482,7 +521,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2018",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -493,7 +533,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2019",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -504,7 +545,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2020",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -515,7 +557,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2021",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -526,7 +569,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2022",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -537,7 +581,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2023",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -548,7 +593,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2024",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -559,7 +605,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2025",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -570,7 +617,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2026",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         }
       ]
@@ -594,7 +642,8 @@
         "source": {
           "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 04.10.2026",
           "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-          "accessed": "2026-10-04"
+          "accessed": "2026-10-04",
+          "kind": "official"
         }
       },
       "prices": [
@@ -606,7 +655,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2016",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -617,7 +667,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2017",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -628,7 +679,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2018",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -639,7 +691,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2019",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -650,7 +703,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2020",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -661,7 +715,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2021",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -672,7 +727,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2022",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -683,7 +739,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2023",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -694,7 +751,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2024",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -705,7 +763,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2025",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -716,7 +775,8 @@
           "source": {
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2026",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         }
       ]
@@ -739,7 +799,8 @@
         "source": {
           "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyeti 2026",
           "url": "https://www.csgb.gov.tr/Media/gm2fekds/asgari-%C3%BCcret-2026.pdf",
-          "accessed": "2026-10-03"
+          "accessed": "2026-10-03",
+          "kind": "official"
         }
       },
       "prices": [
@@ -751,7 +812,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/Media/qm3pvi1z/2010_birincialtiay.pdf",
-            "accessed": "2026-10-03"
+            "accessed": "2026-10-03",
+            "kind": "official"
           }
         },
         {
@@ -762,7 +824,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2011-30.06.2011",
             "url": "https://www.csgb.gov.tr/Media/a2bp4yjf/2011_birincialtiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -773,7 +836,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2012-30.06.2012",
             "url": "https://www.csgb.gov.tr/Media/bxfewasy/2012_birincialtiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -784,7 +848,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2013-30.06.2013",
             "url": "https://www.csgb.gov.tr/Media/2b3hqq11/2013_birincialtiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -795,7 +860,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2014-30.06.2014",
             "url": "https://www.csgb.gov.tr/Media/a2zobjd3/2014_birincialtiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -806,7 +872,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/Media/iekd3tkc/2015_birincialtiay.pdf",
-            "accessed": "2026-10-03"
+            "accessed": "2026-10-03",
+            "kind": "official"
           }
         },
         {
@@ -817,7 +884,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2016-31.12.2016",
             "url": "https://www.csgb.gov.tr/Media/rjrp0du4/2016_onikiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -828,7 +896,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2017-31.12.2017",
             "url": "https://www.csgb.gov.tr/Media/onlm0nvg/2017_onikiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -839,7 +908,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2018-31.12.2018",
             "url": "https://www.csgb.gov.tr/Media/l3lb3fyv/2018_onikiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -850,7 +920,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2019-31.12.2019",
             "url": "https://www.csgb.gov.tr/Media/v31hhspp/2019_onikiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -861,7 +932,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2020-31.12.2020",
             "url": "https://www.csgb.gov.tr/Media/hy2jxzps/2020_onikiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -872,7 +944,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2021-31.12.2021",
             "url": "https://www.csgb.gov.tr/Media/xddbty3t/asgari-ucret-2021.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -883,7 +956,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2022-30.06.2022",
             "url": "https://www.csgb.gov.tr/Media/e1yly2qe/2022_birincialtiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -894,7 +968,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2023-30.06.2023",
             "url": "https://www.csgb.gov.tr/Media/fqvbfpd0/2023_birincialtiay.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         },
         {
@@ -905,7 +980,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/Media/pbqphfb4/2024-asgari-%C3%BCcret.pdf",
-            "accessed": "2026-10-03"
+            "accessed": "2026-10-03",
+            "kind": "official"
           }
         },
         {
@@ -916,7 +992,8 @@
           "source": {
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2025-31.12.2025",
             "url": "https://www.csgb.gov.tr/Media/f4xjys1e/2025-asgari-%C3%BCcret_.pdf",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         }
       ]
@@ -938,7 +1015,8 @@
         "source": {
           "title": "The Economist Big Mac Index",
           "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-          "accessed": "2026-10-03"
+          "accessed": "2026-10-03",
+          "kind": "dataset"
         }
       },
       "prices": [
@@ -949,7 +1027,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-03"
+            "accessed": "2026-10-03",
+            "kind": "dataset"
           }
         },
         {
@@ -960,7 +1039,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -971,7 +1051,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -981,7 +1062,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-03"
+            "accessed": "2026-10-03",
+            "kind": "dataset"
           }
         },
         {
@@ -992,7 +1074,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -1003,7 +1086,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -1014,7 +1098,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -1025,7 +1110,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -1036,7 +1122,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -1047,7 +1134,8 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
           }
         },
         {
@@ -1058,7 +1146,46 @@
           "source": {
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
-            "accessed": "2026-10-04"
+            "accessed": "2026-10-04",
+            "kind": "dataset"
+          }
+        }
+      ]
+    },
+    {
+      "id": "plastik-poset",
+      "name": "Plastik poşet",
+      "unit": "1 adet (market kasası, vergiler dahil)",
+      "region": null,
+      "source_hint": "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı'nın belirlediği asgari ücret; 2019'dan beri 25 kuruş, 2026'dan itibaren 1 TL.",
+      "image": {
+        "src": "img/plastik-poset.svg",
+        "alt": "Alışveriş poşeti",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 1,
+        "status": "verified",
+        "note": "2026 için taban ücret adet başına vergiler dahil 1 TL (Bakanlık kararı, 1 Ocak 2026'dan itibaren). Dört haber sitesi aynı bilgiyi veriyor; ikinci kaynak: https://www.milliyet.com.tr/galeri/plastik-poset-fiyati-2026-yeni-yilda-zamli-plastik-poset-fiyatlari-ne-kadar-oldu-7512001 . Bakanlığın duyuru PDF'i: https://webdosya.csb.gov.tr/v2/cygm/2025/12/posetusulesas20251223-20251228005347.pdf (taranmış görüntü, metni makineyle okunamadı).",
+        "source": {
+          "title": "Bengü Türk: Plastik poşet fiyatı 2026'dan itibaren 1 liraya yükseliyor",
+          "url": "https://www.benguturk.com/ekonomi/plastik-poset-fiyati-2026dan-itibaren-1-liraya-yukseliyor-253414h",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-01",
+          "price": 0.25,
+          "status": "verified",
+          "note": "Sayfadaki cümle: \"01/01/2019 tarihinden itibaren plastik poşetlere uygulanacak asgari ücret adet başına vergiler dahil 25 kuruştur.\" 2020-2025 arasında değişiklik haberi yok, haberler 2026'ya kadar 25 kuruş olduğunu söylüyor; bir haberdeki 2025'te 50 kuruş iddiası diğerleriyle çelişiyor ve alınmadı.",
+          "source": {
+            "title": "Antalya Valiliği Çevre ve Şehircilik İl Müdürlüğü, atık yönetimi sunumu (07.02.2019, PDF)",
+            "url": "https://webdosya.csb.gov.tr/db/antalya/icerikler/s-f-rat-kegtsunum-20190207141044.pdf",
+            "accessed": "2026-10-04",
+            "kind": "official"
           }
         }
       ]

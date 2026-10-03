@@ -22,6 +22,7 @@ function checkEntry(entry, where) {
   assert.ok(s.title?.trim(), `${where}: source.title is required`);
   assert.match(s.url ?? '', /^https:\/\//, `${where}: source.url must be an https URL`);
   assert.match(s.accessed ?? '', /^\d{4}-\d{2}-\d{2}$/, `${where}: source.accessed must be YYYY-MM-DD`);
+  assert.ok(['official', 'dataset', 'news', 'derived'].includes(s.kind), `${where}: source.kind must be official, dataset, news or derived`);
 }
 
 test('prices.json follows the data policy', () => {
