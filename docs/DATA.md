@@ -67,3 +67,16 @@ Entry:
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).
 The start year of the game is whatever the verified data supports; target 2010, 2005 where possible.
+
+## EPDK fuel bulletin (benzin, motorin)
+
+Source: EPDK "Petrol Piyasası Bayi Satış Fiyatı Bülteni"
+(https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml).
+
+- Enter a report date in the query form; the page returns that day's bulletin. The portal only
+  serves dates from 2016-01-01. Earlier prices need another source (still TODO).
+- The value is the average of the prices that distributors declared for their İstanbul (Avrupa
+  yakası) dealers, taxes included. It is a daily value, not a monthly average.
+- Take the standard rows "Kurşunsuz Benzin 95 Oktan" and "Motorin". Older bulletins also list
+  "(Diğer)" rows (differentiated fuels); do not use them.
+- The URL does not encode the date, so the entry title and `note` carry the bulletin date.

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2026-10-04
+### Added
+- data: Benzin (kurşunsuz 95) and motorin, 1 litre, İstanbul (Avrupa): 11 verified entries each (January 2016 to January 2026) plus the current price (4 October 2026). All from the official EPDK Bayi Satış Fiyatı Bülteni.
+- docs: How to reproduce EPDK bulletin values in `docs/DATA.md`.
+
 ## [0.5.0] - 2026-10-04
 ### Changed
 - ui: Removed year filter selects and related CSS; questions are now served randomly from all verified items.
