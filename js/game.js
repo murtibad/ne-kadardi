@@ -33,15 +33,6 @@ export function buildQuestions(data) {
   return questions;
 }
 
-export function yearRange(questions) {
-  const years = questions.map((q) => q.year);
-  return { min: Math.min(...years), max: Math.max(...years) };
-}
-
-export function filterByYears(questions, from, to) {
-  return questions.filter((q) => q.year >= from && q.year <= to);
-}
-
 /** Pick a random question, avoiding an immediate repeat when possible. */
 export function pickRandom(questions, previousId = null, rng = Math.random) {
   const pool = questions.length > 1 ? questions.filter((q) => q.id !== previousId) : questions;
@@ -81,7 +72,7 @@ export function getShortUnit(unit) {
   if (!unit) return 'adet';
   const lower = unit.toLowerCase();
   if (lower.includes('litre')) return 'litre';
-  if (lower.includes('gram') || lower.includes('gr')) return 'adet';
+  if (/\b(gram|gr|g)\b/i.test(unit)) return 'gram';
   if (lower.includes('usd')) return 'dolar';
   return 'adet';
 }

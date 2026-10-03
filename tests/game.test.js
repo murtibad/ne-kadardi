@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, filterByYears, pickRandom, scoreGuess, buildContextLine } from '../js/game.js';
+import { buildQuestions, pickRandom, scoreGuess, buildContextLine, getShortUnit } from '../js/game.js';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -24,10 +24,13 @@ test('buildQuestions keeps only verified entries', () => {
   assert.equal(qs[0].year, 2010);
 });
 
-test('filterByYears is inclusive', () => {
-  const qs = buildQuestions(fixture);
-  assert.equal(filterByYears(qs, 2010, 2014).length, 1);
-  assert.equal(filterByYears(qs, 2010, 2015).length, 2);
+test('getShortUnit matches units precisely', () => {
+  assert.equal(getShortUnit('1 litre'), 'litre');
+  assert.equal(getShortUnit('1 gram'), 'gram');
+  assert.equal(getShortUnit('100 gr'), 'gram');
+  assert.equal(getShortUnit('1 adet'), 'adet');
+  assert.equal(getShortUnit('1 USD'), 'dolar');
+  assert.equal(getShortUnit('Bir paket'), 'adet');
 });
 
 test('pickRandom avoids an immediate repeat', () => {

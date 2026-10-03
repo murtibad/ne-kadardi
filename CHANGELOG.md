@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2026-10-04
+### Changed
+- ui: Removed year filter selects and related CSS; questions are now served randomly from all verified items.
+- ui: Share button restores original label after ~2 seconds and when next question is displayed without hardcoded strings.
+- ui: Receipt "Bugün" row now displays the actual date of the current price (e.g. "Güncel (Temmuz 2026)").
+- ui: Reduced question screen empty space on mobile by aligning the card nearer the top and tightening vertical spacing.
+- a11y: Improved dark mode contrast for context-line box text and source link to exceed WCAG AA 4.5:1.
+- code: Refined `getShortUnit` to match gram units precisely as whole words and return "gram".
+- tests: Added unit tests for `getShortUnit` and removed obsolete `filterByYears` test.
+
 ## [0.4.1] - 2026-10-03
 ### Fixed
 - data: Audited all verified data. Moved unverified links (Sabah, Hürriyet, T24, ITO) to todo.
