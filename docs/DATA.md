@@ -13,6 +13,7 @@
     "unit": "1 litre",                 // default unit, shown in the UI
     "region": "İstanbul (Avrupa)",     // null if national
     "source_hint": "...",              // where to look; not shown in the UI
+    "image": { "src": "img/benzin.svg", "alt": "Benzin pompası", "credit": "Original illustration, CC0" }, // optional
     "current": { /* entry: today's price */ },
     "prices": [ /* entries */ ]
   }]
@@ -50,6 +51,12 @@ Entry:
 - Prices from 2005 to 2008 were in YTL; 1 YTL = 1 TL today, so no conversion is needed.
   Nothing before 2005.
 - `current` is "today's price" and goes stale. Update it with its date; the UI shows the date.
+
+## Product images
+
+The `image` field in a product is optional. When present, it shows an icon on the question card.
+- Icons are original, brand-free SVG files stored in `img/`. No logos, no text elements.
+- Each SVG must be `viewBox="0 0 96 96"`, under 3 KB, with no scripts or external references.
 
 ## Candidate products and sources
 

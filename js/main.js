@@ -62,6 +62,18 @@ function nextQuestion() {
   }
   state.question = q;
   $('q-period').textContent = formatPeriod(q.date);
+  
+  const img = $('q-image');
+  if (q.image) {
+    img.src = q.image.src;
+    img.alt = q.image.alt;
+    img.hidden = false;
+    img.onerror = () => { img.hidden = true; };
+  } else {
+    img.hidden = true;
+    img.removeAttribute('src');
+  }
+
   $('q-name').textContent = questionTitle(q);
   $('q-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('guess-input').value = '';
