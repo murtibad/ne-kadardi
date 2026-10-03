@@ -260,6 +260,13 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin: 0;
 }
 .source a { color: inherit; text-decoration: underline; }
+/* Source type label; wraps with the text so it never changes the layout width. */
+.source-kind {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--muted-on-paper);
+  overflow-wrap: anywhere;
+}
 
 /* Actions & Session */
 .session-actions {

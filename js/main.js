@@ -2,6 +2,7 @@
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
 import { buildQuestions, buildContextLine, pickRandom, scoreGuess } from './game.js';
 import { buildTimelines } from './timeline.js';
+import { sourceKindLabel } from './source-kind.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 
 const DATA_URL = 'data/prices.json';
@@ -142,6 +143,9 @@ function renderResult(q, r) {
 
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
+  const kindLabel = sourceKindLabel(q.source.kind);
+  $('r-source-kind').textContent = kindLabel ? ` · ${kindLabel}` : '';
+  $('r-source-kind').hidden = !kindLabel;
   $('r-session').textContent = `Toplam: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
   showGameScreen('result-screen');
 }
@@ -298,7 +302,9 @@ function renderTimelineScreen(focusProductId = null) {
                    <div class="timeline-bar-fill" style="width: ${r.barPercent}%"></div>
                  </div>`;
                  
-    const sourceLink = r.source ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>` : '';
+    const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
+    const kindSpan = kindLabel ? `<span class="source-kind">${escapeHTML(kindLabel)}</span>` : '';
+    const sourceLink = r.source ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>${kindSpan}` : '';
     const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${escapeHTML(r.note)}</p></details>` : '';
     
     html += `<tr>
