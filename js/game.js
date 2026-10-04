@@ -73,6 +73,19 @@ export function scoreTier(score) {
   return 'bad';
 }
 
+// Every question should feel like a new category: pick a product that was not shown recently
+// (all products take turns), then a random year of that product. Products with many entries
+// (e.g. 17 yearly values) therefore do not dominate. `recent` holds the latest product ids.
+export function pickByCategory(questions, recent = [], previousId = null, rng = Math.random) {
+  const products = [...new Set(questions.map((q) => q.productId))];
+  if (products.length < 2) return pickRandom(questions, previousId, rng);
+  const keep = Math.min(products.length - 1, 8);
+  const blocked = new Set(recent.slice(-keep));
+  const fresh = products.filter((id) => !blocked.has(id));
+  const productId = fresh[Math.floor(rng() * fresh.length)];
+  return pickRandom(questions.filter((q) => q.productId === productId), previousId, rng);
+}
+
 export function getHalfYear(dateStr) {
   if (!dateStr || dateStr.length < 4) return null;
   const year = dateStr.slice(0, 4);

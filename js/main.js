@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
-import { buildQuestions, buildContextLine, pickRandom, scoreGuess, scoreTier } from './game.js';
+import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier } from './game.js';
 import { buildTimelines } from './timeline.js';
 import { sourceKindLabel } from './source-kind.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
@@ -11,7 +11,8 @@ const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
 const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '');
 
-const state = { 
+const state = {
+  recentProducts: [], 
   all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null 
@@ -86,12 +87,14 @@ function nextQuestion() {
     $('r-tax-details').hidden = true;
     $('r-tax-details').open = false;
   }
-  const q = pickRandom(state.all, state.question?.id);
+  const q = pickByCategory(state.all, state.recentProducts, state.question?.id);
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;
   }
   state.question = q;
+  state.recentProducts.push(q.productId);
+  if (state.recentProducts.length > 12) state.recentProducts.shift();
   $('q-period').textContent = formatPeriod(q.date);
   
   const img = $('q-image');
