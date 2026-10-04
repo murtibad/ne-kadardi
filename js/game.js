@@ -61,6 +61,17 @@ export function scoreGuess(guess, actual) {
 }
 
 
+// Colour tier of a result, from dark green (spot on) to dark red (way off).
+// Thresholds on the 0-100 log score: 85 is roughly within 1.3x, 70 within 1.6x,
+// 45 within 2.6x, 20 within 4x.
+export function scoreTier(score) {
+  if (score >= 85) return 'great';
+  if (score >= 70) return 'good';
+  if (score >= 45) return 'mid';
+  if (score >= 20) return 'poor';
+  return 'bad';
+}
+
 export function getHalfYear(dateStr) {
   if (!dateStr || dateStr.length < 4) return null;
   const year = dateStr.slice(0, 4);

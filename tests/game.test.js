@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, scoreGuess, buildContextLine, getShortUnit } from '../js/game.js';
+import { buildQuestions, pickRandom, scoreGuess, buildContextLine, getShortUnit, scoreTier } from '../js/game.js';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -89,4 +89,16 @@ test('buildContextLine needs a wage from the same half-year', () => {
   const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-08', price: 1, current: null };
   assert.equal(buildContextLine(q, wages), null);
   assert.equal(buildContextLine({ ...q, date: '2015-02' }, wages), 'O tarihte 1 asgari ücretle 1000 adet alınabiliyordu.');
+});
+test('scoreTier maps scores to five colour tiers', () => {
+  assert.equal(scoreTier(100), 'great');
+  assert.equal(scoreTier(85), 'great');
+  assert.equal(scoreTier(84), 'good');
+  assert.equal(scoreTier(70), 'good');
+  assert.equal(scoreTier(69), 'mid');
+  assert.equal(scoreTier(45), 'mid');
+  assert.equal(scoreTier(44), 'poor');
+  assert.equal(scoreTier(20), 'poor');
+  assert.equal(scoreTier(19), 'bad');
+  assert.equal(scoreTier(0), 'bad');
 });

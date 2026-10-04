@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
-import { buildQuestions, buildContextLine, pickRandom, scoreGuess } from './game.js';
+import { buildQuestions, buildContextLine, pickRandom, scoreGuess, scoreTier } from './game.js';
 import { buildTimelines } from './timeline.js';
 import { sourceKindLabel } from './source-kind.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
@@ -128,6 +128,10 @@ function renderResult(q, r) {
   $('r-actual').textContent = formatPrice(q.price);
   $('r-verdict').textContent = verdictText(r);
   $('r-score').textContent = `${r.score}/100`;
+  const tier = scoreTier(r.score);
+  document.querySelector('.verdict-box').dataset.tier = tier;
+  document.querySelector('.score-box').dataset.tier = tier;
+  $('r-meter').style.setProperty('--score', `${r.score}%`);
 
   const hasCurrent = q.current !== null;
   $('r-current-row').hidden = !hasCurrent;
