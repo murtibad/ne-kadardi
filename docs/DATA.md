@@ -76,6 +76,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 |---|---|---|---|
 | gram-altin | 1 g, 24k | World Bank gold price x TCMB rate (derived, see below) | high (market value) |
 | dolar | 1 USD | TCMB EVDS exchange rates | very high |
+| euro | 1 EUR | TCMB exchange-rate XML files (same dates as dolar) | very high |
+| ceyrek-altin | 1 coin, 1.75 g, 22 carat | derived from gram-altin x 1.604 g pure gold | high (market value) |
 | asgari-ucret | net, AGİ dahil (2022 öncesi) | ÇSGB, Resmî Gazete (bekâr işçi ele geçen tutar) | very high |
 | big-mac | 1 sandwich | The Economist big-mac-data (GitHub) | high |
 | benzin / motorin | 1 L, İstanbul | EPDK bulletins, distributor price archives | high (date it) |
