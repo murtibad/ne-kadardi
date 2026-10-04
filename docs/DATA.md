@@ -81,7 +81,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | benzin / motorin | 1 L, İstanbul | EPDK bulletins, distributor price archives | high (date it) |
 | iphone | launch price, base storage | Apple TR, news archives | medium-high |
 | istanbul-ulasim | 1 full fare ride | İBB UKOME decisions, news | medium-high |
-| ekmek | per loaf, İstanbul | bread tariff decisions, news (grams changed) | medium |
+| ekmek | Halk Ekmek (İBB) 250 gr, İstanbul | İBB Halk Ekmek price-rise news (AA, Dünya, Sözcü ...) | high from 2019 |
+| kopru | Bosphorus bridge car toll | KGM announcements via news | high; direction rule changed 2022 |
 | cay | Çaykur Rize Turist 1 kg | Çaykur announcements, news | medium |
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).

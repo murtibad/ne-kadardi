@@ -1634,42 +1634,113 @@
     },
     {
       "id": "ekmek",
-      "name": "Ekmek",
-      "unit": "1 adet (gramaj kayıtta)",
+      "name": "Halk Ekmek (İBB)",
+      "unit": "1 adet, 250 gr",
       "region": "İstanbul",
       "current": {
-        "date": "2024-06",
-        "price": null,
-        "status": "todo",
-        "note": "TODO: kaynak gerekli",
-        "source": null
+        "date": "2026-05",
+        "price": 12.5,
+        "status": "verified",
+        "note": "04.05.2026'da 10 TL'den 12,5 TL'ye çıktı (normal ve kepekli 250 gr). Doğrulama: Yeni Birlik Gazetesi (04.05.2026) https://www.gazetebirlik.com/ekonomi/istanbulda-halk-ekmek-fiyatlarina-yuzde-25-zam-yapildi/987275.",
+        "source": {
+          "title": "AA, İBB Halk Ekmek'e yüzde 25 zam yaptı (04.05.2026)",
+          "url": "https://www.aa.com.tr/tr/ekonomi/ibb-halk-ekmeke-yuzde-25-zam-yapti/3926757",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
       },
       "prices": [
         {
-          "date": "2010-10",
-          "price": null,
-          "status": "todo",
-          "unit": "300 gr",
-          "note": "TODO: kaynak gerekli",
+          "date": "2019-06",
+          "price": 0.75,
+          "status": "verified",
+          "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. Haziran 2019'da 0,75 TL'ydi (İBB'de görev değişimi); Eylül 2020'ye kadar sürdü. Doğrulama: A Haber, Halk Ekmek'e zam (21.09.2020) https://www.ahaber.com.tr/gundem/2020/09/21/halk-ekmeke-bir-zam-yapan-chpli-ibbye-vatandastan-sert-tepki-hani-her-sey-guzel-olacakti.",
           "source": {
-            "title": "Haber Arşivi (2010 Ekmek Fiyatları)",
-            "url": "https://www.sabah.com.tr/ekonomi/2010/10/26/ekmege_zam_yok",
-            "accessed": "2026-10-03"
+            "title": "Bianet, Ankara'dan sonra İzmir ve İstanbul'da da Halk Ekmek'e zam (08.08.2022)",
+            "url": "https://bianet.org/haber/ankara-dan-sonra-izmir-ve-istanbul-da-da-halk-ekmek-e-zam-265578",
+            "accessed": "2026-10-04",
+            "kind": "news"
           }
         },
         {
-          "date": "2015-01",
-          "price": null,
-          "status": "todo",
-          "unit": "250 gr",
-          "note": "TODO: kaynak gerekli",
+          "date": "2020-09",
+          "price": 1.0,
+          "status": "verified",
+          "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 21.09.2020'de 0,75 TL'den 1 TL'ye çıktı. Doğrulama: Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
           "source": {
-            "title": "İSTFO Tarife Arşivi",
-            "url": "https://istfo.org/",
-            "accessed": "2026-10-03"
+            "title": "A Haber, Halk Ekmek'e zam (21.09.2020)",
+            "url": "https://www.ahaber.com.tr/gundem/2020/09/21/halk-ekmeke-bir-zam-yapan-chpli-ibbye-vatandastan-sert-tepki-hani-her-sey-guzel-olacakti",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 1.25,
+          "status": "verified",
+          "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 17.07.2021'de 1 TL'den 1,25 TL'ye çıktı. Doğrulama: Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
+          "source": {
+            "title": "Türkiye Gazetesi, İstanbul'da Halk Ekmek'e yüzde 25 zam (17.07.2021)",
+            "url": "https://www.turkiyegazetesi.com.tr/ekonomi/istanbulda-halk-ekmeke-yuzde-25-zam-796866",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-02",
+          "price": 2.0,
+          "status": "verified",
+          "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 11.02.2022'de 1,25 TL'den 2 TL'ye çıktı. Doğrulama: Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
+          "source": {
+            "title": "Sözcü, İstanbul'da Halk Ekmek'e zam (09.02.2022)",
+            "url": "https://www.sozcu.com.tr/istanbulda-halk-ekmege-zam-iste-yeni-fiyati-wp6943015",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-08",
+          "price": 3.0,
+          "status": "verified",
+          "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 08.08.2022'de 2 TL'den 3 TL'ye çıktı. Doğrulama: Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
+          "source": {
+            "title": "Bianet, Ankara'dan sonra İzmir ve İstanbul'da da Halk Ekmek'e zam (08.08.2022)",
+            "url": "https://bianet.org/haber/ankara-dan-sonra-izmir-ve-istanbul-da-da-halk-ekmek-e-zam-265578",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 5.0,
+          "status": "verified",
+          "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 27.07.2023'te 3 TL'den 5 TL'ye çıktı. Doğrulama: BloombergHT (26.07.2023) https://www.bloomberght.com/istanbul-da-halk-ekmek-e-zam-2335342 · Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
+          "source": {
+            "title": "Diken, İstanbul'da Halk Ekmek'e yüzde 66,6 zam (27.07.2023)",
+            "url": "https://www.diken.com.tr/?p=1350061",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-06",
+          "price": 8.0,
+          "status": "verified",
+          "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 20.06.2024'te 5 TL'den 8 TL'ye çıktı. Doğrulama: Dünya (20.06.2024) https://www.dunya.com/ekonomi/son-dakika-istanbulda-halk-ekmeke-zam-haberi-733006 · Yeni Mesaj (20.06.2024) https://www.yenimesaj.com.tr/halk-ekmeke-zam-geldi-H1531780.htm.",
+          "source": {
+            "title": "AA, İBB Halk Ekmek'e yüzde 60 zam yaptı (20.06.2024)",
+            "url": "https://www.aa.com.tr/tr/gundem/ibb-halk-ekmeke-yuzde-60-zam-yapti/3254208",
+            "accessed": "2026-10-04",
+            "kind": "news"
           }
         }
-      ]
+      ],
+      "source_hint": "İBB Halk Ekmek A.Ş. zam açıklamaları (haber arşivi). Normal ve kepekli 250 gr ekmek; gramaj 259 gr olarak da yazılır.",
+      "image": {
+        "src": "img/ekmek.svg",
+        "alt": "Ekmek somunu çizimi",
+        "credit": "Original illustration, CC0"
+      }
     },
     {
       "id": "cay",
@@ -1684,6 +1755,164 @@
         "source": null
       },
       "prices": []
+    },
+    {
+      "id": "kopru",
+      "name": "Boğaz köprüsü geçişi",
+      "unit": "1 geçiş, otomobil (ücret alınan yönde)",
+      "region": "İstanbul",
+      "source_hint": "KGM duyuruları ve haber arşivi: 15 Temmuz Şehitler ve Fatih Sultan Mehmet köprüleri otomobil ücreti aynıdır. 01.01.2022'den beri iki yönlü ve yarı fiyatlı alınır; önceden yalnız tek yönde alınırdı.",
+      "image": {
+        "src": "img/kopru.svg",
+        "alt": "Asma köprü çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 3.75,
+          "status": "verified",
+          "note": "03.01.2010'da 3,25 TL'den 3,75 TL'ye çıktı (tek yönde alınırdı). Bu değer için tek haber kaynağı bulundu.",
+          "source": {
+            "title": "Takvim, Köprü ve otoyol geçişlerine zam (31.12.2009)",
+            "url": "https://www.takvim.com.tr/Ekonomi/2009/12/31/kopru_ve_otoyol_gecislerine_zam",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 4.25,
+          "status": "verified",
+          "note": "01.01.2012'de 3,75 TL'den 4,25 TL'ye çıktı (tek yönde alınırdı). Doğrulama: Milliyet Uzmanpara (04.01.2016, eski fiyat 4,25 TL; son zam 2012) https://uzmanpara.milliyet.com.tr/haber-detay/gundem/kopru-ve-otoyol-gecislerine-zam/35936/.",
+          "source": {
+            "title": "Hukuki Haber, Köprü ve otoyollara yeni yıl zammı (31.12.2011)",
+            "url": "https://www.hukukihaber.net/kopru-ve-otoyollara-yeni-yil-zammi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 4.75,
+          "status": "verified",
+          "note": "03.01.2016'da 4,25 TL'den 4,75 TL'ye çıktı (tek yönde alınırdı). Doğrulama: Capital (03.01.2016) https://www.capital.com.tr/gundem/aktuel/kopru-ve-otoyol-gecislerine-zam · İstiklal (03.01.2016) https://www.istiklal.com.tr/ekonomi/araci-olanlara-kotu-haber-5732h.",
+          "source": {
+            "title": "Milliyet Uzmanpara, Köprü ve otoyol geçişlerine zam (04.01.2016)",
+            "url": "https://uzmanpara.milliyet.com.tr/haber-detay/gundem/kopru-ve-otoyol-gecislerine-zam/35936/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 7.0,
+          "status": "verified",
+          "note": "01.01.2017'de 4,75 TL'den 7 TL'ye çıktı (%48; tek yönde alınırdı). Doğrulama: BloombergHT (31.12.2017, eski fiyat 7 TL) https://www.bloomberght.com/bogaz-kopruleri-ve-otoyol-gecis-ucretlerine-zam-2082807.",
+          "source": {
+            "title": "Karar, Boğaz köprülerine yüzde 48, otoyollara yüzde 18 zam geldi (31.12.2016)",
+            "url": "https://www.karar.com/bogaz-koprulerine-yuzde-48-otoyollara-yuzde-18-zam-geldi-356895",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 8.75,
+          "status": "verified",
+          "note": "01.01.2018'de 7 TL'den 8,75 TL'ye çıktı (tek yönde alınırdı). Doğrulama: Son Dakika (30.12.2017) https://www.sondakika.com/ekonomi/haber-flas-10404190/ · CNN Türk (30.12.2017) https://www.cnnturk.com/son-dakika-kopru-gecis-ucretleri-belli-oldu.",
+          "source": {
+            "title": "BloombergHT, Boğaz köprüleri ve otoyol geçiş ücretlerine zam (31.12.2017)",
+            "url": "https://www.bloomberght.com/bogaz-kopruleri-ve-otoyol-gecis-ucretlerine-zam-2082807",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-10",
+          "price": 10.5,
+          "status": "verified",
+          "note": "07.10.2019'da 8,75 TL'den 10,50 TL'ye çıktı (tek yönde alınırdı; 21 ay zam yapılmamıştı). Doğrulama: NTV (06.10.2019) https://www.ntv.com.tr/ekonomi/bogaz-kopruleri-ve-otoyol-gecis-ucretlerine-zam,YLvZU0oIIEiJxPr2OWniGw.",
+          "source": {
+            "title": "Medyascope, Köprü ve otoyol geçiş ücretlerine yüzde 20 zam (06.10.2019)",
+            "url": "https://medyascope.tv/2019/10/06/kopru-ve-otoyol-gecis-ucretlerine-yuzde-20-zam-bogaz-koprulerinden-otomobille-gecis-ucreti-105-tl-oldu/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 13.25,
+          "status": "verified",
+          "note": "01.01.2021'de 10,50 TL'den 13,25 TL'ye çıktı (tek yönde alınırdı). Doğrulama: Medyascope (01.01.2021) https://medyascope.tv/2021/01/01/yeni-yilda-otoyol-ve-koprulerin-gecis-ucretlerine-ortalama-yuzde-25-zam-yapildi/ · Sözcü (01.01.2021) https://www.sozcu.com.tr/otoyol-ve-koprulere-buyuk-zam-iste-yeni-ucret-tarifeleri-wp6192987.",
+          "source": {
+            "title": "BloombergHT, Köprü ve otoyol geçişlerine zam yapıldı (01.01.2021)",
+            "url": "https://www.bloomberght.com/kopru-ve-otoyol-gecislerine-zam-yapildi-2271816",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 8.25,
+          "status": "verified",
+          "note": "01.01.2022'den itibaren köprü ücreti ikiye bölündü ve iki yönde 8,25 TL alınıyor (eski tek yönlü ücret 13,25 TL'ydi; gidiş-dönüş 16,50 TL). 2023 boyunca değişmedi. Doğrulama: Capital (01.01.2022) https://www.capital.com.tr/haberler/tum-haberler/kopru-gecis-ucretlerine-iki-yonlu-fiyat · Timeturk (02.01.2023, KGM: 2023'te zam yok) https://www.timeturk.com/genel/15-temmuz-bogaz-koprusu-ve-fsm-koprusu-gecis-ucretine-zam-mi-geldi-ne-kadar-2023/haber-1757885.",
+          "source": {
+            "title": "NTV, Boğaz köprülerinde çift yönlü ücretlendirme (01.01.2022)",
+            "url": "https://www.ntv.com.tr/ekonomi/bogaz-koprulerinde-cift-yonlu-ucretlendirme,giMp1JZ_bE6GgtxOIO_j0g",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-05",
+          "price": 24,
+          "status": "verified",
+          "note": "15.05.2024'te 15 TL'den 24 TL'ye çıktı (iki yönde alınır). Doğrulama: İstiklal (01.07.2024, otomobil 24 TL) https://www.istiklal.com.tr/ekonomi/2024-kopru-ve-otoyol-ucretleri-koprulere-zam-geldi-mi-yavuz-sultan-selim-fsm-841603h.",
+          "source": {
+            "title": "TGRT Haber, Otoyol ve köprü geçiş ücretleri zamlandı (14.05.2024)",
+            "url": "https://www.tgrthaber.com/ekonomi/otoyol-ve-kopru-gecis-ucretleri-zamlandi-2950120",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-08",
+          "price": 33,
+          "status": "verified",
+          "note": "15-16.08.2024'te 24 TL'den 33 TL'ye çıktı (iki yönde alınır). Doğrulama: Takvim (16.08.2024) https://www.takvim.com.tr/ekonomi/2024/08/16/kopru-ve-otoyol-ucretleri-16-agustos-2024-zamli-kopru-ve-otoyol-ucretleri-ne-kadar-kac-tl-osmangazi-yavuz-sultan-selim-15-temmuz-sehitler-koprusu.",
+          "source": {
+            "title": "CNN Türk, Köprü ve otoyol geçiş ücretleri tarifesi (17.08.2024)",
+            "url": "https://cnnturk.com/ekonomi/galeri/kopru-ve-otoyol-gecis-ucretleri-tarifesi-2024-osmangazi-koprusu-avrasya-tuneli-gecis-ucreti-ne-kadar-oldu-2141601",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 47,
+          "status": "verified",
+          "note": "13.01.2025'te 33 TL'den 47 TL'ye çıktı (iki yönde alınır). Doğrulama: Motor1 (Ocak 2025) https://tr.motor1.com/news/747053/kopru-otoyol-gecis-ucreti-2025/.",
+          "source": {
+            "title": "BloombergHT, Köprü, otoyol ve tünel ücretleri zamlandı (Ocak 2025)",
+            "url": "https://www.bloomberght.com/kopru-otoyol-ve-tunel-ucretleri-zamlandi-3739064",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ],
+      "current": {
+        "date": "2026-01",
+        "price": 59,
+        "status": "verified",
+        "note": "01.01.2026'da 47 TL'den 59 TL'ye çıktı (iki yönde alınır, %25,49). 01.07.2026 tarifesinde 15 Temmuz ve FSM köprüleri değişmedi. Doğrulama: CNBC-e (31.12.2025) https://www.cnbce.com/haberler/kopru-ve-otoyollara-zam-1-ocak-2026dan-itibaren-gecerli-iste-yeni-tarifeler-g22199 · Yeni Şafak https://www.yenisafak.com/fatih-sultan-mehmet-fsm-koprusu-gecis-ucreti-ne-kadar-h-4781407 · Hisse.net (01.07.2026) https://www.hisse.net/haber/kopru-gecis-ucretlerine-zam-hangi-kopru-ne-kadar-artti-83011.",
+        "source": {
+          "title": "NTV, Köprü ve otoyol geçiş ücretleri belli oldu, 1 Ocak 2026'dan itibaren geçerli",
+          "url": "https://www.ntv.com.tr/turkiye/galeri-kopru-ve-otoyol-gecis-ucretleri-belli-oldu-1-ocak-2026dan-itibaren-gecerli-1705447",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      }
     }
   ]
 }
