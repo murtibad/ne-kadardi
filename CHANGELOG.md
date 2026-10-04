@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.26.0] - 2026-10-04
+### Added
+- data: AirPods (basic model) Turkey launch price: 779 TL (2016), 1,099 (2019), 1,999 (2021), 5,779 (2024). The 2019 value has one usable source, flagged in its note.
+- data: First-child birth grant: 300 TL (15 May 2015) and 5,000 TL one-off (from 1 Jan 2025), each confirmed by two or more news sites.
+- ui: earphones and baby-bottle icons.
+
 ## [0.25.0] - 2026-10-04
 ### Added
 - data: Istanbul yellow taxi opening fee, 8 steps from Jan 2023 (12.65 TL) to July 2026 (71.94 TL), each confirmed by two or more news sites.

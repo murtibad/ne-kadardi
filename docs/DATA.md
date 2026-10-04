@@ -92,6 +92,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | fitre | per-person fitre | Diyanet announcement via news | high |
 | taksi-acilis | Istanbul yellow taxi opening fee | UKOME decisions via news (2023+) | high |
 | playstation | console launch price (PS4, PS5, PS5 Pro) | launch news | high |
+| airpods | basic AirPods launch price | Apple Turkey launch news | high |
+| dogum-yardimi | first-child birth grant | ministry announcements via news | high |
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).
 The start year of the game is whatever the verified data supports; target 2010, 2005 where possible.
