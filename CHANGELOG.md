@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.27.0] - 2026-10-04
+### Added
+- data: Paid military service fee (bedelli askerlik), 14 six-month periods from July 2019 (33,230 TL) to January 2026 (333,089 TL): eight confirmed by two news sites, six by one (flagged). The July 2026 value (472,653 TL) is left out because only a non-news site states it.
+- ui: soldier helmet icon.
+
 ## [0.26.0] - 2026-10-04
 ### Added
 - data: AirPods (basic model) Turkey launch price: 779 TL (2016), 1,099 (2019), 1,999 (2021), 5,779 (2024). The 2019 value has one usable source, flagged in its note.
