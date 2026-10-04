@@ -2677,6 +2677,116 @@
           }
         }
       ]
+    },
+    {
+      "id": "trafik-cezasi",
+      "name": "Kırmızı ışık ihlali cezası",
+      "unit": "1 ihlal (otomobil sürücüsü, ilk ihlal)",
+      "region": null,
+      "source_hint": "2918 sayılı Karayolları Trafik Kanunu madde 47/1-b; ceza her Ocak yeniden değerleme oranıyla artar. Haber kaynaklı.",
+      "image": {
+        "src": "img/trafik-isigi.svg",
+        "alt": "Trafik ışığı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 2719,
+        "status": "verified",
+        "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: arabam.com https://www.arabam.com/blog/?p=178807.",
+        "source": {
+          "title": "kadimhukuk.com.tr",
+          "url": "https://kadimhukuk.com.tr/?p=27256",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2020-01",
+          "price": 288,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: cnnturk.com https://cnnturk.com/ekonomi/mtv-pasaport-harclari-ve-trafik-cezalari-yeni-harc-ve-cezalar-belli-oldu-1583784.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2020/11/06/2021-trafik-cezalari-ne-kadar-yeni-yilda-kirmizi-isik-hiz-cezasi-ne-kadar-olacak",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 314,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: cnnturk.com https://cnnturk.com/ekonomi/mtv-pasaport-harclari-ve-trafik-cezalari-yeni-harc-ve-cezalar-belli-oldu-1583784.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2020/11/06/2021-trafik-cezalari-ne-kadar-yeni-yilda-kirmizi-isik-hiz-cezasi-ne-kadar-olacak",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 427,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: log.com.tr https://www.log.com.tr/?p=789782.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/ekonomi/galeri-yeni-yilda-trafik-cezalari-belli-oldu-iste-ceza-miktarlari-1999573",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 951,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: iscihaber.net https://www.iscihaber.net/ekonomi/2023-yilinin-trafik-cezalari-belli-oldu/81681.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/ekonomi/galeri-yeni-yilda-trafik-cezalari-belli-oldu-iste-ceza-miktarlari-1999573",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 1506,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: finans.mynet.com https://finans.mynet.com/haber/detay/ekonomi/yeni-trafik-cezalari-belli-oldu-2024-yilinda-hepsine-zam-var-33-bin-lirayi-asiyor/472737/.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://cnnturk.com/ekonomi/2024-yili-pasaport-ve-ehliyet-ucretleri-belli-oldu",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 2167,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: arabam.com https://www.arabam.com/blog/?p=73625 · gazetebirlik.com https://www.gazetebirlik.com/genel/kirmizi-isikta-gecme-cezasi-2025-ne-kadar-2025-kirmizi-isikta-gecme-cezasi-kac-tl-kirmizi-isikta-gecme-cezasi-kac-gunde-gelir/254077.",
+          "source": {
+            "title": "gzt.com",
+            "url": "https://www.gzt.com/ekonomi/2025in-trafik-cezalari-belli-oldu-3792043",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 2719,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: arabam.com https://www.arabam.com/blog/?p=178807.",
+          "source": {
+            "title": "kadimhukuk.com.tr",
+            "url": "https://kadimhukuk.com.tr/?p=27256",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
