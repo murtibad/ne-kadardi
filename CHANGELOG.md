@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.29.0] - 2026-10-04
+### Added
+- ui: the footer shows the app version and a small credit line ("Yapan: Murat Tokaç", linking to GitHub). The version lives in `js/version.js`; a test keeps it equal to `package.json`.
+### Changed
+- ui: the question card is centred on mobile and desktop: larger period pill, a bigger centred icon (112 px, 128 px on wide screens), responsive product title, centred guess input. On wide screens the column is a little wider and sits in the vertical middle.
+
 ## [0.28.0] - 2026-10-04
 ### Added
 - data: KPSS Lisans fee per Genel Yetenek-Genel Kültür session, 2014-2026 (40 TL to 800 TL), nine years found (2015, 2016, 2018 and 2020 left out for lack of a usable page); three confirmed by two sites, six by one (flagged).

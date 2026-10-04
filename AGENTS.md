@@ -98,3 +98,7 @@ The `stitch` CLI is installed and logged in. Design direction: `docs/DESIGN-BRIE
 npm test      # node --test, no dependencies
 npm start     # python -m http.server 8000
 ```
+
+## Releasing
+
+- Bump the version in both `package.json` and `js/version.js` (the footer shows it; `tests/version.test.js` fails if they differ), add a CHANGELOG entry, tag `vX.Y.Z` after merging.

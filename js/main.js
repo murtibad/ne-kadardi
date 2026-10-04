@@ -5,6 +5,7 @@ import { buildTimelines } from './timeline.js';
 import { sourceKindLabel } from './source-kind.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
+import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -421,6 +422,8 @@ function onHashChange() {
 window.addEventListener('hashchange', onHashChange);
 
 async function init() {
+  const versionEl = $('app-version');
+  if (versionEl) versionEl.textContent = VERSION;
   loadSession();
   try {
     const res = await fetch(DATA_URL);
