@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, scoreGuess, buildContextLine, getShortUnit, scoreTier } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, getShortUnit, scoreTier } from '../js/game.js';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -130,4 +130,28 @@ test('buildQuestions prefers an entry image over the product image', () => {
   const qs = buildQuestions(f);
   assert.equal(qs[0].image.src, 'img/e.svg');
   assert.equal(qs[1].image.src, 'img/p.svg');
+});
+
+test('pickByCategory never repeats a recent product and visits all products before repeating', () => {
+  const qs = [];
+  for (const id of ['a', 'b', 'c', 'd']) {
+    for (let y = 0; y < (id === 'a' ? 17 : 2); y += 1) qs.push({ id: `${id}@${y}`, productId: id });
+  }
+  const recent = [];
+  let prev = null;
+  const seenInRound = [];
+  for (let i = 0; i < 40; i += 1) {
+    const q = pickByCategory(qs, recent, prev);
+    assert.ok(!recent.slice(-3).includes(q.productId), 'repeated a product within the last 3 questions');
+    recent.push(q.productId); prev = q.id; seenInRound.push(q.productId);
+  }
+  // the 17-entry product must not dominate: roughly a quarter of 40 picks
+  const a = seenInRound.filter((p) => p === 'a').length;
+  assert.ok(a >= 6 && a <= 14, `product a picked ${a} times`);
+});
+
+test('pickByCategory works with a single product', () => {
+  const qs = [{ id: 'x@1', productId: 'x' }, { id: 'x@2', productId: 'x' }];
+  assert.notEqual(pickByCategory(qs, ['x'], 'x@1').id, 'x@1');
+  assert.equal(pickByCategory([], [], null), null);
 });

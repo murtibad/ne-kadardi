@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.30.0] - 2026-10-04
+### Changed
+- game: Every question now comes from a different category. The next product is chosen among those not shown in the last (up to) eight questions, then a random year of that product, so products with many yearly values no longer dominate. In a 40-question run: 22 distinct products, no back-to-back repeats.
+
 ## [0.29.0] - 2026-10-04
 ### Added
 - ui: the footer shows the app version and a small credit line ("Yapan: Murat Tokaç", linking to GitHub). The version lives in `js/version.js`; a test keeps it equal to `package.json`.
