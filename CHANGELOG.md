@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.24.0] - 2026-10-04
+### Added
+- data: Fitre amount announced by Diyanet each Ramazan, 2010-2026 (7 TL to 240 TL), 17 values: nine confirmed by two news sites, eight by one (noted on each entry). Sentences were pulled verbatim from the pages by script.
+- ui: wheat icon.
+### Fixed
+- tooling: the data verifier now recognises one-decimal prices such as "11,5".
+
 ## [0.23.0] - 2026-10-04
 ### Added
 - data: Red-light violation fine (Traffic Law 47/1-b) 2020-2026: 288, 314, 427, 951, 1,506, 2,167, 2,719 TL, each confirmed by two news sites. Sentences were pulled verbatim from the pages by script.

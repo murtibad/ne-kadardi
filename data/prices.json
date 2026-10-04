@@ -2787,6 +2787,236 @@
           }
         }
       ]
+    },
+    {
+      "id": "fitre",
+      "name": "Fitre bedeli",
+      "unit": "1 kişi (Diyanet'in açıkladığı fitre miktarı)",
+      "region": null,
+      "source_hint": "Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu her Ramazan öncesi açıklar; tarih Ramazan ayına yakın aydır.",
+      "image": {
+        "src": "img/fitre.svg",
+        "alt": "Buğday başağı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-02",
+        "price": 240,
+        "status": "verified",
+        "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: hurriyet.com.tr https://www.hurriyet.com.tr/galeri-2026-fitre-miktari-ve-bedeli-1-gunluk-diyanet-bu-sene-fitre-ne-kadar-fitre-ve-fidye-nedir-ne-demek-fitre-nasil-hesaplanir-ne-43111213 · aksam.com.tr https://www.aksam.com.tr/ramazan/2026-diyanet-fitre-bedeli-ne-kadar-kac-tl-fitre-kimlere-ne-zamana-kadar-verilir/haber-1647330 · gzt.com https://www.gzt.com/foto-galeri/gundem/2026-fitre-ne-kadar-diyanet-1-gunluk-fitre-ve-fidye-miktarini-acikladi-fitre-kimlere-verilir-nasil-hesaplanir-4020997.",
+        "source": {
+          "title": "milliyet.com.tr",
+          "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-08",
+          "price": 7,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2011-08",
+          "price": 7.5,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2012-07",
+          "price": 8.5,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2013-07",
+          "price": 9.5,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/Ramazan/2013/06/29/diyanet-isleri-fitre-miktarini-belirledi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2014-06",
+          "price": 10,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/2018-yili-fitre-miktari-aciklandi-2667984.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2015-06",
+          "price": 11.5,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/2018-yili-fitre-miktari-aciklandi-2667984.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-06",
+          "price": 15,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: yeniakit.com.tr https://www.yeniakit.com.tr/haber/2016-yili-fitre-miktari-belirlendi-174266.html · milliyet.com.tr https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/Guncel/2016/05/22/2016-yili-fitre-miktari-belli-oldu",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-05",
+          "price": 16,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/2018-yili-fitre-miktari-aciklandi-2667984.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-05",
+          "price": 19,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/gundem/2018-yili-fitre-miktari-aciklandi-2667984",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-05",
+          "price": 23,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: haberturk.com https://www.haberturk.com/diyanet-isleri-2019-fitre-fiyati-ne-kadar-fitre-kimlere-ve-ne-zaman-verilir-2459707.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/guncel/2019/04/29/diyanet-acikladi-fitre-miktari-belli-oldu",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-04",
+          "price": 27,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı. Doğrulama: hurriyet.com.tr https://www.hurriyet.com.tr/gundem/fitre-ne-kadar-2020-fitre-bedeli-nedir-kimlere-verilir-41510151.",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/gundem/fitre-ne-kadar-2020-diyanet-fitre-miktari-nedir-41507651",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-04",
+          "price": 28,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: gazetevatan.com https://www.gazetevatan.com/ramazan/ramazan-fitresi-ne-kadar-2021-oruc-tutmayan-ne-kadar-para-verecek-2021-1384560.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/gundem/2021-fitre-bedeli-ne-kadar-fitre-kimlere-verilir-kimlere-verilmez-diyanetten-fitre-aciklamasi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-04",
+          "price": 40,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: diyanet.gov.tr https://www.diyanet.gov.tr/tr-tr/Kurumsal/Detay/33246/din-isleri-yuksek-kurulu-2022-yili-fitre-miktarini-acikladi.",
+          "source": {
+            "title": "yenisafak.com",
+            "url": "https://www.yenisafak.com/fitre-nedir-kimlere-verilir-2022-diyanetin-acikladigi-fitre-miktari-h-3772454",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-03",
+          "price": 70,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: aa.com.tr https://www.aa.com.tr/tr/gundem/diyanet-bu-yilki-fitre-miktarini-70-lira-olarak-belirledi/2812764.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/2023/gundem/fitre-ne-kadar-diyanet-2023-fitre-miktarini-belirledi-7594548/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-03",
+          "price": 130,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: haberturk.com https://www.haberturk.com/diyanet-acikladi-2024-fitre-ne-kadar-oldu-fitre-nedir-kimlere-ne-zaman-verilir-3670695.",
+          "source": {
+            "title": "aa.com.tr",
+            "url": "https://www.aa.com.tr/tr/gundem/diyanet-bu-yil-fitre-bedelini-130-lira-olarak-belirledi/3131201",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-03",
+          "price": 180,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/galeri/diyanet-2025-fitre-miktari-bu-yil-fitre-miktari-kac-lira-aciklandi-fitre-kimlere-verilir-7308324.",
+          "source": {
+            "title": "aa.com.tr",
+            "url": "https://www.aa.com.tr/tr/gundem/diyanet-bu-yil-fitre-bedelini-180-lira-olarak-belirledi/3470034",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 240,
+          "status": "verified",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Doğrulama: hurriyet.com.tr https://www.hurriyet.com.tr/galeri-2026-fitre-miktari-ve-bedeli-1-gunluk-diyanet-bu-sene-fitre-ne-kadar-fitre-ve-fidye-nedir-ne-demek-fitre-nasil-hesaplanir-ne-43111213 · aksam.com.tr https://www.aksam.com.tr/ramazan/2026-diyanet-fitre-bedeli-ne-kadar-kac-tl-fitre-kimlere-ne-zamana-kadar-verilir/haber-1647330 · gzt.com https://www.gzt.com/foto-galeri/gundem/2026-fitre-ne-kadar-diyanet-1-gunluk-fitre-ve-fidye-miktarini-acikladi-fitre-kimlere-verilir-nasil-hesaplanir-4020997.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
