@@ -3017,6 +3017,194 @@
           }
         }
       ]
+    },
+    {
+      "id": "taksi-acilis",
+      "name": "İstanbul taksi açılış ücreti",
+      "unit": "1 açılış (sarı taksi, taksimetre açılışı)",
+      "region": "İstanbul",
+      "source_hint": "UKOME kararları ve haber arşivi; sarı taksi açılış ücreti. Tarih zammın yürürlüğe girdiği aydır.",
+      "image": {
+        "src": "img/taksi.svg",
+        "alt": "Sarı taksi çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 71.94,
+        "status": "verified",
+        "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: bigpara.hurriyet.com.tr https://bigpara.hurriyet.com.tr/ekonomi-haberleri/galeri-istanbul-zamli-taksi-tarifesi-2026-istanbulda-yeni-taksimetre-acilis-ucreti-indi-bindi-ve-kisa-mesafe-ucreti-ne-kadar-oldu_ID102212102/.",
+        "source": {
+          "title": "birgun.net",
+          "url": "https://www.birgun.net/haber/istanbul-taksi-ucretleri-2026-acilis-kilometre-ve-indi-bindi-fiyatlari-584162",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2023-01",
+          "price": 12.65,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: timeturk.com https://www.timeturk.com/genel/istanbul-sari-taksi-kisa-mesafe-ne-kadar-2023/haber-1757474 · milliyet.com.tr https://www.milliyet.com.tr/ekonomi/son-dakika-istanbulda-toplu-ulasim-ve-taksi-ucretlerine-zam-6987780.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/turkiye/istanbulda-taksiye-zam-mi-geldi-taksimetre-acilis-ucreti-ne-kadar,iUFrmYfKwEeeoaL3H6U81g",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-08",
+          "price": 19.17,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/ekonomi/son-dakika-istanbulda-toplu-ulasim-ve-taksi-ucretlerine-zam-6987780 · cumhuriyet.com.tr https://www.cumhuriyet.com.tr/turkiye/istanbulda-taksimetre-guncelleme-kuyrugu-14-agustosta-basliyor-2107347.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/turkiye/istanbulda-taksiye-zam-mi-geldi-taksimetre-acilis-ucreti-ne-kadar,iUFrmYfKwEeeoaL3H6U81g",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 24.55,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: egitim.net.tr https://www.egitim.net.tr/amp/guncel/2024-istanbul-taksi-ucretleri-acilis-ucreti-indi-bindi-ve-kilometre-fiyatlari-1688h · turkiyegazetesi.com.tr https://www.turkiyegazetesi.com.tr/ekonomi/taksi-fiyatlarina-iki-kat-zam-yolda-tarih-belli-oldu-esnafin-zam-teklifi-masada-976080.",
+          "source": {
+            "title": "medyascope.tv",
+            "url": "https://medyascope.tv/2024/07/25/istanbulda-taksi-ucretlerine-zam-geldi/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 30,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: egitim.net.tr https://www.egitim.net.tr/amp/guncel/2024-istanbul-taksi-ucretleri-acilis-ucreti-indi-bindi-ve-kilometre-fiyatlari-1688h · cnnturk.com https://www.cnnturk.com/turkiye/galeri/yogunluk-basladi-taksiciler-harekete-gecti-29-temmuzda-basliyor-2135344.",
+          "source": {
+            "title": "medyascope.tv",
+            "url": "https://medyascope.tv/2024/07/25/istanbulda-taksi-ucretlerine-zam-geldi/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 42,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: iscihaber.net https://www.iscihaber.net/gundem/istanbulda-taksi-ucretlerine-zam-2025-taksi-acilis-ve-indi-bindi-ucreti-ne-kadar-oldu/136106.",
+          "source": {
+            "title": "dunya.com",
+            "url": "https://www.dunya.com/ekonomi/istanbulda-taksi-tarifesine-zam-taksimetre-acilisi-kac-tl-indi-bindi-ne-kadar-oldu-haberi-760621",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 54.5,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: haberturk.com https://www.haberturk.com/taksi-ucretlerine-zam-geldi-yeni-zamli-taksi-acilis-kisa-mesafe-ve-zaman-tarifesi-ucreti-ne-kadar-oldu-3861469.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/turkiye/istanbulda-taksi-ucreti-zammi-yururluge-girdi-iste-yeni-fiyatlar,5qPMaFMpH0W1k-zkMfQoWA",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 65.4,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: haberturk.com https://www.haberturk.com/taksi-ucretlerine-zam-geldi-yeni-zamli-taksi-acilis-kisa-mesafe-ve-zaman-tarifesi-ucreti-ne-kadar-oldu-3861469 · bigpara.hurriyet.com.tr https://bigpara.hurriyet.com.tr/ekonomi-haberleri/galeri-istanbul-zamli-taksi-tarifesi-2026-istanbulda-yeni-taksimetre-acilis-ucreti-indi-bindi-ve-kisa-mesafe-ucreti-ne-kadar-oldu_ID102212102/.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/galeri/yeni-taksi-ucretleri-2026-taksi-acilis-ve-kisa-mesafe-ucreti-ne-kadar-oldu-7537307",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 71.94,
+          "status": "verified",
+          "note": "İstanbul sarı taksinin taksimetre açılış ücreti; zam tarihinden bir sonraki zama kadar geçerli. Sarı taksi taksimetre açılış ücreti. Doğrulama: bigpara.hurriyet.com.tr https://bigpara.hurriyet.com.tr/ekonomi-haberleri/galeri-istanbul-zamli-taksi-tarifesi-2026-istanbulda-yeni-taksimetre-acilis-ucreti-indi-bindi-ve-kisa-mesafe-ucreti-ne-kadar-oldu_ID102212102/.",
+          "source": {
+            "title": "birgun.net",
+            "url": "https://www.birgun.net/haber/istanbul-taksi-ucretleri-2026-acilis-kilometre-ve-indi-bindi-fiyatlari-584162",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "playstation",
+      "name": "PlayStation konsolu",
+      "unit": "1 adet (standart, disk sürücülü), Türkiye çıkış fiyatı",
+      "region": null,
+      "source_hint": "Sony Türkiye tavsiye edilen çıkış fiyatı, haber arşivi.",
+      "image": {
+        "src": "img/oyun-konsolu.svg",
+        "alt": "Oyun kolu çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2024-11",
+        "price": 49999,
+        "status": "verified",
+        "note": "Türkiye'de açıklanan tavsiye edilen çıkış fiyatı (KDV dahil). Doğrulama: donanimhaber.com https://www.donanimhaber.com/playstation-5-pro-turkiye-fiyati-ortaya-cikti--183659 · paramevzu.com https://www.paramevzu.com/haber/fiyati-hayal-kirikligi-yaratan-playstation-5-pro-turkiyede-26574.",
+        "source": {
+          "title": "donanimhaber.com",
+          "url": "https://www.donanimhaber.com/sony-playstation-5-pro-50-bin-tl-lik-fiyatiyla-satisa-cikti--183935",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        },
+        "label": "PlayStation 5 Pro"
+      },
+      "prices": [
+        {
+          "date": "2013-12",
+          "price": 1399,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan tavsiye edilen çıkış fiyatı (KDV dahil). Doğrulama: star.com.tr https://www.star.com.tr/teknoloji/ps4un-turkiye-satis-fiyati-belli-oldu-haber-804779/ · technopat.net https://www.technopat.net/2013/11/08/playstation-4un-turkiye-fiyati-ve-cikis-tarihi/.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2013/11/10/playstation-4un-turkiye-fiyati-ve-cikis-tarihi-belli-oldu/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "label": "PlayStation 4"
+        },
+        {
+          "date": "2020-11",
+          "price": 8299,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan tavsiye edilen çıkış fiyatı (KDV dahil). Doğrulama: haberturk.com https://www.haberturk.com/sony-playstation-5-turkiye-fiyati-ne-kadar-ps5-ozellikleri-nelerdir-2874673-teknoloji · webtekno.com https://www.webtekno.com/playstation-5-fiyati-ozellikleri-oyunlari-h77424.html.",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/teknoloji/playstation-5-turkiye-fiyati-az-once-aciklandi-41638107",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "label": "PlayStation 5"
+        },
+        {
+          "date": "2024-11",
+          "price": 49999,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan tavsiye edilen çıkış fiyatı (KDV dahil). Doğrulama: donanimhaber.com https://www.donanimhaber.com/playstation-5-pro-turkiye-fiyati-ortaya-cikti--183659 · paramevzu.com https://www.paramevzu.com/haber/fiyati-hayal-kirikligi-yaratan-playstation-5-pro-turkiyede-26574.",
+          "source": {
+            "title": "donanimhaber.com",
+            "url": "https://www.donanimhaber.com/sony-playstation-5-pro-50-bin-tl-lik-fiyatiyla-satisa-cikti--183935",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "label": "PlayStation 5 Pro"
+        }
+      ]
     }
   ]
 }
