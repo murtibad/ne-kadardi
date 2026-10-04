@@ -1,4 +1,5 @@
 import { formatPeriod, formatPrice, formatRatio } from './format.js';
+import { scoreTier } from './game.js';
 
 export function buildShareText(q, r, url) {
   return [
@@ -39,6 +40,7 @@ export function buildShareImageModel(q, r, { contextLine = null } = {}) {
     current: hasCurrent ? formatPrice(q.current.price) : null,
     increase: hasCurrent ? `${formatRatio(q.current.price / q.price)} kat arttı` : null,
     score: `${r.score}/100`,
+    tier: scoreTier(r.score),
     contextText: contextLine,
     iconSrc: q.image ? q.image.src : null,
     siteAddress: 'murtibad.github.io/ne-kadardi'

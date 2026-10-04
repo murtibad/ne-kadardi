@@ -7,6 +7,9 @@ const COLORS = {
   ink: '#181818',
   muted: '#737068',
   accent: '#d32f2f',
+  // Dark enough to read on the cream receipt paper (>= 4.5:1)
+  tier: { great: '#14532d', good: '#2f6b1f', mid: '#8a5300', poor: '#a8420a', bad: '#9b1c1c' },
+  fill: { great: '#1f9d55', good: '#84cc16', mid: '#f5b301', poor: '#f97316', bad: '#dc2626' },
 };
 
 function loadFonts() {
@@ -176,12 +179,13 @@ export async function renderShareImage(model) {
   // Verdict Box
   const boxW = cardW - 160;
   const boxH = 100;
-  ctx.strokeStyle = COLORS.accent;
+  const tierColor = COLORS.tier[model.tier] || COLORS.accent;
+  ctx.strokeStyle = tierColor;
   ctx.lineWidth = 4;
   ctx.strokeRect(cx - boxW / 2, y, boxW, boxH);
   
   ctx.font = 'bold 36px "Space Mono", ui-monospace, monospace';
-  ctx.fillStyle = COLORS.accent;
+  ctx.fillStyle = tierColor;
   ctx.textAlign = 'center';
   // scale text if it's too long
   const verdictW = ctx.measureText(model.verdict).width;
@@ -201,12 +205,20 @@ export async function renderShareImage(model) {
     y += 20;
   }
   
-  // Score
-  y += 40;
+  // Score (pulled up a bit to leave room for the meter above the footer)
+  y += 15;
   ctx.font = 'bold 64px "Space Mono", ui-monospace, monospace';
-  ctx.fillStyle = COLORS.ink;
+  ctx.fillStyle = tierColor;
   ctx.textAlign = 'center';
   ctx.fillText(`PUAN ${model.score}`, cx, y);
+
+  // Meter under the score
+  const meterW = 420;
+  const pct = Math.max(0, Math.min(100, parseInt(model.score, 10) || 0)) / 100;
+  ctx.fillStyle = 'rgba(0,0,0,0.12)';
+  ctx.fillRect(cx - meterW / 2, y + 20, meterW, 18);
+  ctx.fillStyle = COLORS.fill[model.tier] || COLORS.accent;
+  ctx.fillRect(cx - meterW / 2, y + 24, meterW * pct, 18);
   
   // Bottom Icon and URL
   const bottomY = endY - 70;

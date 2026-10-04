@@ -8,6 +8,18 @@
   --muted-on-paper: #737068; /* secondary text on the receipt paper */
   --accent: #d32f2f; /* Bold red */
   --line: #d6d3cb;
+  /* Result tiers; all three stay >= 4.5:1 on the receipt paper in both colour modes */
+  --tier-great: #14532d;
+  --tier-good: #2f6b1f;
+  --tier-mid: #8a5300;
+  --tier-poor: #a8420a;
+  --tier-bad: #9b1c1c;
+  /* Vivid versions for the meter fill and box tint (never used for text) */
+  --fill-great: #1f9d55;
+  --fill-good: #84cc16;
+  --fill-mid: #f5b301;
+  --fill-poor: #f97316;
+  --fill-bad: #dc2626;
   
   --font-ui: 'DM Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'Space Mono', ui-monospace, monospace;
@@ -230,6 +242,32 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   font-size: 1.25rem; 
   margin: 0;
 }
+
+.verdict-box[data-tier] { border-color: var(--tier, var(--accent)); background: color-mix(in srgb, var(--fill, transparent) 14%, transparent); }
+.verdict-box[data-tier] .verdict,
+.score-box[data-tier] { color: var(--tier, var(--accent)); }
+[data-tier='great'] { --tier: var(--tier-great); --fill: var(--fill-great); }
+[data-tier='good'] { --tier: var(--tier-good); --fill: var(--fill-good); }
+[data-tier='mid'] { --tier: var(--tier-mid); --fill: var(--fill-mid); }
+[data-tier='poor'] { --tier: var(--tier-poor); --fill: var(--fill-poor); }
+[data-tier='bad'] { --tier: var(--tier-bad); --fill: var(--fill-bad); }
+
+.meter {
+  height: 10px;
+  margin: 8px auto 0;
+  max-width: 220px;
+  background: rgba(0,0,0,0.12);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  width: var(--score, 0%);
+  background: var(--fill, var(--accent));
+  transition: width 0.4s ease-out;
+}
+@media (prefers-reduced-motion: reduce) { .meter > span { transition: none; } }
 
 .score-box {
   text-align: center;
