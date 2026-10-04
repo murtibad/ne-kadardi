@@ -32,6 +32,11 @@ test('prices.json follows the data policy', () => {
     ids.add(p.id);
     assert.ok(p.name && p.unit, `${p.id}: name and unit are required`);
     
+    for (const e of p.prices ?? []) {
+      if (!e.image) continue;
+      assert.ok(e.image.src.startsWith('img/') && e.image.src.endsWith('.svg') && existsSync(new URL(`../${e.image.src}`, import.meta.url)), `${p.id}@${e.date}: entry image file must exist in img/`);
+      assert.ok(typeof e.image.alt === 'string' && e.image.alt.trim() !== '', `${p.id}@${e.date}: entry image.alt must be non-empty`);
+    }
     if (p.image) {
       assert.ok(p.image.src.startsWith('img/') && p.image.src.endsWith('.svg'), `${p.id}: image.src must be in img/ and be an .svg`);
       assert.ok(existsSync(new URL(`../${p.image.src}`, import.meta.url)), `${p.id}: image file must exist`);

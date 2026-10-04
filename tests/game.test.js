@@ -120,3 +120,13 @@ test('buildContextLine names the models when the current price is a newest-launc
   const q = { productId: 'iphone', name: 'Yeni iPhone', label: 'iPhone 11', date: '2019-10', price: 7299, unit: '1 adet', current: { date: '2025-09', price: 77999, label: 'En yeni iPhone 17' } };
   assert.match(buildContextLine(q, wages), /O tarihte bir iPhone 11 .* asgari ücret ediyordu, bugün iPhone 17 ise .* asgari ücret\./);
 });
+
+test('buildQuestions prefers an entry image over the product image', () => {
+  const f = { products: [{ id: 'p1', name: 'A', unit: 'U', image: { src: 'img/p.svg', alt: 'P' }, prices: [
+    { date: '2010-01', price: 1, status: 'verified', source: {}, image: { src: 'img/e.svg', alt: 'E' } },
+    { date: '2011-01', price: 2, status: 'verified', source: {} },
+  ] }] };
+  const qs = buildQuestions(f);
+  assert.equal(qs[0].image.src, 'img/e.svg');
+  assert.equal(qs[1].image.src, 'img/p.svg');
+});

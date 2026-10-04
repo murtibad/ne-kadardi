@@ -102,6 +102,7 @@ function nextQuestion() {
   } else {
     img.hidden = true;
     img.removeAttribute('src');
+    img.alt = ''; // do not keep the previous product's alt text
   }
 
   $('q-name').textContent = questionTitle(q);

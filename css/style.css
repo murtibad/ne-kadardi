@@ -138,6 +138,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin-bottom: 12px;
 }
 
+.product-image[hidden] { display: none; }
 .product-image {
   display: block;
   width: 72px;
