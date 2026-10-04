@@ -1365,6 +1365,25 @@
           }
         },
         {
+          "date": "2013-11",
+          "price": 2149,
+          "status": "verified",
+          "label": "iPhone 5s",
+          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı",
+          "note": "Apple Türkiye internet mağazasının açıldığı gün (01.11.2013) gösterilen liste fiyatı (KDV ve ÖTV dahil). Aynı günlerde operatör fiyatları farklıydı (ör. Turkcell 2.279 TL), bu yüzden Apple'ın kendi fiyatı alındı. Doğrulama: Hürriyet, En pahalısı yine bize (02.11.2013) https://www.hurriyet.com.tr/ekonomi/en-pahalisi-yine-bize-25028846.",
+          "source": {
+            "title": "Webrazzi, Apple Türkiye internet mağazası açıldı (01.11.2013)",
+            "url": "https://webrazzi.com/2013/11/01/apple-turkiye-internet-magazasi-acildi/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-home.svg",
+            "alt": "Ana tuşlu iPhone çizimi",
+            "credit": "Original illustration, CC0"
+          }
+        },
+        {
           "date": "2014-09",
           "price": 2349,
           "status": "verified",
