@@ -1195,18 +1195,88 @@
       "name": "Yeni iPhone",
       "unit": "1 adet, Türkiye çıkış fiyatı",
       "region": null,
+      "tax": {
+        "method": "Vergisiz taban matrah üzerinden önce ÖTV, ardından ÖTV'li tutar üzerinden KDV hesaplanır: vergi payı = 1 - 1 / ((1 + ÖTV) * (1 + KDV)).",
+        "note": "ÖTV oranı matrahın en üst diliminin oranıdır; iPhone matrahı her dönemde üst dilimin sınırının çok üstündedir. TRT bandrolü, kültür payı ve IMEI kayıt harcı dahil değildir, bu yüzden değer alt sınırdır.",
+        "periods": [
+          {
+            "from": "2019-05",
+            "to": "2023-06",
+            "kdv": 0.18,
+            "otv": 0.5,
+            "sources": [
+              {
+                "title": "Webrazzi, Cep telefonlarına ÖTV zammı (01.05.2019)",
+                "url": "https://webrazzi.com/2019/05/01/cep-telefonlarina-otv-zammi/",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Memurlar.net, Cep telefonunda ÖTV yüzde 50'ye çıkartıldı",
+                "url": "https://www.memurlar.net/haber/826952/cep-telefonunda-otv-yuzde-50-ye-cikartildi.html",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Hürriyet, Cep telefonu ÖTV oranları değişti (19.04.2022, matrah sınırları 1.500/3.000 TL)",
+                "url": "https://www.hurriyet.com.tr/gundem/cep-telefonu-otv-oranlari-degisti-iste-cep-telefonlarinda-otv-orani-hakkinda-resmi-gazete-karari-42046418",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "BloombergHT, Katma Değer Vergisi'nde artış yapıldı (07.07.2023)",
+                "url": "https://www.bloomberght.com/katma-deger-vergisi-nde-artis-yapildi-2334159",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              }
+            ]
+          },
+          {
+            "from": "2023-07",
+            "to": null,
+            "kdv": 0.2,
+            "otv": 0.5,
+            "sources": [
+              {
+                "title": "BloombergHT, Katma Değer Vergisi'nde artış yapıldı (07.07.2023)",
+                "url": "https://www.bloomberght.com/katma-deger-vergisi-nde-artis-yapildi-2334159",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Habertürk, KDV artış kararı (11.07.2023)",
+                "url": "https://www.haberturk.com/katma-deger-vergisi-artis-karari-resmi-gazete-de-2023-temmuz-kdv-orani-artti-mi-yuzde-kac-oldu-3605790",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "AA, Sigara ve cep telefonunda ÖTV oranları yeniden belirlendi (24.10.2025, matrah 4.500/9.000 TL, üstü %50)",
+                "url": "https://www.aa.com.tr/tr/ekonomi/sigara-ve-cep-telefonunda-otv-oranlari-yeniden-belirlendi/3725335",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "BloombergHT, Cep telefonu ÖTV matrahları yeniden belirlendi",
+                "url": "https://www.bloomberght.com/cep-telefonu-otv-matrahlari-yeniden-belirlendi-3759986",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              }
+            ]
+          }
+        ]
+      },
       "current": {
-        "date": "2026-10",
-        "price": 99999,
+        "date": "2025-09",
+        "price": 77999,
         "status": "verified",
-        "label": "iPhone 17",
-        "unit": "1 adet, 256 GB, Apple Türkiye mağaza fiyatı",
-        "note": "Apple Türkiye mağazasında 256 GB iPhone 17 için gösterilen fiyat; çıkış fiyatı 77.999 TL idi, sonradan zamlandı.",
+        "label": "En yeni iPhone 17",
+        "unit": "1 adet, 256 GB, Türkiye çıkış fiyatı",
+        "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 09.09.2025. Doğrulama: NTV https://www.ntv.com.tr/teknoloji/galeri-iphone-17-apple-turkiyede-on-siparise-acildi-magazada-satis-tarihi-belli-oldu,gIaoGFPKPEWOUa9RYqi0NA. Taban depolama 2025'te 256 GB. Apple Türkiye mağazasında bugün 256 GB iPhone 17 için 99.999 TL gösteriliyor (zamlı), ama oyun çıkış fiyatlarını kıyaslar (2026-10-04, https://www.apple.com/tr/shop/buy-iphone/iphone-17).",
         "source": {
-          "title": "Apple Türkiye: iPhone 17 satın al",
-          "url": "https://www.apple.com/tr/shop/buy-iphone/iphone-17",
+          "title": "DonanımHaber, iPhone 17 Türkiye fiyatı ve çıkış tarihi",
+          "url": "https://www.donanimhaber.com/iphone-17-turkiye-fiyati-ve-cikis-tarihi-aciklandi--195874",
           "accessed": "2026-10-04",
-          "kind": "official"
+          "kind": "news"
         }
       },
       "prices": [

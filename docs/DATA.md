@@ -140,3 +140,20 @@ policy allows when the method and both sources are documented:
 - The XLSX link in the entries is versioned by the World Bank and may change; the download page above
   stays valid.
 
+## Tax floor (derived value)
+
+For products with compound indirect taxes (currently `iphone`), the result screen computes a lower bound on the tax portion ("vergi tabanı / payı").
+
+`vergi payı = 1 - 1 / ((1 + ÖTV) * (1 + KDV))`
+`vergi tutarı = fiyat * vergi payı`
+
+- **Formula**: In Turkey, VAT (KDV) is levied on the subtotal that already includes special consumption tax (ÖTV). If $B$ is the pre-tax base price, retail price $P = B \times (1 + \text{ÖTV}) \times (1 + \text{KDV})$. The total tax floor share is $1 - B/P = 1 - 1 / ((1 + \text{ÖTV}) \times (1 + \text{KDV}))$.
+- **Floor only ("en az")**: Other regulatory fees (TRT bandrolü %10–12, Kültür Bakanlığı payı %1, and IMEI registration fees) are not included, so the actual tax burden is strictly higher than this calculated percentage.
+- **Top tax bracket**: Mobile phones face a tiered ÖTV schedule based on tax base thresholds (matrah). Every iPhone base model listed in the data has a pre-tax value substantially exceeding the highest bracket ceiling, placing it squarely in the 50% ÖTV bracket.
+- **Periods**: Applied only from May 2019 onwards, where verified rates are available:
+  - `2019-05` to `2023-06`: ÖTV 50%, KDV 18% (share ~ 43.5%, rounded to 44%).
+  - `2023-07` to present: ÖTV 50%, KDV 20% (share ~ 44.4%, rounded to 44%).
+- Dates outside these periods (e.g. 2014–2018 iPhones) do not show a tax floor sentence.
+- **Display**: The share is rounded to the nearest whole percent, and the amount is rounded to the nearest 100 TL via the price formatter.
+
+

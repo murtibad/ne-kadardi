@@ -122,3 +122,11 @@ test('buildTimelines passes source.kind through to the rows', () => {
   assert.equal(rows[0].source.kind, 'official');
   assert.equal(rows[1].source.kind, 'news');
 });
+
+test('buildTimelines marks the matching dated row as current instead of repeating it', () => {
+  const entry = (date, price, extra = {}) => ({ date, price, status: 'verified', source: { url: 'https://x' }, ...extra });
+  const [t] = buildTimelines({ products: [{ id: 'p', name: 'P', prices: [entry('2024-09', 10), entry('2025-09', 20)], current: entry('2025-09', 20, { label: 'En yeni P' }) }] });
+  assert.equal(t.rows.length, 2);
+  assert.equal(t.rows[1].isCurrent, true);
+  assert.equal(t.rows[1].currentLabel, 'En yeni P');
+});
