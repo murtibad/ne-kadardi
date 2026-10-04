@@ -1913,6 +1913,466 @@
           "kind": "news"
         }
       }
+    },
+    {
+      "id": "euro",
+      "name": "Euro",
+      "unit": "1 EUR (TCMB döviz satış kuru)",
+      "region": null,
+      "source_hint": "TCMB Gösterge Niteliğindeki Döviz Kurları; dolar ile aynı tarihler.",
+      "image": {
+        "src": "img/euro.svg",
+        "alt": "Euro banknotu",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10-02",
+        "price": 55.1819,
+        "status": "verified",
+        "note": "TCMB döviz satış, o günkü gösterge kuru",
+        "source": {
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.10.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202610/02102026.xml",
+          "accessed": "2026-10-04",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01-04",
+          "price": 2.1377,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2010",
+            "url": "https://www.tcmb.gov.tr/kurlar/201001/04012010.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-01-03",
+          "price": 2.0705,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2011",
+            "url": "https://www.tcmb.gov.tr/kurlar/201101/03012011.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-01-02",
+          "price": 2.4419,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2012",
+            "url": "https://www.tcmb.gov.tr/kurlar/201201/02012012.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-01-02",
+          "price": 2.3592,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2013",
+            "url": "https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-01-02",
+          "price": 2.9797,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2014",
+            "url": "https://www.tcmb.gov.tr/kurlar/201401/02012014.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-01-02",
+          "price": 2.8309,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2015",
+            "url": "https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-01-04",
+          "price": 3.2174,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2016",
+            "url": "https://www.tcmb.gov.tr/kurlar/201601/04012016.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01-02",
+          "price": 3.7153,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2017",
+            "url": "https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01-02",
+          "price": 4.5457,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2018",
+            "url": "https://www.tcmb.gov.tr/kurlar/201801/02012018.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01-02",
+          "price": 6.1171,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2019",
+            "url": "https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01-02",
+          "price": 6.675,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2020",
+            "url": "https://www.tcmb.gov.tr/kurlar/202001/02012020.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01-04",
+          "price": 9.0545,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2021",
+            "url": "https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01-03",
+          "price": 15.2616,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2022",
+            "url": "https://www.tcmb.gov.tr/kurlar/202201/03012022.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01-02",
+          "price": 20.0166,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2023",
+            "url": "https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01-02",
+          "price": 32.726,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2024",
+            "url": "https://www.tcmb.gov.tr/kurlar/202401/02012024.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01-02",
+          "price": 36.5462,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2025",
+            "url": "https://www.tcmb.gov.tr/kurlar/202501/02012025.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01-02",
+          "price": 50.3839,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2026",
+            "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ceyrek-altin",
+      "name": "Çeyrek altın",
+      "unit": "1 adet (1,75 g, 22 ayar, piyasa değeri)",
+      "region": null,
+      "source_hint": "Türetilmiş: gram altın (24 ayar) piyasa değeri × 1,604 g has altın. Kuyumcu satış fiyatı değildir.",
+      "image": {
+        "src": "img/ceyrek-altin.svg",
+        "alt": "Altın sikke",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-09",
+        "price": 10834.81,
+        "status": "verified",
+        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 6754.17 TL × 1.6042 g has altın (1,75 g × 22/24) = 10834.81 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+        "source": {
+          "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-09",
+          "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+          "accessed": "2026-10-04",
+          "kind": "derived"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 84.94,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 52.95 TL × 1.6042 g has altın (1,75 g × 22/24) = 84.94 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 109.73,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 68.4 TL × 1.6042 g has altın (1,75 g × 22/24) = 109.73 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 157.14,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 97.96 TL × 1.6042 g has altın (1,75 g × 22/24) = 157.14 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2012-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 152.75,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 95.22 TL × 1.6042 g has altın (1,75 g × 22/24) = 152.75 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 142.9,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 89.08 TL × 1.6042 g has altın (1,75 g × 22/24) = 142.9 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2014-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 150.78,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 93.99 TL × 1.6042 g has altın (1,75 g × 22/24) = 150.78 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 170.72,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 106.42 TL × 1.6042 g has altın (1,75 g × 22/24) = 170.72 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2016-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 230.78,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 143.86 TL × 1.6042 g has altın (1,75 g × 22/24) = 230.78 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 259.36,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 161.68 TL × 1.6042 g has altın (1,75 g × 22/24) = 259.36 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2018-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 358.23,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 223.31 TL × 1.6042 g has altın (1,75 g × 22/24) = 358.23 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 477.45,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 297.63 TL × 1.6042 g has altın (1,75 g × 22/24) = 477.45 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2020-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 712.78,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 444.33 TL × 1.6042 g has altın (1,75 g × 22/24) = 712.78 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 1268.83,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 790.96 TL × 1.6042 g has altın (1,75 g × 22/24) = 1268.83 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2022-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 1839.88,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 1146.94 TL × 1.6042 g has altın (1,75 g × 22/24) = 1839.88 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 3156.86,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 1967.91 TL × 1.6042 g has altın (1,75 g × 22/24) = 3156.86 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2024-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 4967.64,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 3096.71 TL × 1.6042 g has altın (1,75 g × 22/24) = 4967.64 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2025-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 10593.29,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 6603.61 TL × 1.6042 g has altın (1,75 g × 22/24) = 10593.29 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        }
+      ]
     }
   ]
 }
