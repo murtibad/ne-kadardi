@@ -22,7 +22,7 @@ export function buildQuestions(data) {
         label: entry.label ?? null,
         unit: entry.unit ?? product.unit,
         region: product.region ?? null,
-        image: product.image ?? null,
+        image: entry.image ?? product.image ?? null,
         tax: product.tax ?? null,
         date: entry.date,
         year: yearOf(entry.date),

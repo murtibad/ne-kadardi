@@ -1357,7 +1357,12 @@
             "url": "https://www.hurriyet.com.tr/ekonomi/iphone-4-turkiyede-ne-kadara-satilacak-15843405",
             "accessed": "2026-10-03"
           },
-          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı"
+          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı",
+          "image": {
+            "src": "img/iphone-home.svg",
+            "alt": "Ana tuşlu iPhone çizimi",
+            "credit": "Original illustration, CC0"
+          }
         },
         {
           "date": "2014-09",
@@ -1371,6 +1376,11 @@
             "url": "https://webrazzi.com/2014/09/09/iphone-6-turkiye-fiyatlari/",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-home.svg",
+            "alt": "Ana tuşlu iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1385,6 +1395,11 @@
             "url": "https://www.apple.com/tr/newsroom/2015/09/28Apple-Announces-Record-iPhone-6s-iPhone-6s-Plus-Sales",
             "accessed": "2026-10-04",
             "kind": "official"
+          },
+          "image": {
+            "src": "img/iphone-home.svg",
+            "alt": "Ana tuşlu iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1399,6 +1414,11 @@
             "url": "https://www.teknoblog.com/iphone-7-iphone-7-plus-turkiye-fiyatlar/",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-home.svg",
+            "alt": "Ana tuşlu iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1413,6 +1433,11 @@
             "url": "https://www.donanimhaber.com/iPhone-8-ve-iPhone-8-Plus-Turkiye-fiyati-belli-oldu--94394",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-home.svg",
+            "alt": "Ana tuşlu iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1427,6 +1452,11 @@
             "url": "https://milliyet.com.tr/teknoloji/iphone-xr-xs-ve-xs-max-turkiyede-satisa-sunuldu-2787026",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-notch.svg",
+            "alt": "Çentikli iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1441,6 +1471,11 @@
             "url": "https://webrazzi.com/2019/10/09/iphone-11-pro-turkiye-fiyatlari/",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-notch.svg",
+            "alt": "Çentikli iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1455,6 +1490,11 @@
             "url": "https://www.teknoblog.com/iphone-12-ve-iphone-12-pro-turkiye-de-on-satisa-cikti/",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-notch.svg",
+            "alt": "Çentikli iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1469,6 +1509,11 @@
             "url": "https://www.donanimhaber.com/iphone-13-turkiye-fiyatlari-aciklandi-iphone-13-pro-max-kac-tl--138958",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-notch.svg",
+            "alt": "Çentikli iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1483,6 +1528,11 @@
             "url": "https://www.bloomberght.com/apple-in-iphone-14-serisinin-turkiye-satis-fiyatlari-belli-oldu-2314248",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-notch.svg",
+            "alt": "Çentikli iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1497,6 +1547,11 @@
             "url": "https://cnnturk.com/teknoloji/iphone-15-on-siparis-ne-zaman-iphone-15-satis-tarihi-ve-turkiye-fiyati",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-island.svg",
+            "alt": "Dinamik adalı iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1511,6 +1566,11 @@
             "url": "https://www.ntv.com.tr/teknoloji/galeri-apple-iphone-16-modellerini-tanitti-turkiye-fiyati-belli-oldu,2ZzVWwfI4U-wQ5XxVoO1Kg",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-island.svg",
+            "alt": "Dinamik adalı iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         },
         {
@@ -1525,9 +1585,19 @@
             "url": "https://www.donanimhaber.com/iphone-17-turkiye-fiyati-ve-cikis-tarihi-aciklandi--195874",
             "accessed": "2026-10-04",
             "kind": "news"
+          },
+          "image": {
+            "src": "img/iphone-island.svg",
+            "alt": "Dinamik adalı iPhone çizimi",
+            "credit": "Original illustration, CC0"
           }
         }
-      ]
+      ],
+      "image": {
+        "src": "img/iphone-notch.svg",
+        "alt": "Çentikli iPhone çizimi",
+        "credit": "Original illustration, CC0"
+      }
     },
     {
       "id": "istanbul-ulasim",
