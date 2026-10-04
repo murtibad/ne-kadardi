@@ -1196,14 +1196,16 @@
       "unit": "1 adet, Türkiye çıkış fiyatı",
       "region": null,
       "tax": {
-        "method": "Vergisiz taban matrah üzerinden önce ÖTV, ardından ÖTV'li tutar üzerinden KDV hesaplanır: vergi payı = 1 - 1 / ((1 + ÖTV) * (1 + KDV)).",
-        "note": "ÖTV oranı matrahın en üst diliminin oranıdır; iPhone matrahı her dönemde üst dilimin sınırının çok üstündedir. TRT bandrolü, kültür payı ve IMEI kayıt harcı dahil değildir, bu yüzden değer alt sınırdır.",
+        "method": "Vergisiz taban fiyat üzerine Kültür Bakanlığı payı ve TRT bandrolü eklenir, toplam matrah üzerinden %50 ÖTV, tüm tutar üzerinden KDV hesaplanır: raf = taban × (1 + kültür + trt) × (1 + ötv) × (1 + kdv).",
+        "note": "Vergi tutarı tahminidir; perakende marjı ayrı hesaplanmadı, fiyatın tamamı vergiye esas bedel sayıldı; ÖTV oranı matrahın en üst dilimidir ve iPhone matrahı her dönemde bu dilimin çok üstündedir; IMEI kayıt harcı dahil değildir.",
         "periods": [
           {
             "from": "2019-05",
-            "to": "2023-06",
+            "to": "2020-02",
             "kdv": 0.18,
             "otv": 0.5,
+            "trt": 0.1,
+            "kultur": 0,
             "sources": [
               {
                 "title": "Webrazzi, Cep telefonlarına ÖTV zammı (01.05.2019)",
@@ -1212,8 +1214,36 @@
                 "kind": "news"
               },
               {
-                "title": "Memurlar.net, Cep telefonunda ÖTV yüzde 50'ye çıkartıldı",
+                "title": "Memurlar.net, Cep telefonunda ÖTV yüzde 50'ye çıkartıldı (01.05.2019)",
                 "url": "https://www.memurlar.net/haber/826952/cep-telefonunda-otv-yuzde-50-ye-cikartildi.html",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Teknoblog, Cep telefonlarına TRT bandrol vergisi zammı (08.08.2017)",
+                "url": "https://www.teknoblog.com/trt-bandrol-vergisi-cep-telefonu-zam/",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              }
+            ]
+          },
+          {
+            "from": "2020-03",
+            "to": "2022-04",
+            "kdv": 0.18,
+            "otv": 0.5,
+            "trt": 0.1,
+            "kultur": 0.01,
+            "sources": [
+              {
+                "title": "KPMG Vergi, Cep telefonlarında kültür fonu kesintisi (04.03.2020)",
+                "url": "https://kpmgvergi.com/yayinlar/mali-bultenler/gumruk/cep-telefonlarinda-kultur-fonu-kesintisi/602",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Teknoblog, Cep telefonlarına TRT bandrol vergisi zammı (08.08.2017)",
+                "url": "https://www.teknoblog.com/trt-bandrol-vergisi-cep-telefonu-zam/",
                 "accessed": "2026-10-04",
                 "kind": "news"
               },
@@ -1222,10 +1252,38 @@
                 "url": "https://www.hurriyet.com.tr/gundem/cep-telefonu-otv-oranlari-degisti-iste-cep-telefonlarinda-otv-orani-hakkinda-resmi-gazete-karari-42046418",
                 "accessed": "2026-10-04",
                 "kind": "news"
+              }
+            ]
+          },
+          {
+            "from": "2022-05",
+            "to": "2023-06",
+            "kdv": 0.18,
+            "otv": 0.5,
+            "trt": 0.12,
+            "kultur": 0.01,
+            "sources": [
+              {
+                "title": "BloombergHT, TRT bandrol ücretleri artırıldı (26.05.2022)",
+                "url": "https://www.bloomberght.com/trt-bandrol-ucretleri-artirildi-2307121",
+                "accessed": "2026-10-04",
+                "kind": "news"
               },
               {
-                "title": "BloombergHT, Katma Değer Vergisi'nde artış yapıldı (07.07.2023)",
-                "url": "https://www.bloomberght.com/katma-deger-vergisi-nde-artis-yapildi-2334159",
+                "title": "Habertürk, TRT bandrol ücretleri artırıldı (26.05.2022)",
+                "url": "https://www.haberturk.com/trt-bandrol-ucretleri-artirildi-3450490-teknoloji",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Webtekno, Bir iPhone 14 aldığımızda ne kadar vergi ödüyoruz? (15.09.2022)",
+                "url": "https://www.webtekno.com/iphone-14-ne-kadar-vergi-oduyoruz-h127660.html",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Habertürk, En pahalı iPhone'un yüzde 50.8'i devlete gidecek (14.09.2023)",
+                "url": "https://www.haberturk.com/en-pahali-iphone-un-yuzde-508-i-devlete-gidecek-3621259-teknoloji",
                 "accessed": "2026-10-04",
                 "kind": "news"
               }
@@ -1236,6 +1294,8 @@
             "to": null,
             "kdv": 0.2,
             "otv": 0.5,
+            "trt": 0.12,
+            "kultur": 0.01,
             "sources": [
               {
                 "title": "BloombergHT, Katma Değer Vergisi'nde artış yapıldı (07.07.2023)",
@@ -1244,7 +1304,7 @@
                 "kind": "news"
               },
               {
-                "title": "Habertürk, KDV artış kararı (11.07.2023)",
+                "title": "Habertürk, KDV artış kararı Resmî Gazete'de (11.07.2023)",
                 "url": "https://www.haberturk.com/katma-deger-vergisi-artis-karari-resmi-gazete-de-2023-temmuz-kdv-orani-artti-mi-yuzde-kac-oldu-3605790",
                 "accessed": "2026-10-04",
                 "kind": "news"
@@ -1256,8 +1316,14 @@
                 "kind": "news"
               },
               {
-                "title": "BloombergHT, Cep telefonu ÖTV matrahları yeniden belirlendi",
+                "title": "BloombergHT, Cep telefonu ÖTV matrahları yeniden belirlendi (24.10.2025)",
                 "url": "https://www.bloomberght.com/cep-telefonu-otv-matrahlari-yeniden-belirlendi-3759986",
+                "accessed": "2026-10-04",
+                "kind": "news"
+              },
+              {
+                "title": "Habertürk, En pahalı iPhone'un yüzde 50.8'i devlete gidecek (14.09.2023)",
+                "url": "https://www.haberturk.com/en-pahali-iphone-un-yuzde-508-i-devlete-gidecek-3621259-teknoloji",
                 "accessed": "2026-10-04",
                 "kind": "news"
               }

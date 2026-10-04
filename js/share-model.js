@@ -1,5 +1,6 @@
 import { formatPeriod, formatPrice, formatRatio } from './format.js';
 import { scoreTier } from './game.js';
+import { taxBreakdown } from './tax.js';
 
 export function buildShareText(q, r, url) {
   return [
@@ -30,6 +31,17 @@ export function buildShareFileName(q) {
 export function buildShareImageModel(q, r, { contextLine = null, taxLine = null } = {}) {
   const hasCurrent = q.current !== null && q.current !== undefined &&
     !(q.current.date === q.date && q.current.price === q.price);
+
+  let compactTaxLine = taxLine;
+  if (compactTaxLine === null && q?.tax && q?.price && q?.date) {
+    const tb = taxBreakdown(q.price, q.date, q.tax);
+    if (tb) {
+      const sharePct = Math.round(tb.share * 100);
+      const roundedAmount = Math.round(tb.total / 100) * 100;
+      compactTaxLine = `Vergi payı: yaklaşık %${sharePct} (${formatPrice(roundedAmount)})`;
+    }
+  }
+
   return {
     title: `${formatPeriod(q.date)} · ${questionTitle(q)}`,
     unit: q.region ? `${q.unit} · ${q.region}` : q.unit,
@@ -45,7 +57,8 @@ export function buildShareImageModel(q, r, { contextLine = null, taxLine = null 
     increase: hasCurrent ? `${formatRatio(q.current.price / q.price)} kat arttı` : null,
     score: `${r.score}/100`,
     tier: scoreTier(r.score),
-    contextText: [contextLine, taxLine].filter(Boolean).join(' ') || null,
+    contextText: contextLine || null,
+    taxLine: compactTaxLine || null,
     iconSrc: q.image ? q.image.src : null,
     siteAddress: 'murtibad.github.io/ne-kadardi'
   };

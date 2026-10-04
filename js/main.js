@@ -4,10 +4,11 @@ import { buildQuestions, buildContextLine, pickRandom, scoreGuess, scoreTier } f
 import { buildTimelines } from './timeline.js';
 import { sourceKindLabel } from './source-kind.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
-import { buildTaxLine } from './tax.js';
+import { buildTaxLine, taxBreakdown } from './tax.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
+const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '');
 
 const state = { 
   all: [], timelines: [], question: null, result: null, 
@@ -80,6 +81,10 @@ function setBtnStatus(btnId, text) {
 
 function nextQuestion() {
   resetShareBtn();
+  if ($('r-tax-details')) {
+    $('r-tax-details').hidden = true;
+    $('r-tax-details').open = false;
+  }
   const q = pickRandom(state.all, state.question?.id);
   if (!q) {
     showMessage('Gösterilecek soru yok.');
@@ -150,6 +155,7 @@ function renderResult(q, r) {
   const taxText = buildTaxLine(q);
   $('r-tax').textContent = taxText || '';
   $('r-tax').hidden = !taxText;
+  renderTaxDetails(q);
 
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
@@ -158,6 +164,69 @@ function renderResult(q, r) {
   $('r-source-kind').hidden = !kindLabel;
   $('r-session').textContent = `Toplam: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
   showGameScreen('result-screen');
+}
+
+function renderTaxDetails(q) {
+  const details = $('r-tax-details');
+  const body = $('r-tax-body');
+  if (!details || !body) return;
+
+  const tb = (q?.tax && q?.price && q?.date) ? taxBreakdown(q.price, q.date, q.tax) : null;
+  if (!tb) {
+    details.hidden = true;
+    details.open = false;
+    body.innerHTML = '';
+    return;
+  }
+
+  const rows = [
+    { label: 'Vergisiz fiyat', amount: tb.base },
+  ];
+  if (tb.rates.kultur > 0) {
+    rows.push({
+      label: `Kültür Bakanlığı payı (%${Math.round(tb.rates.kultur * 100)})`,
+      amount: tb.kultur,
+    });
+  }
+  if (tb.rates.trt > 0) {
+    rows.push({
+      label: `TRT bandrolü (%${Math.round(tb.rates.trt * 100)})`,
+      amount: tb.trt,
+    });
+  }
+  if (tb.rates.otv > 0) {
+    rows.push({
+      label: `ÖTV (%${Math.round(tb.rates.otv * 100)})`,
+      amount: tb.otv,
+    });
+  }
+  if (tb.rates.kdv > 0) {
+    rows.push({
+      label: `KDV (%${Math.round(tb.rates.kdv * 100)})`,
+      amount: tb.kdv,
+    });
+  }
+
+  let tableHtml = `<table class="tax-details-table"><caption class="visually-hidden">Vergi dökümü</caption><tbody>`;
+  for (const row of rows) {
+    tableHtml += `<tr><th scope="row">${row.label}</th><td>${formatPrice(Math.round(row.amount))}</td></tr>`;
+  }
+  tableHtml += `<tr class="tax-total-row"><th scope="row">Toplam vergi</th><td>${formatPrice(Math.round(tb.total))}</td></tr>`;
+  tableHtml += `</tbody></table>`;
+
+  const caveatHtml = `<p class="tax-caveat">Vergi payı tahminidir; perakende marjı ayrı hesaplanmadı.</p>`;
+
+  let sourcesHtml = '';
+  if (Array.isArray(tb.period.sources) && tb.period.sources.length > 0) {
+    const links = tb.period.sources
+      .map((s) => `<a href="${escapeHTML(s.url)}" target="_blank" rel="noopener">${escapeHTML(s.title)}</a>`)
+      .join(' · ');
+    sourcesHtml = `<p class="tax-period-sources">Kaynaklar: ${links}</p>`;
+  }
+
+  body.innerHTML = tableHtml + caveatHtml + sourcesHtml;
+  details.hidden = false;
+  details.open = false;
 }
 
 async function prepareShareImage(btnId) {
@@ -170,8 +239,7 @@ async function prepareShareImage(btnId) {
   const q = state.question;
   const r = state.result;
   const contextText = buildContextLine(q, state.all);
-  const taxText = buildTaxLine(q);
-  const model = buildShareImageModel(q, r, { contextLine: contextText, taxLine: taxText });
+  const model = buildShareImageModel(q, r, { contextLine: contextText });
   
   try {
     const { renderShareImage } = await import('./share-image.js');
@@ -301,8 +369,6 @@ function renderTimelineScreen(focusProductId = null) {
       </tr>
     </thead>
     <tbody>`;
-    
-  const escapeHTML = str => str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
 
   for (const r of product.rows) {
     const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);

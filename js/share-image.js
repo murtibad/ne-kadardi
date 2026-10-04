@@ -1,5 +1,4 @@
 const W = 1080;
-const H = 1350;
 
 const COLORS = {
   bg: '#f4f1ea',
@@ -58,6 +57,8 @@ function wrapText(ctx, text, maxWidth) {
 export async function renderShareImage(model) {
   await loadFonts();
   const icon = await loadIcon(model.iconSrc);
+
+  const H = model.taxLine ? 1470 : 1350;
 
   const canvas = document.createElement('canvas');
   canvas.width = W;
@@ -204,7 +205,20 @@ export async function renderShareImage(model) {
     drawRow('Artış', model.increase);
     y += 20;
   }
-  
+
+  if (model.taxLine) {
+    let taxFontSize = 36;
+    ctx.font = `${taxFontSize}px "Space Mono", ui-monospace, monospace`;
+    while (ctx.measureText(model.taxLine).width > cardW - 120 && taxFontSize > 24) {
+      taxFontSize -= 2;
+      ctx.font = `${taxFontSize}px "Space Mono", ui-monospace, monospace`;
+    }
+    ctx.fillStyle = COLORS.muted;
+    ctx.textAlign = 'center';
+    ctx.fillText(model.taxLine, cx, y);
+    y += 85;
+  }
+
   // Score (pulled up a bit to leave room for the meter above the footer)
   y += 15;
   ctx.font = 'bold 64px "Space Mono", ui-monospace, monospace';
