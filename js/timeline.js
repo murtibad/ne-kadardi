@@ -19,7 +19,12 @@ export function buildTimelines(data) {
       .filter(isVerified)
       .sort((a, b) => a.date.localeCompare(b.date))
       .map((entry) => ({ entry, isCurrent: false }));
-    if (isVerified(product.current)) points.push({ entry: product.current, isCurrent: true });
+    if (isVerified(product.current)) {
+      // A "newest launch" current price can equal the last dated entry: mark that row instead of repeating it.
+      const same = points.find((p) => p.entry.date === product.current.date && p.entry.price === product.current.price);
+      if (same) same.isCurrent = true;
+      else points.push({ entry: product.current, isCurrent: true });
+    }
     if (points.length < 2) continue;
 
     const prices = points.map((p) => p.entry.price);
@@ -37,6 +42,7 @@ export function buildTimelines(data) {
         note: entry.note || null,
         source: entry.source || null,
         isCurrent,
+        currentLabel: isCurrent ? product.current.label ?? null : null,
       };
     });
 

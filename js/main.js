@@ -4,6 +4,7 @@ import { buildQuestions, buildContextLine, pickRandom, scoreGuess, scoreTier } f
 import { buildTimelines } from './timeline.js';
 import { sourceKindLabel } from './source-kind.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
+import { buildTaxLine } from './tax.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -133,10 +134,11 @@ function renderResult(q, r) {
   document.querySelector('.score-box').dataset.tier = tier;
   $('r-meter').style.setProperty('--score', `${r.score}%`);
 
-  const hasCurrent = q.current !== null;
+  // The newest launch is both a question and the "current" price: no comparison with itself.
+  const hasCurrent = q.current !== null && !(q.current.date === q.date && q.current.price === q.price);
   $('r-current-row').hidden = !hasCurrent;
   if (hasCurrent) {
-    $('r-current-label').textContent = `Güncel (${formatPeriod(q.current.date)})`;
+    $('r-current-label').textContent = `${q.current.label || 'Güncel'} (${formatPeriod(q.current.date)})`;
     $('r-current').textContent = formatPrice(q.current.price);
     $('r-increase').textContent = `${formatRatio(q.current.price / q.price)} kat arttı`;
   }
@@ -144,6 +146,10 @@ function renderResult(q, r) {
   const contextText = buildContextLine(q, state.all);
   $('r-context').textContent = contextText || '';
   $('r-context').hidden = !contextText;
+
+  const taxText = buildTaxLine(q);
+  $('r-tax').textContent = taxText || '';
+  $('r-tax').hidden = !taxText;
 
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
@@ -164,7 +170,8 @@ async function prepareShareImage(btnId) {
   const q = state.question;
   const r = state.result;
   const contextText = buildContextLine(q, state.all);
-  const model = buildShareImageModel(q, r, { contextLine: contextText });
+  const taxText = buildTaxLine(q);
+  const model = buildShareImageModel(q, r, { contextLine: contextText, taxLine: taxText });
   
   try {
     const { renderShareImage } = await import('./share-image.js');
@@ -298,7 +305,7 @@ function renderTimelineScreen(focusProductId = null) {
   const escapeHTML = str => str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '';
 
   for (const r of product.rows) {
-    const period = r.isCurrent ? `Güncel (${formatPeriod(r.date)})` : formatPeriod(r.date);
+    const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
     const priceStr = formatPrice(r.price);
     const ratioStr = r.ratioToCurrent ? `${formatRatio(r.ratioToCurrent)} kat arttı` : '';
     

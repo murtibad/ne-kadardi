@@ -34,6 +34,16 @@ test('buildQuestions carries product image', () => {
   assert.equal(qs2[0].image, null);
 });
 
+test('buildQuestions carries product tax', () => {
+  const f = { products: [{ id: 'p1', name: 'A', unit: 'U', tax: { method: 'm' }, prices: [{ date: '2010-01', price: 1, status: 'verified', source: {} }] }] };
+  const qs = buildQuestions(f);
+  assert.equal(qs[0].tax?.method, 'm');
+  
+  const f2 = { products: [{ id: 'p2', name: 'B', unit: 'U', prices: [{ date: '2010-01', price: 1, status: 'verified', source: {} }] }] };
+  const qs2 = buildQuestions(f2);
+  assert.equal(qs2[0].tax, null);
+});
+
 test('getShortUnit matches units precisely', () => {
   assert.equal(getShortUnit('1 litre'), 'litre');
   assert.equal(getShortUnit('1 gram'), 'gram');
@@ -101,4 +111,12 @@ test('scoreTier maps scores to five colour tiers', () => {
   assert.equal(scoreTier(20), 'poor');
   assert.equal(scoreTier(19), 'bad');
   assert.equal(scoreTier(0), 'bad');
+});
+
+test('buildContextLine names the models when the current price is a newest-launch price', () => {
+  const wages = [
+    { productId: 'asgari-ucret', date: '2019-07', price: 2020, current: { price: 28075 } },
+  ];
+  const q = { productId: 'iphone', name: 'Yeni iPhone', label: 'iPhone 11', date: '2019-10', price: 7299, unit: '1 adet', current: { date: '2025-09', price: 77999, label: 'En yeni iPhone 17' } };
+  assert.match(buildContextLine(q, wages), /O tarihte bir iPhone 11 .* asgari ücret ediyordu, bugün iPhone 17 ise .* asgari ücret\./);
 });

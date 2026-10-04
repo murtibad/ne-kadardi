@@ -23,6 +23,7 @@ export function buildQuestions(data) {
         unit: entry.unit ?? product.unit,
         region: product.region ?? null,
         image: product.image ?? null,
+        tax: product.tax ?? null,
         date: entry.date,
         year: yearOf(entry.date),
         price: entry.price,
@@ -114,7 +115,8 @@ export function buildContextLine(q, allQuestions) {
       : `${past}; bugün 1 asgari ücret yetmiyor.`;
   }
 
-  const past = `O tarihte bir ${q.name} ${formatRatio(q.price / pastWage.price)} asgari ücret ediyordu`;
+  const past = `O tarihte bir ${q.label || q.name} ${formatRatio(q.price / pastWage.price)} asgari ücret ediyordu`;
   if (!hasNow) return `${past}.`;
-  return `${past}, bugün ${formatRatio(q.current.price / currentWage)} asgari ücret.`;
+  const nowName = q.current.label ? `${q.current.label.replace(/^En yeni /, '')} ise ` : '';
+  return `${past}, bugün ${nowName}${formatRatio(q.current.price / currentWage)} asgari ücret.`;
 }
