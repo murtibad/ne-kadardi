@@ -85,6 +85,8 @@ export function getShortUnit(unit) {
   if (!unit) return 'adet';
   const lower = unit.toLowerCase();
   if (lower.includes('litre')) return 'litre';
+  // "1 adet, 250 gr" counts loaves, not grams: an explicit count unit wins over a weight note.
+  if (/\badet\b/.test(lower)) return 'adet';
   if (/\b(gram|gr|g)\b/i.test(unit)) return 'gram';
   if (lower.includes('usd')) return 'dolar';
   return 'adet';

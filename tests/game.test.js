@@ -49,6 +49,7 @@ test('getShortUnit matches units precisely', () => {
   assert.equal(getShortUnit('1 gram'), 'gram');
   assert.equal(getShortUnit('100 gr'), 'gram');
   assert.equal(getShortUnit('1 adet'), 'adet');
+  assert.equal(getShortUnit('1 adet, 250 gr'), 'adet');
   assert.equal(getShortUnit('1 USD'), 'dolar');
   assert.equal(getShortUnit('Bir paket'), 'adet');
 });
