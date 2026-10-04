@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.28.0] - 2026-10-04
+### Added
+- data: KPSS Lisans fee per Genel Yetenek-Genel Kültür session, 2014-2026 (40 TL to 800 TL), nine years found (2015, 2016, 2018 and 2020 left out for lack of a usable page); three confirmed by two sites, six by one (flagged).
+- data: KYK monthly undergraduate scholarship/loan amount, 2010-2026 (200 TL to 4,000 TL), seventeen years; twelve confirmed by two news sites, five by one.
+- ui: graduation-cap icon (KPSS reuses the exam icon).
+
 ## [0.27.0] - 2026-10-04
 ### Added
 - data: Paid military service fee (bedelli askerlik), 14 six-month periods from July 2019 (33,230 TL) to January 2026 (333,089 TL): eight confirmed by two news sites, six by one (flagged). The July 2026 value (472,653 TL) is left out because only a non-news site states it.

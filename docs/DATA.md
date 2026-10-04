@@ -95,6 +95,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | airpods | basic AirPods launch price | Apple Turkey launch news | high |
 | dogum-yardimi | first-child birth grant | ministry announcements via news | high |
 | bedelli-askerlik | paid military service fee per period | MSB figures via news (2019+) | high |
+| kpss-lisans | KPSS Lisans GY-GK session fee | ÖSYM guide via news (2014+) | medium-high |
+| kyk-burs | KYK monthly undergraduate scholarship | yearly tables and announcements via news | high |
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).
 The start year of the game is whatever the verified data supports; target 2010, 2005 where possible.

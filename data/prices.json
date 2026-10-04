@@ -3528,6 +3528,370 @@
           }
         }
       ]
+    },
+    {
+      "id": "kpss-lisans",
+      "name": "KPSS lisans sınav ücreti",
+      "unit": "1 oturum (Genel Yetenek-Genel Kültür)",
+      "region": null,
+      "source_hint": "ÖSYM KPSS Lisans kılavuzu ve haberleri; GY-GK oturumu için her bir oturum ücreti (2014'ten itibaren oturum başına).",
+      "image": {
+        "src": "img/sinav.svg",
+        "alt": "Sınav kâğıdı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 800,
+        "status": "verified",
+        "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Doğrulama: turkiyegazetesi.com.tr https://www.turkiyegazetesi.com.tr/haberler/kpss-basvuru-ucreti-ne-kadar-nasil-odenir-kpss-lisans-basvurulari-basladi-1800599 · tgrthaber.com https://www.tgrthaber.com/ekonomi/kpss-basvuru-ucreti-2026-ne-kadar-oldu-yuzde-kac-zamlandi-osym-kpss-lisans-ortaogreti-3344975.",
+        "source": {
+          "title": "haberturk.com",
+          "url": "https://www.haberturk.com/bilgi/foto/kpss-sinav-basvuru-ucretleri-kpss-sinav-basvuru-tarihleri-ne-zaman-basliyor-kpss-sinav-ucreti-ne-kadar-3895368",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2014-05",
+          "price": 40,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Doğrulama: internethaber.com https://www.internethaber.com/kpss-basvurulari-basladi-sinav-ucretleri-ne-kadar-667646h.htm · cnnturk.com https://www.cnnturk.com/turkiye/osym-2014-kpss-oturumlari-basvurulari-hangi-bolum-mezunu-hangi-oturuma-basvuracak-tikla-ogren-13-mayis-2014-kpss-oturumlari-kpss-haberleri-408301.",
+          "source": {
+            "title": "internethaber.com",
+            "url": "https://www.internethaber.com/kpss-2014-basvurulari-sinav-ucreti-ne-kadar-hangi-bankaya-yatiyor-667638h.htm",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-05",
+          "price": 60,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/gundem/osym-kpss-basvuru-ucretlerini-acikladi-kpss-basvurulari-nasil-yapilacak-40832965",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-05",
+          "price": 75,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/egitim/2019-kpss-basvurulari-ne-zaman-ve-nasil-yapilir-kpss-basvuru-ucreti-ne-kadar-3898479",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-06",
+          "price": 90,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "aspor.com.tr",
+            "url": "https://www.aspor.com.tr/haberler/2022/05/24/kpss-2022-basvuru-ucreti-ne-kadar-kamu-personeli-secme-sinavi-basvuru-tarihleri-ve-basvuru-kilavuzu-kpss-basvuru/amp",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-05",
+          "price": 115,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "aspor.com.tr",
+            "url": "https://www.aspor.com.tr/haberler/2022/06/06/kpss-basvurulari-bitti-mi-son-basvuru-ne-zaman-kpss-2022-basvuru-ucreti-ne-kadar-nasil-yatirilir/amp",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-05",
+          "price": 150,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/kpss-basvuru-ucreti-ne-kadar-kpss-basvuru-nasil-yapilir-wp7692315",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-05",
+          "price": 350,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/kpss-basvuru-ucreti-ne-kadar-kpss-basvuru-kilavuzu-yayinlandi-p43886.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/galeri/kpss-lisans-basvuru-ekrani-osym-kpss-lisans-basvurusu-nasil-yapilir-basvuru-ucreti-ne-kadar-7121745",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-05",
+          "price": 570,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/ekonomi/kpss-basvuru-ucreti-2026-ne-kadar-oldu-yuzde-kac-zamlandi-osym-kpss-lisans-ortaogreti-3344975",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 800,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Doğrulama: turkiyegazetesi.com.tr https://www.turkiyegazetesi.com.tr/haberler/kpss-basvuru-ucreti-ne-kadar-nasil-odenir-kpss-lisans-basvurulari-basladi-1800599 · tgrthaber.com https://www.tgrthaber.com/ekonomi/kpss-basvuru-ucreti-2026-ne-kadar-oldu-yuzde-kac-zamlandi-osym-kpss-lisans-ortaogreti-3344975.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bilgi/foto/kpss-sinav-basvuru-ucretleri-kpss-sinav-basvuru-tarihleri-ne-zaman-basliyor-kpss-sinav-ucreti-ne-kadar-3895368",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kyk-burs",
+      "name": "KYK aylık burs (lisans)",
+      "unit": "1 ay, lisans öğrencisi (burs veya kredi tutarı)",
+      "region": null,
+      "source_hint": "Kredi ve Yurtlar Kurumu / Gençlik ve Spor Bakanlığı; lisans için aylık burs-kredi tutarı, yıl bazlı. Burs ve kredi aynı tutardır.",
+      "image": {
+        "src": "img/mezuniyet.svg",
+        "alt": "Mezuniyet kepi çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026",
+        "price": 4000,
+        "status": "verified",
+        "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: timeturk.com https://www.timeturk.com/kyk-burs-ve-kredi-tutarlari-2026-2027de-ne-kadar · politikam.com https://www.politikam.com/kyk-bursu-ne-kadar-oldu-basvurular-basladi-mi-e-devlet-gsb-2026-2027-burs-ve-kredi-basvuru-tarihinde-son-durum.",
+        "source": {
+          "title": "gzt.com",
+          "url": "https://www.gzt.com/gundem/kyk-bursu-ne-kadar-oldu-2026-2027-kyk-burs-ve-kredi-fiyati-4251273",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010",
+          "price": 200,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2011",
+          "price": 240,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2012",
+          "price": 260,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2013",
+          "price": 280,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2014",
+          "price": 300,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2015",
+          "price": 330,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016",
+          "price": 400,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017",
+          "price": 425,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 470,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 500,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 550,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021",
+          "price": 650,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: ensonhaber.com https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 850,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 1250,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/egitim/2024-kyk-burs-ve-yurt-basvurusu-kyk-burs-basvurusu-ne-zaman-2024-kyk-bursu-ne-843295h.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/egitim/kyk-burs-ve-kredi-ucreti-2023-2024-gsb-kyk-burskredi-miktari-ne-kadar-kac-tl-hazirlik-on-lisans-lisans-yuksek-doktora-5671009",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 2000,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: birgun.net https://www.birgun.net/haber/kyk-bursu-ne-kadar-2024-yeni-kyk-bursu-kac-tl-480133 · istiklal.com.tr https://www.istiklal.com.tr/egitim/2024-kyk-burs-ve-yurt-basvurusu-kyk-burs-basvurusu-ne-zaman-2024-kyk-bursu-ne-843295h.",
+          "source": {
+            "title": "gazetebirlik.com",
+            "url": "https://www.gazetebirlik.com/genel/kyk-bursu-1-yillik-mi-kyk-bursu-12-ay-kesintisiz-veriliyor-mu-lisans-ogrencisi-icin-kyk-burs-miktari-ne-kadar/254639",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 3000,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: takvim.com.tr https://www.takvim.com.tr/egitim/2025-yuksek-lisans-kyk-bursu-kac-tl-oldu-zamli-lisans-yuksek-lisans-doktora-burs-ucretleri-ne-zaman-yatacak-6013921.",
+          "source": {
+            "title": "tgrthaber.com",
+            "url": "https://www.tgrthaber.com/aktuel/kyk-bursu-ne-kadar-kac-tl-2025-burs-ve-kredi-basvurulari-bugun-basladi-3255752",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 4000,
+          "status": "verified",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Doğrulama: timeturk.com https://www.timeturk.com/kyk-burs-ve-kredi-tutarlari-2026-2027de-ne-kadar · politikam.com https://www.politikam.com/kyk-bursu-ne-kadar-oldu-basvurular-basladi-mi-e-devlet-gsb-2026-2027-burs-ve-kredi-basvuru-tarihinde-son-durum.",
+          "source": {
+            "title": "gzt.com",
+            "url": "https://www.gzt.com/gundem/kyk-bursu-ne-kadar-oldu-2026-2027-kyk-burs-ve-kredi-fiyati-4251273",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
