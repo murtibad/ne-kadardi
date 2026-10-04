@@ -2373,6 +2373,140 @@
           }
         }
       ]
+    },
+    {
+      "id": "yks",
+      "name": "YKS sınav ücreti",
+      "unit": "1 oturum (TYT, AYT veya YDT her biri)",
+      "region": null,
+      "source_hint": "ÖSYM YKS kılavuzu ve haberleri; ücret her oturum için ayrıdır.",
+      "image": {
+        "src": "img/sinav.svg",
+        "alt": "Sınav kâğıdı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-02",
+        "price": 700,
+        "status": "verified",
+        "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Doğrulama: YKS BAŞVURU TARİHLERİ 2026 SON GÜN | YKS (TYT, AYT, YDT) başvurusu ne  https://www.hurriyet.com.tr/bilgi/galeri/yks-basvuru-tarihleri-2026-son-gun-yks-tyt-ayt-ydt-basvurusu-ne-zaman-bitiyor-basvurular-nasil-yapilir-universite-sinavi-ucreti-ne-43114878.",
+        "source": {
+          "title": "YKS başvurusu ne zaman bitiyor? YKS başvurusu nasıl yapılır, şartları nelerdir?",
+          "url": "https://www.haberturk.com/yks-basvurusu-ne-zaman-bitiyor-yks-basvurusu-nasil-yapilir-sartlari-nelerdir-3860677",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2018-03",
+          "price": 50,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "YKS'ye başvuru ücretleri belli oldu",
+            "url": "https://www.aa.com.tr/tr/egitim/yksye-basvuru-ucretleri-belli-oldu/1008149",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-02",
+          "price": 50,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Doğrulama: YKS başvuru ücreti ne kadar? Üniversite sınavı ne zaman yapılacak? https://www.hurriyet.com.tr/gundem/yks-sinav-basvurusu-nasil-yapilir-osym-ais-girisi-ile-yks-basvuru-ekrani-41113968.",
+          "source": {
+            "title": "Son Dakika: YKS kılavuzu yayınlandı! 2019 YKS başvuru ne zaman?",
+            "url": "https://www.haberturk.com/son-dakika-yks-kilavuzu-yayinlandi-2019-yks-basvuru-ne-zaman-2370196",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-02",
+          "price": 70,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "YKS para yatırma nasıl yapılır? 2020 ÖSYM Üniversite sınavı son başvuru günü! YKS sınav ücreti ne kadar? - Güncel Eğitim Haberleri - Habertü",
+            "url": "https://www.haberturk.com/yks-para-yatirma-2020-osym-universite-sinavi-son-basvuru-gunu-yks-sinav-ucreti-ne-kadar-2601515",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-02",
+          "price": 90,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Doğrulama: 2021 YKS başvuru ücreti nereye, nasıl yatırılır? 2021 YKS başvuru ücre https://www.haberturk.com/2021-yks-basvuru-ucreti-nereye-nasil-yatirilir-2021-yks-basvuru-ucreti-ne-kadar-2962635.",
+          "source": {
+            "title": "YKS başvuru ücreti ne kadar? İşte YKS 2021 sınav ücreti yatırılan bankalar",
+            "url": "https://www.hurriyet.com.tr/gundem/yks-2021-basvuru-ucreti-ne-kadar-yks-ucreti-odemesi-hakkinda-bilgiler-41731856",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-02",
+          "price": 115,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "YKS başvuru ücreti 2022 ne kadar, nasıl ve nereye yatırılacak? YKS sınav ücreti için son gün ne zaman? TYT,AYT, YDT sınavı başvuru detayları",
+            "url": "https://www.haberturk.com/yks-basvuru-ucreti-ne-kadar-hangi-bankalara-yatirilir-2022-yks-sinav-ucreti-icin-son-gun-ne-zaman-tyt-ayt-ydt-sinavi-basvuru-hakkinda-tum-detaylar-3366736",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-03",
+          "price": 115,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Doğrulama: 2023 YKS GEÇ BAŞVURU tarihi başladı mı, ne zaman son? YKS geç başvuru  https://www.hurriyet.com.tr/bilgi/galeri/yks-gec-basvuru-tarihi-2023-yks-gec-basvurulari-ne-zaman-basladi-mi-yks-gec-basvuru-ucreti-ve-sinav-tarihi-42240540.",
+          "source": {
+            "title": "YKS başvuru kılavuzu ÖSYM tarafından paylaşıldı: 2023 YKS sınavı ne zaman yapılacak? Başvuru tarihleri açıklandı | NTV Haber",
+            "url": "https://www.ntv.com.tr/egitim/galeri-yks-basvurulari-basladi-2023-yks-sinavi-ne-zaman-basvuru-nasil-yapilir-osym-yks-basvuru-tarihleri,tPKECqZ_9kaOXcIergwaZw",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-02",
+          "price": 295,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Doğrulama: YKS başvuruları 2024: YKS başvuruları nasıl yapılır, başvuru ücreti ne https://www.ntv.com.tr/egitim/galeri-yks-2024-basvurulari-basladi-yks-basvuru-ucreti-ne-kadar-yks-basvuru-kilavuzu-yayimlandi,BkIiySZlcEWEvLZWGPU9gg.",
+          "source": {
+            "title": "YKS başvuruları ne zaman bitiyor? YKS, TYT, AYT, YDT son başvuru tarihi ve ücreti 2024!",
+            "url": "https://www.hurriyet.com.tr/bilgi/galeri/yks-basvurulari-ne-zaman-bitiyor-yks-tyt-ayt-ydt-son-basvuru-tarihi-ve-ucreti-2024-42405003",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-02",
+          "price": 450,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Doğrulama: YKS sınav ücreti son ödeme günü 2025: YKS sınav başvuru ücreti ne zama https://www.ntv.com.tr/turkiye/galeri-yks-sinav-ucreti-son-odeme-gunu-2025-yks-sinav-basvuru-ucreti-ne-zaman-odenecek,oHlNElnuyEeu6ONYfsA-GQ.",
+          "source": {
+            "title": "YKS BAŞVURU EKRANI VE SINAV ÜCRETİ 2025: ÖSYM kılavuzu ile 2025 YKS başvurusu nasıl ve nereden yapılır, başvuru ücreti ne kadar, TYT, AYT, Y",
+            "url": "https://www.haberturk.com/yks-basvuru-ekrani-ve-ucreti-2025-osym-kilavuzu-ile-2025-yks-basvurusu-nasil-yapilir-sinav-ucreti-ne-kadar-tyt-ayt-ydt-sinav-tarihleri-3762972",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 700,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Doğrulama: YKS BAŞVURU TARİHLERİ 2026 SON GÜN | YKS (TYT, AYT, YDT) başvurusu ne  https://www.hurriyet.com.tr/bilgi/galeri/yks-basvuru-tarihleri-2026-son-gun-yks-tyt-ayt-ydt-basvurusu-ne-zaman-bitiyor-basvurular-nasil-yapilir-universite-sinavi-ucreti-ne-43114878.",
+          "source": {
+            "title": "YKS başvurusu ne zaman bitiyor? YKS başvurusu nasıl yapılır, şartları nelerdir?",
+            "url": "https://www.haberturk.com/yks-basvurusu-ne-zaman-bitiyor-yks-basvurusu-nasil-yapilir-sartlari-nelerdir-3860677",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
