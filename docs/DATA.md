@@ -86,6 +86,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | ekmek | Halk Ekmek (İBB) 250 gr, İstanbul | İBB Halk Ekmek price-rise news (AA, Dünya, Sözcü ...) | high from 2019 |
 | kopru | Bosphorus bridge car toll | KGM announcements via news | high; direction rule changed 2022 |
 | cay | Çaykur Rize Turist 1 kg | Çaykur announcements, news | medium |
+| yks | YKS fee per session | ÖSYM guide via news | high |
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).
 The start year of the game is whatever the verified data supports; target 2010, 2005 where possible.
