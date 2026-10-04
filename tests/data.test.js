@@ -49,6 +49,8 @@ test('prices.json follows the data policy', () => {
         assert.ok(period.to === null || /^\d{4}-\d{2}$/.test(period.to), `${where}: to must be YYYY-MM or null`);
         assert.ok(typeof period.kdv === 'number' && period.kdv > 0, `${where}: kdv must be a positive number`);
         assert.ok(typeof period.otv === 'number' && period.otv > 0, `${where}: otv must be a positive number`);
+        assert.ok(typeof period.trt === 'number' && period.trt > 0, `${where}: trt must be a positive number`);
+        assert.ok(typeof period.kultur === 'number' && period.kultur >= 0, `${where}: kultur must be a non-negative number`);
         assert.ok(Array.isArray(period.sources) && period.sources.length >= 2, `${where}: must have at least 2 sources`);
         for (const [si, s] of period.sources.entries()) {
           const sWhere = `${where}.sources[${si}]`;

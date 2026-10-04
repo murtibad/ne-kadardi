@@ -277,20 +277,82 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 }
 
 .context-line,
-.tax-line {
+.tax-line,
+.tax-details {
   font-family: var(--font-ui);
   font-size: 0.875rem;
   color: var(--muted-on-paper);
-  text-align: center;
   margin: 0 0 16px;
   padding: 12px;
   background: rgba(0,0,0,0.03);
   border-radius: 6px;
   line-height: 1.4;
 }
+.context-line,
+.tax-line {
+  text-align: center;
+}
 @media (prefers-color-scheme: dark) {
   .context-line,
-  .tax-line { background: rgba(0,0,0,0.1); }
+  .tax-line,
+  .tax-details { background: rgba(0,0,0,0.1); }
+}
+
+.tax-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  padding: 2px 0;
+  color: var(--ink);
+  list-style-position: inside;
+}
+.tax-details summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.tax-details-table {
+  width: 100%;
+  margin: 12px 0 8px;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+.tax-details-table th,
+.tax-details-table td {
+  padding: 4px 0;
+}
+.tax-details-table th {
+  font-weight: 400;
+  text-align: left;
+  color: var(--muted-on-paper);
+}
+.tax-details-table td {
+  font-weight: 700;
+  text-align: right;
+  color: var(--ink);
+}
+.tax-details-table tr.tax-total-row th,
+.tax-details-table tr.tax-total-row td {
+  border-top: 1px dashed var(--line);
+  font-weight: 700;
+  padding-top: 6px;
+}
+.tax-caveat {
+  font-size: 0.75rem;
+  color: var(--muted-on-paper);
+  text-align: center;
+  margin: 8px 0 4px;
+}
+.tax-period-sources {
+  font-size: 0.75rem;
+  color: var(--muted-on-paper);
+  text-align: center;
+  margin: 4px 0 0;
+}
+.tax-period-sources a {
+  color: inherit;
+  text-decoration: underline;
 }
 
 .source { 

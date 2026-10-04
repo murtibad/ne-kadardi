@@ -64,17 +64,19 @@ test('buildShareImageModel handles question with current price and image and con
   assert.equal(model.contextText, 'Context text.');
 });
 
-test('buildShareImageModel handles taxLine combined with contextLine', () => {
+test('buildShareImageModel handles taxLine and keeps contextLine separate', () => {
   const q = { date: '2024-09', name: 'Yeni iPhone', unit: '1 adet', price: 64999 };
   const r = { guess: 65000, score: 100, direction: 'exact', factor: 1 };
   const model = buildShareImageModel(q, r, {
     contextLine: 'Context text.',
-    taxLine: 'Tax text.',
+    taxLine: 'Vergi payı: yaklaşık %51 (₺33.000)',
   });
-  assert.equal(model.contextText, 'Context text. Tax text.');
+  assert.equal(model.contextText, 'Context text.');
+  assert.equal(model.taxLine, 'Vergi payı: yaklaşık %51 (₺33.000)');
 
   const modelOnlyTax = buildShareImageModel(q, r, {
-    taxLine: 'Tax text.',
+    taxLine: 'Vergi payı: yaklaşık %51 (₺33.000)',
   });
-  assert.equal(modelOnlyTax.contextText, 'Tax text.');
+  assert.equal(modelOnlyTax.contextText, null);
+  assert.equal(modelOnlyTax.taxLine, 'Vergi payı: yaklaşık %51 (₺33.000)');
 });
