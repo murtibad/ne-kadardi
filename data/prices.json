@@ -3334,6 +3334,200 @@
           }
         }
       ]
+    },
+    {
+      "id": "bedelli-askerlik",
+      "name": "Bedelli askerlik bedeli",
+      "unit": "1 başvuru (dönem bedeli)",
+      "region": null,
+      "source_hint": "Milli Savunma Bakanlığı; 240.000 gösterge x memur aylık katsayısı, Ocak ve Temmuz'da yenilenir (2019 sonrası kalıcı düzen).",
+      "image": {
+        "src": "img/asker.svg",
+        "alt": "Asker miğferi çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 333089,
+        "status": "verified",
+        "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2026. Doğrulama: sanayigazetesi.com.tr https://sanayigazetesi.com.tr/?p=210119 · ayboga.av.tr https://ayboga.av.tr/bedelli-askerlik-2026/.",
+        "source": {
+          "title": "finans.cnnturk.com",
+          "url": "https://finans.cnnturk.com/finans-haberler/bedelli-askerlik-ucreti-2026-ne-kadar-oldu-milli-savunma-bakanligi-acikladi-2026-bedelli-askerlik-ucreti-ne-kadar-oldu-2381311",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-07",
+          "price": 33230,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2019. Doğrulama: diken.com.tr https://www.diken.com.tr/?p=979791 · hurriyet.com.tr https://www.hurriyet.com.tr/gundem/bedelli-askerlik-basvurusu-nasil-yapilir-bedelli-askerlik-ucreti-ne-kadar-41273145.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedellide-iki-yillik-artis-yuzde-38-oldu-3125047-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 35054,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2020. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/bedelli-askerlik-ne-kadar-bedelli-askerlik-celp-donemleri-2021-ve-askerlik-yerleri-6416945.",
+          "source": {
+            "title": "ekonomist.com.tr",
+            "url": "https://www.ekonomist.com.tr/haberler/bedelli-askerlik-ucretleri-belli-oldu-8583",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-07",
+          "price": 37070,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2020. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/bedelli-askerlik-ne-kadar-bedelli-askerlik-celp-donemleri-2021-ve-askerlik-yerleri-6416945.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-belli-oldu-3304281-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 39788,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2021. Doğrulama: posta.com.tr https://www.posta.com.tr/ekonomi/son-dakika-2021in-ilk-yarisi-icin-bedelli-askerlik-ucreti-belli-oldu-2300039 · memurlar.net https://www.memurlar.net/haber/979738/bedelli-askerlikte-yeni-ucret-belli-oldu.html.",
+          "source": {
+            "title": "ekonomist.com.tr",
+            "url": "https://www.ekonomist.com.tr/haberler/2021-bedelli-askerlik-ucreti-belli-oldu.html",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 43150,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2021. Bu değer için tek haber kaynağı doğrulandı. Doğrulama: haberturk.com https://www.haberturk.com/bedelli-askerlik-ucreti-belli-oldu-3304281-ekonomi.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedellide-iki-yillik-artis-yuzde-38-oldu-3125047-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 56506,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2022. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-2025-temmuz-bedelli-askerlik-ucreti-ne-kadar-olacak-bedelli-askerlik-ucretine-yuzde-kac-zam-gelecek-3800433",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-07",
+          "price": 80064,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2022. Doğrulama: haberturk.com https://www.haberturk.com/bedelli-askerlik-ucreti-belli-oldu-3475129-ekonomi.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/turkiye/2022-yeni-bedelli-askerlik-ucreti-ne-kadar-oldu-temmuz-2022-bedelli-askerlik-ucreti,fjUsFFodd0OrtphD4eVA1A",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 104084,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2023. Bu değer için tek haber kaynağı doğrulandı. Doğrulama: haberturk.com https://www.haberturk.com/bedelli-askerlik-ucreti-2025-temmuz-bedelli-askerlik-ucreti-ne-kadar-olacak-bedelli-askerlik-ucretine-yuzde-kac-zam-gelecek-3800433 · haberturk.com https://www.haberturk.com/bedelli-askerlikte-dolar-rekoru-3650759-ekonomi.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-belli-oldu-3605356-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 122350,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2023. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-belli-oldu-3605356-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 182609,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2024. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedelli-askerlikte-dolar-rekoru-3650759-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 217871,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2024. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-2025-temmuz-bedelli-askerlik-ucreti-ne-kadar-olacak-bedelli-askerlik-ucretine-yuzde-kac-zam-gelecek-3800433",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 243013,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2025. Doğrulama: ekonomist.com.tr https://www.ekonomist.com.tr/haberler/bedelli-askerlik-ucreti-ne-kadar-oldu-temmuz-2025-yeni-bedellik-ucreti--61898.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-2025-temmuz-bedelli-askerlik-ucreti-ne-kadar-olacak-bedelli-askerlik-ucretine-yuzde-kac-zam-gelecek-3800433",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-07",
+          "price": 280850,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2025. Doğrulama: bigpara.hurriyet.com.tr https://bigpara.hurriyet.com.tr/ekonomi-haberleri/galeri-bedelli-askerlik-ucreti-2025-net-rakam-msb-tarafindan-duyuruldu-bedelli-askerlik-ucreti-ne-kadar-oldu_ID1614722/.",
+          "source": {
+            "title": "ekonomist.com.tr",
+            "url": "https://www.ekonomist.com.tr/haberler/bedelli-askerlik-ucreti-ne-kadar-oldu-temmuz-2025-yeni-bedellik-ucreti--61898",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 333089,
+          "status": "verified",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2026. Doğrulama: sanayigazetesi.com.tr https://sanayigazetesi.com.tr/?p=210119 · ayboga.av.tr https://ayboga.av.tr/bedelli-askerlik-2026/.",
+          "source": {
+            "title": "finans.cnnturk.com",
+            "url": "https://finans.cnnturk.com/finans-haberler/bedelli-askerlik-ucreti-2026-ne-kadar-oldu-milli-savunma-bakanligi-acikladi-2026-bedelli-askerlik-ucreti-ne-kadar-oldu-2381311",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
