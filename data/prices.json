@@ -2507,6 +2507,176 @@
           }
         }
       ]
+    },
+    {
+      "id": "emekli-en-dusuk-aylik",
+      "name": "En düşük emekli aylığı",
+      "unit": "1 ay (SSK ve Bağ-Kur, dosya bazında en düşük aylık)",
+      "region": null,
+      "source_hint": "Kanunla belirlenen en düşük emekli aylığı; Ocak ve Temmuz'da değişebilir. Haber kaynaklı, iki sitede doğrulandı.",
+      "image": {
+        "src": "img/emekli.svg",
+        "alt": "Bastonlu emekli çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 23552,
+        "status": "verified",
+        "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Bu değer için tek haber kaynağı doğrulandı. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/emekli-maasi-ne-kadar-oldu-2026-p339472.",
+        "source": {
+          "title": "sozcu.com.tr",
+          "url": "https://www.sozcu.com.tr/en-dusuk-emekli-maasi-ne-kadar-oldu-2026-p341158",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-01",
+          "price": 1000,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/gundem/milyonlarca-emekliyi-ilgilendiren-haber-yeni-duzenlemede-kim-ne-kadar-maas-alacak-747257h.",
+          "source": {
+            "title": "timeturk.com",
+            "url": "https://www.timeturk.com/ekonomi/1500-lira-emekli-maasini-kimler-alacak-1500-lira-emekli-maasi-kimlere-verilecek/haber-1686283",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-03",
+          "price": 1500,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: timeturk.com https://www.timeturk.com/ekonomi/1500-lira-emekli-maasini-kimler-alacak-1500-lira-emekli-maasi-kimlere-verilecek/haber-1686283 · benguturk.com https://www.benguturk.com/amp/gundem/calisma-ve-sosyal-guvenlik-bakanligi-emekli-ayligi-duzenlemesinden-88-milyon-104236h.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/ayrintilar-belli-oldu-1500-tl-aylik-nasil-odenecek-2705869-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 2500,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: cnnturk.com https://cnnturk.com/ekonomi/iste-ssk-bag-kur-ve-tarim-emeklilerinin-zamli-maaslari-1811583 · milliyet.com.tr https://milliyet.com.tr/galeri/emekli-maas-tablosu-hesaplamasi-ssk-ve-bagkur-ocak-2022-ne-kadar-emekli-maasi-alirim-ve-emekli-zammi-ne-kadar-oldu-6682058.",
+          "source": {
+            "title": "yeniakit.com.tr",
+            "url": "https://www.yeniakit.com.tr/haber/emekli-maasi-2500-tl-zam-kime-geldi-en-dusuk-emekli-ayligi-hesaplamasi-nasil-yapilacak-1614504.html",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-07",
+          "price": 3500,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: finans.mynet.com https://finans.mynet.com/haber/detay/ekonomi/en-dusuk-emekli-maasi-ne-kadar-2022-temmuz-zammi-ile-en-dusuk-emekli-maasi-kac-tl-oldu/445565/ · borsaningundemi.com https://www.borsaningundemi.com/haber/en-dusuk-emekli-ayligi-3500-tl-oluyor/1671346.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/emekli-maasi-ne-kadar-2022-temmuz-zammi-sonrasi-ssk-ve-bagkur-emekli-maasi-netlesti-emekli-temmuz-zammi-en-dusuk-ve-en-yuksek-emekli-maasi-ne-kadar-oldu-3475385-ekonomi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 5500,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: milliyet.com.tr https://milliyet.com.tr/galeri/emekli-maasi-hesaplama-2023-ssk-bag-kur-emekli-maaslarina-yuzde-kac-zam-geldi-en-dusuk-emekli-maasi-kac-tl-oldu-6883059 · milliyet.com.tr https://milliyet.com.tr/galeri/son-dakika-emekli-maas-zammi-ne-kadar-2023-ocak-en-dusuk-emekli-maasi-kac-tl-oldu-ssk-bag-kur-emekli-zammi-ne-kadar-emekli-maas-farki-ne-zaman-yatacak-6881742.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/zamli-emekli-maaslari-ne-zaman-yatar-2023-en-dusuk-emekli-maasi-ne-kadar-kac-tl-oldu-3577069",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-04",
+          "price": 7500,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/ekonomi/son-dakika-erdogandan-emekliye-mujde-en-dusuk-maas-7-bin-500-tl-oldu-6921230.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/ekonomi/en-dusuk-emekli-maasi-7-500-tl-oluyor-iste-ayrintilar-1903254",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 10000,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "turkgun.com",
+            "url": "https://www.turkgun.com/ekonomi/iste-en-dusuk-emekli-maasi-ve-zam-orani/230800",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 12500,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: birgun.net https://www.birgun.net/haber/en-dusuk-emekli-maasi-belli-oldu-589138 · cnnturk.com https://www.cnnturk.com/turkiye/galeri/emekli-enflasyon-farki-ne-kadar-yuzde-kac-temmuz-2024-en-dusuk-emekli-maasi-kac-tl-olacak-2111168.",
+          "source": {
+            "title": "sanayigazetesi.com.tr",
+            "url": "https://sanayigazetesi.com.tr/en-dusuk-emekli-maasi-belli-oldu/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 14469,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: dunya.com https://www.dunya.com/ekonomi/son-dakika-en-dusuk-emekli-maasi-2025-belli-oldu-bakan-isikhandan-aciklama-geldi-haberi-759649 · milliyet.com.tr https://www.milliyet.com.tr/galeri/zamli-emekli-maasi-bu-ay-mi-ne-zaman-yatar-ocak-maasina-yetisir-mi-2025-zamli-en-dusuk-emekli-maasi-ne-kadar-oldu-yuzde-kac-artti-7277465.",
+          "source": {
+            "title": "medyascope.tv",
+            "url": "https://medyascope.tv/2025/01/07/en-dusuk-emekli-ayligi-14-bin-469-tl-oldu/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-07",
+          "price": 16881,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: haberturk.com https://www.haberturk.com/emekli-zammi-hesaplama-2025-temmuz-emekli-maasi-14500-15000-15500-16000-16500-17000-olanlar-ne-kadar-alacak-ssk-bag-kur-emekli-maas-zammi-belli-oldu-3807010.",
+          "source": {
+            "title": "habergazetesi.com.tr",
+            "url": "https://www.habergazetesi.com.tr/temmuz-zammiyla-en-dusuk-emekli-maasi-16881-tl-oldu-yeni-zamli-emekli-maas-tablosu-ve-detaylar-aciklandi",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 20000,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Doğrulama: tued.com.tr https://tued.com.tr/en-dusuk-emekli-maasi-20-000-tl-oldu/ · ogretmenler.net https://www.ogretmenler.net/en-dusuk-emekli-ayligi-20-bin-tlye-yukseltildi.",
+          "source": {
+            "title": "tr.euronews.com",
+            "url": "https://tr.euronews.com/2026/01/22/tbmmde-kabul-edildi-en-dusuk-emekli-maasi-20000-tl-oldu",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 23552,
+          "status": "verified",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Bu değer için tek haber kaynağı doğrulandı. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/emekli-maasi-ne-kadar-oldu-2026-p339472.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/en-dusuk-emekli-maasi-ne-kadar-oldu-2026-p341158",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
