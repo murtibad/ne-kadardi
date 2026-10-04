@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.25.0] - 2026-10-04
+### Added
+- data: Istanbul yellow taxi opening fee, 8 steps from Jan 2023 (12.65 TL) to July 2026 (71.94 TL), each confirmed by two or more news sites.
+- data: PlayStation console Turkey launch price (standard disc model): PS4 1,399 TL (2013), PS5 8,299 TL (2020), PS5 Pro 49,999 TL (2024), each confirmed by two or more news sites.
+- ui: taxi and game-controller icons.
+
 ## [0.24.0] - 2026-10-04
 ### Added
 - data: Fitre amount announced by Diyanet each Ramazan, 2010-2026 (7 TL to 240 TL), 17 values: nine confirmed by two news sites, eight by one (noted on each entry). Sentences were pulled verbatim from the pages by script.
