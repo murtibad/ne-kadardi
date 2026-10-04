@@ -124,7 +124,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   border-top-right-radius: 12px;
   margin-top: 8px;
   margin-bottom: 16px;
-  padding: 24px 20px;
+  padding: 28px 20px 24px;
+  text-align: center;
 }
 
 .period-badge {
@@ -132,24 +133,25 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   background: var(--accent);
   color: #fff;
   font-weight: 700;
-  font-size: 0.875rem;
-  padding: 6px 12px;
-  border-radius: 20px;
-  margin-bottom: 12px;
+  font-size: 1.0625rem;
+  letter-spacing: 0.01em;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-bottom: 16px;
 }
 
 .product-image[hidden] { display: none; }
 .product-image {
   display: block;
-  width: 72px;
-  height: 72px;
+  width: 112px;
+  height: 112px;
   object-fit: contain;
-  margin-bottom: 12px;
+  margin: 0 auto 16px;
 }
 
 .product { 
-  margin: 0 0 4px; 
-  font-size: 2rem; 
+  margin: 0 0 6px; 
+  font-size: clamp(1.75rem, 6vw, 2.25rem); 
   font-weight: 700; 
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -415,6 +417,16 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   width: 100%;
 }
 
+.question-card .guess-field input { text-align: center; }
+.question-card .currency { padding-right: 18px; }
+
+/* Wider screens: give the single card a bit more room and centre it vertically */
+@media (min-width: 720px) {
+  .site-header, main, .site-footer { max-width: 560px; }
+  main { justify-content: center; }
+  .product-image { width: 128px; height: 128px; }
+}
+
 /* Footer */
 .site-footer { 
   font-size: 0.75rem; 
@@ -423,6 +435,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin-top: auto;
 }
 .site-footer a { color: inherit; font-weight: 600; }
+.site-footer .credit { margin-top: 4px; }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
