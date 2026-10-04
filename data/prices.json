@@ -3205,6 +3205,135 @@
           "label": "PlayStation 5 Pro"
         }
       ]
+    },
+    {
+      "id": "airpods",
+      "name": "AirPods (temel model)",
+      "unit": "1 adet, Türkiye çıkış fiyatı",
+      "region": null,
+      "source_hint": "Apple Türkiye çıkış fiyatı, haber arşivi. AirPods Pro ve Max değil, temel (standart) model.",
+      "image": {
+        "src": "img/kulaklik.svg",
+        "alt": "Kablosuz kulaklık çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2024-09",
+        "price": 5779,
+        "status": "verified",
+        "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Doğrulama: sanayigazetesi.com.tr https://sanayigazetesi.com.tr/?p=223136 · log.com.tr https://www.log.com.tr/?p=912449.",
+        "source": {
+          "title": "donanimhaber.com",
+          "url": "https://www.donanimhaber.com/airpods-4-turkiye-de-on-siparise-basliyor--181785",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        },
+        "label": "AirPods 4"
+      },
+      "prices": [
+        {
+          "date": "2016-09",
+          "price": 779,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Doğrulama: log.com.tr https://www.log.com.tr/?p=291769 · log.com.tr https://www.log.com.tr/?p=293317.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2016/09/08/apple-watch-airpods-turkiye-fiyatlari/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "label": "AirPods"
+        },
+        {
+          "date": "2019-03",
+          "price": 1099,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "webtekno.com",
+            "url": "https://www.webtekno.com/airpods-2-turkiye-fiyati-h65241.html",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "label": "AirPods 2"
+        },
+        {
+          "date": "2021-10",
+          "price": 1999,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Doğrulama: teknoblog.com https://www.teknoblog.com/3-nesil-airpods-ozellikleri/.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2021/10/18/yeni-airpods-un-ozellikleri-ve-turkiye-fiyati-aciklandi/",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "label": "AirPods 3"
+        },
+        {
+          "date": "2024-09",
+          "price": 5779,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Doğrulama: sanayigazetesi.com.tr https://sanayigazetesi.com.tr/?p=223136 · log.com.tr https://www.log.com.tr/?p=912449.",
+          "source": {
+            "title": "donanimhaber.com",
+            "url": "https://www.donanimhaber.com/airpods-4-turkiye-de-on-siparise-basliyor--181785",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          },
+          "label": "AirPods 4"
+        }
+      ]
+    },
+    {
+      "id": "dogum-yardimi",
+      "name": "Doğum yardımı (ilk çocuk)",
+      "unit": "1 çocuk, bir defaya mahsus",
+      "region": null,
+      "source_hint": "Aile ve Sosyal Hizmetler Bakanlığı; 2015'te 300 TL, 2025'te 5.000 TL (tek seferlik). Yardım türü zamanla değişti.",
+      "image": {
+        "src": "img/biberon.svg",
+        "alt": "Biberon çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025-01",
+        "price": 5000,
+        "status": "verified",
+        "note": "Aile ve Sosyal Hizmetler Bakanlığı'nın ilk çocuk için verdiği doğum yardımı. 1 Ocak 2025 sonrası doğan ilk çocuk için tek seferlik. Doğrulama: ntv.com.tr https://www.ntv.com.tr/ntvpara/dogum-yardimi-odemeleri-hesaplara-gecti,IGFjo01N0Uusj7pASDp08A · aa.com.tr https://www.aa.com.tr/tr/politika/bakan-goktas-dogum-yardimi-destegini-cocuklar-5-yasini-doldurana-kadar-surdurecegiz/3741526.",
+        "source": {
+          "title": "ensonhaber.com",
+          "url": "https://www.ensonhaber.com/gundem/dogum-yardimi-yonetmeligi-yururluge-girdi-5-bin-liraya-kadar-odeme-yapilacak",
+          "accessed": "2026-10-04",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2015-05",
+          "price": 300,
+          "status": "verified",
+          "note": "Aile ve Sosyal Hizmetler Bakanlığı'nın ilk çocuk için verdiği doğum yardımı. Birinci çocuk için bir defaya mahsus (15.05.2015 sonrası doğumlar). Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/dogum-yardimi-parasi-nasil-alinir-2807676 · aile.gov.tr https://aile.gov.tr/eskisehir/duyurular/dogum-yardimi-uygulamasi/.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/gundem/dogum-yardimi-nereden-ve-nasil-alinir-2829475",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 5000,
+          "status": "verified",
+          "note": "Aile ve Sosyal Hizmetler Bakanlığı'nın ilk çocuk için verdiği doğum yardımı. 1 Ocak 2025 sonrası doğan ilk çocuk için tek seferlik. Doğrulama: ntv.com.tr https://www.ntv.com.tr/ntvpara/dogum-yardimi-odemeleri-hesaplara-gecti,IGFjo01N0Uusj7pASDp08A · aa.com.tr https://www.aa.com.tr/tr/politika/bakan-goktas-dogum-yardimi-destegini-cocuklar-5-yasini-doldurana-kadar-surdurecegiz/3741526.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/gundem/dogum-yardimi-yonetmeligi-yururluge-girdi-5-bin-liraya-kadar-odeme-yapilacak",
+            "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
