@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.31.0] - 2026-10-08
+### Added
+- data: 10-year passport fee (over-3-years tariff, booklet fee excluded), 2017-2026 (573.10 TL to 13,410.40 TL), eleven values including the July 2023 50% mid-year rise; every value confirmed by two news sites.
+- data: B-class driving licence fee (fee only; card and foundation fees excluded), 2019-2026 (613 TL to 6,754 TL), eight values, each confirmed by two news sites.
+- ui: passport and driving licence icons.
+
+## [0.30.1] - 2026-10-08
+### Fixed
+- game: an exact guess now says "Tam isabet! 🎯"; "Neredeyse tam isabet!" is kept for guesses that are close but not equal.
+
 ## [0.30.0] - 2026-10-04
 ### Changed
 - game: Every question now comes from a different category. The next product is chosen among those not shown in the last (up to) eight questions, then a random year of that product, so products with many yearly values no longer dominate. In a 40-question run: 22 distinct products, no back-to-back repeats.

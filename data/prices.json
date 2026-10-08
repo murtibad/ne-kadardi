@@ -3892,6 +3892,286 @@
           }
         }
       ]
+    },
+    {
+      "id": "pasaport-harci",
+      "name": "10 yıllık pasaport harcı",
+      "unit": "1 pasaport, 10 yıllık (3 yıldan uzun süreli tarife), defter bedeli hariç",
+      "region": null,
+      "source_hint": "492 sayılı Harçlar Kanunu (8) sayılı tarife; harç her Ocak yeniden değerleme oranıyla artar, 7 Temmuz 2023'te Cumhurbaşkanı Kararıyla %50 ara zam yapıldı. Defter bedeli ayrıca ödenir. Haber kaynaklı.",
+      "image": {
+        "src": "img/pasaport.svg",
+        "alt": "Bordo pasaport çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 13410.4,
+        "status": "verified",
+        "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: enuygun.com https://www.enuygun.com/bilgi/pasaport-ucretleri/ · flypgs.com https://www.flypgs.com/seyahat-sozlugu/pasaport-ucretleri · gazetebirlik.com https://www.gazetebirlik.com/gundem/pasaport-yenileme-ucretleri-artti-mi-ne-kadar-oldu-2026/939387.",
+        "source": {
+          "title": "kadimhukuk.com.tr",
+          "url": "https://kadimhukuk.com.tr/?p=35030",
+          "accessed": "2026-10-08",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2017-01",
+          "price": 573.1,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/ekonomi/yurt-disina-cikacaklar-dikkat-350372h.",
+          "source": {
+            "title": "diken.com.tr",
+            "url": "https://www.diken.com.tr/?p=515495",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 657.4,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/ekonomi/yurt-disina-cikacaklar-dikkat-350372h · yeniakit.com.tr https://www.yeniakit.com.tr/haber/pasaport-harc-ucretleri-2018-yilinda-ne-kadar-oldu-407114.html · yeniakit.com.tr https://www.yeniakit.com.tr/haber/pasaport-harclarina-gelen-zam-orani-belli-oldu-407044.html · serbestiyet.com https://serbestiyet.com/?p=12072.",
+          "source": {
+            "title": "diken.com.tr",
+            "url": "https://www.diken.com.tr/?p=515495",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 812,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: haber.aero https://haber.aero/?p=27025.",
+          "source": {
+            "title": "internethaber.com",
+            "url": "https://www.internethaber.com/10-yillik-pasaport-harci-2020-yeni-pasaport-ucretleri-2077321h.htm",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 995,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: haber.aero https://haber.aero/?p=27025 · eagvs.com https://www.eagvs.com/pasaport-harclarina-2020-zam-orani-belirlendi.",
+          "source": {
+            "title": "internethaber.com",
+            "url": "https://www.internethaber.com/10-yillik-pasaport-harci-2020-yeni-pasaport-ucretleri-2077321h.htm",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 1085.4,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: trthaber.com https://www.trthaber.com/haber/guncel/2021-pasaport-harclari-belli-oldu-2021-pasaport-harci-ne-kadar-542079.html · takvim.com.tr https://www.takvim.com.tr/ekonomi/2020/12/30/2021-pasaport-harci-ne-kadar-olacak-yeni-pasaport-ucreti-kac-tl.",
+          "source": {
+            "title": "trthaber.com",
+            "url": "https://www.trthaber.com/haber/guncel/2021-pasaport-harclari-belli-oldu-2021-pasaport-harci-ne-kadar-542411.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 1478.3,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: aydinlik.com.tr https://www.aydinlik.com.tr/haber/pasaport-icin-2022de-harc-yatirip-randevusu-2023e-kalanlara-fark-aciklamasi-360715 · tgrthaber.com https://www.tgrthaber.com/ekonomi/pasaport-harci-yatiranlar-dikkat-ucret-farki-odenmeyecek-2868063 · haber.aero https://haber.aero/?p=97897 · trthaber.com https://www.trthaber.com/haber/guncel/2022-pasaport-harci-ne-kadar-pasaport-harc-ve-defter-bedelleri-2022-710146.html · trthaber.com https://www.trthaber.com/haber/guncel/2022-pasaport-harclari-belli-oldu-2022-pasaport-harci-ne-kadar-640017.html.",
+          "source": {
+            "title": "ekonomist.com.tr",
+            "url": "https://www.ekonomist.com.tr/haberler/-pasaportta-harc-farki-krizi-sona-erdi-37790",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 3295.5,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: hurriyet.com.tr https://www.hurriyet.com.tr/gundem/pasaportta-2023-soku-42201472.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/ekonomi/pasaportta-2023-soku-cimere-sikayet-yagdi-1878525",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 4943,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. 7 Temmuz 2023 Cumhurbaşkanı Kararıyla yapılan %50 ara zam sonrası (kuruşlu tutar 4.943,25). Doğrulama: bloomberght.com https://www.bloomberght.com/10-yillik-pasaport-5-bin-444-lira-oldu-2334184 · diken.com.tr https://www.diken.com.tr/?p=1340882 · indigodergisi.com https://indigodergisi.com/2023/07/pasaport-ucretlerine-zam-10-yillik-pasaport-5444-tl-oldu/ · paratic.com https://paratic.com/resmi-gazetede-yayimlandi-pasaport-harclari-kac-lira-oldu/ · tgrthaber.com https://www.tgrthaber.com/ekonomi/yurt-disina-cikacaklara-kotu-haber-pasaport-ve-vize-ucretlerine-buyuk-zam-yuzde-50-artti-2895817 · finansopia.com https://www.finansopia.com/genel/gundem/pasaport-ucretlerine-zam-pasaport-ucretleri-ne-kadar-oldu-10-yillik-pasaport-ucreti-ne-kadar/.",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/10-yillik-pasaport-5444-lira-oldu-2334184",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 7833,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: ankahaber.net https://ankahaber.net/haber/detay/2024un_vergi_ve_harc_tutarlari_belli_oldu_164386.",
+          "source": {
+            "title": "borsaningundemi.com",
+            "url": "https://www.borsaningundemi.com/haber/2024-yili-ehliyet-ve-pasaport-harclari-belli-oldu-1776627",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 11274,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: cnnturk.com https://www.cnnturk.com/turkiye/2025-pasaport-ucretleri-ne-kadar-oldu-yeni-pasaport-cikarma-ucreti-kac-tl-pasaport-yillik-2-yillik-10-yillik-ucretleri-2212051 · cnnturk.com https://www.cnnturk.com/ekonomi/galeri/yeniden-degerleme-orani-resmi-gazetede-ehliyet-pasaport-yurt-disi-cikis-harci-2025te-kac-para-olacak-2192565.",
+          "source": {
+            "title": "sanayigazetesi.com.tr",
+            "url": "https://sanayigazetesi.com.tr/?p=226604",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 13410.4,
+          "status": "verified",
+          "note": "3 yıldan uzun süreli (10 yıllık) pasaport harcı, defter bedeli hariç. Doğrulama: enuygun.com https://www.enuygun.com/bilgi/pasaport-ucretleri/ · flypgs.com https://www.flypgs.com/seyahat-sozlugu/pasaport-ucretleri · gazetebirlik.com https://www.gazetebirlik.com/gundem/pasaport-yenileme-ucretleri-artti-mi-ne-kadar-oldu-2026/939387.",
+          "source": {
+            "title": "kadimhukuk.com.tr",
+            "url": "https://kadimhukuk.com.tr/?p=35030",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ehliyet-harci",
+      "name": "B sınıfı ehliyet harcı",
+      "unit": "1 sürücü belgesi, B sınıfı (otomobil), yalnız harç; kart ve vakıf bedeli hariç",
+      "region": null,
+      "source_hint": "492 sayılı Harçlar Kanunu sürücü belgesi harcı; her Ocak yeniden değerleme oranıyla artar. Değerli kâğıt (kart) ve vakıf hizmet bedeli ayrıca ödenir. Haber kaynaklı.",
+      "image": {
+        "src": "img/ehliyet.svg",
+        "alt": "Sürücü belgesi kartı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 6754,
+        "status": "verified",
+        "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: finansopia.com https://www.finansopia.com/genel/gundem/2026-yili-zamli-ehliyet-ve-pasaport-ucretleri/ · eleman.net https://www.eleman.net/is-rehberi/maaslar-ve-ucretler/ehliyet-fiyatlari-h18228. Haberler tutarı tam liraya yuvarlıyor; kuruş hanesi gösterilmedi.",
+        "source": {
+          "title": "hukukihaber.net",
+          "url": "https://www.hukukihaber.net/2026-yili-ehliyet-pasaport-ve-yurt-disi-cikis-harci-bedelleri",
+          "accessed": "2026-10-08",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-01",
+          "price": 613,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: yeniakit.com.tr https://www.yeniakit.com.tr/haber/ehliyet-fiyatlari-2019-ehliyet-fiyatlari-ne-kadar-ehliyet-icin-istenilen-belgeler-nelerdir-555039.html. Haberler tutarı tam liraya yuvarlıyor; kuruş hanesi gösterilmedi.",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/ekonomi/yeni-yilin-vergileri-belli-oldu-41404372",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 751.7,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: trthaber.com https://www.trthaber.com/haber/guncel/2021-ehliyet-harclari-belli-oldu-2021-ehliyet-harci-ne-kadar-542075.html · trthaber.com https://www.trthaber.com/haber/guncel/2021-ehliyet-harclari-belli-oldu-2021-ehliyet-harci-ne-kadar-542412.html · trthaber.com https://www.trthaber.com/haber/guncel/2021-ehliyet-harclari-belli-oldu-2021-ehliyet-harci-ne-kadar-542858.html.",
+          "source": {
+            "title": "yeniakit.com.tr",
+            "url": "https://www.yeniakit.com.tr/haber/2021-ehliyet-harci-ne-kadar-olacak-ab-sinifi-ehliyet-harclari-1496248.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 820.1,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: trthaber.com https://www.trthaber.com/haber/guncel/2021-ehliyet-harclari-belli-oldu-2021-ehliyet-harci-ne-kadar-542075.html · trthaber.com https://www.trthaber.com/haber/guncel/2021-ehliyet-harclari-belli-oldu-2021-ehliyet-harci-ne-kadar-542412.html.",
+          "source": {
+            "title": "yeniakit.com.tr",
+            "url": "https://www.yeniakit.com.tr/haber/2021-ehliyet-harci-ne-kadar-olacak-ab-sinifi-ehliyet-harclari-1496248.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 1116.9,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: ensonhaber.com https://www.ensonhaber.com/otomobil/2023te-b-sinifi-ehliyet-almanin-maliyeti-10-bin-tlyi-asacak.",
+          "source": {
+            "title": "yeniakit.com.tr",
+            "url": "https://www.yeniakit.com.tr/haber/b-sinifi-ehliyet-harci-2022-ne-kadar-1609055.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 2489.9,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: yenisafak.com https://www.yenisafak.com/b-sinifi-ehliyet-hangi-araclari-kullanir-ehliyet-harc-ehliyet-sinav-surucu-kursu-ucretleri-ne-kadar-h-4554758.",
+          "source": {
+            "title": "finans.mynet.com",
+            "url": "https://finans.mynet.com/haber/detay/ekonomi/2023-ehliyet-harci-surucu-belgesi-ehliyet-harci-ne-kadar-zam-geldi-mi-temmuz-zammindan-etkilendi-mi/467819/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 3945,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/ekonomi/son-dakika-kalem-kalem-yeni-harc-ve-tarifeler-kopru-gecisi-cep-telefonu-kaydi-degerli-kagitlar-trafik-cezalari-7058468 · cnnturk.com https://cnnturk.com/ekonomi/2024-yili-pasaport-ve-ehliyet-ucretleri-belli-oldu · ankahaber.net https://ankahaber.net/haber/detay/2024un_vergi_ve_harc_tutarlari_belli_oldu_164386. Haberler tutarı tam liraya yuvarlıyor; kuruş hanesi gösterilmedi.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/ekonomi/cep-telefonu-kaydi-kopru-gecisi-trafik-cezalari-degerli-kagitlar-iste-2024-yeni-harc-ve-tarifeleri-kalem-kalem-hesap-2075518",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 5678,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: cnnturk.com https://cnnturk.com/yasam/galeri/b-sinifi-ehliyeti-nedir-nasil-alinir-hangi-araclari-kullanabilirsiniz-ve-2025-odemesi-2252882 · istiklal.com.tr https://www.istiklal.com.tr/gundem/2026-pasaport-ve-ehliyet-ucretleri-zamlandi-iste-yeni-harc-tutarlari-1071627h. Haberler tutarı tam liraya yuvarlıyor; kuruş hanesi gösterilmedi.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/ekonomi/galeri/yeniden-degerleme-orani-resmi-gazetede-ehliyet-pasaport-yurt-disi-cikis-harci-2025te-kac-para-olacak-2192565",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 6754,
+          "status": "verified",
+          "note": "B sınıfı sürücü belgesi harcı, o yıl Ocak ayından itibaren geçerli. Doğrulama: finansopia.com https://www.finansopia.com/genel/gundem/2026-yili-zamli-ehliyet-ve-pasaport-ucretleri/ · eleman.net https://www.eleman.net/is-rehberi/maaslar-ve-ucretler/ehliyet-fiyatlari-h18228. Haberler tutarı tam liraya yuvarlıyor; kuruş hanesi gösterilmedi.",
+          "source": {
+            "title": "hukukihaber.net",
+            "url": "https://www.hukukihaber.net/2026-yili-ehliyet-pasaport-ve-yurt-disi-cikis-harci-bedelleri",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
