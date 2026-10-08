@@ -4172,6 +4172,236 @@
           }
         }
       ]
+    },
+    {
+      "id": "schengen-vize",
+      "name": "Schengen vize ücreti",
+      "unit": "1 yetişkin başvurusu, TL karşılığı (aracı kurum hizmet bedeli hariç)",
+      "region": null,
+      "source_hint": "Türetilmiş: AB Vize Kodu'ndaki euro cinsi ücret (2020 Şubat öncesi 60, sonra 80, 11 Haziran 2024'ten beri 90 euro) × o yılın ilk iş günü TCMB euro satış kuru.",
+      "image": {
+        "src": "img/vize.svg",
+        "alt": "Vize damgalı belge çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 4534.55,
+        "status": "verified",
+        "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 90 euro × TCMB euro satış kuru 50.3839 (2026-01-02) = 4534.55 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 90 euro: 11 Haziran 2024'ten itibaren, Vize Merkezi https://www.vizemerkezi.com/duyuru/schengen-vize-ucreti-degisiyor · CNN Türk https://www.cnnturk.com/dunya/schengen-vize-ucretlerine-zam-geldi-2116356.",
+        "source": {
+          "title": "TCMB euro kuru (2026-01-02) ve AB Vize Kodu ücreti",
+          "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
+          "accessed": "2026-10-08",
+          "kind": "derived"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 128.26,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 2.1377 (2010-01-04) = 128.26 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2010-01-04) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201001/04012010.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 124.23,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 2.0705 (2011-01-03) = 124.23 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2011-01-03) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201101/03012011.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 146.51,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 2.4419 (2012-01-02) = 146.51 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2012-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201201/02012012.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 141.55,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 2.3592 (2013-01-02) = 141.55 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2013-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 178.78,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 2.9797 (2014-01-02) = 178.78 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2014-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201401/02012014.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 169.85,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 2.8309 (2015-01-02) = 169.85 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2015-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 193.04,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 3.2174 (2016-01-04) = 193.04 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2016-01-04) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201601/04012016.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 222.92,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 3.7153 (2017-01-02) = 222.92 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2017-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 272.74,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 4.5457 (2018-01-02) = 272.74 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2018-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201801/02012018.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 367.03,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 6.1171 (2019-01-02) = 367.03 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2019-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 400.5,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 60 euro × TCMB euro satış kuru 6.675 (2020-01-02) = 400.5 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 60 euro: 2 Şubat 2020 öncesi ücret, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2020-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/202001/02012020.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 724.36,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 80 euro × TCMB euro satış kuru 9.0545 (2021-01-04) = 724.36 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 80 euro: 2 Şubat 2020'den itibaren, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2021-01-04) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 1220.93,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 80 euro × TCMB euro satış kuru 15.2616 (2022-01-03) = 1220.93 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 80 euro: 2 Şubat 2020'den itibaren, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2022-01-03) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/202201/03012022.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 1601.33,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 80 euro × TCMB euro satış kuru 20.0166 (2023-01-02) = 1601.33 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 80 euro: 2 Şubat 2020'den itibaren, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2023-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 2618.08,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 80 euro × TCMB euro satış kuru 32.726 (2024-01-02) = 2618.08 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 80 euro: 2 Şubat 2020'den itibaren, NTV https://www.ntv.com.tr/yasam/schengen-vizesine-zam-schengen-vize-ucreti-ne-kadar-basvuruda-istenen-belgeler-_jdgu7gFqkiPsnkg9_XURA · Ekonomist https://www.ekonomist.com.tr/genel/schengen-vize-ucreti-zamlandi-yeni-fiyat-2-subattan-itibaren-gecerli-olacak-8797.",
+          "source": {
+            "title": "TCMB euro kuru (2024-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/202401/02012024.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 3289.16,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 90 euro × TCMB euro satış kuru 36.5462 (2025-01-02) = 3289.16 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 90 euro: 11 Haziran 2024'ten itibaren, Vize Merkezi https://www.vizemerkezi.com/duyuru/schengen-vize-ucreti-degisiyor · CNN Türk https://www.cnnturk.com/dunya/schengen-vize-ucretlerine-zam-geldi-2116356.",
+          "source": {
+            "title": "TCMB euro kuru (2025-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/202501/02012025.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 4534.55,
+          "status": "verified",
+          "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 90 euro × TCMB euro satış kuru 50.3839 (2026-01-02) = 4534.55 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 90 euro: 11 Haziran 2024'ten itibaren, Vize Merkezi https://www.vizemerkezi.com/duyuru/schengen-vize-ucreti-degisiyor · CNN Türk https://www.cnnturk.com/dunya/schengen-vize-ucretlerine-zam-geldi-2116356.",
+          "source": {
+            "title": "TCMB euro kuru (2026-01-02) ve AB Vize Kodu ücreti",
+            "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
+            "accessed": "2026-10-08",
+            "kind": "derived"
+          }
+        }
+      ]
     }
   ]
 }
