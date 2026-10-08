@@ -97,6 +97,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | bedelli-askerlik | paid military service fee per period | MSB figures via news (2019+) | high |
 | kpss-lisans | KPSS Lisans GY-GK session fee | ÖSYM guide via news (2014+) | medium-high |
 | kyk-burs | KYK monthly undergraduate scholarship | yearly tables and announcements via news | high |
+| pasaport-harci | 10-year passport fee (over-3-years tariff), booklet fee excluded | Harçlar Kanunu tariff via news (2017+, incl. July 2023 mid-year rise) | high |
+| ehliyet-harci | B-class driving licence fee, fee only (card and foundation fees excluded) | Harçlar Kanunu via news (2019+) | high |
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).
 The start year of the game is whatever the verified data supports; target 2010, 2005 where possible.
