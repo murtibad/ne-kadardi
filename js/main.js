@@ -3,6 +3,7 @@ import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js'
 import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier } from './game.js';
 import { buildTimelines } from './timeline.js';
 import { sourceKindLabel } from './source-kind.js';
+import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { VERSION } from './version.js';
@@ -67,7 +68,7 @@ function resetShareBtn() {
     $('share-btn').removeAttribute('aria-busy');
   }
   if (downloadOriginalLabel) {
-    $('download-btn').textContent = downloadOriginalLabel;
+    $('download-btn').innerHTML = downloadOriginalLabel;
     $('download-btn').removeAttribute('aria-busy');
   }
 }
@@ -143,6 +144,7 @@ function renderResult(q, r) {
   document.querySelector('.verdict-box').dataset.tier = tier;
   document.querySelector('.score-box').dataset.tier = tier;
   $('r-meter').style.setProperty('--score', `${r.score}%`);
+  if (r.factor === 1) burstConfetti();
 
   // The newest launch is both a question and the "current" price: no comparison with itself.
   const hasCurrent = q.current !== null && !(q.current.date === q.date && q.current.price === q.price);
@@ -444,7 +446,7 @@ async function init() {
     return;
   }
   shareOriginalLabel = $('share-btn').textContent;
-  downloadOriginalLabel = $('download-btn').textContent;
+  downloadOriginalLabel = $('download-btn').innerHTML;
   $('guess-form').addEventListener('submit', onGuess);
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();

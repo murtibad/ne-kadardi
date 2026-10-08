@@ -1619,20 +1619,6 @@
       }
     },
     {
-      "id": "istanbul-ulasim",
-      "name": "İstanbul toplu taşıma",
-      "unit": "1 biniş, tam bilet (elektronik kart)",
-      "region": "İstanbul",
-      "source_hint": "TODO: kaynak gerekli. Aday: İBB UKOME kararları, haber arşivleri.",
-      "current": {
-        "date": "2026-10",
-        "price": null,
-        "status": "todo",
-        "source": null
-      },
-      "prices": []
-    },
-    {
       "id": "ekmek",
       "name": "Halk Ekmek (İBB)",
       "unit": "1 adet, 250 gr",
@@ -4993,6 +4979,188 @@
           "source": {
             "title": "Türk-İş açlık sınırı, ulusal.com.tr",
             "url": "https://www.ulusal.com.tr/ekonomi/turk-is-duyurdu-2026nin-ilk-aclik-ve-yoksulluk-rakamlari-aciklandi-15091692",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "istanbul-ulasim",
+      "name": "İstanbul toplu taşıma",
+      "unit": "1 biniş, tam bilet (elektronik kart)",
+      "region": "İstanbul",
+      "source_hint": "İBB UKOME kararıyla belirlenen tam elektronik bilet (Akbil, sonra İstanbulkart) ilk biniş ücreti; haber kaynaklı. Tarih kararın/zammın ayıdır.",
+      "image": {
+        "src": "img/otobus.svg",
+        "alt": "Şehir otobüsü çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 46.2,
+        "status": "verified",
+        "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: haber.sol.org.tr https://haber.sol.org.tr/haber/istanbullunun-ulasim-masrafina-yeni-zam-tam-bilet-4620-tl-411809 · bursahakimiyet.com.tr https://www.bursahakimiyet.com.tr/amp/gundem/istanbul-da-toplu-ulasima-yuzde-10-zam-yapildi-1671389.",
+        "source": {
+          "title": "gzt.com",
+          "url": "https://www.gzt.com/ekonomi/istanbul-toplu-tasima-zammi-2026-son-dakika-marmaray-metro-otobus-ve-metrobus-ucreti-ne-kadar-oldu-iett-yeni-ucret-tarifesi-istanbul-ulasim-zammi-ne-zaman-uygulanacak-4242283",
+          "accessed": "2026-10-08",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2011-08",
+          "price": 1.75,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: memurlar.net https://www.memurlar.net/haber/202727/istanbul-da-toplu-tasima-ve-okul-servis-ucretlerine-zam.html.",
+          "source": {
+            "title": "timeturk.com",
+            "url": "https://www.timeturk.com/tr/2011/08/13/ulasim-zamlandi-iste-yeni-fiyatlar.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2014-06",
+          "price": 2.15,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: serbestiyet.com https://serbestiyet.com/haberler/yasam/stanbulda-toplu-ulasima-zam-30718.",
+          "source": {
+            "title": "gazetevatan.com",
+            "url": "https://www.gazetevatan.com/gundem/istanbulda-toplu-tasimaya-zam-647778",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 2.3,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: serbestiyet.com https://serbestiyet.com/haberler/yasam/stanbulda-toplu-ulasim-zam-30718.",
+          "source": {
+            "title": "posta.com.tr",
+            "url": "https://www.posta.com.tr/ekonomi/istanbulda-zamli-ulasim-basladi-324717",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-02",
+          "price": 3.5,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/haber/ibbden-toplu-tasima-zammina-onay-1719247 · diken.com.tr https://www.diken.com.tr/?p=781000.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/turkiye/iett-zam-2020-istanbulkart-metro-otobus-ve-aktarma-ucretlerine-zam-1485647",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 5.48,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: sozcu.com.tr https://sozcu.com.tr/2021/ekonomi/istanbulda-toplu-ulasim-ucretleri-ne-kadar-oldu-6847202.",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/ekonomi/son-dakika-istanbulda-elektronik-bilet-taksi-dolmus-minibus-ve-servis-ucretlerine-zam-41967933",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-04",
+          "price": 7.67,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: medyascope.tv https://medyascope.tv/2022/04/09/istanbulda-ulasima-yuzde-40-zam-yururluge-girdi-iste-yeni-tarife/.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/ekonomi/son-dakika-istanbulda-toplu-ulasima-yuzde-40-zam,TNeDMXG_EEaYCzmsOITJEw",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 9.9,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: ntv.com.tr https://www.ntv.com.tr/ntvpara/istanbulda-toplu-ulasim-ve-servislere-zam,420Clakj9EGwyTWfp4_3uQ.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/turkiye/iett-zammi-ne-zaman-gecerli-olacak-istanbulda-otobus-metrobus-marmaray-vapur-kac-tl-oldu-2016183",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-08",
+          "price": 15,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/istanbulda-toplu-ulasima-zam-3-wp7755895.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/turkiye/son-dakika-ukome-toplantisinda-belli-oldu-istanbulda-toplu-tasimaya-yuzde-515-zam-2106544",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 17.7,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/genel/istanbulda-ulasima-zam-geldi-843921h.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/ekonomi/son-dakika-istanbulda-toplu-tasimaya-yuzde-18-ile-28-arasinda-zam-2160620",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 20,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: medyascope.tv https://medyascope.tv/2024/07/25/istanbulda-toplu-ulasima-yuzde-13-zam/ · egitim.net.tr https://www.egitim.net.tr/amp/guncel/istanbulda-toplu-tasima-ucretlerine-zam-tam-bilet-20-tl-ogrenci-bileti-12-tl-1683h.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/turkiye/istanbulda-toplu-tasima-zammi-ne-kadar-oldu-metro-metrobus-marmaray-2231042",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 35,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: ekonomist.com.tr https://www.ekonomist.com.tr/haberler/istanbul-da-toplu-ulasima-yuzde-30-zam-65105 · ekonomigazetesi.com https://www.ekonomigazetesi.com/ekonomi/istanbulda-ulasima-zam-59059.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/ntvpara/istanbulda-ulasima-yuzde-30-zam,4Fnc7t0vikmUrRguCgm4-A",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 42,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: dha.com.tr https://www.dha.com.tr/gundem/istanbulda-toplu-tasimaya-yuzde-20-zam-teklifi-ibb-meclisinde-kabul-edildi-2817725 · 24saatgazetesi.com https://www.24saatgazetesi.com/istanbulda-toplu-ulasima-yuzde-20-zam-yapildi.",
+          "source": {
+            "title": "gzt.com",
+            "url": "https://www.gzt.com/gundem/istanbul-ulasim-ne-kadar-oldu-2026-zam-sonrasi-tam-bilet-42-tl-ogrenci-2050-tl-aylik-abonman-3298-tl-4019478",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 46.2,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma tam elektronik bilet (ilk biniş) ücreti. Doğrulama: haber.sol.org.tr https://haber.sol.org.tr/haber/istanbullunun-ulasim-masrafina-yeni-zam-tam-bilet-4620-tl-411809 · bursahakimiyet.com.tr https://www.bursahakimiyet.com.tr/amp/gundem/istanbul-da-toplu-ulasima-yuzde-10-zam-yapildi-1671389.",
+          "source": {
+            "title": "gzt.com",
+            "url": "https://www.gzt.com/ekonomi/istanbul-toplu-tasima-zammi-2026-son-dakika-marmaray-metro-otobus-ve-metrobus-ucreti-ne-kadar-oldu-iett-yeni-ucret-tarifesi-istanbul-ulasim-zammi-ne-zaman-uygulanacak-4242283",
             "accessed": "2026-10-08",
             "kind": "news"
           }
