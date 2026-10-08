@@ -4402,6 +4402,432 @@
           }
         }
       ]
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify Premium",
+      "unit": "1 ay, Bireysel plan",
+      "region": null,
+      "source_hint": "Spotify Türkiye Premium Bireysel aylık ücret; zam haberleri. Tarih, zammın duyurulduğu/yürürlüğe girdiği aydır.",
+      "image": {
+        "src": "img/muzik.svg",
+        "alt": "Müzik notası çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10",
+        "price": 115,
+        "status": "verified",
+        "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 99 -> 115 TL; haber 1-2 Ekim 2026. teknoblog fetch edilmedi, arama sonucu Doğrulama: teknoblog.com https://teknoblog.com/spotify-turkiye-fiyatlari-artti-premium-bireysel-115-tl.",
+        "source": {
+          "title": "evrensel.net",
+          "url": "https://www.evrensel.net/haber/6003074/spotify-aboneliklerine-zam-geldi-yeni-fiyatlar-belli-oldu",
+          "accessed": "2026-10-08",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2013-09",
+          "price": 9.99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). Lansman 24 Eylul 2013; Premium aylik 9,99 TL (4,99 TL ara paket Unlimited ayri). shiftdelete 34512 sadece arama ozetinden, fetch edilmedi Doğrulama: log.com.tr https://www.log.com.tr/?p=108061 · shiftdelete.net https://shiftdelete.net/?p=34512.",
+          "source": {
+            "title": "teknoblog.com",
+            "url": "https://www.teknoblog.com/spotify-turkiye/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 17.99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 13,99 -> 17,99; haber 1 Kasim 2019, mevcut abonelere Ocak 2020 faturasindan itibaren Doğrulama: log.com.tr https://www.log.com.tr/?p=584577.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2019/11/01/spotify-turkiye-zam/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-08",
+          "price": 20.99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 17,99 -> 20,99; 1 Agustos 2022 duyuru; mevcut aboneler Ekim 2022 faturasindan Doğrulama: log.com.tr https://www.log.com.tr/?p=772016 · teknoblog.com https://www.teknoblog.com/spotify-premium-abonelik-planlarina-zam.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2022/08/01/spotify-turkiye-de-premium-abonelik-ucretlerine-zam-yapacagini-acikladi/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-02",
+          "price": 29.99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 20,99 -> 29,99; haber 1 Subat 2023. Paratic 14,99'dan yazmis (yanlis, ogrenci fiyati). shiftdelete 817033 fetch edilemedi/arama ozeti Doğrulama: shiftdelete.net https://shiftdelete.net/?p=817033 · teknoblog.com https://www.teknoblog.com/spotify-premium-abonelik-planlarina-zam.",
+          "source": {
+            "title": "log.com.tr",
+            "url": "https://www.log.com.tr/?p=805840",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 39.99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 29,99 -> 39,99; haber 24 Temmuz 2023; mevcut abonelere Eylul sonrasi yansiyor Doğrulama: teknoblog.com https://www.teknoblog.com/spotify-premium-abonelik-ucretlerine-zam-geldi/.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2023/07/24/spotify-in-premium-uyelik-ucretleri-turkiye-de-de-zamlandi/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-02",
+          "price": 59.99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 39,99 -> 59,99; 1-2 Subat 2024 Doğrulama: teknoblog.com https://www.teknoblog.com/spotify-premium-turkiye-abonelik-ucretlerine-zam-geldi/ · donanimhaber.com https://www.donanimhaber.com/spotify-premium-abonelik-fiyatlarina-zam-yapiyor--194631.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2024/02/01/spotify-in-premium-uyelik-ucretlerine-zam-geldi/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-10",
+          "price": 99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 59,99 -> 99 TL (tam sayi, 99,00); 1 Ekim 2025. technopat fetch 403, arama ozeti. Bir kaynak 15 Ekim diyor Doğrulama: ntv.com.tr https://ntv.com.tr/ntvpara/spotifya-dev-zam-iste-yeni-abonelik-ucretleri,bpg6Jm4NHUibkXbFnJc09Q · technopat.net https://www.technopat.net/?p=451087.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2025/10/01/spotify-turkiyede-abonelik-ucretlerine-zam-yapti/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-10",
+          "price": 115,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). 99 -> 115 TL; haber 1-2 Ekim 2026. teknoblog fetch edilmedi, arama sonucu Doğrulama: teknoblog.com https://teknoblog.com/spotify-turkiye-fiyatlari-artti-premium-bireysel-115-tl.",
+          "source": {
+            "title": "evrensel.net",
+            "url": "https://www.evrensel.net/haber/6003074/spotify-aboneliklerine-zam-geldi-yeni-fiyatlar-belli-oldu",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix aboneliği",
+      "unit": "1 ay, Standart plan (2016'da HD paket)",
+      "region": null,
+      "source_hint": "Netflix Türkiye Standart plan aylık ücreti; 2016'daki HD paket Standart'ın karşılığıdır. Zam haberleri.",
+      "image": {
+        "src": "img/dizi.svg",
+        "alt": "Oynat düğmeli ekran çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10",
+        "price": 389.99,
+        "status": "verified",
+        "note": "Netflix Türkiye Standart plan aylık ücreti. 289,99 -> 389,99 TL, haberler 3-5 Ekim 2026. 2026'da daha once zam bulunamadi. Doğrulama: teknoblog.com https://teknoblog.com/netflix-turkiye-fiyatlari-ekim-2026.",
+        "source": {
+          "title": "webtekno.com",
+          "url": "https://www.webtekno.com/netflix-zam-yeni-fiyatlar-h226303.html",
+          "accessed": "2026-10-08",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-06",
+          "price": 29.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 27,99 -> 29,99 TL, 20 Haziran 2019 yururluk. (Mart 2019 fiyat testi kalici degildi.) Doğrulama: muhasebenews.com https://www.muhasebenews.com/?p=61442.",
+          "source": {
+            "title": "teknoblog.com",
+            "url": "https://www.teknoblog.com/netflix-aylik-uyelik-ucretleri-icin-uzun-suredir-beklenen-zam-geldi/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-03",
+          "price": 40.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 29,99 -> 40,99 TL, 4 Mart 2021 itibariyle. Doğrulama: bloomberght.com https://www.bloomberght.com/netflix-turkiye-uyelik-ucretlerini-yuzde-31-ile-yuzde-50-arasinda-artirdi-2275768 · indigodergisi.com https://indigodergisi.com/2021/03/netflix-turkiye-uyelik-fiyatlari.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2021/03/04/netflix-turkiye-uyelik-paketlerinde-yeni-fiyatlar/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-04",
+          "price": 57.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 40,99 -> 57,99 TL, 5 Nisan 2022. Doğrulama: bloomberght.com https://www.bloomberght.com/netflix-turkiye-uyelik-ucretlerine-zam-yapti-2303200.",
+          "source": {
+            "title": "webtekno.com",
+            "url": "https://www.webtekno.com/netflix-abonelik-ucretleri-zam-2022-h122394.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 97.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 69,99 -> 97,99 TL, 17 Ocak 2023. Doğrulama: webrazzi.com https://webrazzi.com/2023/01/17/netflix-turkiye-uyelik-ucretlerine-zam-yapti.",
+          "source": {
+            "title": "teknoblog.com",
+            "url": "https://www.teknoblog.com/netflix-turkiye-ucretleri-zamlandi/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-09",
+          "price": 149.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 97,99 -> 149,99 TL, haberler 12-13 Eylul 2023. Doğrulama: medyascope.tv https://medyascope.tv/2023/09/13/netflix-uyelik-ucretlerine-zam-iste-son-fiyatlar/.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2023/09/12/netflix-turkiye-uyelik-ucretlerine-zam-yapti-en-pahali-abonelik-200-tl-oldu/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 176.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 149,99 -> 176,99 TL, 16 Ocak 2024. (Bir arama ozeti hatali olarak 229,99 dedi; haberler 176,99.) Doğrulama: teknoblog.com https://www.teknoblog.com/netflix-turkiye-abonelik-ucretlerine-2024un-ilk-zammi-geldi/ · ekonomist.com.tr https://www.ekonomist.com.tr/teknoloji/netflix-turkiye-den-yeni-yil-zammi--47083.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2024/01/16/netflix-zam-en-pahali-abonelik-230-tl/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 229.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 176,99 -> 229,99 TL, 9 Temmuz 2024 itibariyle. Doğrulama: webrazzi.com https://webrazzi.com/2024/07/09/netflix-turkiye-abonelik-ucretlerine-tekrar-zam-yapti-en-pahali-abonelik-secenegi-300-tl-oldu/.",
+          "source": {
+            "title": "donanimhaber.com",
+            "url": "https://www.donanimhaber.com/netflix-abonelik-ucreti-turkiye-de-zamlandi-iste-yeni-fiyatlar--179249",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-06",
+          "price": 289.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 229,99 -> 289,99 TL, 4 Haziran 2025 itibariyle (haberler 5 Haziran). Ocak 2025'te zam bulunamadi. Plan adi Premium olarak da geciyor (Ozel plan = Premium). Doğrulama: diken.com.tr https://www.diken.com.tr/?p=1586626.",
+          "source": {
+            "title": "webrazzi.com",
+            "url": "https://webrazzi.com/2025/06/05/netflix-turkiye-abonelik-ucretlerine-zam-yapti/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-10",
+          "price": 389.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. 289,99 -> 389,99 TL, haberler 3-5 Ekim 2026. 2026'da daha once zam bulunamadi. Doğrulama: teknoblog.com https://teknoblog.com/netflix-turkiye-fiyatlari-ekim-2026.",
+          "source": {
+            "title": "webtekno.com",
+            "url": "https://www.webtekno.com/netflix-zam-yeni-fiyatlar-h226303.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "imei-kayit-harci",
+      "name": "IMEI kayıt harcı",
+      "unit": "Yurt dışından getirilen 1 telefon",
+      "region": null,
+      "source_hint": "492 sayılı Harçlar Kanunu cep telefonu kayıt harcı; her Ocak yeniden değerleme oranıyla artar, bazı yıllarda yıl içinde Cumhurbaşkanı Kararıyla ayrıca artırıldı. Haber kaynaklı.",
+      "image": {
+        "src": "img/imei.svg",
+        "alt": "Barkodlu telefon çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 54258,
+        "status": "verified",
+        "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 45614.2*1.1895=54258; kesin oran %18,95. 57.241 (%25,49) on tahmin, yenisafak/benguturk eski haber Doğrulama: gazeteoksijen.com https://gazeteoksijen.com/ekonomi/cep-telefonu-imei-kayit-harcina-dev-zam-kapida-290992.",
+        "source": {
+          "title": "eleman.net",
+          "url": "https://www.eleman.net/is-rehberi/maaslar-ve-ucretler/imei-kayit-ucreti-2026-ne-kadar-oldu-h18090",
+          "accessed": "2026-10-08",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2012-07",
+          "price": 100,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 2012 ikinci yarisinda yururluge giren ilk harc (Ocak degil); tek sabit 100 TL Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/ekonomi/son-dakika-resmen-aciklandi-o-ucret-3-kat-artti-2774880.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/telefon-harcina-yeni-zam-geliyor-2242339-teknoloji",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 138.8,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 131.5*1.0558=138.84; Haberturk tablosu 138.5 yazar (yuvarlama/yazim farki) Doğrulama: indigodergisi.com https://indigodergisi.com/2018/11/yurt-disi-telefon-imei-kayit-ucreti/.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-resmen-aciklandi-o-ucret-3-kat-artti-2774880",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 149.2,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 138.8->149.2 (+7.5%) oran tam dogrulanamadi ama 4 kaynak ayni Doğrulama: indigodergisi.com https://indigodergisi.com/2018/11/yurt-disi-telefon-imei-kayit-ucreti/ · haberturk.com https://www.haberturk.com/telefon-harcina-yeni-zam-geliyor-2242339-teknoloji.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-resmen-aciklandi-o-ucret-3-kat-artti-2774880",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 170.7,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 149.2*1.1447=170.8; 9 Kasim 2018'e kadar gecerli Doğrulama: indigodergisi.com https://indigodergisi.com/2018/11/yurt-disi-telefon-imei-kayit-ucreti/ · haberturk.com https://www.haberturk.com/telefon-harcina-yeni-zam-geliyor-2242339-teknoloji.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-resmen-aciklandi-o-ucret-3-kat-artti-2774880",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-11",
+          "price": 500,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 9 Kasim 2018 Cumhurbaskani karari, 170.70->500 Doğrulama: onedio.com https://onedio.com/haber/yurt-disindan-alinan-telefonlarin-kayit-ucreti-500-liraya-yukseldi-848086.",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/ekonomi/cepten-harc-3-kat-zamlandi-41014444",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 618.65,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 500*1.2373=618.65 Doğrulama: bloomberght.com https://www.bloomberght.com/cep-telefonu-kayit-harci-500-tlden-618-tlye-cikacak-2177266.",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/telefon-harcina-yeni-zam-geliyor-2242339-teknoloji",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 1838.7,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 1500*1.2258=1838.7 Doğrulama: haberturk.com https://www.haberturk.com/2023-imei-kayit-harci-ucreti-belli-oldu-3535419-teknoloji.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/ekonomi/imei-kayit-ucretlerinde-buyuk-artis-2020den-bugune-yuzde-1600u-asan-2252115",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 2006.2,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 1838.7*1.0911 Doğrulama: haberturk.com https://www.haberturk.com/2023-imei-kayit-harci-ucreti-belli-oldu-3535419-teknoloji.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/ekonomi/imei-kayit-ucretlerinde-buyuk-artis-2020den-bugune-yuzde-1600u-asan-2252115",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 2732.4,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 2006.2*1.362 Doğrulama: haberturk.com https://www.haberturk.com/2023-imei-kayit-harci-ucreti-belli-oldu-3535419-teknoloji.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/ekonomi/imei-kayit-ucretlerinde-buyuk-artis-2020den-bugune-yuzde-1600u-asan-2252115",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 6091.3,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 2732.4*2.2293; haberturk 6091.33 yazar Doğrulama: haberturk.com https://www.haberturk.com/2023-imei-kayit-harci-ucreti-belli-oldu-3535419-teknoloji.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/ekonomi/imei-kayit-ucretlerinde-buyuk-artis-2020den-bugune-yuzde-1600u-asan-2252115",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 31692,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 20000*1.5846=31692 Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/ekonomi/son-dakika-kalem-kalem-yeni-harc-ve-tarifeler-kopru-gecisi-cep-telefonu-kaydi-degerli-kagitlar-trafik-cezalari-7058468 · cumhuriyet.com.tr https://www.cumhuriyet.com.tr/ekonomi/imei-kayit-ucretlerinde-buyuk-artis-2020den-bugune-yuzde-1600u-asan-2252115.",
+          "source": {
+            "title": "log.com.tr",
+            "url": "https://www.log.com.tr/2024-imei-kayit-ucreti-tam-31-692-tl-olacak/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 54258,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 45614.2*1.1895=54258; kesin oran %18,95. 57.241 (%25,49) on tahmin, yenisafak/benguturk eski haber Doğrulama: gazeteoksijen.com https://gazeteoksijen.com/ekonomi/cep-telefonu-imei-kayit-harcina-dev-zam-kapida-290992.",
+          "source": {
+            "title": "eleman.net",
+            "url": "https://www.eleman.net/is-rehberi/maaslar-ve-ucretler/imei-kayit-ucreti-2026-ne-kadar-oldu-h18090",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
