@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.32.0] - 2026-10-08
+### Added
+- data: Schengen visa fee for one adult in TL, 2010-2026, derived from the EU Visa Code fee (60, 80 from Feb 2020, 90 euro from June 2024) times the TCMB euro rate.
+- data: Netflix Standard plan monthly price, nine price steps 2019-2026; Spotify Premium Individual, eight steps 2013-2026; IMEI registration fee, twelve values 2012-2026 including mid-year rises. Every value confirmed by two different news sites.
+- ui: visa, screen, music-note, barcode-phone icons.
+
 ## [0.31.0] - 2026-10-08
 ### Added
 - data: 10-year passport fee (over-3-years tariff, booklet fee excluded), 2017-2026 (573.10 TL to 13,410.40 TL), eleven values including the July 2023 50% mid-year rise; every value confirmed by two news sites.
