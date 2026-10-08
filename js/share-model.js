@@ -14,6 +14,7 @@ export function buildShareText(q, r, url) {
 }
 
 export function verdictText(r) {
+  if (r.factor === 1) return 'Tam isabet! 🎯';
   if (r.direction === 'exact') return 'Neredeyse tam isabet!';
   return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
 }
