@@ -4440,6 +4440,18 @@
           }
         },
         {
+          "date": "2017-02",
+          "price": 13.99,
+          "status": "verified",
+          "note": "Spotify Premium Bireysel aylık ücreti (Türkiye). Doğrulama: shiftdelete.net https://shiftdelete.net/?p=5744.",
+          "source": {
+            "title": "log.com.tr",
+            "url": "https://www.log.com.tr/?p=302472",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2020-01",
           "price": 17.99,
           "status": "verified",
@@ -4550,6 +4562,18 @@
       },
       "prices": [
         {
+          "date": "2016-09",
+          "price": 27.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. Doğrulama: log.com.tr https://www.log.com.tr/?p=269645.",
+          "source": {
+            "title": "teknoblog.com",
+            "url": "https://www.teknoblog.com/netflix-turkce-turkiye-fiyatlar/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2019-06",
           "price": 29.99,
           "status": "verified",
@@ -4581,6 +4605,18 @@
           "source": {
             "title": "webtekno.com",
             "url": "https://www.webtekno.com/netflix-abonelik-ucretleri-zam-2022-h122394.html",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-09",
+          "price": 69.99,
+          "status": "verified",
+          "note": "Netflix Türkiye Standart plan aylık ücreti. Doğrulama: paratic.com https://paratic.com/netflix-turkiye-abonelerine-kotu-haber-yilin-ikinci-zammi-geldi/.",
+          "source": {
+            "title": "turkiyegazetesi.com.tr",
+            "url": "https://www.turkiyegazetesi.com.tr/teknoloji/netflix-yine-zam-yapti-netflix-turkiye-fiyatlari-degisti-907926",
             "accessed": "2026-10-08",
             "kind": "news"
           }
@@ -4696,6 +4732,42 @@
           }
         },
         {
+          "date": "2013-01",
+          "price": 115,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. Doğrulama: haberturk.com https://www.haberturk.com/2023-imei-kayit-harci-ucreti-belli-oldu-3535419-teknoloji · cumhuriyet.com.tr https://www.cumhuriyet.com.tr/bilim-teknoloji/imei-kayit-ucreti-ne-kadar-2023-temmuz-imei-kayit-ucreti-ne-kadar-oldu-yurtdisi-kayit-ucreti-degisikligi-ne-zamandan-2097097.",
+          "source": {
+            "title": "milligazete.com.tr",
+            "url": "https://www.milligazete.com.tr/imei-kayit-ucreti-zamlandi-iste-2022-icin-ucreti",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 119.5,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. Doğrulama: haberturk.com https://www.haberturk.com/2023-imei-kayit-harci-ucreti-belli-oldu-3535419-teknoloji · cumhuriyet.com.tr https://www.cumhuriyet.com.tr/bilim-teknoloji/imei-kayit-ucreti-ne-kadar-2023-temmuz-imei-kayit-ucreti-ne-kadar-oldu-yurtdisi-kayit-ucreti-degisikligi-ne-zamandan-2097097.",
+          "source": {
+            "title": "milligazete.com.tr",
+            "url": "https://www.milligazete.com.tr/imei-kayit-ucreti-zamlandi-iste-2022-icin-ucreti",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 131.5,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. Doğrulama: haberturk.com https://www.haberturk.com/2023-imei-kayit-harci-ucreti-belli-oldu-3535419-teknoloji · cumhuriyet.com.tr https://www.cumhuriyet.com.tr/bilim-teknoloji/imei-kayit-ucreti-ne-kadar-2023-temmuz-imei-kayit-ucreti-ne-kadar-oldu-yurtdisi-kayit-ucreti-degisikligi-ne-zamandan-2097097.",
+          "source": {
+            "title": "milligazete.com.tr",
+            "url": "https://www.milligazete.com.tr/imei-kayit-ucreti-zamlandi-iste-2022-icin-ucreti",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2016-01",
           "price": 138.8,
           "status": "verified",
@@ -4751,6 +4823,18 @@
           "source": {
             "title": "haberturk.com",
             "url": "https://www.haberturk.com/telefon-harcina-yeni-zam-geliyor-2242339-teknoloji",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 1500,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. Doğrulama: muhasebenews.com https://www.muhasebenews.com/?p=64187.",
+          "source": {
+            "title": "teknoblog.com",
+            "url": "https://www.teknoblog.com/yurt-disindan-yolcu-beraberinde-getirilen-telefonlar-icin-odenen-harc-artirildi/",
             "accessed": "2026-10-08",
             "kind": "news"
           }
@@ -4823,6 +4907,92 @@
           "source": {
             "title": "eleman.net",
             "url": "https://www.eleman.net/is-rehberi/maaslar-ve-ucretler/imei-kayit-ucreti-2026-ne-kadar-oldu-h18090",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "aclik-siniri",
+      "name": "Açlık sınırı (Türk-İş)",
+      "unit": "4 kişilik ailenin aylık gıda harcaması, Ocak",
+      "region": null,
+      "source_hint": "Türk-İş Konfederasyonu her ay açıklar; sendika araştırmasıdır, devlet verisi değildir. Ocak değeri, haberler üzerinden.",
+      "image": {
+        "src": "img/sepet.svg",
+        "alt": "Alışveriş sepeti çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 31223.88,
+        "status": "verified",
+        "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Bazı haberler tutarı tam liraya yuvarlıyor. Doğrulama: yatirimx.com.tr https://www.yatirimx.com.tr/ekonomi/turk-is-acikladi-aclik-siniri-31-bin-tlyi-yoksulluk-siniri-100-bin-tlyi-asti/17180.",
+        "source": {
+          "title": "Türk-İş açlık sınırı, ulusal.com.tr",
+          "url": "https://www.ulusal.com.tr/ekonomi/turk-is-duyurdu-2026nin-ilk-aclik-ve-yoksulluk-rakamlari-aciklandi-15091692",
+          "accessed": "2026-10-08",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-01",
+          "price": 2008.66,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Bazı haberler tutarı tam liraya yuvarlıyor. Doğrulama: dunya.com https://www.dunya.com/ekonomi/aclik-siniri-2000-lirayi-gecti-haberi-438188.",
+          "source": {
+            "title": "Türk-İş açlık sınırı, capital.com.tr",
+            "url": "https://www.capital.com.tr/gundem/aktuel/aclik-siniri-2000-lirayi-gecti",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 2651.87,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Bazı haberler tutarı tam liraya yuvarlıyor. Doğrulama: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/haber/turk-is-ocak-ayi-aclik-ve-yoksulluk-sinirini-acikladi-1809519.",
+          "source": {
+            "title": "Türk-İş açlık sınırı, finans.mynet.com",
+            "url": "https://finans.mynet.com/haber/detay/ekonomi/turk-is-acikladi-iste-ocak-ayi-aclik-ve-yoksulluk-siniri/413612/",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 15048,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Bazı haberler tutarı tam liraya yuvarlıyor. Doğrulama: bloomberght.com https://www.bloomberght.com/turk-is-yoksulluk-siniri-49-bin-lirayi-asti-2346484 · istiklal.com.tr https://www.istiklal.com.tr/ekonomi/turk-is-verileri-acikladi-yoksulluk-siniri-49-bin-tlyi-asti-822950h.",
+          "source": {
+            "title": "Türk-İş açlık sınırı, birgun.net",
+            "url": "https://www.birgun.net/haber/turk-is-verileri-aclik-siniri-15-bin-liraya-yoksulluk-siniri-49-bin-liraya-yukseldi-502468",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 22131.06,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Bazı haberler tutarı tam liraya yuvarlıyor. Doğrulama: forbes.com.tr https://www.forbes.com.tr/ekonomi/aclik-siniri-asgari-ucreti-gecti.",
+          "source": {
+            "title": "Türk-İş açlık sınırı, bloomberght.com",
+            "url": "https://www.bloomberght.com/turk-is-aclik-siniri-ocak-ta-22-bin-lirayi-asti-3740527",
+            "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 31223.88,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Bazı haberler tutarı tam liraya yuvarlıyor. Doğrulama: yatirimx.com.tr https://www.yatirimx.com.tr/ekonomi/turk-is-acikladi-aclik-siniri-31-bin-tlyi-yoksulluk-siniri-100-bin-tlyi-asti/17180.",
+          "source": {
+            "title": "Türk-İş açlık sınırı, ulusal.com.tr",
+            "url": "https://www.ulusal.com.tr/ekonomi/turk-is-duyurdu-2026nin-ilk-aclik-ve-yoksulluk-rakamlari-aciklandi-15091692",
             "accessed": "2026-10-08",
             "kind": "news"
           }

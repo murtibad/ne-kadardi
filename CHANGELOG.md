@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.33.0] - 2026-10-08
+### Added
+- data: Türk-İş hunger line (monthly food spending of a family of four, January), 2019-2026, five values each confirmed by two news sites; the source title names Türk-İş because it is a union survey, not official data.
+- data: more confirmed values for IMEI fee (2013, 2014, 2015, July 2019), Netflix (2016 launch, Sept 2022) and Spotify (Feb 2017).
+- ui: shopping-basket icon.
+
 ## [0.32.0] - 2026-10-08
 ### Added
 - data: Schengen visa fee for one adult in TL, 2010-2026, derived from the EU Visa Code fee (60, 80 from Feb 2020, 90 euro from June 2024) times the TCMB euro rate.
