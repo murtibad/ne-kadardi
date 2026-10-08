@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.34.0] - 2026-10-08
+### Added
+- data: Istanbul public transport full electronic fare, 2011-2026, thirteen steps each confirmed by two news sites (was a todo entry).
+- ui: confetti burst on an exact guess (skipped with reduced motion).
+- ui: bus icon.
+### Changed
+- ui: on phones the result actions (Paylaş, İndir, Sonraki) stay pinned to the bottom of the screen in one row, so "Sonraki" is always in reach.
+
 ## [0.33.0] - 2026-10-08
 ### Added
 - data: Türk-İş hunger line (monthly food spending of a family of four, January), 2019-2026, five values each confirmed by two news sites; the source title names Türk-İş because it is a union survey, not official data.
