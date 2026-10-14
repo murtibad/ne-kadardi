@@ -8,6 +8,7 @@ import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, 
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
 import { pickPair, judgePair, nextStreak } from './versus.js';
+import { isPlainKey, pairSide } from './keys.js';
 import { availableYears, buildYearReceipt, buildYearShareModel, buildYearShareText, buildYearShareFileName } from './yearly.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
@@ -837,6 +838,11 @@ async function init() {
   $('v-a').addEventListener('click', () => onVersusPick('a'));
   $('v-b').addEventListener('click', () => onVersusPick('b'));
   $('v-next').addEventListener('click', renderVersus);
+  document.addEventListener('keydown', (event) => {
+    if ($('versus-screen').hidden || versus.locked || !isPlainKey(event)) return;
+    const side = pairSide(event.key);
+    if (side) { event.preventDefault(); onVersusPick(side); }
+  });
   loadVersusBest();
   initOrder(state.all);
   initBlitz(state.all);

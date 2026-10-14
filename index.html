@@ -41,6 +41,7 @@
   <link rel="modulepreload" href="js/tax.js">
   <link rel="modulepreload" href="js/cashier.js">
   <link rel="modulepreload" href="js/versus.js">
+  <link rel="modulepreload" href="js/keys.js">
   <link rel="modulepreload" href="js/yearly.js">
   <link rel="modulepreload" href="js/hint.js">
   <link rel="modulepreload" href="js/basket.js">
@@ -193,6 +194,7 @@
           <button type="button" class="versus-option" id="v-a" data-side="a"></button>
           <button type="button" class="versus-option" id="v-b" data-side="b"></button>
         </div>
+        <p class="key-hint" aria-hidden="true">Klavye: ← → ya da 1 2</p>
         <p id="v-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
         <button type="button" id="v-next" class="btn primary" hidden>Sonraki</button>
         <a href="#" class="versus-back">Ana menüye dön</a>
@@ -205,6 +207,7 @@
         <h2 id="o-title" class="versus-title" tabindex="-1">Ucuzdan pahalıya sırala</h2>
         <p class="order-help">En ucuzdan başlayarak sırayla dokun. Geri almak için numaralı ürüne tekrar dokun.</p>
         <div id="o-items" class="order-items" role="group" aria-labelledby="o-title"></div>
+        <p class="key-hint" aria-hidden="true">Klavye: 1-4 ile sırayla seç</p>
         <p id="o-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
         <div class="order-actions">
           <button type="button" id="o-reset" class="btn secondary">Sıfırla</button>
@@ -227,6 +230,7 @@
         <p id="yg-unit" class="unit"></p>
         <p id="yg-price" class="yg-price"></p>
         <div id="yg-options" class="yg-options" role="group" aria-labelledby="yg-title"></div>
+        <p class="key-hint" aria-hidden="true">Klavye: 1-4</p>
         <p id="yg-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
         <button type="button" id="yg-next" class="btn primary" hidden>Sonraki</button>
         <a href="#" class="versus-back">Ana menüye dön</a>
@@ -247,6 +251,7 @@
             <button type="button" class="versus-option" id="bl-a"></button>
             <button type="button" class="versus-option" id="bl-b"></button>
           </div>
+          <p class="key-hint" aria-hidden="true">Klavye: ← → ya da 1 2</p>
         </div>
         <div id="bl-end" hidden role="status" aria-live="polite">
           <p class="blitz-label">Süre doldu</p>

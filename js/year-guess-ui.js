@@ -2,6 +2,7 @@
 import { pickYearRound, judgeYear } from './year-guess.js';
 import { formatPrice, formatPeriod } from './format.js';
 import { questionTitle } from './share-model.js';
+import { isPlainKey, optionIndex } from './keys.js';
 
 const BEST_KEY = 'ne-kadardi-yearguess-best';
 
@@ -96,5 +97,11 @@ export function initYearGuess(questions) {
   game.questions = questions;
   loadBest();
   $('yg-options').addEventListener('click', onPick);
+  document.addEventListener('keydown', (event) => {
+    if ($('yearguess-screen').hidden || !isPlainKey(event)) return;
+    const buttons = $('yg-options').querySelectorAll('.yg-option');
+    const i = optionIndex(event.key, buttons.length);
+    if (i !== null && !buttons[i].disabled) { event.preventDefault(); buttons[i].click(); }
+  });
   $('yg-next').addEventListener('click', () => { if (newRound()) $('yg-title').focus(); });
 }

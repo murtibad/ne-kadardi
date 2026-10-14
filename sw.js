@@ -23,6 +23,7 @@ const PRECACHE = [
   'js/format.js',
   'js/game.js',
   'js/hint.js',
+  'js/keys.js',
   'js/main.js',
   'js/mode-share.js',
   'js/order-ui.js',
