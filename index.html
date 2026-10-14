@@ -96,10 +96,10 @@
           <label for="guess-input" class="visually-hidden">Tahminin (TL)</label>
           <div class="guess-field">
             <input id="guess-input" type="text" inputmode="decimal" autocomplete="off"
-                   placeholder="Tahminin" aria-describedby="guess-error">
+                   placeholder="Tahminin" aria-describedby="hint-text guess-error">
             <span class="currency">₺</span>
           </div>
-          <div id="guess-steps" class="guess-steps" aria-label="Hızlı artır"></div>
+          <div id="guess-steps" class="guess-steps" role="group" aria-label="Hızlı artır"></div>
           <button type="button" id="hint-btn" class="hint-btn" hidden>İpucu al (puan %20 düşer)</button>
           <div id="hint-text" class="hint-slip" role="status" aria-live="polite" hidden></div>
           <p id="guess-error" class="error" role="alert"></p>
@@ -110,7 +110,7 @@
 
     <section id="result-screen" hidden>
       <div class="receipt-wrapper">
-        <article class="receipt-card result-receipt" aria-live="polite">
+        <article id="r-receipt" class="receipt-card result-receipt" aria-live="polite" tabindex="-1">
           <p class="receipt-head">*** NE KADARDI? ***</p>
           <p id="r-title" class="receipt-title"></p>
           <p id="r-unit" class="receipt-unit"></p>
@@ -155,7 +155,7 @@
     <section id="versus-screen" hidden>
       <div class="receipt-card versus-card">
         <p class="versus-streak">Seri <strong id="v-streak">0</strong> · En iyi <strong id="v-best">0</strong></p>
-        <h2 class="versus-title">Hangisi daha pahalıydı?</h2>
+        <h2 id="v-title" class="versus-title" tabindex="-1">Hangisi daha pahalıydı?</h2>
         <div class="versus-options">
           <button type="button" class="versus-option" id="v-a" data-side="a"></button>
           <button type="button" class="versus-option" id="v-b" data-side="b"></button>
@@ -195,7 +195,7 @@
         <p class="basket-help" id="b-help">Fiyatlar gizli. O günün fiyatlarını tahmin ederek her üründen kaç adet alacağını seç, bütçeye en yakına ulaş. Bütçeyi aşarsan her %1 için 3 puan kaybedersin.</p>
         <ul class="basket-list" id="b-items"></ul>
         <p class="basket-count" id="b-count" aria-live="polite"></p>
-        <div id="b-result" class="basket-result" hidden></div>
+        <div id="b-result" class="basket-result" tabindex="-1" hidden></div>
         <button type="button" id="b-confirm" class="btn primary">Sepeti onayla</button>
         <button type="button" id="b-next" class="btn" hidden>Yeni sepet</button>
         <a href="#" class="versus-back">Ana menüye dön</a>
