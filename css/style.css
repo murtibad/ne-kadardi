@@ -800,3 +800,19 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 @media (prefers-reduced-motion: no-preference) {
   .blitz-card .versus-option { transition: opacity 0.15s; }
 }
+
+/* "Hangi Yıl?" mode */
+.yearguess-card .product-image { display: block; margin: 0 auto 8px; }
+.yearguess-card .product-image[hidden] { display: none; }
+.yg-name { margin: 0; }
+.yg-price { font: 700 2.25rem var(--font-mono); margin: 8px 0 16px; }
+.yg-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.yg-option {
+  min-height: 56px; cursor: pointer; font: 700 1.25rem var(--font-mono);
+  color: var(--ink); background: rgba(0,0,0,0.03); border: 2px solid var(--ink); border-radius: 12px;
+}
+.yg-option:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.yg-option:disabled { cursor: default; }
+.yg-option[data-state="win"] { border-width: 4px; }
+.yg-option[data-state="lose"] { border-style: dashed; color: var(--accent-on-paper); border-color: var(--accent-on-paper); }
+.yg-option:disabled:not([data-state]) { opacity: 0.6; }

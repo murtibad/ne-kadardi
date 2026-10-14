@@ -13,6 +13,7 @@ import { buildHint, applyHintPenalty } from './hint.js';
 import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
 import { initOrder, renderOrder, orderMeta } from './order-ui.js';
 import { initBlitz, renderBlitz, stopBlitz, blitzBest } from './blitz-ui.js';
+import { initYearGuess, renderYearGuess, yearGuessBest } from './year-guess-ui.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -51,7 +52,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen']) {
+  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen', 'yearguess-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -734,6 +735,7 @@ function renderHome() {
   $('m-hangisi').textContent = versus.best > 0 ? `En iyi seri: ${versus.best}` : '';
   $('m-sepet').textContent = basket.best > 0 ? `En iyi puan: ${basket.best}` : '';
   $('m-sirala').textContent = orderMeta();
+  $('m-yearguess').textContent = yearGuessBest() > 0 ? `En iyi seri: ${yearGuessBest()}` : '';
   $('m-blitz').textContent = blitzBest() > 0 ? `En iyi: ${blitzBest()} doğru` : '';
   show('home-screen');
 }
@@ -743,7 +745,9 @@ function onHashChange() {
   if (state.all.length === 0) return;
   // Leaving the 60-second screen must not leave its clock ticking in the background.
   if (hash !== '#60-saniye') stopBlitz();
-  if (hash === '#sirala') {
+  if (hash === '#hangi-yil') {
+    renderYearGuess(show, showMessage);
+  } else if (hash === '#sirala') {
     renderOrder(show, showMessage);
   } else if (hash === '#60-saniye') {
     renderBlitz(show);
@@ -824,6 +828,7 @@ async function init() {
   loadVersusBest();
   initOrder(state.all);
   initBlitz(state.all);
+  initYearGuess(state.all);
   loadBasketBest();
   $('b-confirm').addEventListener('click', confirmBasket);
   $('b-next').addEventListener('click', renderBasket);

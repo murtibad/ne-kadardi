@@ -19,7 +19,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Fonts load without blocking the first paint: the system font shows until they arrive. -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="css/style.css">
   <script>
     // Apply the saved theme before first paint to avoid a light/dark flash.
@@ -46,6 +48,10 @@
   <link rel="modulepreload" href="js/order-ui.js">
   <link rel="modulepreload" href="js/blitz.js">
   <link rel="modulepreload" href="js/blitz-ui.js">
+  <link rel="modulepreload" href="js/mode-share.js">
+  <link rel="modulepreload" href="js/year-guess.js">
+  <link rel="modulepreload" href="js/year-guess-ui.js">
+  <link rel="modulepreload" href="js/share-text.js">
   <link rel="modulepreload" href="js/version.js">
 </head>
 <body>
@@ -86,6 +92,11 @@
           <span class="mode-name">60 Saniye</span>
           <span class="mode-desc">Bir dakikada en çok kaç kez pahalıyı bulursun? Yanlış cevap 3 saniye götürür.</span>
           <span class="mode-meta" id="m-blitz"></span>
+        </a>
+        <a class="mode-card" href="#hangi-yil">
+          <span class="mode-name">Hangi Yıl?</span>
+          <span class="mode-desc">Fiyatı gör, hangi yıla ait olduğunu bul.</span>
+          <span class="mode-meta" id="m-yearguess"></span>
         </a>
         <a class="mode-card" href="#sepet">
           <span class="mode-name">Sepet Kurma</span>
@@ -195,7 +206,25 @@
           <button type="button" id="o-reset" class="btn secondary">Sıfırla</button>
           <button type="button" id="o-check" class="btn primary" disabled>Kontrol et</button>
         </div>
-        <button type="button" id="o-next" class="btn primary" hidden>Yeni set</button>
+        <div class="order-actions">
+          <button type="button" id="o-share" class="btn secondary" hidden>Paylaş</button>
+          <button type="button" id="o-next" class="btn primary" hidden>Yeni set</button>
+        </div>
+        <a href="#" class="versus-back">Ana menüye dön</a>
+      </div>
+    </section>
+
+    <section id="yearguess-screen" hidden>
+      <div class="receipt-card versus-card yearguess-card">
+        <p class="versus-streak">Seri <strong id="yg-streak">0</strong> · En iyi <strong id="yg-best">0</strong></p>
+        <h2 id="yg-title" class="versus-title" tabindex="-1">Bu fiyat hangi yıldan?</h2>
+        <img id="yg-image" class="product-image" width="72" height="72" alt="" decoding="async" hidden>
+        <p id="yg-name" class="product yg-name"></p>
+        <p id="yg-unit" class="unit"></p>
+        <p id="yg-price" class="yg-price"></p>
+        <div id="yg-options" class="yg-options" role="group" aria-labelledby="yg-title"></div>
+        <p id="yg-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
+        <button type="button" id="yg-next" class="btn primary" hidden>Sonraki</button>
         <a href="#" class="versus-back">Ana menüye dön</a>
       </div>
     </section>
@@ -220,7 +249,10 @@
           <p id="bl-result" class="blitz-result"></p>
           <p id="bl-detail" class="versus-streak"></p>
           <p id="bl-best" class="blitz-best"></p>
-          <button type="button" id="bl-again" class="btn primary">Tekrar oyna</button>
+          <div class="order-actions">
+            <button type="button" id="bl-share" class="btn secondary">Paylaş</button>
+            <button type="button" id="bl-again" class="btn primary">Tekrar oyna</button>
+          </div>
         </div>
         <a href="#" class="versus-back">Ana menüye dön</a>
       </div>
