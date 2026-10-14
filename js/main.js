@@ -7,6 +7,7 @@ import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
+import { pickPair, judgePair, nextStreak } from './versus.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -42,7 +43,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
+  for (const id of ['message-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -433,8 +434,73 @@ function renderTimelineScreen(focusProductId = null) {
   $('t-rows-container').innerHTML = html;
 }
 
+// "Hangisi daha pahalıydı?" mode: pick the pricier of two past prices, build a streak.
+const versus = { pair: null, recent: [], streak: 0, best: 0, locked: false };
+
+function loadVersusBest() {
+  try {
+    const n = Number(localStorage.getItem('ne-kadardi-versus-best'));
+    if (Number.isFinite(n) && n > 0) versus.best = n;
+  } catch (e) {}
+}
+
+function saveVersusBest() {
+  try { localStorage.setItem('ne-kadardi-versus-best', String(versus.best)); } catch (e) {}
+}
+
+function versusOptionHTML(q, withPrice) {
+  const priceHTML = withPrice ? `<span class="v-price">${escapeHTML(formatPrice(q.price))}</span>` : '';
+  return `<span class="v-period">${escapeHTML(formatPeriod(q.date))}</span>`
+    + `<strong class="v-name">${escapeHTML(questionTitle(q))}</strong>`
+    + `<span class="v-unit">${escapeHTML(q.region ? `${q.unit} · ${q.region}` : q.unit)}</span>`
+    + priceHTML;
+}
+
+function renderVersus() {
+  versus.locked = false;
+  const pair = pickPair(state.all, Math.random, versus.recent);
+  if (!pair) { showMessage('Karşılaştırılacak yeterli fiyat yok.'); return; }
+  versus.pair = pair;
+  versus.recent = [...versus.recent, pair.a.id, pair.b.id].slice(-8);
+  for (const side of ['a', 'b']) {
+    const btn = $(`v-${side}`);
+    btn.innerHTML = versusOptionHTML(pair[side], false);
+    btn.disabled = false;
+    delete btn.dataset.state;
+  }
+  $('v-feedback').textContent = '';
+  $('v-next').hidden = true;
+  $('v-streak').textContent = versus.streak;
+  $('v-best').textContent = versus.best;
+  show('versus-screen');
+}
+
+function onVersusPick(side) {
+  if (versus.locked || !versus.pair) return;
+  versus.locked = true;
+  const res = judgePair(versus.pair, side);
+  versus.streak = nextStreak(versus.streak, res.correct);
+  if (versus.streak > versus.best) { versus.best = versus.streak; saveVersusBest(); }
+  for (const s of ['a', 'b']) {
+    const btn = $(`v-${s}`);
+    btn.innerHTML = versusOptionHTML(versus.pair[s], true);
+    btn.disabled = true;
+    btn.dataset.state = s === res.winner ? 'win' : 'lose';
+  }
+  const times = formatRatio(res.ratio);
+  $('v-feedback').textContent = res.correct
+    ? `Doğru! ${times} kat daha pahalıydı.`
+    : `Yanlış. Diğeri ${times} kat daha pahalıydı.`;
+  $('v-streak').textContent = versus.streak;
+  $('v-best').textContent = versus.best;
+  $('v-next').hidden = false;
+  $('v-next').focus();
+}
+
 function onHashChange() {
-  if (location.hash === '#zaman-makinesi') {
+  if (location.hash === '#hangisi') {
+    if (state.all.length > 0) renderVersus();
+  } else if (location.hash === '#zaman-makinesi') {
     if (state.timelines.length > 0) renderTimelineScreen();
   } else {
     if (state.all.length > 0) {
@@ -470,6 +536,10 @@ async function init() {
   shareOriginalLabel = $('share-btn').textContent;
   downloadOriginalLabel = $('download-btn').innerHTML;
   $('guess-form').addEventListener('submit', onGuess);
+  $('v-a').addEventListener('click', () => onVersusPick('a'));
+  $('v-b').addEventListener('click', () => onVersusPick('b'));
+  $('v-next').addEventListener('click', renderVersus);
+  loadVersusBest();
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
     nextQuestion();

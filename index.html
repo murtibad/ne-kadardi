@@ -22,7 +22,10 @@
 <body>
   <header class="site-header">
     <h1 class="logo">Ne Kadardı?</h1>
-    <a href="#zaman-makinesi" class="header-link">Zaman makinesi</a>
+    <nav class="header-nav">
+      <a href="#hangisi" class="header-link">Hangisi pahalı?</a>
+      <a href="#zaman-makinesi" class="header-link">Zaman makinesi</a>
+    </nav>
   </header>
 
   <main>
@@ -94,6 +97,20 @@
           <button id="download-btn" type="button" class="btn" aria-label="Görseli indir"><span class="wide-only">Görseli </span><span class="wide-only">i</span><span class="narrow-only">İ</span>ndir</button>
           <button id="next-btn" type="button" class="btn primary">Sonraki</button>
         </div>
+      </div>
+    </section>
+
+    <section id="versus-screen" hidden>
+      <div class="receipt-card versus-card">
+        <p class="versus-streak">Seri <strong id="v-streak">0</strong> · En iyi <strong id="v-best">0</strong></p>
+        <h2 class="versus-title">Hangisi daha pahalıydı?</h2>
+        <div class="versus-options">
+          <button type="button" class="versus-option" id="v-a" data-side="a"></button>
+          <button type="button" class="versus-option" id="v-b" data-side="b"></button>
+        </div>
+        <p id="v-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
+        <button type="button" id="v-next" class="btn primary" hidden>Sonraki</button>
+        <a href="#" class="versus-back">Tahmin oyununa dön</a>
       </div>
     </section>
 

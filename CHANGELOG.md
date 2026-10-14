@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.39.0] - 2026-10-14
+### Added
+- ui: "Hangisi daha pahalıydı?" streak mode at `#hangisi` (`js/versus.js`): pick the pricier of two past prices, best streak kept in localStorage.
+
 ## [0.38.0] - 2026-10-14
 ### Added
 - ui: cashier one-liner under the result receipt (`js/cashier.js`, written by Antigravity).
