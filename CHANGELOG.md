@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.36.0] - 2026-10-14
+### Added
+- data: TÜVTÜRK periodic inspection fee for a passenger car (VAT included, exhaust emission test excluded), 2010-2026, seventeen yearly values from 126.26 TL to 3,288.84 TL; sixteen values are confirmed by at least two news sites, 2025 (2,620.80 TL) by one.
+- ui: car-inspection icon.
+
 ## [0.35.0] - 2026-10-14
 ### Added
 - data: Diyanet / Türkiye Diyanet Vakfı proxy sacrifice (vekâletle kurban kesim) fee, domestic, announced yearly, 2013 and 2015-2022, 2024-2026 (550 TL to 18,000 TL); eleven values confirmed by two news sites, 2013 by one. 2023 is left out because sources disagree (5,950 vs 7,950 TL); 2010-2012 and 2014 had no source.

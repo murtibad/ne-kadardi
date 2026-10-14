@@ -5336,6 +5336,236 @@
           }
         }
       ]
+    },
+    {
+      "id": "arac-muayene-ucreti",
+      "name": "Araç muayene ücreti (TÜVTÜRK, otomobil)",
+      "unit": "1 periyodik muayene, otomobil (KDV dahil, egzoz ölçümü hariç)",
+      "region": null,
+      "source_hint": "TÜVTÜRK fiyat listesi; ücret her yıl Ocak'ta yeniden değerleme oranıyla güncellenir (2918 sayılı Kanun m.35); haber arşivi.",
+      "image": {
+        "src": "img/muayene.svg",
+        "alt": "Muayeneden geçen otomobil çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 3288.84,
+        "status": "verified",
+        "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tamindir.com https://www.tamindir.com/haber/2026-tuvturk-arac-muayene-ucretleri_102181/.",
+        "source": {
+          "title": "hdisigorta.com.tr",
+          "url": "https://www.hdisigorta.com.tr/blog/arac/tuvturk-arac-muayenesi-ile-ilgili-tum-merak-edilenler",
+          "accessed": "2026-10-14",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 126.26,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 135.7,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 148.68,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 159.3,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 165.2,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · milliyet.com.tr https://www.milliyet.com.tr/otomobil/arac-muayenesi-oncesinde-dikkat-edilmesi-gereken-10-nokta-1845344 · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 181.72,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 191.16,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 198.24,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · birgun.net https://www.birgun.net/haber/arac-muayene-ucretleri-cep-yakiyor-500309 · paratic.com https://paratic.com/arac-muayene-ucretlerindeki-artis-el-yakiyor/ · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 226.56,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · birgun.net https://www.birgun.net/haber/arac-muayene-ucretleri-cep-yakiyor-500309 · paratic.com https://paratic.com/arac-muayene-ucretlerindeki-artis-el-yakiyor/ · techturkey.com http://www.techturkey.com/forum/archive/index.php/t-244205.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 279.66,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111 · tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · birgun.net https://www.birgun.net/haber/arac-muayene-ucretleri-cep-yakiyor-500309 · paratic.com https://paratic.com/arac-muayene-ucretlerindeki-artis-el-yakiyor/.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2020/06/24/tuvturk-arac-muayene-ucretleri-ne-kadar-otomobil-sahipleri-dikkat-2020-arac-muayene-ucretlerine-zam-mi-geldi",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 342.2,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: timeturk.com https://www.timeturk.com/ekonomi/arac-muayene-ucreti-ne-kadar-2021-tuvturk-arac-muayene-fiyatlari-2021/haber-1669623 · sozcu.com.tr https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111 · tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · birgun.net https://www.birgun.net/haber/arac-muayene-ucretleri-cep-yakiyor-500309.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2020/06/24/tuvturk-arac-muayene-ucretleri-ne-kadar-otomobil-sahipleri-dikkat-2020-arac-muayene-ucretlerine-zam-mi-geldi",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 372.88,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: timeturk.com https://www.timeturk.com/ekonomi/2022-arac-muayene-ucreti-ne-kadar/haber-1694208 · arabam.com https://www.arabam.com/blog/genel/arac-muayene-ucretleri-2022/ · sozcu.com.tr https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111 · tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130.",
+          "source": {
+            "title": "timeturk.com",
+            "url": "https://www.timeturk.com/ekonomi/arac-muayene-ucreti-ne-kadar-2021-tuvturk-arac-muayene-fiyatlari-2021/haber-1669623",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 507.4,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: ekonomist.com.tr https://www.ekonomist.com.tr/otomotiv/2022-arac-muayene-ucreti-ne-kadar-arac-muayene-oncesi-nelere-dikkat-edilmeli.html · sozcu.com.tr https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111 · tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · birgun.net https://www.birgun.net/haber/arac-muayene-ucretleri-cep-yakiyor-500309.",
+          "source": {
+            "title": "arabam.com",
+            "url": "https://www.arabam.com/blog/genel/arac-muayene-ucretleri-2022/",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 1130.44,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: ekonomist.com.tr https://www.ekonomist.com.tr/otomotiv/2022-arac-muayene-ucreti-ne-kadar-arac-muayene-oncesi-nelere-dikkat-edilmeli.html · sozcu.com.tr https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111 · tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2023/11/03/zamli-arac-muayene-ucreti-2024-tuvturk-arac-muayene-ucreti-ne-kadar-kac-tl-oldu-otomobil-minibus-traktor-romork",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 1821.6,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/arac-muayene-ucretleri-cebimize-tirmaniyor-2025-yili-tuvturk-tarifesi-zamlanacak-2985130 · habergazetesi.com.tr https://www.habergazetesi.com.tr/2025-arac-muayene-ucretlerine-yuksek-zam-yeni-tarife-aciklandi · memurlar.net https://www.memurlar.net/haber/1119303/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri.html.",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/tuvturk-zamlandi-iste-2025-arac-muayene-ucretleri-p108111",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 2620.8,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "tamindir.com",
+            "url": "https://www.tamindir.com/blog/arac-muayene-ucreti_86200/",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 3288.84,
+          "status": "verified",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Doğrulama: tamindir.com https://www.tamindir.com/haber/2026-tuvturk-arac-muayene-ucretleri_102181/.",
+          "source": {
+            "title": "hdisigorta.com.tr",
+            "url": "https://www.hdisigorta.com.tr/blog/arac/tuvturk-arac-muayenesi-ile-ilgili-tum-merak-edilenler",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
