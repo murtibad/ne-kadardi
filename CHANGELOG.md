@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.43.0] - 2026-10-14
+### Added
+- ui: "Sepet Kurma" mode at `#sepet` (`js/basket.js`): a past year's budget, six hidden-price products, pick quantities to get as close to the budget as possible without going over. Best score kept in localStorage; card on the home menu.
+
 ## [0.42.0] - 2026-10-14
 ### Added
 - ui: home menu with named modes (Fiyat Tahmini, Hangisi Pahalı?, Zaman Makinesi, Yıllık Fiş); the guessing game moved to `#tahmin`, the logo is now a link to the menu.
