@@ -42,18 +42,22 @@
   <link rel="modulepreload" href="js/yearly.js">
   <link rel="modulepreload" href="js/hint.js">
   <link rel="modulepreload" href="js/basket.js">
+  <link rel="modulepreload" href="js/order.js">
+  <link rel="modulepreload" href="js/order-ui.js">
+  <link rel="modulepreload" href="js/blitz.js">
+  <link rel="modulepreload" href="js/blitz-ui.js">
   <link rel="modulepreload" href="js/version.js">
 </head>
 <body>
   <header class="site-header">
-    <a href="#" class="logo" aria-label="Ne Kadardı? ana menü">Ne Kadardı?</a>
+    <h1 class="site-title"><a href="#" class="logo" aria-label="Ne Kadardı? ana menü">Ne Kadardı?</a></h1>
     <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Açık / koyu temayı değiştir"></button>
   </header>
 
   <main>
     <section id="message-screen">
       <div class="receipt-card">
-        <p id="message-text">Yükleniyor…</p>
+        <p id="message-text" role="status">Yükleniyor…</p>
       </div>
     </section>
 
@@ -72,6 +76,16 @@
           <span class="mode-name">Hangisi Pahalı?</span>
           <span class="mode-desc">İki fiyattan pahalı olanı seç, seriyi bozmadan sürdür.</span>
           <span class="mode-meta" id="m-hangisi"></span>
+        </a>
+        <a class="mode-card" href="#sirala">
+          <span class="mode-name">Sırala</span>
+          <span class="mode-desc">Aynı yıldan dört fiyatı ucuzdan pahalıya diz.</span>
+          <span class="mode-meta" id="m-sirala"></span>
+        </a>
+        <a class="mode-card" href="#60-saniye">
+          <span class="mode-name">60 Saniye</span>
+          <span class="mode-desc">Bir dakikada en çok kaç kez pahalıyı bulursun? Yanlış cevap 3 saniye götürür.</span>
+          <span class="mode-meta" id="m-blitz"></span>
         </a>
         <a class="mode-card" href="#sepet">
           <span class="mode-name">Sepet Kurma</span>
@@ -170,6 +184,48 @@
       </div>
     </section>
 
+    <section id="order-screen" hidden>
+      <div class="receipt-card order-card">
+        <p class="versus-streak">Yıl <strong id="o-year"></strong></p>
+        <h2 id="o-title" class="versus-title" tabindex="-1">Ucuzdan pahalıya sırala</h2>
+        <p class="order-help">En ucuzdan başlayarak sırayla dokun. Geri almak için numaralı ürüne tekrar dokun.</p>
+        <div id="o-items" class="order-items" role="group" aria-labelledby="o-title"></div>
+        <p id="o-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
+        <div class="order-actions">
+          <button type="button" id="o-reset" class="btn secondary">Sıfırla</button>
+          <button type="button" id="o-check" class="btn primary" disabled>Kontrol et</button>
+        </div>
+        <button type="button" id="o-next" class="btn primary" hidden>Yeni set</button>
+        <a href="#" class="versus-back">Ana menüye dön</a>
+      </div>
+    </section>
+
+    <section id="blitz-screen" hidden>
+      <div class="receipt-card versus-card blitz-card">
+        <h2 id="bl-title" class="versus-title" tabindex="-1">60 Saniye</h2>
+        <div id="bl-start">
+          <p class="order-help">İki fiyattan pahalı olanı seç. Süre 60 saniye, her yanlış cevap 3 saniye götürür.</p>
+          <p id="bl-best-start" class="versus-streak"></p>
+          <button type="button" id="bl-start-btn" class="btn primary">Başla</button>
+        </div>
+        <div id="bl-play" hidden>
+          <p class="blitz-bar"><span id="bl-clock" class="blitz-clock" aria-label="Kalan süre">1:00</span><span id="bl-score" class="versus-streak"></span></p>
+          <div class="versus-options">
+            <button type="button" class="versus-option" id="bl-a"></button>
+            <button type="button" class="versus-option" id="bl-b"></button>
+          </div>
+        </div>
+        <div id="bl-end" hidden role="status" aria-live="polite">
+          <p class="blitz-label">Süre doldu</p>
+          <p id="bl-result" class="blitz-result"></p>
+          <p id="bl-detail" class="versus-streak"></p>
+          <p id="bl-best" class="blitz-best"></p>
+          <button type="button" id="bl-again" class="btn primary">Tekrar oyna</button>
+        </div>
+        <a href="#" class="versus-back">Ana menüye dön</a>
+      </div>
+    </section>
+
     <section id="year-screen" hidden>
       <div class="timeline-header">
         <h2>Yıllık fiş</h2>
@@ -227,6 +283,9 @@
       </div>
     </section>
   </main>
+
+  <!-- Announces transient button feedback (copied, downloading...) that would otherwise only change a label. -->
+  <div id="sr-status" class="visually-hidden" role="status" aria-live="polite"></div>
 
   <footer class="site-footer">
     <p>Tüm fiyatlar kaynaklıdır. Hata görürsen
