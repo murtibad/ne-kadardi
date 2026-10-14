@@ -2,13 +2,15 @@
 import { pickOrderSet, correctOrder, scoreOrder } from './order.js';
 import { formatPeriod, formatPrice } from './format.js';
 import { questionTitle } from './share-model.js';
+import { buildOrderShareText } from './mode-share.js';
+import { shareTextFromButton } from './share-text.js';
 
 const STATS_KEY = 'ne-kadardi-order-stats';
 
 const $ = (id) => document.getElementById(id);
 const escapeHTML = (str) => String(str ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-const round = { set: null, picked: [], checked: false, recent: [], questions: [] };
+const round = { set: null, picked: [], checked: false, recent: [], questions: [], shareText: '' };
 const stats = { rounds: 0, perfect: 0, total: 0 };
 
 function loadStats() {
@@ -90,6 +92,8 @@ function renderChecked(res) {
       + `<span class="o-mark">${ok ? '✓' : `✗ <span class="o-yours">sen: ${playerRank}</span>`}</span>`;
     list.appendChild(row);
   });
+  const marks = truth.map((id, i) => round.picked.indexOf(id) === i);
+  round.shareText = buildOrderShareText(round.set.year, marks, res.score, location.href.split('#')[0] + '#sirala');
   $('o-feedback').textContent = res.perfect
     ? `Kusursuz! Puan ${res.score}.`
     : `Puan ${res.score} · ${res.correctPairs}/${res.totalPairs} çift doğru sırada.`;
@@ -107,6 +111,7 @@ function check() {
   $('o-check').hidden = true;
   $('o-reset').hidden = true;
   $('o-next').hidden = false;
+  $('o-share').hidden = false;
   $('o-next').focus();
 }
 
@@ -129,6 +134,7 @@ function newSet() {
   $('o-check').hidden = false;
   $('o-reset').hidden = false;
   $('o-next').hidden = true;
+  $('o-share').hidden = true;
   renderPicking();
   return true;
 }
@@ -146,5 +152,6 @@ export function initOrder(questions) {
   $('o-items').addEventListener('click', onItemClick);
   $('o-check').addEventListener('click', check);
   $('o-reset').addEventListener('click', reset);
+  $('o-share').addEventListener('click', (e) => shareTextFromButton(e.currentTarget, round.shareText));
   $('o-next').addEventListener('click', () => { if (newSet()) $('o-title').focus(); });
 }

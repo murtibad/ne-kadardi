@@ -16,6 +16,7 @@ Modes, picked from the home menu:
 - **Hangisi Pahalı?:** pick the pricier of two past prices, keep the streak going.
 - **Sırala:** order four prices from the same year, cheapest first.
 - **60 Saniye:** as many "which was pricier" answers as possible in a minute; wrong answers cost 3 seconds.
+- **Hangi Yıl?:** see a price, pick the year it belongs to.
 - **Sepet Kurma:** a past year's budget and six products with hidden prices; fill the basket
   as close to the budget as you can without going over.
 - **Zaman Makinesi:** browse the verified price history of each product.
@@ -49,6 +50,10 @@ js/order.js         "Sırala" set selection and pair scoring (pure, tested)
 js/order-ui.js      "Sırala" screen
 js/blitz.js         "60 Saniye" timer state (pure, tested)
 js/blitz-ui.js      "60 Saniye" screen and clock
+js/year-guess.js    "Hangi Yıl?" rounds (pure, tested)
+js/year-guess-ui.js "Hangi Yıl?" screen
+js/mode-share.js    share texts for the quick modes (pure, tested)
+js/share-text.js    share sheet / clipboard helper
 js/timeline.js      time machine rows
 js/yearly.js        yearly receipt rows
 js/hint.js          hint values and exclusions

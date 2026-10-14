@@ -3,6 +3,8 @@ import { pickPair, judgePair } from './versus.js';
 import { startBlitz, remainingMs, answerBlitz, finishIfExpired, blitzSummary, formatSeconds, DURATION_MS } from './blitz.js';
 import { formatPeriod } from './format.js';
 import { questionTitle } from './share-model.js';
+import { buildBlitzShareText } from './mode-share.js';
+import { shareTextFromButton } from './share-text.js';
 
 const BEST_KEY = 'ne-kadardi-blitz-best';
 const TICK_MS = 200;
@@ -133,6 +135,9 @@ export function initBlitz(questions) {
   loadBest();
   $('bl-start-btn').addEventListener('click', start);
   $('bl-again').addEventListener('click', start);
+  $('bl-share').addEventListener('click', (e) => {
+    if (run.state) shareTextFromButton(e.currentTarget, buildBlitzShareText(blitzSummary(run.state), location.href.split('#')[0] + '#60-saniye'));
+  });
   $('bl-a').addEventListener('click', () => onPick('a'));
   $('bl-b').addEventListener('click', () => onPick('b'));
 }

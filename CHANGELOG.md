@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.50.0] - 2026-10-14
+### Added
+- game: "Hangi Yıl?" mode (`#hangi-yil`, `js/year-guess.js` + `js/year-guess-ui.js`): a product and its price, pick the year from four options. Distractor years differ in price by at least 8% so only one option is right (flat fees never qualify). Streak and best streak saved.
+- ui: "Paylaş" for Sırala and 60 Saniye results (`js/mode-share.js`, `js/share-text.js`): share sheet on phones, clipboard elsewhere; Sırala shares one ✅/❌ per item.
+### Changed
+- perf: Google Fonts stylesheet no longer blocks the first paint (`media="print"` swap, `<noscript>` fallback).
+
 ## [0.49.0] - 2026-10-14
 ### Added
 - game: "Sırala" mode (`#sirala`, `js/order.js` + `js/order-ui.js`): four prices from the same year, tap them cheapest first; score is the share of correctly ordered pairs. Adjacent prices are at least 1.15x apart so every set is answerable. Menu card shows sets played, average and perfect sets.
