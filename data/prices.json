@@ -5566,6 +5566,200 @@
           }
         }
       ]
+    },
+    {
+      "id": "sigara-marlboro",
+      "name": "Sigara (Marlboro Kırmızı, 20'li paket)",
+      "unit": "1 paket, 20'li, Marlboro Kırmızı (Red, kısa boy)",
+      "region": null,
+      "source_hint": "Philip Morris zam duyuruları ve Tekel bayileri fiyat listeleri; haber arşivi.",
+      "image": {
+        "src": "img/sigara.svg",
+        "alt": "Sigara paketi çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-08",
+        "price": 125,
+        "status": "verified",
+        "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Doğrulama: karar.com, sigara zammı (06.08.2026) https://www.karar.com/ekonomi-haberleri/sigara-fiyatlarina-bir-zam-daha-2063987.",
+        "source": {
+          "title": "hisse.net, Philip Morris listesi (06.08.2026)",
+          "url": "https://www.hisse.net/haber/sigara-fiyatlari-yeniden-artti-en-pahali-urun-150-tl-87505",
+          "accessed": "2026-10-14",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 5.5,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "dunya.com, Philsa Marlboro Kısa 5,50 TL (07.01.2010)",
+            "url": "https://www.dunya.com/gundem/marlboro039nun-fiyati-550-liraya-dustu-haberi-101880",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-07",
+          "price": 13,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "gazetevatan.com, Marlboro 11 TL'den 13 TL'ye (12.07.2016)",
+            "url": "https://www.gazetevatan.com/gundem/sigaranin-zamli-fiyatlari-ne-kadar-oldu-iste-zamli-sigara-fiyatlari-965869",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-04",
+          "price": 15,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Doğrulama: gazetebirlik.com, 2019 sigara fiyatları (06.04.2019) https://www.gazetebirlik.com/yasam/2019-sigara-fiyatlari-sigara-kac-lira/12212.",
+          "source": {
+            "title": "takvim.com.tr, sigara fiyatları (06.04.2019)",
+            "url": "https://www.takvim.com.tr/ekonomi/2019/04/06/6-nisan-2019-marlboro-lark-parlament-lm-muratti-sigara-ne-kadar-2019-guncel-yeni-sigara-fiyatlari-ne-oldu",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-12",
+          "price": 18,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Doğrulama: ahaber.com.tr, sigara fiyat listesi (07.12.2020, fiyat değişmedi) https://www.ahaber.com.tr/galeri/ekonomi/sigara-zamli-guncel-fiyat-listesi-2020-7-aralik-sigara-fiyatlarina-zam-geldi-mi-marlboro-camel-winston-muratti-lm-fiyatlari.",
+          "source": {
+            "title": "takvim.com.tr, güncel sigara fiyatları (28.12.2019)",
+            "url": "https://www.takvim.com.tr/ekonomi/2019/12/28/2020de-sigaraya-zam-yapilacak-mi-sigara-fiyatlari-ne-kadar-olacak-iste-guncel-fiyat-listesi",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-10",
+          "price": 19,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Doğrulama: milligazete.com.tr, Philip Morris listesi (4 Ekim 2021 itibarıyla) https://www.milligazete.com.tr/guncel-sigara-fiyatlari-sigaraya-zam-iste-sigara-fiyat-listesi-2021.",
+          "source": {
+            "title": "internethaber.com, Marlboro zam (04.10.2021)",
+            "url": "https://www.internethaber.com/marlboro-zam-geldi-2021-yeni-marlboro-edge-touch-fiyatlari-2211659h.htm",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-03",
+          "price": 27,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Doğrulama: yeniakit.com.tr, sigara zammı (Mart 2022) https://www.yeniakit.com.tr/haber/sigara-zammi-son-dakika-ne-kadar-sigara-fiyatlari-ne-kadar-oldu-philip-morris-bat-jti-ucretleri-1636500.html.",
+          "source": {
+            "title": "timeturk.com, Philip Morris zam (15.03.2022)",
+            "url": "https://www.timeturk.com/genel/guncel-sigara-fiyat-listesi-2022-sigaraya-zam-mi-geldi-sigara-ne-kadar-oldu-marlboro-parliament-muratti-lark-l-m-fiyatlari-2022/haber-1727048",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-07",
+          "price": 31,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "milligazete.com.tr, Philip Morris listesi (4 Temmuz 2022 itibarıyla)",
+            "url": "https://www.milligazete.com.tr/2022-guncel-sigara-fiyatlari-listesi-kent-marlboro-sigara-ne-kadar",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-08",
+          "price": 34,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "fanatik.com.tr, Philip Morris listesi (1 Ağustos 2022 itibarıyla)",
+            "url": "https://www.fanatik.com.tr/sigaraya-zam-mi-geldi-sigara-fiyatlari-ne-kadar-kac-tl-oldu-2022-guncel-zamli-sigara-fiyatlari-2293670",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-05",
+          "price": 36,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "milligazete.com.tr, sigara fiyat listesi (11 Mayıs 2023 itibarıyla)",
+            "url": "https://www.milligazete.com.tr/marlboro-sigara-ne-kadar-sigara-guncel-fiyatlari-tam-liste",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 46,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "milligazete.com.tr, PMI zam (10.07.2023)",
+            "url": "https://www.milligazete.com.tr/pmi-sigara-fiyatlarina-en-yeni-zam-iste-sigara-fiyat-listesi-2023",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-05",
+          "price": 67,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "milligazete.com.tr, sigara fiyatları (Mayıs 2024)",
+            "url": "https://www.milligazete.com.tr/sigara-fiyatlari-2024",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-03",
+          "price": 85,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "habergazetesi.com.tr, 2025 sigara fiyatları (10 Mart 2025)",
+            "url": "https://www.habergazetesi.com.tr/2025-sigara-fiyatlari",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 110,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Doğrulama: iscihaber.net, Marlboro Red fiyatı 2026 https://www.iscihaber.net/gundem/2026-yilinda-marlboro-red-fiyati-ne-kadar-oldu-zam-geldi-mi/231516.",
+          "source": {
+            "title": "evrensel.net, Philip Morris zam (18.02.2026)",
+            "url": "https://www.evrensel.net/haber/5971191/sigara-fiyatlarina-bir-zam-daha-philip-morris-grubuna-artis",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-08",
+          "price": 125,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Doğrulama: karar.com, sigara zammı (06.08.2026) https://www.karar.com/ekonomi-haberleri/sigara-fiyatlarina-bir-zam-daha-2063987.",
+          "source": {
+            "title": "hisse.net, Philip Morris listesi (06.08.2026)",
+            "url": "https://www.hisse.net/haber/sigara-fiyatlari-yeniden-artti-en-pahali-urun-150-tl-87505",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.37.0] - 2026-10-14
+### Added
+- data: Marlboro Red 20-piece pack price at the date of each price list or Philip Morris price rise, fourteen steps 2010-2026 (5.50 TL to 125 TL); six values confirmed by two news sites, eight by one (flagged in their notes). Gaps in 2011-2015 and 2017-2018 stay empty because no source gave an unambiguous short-pack price.
+- ui: cigarette pack icon.
+
 ## [0.36.0] - 2026-10-14
 ### Added
 - data: TÜVTÜRK periodic inspection fee for a passenger car (VAT included, exhaust emission test excluded), 2010-2026, seventeen yearly values from 126.26 TL to 3,288.84 TL; sixteen values are confirmed by at least two news sites, 2025 (2,620.80 TL) by one.
