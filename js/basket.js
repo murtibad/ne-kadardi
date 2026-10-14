@@ -2,6 +2,9 @@
 
 export const MAX_QTY = 5;
 export const ITEM_COUNT = 6;
+// Going over costs 3 points per 1% instead of everything: a hard bust made even good guessers
+// score 0 in about half the rounds (simulated), so knowing prices barely mattered.
+export const OVER_PENALTY = 3;
 
 // Not shoppable: currencies, and incomes/benefits (a wage in a basket makes no sense).
 const NOT_IN_BASKET = new Set(['dolar', 'euro', 'asgari-ucret', 'kyk-burs', 'emekli-en-dusuk-aylik', 'aclik-siniri', 'dogum-yardimi']);
@@ -128,7 +131,7 @@ export function scoreBasket(round, quantities) {
       total,
       over: true,
       empty: false,
-      score: 0,
+      score: Math.max(0, Math.round(100 * (1 - OVER_PENALTY * (total / budget - 1)))),
       left,
     };
   }

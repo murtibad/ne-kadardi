@@ -691,7 +691,7 @@ function confirmBasket() {
     li.querySelectorAll('button').forEach((b) => { b.disabled = true; });
   }
   const verdict = res.over
-    ? `Bütçeyi ${formatPrice(-res.left)} aştın. Puan: 0`
+    ? `Bütçeyi ${formatPrice(-res.left)} (%${Math.round((-100 * res.left) / basket.round.budget)}) aştın. Puan: ${res.score}`
     : `Bütçenin %${res.score}'ini kullandın, ${formatPrice(res.left)} kaldı. Puan: ${res.score}`;
   $('b-result').innerHTML = `<div class="row"><span>Sepet toplamı</span><strong>${escapeHTML(formatPrice(res.total))}</strong></div>`
     + `<div class="row"><span>Bütçe</span><strong>${escapeHTML(formatPrice(basket.round.budget))}</strong></div>`
