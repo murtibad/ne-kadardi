@@ -12,7 +12,8 @@ test('hint lists the dollar rate and minimum wage of the question year', () => {
   const lines = buildHint({ productId: 'benzin', year: 2012 }, all);
   assert.equal(lines.length, 2);
   assert.equal(lines[0].label, 'Dolar kuru');
-  assert.match(lines[1].text, /837/);
+  assert.match(lines[1].value, /837/);
+  assert.equal(lines[0].period, 'Ocak 2012');
 });
 
 test('hint skips missing products and the hint products themselves', () => {

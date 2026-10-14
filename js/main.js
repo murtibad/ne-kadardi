@@ -45,7 +45,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen']) {
+  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -123,7 +123,8 @@ function nextQuestion() {
   $('hint-text').hidden = true;
   $('hint-btn').onclick = () => {
     state.hinted = true;
-    $('hint-text').textContent = hint.map((l) => `${l.label} · ${l.text}`).join('  |  ');
+    $('hint-text').innerHTML = `<p class="hint-slip-title">İpucu · ${escapeHTML(hint[0].period)}</p>`
+      + hint.map((l) => `<div class="hint-row"><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.value)}</strong></div>`).join('');
     $('hint-text').hidden = false;
     $('hint-btn').hidden = true;
   };
@@ -538,29 +539,58 @@ function renderYearScreen() {
   }).join('')}</tbody></table>`;
 }
 
+function renderHome() {
+  $('m-tahmin').textContent = state.played > 0 ? `${state.played} soru oynadın` : '';
+  $('m-hangisi').textContent = versus.best > 0 ? `En iyi seri: ${versus.best}` : '';
+  show('home-screen');
+}
+
 function onHashChange() {
-  if (location.hash === '#yil') {
-    if (state.raw) renderYearScreen();
-  } else if (location.hash === '#hangisi') {
-    if (state.all.length > 0) renderVersus();
-  } else if (location.hash === '#zaman-makinesi') {
-    if (state.timelines.length > 0) renderTimelineScreen();
+  const hash = location.hash;
+  if (state.all.length === 0) return;
+  if (hash === '#yil') {
+    renderYearScreen();
+  } else if (hash === '#hangisi') {
+    renderVersus();
+  } else if (hash === '#zaman-makinesi') {
+    renderTimelineScreen();
+  } else if (hash === '#tahmin') {
+    if (!state.question) nextQuestion();
+    else show(state.lastGameScreen);
   } else {
-    if (state.all.length > 0) {
-      if (!state.question) {
-        nextQuestion();
-      } else {
-        show(state.lastGameScreen);
-      }
-    }
+    renderHome();
   }
 }
 window.addEventListener('hashchange', onHashChange);
+
+const THEME_KEY = 'ne-kadardi-theme';
+
+function currentTheme() {
+  const set = document.documentElement.dataset.theme;
+  if (set === 'light' || set === 'dark') return set;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function renderThemeToggle() {
+  const dark = currentTheme() === 'dark';
+  const btn = $('theme-toggle');
+  btn.textContent = dark ? '☀' : '☾';
+  btn.setAttribute('aria-label', dark ? 'Açık temaya geç' : 'Koyu temaya geç');
+}
+
+function toggleTheme() {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  renderThemeToggle();
+}
 
 async function init() {
   const versionEl = $('app-version');
   if (versionEl) versionEl.textContent = VERSION;
   loadSession();
+  renderThemeToggle();
+  $('theme-toggle').addEventListener('click', toggleTheme);
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.42.0] - 2026-10-14
+### Added
+- ui: home menu with named modes (Fiyat Tahmini, Hangisi Pahalı?, Zaman Makinesi, Yıllık Fiş); the guessing game moved to `#tahmin`, the logo is now a link to the menu.
+- ui: light/dark theme toggle in the header (saved in localStorage, defaults to the system theme).
+- ui: hint is a small slip with aligned rows (dollar rate, minimum wage) instead of one long line.
+
 ## [0.41.1] - 2026-10-14
 ### Fixed
 - ui: quick-add chips and the hint link were light-on-cream (invisible) in dark mode because they used the page text colour on the receipt paper; they now use the receipt ink colour.
