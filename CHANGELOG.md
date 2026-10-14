@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.51.1] - 2026-10-14
+### Changed
+- docs: AGENTS.md roadmap lists v0.44-v0.51 and the pre-2016 fuel attempt; page description mentions the new modes.
+
 ## [0.51.0] - 2026-10-14
 ### Changed
 - ui: home menu regrouped for phones (layout from a Google Stitch variant, invented decoration left out): "Oyna" with Fiyat Tahmini as the main card and the quick games in two columns, "Keşfet" with Zaman Makinesi and Yıllık Fiş as slim rows.
