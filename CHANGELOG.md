@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.38.0] - 2026-10-14
+### Added
+- ui: cashier one-liner under the result receipt (`js/cashier.js`, written by Antigravity).
+- ui: quick-add chips (+10, +100, +1.000) under the guess field.
+
 ## [0.37.0] - 2026-10-14
 ### Added
 - data: Marlboro Red 20-piece pack price at the date of each price list or Philip Morris price rise, fourteen steps 2010-2026 (5.50 TL to 125 TL); six values confirmed by two news sites, eight by one (flagged in their notes). Gaps in 2011-2015 and 2017-2018 stay empty because no source gave an unambiguous short-pack price.

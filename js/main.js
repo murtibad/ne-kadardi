@@ -6,6 +6,7 @@ import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
+import { cashierComment } from './cashier.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -113,6 +114,7 @@ function nextQuestion() {
   $('q-name').textContent = questionTitle(q);
   $('q-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('guess-input').value = '';
+  renderGuessSteps();
   $('guess-error').textContent = '';
   showGameScreen('question-screen');
   $('guess-input').focus();
@@ -133,6 +135,25 @@ function onGuess(event) {
   renderResult(q, state.result);
 }
 
+// Quick-add chips. Fixed steps on purpose: scaling them to the price would leak its magnitude.
+function renderGuessSteps() {
+  const box = $('guess-steps');
+  box.textContent = '';
+  for (const step of [10, 100, 1000]) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn step';
+    b.textContent = `+${step.toLocaleString('tr-TR')}`;
+    b.addEventListener('click', () => {
+      const input = $('guess-input');
+      const cur = parseGuess(input.value);
+      input.value = String((Number.isFinite(cur) ? cur : 0) + step).replace('.', ',');
+      input.focus();
+    });
+    box.appendChild(b);
+  }
+}
+
 function renderResult(q, r) {
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
@@ -141,6 +162,7 @@ function renderResult(q, r) {
   $('r-verdict').textContent = verdictText(r);
   $('r-score').textContent = `${r.score}/100`;
   const tier = scoreTier(r.score);
+  $('r-cashier').textContent = `“${cashierComment(tier)}”`;
   document.querySelector('.verdict-box').dataset.tier = tier;
   document.querySelector('.score-box').dataset.tier = tier;
   $('r-meter').style.setProperty('--score', `${r.score}%`);
