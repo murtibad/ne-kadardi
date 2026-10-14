@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.41.0] - 2026-10-14
+### Added
+- ui: hint button on the guess screen (`js/hint.js`): the dollar rate and minimum wage of the question's year, costing 20% of the score. Not offered for dollar, euro or minimum wage questions.
+
 ## [0.40.0] - 2026-10-14
 ### Added
 - ui: "Yıllık fiş" screen at `#yil` (`js/yearly.js`): all verified prices of one year with the rise to today, linked from the time machine.

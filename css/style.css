@@ -663,3 +663,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .year-link { display: block; margin-top: 12px; font-size: 0.875rem; font-weight: 700; color: var(--text); }
 .year-price { text-align: right; white-space: nowrap; font-weight: 700; }
 #y-rows small { font-weight: 400; color: var(--muted-on-paper); }
+
+.hint-btn { display: block; margin: 0 auto 12px; padding: 4px 8px; background: none; border: 0; font: inherit; font-size: 0.875rem; font-weight: 700; color: var(--text); text-decoration: underline; cursor: pointer; }
+.hint-text { font-family: var(--font-ui); font-size: 0.875rem; text-align: center; margin: 0 0 12px; padding: 8px; background: rgba(0,0,0,0.03); border-radius: 8px; }
