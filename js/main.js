@@ -11,6 +11,8 @@ import { pickPair, judgePair, nextStreak } from './versus.js';
 import { availableYears, buildYearReceipt, buildYearShareModel, buildYearShareText, buildYearShareFileName } from './yearly.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
+import { initOrder, renderOrder, orderMeta } from './order-ui.js';
+import { initBlitz, renderBlitz, stopBlitz, blitzBest } from './blitz-ui.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -49,7 +51,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen']) {
+  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -731,13 +733,21 @@ function renderHome() {
     : '';
   $('m-hangisi').textContent = versus.best > 0 ? `En iyi seri: ${versus.best}` : '';
   $('m-sepet').textContent = basket.best > 0 ? `En iyi puan: ${basket.best}` : '';
+  $('m-sirala').textContent = orderMeta();
+  $('m-blitz').textContent = blitzBest() > 0 ? `En iyi: ${blitzBest()} doğru` : '';
   show('home-screen');
 }
 
 function onHashChange() {
   const hash = location.hash;
   if (state.all.length === 0) return;
-  if (hash === '#yil') {
+  // Leaving the 60-second screen must not leave its clock ticking in the background.
+  if (hash !== '#60-saniye') stopBlitz();
+  if (hash === '#sirala') {
+    renderOrder(show, showMessage);
+  } else if (hash === '#60-saniye') {
+    renderBlitz(show);
+  } else if (hash === '#yil') {
     renderYearScreen();
   } else if (hash === '#hangisi') {
     renderVersus();
@@ -812,6 +822,8 @@ async function init() {
   $('v-b').addEventListener('click', () => onVersusPick('b'));
   $('v-next').addEventListener('click', renderVersus);
   loadVersusBest();
+  initOrder(state.all);
+  initBlitz(state.all);
   loadBasketBest();
   $('b-confirm').addEventListener('click', confirmBasket);
   $('b-next').addEventListener('click', renderBasket);

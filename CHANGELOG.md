@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.49.0] - 2026-10-14
+### Added
+- game: "Sırala" mode (`#sirala`, `js/order.js` + `js/order-ui.js`): four prices from the same year, tap them cheapest first; score is the share of correctly ordered pairs. Adjacent prices are at least 1.15x apart so every set is answerable. Menu card shows sets played, average and perfect sets.
+- game: "60 Saniye" mode (`#60-saniye`, `js/blitz.js` + `js/blitz-ui.js`): Hangisi Pahalı against the clock; each wrong answer costs 3 seconds; best score saved. The clock stops when the player leaves the screen.
+- data: 2023 kurban vekâlet bedeli 5.950 TL (the Diyanet president's own statement quoted by three publishers; the conflicting 7.950 TL figure was not found in any of them).
+### Fixed
+- a11y: every control is at least 44x44 px on phones (142 controls were smaller at 390 px), the site title is the page's `<h1>`, and transient button feedback ("Kopyalandı!", "İndiriliyor…") is announced through a live region.
+
 ## [0.48.0] - 2026-10-14
 ### Added
 - pwa: installable and playable offline (`manifest.webmanifest`, `sw.js`, app icons). Stale-while-revalidate cache named after the version; on localhost the worker is opt-in with `?sw`. Tests check the precache list and the version.

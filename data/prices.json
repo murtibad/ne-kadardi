@@ -5396,6 +5396,18 @@
           }
         },
         {
+          "date": "2023",
+          "price": 5950,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Kaynakta Diyanet İşleri Başkanı'nın açıklaması: \"2023 yılı vekaletle kurban kesim bedelini, yurt içinde 5 bin 950 lira ... olarak belirledik\". Doğrulama: gazetebirlik.com https://www.gazetebirlik.com/gundem/vekaletle-kurban-kesim-bedeli-ne-kadar-2023/123186 · cnnturk.com https://www.cnnturk.com/ekonomi/kurban-vekalet-ucretleri-2023-diyanet-kurban-vekaleti-ne-kadar-kac-tl. Bir sitede geçen 7.950 TL bu kaynaklarda yok.",
+          "source": {
+            "title": "ekonomist.com.tr",
+            "url": "https://www.ekonomist.com.tr/haberler/diyanet-isleri-baskanligi-ve-tdv-2023-yili-vekaletle-kurban-kesim-bedelini-belirledi-41798",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2024",
           "price": 11750,
           "status": "verified",
