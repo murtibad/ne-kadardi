@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.44.0] - 2026-10-14
+### Added
+- ui: the Fiyat Tahmini card on the home menu shows the average and best score next to the number of questions played (best score saved with the session stats).
+
 ## [0.43.3] - 2026-10-14
 ### Changed
 - docs: README lists all game modes and modules; AGENTS.md roadmap updated to the current state.

@@ -20,7 +20,7 @@ const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt
 const state = {
   recentProducts: [], 
   hinted: false, raw: null, all: [], timelines: [], selectedYear: null, question: null, result: null, 
-  played: 0, total: 0, 
+  played: 0, total: 0, best: 0, 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null 
 };
 let shareOriginalLabel = '';
@@ -32,6 +32,8 @@ function loadSession() {
     if (data && typeof data.played === 'number') {
       state.played = data.played;
       state.total = data.total;
+      // Older saves have no best; the field is optional.
+      if (Number.isFinite(data.best)) state.best = data.best;
     }
   } catch(e) {}
 }
@@ -40,7 +42,8 @@ function saveSession() {
   try {
     localStorage.setItem('ne-kadardi-session', JSON.stringify({
       played: state.played,
-      total: state.total
+      total: state.total,
+      best: state.best
     }));
   } catch(e) {}
 }
@@ -147,6 +150,7 @@ function onGuess(event) {
   state.result = { guess, ...scored, score: applyHintPenalty(scored.score, state.hinted), hinted: state.hinted };
   state.played += 1;
   state.total += state.result.score;
+  state.best = Math.max(state.best, state.result.score);
   saveSession();
   renderResult(q, state.result);
 }
@@ -624,7 +628,9 @@ function confirmBasket() {
 }
 
 function renderHome() {
-  $('m-tahmin').textContent = state.played > 0 ? `${state.played} soru oynadın` : '';
+  $('m-tahmin').textContent = state.played > 0
+    ? `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en iyi ${state.best}` : '')
+    : '';
   $('m-hangisi').textContent = versus.best > 0 ? `En iyi seri: ${versus.best}` : '';
   $('m-sepet').textContent = basket.best > 0 ? `En iyi puan: ${basket.best}` : '';
   show('home-screen');
