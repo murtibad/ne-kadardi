@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.43.3] - 2026-10-14
+### Changed
+- docs: README lists all game modes and modules; AGENTS.md roadmap updated to the current state.
+
 ## [0.43.2] - 2026-10-14
 ### Changed
 - ui: no hint button for gold, the Schengen fee and wage-linked amounts (scholarship, pension, hunger line, birth benefit), besides currencies and the minimum wage, because the hint would give the answer away.

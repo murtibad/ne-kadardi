@@ -82,15 +82,23 @@ The `stitch` CLI is installed and logged in. Design direction: `docs/DESIGN-BRIE
 
 ## Roadmap
 
+Done (details in `CHANGELOG.md`):
+
 - [x] v0.1 Skeleton: data schema, parsing, scoring, basic UI, tests, CI.
-- [ ] v0.2 Design: Stitch variants → Murti picks → receipt theme implemented, dark mode.
-- [ ] v0.3 Data: verified prices for at least 5 products, ideally from 2010 (2005 where available),
-      plus `current` prices. Murti spot-checks every batch.
-- [ ] v0.4 Polish: session stats in `localStorage`, share text, context line on the result
-      ("O tarihte asgari ücretle X litre benzin alınıyordu, bugün Y") using only verified data,
-      Open Graph meta + social preview image, favicon.
-- [x] Later: "Zaman makinesi" browse screen.
-- [x] Later: Shareable result image (canvas).
+- [x] v0.2 Design: receipt theme, dark mode.
+- [x] v0.3–v0.37 Data: 34 playable products, verified prices from 2010 where sources exist, `current` prices,
+      source type label (`source.kind`).
+- [x] v0.4 Polish: session stats, share text, context line, Open Graph, favicon.
+- [x] v0.10 "Zaman makinesi" browse screen. v0.11 Shareable result image (canvas).
+- [x] v0.38–v0.43 Modes and UI: cashier comment, quick-add buttons, "Hangisi Pahalı?",
+      "Yıllık fiş", hint, home menu with named modes, theme toggle, "Sepet Kurma".
+
+Open:
+
+- [ ] Tune "Sepet Kurma" budget difficulty after playtesting.
+- [ ] More products only when a fixed definition and sourced series exist. Tried and not added
+      (definition or sources break): tea, simit, cinema, Coca-Cola, rakı, civil servant pay,
+      LPG cylinder, Fiat Egea, national team tickets.
 
 ## Commands
 

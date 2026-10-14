@@ -4,16 +4,29 @@ A small browser game about inflation in Turkey. You see a product and a date
 ("Ocak 2012 · 1 litre benzin"), guess the price, and get a receipt-style result:
 the real price, how many times off you were, and what it costs today.
 
-**Play:** https://murtibad.github.io/ne-kadardi/ *(work in progress)*
+**Play:** https://murtibad.github.io/ne-kadardi/
 
 ## Features
 
-- Random questions from all verified prices
+Modes, picked from the home menu:
+
+- **Fiyat Tahmini:** guess a past price, get a receipt with the real price, how far off you
+  were, today's price and the source. Optional hint (that year's dollar rate and minimum
+  wage) for a 20% score cut, quick +10/+100/+1.000 buttons, a cashier comment on each result.
+- **Hangisi Pahalı?:** pick the pricier of two past prices, keep the streak going.
+- **Sepet Kurma:** a past year's budget and six products with hidden prices; fill the basket
+  as close to the budget as you can without going over.
+- **Zaman Makinesi:** browse the verified price history of each product.
+- **Yıllık Fiş:** every verified price of one year next to today's.
+
+Also:
+
 - Turkish number input (`4,5`, `1.250,75`)
 - Fair, ratio-based scoring on a log scale: being 2× too high costs the same as 2× too low
 - Shareable result image (Canvas 2D) to download or post directly
-- "Zaman makinesi" screen to explore the verified price history of each product
-- Every price is sourced; unverified data never reaches the game
+- Light/dark theme toggle, keyboard friendly, respects reduced motion
+- Every price is sourced and labelled by source type (official, dataset, news, derived);
+  unverified data never reaches the game
 
 ## Tech
 
@@ -23,12 +36,22 @@ dependencies, so GitHub Pages serves the repo as it is.
 ```
 index.html          markup
 css/style.css       styles (design tokens as CSS custom properties)
-js/main.js          UI: screens and events
+js/main.js          UI: screens, routing and events
 js/game.js          question selection and scoring (pure, tested)
 js/format.js        Turkish number parsing and formatting (pure, tested)
+js/versus.js        "Hangisi Pahalı?" pairs (pure, tested)
+js/basket.js        "Sepet Kurma" budget and scoring (pure, tested)
+js/timeline.js      time machine rows
+js/yearly.js        yearly receipt rows
+js/hint.js          hint values and exclusions
+js/cashier.js       cashier comments
+js/share-*.js       share text and image
+js/tax.js           estimated tax share (iPhone)
+js/version.js       version shown in the footer
 data/prices.json    prices with sources
+img/                product icons (own SVGs, no brands)
 tests/              node:test unit tests, including a data policy check
-docs/               data guide and design brief
+docs/               data guide, design brief and design rules
 ```
 
 ## Run locally
