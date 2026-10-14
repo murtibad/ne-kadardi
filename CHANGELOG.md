@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.56.0] - 2026-10-14
+### Added
+- data: 13 July observations of the Economist Big Mac Index for Türkiye (2010-2025: 5,95 … 225), the series grows from 11 to 24 values. Rule extended in `docs/DATA.md`: January and July observations that differ from the previous observation; 2014-07 is skipped because it equals the existing 2015-01 value.
+
 ## [0.55.0] - 2026-10-14
 ### Added
 - data: 2026 net minimum wage as a question (it was only the "today" price), so 2026 questions get a purchasing-power line.
