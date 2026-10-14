@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.41.1] - 2026-10-14
+### Fixed
+- ui: quick-add chips and the hint link were light-on-cream (invisible) in dark mode because they used the page text colour on the receipt paper; they now use the receipt ink colour.
+
 ## [0.41.0] - 2026-10-14
 ### Added
 - ui: hint button on the guess screen (`js/hint.js`): the dollar rate and minimum wage of the question's year, costing 20% of the score. Not offered for dollar, euro or minimum wage questions.
