@@ -10,6 +10,7 @@ import { cashierComment } from './cashier.js';
 import { pickPair, judgePair, nextStreak } from './versus.js';
 import { availableYears, buildYearReceipt } from './yearly.js';
 import { buildHint, applyHintPenalty } from './hint.js';
+import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -45,7 +46,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen']) {
+  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -539,9 +540,93 @@ function renderYearScreen() {
   }).join('')}</tbody></table>`;
 }
 
+// "Sepet Kurma": prices are hidden, the player picks quantities to get as close to the
+// budget as possible without going over (Price-is-Right rules).
+const basket = { round: null, qty: {}, done: false, best: 0 };
+
+function loadBasketBest() {
+  try {
+    const n = Number(localStorage.getItem('ne-kadardi-basket-best'));
+    if (Number.isFinite(n) && n > 0) basket.best = n;
+  } catch (e) {}
+}
+
+function updateBasketCount() {
+  const kinds = Object.values(basket.qty).filter((n) => n > 0).length;
+  const pieces = Object.values(basket.qty).reduce((a, b) => a + b, 0);
+  $('b-count').textContent = pieces === 0 ? 'Sepetin boş' : `Sepetin: ${kinds} kalem, ${pieces} adet`;
+  $('b-confirm').disabled = pieces === 0;
+}
+
+function renderBasket() {
+  const round = buildBasketRound(state.all);
+  if (!round) { showMessage('Sepet için yeterli fiyat yok.'); return; }
+  basket.round = round;
+  basket.qty = Object.fromEntries(round.items.map((q) => [q.id, 0]));
+  basket.done = false;
+  $('b-period').textContent = String(round.year);
+  $('b-budget').textContent = formatPrice(round.budget);
+  $('b-help').hidden = false;
+  $('b-result').hidden = true;
+  $('b-confirm').hidden = false;
+  $('b-next').hidden = true;
+  const list = $('b-items');
+  list.textContent = '';
+  for (const q of round.items) {
+    const li = document.createElement('li');
+    li.className = 'basket-row';
+    li.dataset.id = q.id;
+    li.innerHTML = `<span class="basket-name">${escapeHTML(questionTitle(q))}</span>`
+      + `<span class="basket-unit">${escapeHTML(q.region ? `${q.unit} · ${q.region}` : q.unit)}</span>`
+      + `<span class="basket-price"></span>`
+      + `<span class="basket-stepper"><button type="button" data-d="-1" aria-label="Azalt">−</button>`
+      + `<span class="basket-qty" aria-live="polite">0</span>`
+      + `<button type="button" data-d="1" aria-label="Artır">+</button></span>`;
+    li.querySelectorAll('button').forEach((btn) => btn.addEventListener('click', () => {
+      if (basket.done) return;
+      const next = Math.max(0, Math.min(MAX_QTY, basket.qty[q.id] + Number(btn.dataset.d)));
+      basket.qty[q.id] = next;
+      li.querySelector('.basket-qty').textContent = String(next);
+      updateBasketCount();
+    }));
+    list.appendChild(li);
+  }
+  updateBasketCount();
+  show('basket-screen');
+}
+
+function confirmBasket() {
+  if (!basket.round || basket.done) return;
+  basket.done = true;
+  const res = scoreBasket(basket.round, basket.qty);
+  for (const li of $('b-items').children) {
+    const q = basket.round.items.find((x) => x.id === li.dataset.id);
+    const n = basket.qty[q.id];
+    li.querySelector('.basket-price').textContent = n > 0
+      ? `${n} × ${formatPrice(q.price)} = ${formatPrice(n * q.price)}`
+      : `Birim fiyat: ${formatPrice(q.price)}`;
+    li.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+  }
+  const verdict = res.over
+    ? `Bütçeyi ${formatPrice(-res.left)} aştın. Puan: 0`
+    : `Bütçenin %${res.score}'ini kullandın, ${formatPrice(res.left)} kaldı. Puan: ${res.score}`;
+  $('b-result').innerHTML = `<div class="row"><span>Sepet toplamı</span><strong>${escapeHTML(formatPrice(res.total))}</strong></div>`
+    + `<div class="row"><span>Bütçe</span><strong>${escapeHTML(formatPrice(basket.round.budget))}</strong></div>`
+    + `<p class="verdict">${escapeHTML(verdict)}</p>`;
+  $('b-result').hidden = false;
+  $('b-help').hidden = true;
+  $('b-confirm').hidden = true;
+  $('b-next').hidden = false;
+  if (res.score > basket.best) {
+    basket.best = res.score;
+    try { localStorage.setItem('ne-kadardi-basket-best', String(res.score)); } catch (e) {}
+  }
+}
+
 function renderHome() {
   $('m-tahmin').textContent = state.played > 0 ? `${state.played} soru oynadın` : '';
   $('m-hangisi').textContent = versus.best > 0 ? `En iyi seri: ${versus.best}` : '';
+  $('m-sepet').textContent = basket.best > 0 ? `En iyi puan: ${basket.best}` : '';
   show('home-screen');
 }
 
@@ -552,6 +637,8 @@ function onHashChange() {
     renderYearScreen();
   } else if (hash === '#hangisi') {
     renderVersus();
+  } else if (hash === '#sepet') {
+    renderBasket();
   } else if (hash === '#zaman-makinesi') {
     renderTimelineScreen();
   } else if (hash === '#tahmin') {
@@ -614,6 +701,9 @@ async function init() {
   $('v-b').addEventListener('click', () => onVersusPick('b'));
   $('v-next').addEventListener('click', renderVersus);
   loadVersusBest();
+  loadBasketBest();
+  $('b-confirm').addEventListener('click', confirmBasket);
+  $('b-next').addEventListener('click', renderBasket);
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
     nextQuestion();

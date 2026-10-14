@@ -52,6 +52,11 @@
           <span class="mode-desc">İki fiyattan pahalı olanı seç, seriyi bozmadan sürdür.</span>
           <span class="mode-meta" id="m-hangisi"></span>
         </a>
+        <a class="mode-card" href="#sepet">
+          <span class="mode-name">Sepet Kurma</span>
+          <span class="mode-desc">Geçmişteki bütçenle sepeti doldur, bütçeyi aşmadan en yakına ulaş.</span>
+          <span class="mode-meta" id="m-sepet"></span>
+        </a>
         <a class="mode-card" href="#zaman-makinesi">
           <span class="mode-name">Zaman Makinesi</span>
           <span class="mode-desc">Her ürünün yıllar içindeki fiyatını kaynaklarıyla incele.</span>
@@ -158,6 +163,21 @@
           <hr>
           <div id="y-rows"></div>
         </article>
+      </div>
+    </section>
+
+    <section id="basket-screen" hidden>
+      <div class="receipt-card basket-card">
+        <p class="basket-period" id="b-period"></p>
+        <p class="basket-label">Bütçen</p>
+        <p class="basket-budget" id="b-budget"></p>
+        <p class="basket-help" id="b-help">Fiyatlar gizli. O günün fiyatlarını tahmin ederek her üründen kaç adet alacağını seç, bütçeyi aşmadan en yakına ulaş.</p>
+        <ul class="basket-list" id="b-items"></ul>
+        <p class="basket-count" id="b-count" aria-live="polite"></p>
+        <div id="b-result" class="basket-result" hidden></div>
+        <button type="button" id="b-confirm" class="btn primary">Sepeti onayla</button>
+        <button type="button" id="b-next" class="btn" hidden>Yeni sepet</button>
+        <a href="#" class="versus-back">Ana menüye dön</a>
       </div>
     </section>
 

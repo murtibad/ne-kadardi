@@ -703,3 +703,25 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .hint-slip-title { margin: 0 0 6px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.75rem; color: var(--muted-on-paper); }
 .hint-row { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; }
 .hint-row strong { font-weight: 700; }
+
+/* Sepet Kurma */
+.basket-card { text-align: center; }
+.basket-period { display: inline-block; margin: 0 0 12px; padding: 4px 12px; background: var(--accent); color: #fff; border-radius: 999px; font: 700 0.9375rem var(--font-ui); }
+.basket-label { margin: 0; font: 700 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-on-paper); }
+.basket-budget { margin: 4px 0 8px; font: 700 2.25rem var(--font-mono); }
+.basket-help { margin: 0 0 16px; font: 400 0.875rem var(--font-ui); color: var(--muted-on-paper); }
+.basket-list { list-style: none; margin: 0 0 12px; padding: 0; text-align: left; }
+.basket-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; padding: 12px 0; border-top: 1px dashed var(--line); }
+.basket-name { font: 700 1rem var(--font-ui); }
+.basket-unit { grid-column: 1; font: 400 0.8125rem var(--font-ui); color: var(--muted-on-paper); }
+.basket-price { grid-column: 1; font: 700 0.8125rem var(--font-mono); color: var(--muted-on-paper); }
+.basket-price:empty { display: none; }
+.basket-stepper { grid-column: 2; grid-row: 1 / span 3; display: flex; align-items: center; gap: 8px; }
+.basket-stepper button { width: 40px; height: 40px; font: 700 1.25rem var(--font-mono); color: var(--ink); background: transparent; border: 2px solid var(--ink); border-radius: 6px; cursor: pointer; }
+.basket-stepper button:disabled { opacity: 0.35; cursor: default; }
+.basket-qty { min-width: 1.5em; text-align: center; font: 700 1.125rem var(--font-mono); }
+.basket-count { margin: 0 0 12px; font: 700 0.9375rem var(--font-ui); }
+.basket-result { margin: 0 0 12px; padding: 12px; border: 1px dashed var(--ink); border-radius: 4px; font-family: var(--font-mono); font-size: 0.9375rem; text-align: left; }
+.basket-result .row { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; }
+.basket-result .verdict { margin: 8px 0 0; font: 700 1rem var(--font-ui); text-align: center; }
+#b-next { margin-bottom: 8px; }
