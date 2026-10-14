@@ -634,3 +634,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin: 6px 0 0;
   line-height: 1.4;
 }
+
+.guess-steps { display: flex; gap: 8px; justify-content: center; margin: 0 0 12px; }
+.guess-steps .step { flex: 1; padding: 8px 4px; font-size: 0.875rem; min-height: 40px; }
+.cashier-line { font-family: var(--font-ui); font-style: italic; text-align: center; font-size: 0.875rem; color: var(--muted-on-paper); margin: 0 0 16px; }
