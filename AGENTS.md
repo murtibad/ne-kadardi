@@ -92,13 +92,18 @@ Done (details in `CHANGELOG.md`):
 - [x] v0.10 "Zaman makinesi" browse screen. v0.11 Shareable result image (canvas).
 - [x] v0.38–v0.43 Modes and UI: cashier comment, quick-add buttons, "Hangisi Pahalı?",
       "Yıllık fiş", hint, home menu with named modes, theme toggle, "Sepet Kurma".
+- [x] v0.44–v0.48 Menu stats, year receipt image, basket over-budget penalty, July minimum wages,
+      offline PWA, preload, accessibility.
+- [x] v0.49–v0.51 Modes "Sırala", "60 Saniye", "Hangi Yıl?", text sharing for quick modes,
+      44 px touch targets, `<h1>`, live-region announcements, grouped home menu.
 
 Open:
 
 - [ ] Tune "Sepet Kurma" budget difficulty after playtesting.
 - [ ] More products only when a fixed definition and sourced series exist. Tried and not added
       (definition or sources break): tea, simit, cinema, Coca-Cola, rakı, civil servant pay,
-      LPG cylinder, Fiat Egea, national team tickets.
+      LPG cylinder, Fiat Egea, national team tickets, fuel prices before 2016 (only one January
+      2015 point found, not the EPDK definition).
 
 ## Commands
 
