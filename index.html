@@ -6,6 +6,10 @@
   <title>Ne Kadardı? · Fiyat tahmin oyunu</title>
   <meta name="description" content="Geçmiş yıllarda benzin, altın, ekmek ne kadardı? Tahmin et, gerçek fiyatla karşılaştır.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1917" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Ne Kadardı? · Fiyat tahmin oyunu">
   <meta property="og:description" content="Geçmiş yıllarda fiyatlar ne kadardı? Tahmin et, gerçek fiyatla karşılaştır ve enflasyonu gör.">
   <meta property="og:image" content="https://murtibad.github.io/ne-kadardi/social.jpg">
@@ -22,6 +26,23 @@
     try { var t = localStorage.getItem('ne-kadardi-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
   <script type="module" src="js/main.js"></script>
+  <!-- Without these hints the browser only finds the imports after main.js arrives and the
+       data only after every module ran: three round trips in a row. tests/preload.test.js
+       keeps this list in sync with the static imports. -->
+  <link rel="preload" href="data/prices.json" as="fetch" crossorigin>
+  <link rel="modulepreload" href="js/format.js">
+  <link rel="modulepreload" href="js/game.js">
+  <link rel="modulepreload" href="js/timeline.js">
+  <link rel="modulepreload" href="js/source-kind.js">
+  <link rel="modulepreload" href="js/confetti.js">
+  <link rel="modulepreload" href="js/share-model.js">
+  <link rel="modulepreload" href="js/tax.js">
+  <link rel="modulepreload" href="js/cashier.js">
+  <link rel="modulepreload" href="js/versus.js">
+  <link rel="modulepreload" href="js/yearly.js">
+  <link rel="modulepreload" href="js/hint.js">
+  <link rel="modulepreload" href="js/basket.js">
+  <link rel="modulepreload" href="js/version.js">
 </head>
 <body>
   <header class="site-header">
@@ -79,10 +100,10 @@
           <label for="guess-input" class="visually-hidden">Tahminin (TL)</label>
           <div class="guess-field">
             <input id="guess-input" type="text" inputmode="decimal" autocomplete="off"
-                   placeholder="Tahminin" aria-describedby="guess-error">
+                   placeholder="Tahminin" aria-describedby="hint-text guess-error">
             <span class="currency">₺</span>
           </div>
-          <div id="guess-steps" class="guess-steps" aria-label="Hızlı artır"></div>
+          <div id="guess-steps" class="guess-steps" role="group" aria-label="Hızlı artır"></div>
           <button type="button" id="hint-btn" class="hint-btn" hidden>İpucu al (puan %20 düşer)</button>
           <div id="hint-text" class="hint-slip" role="status" aria-live="polite" hidden></div>
           <p id="guess-error" class="error" role="alert"></p>
@@ -93,7 +114,7 @@
 
     <section id="result-screen" hidden>
       <div class="receipt-wrapper">
-        <article class="receipt-card result-receipt" aria-live="polite">
+        <article id="r-receipt" class="receipt-card result-receipt" aria-live="polite" tabindex="-1">
           <p class="receipt-head">*** NE KADARDI? ***</p>
           <p id="r-title" class="receipt-title"></p>
           <p id="r-unit" class="receipt-unit"></p>
@@ -138,7 +159,7 @@
     <section id="versus-screen" hidden>
       <div class="receipt-card versus-card">
         <p class="versus-streak">Seri <strong id="v-streak">0</strong> · En iyi <strong id="v-best">0</strong></p>
-        <h2 class="versus-title">Hangisi daha pahalıydı?</h2>
+        <h2 id="v-title" class="versus-title" tabindex="-1">Hangisi daha pahalıydı?</h2>
         <div class="versus-options">
           <button type="button" class="versus-option" id="v-a" data-side="a"></button>
           <button type="button" class="versus-option" id="v-b" data-side="b"></button>
@@ -178,7 +199,7 @@
         <p class="basket-help" id="b-help">Fiyatlar gizli. O günün fiyatlarını tahmin ederek her üründen kaç adet alacağını seç, bütçeye en yakına ulaş. Bütçeyi aşarsan her %1 için 3 puan kaybedersin.</p>
         <ul class="basket-list" id="b-items"></ul>
         <p class="basket-count" id="b-count" aria-live="polite"></p>
-        <div id="b-result" class="basket-result" hidden></div>
+        <div id="b-result" class="basket-result" tabindex="-1" hidden></div>
         <button type="button" id="b-confirm" class="btn primary">Sepeti onayla</button>
         <button type="button" id="b-next" class="btn" hidden>Yeni sepet</button>
         <a href="#" class="versus-back">Ana menüye dön</a>

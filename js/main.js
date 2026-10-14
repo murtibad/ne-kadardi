@@ -131,6 +131,7 @@ function nextQuestion() {
       + hint.map((l) => `<div class="hint-row"><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.value)}</strong></div>`).join('');
     $('hint-text').hidden = false;
     $('hint-btn').hidden = true;
+    $('guess-input').focus();
   };
   renderGuessSteps();
   $('guess-error').textContent = '';
@@ -213,6 +214,7 @@ function renderResult(q, r) {
   $('r-source-kind').hidden = !kindLabel;
   $('r-session').textContent = `Toplam: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
   showGameScreen('result-screen');
+  $('r-receipt').focus({ preventScroll: true }); // the submit button just disappeared; read the receipt next
 }
 
 function renderTaxDetails(q) {
@@ -492,6 +494,7 @@ function renderVersus() {
   $('v-streak').textContent = versus.streak;
   $('v-best').textContent = versus.best;
   show('versus-screen');
+  if (document.activeElement === document.body || document.activeElement?.closest('[hidden]')) $('v-title').focus();
 }
 
 function onVersusPick(side) {
@@ -516,7 +519,7 @@ function onVersusPick(side) {
   $('v-next').focus();
 }
 
-function renderYearScreen() {
+function renderYearScreen(focusYear = null) {
   show('year-screen');
   const years = availableYears(state.raw);
   if (years.length === 0) return;
@@ -529,7 +532,8 @@ function renderYearScreen() {
     btn.className = 'picker-chip';
     btn.setAttribute('aria-pressed', y === state.selectedYear ? 'true' : 'false');
     btn.textContent = String(y);
-    btn.addEventListener('click', () => { state.selectedYear = y; renderYearScreen(); });
+    btn.addEventListener('click', () => { state.selectedYear = y; renderYearScreen(y); });
+    if (y === focusYear) queueMicrotask(() => btn.focus());
     picker.appendChild(btn);
   }
   const { rows } = buildYearReceipt(state.raw, state.selectedYear);
@@ -662,9 +666,9 @@ function renderBasket() {
     li.innerHTML = `<span class="basket-name">${escapeHTML(questionTitle(q))}</span>`
       + `<span class="basket-unit">${escapeHTML(q.region ? `${q.unit} · ${q.region}` : q.unit)}</span>`
       + `<span class="basket-price"></span>`
-      + `<span class="basket-stepper"><button type="button" data-d="-1" aria-label="Azalt">−</button>`
+      + `<span class="basket-stepper"><button type="button" data-d="-1" aria-label="${escapeHTML(questionTitle(q))}: azalt">−</button>`
       + `<span class="basket-qty" aria-live="polite">0</span>`
-      + `<button type="button" data-d="1" aria-label="Artır">+</button></span>`;
+      + `<button type="button" data-d="1" aria-label="${escapeHTML(questionTitle(q))}: artır">+</button></span>`;
     li.querySelectorAll('button').forEach((btn) => btn.addEventListener('click', () => {
       if (basket.done) return;
       const next = Math.max(0, Math.min(MAX_QTY, basket.qty[q.id] + Number(btn.dataset.d)));
@@ -676,6 +680,7 @@ function renderBasket() {
   }
   updateBasketCount();
   show('basket-screen');
+  if (document.activeElement === document.body || document.activeElement?.closest('[hidden]')) list.querySelector('button[data-d="1"]')?.focus();
 }
 
 function confirmBasket() {
@@ -700,6 +705,7 @@ function confirmBasket() {
   $('b-help').hidden = true;
   $('b-confirm').hidden = true;
   $('b-next').hidden = false;
+  $('b-result').focus(); // the confirm button just disappeared
   if (res.score > basket.best) {
     basket.best = res.score;
     try { localStorage.setItem('ne-kadardi-basket-best', String(res.score)); } catch (e) {}
@@ -808,4 +814,20 @@ async function init() {
   onHashChange();
 }
 
+// Offline support. On localhost the worker is opt-in (open the page with ?sw) because its
+// stale-while-revalidate cache would show the previous version of a file after each edit;
+// without ?sw a leftover worker is removed so developers never get stuck on old files.
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator) || !/^https?:$/.test(location.protocol)) return;
+  const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+  if (local && !new URLSearchParams(location.search).has('sw')) {
+    navigator.serviceWorker.getRegistrations()
+      .then(regs => regs.forEach(reg => reg.unregister()))
+      .catch(() => {});
+    return;
+  }
+  navigator.serviceWorker.register('sw.js').catch(err => console.warn('Service worker:', err));
+}
+
+registerServiceWorker();
 init();
