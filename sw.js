@@ -34,6 +34,7 @@ const PRECACHE = [
   'js/source-kind.js',
   'js/stats-ui.js',
   'js/stats.js',
+  'js/streak-share.js',
   'js/tax.js',
   'js/timeline.js',
   'js/version.js',
