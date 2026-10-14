@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.51.0] - 2026-10-14
+### Changed
+- ui: home menu regrouped for phones (layout from a Google Stitch variant, invented decoration left out): "Oyna" with Fiyat Tahmini as the main card and the quick games in two columns, "Keşfet" with Zaman Makinesi and Yıllık Fiş as slim rows.
+### Fixed
+- a11y: after in-app navigation focus moves to the new screen's heading instead of staying on a link inside the hidden screen.
+
 ## [0.50.1] - 2026-10-14
 ### Fixed
 - ui: a second "Paylaş" tap within two seconds left the button stuck on "Kopyalandı!"; a failed clipboard write now says "Kopyalanamadı".

@@ -700,6 +700,23 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .mode-desc { font: 400 0.9375rem var(--font-ui); color: var(--muted-on-paper); }
 .mode-meta { font: 700 0.8125rem var(--font-mono); color: var(--accent-on-paper); }
 .mode-meta:empty { display: none; }
+/* Menu groups: the main game on top, the quick games in two columns, browsing screens as slim rows. */
+.mode-group {
+  display: flex; align-items: center; gap: 8px; margin: 8px 0 -2px;
+  font: 700 0.75rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+}
+.mode-group::after { content: ''; flex: 1; border-top: 2px dashed currentColor; opacity: 0.5; }
+.mode-main { box-shadow: 4px 4px 0 var(--text); }
+.mode-main .mode-meta { border-top: 1px dashed var(--line); padding-top: 8px; }
+.mode-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.mode-grid .mode-card { align-content: start; padding: 12px; }
+.mode-grid .mode-name { font-size: 1.0625rem; }
+.mode-grid .mode-desc { font-size: 0.8125rem; }
+.mode-grid .mode-meta { font-size: 0.75rem; }
+.mode-wide { grid-column: 1 / -1; }
+.mode-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 16px; }
+.mode-row .mode-name { font-size: 1.0625rem; flex: none; }
+.mode-row .mode-desc { font-size: 0.8125rem; text-align: right; }
 
 /* Hint: a small slip with aligned rows instead of one long line */
 .hint-slip { margin: 0 0 12px; padding: 10px 12px; background: rgba(0,0,0,0.03); border: 1px dashed var(--ink); border-radius: 4px; font-family: var(--font-mono); font-size: 0.875rem; }

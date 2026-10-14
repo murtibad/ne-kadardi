@@ -73,41 +73,45 @@
         <p>Bir mod seç, tahmin et, enflasyonu gör.</p>
       </div>
       <nav class="mode-list" aria-label="Oyun modları">
-        <a class="mode-card" href="#tahmin">
+        <h3 class="mode-group">Oyna</h3>
+        <a class="mode-card mode-main" href="#tahmin">
           <span class="mode-name">Fiyat Tahmini</span>
           <span class="mode-desc">Bir ürünün geçmişteki fiyatını tahmin et, gerçeğiyle karşılaştır.</span>
           <span class="mode-meta" id="m-tahmin"></span>
         </a>
-        <a class="mode-card" href="#hangisi">
-          <span class="mode-name">Hangisi Pahalı?</span>
-          <span class="mode-desc">İki fiyattan pahalı olanı seç, seriyi bozmadan sürdür.</span>
-          <span class="mode-meta" id="m-hangisi"></span>
-        </a>
-        <a class="mode-card" href="#sirala">
-          <span class="mode-name">Sırala</span>
-          <span class="mode-desc">Aynı yıldan dört fiyatı ucuzdan pahalıya diz.</span>
-          <span class="mode-meta" id="m-sirala"></span>
-        </a>
-        <a class="mode-card" href="#60-saniye">
-          <span class="mode-name">60 Saniye</span>
-          <span class="mode-desc">Bir dakikada en çok kaç kez pahalıyı bulursun? Yanlış cevap 3 saniye götürür.</span>
-          <span class="mode-meta" id="m-blitz"></span>
-        </a>
-        <a class="mode-card" href="#hangi-yil">
-          <span class="mode-name">Hangi Yıl?</span>
-          <span class="mode-desc">Fiyatı gör, hangi yıla ait olduğunu bul.</span>
-          <span class="mode-meta" id="m-yearguess"></span>
-        </a>
-        <a class="mode-card" href="#sepet">
-          <span class="mode-name">Sepet Kurma</span>
-          <span class="mode-desc">Geçmişteki bütçenle sepeti doldur, bütçeyi aşmadan en yakına ulaş.</span>
-          <span class="mode-meta" id="m-sepet"></span>
-        </a>
-        <a class="mode-card" href="#zaman-makinesi">
+        <div class="mode-grid">
+          <a class="mode-card" href="#hangisi">
+            <span class="mode-name">Hangisi Pahalı?</span>
+            <span class="mode-desc">İki fiyattan pahalıyı seç, seriyi sürdür.</span>
+            <span class="mode-meta" id="m-hangisi"></span>
+          </a>
+          <a class="mode-card" href="#sirala">
+            <span class="mode-name">Sırala</span>
+            <span class="mode-desc">Aynı yıldan dört fiyatı ucuzdan pahalıya diz.</span>
+            <span class="mode-meta" id="m-sirala"></span>
+          </a>
+          <a class="mode-card" href="#60-saniye">
+            <span class="mode-name">60 Saniye</span>
+            <span class="mode-desc">Bir dakikada en çok kaç kez pahalıyı bulursun?</span>
+            <span class="mode-meta" id="m-blitz"></span>
+          </a>
+          <a class="mode-card" href="#hangi-yil">
+            <span class="mode-name">Hangi Yıl?</span>
+            <span class="mode-desc">Fiyatı gör, hangi yıla ait olduğunu bul.</span>
+            <span class="mode-meta" id="m-yearguess"></span>
+          </a>
+          <a class="mode-card mode-wide" href="#sepet">
+            <span class="mode-name">Sepet Kurma</span>
+            <span class="mode-desc">Geçmişteki bütçenle sepeti doldur, bütçeyi aşmadan en yakına ulaş.</span>
+            <span class="mode-meta" id="m-sepet"></span>
+          </a>
+        </div>
+        <h3 class="mode-group">Keşfet</h3>
+        <a class="mode-card mode-row" href="#zaman-makinesi">
           <span class="mode-name">Zaman Makinesi</span>
-          <span class="mode-desc">Her ürünün yıllar içindeki fiyatını kaynaklarıyla incele.</span>
+          <span class="mode-desc">Her ürünün yıllar içindeki fiyatı, kaynaklarıyla.</span>
         </a>
-        <a class="mode-card" href="#yil">
+        <a class="mode-card mode-row" href="#yil">
           <span class="mode-name">Yıllık Fiş</span>
           <span class="mode-desc">Bir yıl seç: o yıl her şey ne kadardı?</span>
         </a>
