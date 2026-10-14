@@ -109,4 +109,4 @@ npm start     # python -m http.server 8000
 
 ## Releasing
 
-- Bump the version in both `package.json` and `js/version.js` (the footer shows it; `tests/version.test.js` fails if they differ), add a CHANGELOG entry, tag `vX.Y.Z` after merging.
+- Bump the version in `package.json`, `js/version.js` and `sw.js` (the footer shows it; `tests/version.test.js` fails if they differ), add a CHANGELOG entry, tag `vX.Y.Z` after merging.

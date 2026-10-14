@@ -24,6 +24,8 @@ Also:
 - Turkish number input (`4,5`, `1.250,75`)
 - Fair, ratio-based scoring on a log scale: being 2× too high costs the same as 2× too low
 - Shareable result image (Canvas 2D) to download or post directly
+- Installable app (PWA) that works offline after the first visit; new prices arrive on the
+  next visit (stale-while-revalidate, cache versioned with the release)
 - Light/dark theme toggle, keyboard friendly, respects reduced motion
 - Every price is sourced and labelled by source type (official, dataset, news, derived);
   unverified data never reaches the game
@@ -49,8 +51,10 @@ js/share-*.js       share text and image
 js/year-share-image.js  yearly receipt image
 js/tax.js           estimated tax share (iPhone)
 js/version.js       version shown in the footer
+sw.js               service worker: offline cache (version must match package.json)
+manifest.webmanifest  install metadata and icons
 data/prices.json    prices with sources
-img/                product icons (own SVGs, no brands)
+img/                product icons (own SVGs, no brands) and app icons (PNG)
 tests/              node:test unit tests, including a data policy check
 docs/               data guide, design brief and design rules
 ```
@@ -63,6 +67,8 @@ npm test    # requires Node 20+
 ```
 
 Opening `index.html` directly does not work: browsers block `fetch` on `file://` URLs.
+On localhost the service worker is off unless you open the page with `?sw`, so edits show up
+on reload.
 
 ## Data policy
 

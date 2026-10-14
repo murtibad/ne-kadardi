@@ -814,4 +814,20 @@ async function init() {
   onHashChange();
 }
 
+// Offline support. On localhost the worker is opt-in (open the page with ?sw) because its
+// stale-while-revalidate cache would show the previous version of a file after each edit;
+// without ?sw a leftover worker is removed so developers never get stuck on old files.
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator) || !/^https?:$/.test(location.protocol)) return;
+  const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+  if (local && !new URLSearchParams(location.search).has('sw')) {
+    navigator.serviceWorker.getRegistrations()
+      .then(regs => regs.forEach(reg => reg.unregister()))
+      .catch(() => {});
+    return;
+  }
+  navigator.serviceWorker.register('sw.js').catch(err => console.warn('Service worker:', err));
+}
+
+registerServiceWorker();
 init();
