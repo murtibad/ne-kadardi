@@ -32,6 +32,8 @@ const PRECACHE = [
   'js/share-model.js',
   'js/share-text.js',
   'js/source-kind.js',
+  'js/stats-ui.js',
+  'js/stats.js',
   'js/tax.js',
   'js/timeline.js',
   'js/version.js',

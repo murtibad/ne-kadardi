@@ -15,6 +15,7 @@ import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
 import { initOrder, renderOrder, orderMeta } from './order-ui.js';
 import { initBlitz, renderBlitz, stopBlitz, blitzBest } from './blitz-ui.js';
 import { initYearGuess, renderYearGuess, yearGuessBest } from './year-guess-ui.js';
+import { renderStats } from './stats-ui.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -53,7 +54,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen', 'yearguess-screen']) {
+  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen', 'yearguess-screen', 'stats-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -752,6 +753,8 @@ function onHashChange() {
     renderOrder(show, showMessage);
   } else if (hash === '#60-saniye') {
     renderBlitz(show);
+  } else if (hash === '#istatistik') {
+    renderStats(show);
   } else if (hash === '#yil') {
     renderYearScreen();
   } else if (hash === '#hangisi') {
