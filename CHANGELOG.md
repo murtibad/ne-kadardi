@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.48.0] - 2026-10-14
+### Added
+- pwa: installable and playable offline (`manifest.webmanifest`, `sw.js`, app icons). Stale-while-revalidate cache named after the version; on localhost the worker is opt-in with `?sw`. Tests check the precache list and the version.
+### Changed
+- perf: preload `data/prices.json` and modulepreload the static modules; home menu appears about 40% sooner on slow 4G.
+### Fixed
+- a11y: contrast of red stats/verdicts on dark receipt paper, the invisible "Yeni sepet" button in dark mode, and grey text on the light page background.
+- a11y: keyboard focus no longer falls to the page after answering, hints, basket confirm, Hangisi Pahalı and year picks; basket steppers name their product.
+
 ## [0.47.0] - 2026-10-14
 ### Added
 - data: July minimum wage values for 2010-2015, 2022 and 2023 (ÇSGB second-half PDFs, each with an independent second publisher), so second-half questions get the right purchasing-power line.
