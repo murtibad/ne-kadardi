@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.52.0] - 2026-10-14
+### Added
+- ui: "İstatistiklerim" screen (`#istatistik`, `js/stats.js` + `js/stats-ui.js`): every mode's saved score on one receipt, with a two-step "Skorları sıfırla" (no browser dialog) that clears scores but keeps the theme.
+- ui: keyboard shortcuts on desktop (`js/keys.js`): ← → or 1 2 in Hangisi Pahalı? and 60 Saniye, 1-4 in Sırala and Hangi Yıl?; ignored in form fields and with modifier keys. A hint line shows only on devices with a fine pointer.
+
 ## [0.51.1] - 2026-10-14
 ### Changed
 - docs: AGENTS.md roadmap lists v0.44-v0.51 and the pre-2016 fuel attempt; page description mentions the new modes.

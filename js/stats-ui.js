@@ -36,6 +36,8 @@ export function renderStats(show) {
     $('stats-reset').addEventListener('click', () => {
       if (armTimer === null) {
         $('stats-reset').textContent = CONFIRM_LABEL;
+        const live = $('sr-status');
+        if (live) live.textContent = CONFIRM_LABEL;
         armTimer = setTimeout(disarm, 4000);
       } else {
         resetScores();
