@@ -15,21 +15,24 @@ function shuffle(arr, rng) {
   return arr;
 }
 
-/** productId -> Map(year -> first question of that year, in input order). */
+/** productId -> Map(year -> all questions of that year). */
 function yearsByProduct(questions) {
   const out = new Map();
   for (const q of questions) {
     if (!out.has(q.productId)) out.set(q.productId, new Map());
     const years = out.get(q.productId);
-    if (!years.has(q.year)) years.set(q.year, q);
+    if (!years.has(q.year)) years.set(q.year, []);
+    years.get(q.year).push(q);
   }
   return out;
 }
 
+// Every price of a distractor year must be clearly different: with several prices a year
+// (cigarettes, fees raised mid-year) one of them could otherwise match the shown price.
 function distractorYears(answer, years) {
-  return [...years.values()]
-    .filter((q) => q.year !== answer.year && ratio(q.price, answer.price) >= MIN_PRICE_GAP)
-    .map((q) => q.year);
+  return [...years.entries()]
+    .filter(([year, qs]) => year !== answer.year && qs.every((q) => ratio(q.price, answer.price) >= MIN_PRICE_GAP))
+    .map(([year]) => year);
 }
 
 /**

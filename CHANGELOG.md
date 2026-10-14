@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.50.1] - 2026-10-14
+### Fixed
+- ui: a second "Paylaş" tap within two seconds left the button stuck on "Kopyalandı!"; a failed clipboard write now says "Kopyalanamadı".
+- ui: some checked "Sırala" sets overflowed by a few pixels at 360 px (long unit text in a grid item).
+- game: "Hangi Yıl?" could offer a year that also had a price within 8% of the answer (products with several prices a year); every price of a distractor year is now checked.
+
 ## [0.50.0] - 2026-10-14
 ### Added
 - game: "Hangi Yıl?" mode (`#hangi-yil`, `js/year-guess.js` + `js/year-guess-ui.js`): a product and its price, pick the year from four options. Distractor years differ in price by at least 8% so only one option is right (flat fees never qualify). Streak and best streak saved.

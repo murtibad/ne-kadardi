@@ -41,6 +41,16 @@ test('returns null when no product qualifies', () => {
   assert.equal(pickYearRound([...short, ...flat], seeded(1)), null);
 });
 
+test('a distractor year is skipped when any of its prices is close to the answer', () => {
+  // 2019 has two prices; its second (18) is within 8% of the 2021 answer (19).
+  const multi = [q('m', 2015, 5), { ...q('m', 2019, 12), id: 'm@2019-01' }, { ...q('m', 2019, 18), id: 'm@2019-12' },
+    q('m', 2021, 19), q('m', 2023, 36), q('m', 2025, 85), q('m', 2026, 110)];
+  for (let seed = 1; seed <= 100; seed++) {
+    const round = pickYearRound(multi, seeded(seed));
+    if (round.question.price === 19) assert.ok(!round.options.includes(2019), `seed ${seed}`);
+  }
+});
+
 test('judgeYear reports correctness and distance', () => {
   const round = { question: q('p1', 2019, 10), options: [2015, 2017, 2019, 2021] };
   assert.deepEqual(judgeYear(round, 2019), { correct: true, answer: 2019, off: 0 });
