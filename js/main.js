@@ -8,6 +8,7 @@ import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, 
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
 import { pickPair, judgePair, nextStreak } from './versus.js';
+import { availableYears, buildYearReceipt } from './yearly.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -16,7 +17,7 @@ const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt
 
 const state = {
   recentProducts: [], 
-  all: [], timelines: [], question: null, result: null, 
+  raw: null, all: [], timelines: [], selectedYear: null, question: null, result: null, 
   played: 0, total: 0, 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null 
 };
@@ -43,7 +44,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen']) {
+  for (const id of ['message-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -497,8 +498,38 @@ function onVersusPick(side) {
   $('v-next').focus();
 }
 
+function renderYearScreen() {
+  show('year-screen');
+  const years = availableYears(state.raw);
+  if (years.length === 0) return;
+  if (!years.includes(state.selectedYear)) state.selectedYear = years[0];
+  const picker = $('year-picker');
+  picker.textContent = '';
+  for (const y of years) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'picker-chip';
+    btn.setAttribute('aria-pressed', y === state.selectedYear ? 'true' : 'false');
+    btn.textContent = String(y);
+    btn.addEventListener('click', () => { state.selectedYear = y; renderYearScreen(); });
+    picker.appendChild(btn);
+  }
+  const { rows } = buildYearReceipt(state.raw, state.selectedYear);
+  $('y-title').textContent = `${state.selectedYear} · Yıllık fiş`;
+  $('y-count').textContent = `${rows.length} kalem`;
+  $('y-rows').innerHTML = `<table class="timeline-table"><tbody>${rows.map((r) => {
+    const unit = r.region ? `${r.unit} · ${r.region}` : r.unit;
+    const name = r.label ? `${r.name}: ${r.label}` : r.name;
+    const ratio = r.ratio ? `${formatRatio(r.ratio)} kat arttı` : '';
+    return `<tr><td><strong>${escapeHTML(name)}</strong><br><small>${escapeHTML(unit)} · ${escapeHTML(formatPeriod(r.date))}</small></td>`
+      + `<td class="year-price">${escapeHTML(formatPrice(r.price))}${ratio ? `<br><small>${escapeHTML(ratio)}</small>` : ''}</td></tr>`;
+  }).join('')}</tbody></table>`;
+}
+
 function onHashChange() {
-  if (location.hash === '#hangisi') {
+  if (location.hash === '#yil') {
+    if (state.raw) renderYearScreen();
+  } else if (location.hash === '#hangisi') {
     if (state.all.length > 0) renderVersus();
   } else if (location.hash === '#zaman-makinesi') {
     if (state.timelines.length > 0) renderTimelineScreen();
@@ -522,6 +553,7 @@ async function init() {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const rawData = await res.json();
+    state.raw = rawData;
     state.all = buildQuestions(rawData);
     state.timelines = buildTimelines(rawData);
   } catch (err) {

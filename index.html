@@ -114,11 +114,29 @@
       </div>
     </section>
 
+    <section id="year-screen" hidden>
+      <div class="timeline-header">
+        <h2>Yıllık fiş</h2>
+        <p>Seçtiğin yılda doğrulanmış tüm fiyatlar, bugünkü fiyatla.</p>
+        <a href="#zaman-makinesi" class="btn primary timeline-back-btn">Zaman makinesi</a>
+      </div>
+      <div class="timeline-picker" role="group" aria-label="Yıl seç" id="year-picker"></div>
+      <div class="receipt-wrapper">
+        <article class="receipt-card result-receipt timeline-receipt">
+          <p id="y-title" class="receipt-title"></p>
+          <p id="y-count" class="receipt-unit"></p>
+          <hr>
+          <div id="y-rows"></div>
+        </article>
+      </div>
+    </section>
+
     <section id="timeline-screen" hidden>
       <div class="timeline-header">
         <h2>Zaman makinesi</h2>
         <p>Doğrulanmış tüm fiyatlar, kaynaklarıyla.</p>
         <a href="#" class="btn primary timeline-back-btn">Oyuna dön</a>
+        <a href="#yil" class="year-link">Yıla göre fiş: o yıl her şey ne kadardı?</a>
       </div>
       
       <div class="timeline-picker" role="group" aria-label="Ürün seç" id="timeline-picker">

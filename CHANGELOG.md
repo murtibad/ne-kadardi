@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.40.0] - 2026-10-14
+### Added
+- ui: "Yıllık fiş" screen at `#yil` (`js/yearly.js`): all verified prices of one year with the rise to today, linked from the time machine.
+
 ## [0.39.0] - 2026-10-14
 ### Added
 - ui: "Hangisi daha pahalıydı?" streak mode at `#hangisi` (`js/versus.js`): pick the pricier of two past prices, best streak kept in localStorage.
