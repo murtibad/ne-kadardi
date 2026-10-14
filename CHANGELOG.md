@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.45.0] - 2026-10-14
+### Added
+- ui: "Yıllık fiş" can be shared or downloaded as a long receipt image (`js/year-share-image.js`): one line per product with that year's price and the rise to today, plus the biggest riser. The receipt paper drawing is shared with the result image.
+
 ## [0.44.0] - 2026-10-14
 ### Added
 - ui: the Fiyat Tahmini card on the home menu shows the average and best score next to the number of questions played (best score saved with the session stats).

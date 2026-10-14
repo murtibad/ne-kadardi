@@ -17,7 +17,7 @@ Modes, picked from the home menu:
 - **Sepet Kurma:** a past year's budget and six products with hidden prices; fill the basket
   as close to the budget as you can without going over.
 - **Zaman Makinesi:** browse the verified price history of each product.
-- **Yıllık Fiş:** every verified price of one year next to today's.
+- **Yıllık Fiş:** every verified price of one year next to today's, shareable as an image.
 
 Also:
 
@@ -46,6 +46,7 @@ js/yearly.js        yearly receipt rows
 js/hint.js          hint values and exclusions
 js/cashier.js       cashier comments
 js/share-*.js       share text and image
+js/year-share-image.js  yearly receipt image
 js/tax.js           estimated tax share (iPhone)
 js/version.js       version shown in the footer
 data/prices.json    prices with sources

@@ -734,3 +734,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   .theme-toggle.spin { animation: theme-spin 0.4s ease; }
 }
 @keyframes theme-spin { from { transform: rotate(-90deg) scale(0.8); } to { transform: none; } }
+
+.year-actions { display: flex; gap: 12px; justify-content: center; margin: 20px auto 8px; max-width: 480px; }
+.year-actions .btn { flex: 1 1 0; }

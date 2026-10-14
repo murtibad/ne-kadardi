@@ -1,6 +1,6 @@
 const W = 1080;
 
-const COLORS = {
+export const COLORS = {
   bg: '#f4f1ea',
   paper: '#fffcf5',
   ink: '#181818',
@@ -11,7 +11,7 @@ const COLORS = {
   fill: { great: '#1f9d55', good: '#84cc16', mid: '#f5b301', poor: '#f97316', bad: '#dc2626' },
 };
 
-function loadFonts() {
+export function loadFonts() {
   if (document.fonts && document.fonts.load) {
     return Promise.race([
       Promise.all([
@@ -54,6 +54,35 @@ function wrapText(ctx, text, maxWidth) {
   return lines;
 }
 
+// Cream receipt paper with zigzag top and bottom edges and a soft shadow.
+export function drawReceiptPaper(ctx, startX, startY, endX, endY) {
+  const cardW = endX - startX;
+  const toothW = 30;
+  const toothH = 15;
+  const teethCount = Math.floor(cardW / toothW);
+  const actualW = cardW / teethCount;
+
+  ctx.fillStyle = COLORS.paper;
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  for (let i = 0; i < teethCount; i++) {
+    ctx.lineTo(startX + i * actualW + actualW / 2, startY - toothH);
+    ctx.lineTo(startX + (i + 1) * actualW, startY);
+  }
+  ctx.lineTo(endX, endY);
+  for (let i = 0; i < teethCount; i++) {
+    ctx.lineTo(endX - i * actualW - actualW / 2, endY + toothH);
+    ctx.lineTo(endX - (i + 1) * actualW, endY);
+  }
+  ctx.lineTo(startX, startY);
+
+  ctx.shadowColor = 'rgba(0,0,0,0.06)';
+  ctx.shadowBlur = 30;
+  ctx.shadowOffsetY = 15;
+  ctx.fill();
+  ctx.shadowColor = 'transparent';
+}
+
 export async function renderShareImage(model) {
   await loadFonts();
   const icon = await loadIcon(model.iconSrc);
@@ -78,32 +107,7 @@ export async function renderShareImage(model) {
   const endX = W - marginX;
   const endY = H - marginY;
 
-  // Draw Card with Zigzag
-  const toothW = 30;
-  const toothH = 15;
-  const teethCount = Math.floor(cardW / toothW);
-  const actualW = cardW / teethCount;
-
-  ctx.fillStyle = COLORS.paper;
-  ctx.beginPath();
-  ctx.moveTo(startX, startY);
-  for (let i = 0; i < teethCount; i++) {
-    ctx.lineTo(startX + i * actualW + actualW / 2, startY - toothH);
-    ctx.lineTo(startX + (i + 1) * actualW, startY);
-  }
-  ctx.lineTo(endX, endY);
-  for (let i = 0; i < teethCount; i++) {
-    ctx.lineTo(endX - i * actualW - actualW / 2, endY + toothH);
-    ctx.lineTo(endX - (i + 1) * actualW, endY);
-  }
-  ctx.lineTo(startX, startY);
-  
-  // Shadow
-  ctx.shadowColor = 'rgba(0,0,0,0.06)';
-  ctx.shadowBlur = 30;
-  ctx.shadowOffsetY = 15;
-  ctx.fill();
-  ctx.shadowColor = 'transparent';
+  drawReceiptPaper(ctx, startX, startY, endX, endY);
 
   // Content state
   const cx = W / 2;

@@ -8,7 +8,7 @@ import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, 
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
 import { pickPair, judgePair, nextStreak } from './versus.js';
-import { availableYears, buildYearReceipt } from './yearly.js';
+import { availableYears, buildYearReceipt, buildYearShareModel, buildYearShareText, buildYearShareFileName } from './yearly.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
 import { VERSION } from './version.js';
@@ -544,6 +544,85 @@ function renderYearScreen() {
   }).join('')}</tbody></table>`;
 }
 
+// Yearly receipt share: same pattern as the result share (file share on phones, else text),
+// but with its own buttons so the two screens never reset each other's labels.
+const yearBtnLabels = {};
+
+function setYearBtn(id, text, busy = false) {
+  const btn = $(id);
+  if (!(id in yearBtnLabels)) yearBtnLabels[id] = btn.textContent;
+  btn.textContent = text;
+  if (busy) btn.setAttribute('aria-busy', 'true');
+  else btn.removeAttribute('aria-busy');
+}
+
+function resetYearBtn(id, delay = 0) {
+  const restore = () => {
+    if (id in yearBtnLabels) $(id).textContent = yearBtnLabels[id];
+    $(id).removeAttribute('aria-busy');
+  };
+  if (delay) setTimeout(restore, delay); else restore();
+}
+
+async function yearImage(btnId) {
+  setYearBtn(btnId, 'Hazırlanıyor…', true);
+  try {
+    const { renderYearShareImage } = await import('./year-share-image.js');
+    return await renderYearShareImage(buildYearShareModel(buildYearReceipt(state.raw, state.selectedYear)));
+  } catch (err) {
+    console.warn('Görsel hazırlanamadı', err);
+    return null;
+  }
+}
+
+async function shareYear() {
+  if ($('y-share-btn').hasAttribute('aria-busy')) return;
+  const year = state.selectedYear;
+  const text = buildYearShareText(buildYearReceipt(state.raw, year), location.href.split('#')[0] + '#yil');
+  const filesSupported = canShareImageFiles();
+  const blob = filesSupported ? await yearImage('y-share-btn') : null;
+  // The button stays busy until the share sheet closes: a second tap would throw InvalidStateError.
+  let delay = 0;
+  try {
+    if (blob) {
+      const file = new File([blob], buildYearShareFileName(year), { type: 'image/png' });
+      setYearBtn('y-share-btn', yearBtnLabels['y-share-btn'] ?? 'Paylaş', true);
+      await navigator.share({ files: [file], text });
+    } else if (navigator.share) {
+      setYearBtn('y-share-btn', $('y-share-btn').textContent, true);
+      await navigator.share({ text });
+    } else {
+      await navigator.clipboard.writeText(text);
+      setYearBtn('y-share-btn', 'Kopyalandı!');
+      delay = 2000;
+    }
+  } catch (err) {
+    if (err.name !== 'AbortError') console.warn(err);
+  } finally {
+    resetYearBtn('y-share-btn', delay);
+  }
+}
+
+async function downloadYearImage() {
+  if ($('y-download-btn').hasAttribute('aria-busy')) return;
+  const blob = await yearImage('y-download-btn');
+  if (!blob) {
+    setYearBtn('y-download-btn', 'Görsel hazırlanamadı.');
+    resetYearBtn('y-download-btn', 2000);
+    return;
+  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = buildYearShareFileName(state.selectedYear);
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  setYearBtn('y-download-btn', 'İndiriliyor…');
+  resetYearBtn('y-download-btn', 2000);
+}
+
 // "Sepet Kurma": prices are hidden, the player picks quantities to get as close to the
 // budget as possible without going over (Price-is-Right rules).
 const basket = { round: null, qty: {}, done: false, best: 0 };
@@ -723,6 +802,8 @@ async function init() {
   });
   $('share-btn').addEventListener('click', share);
   $('download-btn').addEventListener('click', downloadImage);
+  $('y-share-btn').addEventListener('click', shareYear);
+  $('y-download-btn').addEventListener('click', downloadYearImage);
   
   onHashChange();
 }
