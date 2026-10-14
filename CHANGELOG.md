@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.47.0] - 2026-10-14
+### Added
+- data: July minimum wage values for 2010-2015, 2022 and 2023 (ÇSGB second-half PDFs, each with an independent second publisher), so second-half questions get the right purchasing-power line.
+
 ## [0.46.0] - 2026-10-14
 ### Changed
 - game: going over the budget in "Sepet Kurma" no longer scores 0; each 1% over costs 3 points (10% over → 70, a third over → 0). A simulation showed even good guessers busted in about half the rounds under the old rule. Rules text and verdict updated.
