@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.43.1] - 2026-10-14
+### Changed
+- ui: short colour fade and a small spin on the theme toggle when switching light/dark (skipped with reduced motion).
+
 ## [0.43.0] - 2026-10-14
 ### Added
 - ui: "Sepet Kurma" mode at `#sepet` (`js/basket.js`): a past year's budget, six hidden-price products, pick quantities to get as close to the budget as possible without going over. Best score kept in localStorage; card on the home menu.

@@ -667,7 +667,14 @@ function renderThemeToggle() {
 
 function toggleTheme() {
   const next = currentTheme() === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
+  const root = document.documentElement;
+  root.classList.add('theme-anim');
+  $('theme-toggle').classList.add('spin');
+  setTimeout(() => {
+    root.classList.remove('theme-anim');
+    $('theme-toggle').classList.remove('spin');
+  }, 450);
+  root.dataset.theme = next;
   try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
   renderThemeToggle();
 }
