@@ -5,6 +5,7 @@ import { formatPeriod } from './format.js';
 import { questionTitle } from './share-model.js';
 import { buildBlitzShareText } from './mode-share.js';
 import { shareTextFromButton } from './share-text.js';
+import { isPlainKey, pairSide } from './keys.js';
 
 const BEST_KEY = 'ne-kadardi-blitz-best';
 const TICK_MS = 200;
@@ -139,5 +140,10 @@ export function initBlitz(questions) {
     if (run.state) shareTextFromButton(e.currentTarget, buildBlitzShareText(blitzSummary(run.state), location.href.split('#')[0] + '#60-saniye'));
   });
   $('bl-a').addEventListener('click', () => onPick('a'));
+  document.addEventListener('keydown', (event) => {
+    if ($('blitz-screen').hidden || $('bl-play').hidden || !isPlainKey(event)) return;
+    const side = pairSide(event.key);
+    if (side) { event.preventDefault(); onPick(side); }
+  });
   $('bl-b').addEventListener('click', () => onPick('b'));
 }

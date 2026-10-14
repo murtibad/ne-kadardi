@@ -4,6 +4,7 @@ import { formatPeriod, formatPrice } from './format.js';
 import { questionTitle } from './share-model.js';
 import { buildOrderShareText } from './mode-share.js';
 import { shareTextFromButton } from './share-text.js';
+import { isPlainKey, optionIndex } from './keys.js';
 
 const STATS_KEY = 'ne-kadardi-order-stats';
 
@@ -150,6 +151,12 @@ export function initOrder(questions) {
   round.questions = questions;
   loadStats();
   $('o-items').addEventListener('click', onItemClick);
+  document.addEventListener('keydown', (event) => {
+    if ($('order-screen').hidden || round.checked || !isPlainKey(event)) return;
+    const items = $('o-items').querySelectorAll('button.order-item');
+    const i = optionIndex(event.key, items.length);
+    if (i !== null) { event.preventDefault(); items[i].click(); }
+  });
   $('o-check').addEventListener('click', check);
   $('o-reset').addEventListener('click', reset);
   $('o-share').addEventListener('click', (e) => shareTextFromButton(e.currentTarget, round.shareText));

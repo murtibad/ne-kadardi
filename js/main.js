@@ -8,12 +8,14 @@ import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, 
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
 import { pickPair, judgePair, nextStreak } from './versus.js';
+import { isPlainKey, pairSide } from './keys.js';
 import { availableYears, buildYearReceipt, buildYearShareModel, buildYearShareText, buildYearShareFileName } from './yearly.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
 import { initOrder, renderOrder, orderMeta } from './order-ui.js';
 import { initBlitz, renderBlitz, stopBlitz, blitzBest } from './blitz-ui.js';
 import { initYearGuess, renderYearGuess, yearGuessBest } from './year-guess-ui.js';
+import { renderStats } from './stats-ui.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -52,7 +54,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen', 'yearguess-screen']) {
+  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen', 'yearguess-screen', 'stats-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -751,6 +753,8 @@ function onHashChange() {
     renderOrder(show, showMessage);
   } else if (hash === '#60-saniye') {
     renderBlitz(show);
+  } else if (hash === '#istatistik') {
+    renderStats(show);
   } else if (hash === '#yil') {
     renderYearScreen();
   } else if (hash === '#hangisi') {
@@ -837,6 +841,11 @@ async function init() {
   $('v-a').addEventListener('click', () => onVersusPick('a'));
   $('v-b').addEventListener('click', () => onVersusPick('b'));
   $('v-next').addEventListener('click', renderVersus);
+  document.addEventListener('keydown', (event) => {
+    if ($('versus-screen').hidden || versus.locked || !isPlainKey(event)) return;
+    const side = pairSide(event.key);
+    if (side) { event.preventDefault(); onVersusPick(side); }
+  });
   loadVersusBest();
   initOrder(state.all);
   initBlitz(state.all);

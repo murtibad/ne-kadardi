@@ -41,6 +41,7 @@
   <link rel="modulepreload" href="js/tax.js">
   <link rel="modulepreload" href="js/cashier.js">
   <link rel="modulepreload" href="js/versus.js">
+  <link rel="modulepreload" href="js/keys.js">
   <link rel="modulepreload" href="js/yearly.js">
   <link rel="modulepreload" href="js/hint.js">
   <link rel="modulepreload" href="js/basket.js">
@@ -51,6 +52,8 @@
   <link rel="modulepreload" href="js/mode-share.js">
   <link rel="modulepreload" href="js/year-guess.js">
   <link rel="modulepreload" href="js/year-guess-ui.js">
+  <link rel="modulepreload" href="js/stats.js">
+  <link rel="modulepreload" href="js/stats-ui.js">
   <link rel="modulepreload" href="js/share-text.js">
   <link rel="modulepreload" href="js/version.js">
 </head>
@@ -114,6 +117,10 @@
         <a class="mode-card mode-row" href="#yil">
           <span class="mode-name">Yıllık Fiş</span>
           <span class="mode-desc">Bir yıl seç: o yıl her şey ne kadardı?</span>
+        </a>
+        <a class="mode-card mode-row" href="#istatistik">
+          <span class="mode-name">İstatistiklerim</span>
+          <span class="mode-desc">Tüm modlardaki skorların, sıfırlama</span>
         </a>
       </nav>
     </section>
@@ -193,6 +200,7 @@
           <button type="button" class="versus-option" id="v-a" data-side="a"></button>
           <button type="button" class="versus-option" id="v-b" data-side="b"></button>
         </div>
+        <p class="key-hint" aria-hidden="true">Klavye: ← → ya da 1 2</p>
         <p id="v-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
         <button type="button" id="v-next" class="btn primary" hidden>Sonraki</button>
         <a href="#" class="versus-back">Ana menüye dön</a>
@@ -205,6 +213,7 @@
         <h2 id="o-title" class="versus-title" tabindex="-1">Ucuzdan pahalıya sırala</h2>
         <p class="order-help">En ucuzdan başlayarak sırayla dokun. Geri almak için numaralı ürüne tekrar dokun.</p>
         <div id="o-items" class="order-items" role="group" aria-labelledby="o-title"></div>
+        <p class="key-hint" aria-hidden="true">Klavye: 1-4 ile sırayla seç</p>
         <p id="o-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
         <div class="order-actions">
           <button type="button" id="o-reset" class="btn secondary">Sıfırla</button>
@@ -227,6 +236,7 @@
         <p id="yg-unit" class="unit"></p>
         <p id="yg-price" class="yg-price"></p>
         <div id="yg-options" class="yg-options" role="group" aria-labelledby="yg-title"></div>
+        <p class="key-hint" aria-hidden="true">Klavye: 1-4</p>
         <p id="yg-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
         <button type="button" id="yg-next" class="btn primary" hidden>Sonraki</button>
         <a href="#" class="versus-back">Ana menüye dön</a>
@@ -247,6 +257,7 @@
             <button type="button" class="versus-option" id="bl-a"></button>
             <button type="button" class="versus-option" id="bl-b"></button>
           </div>
+          <p class="key-hint" aria-hidden="true">Klavye: ← → ya da 1 2</p>
         </div>
         <div id="bl-end" hidden role="status" aria-live="polite">
           <p class="blitz-label">Süre doldu</p>
@@ -280,6 +291,24 @@
       <div class="year-actions">
         <button id="y-share-btn" type="button" class="btn">Paylaş</button>
         <button id="y-download-btn" type="button" class="btn">Görseli indir</button>
+      </div>
+    </section>
+
+    <section id="stats-screen" hidden>
+      <div class="timeline-header">
+        <h2>İstatistiklerim</h2>
+        <p>Bu cihazda kayıtlı skorların.</p>
+        <a href="#" class="btn primary timeline-back-btn">Ana menüye dön</a>
+      </div>
+      <div class="receipt-wrapper">
+        <article class="receipt-card result-receipt timeline-receipt">
+          <p class="receipt-title">Skor fişi</p>
+          <hr>
+          <div id="stats-rows"></div>
+        </article>
+      </div>
+      <div class="year-actions">
+        <button id="stats-reset" type="button" class="btn">Skorları sıfırla</button>
       </div>
     </section>
 
