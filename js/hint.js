@@ -4,8 +4,13 @@ import { formatPrice, formatPeriod } from './format.js';
 
 export const HINT_FACTOR = 0.8; // 20% off the score
 
-// A hint on these would give the answer away (the hint products themselves, or near copies).
-const NO_HINT = new Set(['dolar', 'euro', 'asgari-ucret']);
+// No hint where the hint itself would be (nearly) the answer: currencies and gold (track the
+// dollar), the euro-priced Schengen fee, and amounts tied to the minimum wage or set by law
+// from it (wage, scholarship, pension, hunger line, birth benefit).
+const NO_HINT = new Set([
+  'dolar', 'euro', 'gram-altin', 'ceyrek-altin', 'schengen-vize',
+  'asgari-ucret', 'kyk-burs', 'emekli-en-dusuk-aylik', 'aclik-siniri', 'dogum-yardimi',
+]);
 const HINT_PRODUCTS = [
   { id: 'dolar', label: 'Dolar kuru' },
   { id: 'asgari-ucret', label: 'Asgari ücret' },
