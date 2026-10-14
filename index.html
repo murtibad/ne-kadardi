@@ -17,15 +17,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Apply the saved theme before first paint to avoid a light/dark flash.
+    try { var t = localStorage.getItem('ne-kadardi-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <h1 class="logo">Ne Kadardı?</h1>
-    <nav class="header-nav">
-      <a href="#hangisi" class="header-link">Hangisi pahalı?</a>
-      <a href="#zaman-makinesi" class="header-link">Zaman makinesi</a>
-    </nav>
+    <a href="#" class="logo" aria-label="Ne Kadardı? ana menü">Ne Kadardı?</a>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Açık / koyu temayı değiştir"></button>
   </header>
 
   <main>
@@ -33,6 +34,33 @@
       <div class="receipt-card">
         <p id="message-text">Yükleniyor…</p>
       </div>
+    </section>
+
+    <section id="home-screen" hidden>
+      <div class="home-intro">
+        <h2>Geçmişte fiyatlar ne kadardı?</h2>
+        <p>Bir mod seç, tahmin et, enflasyonu gör.</p>
+      </div>
+      <nav class="mode-list" aria-label="Oyun modları">
+        <a class="mode-card" href="#tahmin">
+          <span class="mode-name">Fiyat Tahmini</span>
+          <span class="mode-desc">Bir ürünün geçmişteki fiyatını tahmin et, gerçeğiyle karşılaştır.</span>
+          <span class="mode-meta" id="m-tahmin"></span>
+        </a>
+        <a class="mode-card" href="#hangisi">
+          <span class="mode-name">Hangisi Pahalı?</span>
+          <span class="mode-desc">İki fiyattan pahalı olanı seç, seriyi bozmadan sürdür.</span>
+          <span class="mode-meta" id="m-hangisi"></span>
+        </a>
+        <a class="mode-card" href="#zaman-makinesi">
+          <span class="mode-name">Zaman Makinesi</span>
+          <span class="mode-desc">Her ürünün yıllar içindeki fiyatını kaynaklarıyla incele.</span>
+        </a>
+        <a class="mode-card" href="#yil">
+          <span class="mode-name">Yıllık Fiş</span>
+          <span class="mode-desc">Bir yıl seç: o yıl her şey ne kadardı?</span>
+        </a>
+      </nav>
     </section>
 
     <section id="question-screen" hidden>
@@ -51,7 +79,7 @@
           </div>
           <div id="guess-steps" class="guess-steps" aria-label="Hızlı artır"></div>
           <button type="button" id="hint-btn" class="hint-btn" hidden>İpucu al (puan %20 düşer)</button>
-          <p id="hint-text" class="hint-text" role="status" aria-live="polite" hidden></p>
+          <div id="hint-text" class="hint-slip" role="status" aria-live="polite" hidden></div>
           <p id="guess-error" class="error" role="alert"></p>
           <button type="submit" class="btn primary">Tahmin et</button>
         </form>
@@ -112,7 +140,7 @@
         </div>
         <p id="v-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
         <button type="button" id="v-next" class="btn primary" hidden>Sonraki</button>
-        <a href="#" class="versus-back">Tahmin oyununa dön</a>
+        <a href="#" class="versus-back">Ana menüye dön</a>
       </div>
     </section>
 
@@ -120,7 +148,7 @@
       <div class="timeline-header">
         <h2>Yıllık fiş</h2>
         <p>Seçtiğin yılda doğrulanmış tüm fiyatlar, bugünkü fiyatla.</p>
-        <a href="#zaman-makinesi" class="btn primary timeline-back-btn">Zaman makinesi</a>
+        <a href="#" class="btn primary timeline-back-btn">Ana menü</a>
       </div>
       <div class="timeline-picker" role="group" aria-label="Yıl seç" id="year-picker"></div>
       <div class="receipt-wrapper">
@@ -137,7 +165,7 @@
       <div class="timeline-header">
         <h2>Zaman makinesi</h2>
         <p>Doğrulanmış tüm fiyatlar, kaynaklarıyla.</p>
-        <a href="#" class="btn primary timeline-back-btn">Oyuna dön</a>
+        <a href="#" class="btn primary timeline-back-btn">Ana menü</a>
         <a href="#yil" class="year-link">Yıla göre fiş: o yıl her şey ne kadardı?</a>
       </div>
       
@@ -158,7 +186,7 @@
   <footer class="site-footer">
     <p>Tüm fiyatlar kaynaklıdır. Hata görürsen
       <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a>.</p>
-    <p><a href="#zaman-makinesi" class="footer-link">Zaman makinesi</a></p>
+    <p><a href="#" class="footer-link">Ana menü</a></p>
     <p class="credit">v<span id="app-version"></span> · Yapan: <a href="https://github.com/murtibad" target="_blank" rel="noopener">Murat Tokaç</a></p>
   </footer>
 </body>

@@ -11,7 +11,7 @@ const HINT_PRODUCTS = [
   { id: 'asgari-ucret', label: 'Asgari ücret' },
 ];
 
-/** Returns [{label, text}] for the question's year, or null when no hint is available. */
+/** Returns [{label, value, period}] for the question's year, or null when no hint is available. */
 export function buildHint(question, allQuestions) {
   if (NO_HINT.has(question.productId)) return null;
   const lines = [];
@@ -20,7 +20,7 @@ export function buildHint(question, allQuestions) {
       .filter((x) => x.productId === id && x.year === question.year)
       .sort((a, b) => a.date.localeCompare(b.date));
     const hit = inYear[0];
-    if (hit) lines.push({ label, text: `${formatPeriod(hit.date)}: ${formatPrice(hit.price)}` });
+    if (hit) lines.push({ label, value: formatPrice(hit.price), period: formatPeriod(hit.date) });
   }
   return lines.length > 0 ? lines : null;
 }
