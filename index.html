@@ -46,14 +46,14 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="#" class="logo" aria-label="Ne Kadardı? ana menü">Ne Kadardı?</a>
+    <h1 class="site-title"><a href="#" class="logo" aria-label="Ne Kadardı? ana menü">Ne Kadardı?</a></h1>
     <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Açık / koyu temayı değiştir"></button>
   </header>
 
   <main>
     <section id="message-screen">
       <div class="receipt-card">
-        <p id="message-text">Yükleniyor…</p>
+        <p id="message-text" role="status">Yükleniyor…</p>
       </div>
     </section>
 
@@ -227,6 +227,9 @@
       </div>
     </section>
   </main>
+
+  <!-- Announces transient button feedback (copied, downloading...) that would otherwise only change a label. -->
+  <div id="sr-status" class="visually-hidden" role="status" aria-live="polite"></div>
 
   <footer class="site-footer">
     <p>Tüm fiyatlar kaynaklıdır. Hata görürsen

@@ -81,8 +81,19 @@ function resetShareBtn() {
   }
 }
 
+// Button labels change silently for screen readers, so mirror transient feedback here.
+// Clearing first makes an identical repeated message announce again.
+let announceTimeoutId = null;
+function announce(text) {
+  const el = $('sr-status');
+  el.textContent = '';
+  clearTimeout(announceTimeoutId);
+  announceTimeoutId = setTimeout(() => { el.textContent = text; }, 60);
+}
+
 function setBtnStatus(btnId, text) {
   if (shareTimeoutId !== null) clearTimeout(shareTimeoutId);
+  announce(text);
   $(btnId).textContent = text;
   $(btnId).removeAttribute('aria-busy');
   shareTimeoutId = setTimeout(() => {
@@ -286,7 +297,8 @@ async function prepareShareImage(btnId) {
   
   btn.setAttribute('aria-busy', 'true');
   btn.textContent = 'Hazırlanıyor…';
-  
+  announce('Hazırlanıyor…');
+
   const q = state.question;
   const r = state.result;
   const contextText = buildContextLine(q, state.all);
@@ -556,6 +568,7 @@ function setYearBtn(id, text, busy = false) {
   const btn = $(id);
   if (!(id in yearBtnLabels)) yearBtnLabels[id] = btn.textContent;
   btn.textContent = text;
+  if (text !== yearBtnLabels[id]) announce(text);
   if (busy) btn.setAttribute('aria-busy', 'true');
   else btn.removeAttribute('aria-busy');
 }
