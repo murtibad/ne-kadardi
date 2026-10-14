@@ -1140,6 +1140,30 @@
           }
         },
         {
+          "date": "2010-07",
+          "price": 5.95,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2010 gözlemi (CSV satırı 2010-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2011-07",
+          "price": 6.5,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2011 gözlemi (CSV satırı 2011-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2012-01",
           "price": 6.6,
           "status": "verified",
@@ -1148,6 +1172,18 @@
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
             "accessed": "2026-10-04",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2012-07",
+          "price": 8.25,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2012 gözlemi (CSV satırı 2012-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
             "kind": "dataset"
           }
         },
@@ -1164,6 +1200,18 @@
           }
         },
         {
+          "date": "2013-07",
+          "price": 8.5,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2013 gözlemi (CSV satırı 2013-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2015-01",
           "price": 9.25,
           "status": "verified",
@@ -1171,6 +1219,42 @@
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
             "accessed": "2026-10-03",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2015-07",
+          "price": 10.25,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2015 gözlemi (CSV satırı 2015-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2016-07",
+          "price": 10.75,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2016 gözlemi (CSV satırı 2016-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 13.99,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2019 gözlemi (CSV satırı 2019-07-09). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
             "kind": "dataset"
           }
         },
@@ -1187,6 +1271,18 @@
           }
         },
         {
+          "date": "2020-07",
+          "price": 13.99,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2020 gözlemi (CSV satırı 2020-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 14.99,
           "status": "verified",
@@ -1195,6 +1291,18 @@
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
             "accessed": "2026-10-04",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 19.99,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2021 gözlemi (CSV satırı 2021-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
             "kind": "dataset"
           }
         },
@@ -1211,6 +1319,18 @@
           }
         },
         {
+          "date": "2022-07",
+          "price": 47,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2022 gözlemi (CSV satırı 2022-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2023-01",
           "price": 75,
           "status": "verified",
@@ -1219,6 +1339,18 @@
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
             "accessed": "2026-10-04",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 95,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2023 gözlemi (CSV satırı 2023-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
             "kind": "dataset"
           }
         },
@@ -1235,6 +1367,18 @@
           }
         },
         {
+          "date": "2024-07",
+          "price": 155,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2024 gözlemi (CSV satırı 2024-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2025-01",
           "price": 190,
           "status": "verified",
@@ -1243,6 +1387,18 @@
             "title": "The Economist Big Mac Index",
             "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
             "accessed": "2026-10-04",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2025-07",
+          "price": 225,
+          "status": "verified",
+          "note": "Economist Big Mac Index, Temmuz 2025 gözlemi (CSV satırı 2025-07-01). Bir önceki gözlemden farklı değerler alındı.",
+          "source": {
+            "title": "The Economist Big Mac Index",
+            "url": "https://github.com/TheEconomist/big-mac-data/blob/master/output-data/big-mac-full-index.csv",
+            "accessed": "2026-10-14",
             "kind": "dataset"
           }
         },

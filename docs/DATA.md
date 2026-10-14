@@ -142,7 +142,9 @@ Source: EPDK "Petrol Piyasası Bayi Satış Fiyatı Bülteni"
 
 - The Turkey series repeats the same price for several consecutive observations (for example
   10.75 from 2017 to 2019). We cannot tell a real unchanged price from a carried-forward value,
-  so only January observations that differ from the previous one are used. Existing entries stay.
+  so only January and July observations that differ from the previous observation are used
+  (July added in v0.56.0). 2014-07 (9.25) is left out because the existing 2015-01 entry has the
+  same value. Existing entries stay.
 
 ## Gram altın (derived value)
 
