@@ -759,7 +759,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 /* "Sırala" mode */
 .order-card { text-align: center; }
 .order-help { font-family: var(--font-ui); font-size: 0.875rem; color: var(--muted-on-paper); margin: -8px 0 16px; }
-.order-items { display: grid; gap: 10px; margin-bottom: 16px; }
+.order-items { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 16px; }
 .order-item {
   display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px;
   padding: 10px 12px; text-align: left; cursor: pointer;
@@ -775,7 +775,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .order-item[aria-pressed="true"] .o-rank { border: 0; background: var(--ink); color: var(--paper); }
 .order-item .o-icon { flex: none; width: 36px; height: 36px; }
 .order-item .o-body { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.order-item .o-unit { font-family: var(--font-ui); font-size: 0.8125rem; color: var(--muted-on-paper); }
+.order-item .o-unit { font-family: var(--font-ui); font-size: 0.8125rem; color: var(--muted-on-paper); overflow-wrap: anywhere; }
 .order-row { cursor: default; }
 .order-row .o-rank { border: 0; background: var(--ink); color: var(--paper); }
 .order-row .o-price { font: 700 1rem var(--font-mono); white-space: nowrap; }
