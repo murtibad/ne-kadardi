@@ -5166,6 +5166,176 @@
           }
         }
       ]
+    },
+    {
+      "id": "kurban-vekalet-bedeli",
+      "name": "Kurban vekâlet bedeli (Diyanet / TDV)",
+      "unit": "1 kurban, yurt içi vekâletle kesim bedeli",
+      "region": null,
+      "source_hint": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı her yıl Kurban Bayramı öncesi açıklar; haber arşivi.",
+      "image": {
+        "src": "img/kurban.svg",
+        "alt": "Koyun çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026",
+        "price": 18000,
+        "status": "verified",
+        "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: dha.com.tr https://www.dha.com.tr/yerel-haberler/ankara/vekaletle-kurban-bedeli-yurt-ici-18-yurt-disi-2858132.",
+        "source": {
+          "title": "yeniankara.com.tr",
+          "url": "https://www.yeniankara.com.tr/guncel/diyanet-isleri-baskani-acikladi-2026-kurban-bedelleri-belli-oldu-165936",
+          "accessed": "2026-10-14",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2013",
+          "price": 550,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/Ekonomi/2013/09/11/kurban-fiyatlari-belli-oldu",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2015",
+          "price": 625,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: takvim.com.tr https://www.takvim.com.tr/Ekonomi/2015/08/17/diyanet-vekalet-kurban-bedelini-acikladi.",
+          "source": {
+            "title": "karar.com",
+            "url": "https://www.karar.com/turkiye-diyanet-vakfi-kurban-fiyatlarini-acikladi-31793",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016",
+          "price": 690,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: trthaber.com https://www.trthaber.com/haber/turkiye/yurt-ici-ve-yurt-disi-vekaletle-kurban-kesimi-268840.html · milliyet.com.tr https://www.milliyet.com.tr/gundem/kurbanlik-fiyatlari-ne-kadar-2017-yili-kurbanlik-fiyatlari-2505139.",
+          "source": {
+            "title": "trthaber.com",
+            "url": "https://www.trthaber.com/haber/gundem/diyanet-vakfi-kurban-bedellerini-acikladi-264993.html",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017",
+          "price": 850,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/kurbanlik-fiyatlari-ne-kadar-2017-yili-kurbanlik-fiyatlari-2505139 · yenisafak.com https://www.yenisafak.com/kurbanlik-fiyatlari-ne-kadar-iste-2017-kurban-fiyatlari-h-2779830.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://cnnturk.com/ekonomi/diyanet-vekaletle-kurban-bedellerini-acikladi-664292",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 850,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: tgrthaber.com https://www.tgrthaber.com/ekonomi/2018-kurban-fiyatlari-ne-kadar-kurban-kesim-bedeli-belli-oldu-kurbanlik-fiyatlari-249272.",
+          "source": {
+            "title": "karar.com",
+            "url": "https://www.karar.com/diyanet-acikladi-2018-kurbanlik-fiyatlari-belli-oldu-910410",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 890,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: gazetebirlik.com https://www.gazetebirlik.com/vekaleten-kurban-kesim-bedeli-aciklandi · trthaber.com https://www.trthaber.com/haber/turkiye/vekalet-yoluyla-kurban-kesim-bedelleri-belirlendi-421334.html · cnnturk.com https://www.cnnturk.com/turkiye/kurban-bayrami-ne-zaman-diyanet-2019-kurban-bedeli-belli-oldu.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/turkiye/diyanet-vekaleten-kurban-kesim-bedellerini-acikladi,MRV2WqynLEybi4xw0ikmpw",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 975,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: karar.com https://www.karar.com/2020-kurban-vekalet-ucreti-ne-kadar-iste-diyanete-gore-vekaleten-kurbanlik-1570646 · ensonhaber.com https://www.ensonhaber.com/gundem/kurban-kesim-bedeli-belli-oldu · ekonomist.com.tr https://www.ekonomist.com.tr/haberler/vekaletle-kurban-kesim-fiyatlari-belli-oldu.html.",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2020/06/22/son-dakika-kurban-vekalet-ucreti-belli-oldu",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021",
+          "price": 1125,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: ensonhaber.com https://www.ensonhaber.com/yasam/diyanet-kurban-kesim-fiyatlari-ne-kadar-yurt-ici-ve-yurt-disi-kurban-fiyati-2021.",
+          "source": {
+            "title": "milliyet.com.tr",
+            "url": "https://www.milliyet.com.tr/galeri/kurban-kesim-bedelli-ne-kadar-2021-kac-tl-yurt-ici-ve-yurt-disi-kurban-kesim-bedeli-aciklandi-6527740",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 2250,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: ekonomist.com.tr https://www.ekonomist.com.tr/haberler/vekalet-yoluyla-kurban-kesim-bedeli-2022-ne-kadar-diyanet-isleri-baskani-acikladi-32429 · timeturk.com https://www.timeturk.com/genel/2022-kurban-vekalet-fiyatlari-2022-yurt-disi-kurban-hissesi-ne-kadar-yurt-ici-turkiye-kurban-vekalet-kac-tl/haber-1736406.",
+          "source": {
+            "title": "ensonhaber.com",
+            "url": "https://www.ensonhaber.com/gundem/bu-yilin-vekalet-yoluyla-kurban-kesim-bedeli-belli-oldu",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 11750,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: cnnturk.com https://www.cnnturk.com/turkiye/son-dakika-diyanet-isleri-baskani-erbas-kurban-kesim-bedelini-acikladi-2111732 · politikam.com https://www.politikam.com/diyanet-acikladi-2024-yili-vekaletle-kurban-kesim-bedeli-belli-oldu.",
+          "source": {
+            "title": "dunya.com",
+            "url": "https://www.dunya.com/gundem/diyanet-kurban-kesim-bedeli-2024-kurban-kesim-bedeli-ne-kadar-iste-vekaletle-kurban-kesim-bedeli-haberi-725613",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 13500,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: ntv.com.tr https://www.ntv.com.tr/turkiye/galeri-kurban-kesim-bedeli-ne-kadar-kac-tl-oldu-2025-diyanet-yurt-ici-ve-yurt-disi-vekaletle-kurban-kesim-bedeli,qUTe9raxgUK5TvC4vKL5Vg · haberturk.com https://www.haberturk.com/vekaletle-kurban-kesim-bedeli-yurt-ici-yurt-disi-2025-diyanet-isleri-ve-kizilay-in-bu-sene-kurban-kesim-bedeli-aciklandi-mi-3791007 · habergazetesi.com.tr https://www.habergazetesi.com.tr/2025-vekalet-ile-kurban-kesim-bedeli-aciklandi.",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/diyanet-kurban-kesim-bedelini-13500-tl-olarak-belirledi-3746928",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 18000,
+          "status": "verified",
+          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Doğrulama: dha.com.tr https://www.dha.com.tr/yerel-haberler/ankara/vekaletle-kurban-bedeli-yurt-ici-18-yurt-disi-2858132.",
+          "source": {
+            "title": "yeniankara.com.tr",
+            "url": "https://www.yeniankara.com.tr/guncel/diyanet-isleri-baskani-acikladi-2026-kurban-bedelleri-belli-oldu-165936",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.35.0] - 2026-10-14
+### Added
+- data: Diyanet / Türkiye Diyanet Vakfı proxy sacrifice (vekâletle kurban kesim) fee, domestic, announced yearly, 2013 and 2015-2022, 2024-2026 (550 TL to 18,000 TL); eleven values confirmed by two news sites, 2013 by one. 2023 is left out because sources disagree (5,950 vs 7,950 TL); 2010-2012 and 2014 had no source.
+- ui: sheep icon.
+
 ## [0.34.0] - 2026-10-08
 ### Added
 - data: Istanbul public transport full electronic fare, 2011-2026, thirteen steps each confirmed by two news sites (was a todo entry).
