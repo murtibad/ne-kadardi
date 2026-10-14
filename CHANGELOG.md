@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.43.2] - 2026-10-14
+### Changed
+- ui: no hint button for gold, the Schengen fee and wage-linked amounts (scholarship, pension, hunger line, birth benefit), besides currencies and the minimum wage, because the hint would give the answer away.
+
 ## [0.43.1] - 2026-10-14
 ### Changed
 - ui: short colour fade and a small spin on the theme toggle when switching light/dark (skipped with reduced motion).

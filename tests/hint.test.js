@@ -19,7 +19,9 @@ test('hint lists the dollar rate and minimum wage of the question year', () => {
 test('hint skips missing products and the hint products themselves', () => {
   assert.equal(buildHint({ productId: 'benzin', year: 2013 }, all).length, 1);
   assert.equal(buildHint({ productId: 'benzin', year: 2030 }, all), null);
-  assert.equal(buildHint({ productId: 'dolar', year: 2012 }, all), null);
+  for (const id of ['dolar', 'euro', 'gram-altin', 'ceyrek-altin', 'schengen-vize', 'asgari-ucret', 'kyk-burs']) {
+    assert.equal(buildHint({ productId: id, year: 2012 }, all), null, id);
+  }
 });
 
 test('penalty only applies when a hint was used', () => {
