@@ -22,6 +22,23 @@
     try { var t = localStorage.getItem('ne-kadardi-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
   <script type="module" src="js/main.js"></script>
+  <!-- Without these hints the browser only finds the imports after main.js arrives and the
+       data only after every module ran: three round trips in a row. tests/preload.test.js
+       keeps this list in sync with the static imports. -->
+  <link rel="preload" href="data/prices.json" as="fetch" crossorigin>
+  <link rel="modulepreload" href="js/format.js">
+  <link rel="modulepreload" href="js/game.js">
+  <link rel="modulepreload" href="js/timeline.js">
+  <link rel="modulepreload" href="js/source-kind.js">
+  <link rel="modulepreload" href="js/confetti.js">
+  <link rel="modulepreload" href="js/share-model.js">
+  <link rel="modulepreload" href="js/tax.js">
+  <link rel="modulepreload" href="js/cashier.js">
+  <link rel="modulepreload" href="js/versus.js">
+  <link rel="modulepreload" href="js/yearly.js">
+  <link rel="modulepreload" href="js/hint.js">
+  <link rel="modulepreload" href="js/basket.js">
+  <link rel="modulepreload" href="js/version.js">
 </head>
 <body>
   <header class="site-header">
