@@ -817,6 +817,18 @@
           }
         },
         {
+          "date": "2010-07",
+          "price": 599.12,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 54,68 TL AGİ ilave edilmiştir. Dönem: 01.07-31.12. Ayrıca: muhasebetr.com/2010-asgari-ucret/.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2010-31.12.2010",
+            "url": "https://www.csgb.gov.tr/Media/leieyqw5/2010_ikincialtiay.pdf",
+            "accessed": "2026-10-14",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2011-01",
           "price": 629.96,
           "status": "verified",
@@ -825,6 +837,18 @@
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2011-30.06.2011",
             "url": "https://www.csgb.gov.tr/Media/a2bp4yjf/2011_birincialtiay.pdf",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-07",
+          "price": 658.95,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 59,74 TL AGİ ilave edilmiştir. Dönem: 01.07-31.12. Ayrıca: memurlar.net/haber/199066.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2011-31.12.2011",
+            "url": "https://www.csgb.gov.tr/Media/q1mlep4m/2011_ikincialtiay.pdf",
+            "accessed": "2026-10-14",
             "kind": "official"
           }
         },
@@ -841,6 +865,18 @@
           }
         },
         {
+          "date": "2012-07",
+          "price": 739.79,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 66,49 TL AGİ ilave edilmiştir. Dönem: 01.07-31.12. Ayrıca: finans.mynet.com 2012 asgari ücret haberi.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2012-31.12.2012",
+            "url": "https://www.csgb.gov.tr/Media/mzgj14zo/2012_ikincialtiay.pdf",
+            "accessed": "2026-10-14",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2013-01",
           "price": 773.01,
           "status": "verified",
@@ -849,6 +885,18 @@
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2013-30.06.2013",
             "url": "https://www.csgb.gov.tr/Media/2b3hqq11/2013_birincialtiay.pdf",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-07",
+          "price": 803.68,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 73,40 TL AGİ ilave edilmiştir. Dönem: 01.07-31.12. Ayrıca: muhasebetr.com/2013-asgari-ucret/.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2013-31.12.2013",
+            "url": "https://www.csgb.gov.tr/Media/czln2x0x/2013_ikincialtiay.pdf",
+            "accessed": "2026-10-14",
             "kind": "official"
           }
         },
@@ -865,6 +913,18 @@
           }
         },
         {
+          "date": "2014-07",
+          "price": 891.03,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 80,33 TL AGİ ilave edilmiştir. Dönem: 01.07-31.12. Ayrıca: TÜRMOB asgari_ucret2014.pdf (891,03; muhasebetr.com 891,04 yazıyor, resmî iki kaynak 891,03).",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2014-31.12.2014",
+            "url": "https://www.csgb.gov.tr/Media/zccpn3sk/2014_ikincialtiay.pdf",
+            "accessed": "2026-10-14",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2015-01",
           "price": 949.07,
           "status": "verified",
@@ -873,6 +933,18 @@
             "title": "ÇSGB Asgari Ücret İstatistikleri",
             "url": "https://www.csgb.gov.tr/Media/iekd3tkc/2015_birincialtiay.pdf",
             "accessed": "2026-10-03",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-07",
+          "price": 1000.54,
+          "status": "verified",
+          "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 90,11 TL AGİ ilave edilmiştir. Dönem: 01.07-31.12. Ayrıca: muhasebetr.com/2015-asgari-ucret/.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2015-31.12.2015",
+            "url": "https://www.csgb.gov.tr/Media/xcwjehlq/2015_ikincialtiay.pdf",
+            "accessed": "2026-10-14",
             "kind": "official"
           }
         },
@@ -961,6 +1033,18 @@
           }
         },
         {
+          "date": "2022-07",
+          "price": 5500.35,
+          "status": "verified",
+          "note": "Net asgari ücret; gelir vergisi ve damga vergisi hesaplanmamıştır (AGİ uygulanmaz). Dönem: 01.07-31.12. Ayrıca: KPMG Vergi mali bülteni 202207.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2022-31.12.2022",
+            "url": "https://www.csgb.gov.tr/Media/3dhknx0c/2022-tem.pdf",
+            "accessed": "2026-10-14",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2023-01",
           "price": 8506.8,
           "status": "verified",
@@ -969,6 +1053,18 @@
             "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.01.2023-30.06.2023",
             "url": "https://www.csgb.gov.tr/Media/fqvbfpd0/2023_birincialtiay.pdf",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 11402.32,
+          "status": "verified",
+          "note": "Net asgari ücret; gelir vergisi ve damga vergisi hesaplanmamıştır (AGİ uygulanmaz). Dönem: 01.07-31.12. Ayrıca: esin.av.tr 03.07.2023.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyet, 01.07.2023-31.12.2023",
+            "url": "https://www.csgb.gov.tr/Media/3xth4d4y/temmuz-2023-asgari-ucret.pdf",
+            "accessed": "2026-10-14",
             "kind": "official"
           }
         },

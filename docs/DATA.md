@@ -134,7 +134,9 @@ Source: EPDK "Petrol Piyasası Bayi Satış Fiyatı Bülteni"
   indirimi ilave edilmiştir", so the number is net with AGİ. From 2022 no income or stamp tax is
   calculated, so net is simply gross minus SGK and unemployment premiums.
 - 2016-2021 PDFs cover the whole year, earlier ones and 2022/2023 cover the first half. July
-  changes (2022, 2023, 2025) are not in the data yet.
+  values (`YYYY-07`, the `ikincialtiay` / `tem` PDFs) are in for 2010-2015, 2022 and 2023; each
+  note names an independent second publisher. The result's purchasing-power line uses the wage
+  of the same half-year, the hint uses the first value of the year.
 
 ## Economist Big Mac Index (Türkiye)
 
