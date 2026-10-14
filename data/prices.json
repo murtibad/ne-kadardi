@@ -5020,6 +5020,30 @@
       },
       "prices": [
         {
+          "date": "2017-01",
+          "price": 1479.18,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Doğrulama: muhasebenews.com https://www.muhasebenews.com/?p=5032 (aynı tutar).",
+          "source": {
+            "title": "Türk-İş Ocak 2017 açlık ve yoksulluk sınırı, turkis.org.tr",
+            "url": "https://turkis.org.tr/?p=134127",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 1615.49,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Doğrulama: diken.com.tr https://www.diken.com.tr/?p=531027 (1615 lira 49 kuruş).",
+          "source": {
+            "title": "Türk-İş Ocak 2018 açlık ve yoksulluk sınırı, turkis.org.tr",
+            "url": "https://www.turkis.org.tr/?p=139656",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2019-01",
           "price": 2008.66,
           "status": "verified",
@@ -5032,6 +5056,18 @@
           }
         },
         {
+          "date": "2020-01",
+          "price": 2219.45,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Doğrulama: capital.com.tr https://www.capital.com.tr/haberler/tum-haberler/turk-is-aclik-siniri-2-bin-219-tl (2 bin 219 TL, tam liraya yuvarlanmış).",
+          "source": {
+            "title": "Türk-İş Ocak 2020 açlık ve yoksulluk sınırı bülteni, turkis.org.tr",
+            "url": "https://www.turkis.org.tr/storage/2021/10/ibw3sva2jukw-doc.doc",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 2651.87,
           "status": "verified",
@@ -5040,6 +5076,30 @@
             "title": "Türk-İş açlık sınırı, finans.mynet.com",
             "url": "https://finans.mynet.com/haber/detay/ekonomi/turk-is-acikladi-iste-ocak-ayi-aclik-ve-yoksulluk-siniri/413612/",
             "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 4249.95,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Doğrulama: karar.com https://www.karar.com/ekonomi-haberleri/turk-is-aclik-siniri-4-bin-249-tl-1649431 (aynı tutar).",
+          "source": {
+            "title": "Türk-İş Ocak 2022 açlık ve yoksulluk sınırı, turkis.org.tr",
+            "url": "https://turkis.org.tr/?p=147375",
+            "accessed": "2026-10-14",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 8864,
+          "status": "verified",
+          "note": "Türk-İş açlık sınırı (4 kişilik ailenin aylık gıda harcaması), Ocak ayı. Kaynak bir sendika araştırmasıdır. Haberler tam lira veriyor (8 bin 864 TL); kuruşlu tutar yalnız Türk-İş PDF'inde, okunamadı. Doğrulama: paratic.com https://paratic.com/aclik-siniri-ocakta-9-bin-liraya-dayandi/ · sozcu.com.tr https://www.sozcu.com.tr/aclik-siniri-asgari-ucreti-gecti-2-wp7573502.",
+          "source": {
+            "title": "Türk-İş açlık sınırı, bianet.org",
+            "url": "https://bianet.org/haber/aclik-siniri-ilk-aydan-asgari-ucreti-gecti-273500",
+            "accessed": "2026-10-14",
             "kind": "news"
           }
         },

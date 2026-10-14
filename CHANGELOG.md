@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.54.0] - 2026-10-14
+### Added
+- data: Türk-İş açlık sınırı for January 2017, 2018, 2020, 2022 and 2023 (series now 10 values, 2017-2026). Four come from Türk-İş's own releases (`kind: dataset`) with a news outlet giving the same figure; 2023 uses the whole-lira figure from three news outlets because the kuruş value is only in an unreadable PDF.
+
 ## [0.53.0] - 2026-10-14
 ### Added
 - ui: "Paylaş" after each answer in Hangisi Pahalı? and Hangi Yıl? (`js/streak-share.js`): shares the running streak, or the one a wrong answer just ended; hidden while there is nothing to share.
