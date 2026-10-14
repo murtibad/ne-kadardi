@@ -9,6 +9,7 @@ import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
 import { pickPair, judgePair, nextStreak } from './versus.js';
 import { availableYears, buildYearReceipt } from './yearly.js';
+import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -17,7 +18,7 @@ const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt
 
 const state = {
   recentProducts: [], 
-  raw: null, all: [], timelines: [], selectedYear: null, question: null, result: null, 
+  hinted: false, raw: null, all: [], timelines: [], selectedYear: null, question: null, result: null, 
   played: 0, total: 0, 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null 
 };
@@ -116,6 +117,16 @@ function nextQuestion() {
   $('q-name').textContent = questionTitle(q);
   $('q-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('guess-input').value = '';
+  state.hinted = false;
+  const hint = buildHint(q, state.all);
+  $('hint-btn').hidden = !hint;
+  $('hint-text').hidden = true;
+  $('hint-btn').onclick = () => {
+    state.hinted = true;
+    $('hint-text').textContent = hint.map((l) => `${l.label} · ${l.text}`).join('  |  ');
+    $('hint-text').hidden = false;
+    $('hint-btn').hidden = true;
+  };
   renderGuessSteps();
   $('guess-error').textContent = '';
   showGameScreen('question-screen');
@@ -130,7 +141,8 @@ function onGuess(event) {
     return;
   }
   const q = state.question;
-  state.result = { guess, ...scoreGuess(guess, q.price) };
+  const scored = scoreGuess(guess, q.price);
+  state.result = { guess, ...scored, score: applyHintPenalty(scored.score, state.hinted), hinted: state.hinted };
   state.played += 1;
   state.total += state.result.score;
   saveSession();
@@ -162,7 +174,7 @@ function renderResult(q, r) {
   $('r-guess').textContent = formatPrice(r.guess);
   $('r-actual').textContent = formatPrice(q.price);
   $('r-verdict').textContent = verdictText(r);
-  $('r-score').textContent = `${r.score}/100`;
+  $('r-score').textContent = r.hinted ? `${r.score}/100 (ipucu: -%20)` : `${r.score}/100`;
   const tier = scoreTier(r.score);
   $('r-cashier').textContent = `“${cashierComment(tier)}”`;
   document.querySelector('.verdict-box').dataset.tier = tier;
