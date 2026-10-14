@@ -141,9 +141,13 @@ test('scoreBasket handles empty, over, exact fit, and partial guesses', () => {
     total: 120,
     over: true,
     empty: false,
-    score: 0,
+    score: 40, // 20% over, 3 points per 1%
     left: -20,
   });
+
+  // 34% or more over scores 0
+  assert.equal(scoreBasket(round, { d: 3, b: 1 }).score, 0); // 140
+  assert.equal(scoreBasket(round, { a: 11 }).score, 70); // 110, 10% over
 
   // 3. Exact fit (total === budget => score 100, left 0)
   // 1 * 10 + 2 * 20 + 1 * 10 + 1 * 40 = 100 -> or 2 * 30 + 4 * 10 = 100

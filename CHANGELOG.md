@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.46.0] - 2026-10-14
+### Changed
+- game: going over the budget in "Sepet Kurma" no longer scores 0; each 1% over costs 3 points (10% over → 70, a third over → 0). A simulation showed even good guessers busted in about half the rounds under the old rule. Rules text and verdict updated.
+
 ## [0.45.0] - 2026-10-14
 ### Added
 - ui: "Yıllık fiş" can be shared or downloaded as a long receipt image (`js/year-share-image.js`): one line per product with that year's price and the rise to today, plus the biggest riser. The receipt paper drawing is shared with the result image.
