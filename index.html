@@ -42,6 +42,7 @@
   <link rel="modulepreload" href="js/cashier.js">
   <link rel="modulepreload" href="js/versus.js">
   <link rel="modulepreload" href="js/keys.js">
+  <link rel="modulepreload" href="js/streak-share.js">
   <link rel="modulepreload" href="js/yearly.js">
   <link rel="modulepreload" href="js/hint.js">
   <link rel="modulepreload" href="js/basket.js">
@@ -202,7 +203,10 @@
         </div>
         <p class="key-hint" aria-hidden="true">Klavye: ← → ya da 1 2</p>
         <p id="v-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
-        <button type="button" id="v-next" class="btn primary" hidden>Sonraki</button>
+        <div class="order-actions">
+          <button type="button" id="v-share" class="btn secondary" hidden>Paylaş</button>
+          <button type="button" id="v-next" class="btn primary" hidden>Sonraki</button>
+        </div>
         <a href="#" class="versus-back">Ana menüye dön</a>
       </div>
     </section>
@@ -238,7 +242,10 @@
         <div id="yg-options" class="yg-options" role="group" aria-labelledby="yg-title"></div>
         <p class="key-hint" aria-hidden="true">Klavye: 1-4</p>
         <p id="yg-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
-        <button type="button" id="yg-next" class="btn primary" hidden>Sonraki</button>
+        <div class="order-actions">
+          <button type="button" id="yg-share" class="btn secondary" hidden>Paylaş</button>
+          <button type="button" id="yg-next" class="btn primary" hidden>Sonraki</button>
+        </div>
         <a href="#" class="versus-back">Ana menüye dön</a>
       </div>
     </section>

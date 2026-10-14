@@ -9,6 +9,8 @@ import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
 import { pickPair, judgePair, nextStreak } from './versus.js';
 import { isPlainKey, pairSide } from './keys.js';
+import { buildStreakShareText } from './streak-share.js';
+import { shareTextFromButton } from './share-text.js';
 import { availableYears, buildYearReceipt, buildYearShareModel, buildYearShareText, buildYearShareFileName } from './yearly.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
@@ -473,7 +475,7 @@ function renderTimelineScreen(focusProductId = null) {
 }
 
 // "Hangisi daha pahalıydı?" mode: pick the pricier of two past prices, build a streak.
-const versus = { pair: null, recent: [], streak: 0, best: 0, locked: false };
+const versus = { pair: null, recent: [], streak: 0, best: 0, locked: false, shareStreak: 0 };
 
 function loadVersusBest() {
   try {
@@ -508,6 +510,7 @@ function renderVersus() {
   }
   $('v-feedback').textContent = '';
   $('v-next').hidden = true;
+  $('v-share').hidden = true;
   $('v-streak').textContent = versus.streak;
   $('v-best').textContent = versus.best;
   show('versus-screen');
@@ -518,6 +521,8 @@ function onVersusPick(side) {
   if (versus.locked || !versus.pair) return;
   versus.locked = true;
   const res = judgePair(versus.pair, side);
+  // A wrong answer ends the streak; share the one that just ended, not the reset 0.
+  versus.shareStreak = res.correct ? versus.streak + 1 : versus.streak;
   versus.streak = nextStreak(versus.streak, res.correct);
   if (versus.streak > versus.best) { versus.best = versus.streak; saveVersusBest(); }
   for (const s of ['a', 'b']) {
@@ -533,6 +538,7 @@ function onVersusPick(side) {
   $('v-streak').textContent = versus.streak;
   $('v-best').textContent = versus.best;
   $('v-next').hidden = false;
+  $('v-share').hidden = versus.shareStreak === 0 && versus.best === 0; // nothing to share yet
   $('v-next').focus();
 }
 
@@ -841,6 +847,8 @@ async function init() {
   $('v-a').addEventListener('click', () => onVersusPick('a'));
   $('v-b').addEventListener('click', () => onVersusPick('b'));
   $('v-next').addEventListener('click', renderVersus);
+  $('v-share').addEventListener('click', (e) => shareTextFromButton(e.currentTarget,
+    buildStreakShareText('Hangisi Pahalı?', versus.shareStreak, versus.best, location.href.split('#')[0] + '#hangisi')));
   document.addEventListener('keydown', (event) => {
     if ($('versus-screen').hidden || versus.locked || !isPlainKey(event)) return;
     const side = pairSide(event.key);

@@ -8,6 +8,7 @@
   --muted-on-paper: #737068;
   --accent-on-paper: #d32f2f; /* red text on the receipt paper */ /* secondary text on the receipt paper */
   --accent: #d32f2f; /* Bold red */
+  --accent-on-bg: #c62828; /* the logo on the page background; --accent is 4.4:1 there */
   --line: #d6d3cb;
   /* Result tiers; all three stay >= 4.5:1 on the receipt paper in both colour modes */
   --tier-great: #14532d;
@@ -37,6 +38,7 @@
     --muted: #8b887f;
     --muted-on-paper: #504c45; /* paper stays light in dark mode, so its text must be dark */
     --accent-on-paper: #b3261e; /* --accent is only 3.9:1 on the dark-mode paper */
+    --accent-on-bg: #ef5350; /* --accent is 3.5:1 on the dark page */
     --line: #b5b1a8; /* Darker dashes on the light receipt */
   }
 }
@@ -50,6 +52,7 @@
     --muted: #8b887f;
     --muted-on-paper: #504c45; /* paper stays light in dark mode, so its text must be dark */
     --accent-on-paper: #b3261e; /* --accent is only 3.9:1 on the dark-mode paper */
+    --accent-on-bg: #ef5350; /* --accent is 3.5:1 on the dark page */
     --line: #b5b1a8; /* Darker dashes on the light receipt */
 }
 
@@ -89,7 +92,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   font-weight: 700;
   font-size: 1.5rem; 
   margin: 0; 
-  color: var(--accent); 
+  color: var(--accent-on-bg); 
   letter-spacing: -0.02em;
 }
 

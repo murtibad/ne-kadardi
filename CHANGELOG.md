@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.53.0] - 2026-10-14
+### Added
+- ui: "Paylaş" after each answer in Hangisi Pahalı? and Hangi Yıl? (`js/streak-share.js`): shares the running streak, or the one a wrong answer just ended; hidden while there is nothing to share.
+### Fixed
+- a11y: the logo reached only 3.5:1 on the dark page (4.4:1 in light); new `--accent-on-bg` token brings both to 5:1.
+
 ## [0.52.0] - 2026-10-14
 ### Added
 - ui: "İstatistiklerim" screen (`#istatistik`, `js/stats.js` + `js/stats-ui.js`): every mode's saved score on one receipt, with a two-step "Skorları sıfırla" (no browser dialog) that clears scores but keeps the theme.

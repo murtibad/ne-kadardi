@@ -55,6 +55,7 @@ js/year-guess-ui.js "Hangi Yıl?" screen
 js/mode-share.js    share texts for the quick modes (pure, tested)
 js/share-text.js    share sheet / clipboard helper
 js/keys.js          desktop keyboard shortcuts (pure, tested)
+js/streak-share.js  streak share text for Hangisi Pahalı? and Hangi Yıl? (pure, tested)
 js/stats.js         "İstatistiklerim" rows from saved scores (pure, tested)
 js/stats-ui.js      "İstatistiklerim" screen and reset
 js/timeline.js      time machine rows

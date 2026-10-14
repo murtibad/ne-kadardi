@@ -3,12 +3,14 @@ import { pickYearRound, judgeYear } from './year-guess.js';
 import { formatPrice, formatPeriod } from './format.js';
 import { questionTitle } from './share-model.js';
 import { isPlainKey, optionIndex } from './keys.js';
+import { buildStreakShareText } from './streak-share.js';
+import { shareTextFromButton } from './share-text.js';
 
 const BEST_KEY = 'ne-kadardi-yearguess-best';
 
 const $ = (id) => document.getElementById(id);
 
-const game = { round: null, recent: [], streak: 0, best: 0, locked: false, questions: [] };
+const game = { round: null, recent: [], streak: 0, best: 0, locked: false, questions: [], shareStreak: 0 };
 
 function loadBest() {
   try {
@@ -61,6 +63,7 @@ function newRound() {
   }
   $('yg-feedback').textContent = '';
   $('yg-next').hidden = true;
+  $('yg-share').hidden = true;
   renderStreak();
   return true;
 }
@@ -70,6 +73,7 @@ function onPick(event) {
   if (!btn || game.locked || !game.round) return;
   game.locked = true;
   const res = judgeYear(game.round, Number(btn.dataset.year));
+  game.shareStreak = res.correct ? game.streak + 1 : game.streak;
   game.streak = res.correct ? game.streak + 1 : 0;
   if (game.streak > game.best) { game.best = game.streak; saveBest(); }
   for (const b of $('yg-options').querySelectorAll('.yg-option')) {
@@ -84,6 +88,7 @@ function onPick(event) {
     : `Yanlış. Bu fiyat ${period} tarihine ait, ${res.off} yıl saptın.`;
   renderStreak();
   $('yg-next').hidden = false;
+  $('yg-share').hidden = game.shareStreak === 0 && game.best === 0; // nothing to share yet
   $('yg-next').focus();
 }
 
@@ -103,5 +108,7 @@ export function initYearGuess(questions) {
     const i = optionIndex(event.key, buttons.length);
     if (i !== null && !buttons[i].disabled) { event.preventDefault(); buttons[i].click(); }
   });
+  $('yg-share').addEventListener('click', (e) => shareTextFromButton(e.currentTarget,
+    buildStreakShareText('Hangi Yıl?', game.shareStreak, game.best, location.href.split('#')[0] + '#hangi-yil')));
   $('yg-next').addEventListener('click', () => { if (newRound()) $('yg-title').focus(); });
 }
