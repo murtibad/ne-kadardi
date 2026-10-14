@@ -765,6 +765,18 @@ function onHashChange() {
   } else {
     renderHome();
   }
+  rescueFocus();
+}
+
+// After in-app navigation the focused link ("Ana menüye dön", a menu card) is inside a now
+// hidden screen, so keyboard and screen reader users would restart from the top of the page.
+// The first load is left alone: focus on <body> is the browser's normal starting point.
+function rescueFocus() {
+  if (!document.activeElement?.closest('[hidden]')) return;
+  const heading = document.querySelector('main > section:not([hidden]) h2');
+  if (!heading) return;
+  if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+  heading.focus({ preventScroll: true });
 }
 window.addEventListener('hashchange', onHashChange);
 
