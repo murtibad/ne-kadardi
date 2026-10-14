@@ -1091,6 +1091,18 @@
             "accessed": "2026-10-04",
             "kind": "official"
           }
+        },
+        {
+          "date": "2026-01",
+          "price": 28075.5,
+          "status": "verified",
+          "note": "Net asgari ücret; gelir vergisi ve damga vergisi hesaplanmamıştır (AGİ uygulanmaz). Dönem: 01.01.2026-31.12.2026.",
+          "source": {
+            "title": "ÇSGB Asgari Ücretin Net Hesabı ve İşverene Maliyeti 2026",
+            "url": "https://www.csgb.gov.tr/Media/gm2fekds/asgari-%C3%BCcret-2026.pdf",
+            "accessed": "2026-10-03",
+            "kind": "official"
+          }
         }
       ]
     },
