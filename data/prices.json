@@ -3660,6 +3660,18 @@
           }
         },
         {
+          "date": "2016-03",
+          "price": 55,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Doğrulama: birgun.net https://www.birgun.net/haber/2016-kpss-basvurulari-bugun-sonra-eriyor-107813 (\"KPSS Lisans düzeyi ... 55 TL\").",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/egitim/kpss-basvuru-islemleri-ve-sinav-tarihleri-40073598",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2017-05",
           "price": 60,
           "status": "verified",
@@ -3672,6 +3684,18 @@
           }
         },
         {
+          "date": "2018-05",
+          "price": 60,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Doğrulama: hurriyet.com.tr https://www.hurriyet.com.tr/gundem/osym-kpss-basvuru-ucretlerini-acikladi-kpss-basvurulari-nasil-yapilacak-40832965 (\"60'ar lira\", ÖSYM: önceki yıla göre değişiklik yok).",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/turkiye/kpss-sinav-ucretleri-ne-kadar-2018-kpss-sinav-ucretleri-hangi-bankaya-yatiriliyor-798406",
+            "accessed": "2026-10-14",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2019-05",
           "price": 75,
           "status": "verified",
@@ -3680,6 +3704,18 @@
             "title": "takvim.com.tr",
             "url": "https://www.takvim.com.tr/egitim/2019-kpss-basvurulari-ne-zaman-ve-nasil-yapilir-kpss-basvuru-ucreti-ne-kadar-3898479",
             "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-06",
+          "price": 80,
+          "status": "verified",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/galeri/kpss-basvuru-ucreti-ne-kadar-lisans-kilavuzu-yayimlandi-basvurular-basladi-ortaogretim-ve-onlisans-basvuru-tarihleri-6247661. Başvurular 30 Haziran-13 Temmuz 2020.",
+          "source": {
+            "title": "haber7.com",
+            "url": "https://www.haber7.com/egitim/haber/2990537-2020-kpss-kilavuzu-yayimlandi-kpss-memurluk-sinavi-lisans-ve-alan-basvuru-ucretleri",
+            "accessed": "2026-10-14",
             "kind": "news"
           }
         },
@@ -4990,6 +5026,18 @@
             "title": "log.com.tr",
             "url": "https://www.log.com.tr/2024-imei-kayit-ucreti-tam-31-692-tl-olacak/",
             "accessed": "2026-10-08",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 45614.2,
+          "status": "verified",
+          "note": "Yolcu beraberinde getirilen cep telefonu için IMEI kayıt harcı. 31692*1.4393=45614,2 (yeniden değerleme oranı %43,93). Doğrulama: teknoblog.com https://www.teknoblog.com/imei-kayit-ucreti-2025/ (\"45.614 TL\").",
+          "source": {
+            "title": "yenisafak.com",
+            "url": "https://www.yenisafak.com/2025-e-devlet-imei-kaydi-nasil-yapilir-kayit-ucreti-ne-kadar-oldu-h-4707791",
+            "accessed": "2026-10-14",
             "kind": "news"
           }
         },

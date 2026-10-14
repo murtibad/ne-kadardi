@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.55.0] - 2026-10-14
+### Added
+- data: 2026 net minimum wage as a question (it was only the "today" price), so 2026 questions get a purchasing-power line.
+- data: KPSS Lisans GY-GK fee 2016 (55), 2018 (60), 2020 (80); IMEI registration fee 2025 (45.614,20). Each figure found verbatim on two publishers' pages.
+- Not added: kurban 2014 (575) and KPSS 2015 (50) have one publisher only; the 2021 minimum pension rise (1.627) appears only in tables and conflicts with a January 2022 official statement.
+
 ## [0.54.0] - 2026-10-14
 ### Added
 - data: Türk-İş açlık sınırı for January 2017, 2018, 2020, 2022 and 2023 (series now 10 values, 2017-2026). Four come from Türk-İş's own releases (`kind: dataset`) with a news outlet giving the same figure; 2023 uses the whole-lira figure from three news outlets because the kuruş value is only in an unreadable PDF.
