@@ -40,6 +40,7 @@ js/game.js          question selection and scoring (pure, tested)
 js/format.js        Turkish number parsing and formatting (pure, tested)
 js/timeline.js      price archive rows
 js/categories.js    product categories for the archive filter (pure, tested)
+js/linkify.js       turns URLs in notes into link buttons (pure, tested)
 js/hint.js          hint values and exclusions
 js/cashier.js       cashier comments
 js/share-*.js       share text and image
