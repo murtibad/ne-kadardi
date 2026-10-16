@@ -13,7 +13,7 @@ The game is one mode, plus a price archive:
 - **Fiyat Tahmini:** guess a past price, get a receipt with the real price, how far off you
   were, today's price and the source. Optional hint (that year's dollar rate and minimum
   wage) for a 20% score cut, quick +10/+100/+1.000 buttons, a cashier comment on each result.
-- **Fiyat Arşivi:** browse the verified price history of each product with its sources; the
+- **Fiyat Arşivi:** browse the verified price history of each product with its sources, filtered by category; the
   result screen links straight to the product's history.
 
 Also:
@@ -39,6 +39,7 @@ js/main.js          UI: screens, routing and events
 js/game.js          question selection and scoring (pure, tested)
 js/format.js        Turkish number parsing and formatting (pure, tested)
 js/timeline.js      price archive rows
+js/categories.js    product categories for the archive filter (pure, tested)
 js/hint.js          hint values and exclusions
 js/cashier.js       cashier comments
 js/share-*.js       share text and image
