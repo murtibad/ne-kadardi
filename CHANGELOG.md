@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.65.0] - 2026-10-16
+### Added
+- "Bu soruyu geç" link under the guess button: skips a product you do not know. A skip is free: no score, no round counted.
+
 ## [0.64.0] - 2026-10-16
 ### Changed
 - The hint button reads "Fiyatı okut: ipucu al" (cashier scans the price for you).

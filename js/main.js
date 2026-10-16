@@ -644,6 +644,11 @@ async function init() {
   shareOriginalLabel = $('share-btn').textContent;
   downloadOriginalLabel = $('download-btn').innerHTML;
   $('guess-form').addEventListener('submit', onGuess);
+  // Skipping is free: no score, no round counted, so players can drop a product they do not know.
+  $('skip-btn').addEventListener('click', () => {
+    sound.play('tick');
+    nextQuestion();
+  });
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
     nextQuestion();
