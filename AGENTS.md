@@ -105,9 +105,12 @@ Open:
 
 - Product rule: do not add new game modes. Keep the core guessing game simple.
 - [ ] More products only when a fixed definition and sourced series exist. Tried and not added
-      (definition or sources break): tea, simit, cinema, Coca-Cola, rakı, civil servant pay,
-      LPG cylinder, Fiat Egea, national team tickets, fuel prices before 2016 (only one January
-      2015 point found, not the EPDK definition).
+      (definition or sources break): tea, Coca-Cola, rakı, civil servant pay, LPG cylinder, national
+      team tickets and jerseys, Süper Lig tickets, damacana water, barber, YHT, PTT cargo, Ramazan
+      pidesi (weight changes), fuel prices before 2016 (only one January 2015 point found, not the
+      EPDK definition). Added in v0.66 with a looser definition: simit (Istanbul, 6 values),
+      cinema (national average ticket from Box Office Türkiye, not the full ticket), Fiat Egea
+      (1.4 Fire Easy list price, 9 values).
 
 ## Commands
 
