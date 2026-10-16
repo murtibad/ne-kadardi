@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.58.0] - 2026-10-16
+### Added
+- Fiyat Arşivi: category filter (Para ve altın, Ulaşım ve yakıt, Gıda ve gündelik, Teknoloji ve eğlence, Maaş ve yardımlar, Harç, ceza ve bedeller). `js/categories.js` maps products to categories; a test fails when a product has none.
+
 ## [0.57.0] - 2026-10-16
 ### Changed
 - The game is a single mode again. Menu: "Fiyat Tahmini" and "Fiyat Arşivi" (the old "Zaman makinesi", renamed). The result screen links to the product's price history.

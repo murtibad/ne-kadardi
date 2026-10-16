@@ -2,6 +2,7 @@
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
 import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier } from './game.js';
 import { buildTimelines } from './timeline.js';
+import { CATEGORIES, filterTimelines } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
@@ -18,7 +19,7 @@ const state = {
   recentProducts: [], 
   hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, 
-  lastGameScreen: 'question-screen', selectedTimelineProduct: null 
+  lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all' 
 };
 let shareOriginalLabel = '';
 let shareTimeoutId = null;
@@ -215,7 +216,7 @@ function renderResult(q, r) {
   $('r-tax').hidden = !taxText;
   renderTaxDetails(q);
 
-  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; };
+  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; };
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
   const kindLabel = sourceKindLabel(q.source.kind);
@@ -384,15 +385,34 @@ function renderTimelineScreen(focusProductId = null) {
   show('timeline-screen');
   if (state.timelines.length === 0) return;
   
-  if (!state.selectedTimelineProduct) {
-    state.selectedTimelineProduct = state.timelines[0].id;
+  const catPicker = $('category-picker');
+  catPicker.textContent = '';
+  for (const c of [{ id: 'all', label: 'Tümü' }, ...CATEGORIES]) {
+    if (c.id !== 'all' && filterTimelines(state.timelines, c.id).length === 0) continue;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'picker-chip';
+    btn.setAttribute('aria-pressed', c.id === state.timelineCategory ? 'true' : 'false');
+    btn.dataset.cat = c.id;
+    btn.textContent = c.label;
+    btn.onclick = () => {
+      state.timelineCategory = c.id;
+      state.selectedTimelineProduct = null; // pick the first product of the new category
+      renderTimelineScreen();
+      catPicker.querySelector(`[data-cat="${c.id}"]`)?.focus(); // the chips were rebuilt
+    };
+    catPicker.appendChild(btn);
   }
-  
-  const product = state.timelines.find(t => t.id === state.selectedTimelineProduct) || state.timelines[0];
+
+  const visible = filterTimelines(state.timelines, state.timelineCategory);
+  if (!visible.some(t => t.id === state.selectedTimelineProduct)) {
+    state.selectedTimelineProduct = visible[0].id;
+  }
+  const product = visible.find(t => t.id === state.selectedTimelineProduct);
   
   const picker = $('timeline-picker');
   picker.innerHTML = '';
-  for (const t of state.timelines) {
+  for (const t of visible) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'picker-chip';
