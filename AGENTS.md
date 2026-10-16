@@ -86,7 +86,7 @@ Done (details in `CHANGELOG.md`):
 
 - [x] v0.1 Skeleton: data schema, parsing, scoring, basic UI, tests, CI.
 - [x] v0.2 Design: receipt theme, dark mode.
-- [x] v0.3–v0.37 Data: 34 playable products, verified prices from 2010 where sources exist, `current` prices,
+- [x] v0.3–v0.37 Data: 34 playable products (41 by v0.61), verified prices from 2010 where sources exist, `current` prices,
       source type label (`source.kind`).
 - [x] v0.4 Polish: session stats, share text, context line, Open Graph, favicon.
 - [x] v0.10 Price archive screen (first called "Zaman makinesi"). v0.11 Shareable result image (canvas).
@@ -97,6 +97,9 @@ Done (details in `CHANGELOG.md`):
 - [x] v0.49–v0.56 Extra modes and data gaps (the extra modes were removed again in v0.57).
 - [x] v0.57 Single-mode cleanup (Murti's decision, 2026-10-16): only "Fiyat Tahmini" plus "Fiyat Arşivi"
       remain; the other modes were deleted from the code, they are in git history before v0.57.
+- [x] v0.58–v0.61 Archive categories, tappable note links, sound with mute toggle, contextual cashier
+      banter, aged receipt paper, score stamp on the share image; new data: aile cüzdanı, Milli Piyango
+      yılbaşı çeyrek bilet.
 
 Open:
 
