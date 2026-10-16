@@ -3,7 +3,7 @@
 // everywhere yet, so the version is repeated here and tests/version.test.js checks it
 // against package.json. A release bump therefore always changes this file, which makes
 // browsers install the new worker, precache fresh files and drop the old cache.
-const VERSION = '0.56.0';
+const VERSION = '0.57.0';
 const CACHE = `ne-kadardi-v${VERSION}`;
 const FONT_CACHE = 'ne-kadardi-fonts';
 
@@ -15,34 +15,18 @@ const PRECACHE = [
   'manifest.webmanifest',
   'css/style.css',
   'data/prices.json',
-  'js/basket.js',
-  'js/blitz-ui.js',
-  'js/blitz.js',
   'js/cashier.js',
   'js/confetti.js',
   'js/format.js',
   'js/game.js',
   'js/hint.js',
-  'js/keys.js',
   'js/main.js',
-  'js/mode-share.js',
-  'js/order-ui.js',
-  'js/order.js',
   'js/share-image.js',
   'js/share-model.js',
-  'js/share-text.js',
   'js/source-kind.js',
-  'js/stats-ui.js',
-  'js/stats.js',
-  'js/streak-share.js',
   'js/tax.js',
   'js/timeline.js',
   'js/version.js',
-  'js/versus.js',
-  'js/year-share-image.js',
-  'js/year-guess-ui.js',
-  'js/year-guess.js',
-  'js/yearly.js',
   'img/icon-192.png',
   'img/icon-512.png',
   'img/icon-maskable-512.png',

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.57.0] - 2026-10-16
+### Changed
+- The game is a single mode again. Menu: "Fiyat Tahmini" and "Fiyat Arşivi" (the old "Zaman makinesi", renamed). The result screen links to the product's price history.
+### Removed
+- Modes "Hangisi Pahalı?", "Sırala", "60 Saniye", "Hangi Yıl?", "Sepet Kurma", "Yıllık Fiş" and "İstatistiklerim", with their modules, tests, styles and share texts. They remain in git history up to v0.56.0.
+
 ## [0.56.0] - 2026-10-14
 ### Added
 - data: 13 July observations of the Economist Big Mac Index for Türkiye (2010-2025: 5,95 … 225), the series grows from 11 to 24 values. Rule extended in `docs/DATA.md`: January and July observations that differ from the previous observation; 2014-07 is skipped because it equals the existing 2015-01 value.
