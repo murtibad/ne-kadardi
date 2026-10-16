@@ -2,6 +2,7 @@
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
 import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier } from './game.js';
 import { buildTimelines } from './timeline.js';
+import { linkifyNote } from './linkify.js';
 import { CATEGORIES, filterTimelines } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
@@ -463,7 +464,7 @@ function renderTimelineScreen(focusProductId = null) {
     const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
     const kindSpan = kindLabel ? `<span class="source-kind">${escapeHTML(kindLabel)}</span>` : '';
     const sourceLink = r.source ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>${kindSpan}` : '';
-    const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${escapeHTML(r.note)}</p></details>` : '';
+    const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${linkifyNote(r.note)}</p></details>` : '';
     
     html += `<tr>
       <th scope="row">${period}</th>

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.58.1] - 2026-10-16
+### Changed
+- Fiyat Arşivi: URLs inside the "Ayrıntı" notes are now tappable "Link · host" buttons that open in a new tab, instead of plain text to copy. `js/linkify.js` escapes the text and only links http(s) URLs.
+
 ## [0.58.0] - 2026-10-16
 ### Added
 - Fiyat Arşivi: category filter (Para ve altın, Ulaşım ve yakıt, Gıda ve gündelik, Teknoloji ve eğlence, Maaş ve yardımlar, Harç, ceza ve bedeller). `js/categories.js` maps products to categories; a test fails when a product has none.
