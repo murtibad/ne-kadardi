@@ -8,19 +8,13 @@ the real price, how many times off you were, and what it costs today.
 
 ## Features
 
-Modes, picked from the home menu:
+The game is one mode, plus a price archive:
 
 - **Fiyat Tahmini:** guess a past price, get a receipt with the real price, how far off you
   were, today's price and the source. Optional hint (that year's dollar rate and minimum
   wage) for a 20% score cut, quick +10/+100/+1.000 buttons, a cashier comment on each result.
-- **Hangisi Pahalı?:** pick the pricier of two past prices, keep the streak going.
-- **Sırala:** order four prices from the same year, cheapest first.
-- **60 Saniye:** as many "which was pricier" answers as possible in a minute; wrong answers cost 3 seconds.
-- **Hangi Yıl?:** see a price, pick the year it belongs to.
-- **Sepet Kurma:** a past year's budget and six products with hidden prices; fill the basket
-  as close to the budget as you can without going over.
-- **Zaman Makinesi:** browse the verified price history of each product.
-- **Yıllık Fiş:** every verified price of one year next to today's, shareable as an image.
+- **Fiyat Arşivi:** browse the verified price history of each product with its sources; the
+  result screen links straight to the product's history.
 
 Also:
 
@@ -44,22 +38,7 @@ css/style.css       styles (design tokens as CSS custom properties)
 js/main.js          UI: screens, routing and events
 js/game.js          question selection and scoring (pure, tested)
 js/format.js        Turkish number parsing and formatting (pure, tested)
-js/versus.js        "Hangisi Pahalı?" pairs (pure, tested)
-js/basket.js        "Sepet Kurma" budget and scoring (pure, tested)
-js/order.js         "Sırala" set selection and pair scoring (pure, tested)
-js/order-ui.js      "Sırala" screen
-js/blitz.js         "60 Saniye" timer state (pure, tested)
-js/blitz-ui.js      "60 Saniye" screen and clock
-js/year-guess.js    "Hangi Yıl?" rounds (pure, tested)
-js/year-guess-ui.js "Hangi Yıl?" screen
-js/mode-share.js    share texts for the quick modes (pure, tested)
-js/share-text.js    share sheet / clipboard helper
-js/keys.js          desktop keyboard shortcuts (pure, tested)
-js/streak-share.js  streak share text for Hangisi Pahalı? and Hangi Yıl? (pure, tested)
-js/stats.js         "İstatistiklerim" rows from saved scores (pure, tested)
-js/stats-ui.js      "İstatistiklerim" screen and reset
-js/timeline.js      time machine rows
-js/yearly.js        yearly receipt rows
+js/timeline.js      price archive rows
 js/hint.js          hint values and exclusions
 js/cashier.js       cashier comments
 js/share-*.js       share text and image

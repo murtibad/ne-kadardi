@@ -1,4 +1,4 @@
-// Pure logic for the "Zaman makinesi" browse screen. No DOM access here.
+// Pure logic for the "Fiyat Arşivi" browse screen. No DOM access here.
 
 const MIN_BAR_PERCENT = 8;
 

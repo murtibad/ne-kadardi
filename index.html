@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ne Kadardı? · Fiyat tahmin oyunu</title>
-  <meta name="description" content="Geçmiş yıllarda benzin, altın, ekmek ne kadardı? Tahmin et, sırala, yılını bul; gerçek fiyatla karşılaştır.">
+  <meta name="description" content="Geçmiş yıllarda benzin, altın, ekmek ne kadardı? Tahmin et, gerçek fiyatla karşılaştır.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -40,22 +40,7 @@
   <link rel="modulepreload" href="js/share-model.js">
   <link rel="modulepreload" href="js/tax.js">
   <link rel="modulepreload" href="js/cashier.js">
-  <link rel="modulepreload" href="js/versus.js">
-  <link rel="modulepreload" href="js/keys.js">
-  <link rel="modulepreload" href="js/streak-share.js">
-  <link rel="modulepreload" href="js/yearly.js">
   <link rel="modulepreload" href="js/hint.js">
-  <link rel="modulepreload" href="js/basket.js">
-  <link rel="modulepreload" href="js/order.js">
-  <link rel="modulepreload" href="js/order-ui.js">
-  <link rel="modulepreload" href="js/blitz.js">
-  <link rel="modulepreload" href="js/blitz-ui.js">
-  <link rel="modulepreload" href="js/mode-share.js">
-  <link rel="modulepreload" href="js/year-guess.js">
-  <link rel="modulepreload" href="js/year-guess-ui.js">
-  <link rel="modulepreload" href="js/stats.js">
-  <link rel="modulepreload" href="js/stats-ui.js">
-  <link rel="modulepreload" href="js/share-text.js">
   <link rel="modulepreload" href="js/version.js">
 </head>
 <body>
@@ -74,54 +59,17 @@
     <section id="home-screen" hidden>
       <div class="home-intro">
         <h2>Geçmişte fiyatlar ne kadardı?</h2>
-        <p>Bir mod seç, tahmin et, enflasyonu gör.</p>
+        <p>Tahmin et, gerçek fiyatı gör, enflasyonu hisset.</p>
       </div>
-      <nav class="mode-list" aria-label="Oyun modları">
-        <h3 class="mode-group">Oyna</h3>
+      <nav class="mode-list" aria-label="Menü">
         <a class="mode-card mode-main" href="#tahmin">
           <span class="mode-name">Fiyat Tahmini</span>
           <span class="mode-desc">Bir ürünün geçmişteki fiyatını tahmin et, gerçeğiyle karşılaştır.</span>
           <span class="mode-meta" id="m-tahmin"></span>
         </a>
-        <div class="mode-grid">
-          <a class="mode-card" href="#hangisi">
-            <span class="mode-name">Hangisi Pahalı?</span>
-            <span class="mode-desc">İki fiyattan pahalıyı seç, seriyi sürdür.</span>
-            <span class="mode-meta" id="m-hangisi"></span>
-          </a>
-          <a class="mode-card" href="#sirala">
-            <span class="mode-name">Sırala</span>
-            <span class="mode-desc">Aynı yıldan dört fiyatı ucuzdan pahalıya diz.</span>
-            <span class="mode-meta" id="m-sirala"></span>
-          </a>
-          <a class="mode-card" href="#60-saniye">
-            <span class="mode-name">60 Saniye</span>
-            <span class="mode-desc">Bir dakikada en çok kaç kez pahalıyı bulursun?</span>
-            <span class="mode-meta" id="m-blitz"></span>
-          </a>
-          <a class="mode-card" href="#hangi-yil">
-            <span class="mode-name">Hangi Yıl?</span>
-            <span class="mode-desc">Fiyatı gör, hangi yıla ait olduğunu bul.</span>
-            <span class="mode-meta" id="m-yearguess"></span>
-          </a>
-          <a class="mode-card mode-wide" href="#sepet">
-            <span class="mode-name">Sepet Kurma</span>
-            <span class="mode-desc">Geçmişteki bütçenle sepeti doldur, bütçeyi aşmadan en yakına ulaş.</span>
-            <span class="mode-meta" id="m-sepet"></span>
-          </a>
-        </div>
-        <h3 class="mode-group">Keşfet</h3>
-        <a class="mode-card mode-row" href="#zaman-makinesi">
-          <span class="mode-name">Zaman Makinesi</span>
+        <a class="mode-card mode-row" href="#arsiv">
+          <span class="mode-name">Fiyat Arşivi</span>
           <span class="mode-desc">Her ürünün yıllar içindeki fiyatı, kaynaklarıyla.</span>
-        </a>
-        <a class="mode-card mode-row" href="#yil">
-          <span class="mode-name">Yıllık Fiş</span>
-          <span class="mode-desc">Bir yıl seç: o yıl her şey ne kadardı?</span>
-        </a>
-        <a class="mode-card mode-row" href="#istatistik">
-          <span class="mode-name">İstatistiklerim</span>
-          <span class="mode-desc">Tüm modlardaki skorların, sıfırlama</span>
         </a>
       </nav>
     </section>
@@ -179,6 +127,7 @@
             <summary>Verginin dökümü</summary>
             <div id="r-tax-body"></div>
           </details>
+          <p class="source"><a id="r-archive" href="#arsiv" class="archive-link">Bu ürünün fiyat geçmişi →</a></p>
           <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a><span id="r-source-kind" class="source-kind" hidden></span></p>
         </article>
       </div>
@@ -193,153 +142,11 @@
       </div>
     </section>
 
-    <section id="versus-screen" hidden>
-      <div class="receipt-card versus-card">
-        <p class="versus-streak">Seri <strong id="v-streak">0</strong> · En iyi <strong id="v-best">0</strong></p>
-        <h2 id="v-title" class="versus-title" tabindex="-1">Hangisi daha pahalıydı?</h2>
-        <div class="versus-options">
-          <button type="button" class="versus-option" id="v-a" data-side="a"></button>
-          <button type="button" class="versus-option" id="v-b" data-side="b"></button>
-        </div>
-        <p class="key-hint" aria-hidden="true">Klavye: ← → ya da 1 2</p>
-        <p id="v-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
-        <div class="order-actions">
-          <button type="button" id="v-share" class="btn secondary" hidden>Paylaş</button>
-          <button type="button" id="v-next" class="btn primary" hidden>Sonraki</button>
-        </div>
-        <a href="#" class="versus-back">Ana menüye dön</a>
-      </div>
-    </section>
-
-    <section id="order-screen" hidden>
-      <div class="receipt-card order-card">
-        <p class="versus-streak">Yıl <strong id="o-year"></strong></p>
-        <h2 id="o-title" class="versus-title" tabindex="-1">Ucuzdan pahalıya sırala</h2>
-        <p class="order-help">En ucuzdan başlayarak sırayla dokun. Geri almak için numaralı ürüne tekrar dokun.</p>
-        <div id="o-items" class="order-items" role="group" aria-labelledby="o-title"></div>
-        <p class="key-hint" aria-hidden="true">Klavye: 1-4 ile sırayla seç</p>
-        <p id="o-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
-        <div class="order-actions">
-          <button type="button" id="o-reset" class="btn secondary">Sıfırla</button>
-          <button type="button" id="o-check" class="btn primary" disabled>Kontrol et</button>
-        </div>
-        <div class="order-actions">
-          <button type="button" id="o-share" class="btn secondary" hidden>Paylaş</button>
-          <button type="button" id="o-next" class="btn primary" hidden>Yeni set</button>
-        </div>
-        <a href="#" class="versus-back">Ana menüye dön</a>
-      </div>
-    </section>
-
-    <section id="yearguess-screen" hidden>
-      <div class="receipt-card versus-card yearguess-card">
-        <p class="versus-streak">Seri <strong id="yg-streak">0</strong> · En iyi <strong id="yg-best">0</strong></p>
-        <h2 id="yg-title" class="versus-title" tabindex="-1">Bu fiyat hangi yıldan?</h2>
-        <img id="yg-image" class="product-image" width="72" height="72" alt="" decoding="async" hidden>
-        <p id="yg-name" class="product yg-name"></p>
-        <p id="yg-unit" class="unit"></p>
-        <p id="yg-price" class="yg-price"></p>
-        <div id="yg-options" class="yg-options" role="group" aria-labelledby="yg-title"></div>
-        <p class="key-hint" aria-hidden="true">Klavye: 1-4</p>
-        <p id="yg-feedback" class="versus-feedback" role="status" aria-live="polite"></p>
-        <div class="order-actions">
-          <button type="button" id="yg-share" class="btn secondary" hidden>Paylaş</button>
-          <button type="button" id="yg-next" class="btn primary" hidden>Sonraki</button>
-        </div>
-        <a href="#" class="versus-back">Ana menüye dön</a>
-      </div>
-    </section>
-
-    <section id="blitz-screen" hidden>
-      <div class="receipt-card versus-card blitz-card">
-        <h2 id="bl-title" class="versus-title" tabindex="-1">60 Saniye</h2>
-        <div id="bl-start">
-          <p class="order-help">İki fiyattan pahalı olanı seç. Süre 60 saniye, her yanlış cevap 3 saniye götürür.</p>
-          <p id="bl-best-start" class="versus-streak"></p>
-          <button type="button" id="bl-start-btn" class="btn primary">Başla</button>
-        </div>
-        <div id="bl-play" hidden>
-          <p class="blitz-bar"><span id="bl-clock" class="blitz-clock" aria-label="Kalan süre">1:00</span><span id="bl-score" class="versus-streak"></span></p>
-          <div class="versus-options">
-            <button type="button" class="versus-option" id="bl-a"></button>
-            <button type="button" class="versus-option" id="bl-b"></button>
-          </div>
-          <p class="key-hint" aria-hidden="true">Klavye: ← → ya da 1 2</p>
-        </div>
-        <div id="bl-end" hidden role="status" aria-live="polite">
-          <p class="blitz-label">Süre doldu</p>
-          <p id="bl-result" class="blitz-result"></p>
-          <p id="bl-detail" class="versus-streak"></p>
-          <p id="bl-best" class="blitz-best"></p>
-          <div class="order-actions">
-            <button type="button" id="bl-share" class="btn secondary">Paylaş</button>
-            <button type="button" id="bl-again" class="btn primary">Tekrar oyna</button>
-          </div>
-        </div>
-        <a href="#" class="versus-back">Ana menüye dön</a>
-      </div>
-    </section>
-
-    <section id="year-screen" hidden>
-      <div class="timeline-header">
-        <h2>Yıllık fiş</h2>
-        <p>Seçtiğin yılda doğrulanmış tüm fiyatlar, bugünkü fiyatla.</p>
-        <a href="#" class="btn primary timeline-back-btn">Ana menü</a>
-      </div>
-      <div class="timeline-picker" role="group" aria-label="Yıl seç" id="year-picker"></div>
-      <div class="receipt-wrapper">
-        <article class="receipt-card result-receipt timeline-receipt">
-          <p id="y-title" class="receipt-title"></p>
-          <p id="y-count" class="receipt-unit"></p>
-          <hr>
-          <div id="y-rows"></div>
-        </article>
-      </div>
-      <div class="year-actions">
-        <button id="y-share-btn" type="button" class="btn">Paylaş</button>
-        <button id="y-download-btn" type="button" class="btn">Görseli indir</button>
-      </div>
-    </section>
-
-    <section id="stats-screen" hidden>
-      <div class="timeline-header">
-        <h2>İstatistiklerim</h2>
-        <p>Bu cihazda kayıtlı skorların.</p>
-        <a href="#" class="btn primary timeline-back-btn">Ana menüye dön</a>
-      </div>
-      <div class="receipt-wrapper">
-        <article class="receipt-card result-receipt timeline-receipt">
-          <p class="receipt-title">Skor fişi</p>
-          <hr>
-          <div id="stats-rows"></div>
-        </article>
-      </div>
-      <div class="year-actions">
-        <button id="stats-reset" type="button" class="btn">Skorları sıfırla</button>
-      </div>
-    </section>
-
-    <section id="basket-screen" hidden>
-      <div class="receipt-card basket-card">
-        <p class="basket-period" id="b-period"></p>
-        <p class="basket-label">Bütçen</p>
-        <p class="basket-budget" id="b-budget"></p>
-        <p class="basket-help" id="b-help">Fiyatlar gizli. O günün fiyatlarını tahmin ederek her üründen kaç adet alacağını seç, bütçeye en yakına ulaş. Bütçeyi aşarsan her %1 için 3 puan kaybedersin.</p>
-        <ul class="basket-list" id="b-items"></ul>
-        <p class="basket-count" id="b-count" aria-live="polite"></p>
-        <div id="b-result" class="basket-result" tabindex="-1" hidden></div>
-        <button type="button" id="b-confirm" class="btn primary">Sepeti onayla</button>
-        <button type="button" id="b-next" class="btn" hidden>Yeni sepet</button>
-        <a href="#" class="versus-back">Ana menüye dön</a>
-      </div>
-    </section>
-
     <section id="timeline-screen" hidden>
       <div class="timeline-header">
-        <h2>Zaman makinesi</h2>
+        <h2>Fiyat Arşivi</h2>
         <p>Doğrulanmış tüm fiyatlar, kaynaklarıyla.</p>
         <a href="#" class="btn primary timeline-back-btn">Ana menü</a>
-        <a href="#yil" class="year-link">Yıla göre fiş: o yıl her şey ne kadardı?</a>
       </div>
       
       <div class="timeline-picker" role="group" aria-label="Ürün seç" id="timeline-picker">

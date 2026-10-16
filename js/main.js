@@ -7,17 +7,7 @@ import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
-import { pickPair, judgePair, nextStreak } from './versus.js';
-import { isPlainKey, pairSide } from './keys.js';
-import { buildStreakShareText } from './streak-share.js';
-import { shareTextFromButton } from './share-text.js';
-import { availableYears, buildYearReceipt, buildYearShareModel, buildYearShareText, buildYearShareFileName } from './yearly.js';
 import { buildHint, applyHintPenalty } from './hint.js';
-import { buildBasketRound, scoreBasket, MAX_QTY } from './basket.js';
-import { initOrder, renderOrder, orderMeta } from './order-ui.js';
-import { initBlitz, renderBlitz, stopBlitz, blitzBest } from './blitz-ui.js';
-import { initYearGuess, renderYearGuess, yearGuessBest } from './year-guess-ui.js';
-import { renderStats } from './stats-ui.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
@@ -26,7 +16,7 @@ const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt
 
 const state = {
   recentProducts: [], 
-  hinted: false, raw: null, all: [], timelines: [], selectedYear: null, question: null, result: null, 
+  hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null 
 };
@@ -56,7 +46,7 @@ function saveSession() {
 }
 
 function show(screenId) {
-  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen', 'versus-screen', 'year-screen', 'basket-screen', 'order-screen', 'blitz-screen', 'yearguess-screen', 'stats-screen']) {
+  for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
     $(id).hidden = id !== screenId;
   }
 }
@@ -225,6 +215,7 @@ function renderResult(q, r) {
   $('r-tax').hidden = !taxText;
   renderTaxDetails(q);
 
+  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; };
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
   const kindLabel = sourceKindLabel(q.source.kind);
@@ -474,300 +465,17 @@ function renderTimelineScreen(focusProductId = null) {
   $('t-rows-container').innerHTML = html;
 }
 
-// "Hangisi daha pahalıydı?" mode: pick the pricier of two past prices, build a streak.
-const versus = { pair: null, recent: [], streak: 0, best: 0, locked: false, shareStreak: 0 };
-
-function loadVersusBest() {
-  try {
-    const n = Number(localStorage.getItem('ne-kadardi-versus-best'));
-    if (Number.isFinite(n) && n > 0) versus.best = n;
-  } catch (e) {}
-}
-
-function saveVersusBest() {
-  try { localStorage.setItem('ne-kadardi-versus-best', String(versus.best)); } catch (e) {}
-}
-
-function versusOptionHTML(q, withPrice) {
-  const priceHTML = withPrice ? `<span class="v-price">${escapeHTML(formatPrice(q.price))}</span>` : '';
-  return `<span class="v-period">${escapeHTML(formatPeriod(q.date))}</span>`
-    + `<strong class="v-name">${escapeHTML(questionTitle(q))}</strong>`
-    + `<span class="v-unit">${escapeHTML(q.region ? `${q.unit} · ${q.region}` : q.unit)}</span>`
-    + priceHTML;
-}
-
-function renderVersus() {
-  versus.locked = false;
-  const pair = pickPair(state.all, Math.random, versus.recent);
-  if (!pair) { showMessage('Karşılaştırılacak yeterli fiyat yok.'); return; }
-  versus.pair = pair;
-  versus.recent = [...versus.recent, pair.a.id, pair.b.id].slice(-8);
-  for (const side of ['a', 'b']) {
-    const btn = $(`v-${side}`);
-    btn.innerHTML = versusOptionHTML(pair[side], false);
-    btn.disabled = false;
-    delete btn.dataset.state;
-  }
-  $('v-feedback').textContent = '';
-  $('v-next').hidden = true;
-  $('v-share').hidden = true;
-  $('v-streak').textContent = versus.streak;
-  $('v-best').textContent = versus.best;
-  show('versus-screen');
-  if (document.activeElement === document.body || document.activeElement?.closest('[hidden]')) $('v-title').focus();
-}
-
-function onVersusPick(side) {
-  if (versus.locked || !versus.pair) return;
-  versus.locked = true;
-  const res = judgePair(versus.pair, side);
-  // A wrong answer ends the streak; share the one that just ended, not the reset 0.
-  versus.shareStreak = res.correct ? versus.streak + 1 : versus.streak;
-  versus.streak = nextStreak(versus.streak, res.correct);
-  if (versus.streak > versus.best) { versus.best = versus.streak; saveVersusBest(); }
-  for (const s of ['a', 'b']) {
-    const btn = $(`v-${s}`);
-    btn.innerHTML = versusOptionHTML(versus.pair[s], true);
-    btn.disabled = true;
-    btn.dataset.state = s === res.winner ? 'win' : 'lose';
-  }
-  const times = formatRatio(res.ratio);
-  $('v-feedback').textContent = res.correct
-    ? `Doğru! ${times} kat daha pahalıydı.`
-    : `Yanlış. Diğeri ${times} kat daha pahalıydı.`;
-  $('v-streak').textContent = versus.streak;
-  $('v-best').textContent = versus.best;
-  $('v-next').hidden = false;
-  $('v-share').hidden = versus.shareStreak === 0 && versus.best === 0; // nothing to share yet
-  $('v-next').focus();
-}
-
-function renderYearScreen(focusYear = null) {
-  show('year-screen');
-  const years = availableYears(state.raw);
-  if (years.length === 0) return;
-  if (!years.includes(state.selectedYear)) state.selectedYear = years[0];
-  const picker = $('year-picker');
-  picker.textContent = '';
-  for (const y of years) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'picker-chip';
-    btn.setAttribute('aria-pressed', y === state.selectedYear ? 'true' : 'false');
-    btn.textContent = String(y);
-    btn.addEventListener('click', () => { state.selectedYear = y; renderYearScreen(y); });
-    if (y === focusYear) queueMicrotask(() => btn.focus());
-    picker.appendChild(btn);
-  }
-  const { rows } = buildYearReceipt(state.raw, state.selectedYear);
-  $('y-title').textContent = `${state.selectedYear} · Yıllık fiş`;
-  $('y-count').textContent = `${rows.length} kalem`;
-  $('y-rows').innerHTML = `<table class="timeline-table"><tbody>${rows.map((r) => {
-    const unit = r.region ? `${r.unit} · ${r.region}` : r.unit;
-    const name = r.label ? `${r.name}: ${r.label}` : r.name;
-    const ratio = r.ratio ? `${formatRatio(r.ratio)} kat arttı` : '';
-    return `<tr><td><strong>${escapeHTML(name)}</strong><br><small>${escapeHTML(unit)} · ${escapeHTML(formatPeriod(r.date))}</small></td>`
-      + `<td class="year-price">${escapeHTML(formatPrice(r.price))}${ratio ? `<br><small>${escapeHTML(ratio)}</small>` : ''}</td></tr>`;
-  }).join('')}</tbody></table>`;
-}
-
-// Yearly receipt share: same pattern as the result share (file share on phones, else text),
-// but with its own buttons so the two screens never reset each other's labels.
-const yearBtnLabels = {};
-
-function setYearBtn(id, text, busy = false) {
-  const btn = $(id);
-  if (!(id in yearBtnLabels)) yearBtnLabels[id] = btn.textContent;
-  btn.textContent = text;
-  if (text !== yearBtnLabels[id]) announce(text);
-  if (busy) btn.setAttribute('aria-busy', 'true');
-  else btn.removeAttribute('aria-busy');
-}
-
-function resetYearBtn(id, delay = 0) {
-  const restore = () => {
-    if (id in yearBtnLabels) $(id).textContent = yearBtnLabels[id];
-    $(id).removeAttribute('aria-busy');
-  };
-  if (delay) setTimeout(restore, delay); else restore();
-}
-
-async function yearImage(btnId) {
-  setYearBtn(btnId, 'Hazırlanıyor…', true);
-  try {
-    const { renderYearShareImage } = await import('./year-share-image.js');
-    return await renderYearShareImage(buildYearShareModel(buildYearReceipt(state.raw, state.selectedYear)));
-  } catch (err) {
-    console.warn('Görsel hazırlanamadı', err);
-    return null;
-  }
-}
-
-async function shareYear() {
-  if ($('y-share-btn').hasAttribute('aria-busy')) return;
-  const year = state.selectedYear;
-  const text = buildYearShareText(buildYearReceipt(state.raw, year), location.href.split('#')[0] + '#yil');
-  const filesSupported = canShareImageFiles();
-  const blob = filesSupported ? await yearImage('y-share-btn') : null;
-  // The button stays busy until the share sheet closes: a second tap would throw InvalidStateError.
-  let delay = 0;
-  try {
-    if (blob) {
-      const file = new File([blob], buildYearShareFileName(year), { type: 'image/png' });
-      setYearBtn('y-share-btn', yearBtnLabels['y-share-btn'] ?? 'Paylaş', true);
-      await navigator.share({ files: [file], text });
-    } else if (navigator.share) {
-      setYearBtn('y-share-btn', $('y-share-btn').textContent, true);
-      await navigator.share({ text });
-    } else {
-      await navigator.clipboard.writeText(text);
-      setYearBtn('y-share-btn', 'Kopyalandı!');
-      delay = 2000;
-    }
-  } catch (err) {
-    if (err.name !== 'AbortError') console.warn(err);
-  } finally {
-    resetYearBtn('y-share-btn', delay);
-  }
-}
-
-async function downloadYearImage() {
-  if ($('y-download-btn').hasAttribute('aria-busy')) return;
-  const blob = await yearImage('y-download-btn');
-  if (!blob) {
-    setYearBtn('y-download-btn', 'Görsel hazırlanamadı.');
-    resetYearBtn('y-download-btn', 2000);
-    return;
-  }
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = buildYearShareFileName(state.selectedYear);
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  setYearBtn('y-download-btn', 'İndiriliyor…');
-  resetYearBtn('y-download-btn', 2000);
-}
-
-// "Sepet Kurma": prices are hidden, the player picks quantities to get as close to the
-// budget as possible without going over (Price-is-Right rules).
-const basket = { round: null, qty: {}, done: false, best: 0 };
-
-function loadBasketBest() {
-  try {
-    const n = Number(localStorage.getItem('ne-kadardi-basket-best'));
-    if (Number.isFinite(n) && n > 0) basket.best = n;
-  } catch (e) {}
-}
-
-function updateBasketCount() {
-  const kinds = Object.values(basket.qty).filter((n) => n > 0).length;
-  const pieces = Object.values(basket.qty).reduce((a, b) => a + b, 0);
-  $('b-count').textContent = pieces === 0 ? 'Sepetin boş' : `Sepetin: ${kinds} kalem, ${pieces} adet`;
-  $('b-confirm').disabled = pieces === 0;
-}
-
-function renderBasket() {
-  const round = buildBasketRound(state.all);
-  if (!round) { showMessage('Sepet için yeterli fiyat yok.'); return; }
-  basket.round = round;
-  basket.qty = Object.fromEntries(round.items.map((q) => [q.id, 0]));
-  basket.done = false;
-  $('b-period').textContent = String(round.year);
-  $('b-budget').textContent = formatPrice(round.budget);
-  $('b-help').hidden = false;
-  $('b-result').hidden = true;
-  $('b-confirm').hidden = false;
-  $('b-next').hidden = true;
-  const list = $('b-items');
-  list.textContent = '';
-  for (const q of round.items) {
-    const li = document.createElement('li');
-    li.className = 'basket-row';
-    li.dataset.id = q.id;
-    li.innerHTML = `<span class="basket-name">${escapeHTML(questionTitle(q))}</span>`
-      + `<span class="basket-unit">${escapeHTML(q.region ? `${q.unit} · ${q.region}` : q.unit)}</span>`
-      + `<span class="basket-price"></span>`
-      + `<span class="basket-stepper"><button type="button" data-d="-1" aria-label="${escapeHTML(questionTitle(q))}: azalt">−</button>`
-      + `<span class="basket-qty" aria-live="polite">0</span>`
-      + `<button type="button" data-d="1" aria-label="${escapeHTML(questionTitle(q))}: artır">+</button></span>`;
-    li.querySelectorAll('button').forEach((btn) => btn.addEventListener('click', () => {
-      if (basket.done) return;
-      const next = Math.max(0, Math.min(MAX_QTY, basket.qty[q.id] + Number(btn.dataset.d)));
-      basket.qty[q.id] = next;
-      li.querySelector('.basket-qty').textContent = String(next);
-      updateBasketCount();
-    }));
-    list.appendChild(li);
-  }
-  updateBasketCount();
-  show('basket-screen');
-  if (document.activeElement === document.body || document.activeElement?.closest('[hidden]')) list.querySelector('button[data-d="1"]')?.focus();
-}
-
-function confirmBasket() {
-  if (!basket.round || basket.done) return;
-  basket.done = true;
-  const res = scoreBasket(basket.round, basket.qty);
-  for (const li of $('b-items').children) {
-    const q = basket.round.items.find((x) => x.id === li.dataset.id);
-    const n = basket.qty[q.id];
-    li.querySelector('.basket-price').textContent = n > 0
-      ? `${n} × ${formatPrice(q.price)} = ${formatPrice(n * q.price)}`
-      : `Birim fiyat: ${formatPrice(q.price)}`;
-    li.querySelectorAll('button').forEach((b) => { b.disabled = true; });
-  }
-  const verdict = res.over
-    ? `Bütçeyi ${formatPrice(-res.left)} (%${Math.round((-100 * res.left) / basket.round.budget)}) aştın. Puan: ${res.score}`
-    : `Bütçenin %${res.score}'ini kullandın, ${formatPrice(res.left)} kaldı. Puan: ${res.score}`;
-  $('b-result').innerHTML = `<div class="row"><span>Sepet toplamı</span><strong>${escapeHTML(formatPrice(res.total))}</strong></div>`
-    + `<div class="row"><span>Bütçe</span><strong>${escapeHTML(formatPrice(basket.round.budget))}</strong></div>`
-    + `<p class="verdict">${escapeHTML(verdict)}</p>`;
-  $('b-result').hidden = false;
-  $('b-help').hidden = true;
-  $('b-confirm').hidden = true;
-  $('b-next').hidden = false;
-  $('b-result').focus(); // the confirm button just disappeared
-  if (res.score > basket.best) {
-    basket.best = res.score;
-    try { localStorage.setItem('ne-kadardi-basket-best', String(res.score)); } catch (e) {}
-  }
-}
-
 function renderHome() {
   $('m-tahmin').textContent = state.played > 0
     ? `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en iyi ${state.best}` : '')
     : '';
-  $('m-hangisi').textContent = versus.best > 0 ? `En iyi seri: ${versus.best}` : '';
-  $('m-sepet').textContent = basket.best > 0 ? `En iyi puan: ${basket.best}` : '';
-  $('m-sirala').textContent = orderMeta();
-  $('m-yearguess').textContent = yearGuessBest() > 0 ? `En iyi seri: ${yearGuessBest()}` : '';
-  $('m-blitz').textContent = blitzBest() > 0 ? `En iyi: ${blitzBest()} doğru` : '';
   show('home-screen');
 }
 
 function onHashChange() {
   const hash = location.hash;
   if (state.all.length === 0) return;
-  // Leaving the 60-second screen must not leave its clock ticking in the background.
-  if (hash !== '#60-saniye') stopBlitz();
-  if (hash === '#hangi-yil') {
-    renderYearGuess(show, showMessage);
-  } else if (hash === '#sirala') {
-    renderOrder(show, showMessage);
-  } else if (hash === '#60-saniye') {
-    renderBlitz(show);
-  } else if (hash === '#istatistik') {
-    renderStats(show);
-  } else if (hash === '#yil') {
-    renderYearScreen();
-  } else if (hash === '#hangisi') {
-    renderVersus();
-  } else if (hash === '#sepet') {
-    renderBasket();
-  } else if (hash === '#zaman-makinesi') {
+  if (hash === '#arsiv') {
     renderTimelineScreen();
   } else if (hash === '#tahmin') {
     if (!state.question) nextQuestion();
@@ -844,31 +552,12 @@ async function init() {
   shareOriginalLabel = $('share-btn').textContent;
   downloadOriginalLabel = $('download-btn').innerHTML;
   $('guess-form').addEventListener('submit', onGuess);
-  $('v-a').addEventListener('click', () => onVersusPick('a'));
-  $('v-b').addEventListener('click', () => onVersusPick('b'));
-  $('v-next').addEventListener('click', renderVersus);
-  $('v-share').addEventListener('click', (e) => shareTextFromButton(e.currentTarget,
-    buildStreakShareText('Hangisi Pahalı?', versus.shareStreak, versus.best, location.href.split('#')[0] + '#hangisi')));
-  document.addEventListener('keydown', (event) => {
-    if ($('versus-screen').hidden || versus.locked || !isPlainKey(event)) return;
-    const side = pairSide(event.key);
-    if (side) { event.preventDefault(); onVersusPick(side); }
-  });
-  loadVersusBest();
-  initOrder(state.all);
-  initBlitz(state.all);
-  initYearGuess(state.all);
-  loadBasketBest();
-  $('b-confirm').addEventListener('click', confirmBasket);
-  $('b-next').addEventListener('click', renderBasket);
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
     nextQuestion();
   });
   $('share-btn').addEventListener('click', share);
   $('download-btn').addEventListener('click', downloadImage);
-  $('y-share-btn').addEventListener('click', shareYear);
-  $('y-download-btn').addEventListener('click', downloadYearImage);
   
   onHashChange();
 }

@@ -661,28 +661,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 .site-header { flex-wrap: wrap; }
 .header-nav { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
-.versus-card { text-align: center; }
-.versus-streak { font-family: var(--font-ui); font-size: 0.875rem; color: var(--muted-on-paper); margin: 0 0 8px; }
-.versus-title { margin: 0 0 16px; }
-.versus-options { display: grid; gap: 12px; margin-bottom: 16px; }
-.versus-option {
-  display: flex; flex-direction: column; gap: 4px; align-items: center;
-  padding: 16px 12px; min-height: 96px; cursor: pointer;
-  font: inherit; color: inherit; background: rgba(0,0,0,0.03);
-  border: 2px solid currentColor; border-radius: 12px;
-}
-.versus-option:focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
-.versus-option:disabled { cursor: default; opacity: 1; }
-.versus-option .v-period, .versus-option .v-unit { font-family: var(--font-ui); font-size: 0.8125rem; color: var(--muted-on-paper); }
-.versus-option .v-price { font-family: var(--font-mono, monospace); font-weight: 700; font-size: 1.125rem; }
-.versus-option[data-state="win"] { border-width: 4px; }
-.versus-option[data-state="lose"] { opacity: 0.7; border-style: dashed; }
-.versus-feedback { min-height: 1.5em; font-weight: 700; margin: 0 0 12px; }
-.versus-back { color: var(--ink); display: block; margin-top: 16px; font-family: var(--font-ui); font-size: 0.875rem; }
-
-.year-link { display: block; margin-top: 12px; font-size: 0.875rem; font-weight: 700; color: var(--text); }
-.year-price { text-align: right; white-space: nowrap; font-weight: 700; }
-#y-rows small { font-weight: 400; color: var(--muted-on-paper); }
 
 .hint-btn { display: block; margin: 0 auto 12px; padding: 4px 8px; background: none; border: 0; font: inherit; font-size: 0.875rem; font-weight: 700; color: var(--ink); text-decoration: underline; cursor: pointer; }
 
@@ -703,20 +681,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .mode-desc { font: 400 0.9375rem var(--font-ui); color: var(--muted-on-paper); }
 .mode-meta { font: 700 0.8125rem var(--font-mono); color: var(--accent-on-paper); }
 .mode-meta:empty { display: none; }
-/* Menu groups: the main game on top, the quick games in two columns, browsing screens as slim rows. */
-.mode-group {
-  display: flex; align-items: center; gap: 8px; margin: 8px 0 -2px;
-  font: 700 0.75rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
-}
-.mode-group::after { content: ''; flex: 1; border-top: 2px dashed currentColor; opacity: 0.5; }
 .mode-main { box-shadow: 4px 4px 0 var(--text); }
 .mode-main .mode-meta { border-top: 1px dashed var(--line); padding-top: 8px; }
-.mode-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
-.mode-grid .mode-card { align-content: start; padding: 12px; }
-.mode-grid .mode-name { font-size: 1.0625rem; }
-.mode-grid .mode-desc { font-size: 0.8125rem; }
-.mode-grid .mode-meta { font-size: 0.75rem; }
-.mode-wide { grid-column: 1 / -1; }
 .mode-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 12px 16px; }
 .mode-row .mode-name { font-size: 1.0625rem; flex: none; }
 .mode-row .mode-desc { font-size: 0.8125rem; text-align: right; }
@@ -727,28 +693,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .hint-row { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; }
 .hint-row strong { font-weight: 700; }
 
-/* Sepet Kurma */
-.basket-card { text-align: center; }
-.basket-period { display: inline-block; margin: 0 0 12px; padding: 4px 12px; background: var(--accent); color: #fff; border-radius: 999px; font: 700 0.9375rem var(--font-ui); }
-.basket-label { margin: 0; font: 700 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-on-paper); }
-.basket-budget { margin: 4px 0 8px; font: 700 2.25rem var(--font-mono); }
-.basket-help { margin: 0 0 16px; font: 400 0.875rem var(--font-ui); color: var(--muted-on-paper); }
-.basket-list { list-style: none; margin: 0 0 12px; padding: 0; text-align: left; }
-.basket-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; padding: 12px 0; border-top: 1px dashed var(--line); }
-.basket-name { font: 700 1rem var(--font-ui); }
-.basket-unit { grid-column: 1; font: 400 0.8125rem var(--font-ui); color: var(--muted-on-paper); }
-.basket-price { grid-column: 1; font: 700 0.8125rem var(--font-mono); color: var(--muted-on-paper); }
-.basket-price:empty { display: none; }
-.basket-stepper { grid-column: 2; grid-row: 1 / span 3; display: flex; align-items: center; gap: 8px; }
-.basket-stepper button { width: 40px; height: 40px; font: 700 1.25rem var(--font-mono); color: var(--ink); background: transparent; border: 2px solid var(--ink); border-radius: 6px; cursor: pointer; }
-.basket-stepper button:disabled { opacity: 0.35; cursor: default; }
-.basket-qty { min-width: 1.5em; text-align: center; font: 700 1.125rem var(--font-mono); }
-.basket-count { margin: 0 0 12px; font: 700 0.9375rem var(--font-ui); }
-.basket-result { margin: 0 0 12px; padding: 12px; border: 1px dashed var(--ink); border-radius: 4px; font-family: var(--font-mono); font-size: 0.9375rem; text-align: left; }
-.basket-result .row { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; }
-.basket-result .verdict { color: var(--accent-on-paper); margin: 8px 0 0; font: 700 1rem var(--font-ui); text-align: center; }
-/* Secondary button on the paper: --text is the paper colour in dark mode */
-#b-next { margin-bottom: 8px; color: var(--ink); border-color: var(--ink); }
 
 /* Short colour fade when the theme is switched by hand (class is set for ~400ms by main.js) */
 @media (prefers-reduced-motion: no-preference) {
@@ -759,8 +703,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 }
 @keyframes theme-spin { from { transform: rotate(-90deg) scale(0.8); } to { transform: none; } }
 
-.year-actions { display: flex; gap: 12px; justify-content: center; margin: 20px auto 8px; max-width: 480px; }
-.year-actions .btn { flex: 1 1 0; }
 
 /* Touch targets: every control gets at least a 44x44 CSS px hit area (WCAG 2.5.5). */
 .logo { display: inline-flex; align-items: center; min-height: 44px; }
@@ -769,80 +711,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .guess-steps .step { min-height: 44px; }
 .hint-btn { min-height: 44px; padding: 8px 12px; }
 .picker-chip { min-height: 44px; }
-.basket-stepper button { width: 44px; height: 44px; }
-.versus-back, .year-link { display: flex; align-items: center; justify-content: center; min-height: 44px; }
 .site-footer a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
 .tax-details summary, .timeline-note summary { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
 .tax-details summary { display: flex; justify-content: center; }
 .timeline-source, .source a, .tax-period-sources a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
-
-/* "Sırala" mode */
-.order-card { text-align: center; }
-.order-help { font-family: var(--font-ui); font-size: 0.875rem; color: var(--muted-on-paper); margin: -8px 0 16px; }
-.order-items { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 16px; }
-.order-item {
-  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px;
-  padding: 10px 12px; text-align: left; cursor: pointer;
-  font: inherit; color: var(--ink); background: rgba(0,0,0,0.03);
-  border: 2px solid var(--ink); border-radius: 12px;
-}
-.order-item:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-.order-item .o-rank {
-  flex: none; width: 40px; height: 40px; display: grid; place-items: center;
-  border: 2px dashed var(--muted-on-paper); border-radius: 50%;
-  font: 700 1.25rem var(--font-mono);
-}
-.order-item[aria-pressed="true"] .o-rank { border: 0; background: var(--ink); color: var(--paper); }
-.order-item .o-icon { flex: none; width: 36px; height: 36px; }
-.order-item .o-body { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.order-item .o-unit { font-family: var(--font-ui); font-size: 0.8125rem; color: var(--muted-on-paper); overflow-wrap: anywhere; }
-.order-row { cursor: default; }
-.order-row .o-rank { border: 0; background: var(--ink); color: var(--paper); }
-.order-row .o-price { font: 700 1rem var(--font-mono); white-space: nowrap; }
-.order-row .o-mark { flex: none; min-width: 2.5em; text-align: right; font-weight: 700; }
-.order-row .o-yours { display: block; font-family: var(--font-ui); font-size: 0.75rem; font-weight: 400; color: var(--muted-on-paper); }
-.order-row[data-state="lose"] { border-style: dashed; }
-.order-row[data-state="lose"] .o-mark { color: var(--accent-on-paper); }
-.order-actions { display: flex; gap: 12px; }
-.order-actions .btn { color: var(--ink); border-color: var(--ink); }
-.order-actions .btn.primary { flex: 1.4 1 0; width: auto; }
-.order-actions .btn:disabled { opacity: 0.45; cursor: default; }
-
-/* "60 Saniye" mode */
-.blitz-bar { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 12px; }
-.blitz-bar .versus-streak { margin: 0; }
-.blitz-clock { font: 700 2rem var(--font-mono); }
-.blitz-clock[data-low="true"] { color: var(--accent-on-paper); }
-.blitz-card .versus-option { min-height: 104px; }
-.blitz-label { font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8125rem; color: var(--muted-on-paper); margin: 0; }
-.blitz-result { font: 700 2.5rem var(--font-mono); margin: 4px 0; }
-.blitz-best { font-weight: 700; margin: 0 0 16px; }
-@media (prefers-reduced-motion: no-preference) {
-  .blitz-card .versus-option { transition: opacity 0.15s; }
-}
-
-/* "Hangi Yıl?" mode */
-.yearguess-card .product-image { display: block; margin: 0 auto 8px; }
-.yearguess-card .product-image[hidden] { display: none; }
-.yg-name { margin: 0; }
-.yg-price { font: 700 2.25rem var(--font-mono); margin: 8px 0 16px; }
-.yg-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-.yg-option {
-  min-height: 56px; cursor: pointer; font: 700 1.25rem var(--font-mono);
-  color: var(--ink); background: rgba(0,0,0,0.03); border: 2px solid var(--ink); border-radius: 12px;
-}
-.yg-option:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-.yg-option:disabled { cursor: default; }
-.yg-option[data-state="win"] { border-width: 4px; }
-.yg-option[data-state="lose"] { border-style: dashed; color: var(--accent-on-paper); border-color: var(--accent-on-paper); }
-.yg-option:disabled:not([data-state]) { opacity: 0.6; }
-
-/* Keyboard hint: only where a hardware keyboard and mouse are likely. */
-.key-hint { display: none; margin: -8px 0 12px; font: 400 0.75rem var(--font-mono); color: var(--muted-on-paper); }
-@media (hover: hover) and (pointer: fine) {
-  .key-hint { display: block; }
-}
-/* Stats screen: mode name is a link to the mode, kept a 44px target */
-.stats-mode { display: inline-flex; align-items: center; min-height: 44px; color: inherit; }
-#stats-reset { color: var(--ink); border-color: var(--ink); }
-#stats-rows td { vertical-align: middle; }
+.archive-link { font-weight: 700; }
