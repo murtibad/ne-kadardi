@@ -18,6 +18,11 @@ import { VERSION } from './version.js';
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
 const sound = createSoundPlayer();
+// Vibration follows the sound switch and the reduced-motion preference.
+const hapticIfAllowed = (ms) => {
+  if (!sound.isEnabled() || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+  haptic(ms);
+};
 const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '');
 
 const state = {
@@ -175,10 +180,10 @@ function onGuess(event) {
   state.total += state.result.score;
   state.best = Math.max(state.best, state.result.score);
   saveSession();
-  haptic(10);
+  hapticIfAllowed(10);
   renderResult(q, state.result);
   // A close or way-off guess gets its own jingle; everything else just hears the receipt printer.
-  sound.play(soundForResult(state.result.score, state.result.factor) ?? 'print');
+  sound.play(soundForResult(state.result.score, state.result.direction === 'exact' ? 1 : state.result.factor) ?? 'print');
 }
 
 // Quick-add chips. Fixed steps on purpose: scaling them to the price would leak its magnitude.
@@ -192,7 +197,7 @@ function renderGuessSteps() {
     b.textContent = `+${step.toLocaleString('tr-TR')}`;
     b.addEventListener('click', () => {
       sound.play('tick');
-      haptic(8);
+      hapticIfAllowed(8);
       const input = $('guess-input');
       const cur = parseGuess(input.value);
       input.value = String((Number.isFinite(cur) ? cur : 0) + step).replace('.', ',');
@@ -206,7 +211,7 @@ function renderGuessSteps() {
 function applyPaperAge(card, date) {
   const age = paperAge(yearOf(date));
   card.style.setProperty('--age', String(age));
-  card.toggleAttribute('data-aged', age >= 0.4);
+  card.toggleAttribute('data-aged', age >= 0.1);
 }
 
 // The product icon bounces after a close guess and shakes after a way-off one.
@@ -592,7 +597,7 @@ function renderSoundToggle() {
   const btn = $('sound-toggle');
   btn.textContent = on ? '🔊' : '🔇';
   btn.setAttribute('aria-pressed', String(on));
-  btn.setAttribute('aria-label', on ? 'Sesi kapat' : 'Sesi aç');
+  btn.title = on ? 'Sesi kapat' : 'Sesi aç'; // the label stays fixed: aria-pressed carries the state
 }
 
 function toggleSound() {
@@ -646,8 +651,7 @@ async function init() {
   $('guess-form').addEventListener('submit', onGuess);
   // Skipping is free: no score, no round counted, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
-    sound.play('tick');
-    nextQuestion();
+    nextQuestion(); // its barcode beep doubles as the skip sound
   });
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.65.1] - 2026-10-16
+### Fixed
+- Contrast: the darker small-text colours now apply from a slight paper tint on (age 0.1), not only from 0.4.
+- The sound button keeps a fixed accessible name ("Ses") and shows its state with `aria-pressed`; the POS line is no longer a live region of its own (double announcements).
+- Vibration respects the sound switch and the reduced-motion setting.
+- Any guess marked exact (within 10%) now gets the cash-register sound, also after a hint penalty.
+- Skipping a question plays only the barcode beep, not two sounds at once.
+
 ## [0.65.0] - 2026-10-16
 ### Added
 - "Bu soruyu geç" link under the guess button: skips a product you do not know. A skip is free: no score, no round counted.
