@@ -7302,6 +7302,18 @@
           }
         },
         {
+          "date": "2018-02",
+          "price": 68900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) 2018 model yılı teslim fiyatı (tavsiye edilen liste, kampanyalı değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2018/1-4-easy (Şubat satırı). Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "Fiat Egea Sedan Lounge 2018 fiyatları ve özellikleri (Yeni Model Arabalar, 5 Şubat 2018)",
+            "url": "https://www.yenimodelarabalar.com/fiat-egea-sedan-lounge-2018-fiyatlari-ve-ozellikleri-2018-02-05-32732.html",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2019-06",
           "price": 83900.0,
           "status": "verified",

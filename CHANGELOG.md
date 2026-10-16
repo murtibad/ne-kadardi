@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.66.1] - 2026-10-16
+### Added
+- Fiat Egea: 2018-02 value (68.900, 2018 model year), confirmed by a news page and the arabalar.com.tr monthly table. The series now has 10 values.
+
 ## [0.66.0] - 2026-10-16
 ### Added
 - "Simit (İstanbul sokak/fırın simidi)": 6 values (2018-09, 2020-01, 2021-02, 2021-11, 2023-08, 2026-09), each from a zam article plus a second outlet that was re-read for the price. The 2015 tavsiye price and the unofficial 2025 hike are left out.
