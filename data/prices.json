@@ -6144,6 +6144,116 @@
           }
         }
       ]
+    },
+    {
+      "id": "aile-cuzdani",
+      "name": "Aile cüzdanı (evlenme cüzdanı) değerli kâğıt bedeli",
+      "unit": "1 adet",
+      "region": null,
+      "source_hint": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği (Resmî Gazete), satır '7 – Aile cüzdanları'",
+      "image": {
+        "src": "img/aile-cuzdani.svg",
+        "alt": "Aile cüzdanı",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025",
+        "price": 1010.0,
+        "status": "verified",
+        "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+        "source": {
+          "title": "Muhasebat Gen. Müd. Genel Tebliği Sıra No:92 Değerli Kağıtlar 2025 Yılı, alomaliye.com",
+          "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
+          "accessed": "2026-10-04",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2017",
+          "price": 86.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "2017 Yılı Değerli Kağıtlar (Muhasebat Gen. Müd. Genel Tebliği Sıra No:52), alomaliye.com",
+            "url": "https://alomaliye.com/2016/12/21/2017-yili-degerli-kagitlar/",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 98.5,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "2018 Yılı Değerli Kağıtlar (Sıra No:56), alomaliye.com",
+            "url": "https://www.alomaliye.com/2017/12/30/2018-yili-degerli-kagitlar/amp/",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 121.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "2019 Değerli Kağıtlar Tebliği (Sıra No:60), alomaliye.com",
+            "url": "https://alomaliye.com/2018/12/31/2019-degerli-kagitlar-tebligi-60/",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 140.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "2020 Değerli Kağıtlar (Sıra No:64), alomaliye.com",
+            "url": "https://alomaliye.com/2019/12/31/2020-degerli-kagitlar/",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 200.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "2022 Değerli Kağıtlar Muhasebat Tebliği (Sıra No:70), alomaliye.com",
+            "url": "https://www.alomaliye.com/2021/12/21/2022-degerli-kagitlar-muhasebat-tebligi-sira-no-70/",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 445.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No:79), alomaliye.com",
+            "url": "https://www.alomaliye.com/2022/12/30/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-79/",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 1010.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "Muhasebat Gen. Müd. Genel Tebliği Sıra No:92 Değerli Kağıtlar 2025 Yılı, alomaliye.com",
+            "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
+            "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }

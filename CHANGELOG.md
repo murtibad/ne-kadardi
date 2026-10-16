@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.59.0] - 2026-10-16
+### Added
+- New product "Aile cüzdanı (evlenme cüzdanı) değerli kâğıt bedeli": 7 verified yearly values (2017-2020, 2022, 2023, 2025) from the Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği (Resmî Gazete text, read on alomaliye.com mirrors). 2021, 2024 and 2026 are left out: their sources could not be confirmed on the page. Category: Harç, ceza ve bedeller.
+
 ## [0.58.1] - 2026-10-16
 ### Changed
 - Fiyat Arşivi: URLs inside the "Ayrıntı" notes are now tappable "Link · host" buttons that open in a new tab, instead of plain text to copy. `js/linkify.js` escapes the text and only links http(s) URLs.
