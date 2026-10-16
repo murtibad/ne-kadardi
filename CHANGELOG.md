@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.60.0] - 2026-10-16
+### Added
+- Sound effects synthesized with the Web Audio API (`js/sound.js`, no audio files): printer on every result, a jingle for close and way-off guesses, a cash-register chime on an exact hit, ticks on the quick-add buttons. A speaker button next to the theme toggle mutes it (saved per device). Phones get a light vibration on guess.
+- Context-aware cashier comments (`js/banter.js`): product easter eggs, lines for guesses far above or below the price, POS lines ("YETERSİZ BAKİYE" / "PARA ÜSTÜ"), a cashier remark when you ask for a hint, a receipt number and tagline at the bottom, an old-lira note for 2005-2008 and a time-capsule line for 2015, 2016, 2020 and 2023.
+- Receipts of older questions yellow with age (`js/paper.js`); the result icon bounces after a close guess and shakes after a way-off one.
+- The shared image gets a tilted red stamp with a title that depends on the score.
+
 ## [0.59.0] - 2026-10-16
 ### Added
 - New product "Aile cüzdanı (evlenme cüzdanı) değerli kâğıt bedeli": 7 verified yearly values (2017-2020, 2022, 2023, 2025) from the Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği (Resmî Gazete text, read on alomaliye.com mirrors). 2021, 2024 and 2026 are left out: their sources could not be confirmed on the page. Category: Harç, ceza ve bedeller.
