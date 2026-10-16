@@ -6448,6 +6448,432 @@
           }
         }
       ]
+    },
+    {
+      "id": "surucu-belgesi-bedeli",
+      "name": "Sürücü belgesi değerli kâğıt bedeli",
+      "unit": "1 adet (ehliyet kartının değerli kâğıt bedeli; harç ayrı)",
+      "region": null,
+      "source_hint": "Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"",
+      "image": {
+        "src": "img/surucu-belgesi.svg",
+        "alt": "Sürücü belgesi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026",
+        "price": 1690.0,
+        "status": "verified",
+        "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+        "source": {
+          "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2026",
+          "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+          "accessed": "2026-10-16",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016",
+          "price": 108.5,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2016",
+            "url": "https://www.alomaliye.com/2015/12/25/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-50-degerli-kagitlar-2016-yili/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017",
+          "price": 117.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2017",
+            "url": "https://alomaliye.com/2016/12/21/2017-yili-degerli-kagitlar/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 134.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2018",
+            "url": "https://www.alomaliye.com/2017/12/30/2018-yili-degerli-kagitlar/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 166.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2019",
+            "url": "https://alomaliye.com/2018/12/31/2019-degerli-kagitlar-tebligi-60/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 200.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2020",
+            "url": "https://alomaliye.com/2019/12/31/2020-degerli-kagitlar/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 280.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2022",
+            "url": "https://www.alomaliye.com/2021/12/21/2022-degerli-kagitlar-muhasebat-tebligi-sira-no-70/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 624.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2023",
+            "url": "https://www.alomaliye.com/2022/12/30/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-79/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 990.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2024",
+            "url": "https://orgtr.org/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-86-2024-yili-degerli-kagit-bedelleri/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 1420.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2025",
+            "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 1690.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Sürücü belgeleri 2026",
+            "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "arac-tescil-belgesi",
+      "name": "Motorlu araç tescil belgesi (ruhsat) değerli kâğıt bedeli",
+      "unit": "1 adet (araç ruhsatının değerli kâğıt bedeli; harç ayrı)",
+      "region": null,
+      "source_hint": "Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"",
+      "image": {
+        "src": "img/arac-tescil.svg",
+        "alt": "Araç ruhsatı",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026",
+        "price": 1511.0,
+        "status": "verified",
+        "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+        "source": {
+          "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2026",
+          "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+          "accessed": "2026-10-16",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016",
+          "price": 81.5,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2016",
+            "url": "https://www.alomaliye.com/2015/12/25/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-50-degerli-kagitlar-2016-yili/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017",
+          "price": 88.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2017",
+            "url": "https://alomaliye.com/2016/12/21/2017-yili-degerli-kagitlar/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 120.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2018",
+            "url": "https://www.alomaliye.com/2017/12/30/2018-yili-degerli-kagitlar/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 148.5,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2019",
+            "url": "https://alomaliye.com/2018/12/31/2019-degerli-kagitlar-tebligi-60/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 180.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2020",
+            "url": "https://alomaliye.com/2019/12/31/2020-degerli-kagitlar/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 250.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2022",
+            "url": "https://www.alomaliye.com/2021/12/21/2022-degerli-kagitlar-muhasebat-tebligi-sira-no-70/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 557.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2023",
+            "url": "https://www.alomaliye.com/2022/12/30/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-79/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 885.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2024",
+            "url": "https://orgtr.org/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-86-2024-yili-degerli-kagit-bedelleri/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 1270.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2025",
+            "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 1511.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, Motorlu araç tescil belgesi 2026",
+            "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kimlik-karti",
+      "name": "T.C. kimlik kartı (değiştirme) değerli kâğıt bedeli",
+      "unit": "1 adet (değiştirme veya doğum nedeniyle düzenlenen kimlik kartı)",
+      "region": null,
+      "source_hint": "Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"",
+      "image": {
+        "src": "img/kimlik-karti.svg",
+        "alt": "Kimlik kartı",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026",
+        "price": 220.0,
+        "status": "verified",
+        "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+        "source": {
+          "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2026",
+          "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+          "accessed": "2026-10-16",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2017",
+          "price": 16.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2017",
+            "url": "https://alomaliye.com/2016/12/21/2017-yili-degerli-kagitlar/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 18.5,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2018",
+            "url": "https://www.alomaliye.com/2017/12/30/2018-yili-degerli-kagitlar/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 22.5,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2019",
+            "url": "https://alomaliye.com/2018/12/31/2019-degerli-kagitlar-tebligi-60/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 25.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2020",
+            "url": "https://alomaliye.com/2019/12/31/2020-degerli-kagitlar/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 37.5,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2022",
+            "url": "https://www.alomaliye.com/2021/12/21/2022-degerli-kagitlar-muhasebat-tebligi-sira-no-70/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 83.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2023",
+            "url": "https://www.alomaliye.com/2022/12/30/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-79/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 130.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2024",
+            "url": "https://orgtr.org/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-86-2024-yili-degerli-kagit-bedelleri/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 185.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2025",
+            "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 220.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
+          "source": {
+            "title": "Değerli Kâğıtlar Tebliği, kimlik kartı (değiştirme) 2026",
+            "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
