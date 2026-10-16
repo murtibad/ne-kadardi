@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.64.0] - 2026-10-16
+### Changed
+- The hint button reads "Fiyatı okut: ipucu al" (cashier scans the price for you).
+- A barcode beep plays when a new question appears (not on the first load, which has no tap yet).
+- After three or more rounds the stamp on the shared image rates your session average instead of the single guess.
+
 ## [0.63.0] - 2026-10-16
 ### Added
 - New product "Asgari noter ücreti (bir noterlik işleminin alt sınırı)": 10 values from the yearly Noterlik Ücret Tarifesi, Madde 1 (2013, 2015, 2018, 2019, 2021-2026). Official Resmî Gazete texts (HİGM copy from 2023); every amount was re-read in the tariff text. The tariff year is the date. 2014, 2016, 2017 and 2020 tariffs were not located.

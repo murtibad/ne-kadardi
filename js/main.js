@@ -11,7 +11,7 @@ import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
-import { contextComment, posLine, hintComment, yearAnchor, ytlNote, receiptFooter } from './banter.js';
+import { contextComment, posLine, hintComment, yearAnchor, ytlNote, receiptFooter, stampTitle } from './banter.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 
@@ -115,6 +115,8 @@ function nextQuestion() {
     showMessage('Gösterilecek soru yok.');
     return;
   }
+  // The first question appears without a tap, so only later ones beep like a barcode scanner.
+  if (state.question) sound.play('beep');
   state.question = q;
   state.recentProducts.push(q.productId);
   if (state.recentProducts.length > 12) state.recentProducts.shift();
@@ -352,6 +354,8 @@ async function prepareShareImage(btnId) {
   const r = state.result;
   const contextText = buildContextLine(q, state.all);
   const model = buildShareImageModel(q, r, { contextLine: contextText, footer: state.footer });
+  // After a few rounds the stamp rates the whole session instead of this one guess.
+  if (state.played >= 3) model.stamp = stampTitle(state.total / state.played) ?? model.stamp;
   
   try {
     const { renderShareImage } = await import('./share-image.js');
