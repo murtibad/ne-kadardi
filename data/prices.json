@@ -7020,6 +7020,384 @@
           }
         }
       ]
+    },
+    {
+      "id": "simit",
+      "name": "Simit (İstanbul sokak/fırın simidi)",
+      "unit": "1 adet, 100 gram",
+      "region": "İstanbul",
+      "source_hint": "İstanbul Simitçiler/Fırıncılar Odası zam haberleri",
+      "image": {
+        "src": "img/simit.svg",
+        "alt": "Simit",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-09",
+        "price": 30.0,
+        "status": "verified",
+        "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://www.politikam.com/istanbulda-simide-zam-geldi-26-eylul-2026-simit-fiyati-kac-tl-oldu.",
+        "source": {
+          "title": "İstanbul'da simide zam: 30 liraya çıktı (Evrensel, 2026-09-26)",
+          "url": "https://www.evrensel.net/haber/6002163/istanbul-da-simide-zam-30-liraya-cikti",
+          "accessed": "2026-10-16",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2018-09",
+          "price": 1.75,
+          "status": "verified",
+          "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://www.istiklal.com.tr/ekonomi/istanbulda-simide-zam-geldi-iste-yeni-fiyati-407949h.",
+          "source": {
+            "title": "İstanbul'da simide zam geldi (Dünya, 2018-09-20)",
+            "url": "https://www.dunya.com/ekonomi/istanbulda-simide-zam-geldi-haberi-428094",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 2.0,
+          "status": "verified",
+          "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://cnnturk.com/turkiye/istanbulda-simit-fiyatlari-artti-1469819.",
+          "source": {
+            "title": "İstanbul'da simit artık daha pahalı (Karar, 2020-01-05)",
+            "url": "https://www.karar.com/istanbulda-simit-artik-daha-pahali-1435294",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-02",
+          "price": 2.5,
+          "status": "verified",
+          "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://www.gazetevatan.com/ekonomi/simide-istanbulda-zam-yapildi-fiyati-1372470.",
+          "source": {
+            "title": "İstanbul'da simide yüzde 25 zam (Capital, 2021-02-10)",
+            "url": "https://www.capital.com.tr/sektorler/gida/istanbulda-simide-yuzde-25-zam",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-11",
+          "price": 3.5,
+          "status": "verified",
+          "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://www.iscihaber.net/ekonomi/simidin-tanesi-35-lira-oldu-simide-yuzde-40-zam-yapildi/19696.",
+          "source": {
+            "title": "İstanbul'da simit 3,5 lira oldu (Timeturk, 2021-11-30)",
+            "url": "https://www.timeturk.com/ekonomi/istanbul-da-simit-3-5-lira-oldu/haber-1712053",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-08",
+          "price": 10.0,
+          "status": "verified",
+          "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://serbestiyet.com/haberler/secim-sonrasi-zam-firtinasi-hiz-kesmiyor-istanbulda-ekmek-8-simit-10-tl-oldu-135101/.",
+          "source": {
+            "title": "İstanbul'da simit 10 TL oldu (Medyascope, 2023-08-07)",
+            "url": "https://medyascope.tv/2023/08/07/istanbulda-simit-10-tl-oldu-un-is-esnaf-sanatkarlar-odasi-baskani-vatandasimizi-dusunuyoruz-ama-biz-de-zor-durumdayiz/",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-09",
+          "price": 30.0,
+          "status": "verified",
+          "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://www.politikam.com/istanbulda-simide-zam-geldi-26-eylul-2026-simit-fiyati-kac-tl-oldu.",
+          "source": {
+            "title": "İstanbul'da simide zam: 30 liraya çıktı (Evrensel, 2026-09-26)",
+            "url": "https://www.evrensel.net/haber/6002163/istanbul-da-simide-zam-30-liraya-cikti",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sinema-ortalama-bilet",
+      "name": "Sinema bileti ortalama fiyatı (Türkiye geneli)",
+      "unit": "1 bilet, yıllık ortalama (gişe hasılatı ÷ seyirci)",
+      "region": null,
+      "source_hint": "Box Office Türkiye yıllık karşılaştırma tablosu",
+      "image": {
+        "src": "img/sinema.svg",
+        "alt": "Sinema",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025",
+        "price": 208.18,
+        "status": "verified",
+        "note": "Yıllık gişe hasılatı ₺5.814.905.525 bölü 27.932.740 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+        "source": {
+          "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+          "url": "https://boxofficeturkiye.com/yillik",
+          "accessed": "2026-10-16",
+          "kind": "dataset"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016",
+          "price": 11.87,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺691.704.828 bölü 58.287.772 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2017",
+          "price": 12.23,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺870.773.224 bölü 71.188.594 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 12.74,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺896.780.475 bölü 70.409.779 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 16.46,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺980.410.567 bölü 59.556.020 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 17.21,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺299.726.220 bölü 17.415.304 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2021",
+          "price": 22.87,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺285.571.443 bölü 12.488.382 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 37.3,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺1.350.268.364 bölü 36.198.982 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 89.66,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺2.828.132.324 bölü 31.542.707 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 150.64,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺4.993.702.968 bölü 33.149.053 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 208.18,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺5.814.905.525 bölü 27.932.740 seyirci. Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu",
+            "url": "https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-16",
+            "kind": "dataset"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fiat-egea-easy",
+      "name": "Sıfır Fiat Egea Sedan 1.4 Fire Easy (manuel, benzinli)",
+      "unit": "1 araç, anahtar teslim liste fiyatı",
+      "region": null,
+      "source_hint": "Fiat/Tofaş fiyat listesi haberleri (otomobil siteleri) ve arabalar.com.tr aylık tablosu",
+      "image": {
+        "src": "img/egea.svg",
+        "alt": "Sedan otomobil",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025-10",
+        "price": 999900.0,
+        "status": "verified",
+        "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2025/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+        "source": {
+          "title": "Fiat Ekim 2025 fiyatları belli oldu (ShiftDelete, 3 Ekim 2025)",
+          "url": "https://shiftdelete.net/fiat-ekim-2025-fiyatlari-belli-oldu",
+          "accessed": "2026-10-16",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2017-02",
+          "price": 57900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2017/1-4-fire-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "Sedan Sınıfının Parlayan Yıldızı Fiat Egea Sedan 2017 (Sıfır Araç Al, 28 Şubat 2017)",
+            "url": "https://www.sifiraracal.com/fiat-haberleri/sedan-sinifinin-parlayan-yildizi-fiat-egea-sedan-2017/10796",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-06",
+          "price": 83900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2019/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "2019 Fiat Egea Sedan Easy Fiyat Listesi, Temmuz (Yeni Model Arabalar, 26.06.2019)",
+            "url": "https://www.yenimodelarabalar.com/2019-fiat-egea-sedan-easy-fiyat-listesi-temmuz-37609.html",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-03",
+          "price": 94900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://sifiraracal.com/fiat-haberleri/2020-fiat-egea-sedan-fiyati-ve-donanimlari/12490 . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "2020 Fiat Egea Sedan fiyatı ve donanımları (Log, 12 Mart 2020)",
+            "url": "https://www.log.com.tr/?p=610634",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-09",
+          "price": 110900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.otomobil.com.tr/fiat-egea-sedan-fiyat-listesi/ . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "ÖTV zammı sonrası güncel 2020 Fiat Egea Sedan fiyatları (Log, 7 Eylül 2020)",
+            "url": "https://www.log.com.tr/?p=646814",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-11",
+          "price": 123900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2020/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "2020 Fiat Egea Sedan fiyatları, ÖTV zammı sonrası son tablo (Log, 12 Kasım 2020)",
+            "url": "https://www.log.com.tr/?p=659427",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 130900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2021/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "Yeni Fiat Egea Ailesiyle Tanıştınız mı (Sıfır Araç Al, 18 Ocak 2021)",
+            "url": "https://www.sifiraracal.com/fiat-haberleri/yeni-fiat-egea-ailesiyle-tanistiniz-mi/14262",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-04",
+          "price": 142900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2021/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "2021 Fiat Egea Sedan fiyatı ve versiyon seçenekleri (Log, 26 Nisan 2021)",
+            "url": "https://www.log.com.tr/?p=691256",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 872900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.haberler.com/2024-fiat-egea-sedan-fiyat-listesi-16710756-haberi/ . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "2024 zamları geldi! Fiat Egea ne kadar oldu? (ShiftDelete, 7 Ocak 2024)",
+            "url": "https://shiftdelete.net/?p=962101",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-10",
+          "price": 999900.0,
+          "status": "verified",
+          "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2025/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
+          "source": {
+            "title": "Fiat Ekim 2025 fiyatları belli oldu (ShiftDelete, 3 Ekim 2025)",
+            "url": "https://shiftdelete.net/fiat-ekim-2025-fiyatlari-belli-oldu",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }

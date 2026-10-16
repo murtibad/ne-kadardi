@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.66.0] - 2026-10-16
+### Added
+- "Simit (İstanbul sokak/fırın simidi)": 6 values (2018-09, 2020-01, 2021-02, 2021-11, 2023-08, 2026-09), each from a zam article plus a second outlet that was re-read for the price. The 2015 tavsiye price and the unofficial 2025 hike are left out.
+- "Sinema bileti ortalama fiyatı (Türkiye geneli)": 10 yearly values (2016-2025) from the Box Office Türkiye yearly table (gişe hasılatı ÷ seyirci). It is the national average of all tickets, not the full ticket price.
+- "Sıfır Fiat Egea Sedan 1.4 Fire Easy": 9 list-price values (2017-02, 2019-06, 2020-03, 2020-09, 2020-11, 2021-01, 2021-04, 2024-01, 2025-10); campaign prices are not used, and points with conflicting or same-outlet sources (2015-11, 2022, 2023) are left out. Each price was found on two pages.
+
 ## [0.65.1] - 2026-10-16
 ### Fixed
 - Contrast: the darker small-text colours now apply from a slight paper tint on (age 0.1), not only from 0.4.
