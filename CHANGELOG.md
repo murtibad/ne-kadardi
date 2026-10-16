@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.61.0] - 2026-10-16
+### Added
+- New product "Milli Piyango yılbaşı çeyrek bilet": 11 yearly values (2014, 2016-2025), each confirmed on pages from at least two different news outlets. Dated by the year the tickets go on sale; 2013 and 2015 are left out (one outlet only). Category: Teknoloji ve eğlence.
+- Aile cüzdanı: 2016, 2024 and 2026 values (Değerli Kâğıtlar tebliğ text pages), now 10 values.
+- The shared image carries the receipt number and tagline too.
+- The tax breakdown makes the printer sound when opened.
+### Changed
+- Proofread cashier and banter lines (grammar, awkward phrases, near-duplicates).
+
 ## [0.60.0] - 2026-10-16
 ### Added
 - Sound effects synthesized with the Web Audio API (`js/sound.js`, no audio files): printer on every result, a jingle for close and way-off guesses, a cash-register chime on an exact hit, ticks on the quick-add buttons. A speaker button next to the theme toggle mutes it (saved per device). Phones get a light vibration on guess.

@@ -6157,18 +6157,30 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2025",
-        "price": 1010.0,
+        "date": "2026",
+        "price": 1202.0,
         "status": "verified",
         "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
         "source": {
-          "title": "Muhasebat Gen. Müd. Genel Tebliği Sıra No:92 Değerli Kağıtlar 2025 Yılı, alomaliye.com",
-          "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
-          "accessed": "2026-10-04",
+          "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 97) Değerli Kağıtlar",
+          "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+          "accessed": "2026-10-16",
           "kind": "official"
         }
       },
       "prices": [
+        {
+          "date": "2016",
+          "price": 80.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 50) Değerli Kağıtlar 2016 Yılı",
+            "url": "https://www.alomaliye.com/2015/12/25/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-50-degerli-kagitlar-2016-yili/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
         {
           "date": "2017",
           "price": 86.0,
@@ -6242,6 +6254,18 @@
           }
         },
         {
+          "date": "2024",
+          "price": 705.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu. 2024 tebliğinde uygulanan bedel 705 TL (kanunla getirilen üst bedel 1.000 TL).",
+          "source": {
+            "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 86) (2024 Yılı Değerli Kağıt Bedelleri)",
+            "url": "https://orgtr.org/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-86-2024-yili-degerli-kagit-bedelleri/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2025",
           "price": 1010.0,
           "status": "verified",
@@ -6251,6 +6275,176 @@
             "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
             "accessed": "2026-10-04",
             "kind": "official"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 1202.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 97) Değerli Kağıtlar",
+            "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "milli-piyango-ceyrek",
+      "name": "Milli Piyango yılbaşı çeyrek bilet",
+      "unit": "1 çeyrek bilet (yılbaşı özel çekilişi)",
+      "region": null,
+      "source_hint": "Milli Piyango İdaresi yılbaşı özel çekilişi bilet fiyatı duyurusu; haber sitelerinde her yıl Kasım-Aralık",
+      "image": {
+        "src": "img/milli-piyango.svg",
+        "alt": "Milli Piyango bileti",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025",
+        "price": 200.0,
+        "status": "verified",
+        "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: iscihaber.net https://www.iscihaber.net/gundem/milli-piyango-yilbasi-cekilisi-buyuk-ikramiye-ve-bilet-fiyatlari-ne-kadar/190735.",
+        "source": {
+          "title": "Milli Piyango yılbaşı bilet fiyatları, Habertürk (04.12.2025)",
+          "url": "https://www.haberturk.com/milli-piyango-yilbasi-bilet-fiyatlari-mpi-2026-milli-piyango-tam-yarim-ceyrek-bilet-fiyati-ne-kadar-3842811",
+          "accessed": "2026-10-16",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2014",
+          "price": 12.5,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: sabah.com.tr https://www.sabah.com.tr/ekonomi/2014/12/23/milli-piyango-bilet-fiyatlari-ne-kadar-oldu.",
+          "source": {
+            "title": "Elinizi cabuk tutun! Biletler bitiyor",
+            "url": "https://finans.mynet.com/haber/detay/ekonomi/elinizi-cabuk-tutun-biletler-bitiyor/98176/",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016",
+          "price": 15.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: trthaber.com https://www.trthaber.com/haber/ekonomi/buyuk-ikramiye-heyecani-yarin-basliyor-285044.html.",
+          "source": {
+            "title": "Milli Piyango 2017 yılbaşı özel çekilişi, CNN Türk",
+            "url": "https://cnnturk.com/ekonomi/turkiye/milli-piyango-2017-yilbasi-ozel-cekilisi-milli-piyango-buyuk-ikramiye-kazandiran-rakamlar-577717",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017",
+          "price": 15.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/2018-milli-piyango-yilbasi-buyuk-ikramiye-tutari-ne-kadar-iste-milli-piyango-bilet-fiyatlari-2580551.",
+          "source": {
+            "title": "Milli Piyango yılbaşı çekilişi bilet fiyatları, Sözcü (06 Ara 2017)",
+            "url": "https://www.sozcu.com.tr/milli-piyango-yilbasi-cekilisi-bilet-fiyatlari-ne-kadar-ceyrek-yarim-tam-yilbasi-biletleri-kac-lira-wp2120707",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 17.5,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: ahaber.com.tr https://www.ahaber.com.tr/ekonomi/2018/11/28/2019-yilbasi-bileti-ne-kadar-yilbasi-ceyrek-bilet-tam-bilet-ve-yarim-bilet-satis-fiyati.",
+          "source": {
+            "title": "Son dakika... Milli Piyango yılbaşı büyük ikramiyesi belli oldu, Hürriyet (15 Kas 2018)",
+            "url": "https://www.hurriyet.com.tr/ekonomi/son-dakika-milli-piyango-yilbasi-buyuk-ikramiyesi-belli-oldu-41019811",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 20.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: fanatik.com.tr https://www.fanatik.com.tr/plus/milli-piyango-yilbasi-biletleri-ne-kadar-milli-piyango-bilet-sorgulama-ekrani-2111867.",
+          "source": {
+            "title": "Milli Piyango yılbaşı bilet fiyatları 2020, Milliyet (30.11.2019)",
+            "url": "https://www.milliyet.com.tr/gundem/milli-piyango-yilbasi-bilet-fiyatlari-milli-piyango-tam-yarim-ceyrek-bilet-fiyatlari-2020-6090638",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020",
+          "price": 25.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: takvim.com.tr https://www.takvim.com.tr/yasam/2020/12/22/milli-piyango-yilbasi-bilet-fiyatlari-ne-kadar-ceyrek-yarim-ve-tam-bilet-kac-tl-iste-fiyat-listesi.",
+          "source": {
+            "title": "Büyük ikramiye 100 milyon! Milli Piyango yılbaşı biletleri, Fanatik (01.12.2020)",
+            "url": "https://www.fanatik.com.tr/sans-oyunlari/buyuk-ikramiye-100-milyon-milli-piyango-yilbasi-biletleri-ne-kadar-kac-tl-ceyrek-yarim-ve-tam-bilet-fiyatlari-2186816",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021",
+          "price": 30.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: gazetevatan.com https://www.gazetevatan.com/gundem/yilbasi-biletleri-ne-kadar-yilbasi-ikramiyesi-kac-lira-oldu-ceyrek-yarim-ve-tam-bilet-ne-kadar-2007644.",
+          "source": {
+            "title": "Milli Piyango yılbaşı bileti fiyatları, CNN Türk (14.12.2021)",
+            "url": "https://www.cnnturk.com/yasam/milli-piyango-yilbasi-bileti-fiyatlari-kac-para-buyuk-ikramiye-ne-kadar-1734889",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 50.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: ahaber.com.tr https://www.ahaber.com.tr/yasam/2022/12/19/yilbasi-bilet-fiyatlari-ne-kadar-kac-tl-2022-2023-tam-ceyrek-yilbasi-bilet-fiyatlari-ne-kadar-satisa-cikti-mi.",
+          "source": {
+            "title": "Milli Piyango bileti ne kadar? (31 Aralık 2022 Yılbaşı Çekilişi), NTV",
+            "url": "https://www.ntv.com.tr/ekonomi/galeri-milli-piyango-bileti-ne-kadar-tam-yarim-ve-ceyrek-bilet-fiyatlari-31-aralik-2022-milli-piyango-yilbasi-cekilisi,6k36jLBEHEu4JAk__Nkufw",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 100.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: takvim.com.tr https://www.takvim.com.tr/ekonomi/2023/11/30/2024-yilbasi-bilet-fiyatlari-2024-yilbasi-ikramiyesi-ne-kadar-milli-piyango-ceyrek-yarim-tam-yilbasi-biletleri-fiyat-listesi · milliyet.com.tr https://www.milliyet.com.tr/galeri/milli-piyango-2024-yilbasi-bilet-fiyatlari-milli-piyango-bileti-ne-kadar-ceyrek-yarim-tam-yilbasi-bileti-online-satin-al-7048745.",
+          "source": {
+            "title": "2024 Milli Piyango biletleri ne kadar?, NTV (26.12.2023)",
+            "url": "https://www.ntv.com.tr/turkiye/milli-piyango-bilet-fiyatlari-milli-piyango-yilbasi-ceyrek-yarim-tam-biletleri-ne-kadar,xkNGXTkuc0aTozrAvaRYJQ",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 150.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: cnnturk.com https://www.cnnturk.com/turkiye/galeri/2025-milli-piyango-bilet-fiyatlari-milli-piyango-yilbasi-ceyrek-yarim-tam-bilet-ne-kadar-kac-tl-2208386 · turkgun.com https://www.turkgun.com/faydali-bilgiler/yilbasi-biletleri-2025-ne-kadar-tam-yarim-ve-ceyrek-bilet-fiyatlari-kac-tl/254756.",
+          "source": {
+            "title": "Milli Piyango'nun yılbaşı büyük ikramiyesi belli oldu, Milliyet (11.11.2024)",
+            "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-milli-piyangonun-yilbasi-buyuk-ikramiyesi-belli-oldu-iste-ceyrek-yarim-ve-tam-bilet-fiyatlari-7231663",
+            "accessed": "2026-10-16",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 200.0,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: iscihaber.net https://www.iscihaber.net/gundem/milli-piyango-yilbasi-cekilisi-buyuk-ikramiye-ve-bilet-fiyatlari-ne-kadar/190735.",
+          "source": {
+            "title": "Milli Piyango yılbaşı bilet fiyatları, Habertürk (04.12.2025)",
+            "url": "https://www.haberturk.com/milli-piyango-yilbasi-bilet-fiyatlari-mpi-2026-milli-piyango-tam-yarim-ceyrek-bilet-fiyati-ne-kadar-3842811",
+            "accessed": "2026-10-16",
+            "kind": "news"
           }
         }
       ]

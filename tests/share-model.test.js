@@ -46,6 +46,7 @@ test('buildShareImageModel handles question without current price and image', ()
   assert.equal(model.increase, null);
   assert.equal(model.score, '50/100');
   assert.equal(model.iconSrc, null);
+  assert.equal(model.footer, null);
 });
 
 test('buildShareImageModel handles question with current price and image and context', () => {
@@ -80,4 +81,27 @@ test('buildShareImageModel handles taxLine and keeps contextLine separate', () =
   });
   assert.equal(modelOnlyTax.contextText, null);
   assert.equal(modelOnlyTax.taxLine, 'Vergi payı: yaklaşık %51 (₺33.000)');
+});
+
+test('buildShareImageModel defaults footer to null when absent or null', () => {
+  const q = { date: '2015-01', name: 'Ekmek', unit: '250 gram', price: 1 };
+  const r = { guess: 1, score: 100, direction: 'exact', factor: 1 };
+
+  const defaultModel = buildShareImageModel(q, r);
+  assert.equal(defaultModel.footer, null);
+
+  const emptyOptsModel = buildShareImageModel(q, r, {});
+  assert.equal(emptyOptsModel.footer, null);
+
+  const nullFooterModel = buildShareImageModel(q, r, { footer: null });
+  assert.equal(nullFooterModel.footer, null);
+});
+
+test('buildShareImageModel passes footer through when provided', () => {
+  const q = { date: '2015-01', name: 'Ekmek', unit: '250 gram', price: 1 };
+  const r = { guess: 1, score: 100, direction: 'exact', factor: 1 };
+  const footer = { no: 'FİŞ NO: #2015-HAFIZA-AÇIK', tagline: 'KDV DAHİL, HÜZÜN HARİÇ' };
+
+  const model = buildShareImageModel(q, r, { footer });
+  assert.deepEqual(model.footer, footer);
 });

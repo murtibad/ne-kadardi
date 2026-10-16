@@ -242,6 +242,7 @@ function renderResult(q, r) {
   const foot = receiptFooter({ year: yearOf(q.date), tier });
   $('r-foot-no').textContent = foot.no;
   $('r-foot-tag').textContent = foot.tagline;
+  state.footer = foot;
   document.querySelector('.verdict-box').dataset.tier = tier;
   document.querySelector('.score-box').dataset.tier = tier;
   $('r-meter').style.setProperty('--score', `${r.score}%`);
@@ -350,7 +351,7 @@ async function prepareShareImage(btnId) {
   const q = state.question;
   const r = state.result;
   const contextText = buildContextLine(q, state.all);
-  const model = buildShareImageModel(q, r, { contextLine: contextText });
+  const model = buildShareImageModel(q, r, { contextLine: contextText, footer: state.footer });
   
   try {
     const { renderShareImage } = await import('./share-image.js');
@@ -616,6 +617,8 @@ async function init() {
   loadSession();
   renderThemeToggle();
   $('theme-toggle').addEventListener('click', toggleTheme);
+  // The tax breakdown prints like a receipt strip.
+  $('r-tax-details').addEventListener('toggle', (e) => { if (e.target.open) sound.play('print'); });
   renderSoundToggle();
   $('sound-toggle').addEventListener('click', toggleSound);
   try {
