@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.63.0] - 2026-10-16
+### Added
+- New product "Asgari noter ücreti (bir noterlik işleminin alt sınırı)": 10 values from the yearly Noterlik Ücret Tarifesi, Madde 1 (2013, 2015, 2018, 2019, 2021-2026). Official Resmî Gazete texts (HİGM copy from 2023); every amount was re-read in the tariff text. The tariff year is the date. 2014, 2016, 2017 and 2020 tariffs were not located.
+
 ## [0.62.0] - 2026-10-16
 ### Added
 - Three products from the yearly Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği (Resmî Gazete text, read on web mirrors; 2024 is the applied price): "Sürücü belgesi değerli kâğıt bedeli" (10 values, 2016-2026), "Motorlu araç tescil belgesi (ruhsat) değerli kâğıt bedeli" (10 values) and "T.C. kimlik kartı (değiştirme) değerli kâğıt bedeli" (9 values, 2017-2026; the 2016 row was the old nüfus cüzdanı, a different item). 2021 is missing for all (its table is an image). Category: Harç, ceza ve bedeller.
