@@ -1,19 +1,23 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
-import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier } from './game.js';
+import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
+import { paperAge } from './paper.js';
+import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { linkifyNote } from './linkify.js';
-import { CATEGORIES, filterTimelines } from './categories.js';
+import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
+import { contextComment, posLine, hintComment, yearAnchor, ytlNote, receiptFooter } from './banter.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
+const sound = createSoundPlayer();
 const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '');
 
 const state = {
@@ -115,6 +119,10 @@ function nextQuestion() {
   state.recentProducts.push(q.productId);
   if (state.recentProducts.length > 12) state.recentProducts.shift();
   $('q-period').textContent = formatPeriod(q.date);
+  applyPaperAge(document.querySelector('.question-card'), q.date);
+  const anchor = yearAnchor(yearOf(q.date));
+  $('q-anchor').textContent = anchor || '';
+  $('q-anchor').hidden = !anchor;
   
   const img = $('q-image');
   if (q.image) {
@@ -136,8 +144,10 @@ function nextQuestion() {
   $('hint-btn').hidden = !hint;
   $('hint-text').hidden = true;
   $('hint-btn').onclick = () => {
+    sound.play('beep');
     state.hinted = true;
-    $('hint-text').innerHTML = `<p class="hint-slip-title">İpucu · ${escapeHTML(hint[0].period)}</p>`
+    $('hint-text').dataset.line = hintComment();
+    $('hint-text').innerHTML = `<p class="hint-cashier">“${escapeHTML($('hint-text').dataset.line)}”</p><p class="hint-slip-title">İpucu · ${escapeHTML(hint[0].period)}</p>`
       + hint.map((l) => `<div class="hint-row"><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.value)}</strong></div>`).join('');
     $('hint-text').hidden = false;
     $('hint-btn').hidden = true;
@@ -163,7 +173,10 @@ function onGuess(event) {
   state.total += state.result.score;
   state.best = Math.max(state.best, state.result.score);
   saveSession();
+  haptic(10);
   renderResult(q, state.result);
+  // A close or way-off guess gets its own jingle; everything else just hears the receipt printer.
+  sound.play(soundForResult(state.result.score, state.result.factor) ?? 'print');
 }
 
 // Quick-add chips. Fixed steps on purpose: scaling them to the price would leak its magnitude.
@@ -176,6 +189,8 @@ function renderGuessSteps() {
     b.className = 'btn step';
     b.textContent = `+${step.toLocaleString('tr-TR')}`;
     b.addEventListener('click', () => {
+      sound.play('tick');
+      haptic(8);
       const input = $('guess-input');
       const cur = parseGuess(input.value);
       input.value = String((Number.isFinite(cur) ? cur : 0) + step).replace('.', ',');
@@ -185,15 +200,48 @@ function renderGuessSteps() {
   }
 }
 
+// Old questions print on yellowed paper; the flag lets CSS darken the small text to keep contrast.
+function applyPaperAge(card, date) {
+  const age = paperAge(yearOf(date));
+  card.style.setProperty('--age', String(age));
+  card.toggleAttribute('data-aged', age >= 0.4);
+}
+
+// The product icon bounces after a close guess and shakes after a way-off one.
+function renderResultImage(q, r) {
+  const img = $('r-image');
+  img.classList.remove('bounce', 'shake');
+  if (!q.image) { img.hidden = true; return; }
+  img.src = q.image.src;
+  img.hidden = false;
+  img.onerror = () => { img.hidden = true; };
+  const tier = scoreTier(r.score);
+  if (tier === 'great') requestAnimationFrame(() => img.classList.add('bounce'));
+  else if (tier === 'bad') requestAnimationFrame(() => img.classList.add('shake'));
+}
+
 function renderResult(q, r) {
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
+  applyPaperAge($('r-receipt'), q.date);
+  renderResultImage(q, r);
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('r-guess').textContent = formatPrice(r.guess);
   $('r-actual').textContent = formatPrice(q.price);
   $('r-verdict').textContent = verdictText(r);
   $('r-score').textContent = r.hinted ? `${r.score}/100 (ipucu: -%20)` : `${r.score}/100`;
   const tier = scoreTier(r.score);
-  $('r-cashier').textContent = `“${cashierComment(tier)}”`;
+  const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId) })
+    ?? cashierComment(tier);
+  $('r-cashier').textContent = `“${line}”`;
+  const pos = posLine({ direction: r.direction, factor: r.factor });
+  $('r-pos').textContent = pos || '';
+  $('r-pos').hidden = !pos;
+  const ytl = ytlNote(yearOf(q.date), q.price);
+  $('r-ytl').textContent = ytl || '';
+  $('r-ytl').hidden = !ytl;
+  const foot = receiptFooter({ year: yearOf(q.date), tier });
+  $('r-foot-no').textContent = foot.no;
+  $('r-foot-tag').textContent = foot.tagline;
   document.querySelector('.verdict-box').dataset.tier = tier;
   document.querySelector('.score-box').dataset.tier = tier;
   $('r-meter').style.setProperty('--score', `${r.score}%`);
@@ -534,6 +582,20 @@ function renderThemeToggle() {
   btn.setAttribute('aria-label', dark ? 'Açık temaya geç' : 'Koyu temaya geç');
 }
 
+function renderSoundToggle() {
+  const on = sound.isEnabled();
+  const btn = $('sound-toggle');
+  btn.textContent = on ? '🔊' : '🔇';
+  btn.setAttribute('aria-pressed', String(on));
+  btn.setAttribute('aria-label', on ? 'Sesi kapat' : 'Sesi aç');
+}
+
+function toggleSound() {
+  sound.toggle();
+  renderSoundToggle();
+  sound.play('tick'); // confirms the new state; stays silent when just muted
+}
+
 function toggleTheme() {
   const next = currentTheme() === 'dark' ? 'light' : 'dark';
   const root = document.documentElement;
@@ -554,6 +616,8 @@ async function init() {
   loadSession();
   renderThemeToggle();
   $('theme-toggle').addEventListener('click', toggleTheme);
+  renderSoundToggle();
+  $('sound-toggle').addEventListener('click', toggleSound);
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

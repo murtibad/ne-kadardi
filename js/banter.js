@@ -1,0 +1,288 @@
+// Banter, easter eggs and receipt comments. Pure module, no DOM access.
+
+export const OVER_COMMENTS = [
+  'Gelecekten mi geliyorsun, o fiyata henüz gelmedik!',
+  'Sakin ol şampiyon, piyasa o kadar da delirmedi henüz.',
+  'Enflasyon travması seni biraz fazla hırpalamış sanki.',
+  'Dur yahu, o seviyelere gelmemize biraz daha zaman var.',
+  'Gelecek günlerin zamlarını şimdiden yüklemişsin.',
+  'Hangi yılın faturası bu, birkaç sene ilerdesin.',
+];
+
+export const UNDER_COMMENTS = [
+  'O paraya bugün sadece boş kutusunu verirler.',
+  'En son ne zaman alışverişe çıktın, her şey çok değişti.',
+  'Eski güzel günlerin hayalinde biraz fazla kalmışsın.',
+  'Kasada bu parayı uzatsan kasiyer yüzüne bön bön bakar.',
+  'O fiyata anca vitrindeki fotoğrafına bakabilirsin.',
+  'Rüya gibi bir fiyat ama gerçekler maalesef çok başka.',
+];
+
+export const PRODUCT_POOLS = {
+  'plastik-poset': [
+    'Poşet ister misiniz, yoksa kucağınızda mı taşırsınız?',
+    'Çift kat yapayım mı abi, yırtılırsa karışmam.',
+    'Eskiden marketler tomar tomar dağıtırdı, hey gidi.',
+    'Poşeti parayla alacağımız aklına gelir miydi hiç?',
+  ],
+  'ekmek': [
+    'Bozuk yoksa yerine sakız vereyim mi abi?',
+    'Fırından yeni çıktı, sıcacık ama fiyatı yakmasın.',
+    'Köşedeki bakkal veresiye defterini çoktan kapattı.',
+    'Askıda ekmek var ama askıda fiyat maalesef yok.',
+  ],
+  'sigara-marlboro': [
+    'Sağlığa zararlı olduğu kadar cebe de zararlı.',
+    'Paketin üstündeki uyarılar fiyattan daha az korkutucu.',
+    'Tiryakiye dert, bakkala hesap, cebe hüzün.',
+    'Ateşi olan var mı bilmem ama dumanı pahalıya patlıyor.',
+  ],
+  'benzin': [
+    'Depoyu fullemek mi, yoksa sadece ışığı söndürmek mi?',
+    'Fişi muhasebeye verirsin de cebindeki sızıyı kime?',
+    'Pompacı bile fiyatı söylerken gözlerini kaçırıyor.',
+    'Kontak çevirmeden önce bir derin nefes al bence.',
+  ],
+  'motorin': [
+    'Vergisi yakıtından daha ağır çeken bir efsane.',
+    'Fişi sakla da muhasebeciyle oturup beraber ağlarsınız.',
+    'Mazot kokusu nostaljik ama faturası gayet güncel.',
+    'Kontağı açtın mı sayaç su sayacı gibi dönüyor.',
+  ],
+  'big-mac': [
+    'İçindeki turşu dilimi bile daha değerliydi sanki.',
+    'Menüye patates ekletirken iki kere düşündüren dönemler.',
+    'Köftesi ince ama yarattığı ekonomik etki devasa.',
+    'Büyük boy içecek alsak bütçe tamamen çökerdi.',
+  ],
+  'dolar': [
+    'Tabelaya her baktığımızda tansiyonumuz yükselirdi.',
+    'Yeşilin en sevilen ama en çok üzen tonu.',
+    'Yastık altı sakinleri bu tahmine bıyık altından güler.',
+    'Döviz bürosunun önündeki kuyruklar film şeridi gibi.',
+  ],
+  'euro': [
+    'Avrupa hayalleri kurarken cüzdandan gelen acı ses.',
+    'Bozdururken yüz güldürür, alırken can yakar.',
+    'Kuru takip etmekten ekonomist kesildik başımıza.',
+    'Gurbetçi akrabaların havasından geçilmeyen yıllar.',
+  ],
+  'gram-altin': [
+    'Düğünde takmaya kalksan akrabalık bağları sınanır.',
+    'Kuyumcunun vitrinine uzaktan bakma devri.',
+    'Gramı bile ağır, cüzdanda taşıması ayrı dert.',
+    'Altın günü yapan teyzeler bu fiyata bayılırdı.',
+  ],
+  'ceyrek-altin': [
+    'Yastık altı yatırımlarının göz bebeği.',
+    'Düğün davetiyesi gelince içi cız edenler kulübü.',
+    'Kurdele takacak yer bulamadığımız o görkemli günler.',
+    'Eskiden çeyrek takana zengin gözüyle bakılmazdı.',
+  ],
+  'iphone': [
+    'Kutusunu açarken bile eldiven takası geliyor.',
+    'Böbrek şakaları bitti ama fiyat şoku hala taze.',
+    'Taksit sayısı azaldıkça düşünme süresi uzadı.',
+    'Kılıfına ekran koruyucusuna ayrı bütçe lazım.',
+  ],
+  'asgari-ucret': [
+    'Girdiği gibi çıkan o kutsal ama mahzun bütçe.',
+    'Ayın ilk haftası zengin, son üç haftası derviş.',
+    'Hesaba yattığı an market poşetinde buharlaşan tutar.',
+    'Simit çay hesabını bile zorlayan hayat standartları.',
+  ],
+  'kopru': [
+    'Karşıya geçmek mi pahalı, geri dönmek mi bilemedik.',
+    'Manzara harika ama gişeler göz yaşartıyor.',
+    'Boğazı izlemenin de bir bedeli vardı elbet.',
+    'Hızlı geçiş sisteminden çok hızlı para çekiş sistemi.',
+  ],
+  'taksi-acilis': [
+    'Kısa mesafe gideceksen taksiciyle baştan anlaş abi.',
+    'Kapıyı açtığın an başlayan o tatlı gerilim.',
+    'Taksimetre değil sanki zamana karşı yarış pisti.',
+    'Yağmur yağınca taksi bulmak fiyattan daha zor.',
+  ],
+  'trafik-cezasi': [
+    'Hata yapma lüksünün olmadığı o pahalı kavşaklar.',
+    'Erken ödersen indirim var tesellisiyle geçen ömür.',
+    'Işıkta durmak bedava, dalgınlık ateş pahası.',
+    'Flaş patlayınca fotoğraf çekildik sanmıştık.',
+  ],
+  'spotify': [
+    'Müzik ruhun gıdasıydı, faturası da cüzdanın cezası.',
+    'Reklamsız dinlemenin bedeli hafiften ağır gelmeye başladı.',
+    'Şarkıyı atlama hakkı için verilen küçük fedakarlık.',
+    'Çalma listesi yaparken abonelik ücretini düşünmek.',
+  ],
+  'netflix': [
+    'Şifreyi ortak kullanan akrabalar tedirgin.',
+    'İzleyecek bir şey bulamadan uyuyakaldığın üyelik.',
+    'Dizi bitti ama aylık ödemesi bir türlü bitmiyor.',
+    'Aynı anda kaç ekran açabiliyoruz diye hesaplayanlar.',
+  ],
+  'playstation': [
+    'Konsolu almak yetmiyor, kolu oyunu derken ev parası.',
+    'Kardeş payı yapalım desek kol fiyatı can yakıyor.',
+    'Gençliğimiz ekrana bakarak, bütçemiz eriyerek geçti.',
+    'Grafikler gerçeğe yakın, etiket gerçeklerden de sert.',
+  ],
+  'pasaport-harci': [
+    'Vize başvurusu yapmadan önce deftere servet dökmek.',
+    'On yıllık alalım da kafamız rahat etsin dedirten harç.',
+    'Sayfaları boş kalsa da damgası çok kıymetli.',
+    'Yurt dışı hayali pasaport kuyruğunda başlar.',
+  ],
+  'schengen-vize': [
+    'Ret yesen de parayı peşin alan o meşhur konsolosluk.',
+    'Evrak toplama stresi fiyattan daha çok yoruyor.',
+    'Seyahat planı yapmadan önce bütçeyi eriten başvuru.',
+    'Randevu bulabilenler kendini şanslı sayıyordu.',
+  ],
+};
+
+export const POS_UNDER_LINES = [
+  'POS HATASI: YETERSİZ BAKİYE - Kartı koklatsan bile kurtarmaz.',
+  'POS HATASI: YETERSİZ BAKİYE - Hesaptaki son kuruş da erimiş.',
+  'POS HATASI: YETERSİZ BAKİYE - Bu tutarla kasadan çıkamazsınız.',
+  'POS HATASI: YETERSİZ BAKİYE - Başka kartınız var mı acaba?',
+  'POS HATASI: YETERSİZ BAKİYE - Limitiniz geçmişe yetmedi.',
+];
+
+export const POS_OVER_LINES = [
+  'PARA ÜSTÜ: Bozuk yok, sakız versek kurtarır mı?',
+  'PARA ÜSTÜ: Kasada o kadar madeni para kalmadı.',
+  'PARA ÜSTÜ: Fazlasını sonraki alışverişe sayalım.',
+  'PARA ÜSTÜ: Kalanıyla marketin yarısını alırsın.',
+  'PARA ÜSTÜ: Üstünü bayram harçlığı olarak bıraktın.',
+];
+
+export const HINT_LINES = [
+  'Dur abi, barkodu okutayım hemen…',
+  'Reyonda etiketi düşmüş, depoya sorup geliyorum…',
+  'Müdüre sesleniyorum, eski listeyi çıkarsın…',
+  'Sistem biraz yavaş, eski fiyatı bulmaya çalışıyorum…',
+  'Kasada sıra oluştu ama senin için arşive bakıyorum…',
+  'Katalog biraz tozlanmış, sayfaları çeviriyorum…',
+];
+
+export const FOOTER_TIER_WORDS = {
+  great: ['HAFIZA-AÇIK', 'NOSTALJİ-USTASI', 'FİYAT-BİLİR', 'ETİKET-KURDU'],
+  good: ['GÜZEL-GÜNLERDİ', 'YAKIN-TAHMİN', 'PİYASA-KURDU', 'HESAP-BİLİR'],
+  mid: ['NE-ÇABUK-GEÇTİ', 'ORTA-ŞEKERLİ', 'FARK-VAR-BİRAZ', 'ENFLASYON-YORGUNU'],
+  poor: ['ZAMAN-ÇOK-ACIMASIZ', 'ESKİ-ÇAMLAR-BARDAK', 'HESAP-ŞAŞTI', 'BÜTÇE-SARSILDI'],
+  bad: ['BAMBAŞKA-EVREN', 'HAYAL-DÜNYASI', 'UZAYDAN-GELEN', 'FİYAT-KOPUK'],
+};
+
+export const FOOTER_TAGLINES = [
+  'KDV DAHİL, HÜZÜN HARİÇ',
+  'ENFLASYON FARKI MÜŞTERİYE AİTTİR',
+  'BİZİ TERCİH ETTİĞİNİZ İÇİN TEŞEKKÜR EDERİZ',
+  'İADE VE DEĞİŞİM GEÇMİŞ YILLARDA GEÇERLİ DEĞİLDİR',
+  'FİYAT ETİKETLERİ HATIRALARDAN DAHA HIZLI DEĞİŞİR',
+  'KASADA KAVGA ÇIKARMAK KESİNLİKLE YASAKTIR',
+];
+
+const YEAR_ANCHORS = {
+  2015: 'Herkesin elbisenin mavi-siyah mı yoksa beyaz-altın mı olduğunu tartıştığı sene.',
+  2016: 'Bütün yaz sokaklarda herkesin harıl harıl Pokémon peşinde koştuğu o meşhur dönem.',
+  2020: 'Evlerde ekmek yapıp bidonlarla kolonya stokladığımız karantina günleri.',
+  2023: 'Cumhuriyetimizin yüzüncü yaşını gururla kutladığımız tarihi yıl.',
+};
+
+function pick(pool, rng = Math.random) {
+  const index = Math.floor(rng() * pool.length);
+  return pool[Math.max(0, Math.min(index, pool.length - 1))];
+}
+
+/**
+ * Return one contextual comment for the receipt result screen or null.
+ * Prioritizes product easter eggs (when available, 45% chance), then extreme over/under guesses.
+ */
+export function contextComment(params, rng = Math.random) {
+  const { direction, factor, productId } = params ?? {};
+  if (productId && PRODUCT_POOLS[productId]) {
+    if (rng() < 0.45) {
+      return pick(PRODUCT_POOLS[productId], rng);
+    }
+  }
+
+  if (direction === 'over' && factor >= 2.5) {
+    return pick(OVER_COMMENTS, rng);
+  }
+
+  if (direction === 'under' && factor >= 2.5) {
+    return pick(UNDER_COMMENTS, rng);
+  }
+
+  return null;
+}
+
+/**
+ * Return a POS error line for extreme guesses (factor >= 2) or null.
+ */
+export function posLine(params, rng = Math.random) {
+  const { direction, factor } = params ?? {};
+  if (direction === 'under' && factor >= 2) {
+    return pick(POS_UNDER_LINES, rng);
+  }
+  if (direction === 'over' && factor >= 2) {
+    return pick(POS_OVER_LINES, rng);
+  }
+  return null;
+}
+
+/**
+ * Return a random cashier comment when the player requests a hint.
+ */
+export function hintComment(rng = Math.random) {
+  return pick(HINT_LINES, rng);
+}
+
+/**
+ * Return a short Turkish time-capsule sentence for verified milestone years, or null.
+ */
+export function yearAnchor(year) {
+  const y = Number(year);
+  return YEAR_ANCHORS[y] ?? null;
+}
+
+/**
+ * For 2005-2008 only: return old-lira (pre-redenomination) equivalent text, or null.
+ */
+export function ytlNote(year, price) {
+  const y = Number(year);
+  if (!Number.isInteger(y) || y < 2005 || y > 2008) return null;
+  if (typeof price !== 'number' || !Number.isFinite(price) || price <= 0) return null;
+  const oldLira = Math.round(price * 1_000_000);
+  return `Yeni Türk Lirası dönemi: eski parayla ${oldLira.toLocaleString('tr-TR')} lira`;
+}
+
+/**
+ * Return receipt footer details: receipt number and humorous tagline.
+ */
+export function receiptFooter(params, rng = Math.random) {
+  const { year, tier } = params ?? {};
+  const pool = FOOTER_TIER_WORDS[tier] ?? FOOTER_TIER_WORDS.mid;
+  const word = pick(pool, rng);
+  const tagline = pick(FOOTER_TAGLINES, rng);
+  const y = year ?? '';
+  return {
+    no: `FİŞ NO: #${y}-${word}`,
+    tagline,
+  };
+}
+
+/**
+ * Return the title on the shared score stamp based on average score.
+ */
+export function stampTitle(averageScore) {
+  if (typeof averageScore !== 'number' || !Number.isFinite(averageScore)) {
+    return null;
+  }
+  const clamped = Math.max(0, Math.min(100, averageScore));
+  if (clamped >= 90) return 'TÜİK BAŞKANI MISIN MÜBAREK?';
+  if (clamped >= 75) return 'ETİKET HAFIZASI KUVVETLİ';
+  if (clamped >= 50) return 'FİYAT SORMADAN SEPETE ATANLAR';
+  return "FİYAT ALGISI 2018'DE KALMIŞ";
+}

@@ -98,7 +98,9 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 /* The Ripped Receipt Base (Variant B) */
 .receipt-card {
-  background: var(--paper);
+  /* Older questions print on yellowed paper: main.js sets --age from 0 (new) to 1 (2008 or older) */
+  --paper-aged: color-mix(in srgb, var(--paper) calc(100% - var(--age, 0) * 32%), #c9a45a);
+  background: var(--paper-aged);
   color: var(--ink);
   position: relative;
   padding: 32px 24px;
@@ -121,8 +123,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .receipt-card::after {
   bottom: -8px;
   background-image: 
-    linear-gradient(135deg, var(--paper) 25%, transparent 25%), 
-    linear-gradient(-135deg, var(--paper) 25%, transparent 25%);
+    linear-gradient(135deg, var(--paper-aged) 25%, transparent 25%), 
+    linear-gradient(-135deg, var(--paper-aged) 25%, transparent 25%);
   background-position: 0 0;
 }
 
@@ -130,8 +132,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .result-receipt::before {
   top: -8px;
   background-image: 
-    linear-gradient(45deg, var(--paper) 25%, transparent 25%), 
-    linear-gradient(-45deg, var(--paper) 25%, transparent 25%);
+    linear-gradient(45deg, var(--paper-aged) 25%, transparent 25%), 
+    linear-gradient(-45deg, var(--paper-aged) 25%, transparent 25%);
   background-position: 0 100%;
 }
 
@@ -721,3 +723,28 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .note-link { display: inline-flex; align-items: center; min-height: 44px; margin: 2px 0; padding: 0 12px; border: 2px solid var(--ink); border-radius: 6px; color: var(--ink); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
 .note-link:hover { background: var(--ink); color: var(--paper); }
 .note-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+
+/* Yellowed old receipts: darker secondary text keeps the 4.5:1 contrast on the tinted paper */
+.receipt-card[data-aged] { --muted-on-paper: #4a463f; --accent-on-paper: #a82019; }
+
+/* Sound toggle sits next to the theme toggle */
+.header-tools { display: flex; gap: 8px; align-items: center; }
+.sound-toggle[aria-pressed="false"] { opacity: 0.6; }
+
+/* Result icon reacts to the score; motion only for users who allow it */
+.result-image { width: 56px; height: 56px; margin: 4px auto 8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .result-image.bounce { animation: icon-bounce 0.7s ease; }
+  .result-image.shake { animation: icon-shake 0.6s ease; }
+}
+@keyframes icon-bounce { 0%, 100% { transform: none; } 30% { transform: translateY(-14px) scale(1.12); } 55% { transform: translateY(0) scale(0.96); } 75% { transform: translateY(-5px); } }
+@keyframes icon-shake { 0%, 100% { transform: none; } 20% { transform: translateX(-8px) rotate(-6deg); } 40% { transform: translateX(8px) rotate(6deg); } 60% { transform: translateX(-5px) rotate(-3deg); } 80% { transform: translateX(4px) rotate(2deg); } }
+
+/* Cashier banter extras on the receipt */
+.pos-line { margin: -8px 0 12px; text-align: center; font: 700 0.8125rem var(--font-mono); color: var(--accent-on-paper); letter-spacing: 0.02em; }
+.ytl-note { margin: 0 0 12px; text-align: center; font: 400 0.8125rem var(--font-mono); color: var(--muted-on-paper); }
+.receipt-foot { margin: 16px 0 8px; text-align: center; font: 400 0.6875rem var(--font-mono); letter-spacing: 0.04em; color: var(--muted-on-paper); }
+.year-anchor { margin: 0 0 12px; text-align: center; font: italic 0.875rem var(--font-ui); color: var(--muted-on-paper); }
+.year-anchor[hidden] { display: none; }
+.hint-cashier { margin: 0 0 8px; font: italic 0.875rem var(--font-ui); color: var(--muted-on-paper); }

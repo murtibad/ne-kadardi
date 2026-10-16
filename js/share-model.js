@@ -1,6 +1,7 @@
 import { formatPeriod, formatPrice, formatRatio } from './format.js';
 import { scoreTier } from './game.js';
 import { taxBreakdown } from './tax.js';
+import { stampTitle } from './banter.js';
 
 export function buildShareText(q, r, url) {
   return [
@@ -58,6 +59,7 @@ export function buildShareImageModel(q, r, { contextLine = null, taxLine = null 
     increase: hasCurrent ? `${formatRatio(q.current.price / q.price)} kat arttı` : null,
     score: `${r.score}/100`,
     tier: scoreTier(r.score),
+    stamp: stampTitle(r.score),
     contextText: contextLine || null,
     taxLine: compactTaxLine || null,
     iconSrc: q.image ? q.image.src : null,
