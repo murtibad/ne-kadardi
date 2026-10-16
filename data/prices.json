@@ -6874,6 +6874,152 @@
           }
         }
       ]
+    },
+    {
+      "id": "noter-asgari-ucret",
+      "name": "Asgari noter ücreti (bir noterlik işleminin alt sınırı)",
+      "unit": "1 noterlik işlemi, alınabilecek en düşük ücret",
+      "region": null,
+      "source_hint": "Türkiye Noterler Birliği Noterlik Ücret Tarifesi, Madde 1 (yıllık, Resmî Gazete ilanı)",
+      "image": {
+        "src": "img/noter.svg",
+        "alt": "Noter onaylı belge",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026",
+        "price": 58.82,
+        "status": "verified",
+        "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+        "source": {
+          "title": "Resmî Gazete 30.12.2025 - 2026 Yılı Noterlik Ücret Tarifesi (HİGM copy)",
+          "url": "https://higm.adalet.gov.tr/Resimler/SayfaDokuman/202512301701273242026%20YILI%20NOTERL%C4%B0K%20%C3%9CCRET%20TAR%C4%B0FES%C4%B0.pdf",
+          "accessed": "2026-10-16",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2013",
+          "price": 2.5,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 25.02.2013 - 2013 Yılı Noterlik Ücret Tarifesi",
+            "url": "https://resmigazete.gov.tr/ilanlar/eskiilanlar/2013/02/20130225-4.htm",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015",
+          "price": 2.97,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 24.02.2015 - 2015 Yılı Noterlik Ücret Tarifesi",
+            "url": "https://resmigazete.gov.tr/ilanlar/eskiilanlar/2015/02/20150224-4.htm",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018",
+          "price": 3.99,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 22.02.2018 - 2018 Yılı Noterlik Ücret Tarifesi",
+            "url": "https://resmigazete.gov.tr/ilanlar/eskiilanlar/2018/02/20180222-4.htm",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019",
+          "price": 4.94,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 06.04.2019 - 2019 Yılı Noterlik Ücret Tarifesi (ilan)",
+            "url": "https://www.resmigazete.gov.tr/ilanlar/eskiilanlar/2019/04/20190406-4-1.pdf",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021",
+          "price": 6.93,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 10.03.2021 - 2021 Yılı Noterlik Ücret Tarifesi (ilan)",
+            "url": "https://www.resmigazete.gov.tr/ilanlar/eskiilanlar/2021/03/20210310-4-8.pdf",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022",
+          "price": 8.66,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 02.04.2022 - 2022 Yılı Noterlik Ücret Tarifesi (ilan)",
+            "url": "https://www.resmigazete.gov.tr/ilanlar/eskiilanlar/2022/04/20220402-4-6-1.pdf",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023",
+          "price": 17.32,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "2023 Yılı Noterlik Ücret Tarifesi (Adalet Bakanlığı HİGM)",
+            "url": "https://higm.adalet.gov.tr/Resimler/SayfaDokuman/90320231337552023%20Noterlik%20%C3%9Ccret%20Tarifesi.pdf",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024",
+          "price": 30.31,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 06.04.2024 - 2024 Yılı Noterlik Ücret Tarifesi (Adalet Bakanlığı HİGM copy)",
+            "url": "https://higm.adalet.gov.tr/Resimler/SayfaDokuman/150420241003532024%20Noterlik%20%C3%9Ccret%20Tarifesi.pdf",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025",
+          "price": 44.56,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 27.12.2024 - 2025 Yılı Noterlik Ücret Tarifesi (HİGM copy)",
+            "url": "https://higm.adalet.gov.tr/Resimler/SayfaDokuman/301220240900342025%20Noterlik%20%C3%9Ccret%20Tarifesi.pdf",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 58.82,
+          "status": "verified",
+          "note": "Noterlik Ücret Tarifesi Madde 1: harcın %30'u olarak hesaplanan noter ücreti, bir noterlik işleminde bu tutardan az olamaz. Tarife yılı esas alındı (tarife her yıl farklı bir ayda yayımlanır). Tarife metni Resmî Gazete'de (2023'ten sonra Adalet Bakanlığı HİGM kopyasında) okundu.",
+          "source": {
+            "title": "Resmî Gazete 30.12.2025 - 2026 Yılı Noterlik Ücret Tarifesi (HİGM copy)",
+            "url": "https://higm.adalet.gov.tr/Resimler/SayfaDokuman/202512301701273242026%20YILI%20NOTERL%C4%B0K%20%C3%9CCRET%20TAR%C4%B0FES%C4%B0.pdf",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
