@@ -87,7 +87,7 @@ export async function renderShareImage(model) {
   await loadFonts();
   const icon = await loadIcon(model.iconSrc);
 
-  const H = model.taxLine ? 1470 : 1350;
+  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0);
 
   const canvas = document.createElement('canvas');
   canvas.width = W;
@@ -238,6 +238,27 @@ export async function renderShareImage(model) {
   ctx.fillStyle = COLORS.fill[model.tier] || COLORS.accent;
   ctx.fillRect(cx - meterW / 2, y + 24, meterW * pct, 18);
   
+  // Tilted red rubber stamp with the player's title
+  if (model.stamp) {
+    ctx.save();
+    ctx.translate(cx, y + 120);
+    ctx.rotate(-0.1);
+    ctx.font = 'bold 34px "Space Mono", ui-monospace, monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const words = wrapText(ctx, model.stamp, cardW - 260);
+    const lineH = 44;
+    const boxW = Math.max(...words.map((l) => ctx.measureText(l).width)) + 40;
+    const boxH = words.length * lineH + 28;
+    ctx.strokeStyle = COLORS.accent;
+    ctx.fillStyle = COLORS.accent;
+    ctx.globalAlpha = 0.85;
+    ctx.lineWidth = 6;
+    ctx.strokeRect(-boxW / 2, -boxH / 2, boxW, boxH);
+    words.forEach((l, i) => ctx.fillText(l, 0, (i - (words.length - 1) / 2) * lineH));
+    ctx.restore();
+  }
+
   // Bottom Icon and URL
   const bottomY = endY - 70;
   ctx.font = 'bold 36px "Space Mono", ui-monospace, monospace';

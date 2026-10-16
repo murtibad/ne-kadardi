@@ -42,13 +42,19 @@
   <link rel="modulepreload" href="js/share-model.js">
   <link rel="modulepreload" href="js/tax.js">
   <link rel="modulepreload" href="js/cashier.js">
+  <link rel="modulepreload" href="js/paper.js">
+  <link rel="modulepreload" href="js/sound.js">
+  <link rel="modulepreload" href="js/banter.js">
   <link rel="modulepreload" href="js/hint.js">
   <link rel="modulepreload" href="js/version.js">
 </head>
 <body>
   <header class="site-header">
     <h1 class="site-title"><a href="#" class="logo" aria-label="Ne Kadardı? ana menü">Ne Kadardı?</a></h1>
-    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Açık / koyu temayı değiştir"></button>
+    <div class="header-tools">
+      <button type="button" id="sound-toggle" class="theme-toggle sound-toggle" aria-pressed="true" aria-label="Sesi kapat"></button>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Açık / koyu temayı değiştir"></button>
+    </div>
   </header>
 
   <main>
@@ -82,6 +88,7 @@
         <img id="q-image" class="product-image" width="72" height="72" alt="" decoding="async" hidden>
         <h2 id="q-name" class="product"></h2>
         <p id="q-unit" class="unit"></p>
+        <p id="q-anchor" class="year-anchor" hidden></p>
         
         <form id="guess-form" novalidate>
           <label for="guess-input" class="visually-hidden">Tahminin (TL)</label>
@@ -103,6 +110,7 @@
       <div class="receipt-wrapper">
         <article id="r-receipt" class="receipt-card result-receipt" aria-live="polite" tabindex="-1">
           <p class="receipt-head">*** NE KADARDI? ***</p>
+          <img id="r-image" class="product-image result-image" width="56" height="56" alt="" decoding="async" hidden>
           <p id="r-title" class="receipt-title"></p>
           <p id="r-unit" class="receipt-unit"></p>
           <hr>
@@ -124,12 +132,15 @@
           </div>
           <p id="r-context" class="context-line"></p>
           <p id="r-cashier" class="cashier-line"></p>
+          <p id="r-pos" class="pos-line" role="status" hidden></p>
+          <p id="r-ytl" class="ytl-note" hidden></p>
           <p id="r-tax" class="tax-line" hidden></p>
           <details id="r-tax-details" class="tax-details" hidden>
             <summary>Verginin dökümü</summary>
             <div id="r-tax-body"></div>
           </details>
           <p class="source"><a id="r-archive" href="#arsiv" class="archive-link">Bu ürünün fiyat geçmişi →</a></p>
+          <p class="receipt-foot"><span id="r-foot-no"></span><br><span id="r-foot-tag"></span></p>
           <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a><span id="r-source-kind" class="source-kind" hidden></span></p>
         </article>
       </div>
