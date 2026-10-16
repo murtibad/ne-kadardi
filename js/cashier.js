@@ -11,7 +11,7 @@ export const CASHIER_COMMENTS = {
   ],
   good: [
     'Fena değil, piyasayı iyi takip ediyorsun',
-    'Eski günlerin hatırı sayılır derecede aklında',
+    'Eski günler hatırı sayılır derecede aklında',
     'Neredeyse kuruşu kuruşuna tutturdun',
     'Hafızan gayet diri, tebrikler',
     'Piyasa dalgalanmaları seni pek yanıltmamış',
@@ -39,7 +39,7 @@ export const CASHIER_COMMENTS = {
     'Hangi paralel evrenin fiyatı bu?',
     'Bu tahminle o dönem kasada mahsur kalırdın',
     'Fiyat hissin bambaşka bir galaksiden geliyor',
-    'Geçmişle bağların tamamen kopmuş görünüyor',
+    'Geçmişle bağların epey zayıflamış görünüyor',
   ],
 };
 

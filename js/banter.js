@@ -12,9 +12,9 @@ export const OVER_COMMENTS = [
 export const UNDER_COMMENTS = [
   'O paraya bugün sadece boş kutusunu verirler.',
   'En son ne zaman alışverişe çıktın, her şey çok değişti.',
-  'Eski güzel günlerin hayalinde biraz fazla kalmışsın.',
+  'Eski güzel günlerin hayaline fazla dalmışsın.',
   'Kasada bu parayı uzatsan kasiyer yüzüne bön bön bakar.',
-  'O fiyata anca vitrindeki fotoğrafına bakabilirsin.',
+  'O fiyata ancak vitrindeki fotoğrafına bakabilirsin.',
   'Rüya gibi bir fiyat ama gerçekler maalesef çok başka.',
 ];
 
@@ -23,7 +23,7 @@ export const PRODUCT_POOLS = {
     'Poşet ister misiniz, yoksa kucağınızda mı taşırsınız?',
     'Çift kat yapayım mı abi, yırtılırsa karışmam.',
     'Eskiden marketler tomar tomar dağıtırdı, hey gidi.',
-    'Poşeti parayla alacağımız aklına gelir miydi hiç?',
+    'Poşete para vereceğimiz aklına gelir miydi hiç?',
   ],
   'ekmek': [
     'Bozuk yoksa yerine sakız vereyim mi abi?',
@@ -41,17 +41,17 @@ export const PRODUCT_POOLS = {
     'Depoyu fullemek mi, yoksa sadece ışığı söndürmek mi?',
     'Fişi muhasebeye verirsin de cebindeki sızıyı kime?',
     'Pompacı bile fiyatı söylerken gözlerini kaçırıyor.',
-    'Kontak çevirmeden önce bir derin nefes al bence.',
+    'Kontak çevirmeden önce derin bir nefes al bence.',
   ],
   'motorin': [
     'Vergisi yakıtından daha ağır çeken bir efsane.',
-    'Fişi sakla da muhasebeciyle oturup beraber ağlarsınız.',
+    'Depo dolarken cüzdan boşalır, bu bir fizik kuralı.',
     'Mazot kokusu nostaljik ama faturası gayet güncel.',
-    'Kontağı açtın mı sayaç su sayacı gibi dönüyor.',
+    'Pompada sayaç, su sayacı gibi dönüyor.',
   ],
   'big-mac': [
     'İçindeki turşu dilimi bile daha değerliydi sanki.',
-    'Menüye patates ekletirken iki kere düşündüren dönemler.',
+    'Menüyü büyük boy yaparken iki kez düşündüren dönemler.',
     'Köftesi ince ama yarattığı ekonomik etki devasa.',
     'Büyük boy içecek alsak bütçe tamamen çökerdi.',
   ],
@@ -64,7 +64,7 @@ export const PRODUCT_POOLS = {
   'euro': [
     'Avrupa hayalleri kurarken cüzdandan gelen acı ses.',
     'Bozdururken yüz güldürür, alırken can yakar.',
-    'Kuru takip etmekten ekonomist kesildik başımıza.',
+    'Kuru takip etmekten hepimiz ekonomist kesildik.',
     'Gurbetçi akrabaların havasından geçilmeyen yıllar.',
   ],
   'gram-altin': [
@@ -80,10 +80,10 @@ export const PRODUCT_POOLS = {
     'Eskiden çeyrek takana zengin gözüyle bakılmazdı.',
   ],
   'iphone': [
-    'Kutusunu açarken bile eldiven takası geliyor.',
-    'Böbrek şakaları bitti ama fiyat şoku hala taze.',
+    'Kutusunu açarken bile eldiven takasım geliyor.',
+    'Böbrek şakaları bitti ama fiyat şoku hâlâ taze.',
     'Taksit sayısı azaldıkça düşünme süresi uzadı.',
-    'Kılıfına ekran koruyucusuna ayrı bütçe lazım.',
+    'Kılıf ve ekran koruyucu için ayrı bütçe lazım.',
   ],
   'asgari-ucret': [
     'Girdiği gibi çıkan o kutsal ama mahzun bütçe.',
@@ -122,7 +122,7 @@ export const PRODUCT_POOLS = {
     'Aynı anda kaç ekran açabiliyoruz diye hesaplayanlar.',
   ],
   'playstation': [
-    'Konsolu almak yetmiyor, kolu oyunu derken ev parası.',
+    'Konsol yetmiyor; kol derken, oyun derken ev parası.',
     'Kardeş payı yapalım desek kol fiyatı can yakıyor.',
     'Gençliğimiz ekrana bakarak, bütçemiz eriyerek geçti.',
     'Grafikler gerçeğe yakın, etiket gerçeklerden de sert.',
@@ -151,7 +151,7 @@ export const POS_UNDER_LINES = [
 
 export const POS_OVER_LINES = [
   'PARA ÜSTÜ: Bozuk yok, sakız versek kurtarır mı?',
-  'PARA ÜSTÜ: Kasada o kadar madeni para kalmadı.',
+  'PARA ÜSTÜ: Fazlasını bahşiş olarak yazdım.',
   'PARA ÜSTÜ: Fazlasını sonraki alışverişe sayalım.',
   'PARA ÜSTÜ: Kalanıyla marketin yarısını alırsın.',
   'PARA ÜSTÜ: Üstünü bayram harçlığı olarak bıraktın.',
@@ -171,7 +171,7 @@ export const FOOTER_TIER_WORDS = {
   good: ['GÜZEL-GÜNLERDİ', 'YAKIN-TAHMİN', 'PİYASA-KURDU', 'HESAP-BİLİR'],
   mid: ['NE-ÇABUK-GEÇTİ', 'ORTA-ŞEKERLİ', 'FARK-VAR-BİRAZ', 'ENFLASYON-YORGUNU'],
   poor: ['ZAMAN-ÇOK-ACIMASIZ', 'ESKİ-ÇAMLAR-BARDAK', 'HESAP-ŞAŞTI', 'BÜTÇE-SARSILDI'],
-  bad: ['BAMBAŞKA-EVREN', 'HAYAL-DÜNYASI', 'UZAYDAN-GELEN', 'FİYAT-KOPUK'],
+  bad: ['BAMBAŞKA-EVREN', 'HAYAL-DÜNYASI', 'UZAYDAN-GELEN', 'FİYATTAN-KOPUK'],
 };
 
 export const FOOTER_TAGLINES = [
@@ -184,7 +184,7 @@ export const FOOTER_TAGLINES = [
 ];
 
 const YEAR_ANCHORS = {
-  2015: 'Herkesin elbisenin mavi-siyah mı yoksa beyaz-altın mı olduğunu tartıştığı sene.',
+  2015: 'Herkesin elbise mavi-siyah mı, beyaz-altın mı diye tartıştığı sene.',
   2016: 'Bütün yaz sokaklarda herkesin harıl harıl Pokémon peşinde koştuğu o meşhur dönem.',
   2020: 'Evlerde ekmek yapıp bidonlarla kolonya stokladığımız karantina günleri.',
   2023: 'Cumhuriyetimizin yüzüncü yaşını gururla kutladığımız tarihi yıl.',
