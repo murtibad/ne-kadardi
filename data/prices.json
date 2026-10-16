@@ -6157,18 +6157,30 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2025",
-        "price": 1010.0,
+        "date": "2026",
+        "price": 1202.0,
         "status": "verified",
         "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
         "source": {
-          "title": "Muhasebat Gen. Müd. Genel Tebliği Sıra No:92 Değerli Kağıtlar 2025 Yılı, alomaliye.com",
-          "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
-          "accessed": "2026-10-04",
+          "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 97) Değerli Kağıtlar",
+          "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+          "accessed": "2026-10-16",
           "kind": "official"
         }
       },
       "prices": [
+        {
+          "date": "2016",
+          "price": 80.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 50) Değerli Kağıtlar 2016 Yılı",
+            "url": "https://www.alomaliye.com/2015/12/25/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-50-degerli-kagitlar-2016-yili/amp/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
         {
           "date": "2017",
           "price": 86.0,
@@ -6242,6 +6254,18 @@
           }
         },
         {
+          "date": "2024",
+          "price": 705.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu. 2024 tebliğinde uygulanan bedel 705 TL (kanunla getirilen üst bedel 1.000 TL).",
+          "source": {
+            "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 86) (2024 Yılı Değerli Kağıt Bedelleri)",
+            "url": "https://orgtr.org/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-86-2024-yili-degerli-kagit-bedelleri/",
+            "accessed": "2026-10-16",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2025",
           "price": 1010.0,
           "status": "verified",
@@ -6250,6 +6274,18 @@
             "title": "Muhasebat Gen. Müd. Genel Tebliği Sıra No:92 Değerli Kağıtlar 2025 Yılı, alomaliye.com",
             "url": "https://www.alomaliye.com/2024/12/31/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-92-degerli-kagitlar-2025-yili/amp/",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 1202.0,
+          "status": "verified",
+          "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
+          "source": {
+            "title": "Muhasebat Genel Müdürlüğü Genel Tebliği (Sıra No: 97) Değerli Kağıtlar",
+            "url": "https://www.hukukihaber.net/muhasebat-genel-mudurlugu-genel-tebligi-sira-no-97-degerli-kagitlar",
+            "accessed": "2026-10-16",
             "kind": "official"
           }
         }
