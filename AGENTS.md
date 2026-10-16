@@ -86,7 +86,7 @@ Done (details in `CHANGELOG.md`):
 
 - [x] v0.1 Skeleton: data schema, parsing, scoring, basic UI, tests, CI.
 - [x] v0.2 Design: receipt theme, dark mode.
-- [x] v0.3–v0.37 Data: 34 playable products (41 by v0.61), verified prices from 2010 where sources exist, `current` prices,
+- [x] v0.3–v0.37 Data: 34 playable products (40 by v0.62), verified prices from 2010 where sources exist, `current` prices,
       source type label (`source.kind`).
 - [x] v0.4 Polish: session stats, share text, context line, Open Graph, favicon.
 - [x] v0.10 Price archive screen (first called "Zaman makinesi"). v0.11 Shareable result image (canvas).

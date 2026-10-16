@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.62.0] - 2026-10-16
+### Added
+- Three products from the yearly Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği (Resmî Gazete text, read on web mirrors; 2024 is the applied price): "Sürücü belgesi değerli kâğıt bedeli" (10 values, 2016-2026), "Motorlu araç tescil belgesi (ruhsat) değerli kâğıt bedeli" (10 values) and "T.C. kimlik kartı (değiştirme) değerli kâğıt bedeli" (9 values, 2017-2026; the 2016 row was the old nüfus cüzdanı, a different item). 2021 is missing for all (its table is an image). Category: Harç, ceza ve bedeller.
+
 ## [0.61.0] - 2026-10-16
 ### Added
 - New product "Milli Piyango yılbaşı çeyrek bilet": 11 yearly values (2014, 2016-2025), each confirmed on pages from at least two different news outlets. Dated by the year the tickets go on sale; 2013 and 2015 are left out (one outlet only). Category: Teknoloji ve eğlence.
