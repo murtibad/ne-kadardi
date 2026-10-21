@@ -1164,3 +1164,13 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 }
 @keyframes icon-pop { from { transform: scale(0.6) rotate(-8deg); opacity: 0; } to { transform: none; opacity: 1; } }
 .header-tools { margin-left: auto; } /* stays on the right when the badge makes the header wrap */
+
+/* Interactive tooltip and keyboard focus on the price history chart */
+.pc-tip[hidden] { display: none; }
+.pc-tip { pointer-events: none; }
+.pc-tip rect { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+.pc-tip text { font: 700 10px var(--font-mono); fill: var(--ink); }
+.pc-tip .pc-tip-period { font-weight: 400; fill: var(--muted-on-paper); }
+.pc-active { r: 5; }
+.price-chart svg:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.pc-hit { fill: transparent; cursor: pointer; pointer-events: all; }
