@@ -66,7 +66,22 @@ function saveSession() {
 
 function show(screenId) {
   for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
-    $(id).hidden = id !== screenId;
+    const el = $(id);
+    const wasHidden = el.hidden;
+    el.hidden = id !== screenId;
+    // Animate only newly revealed screens; result-screen has its own printer animation and message-screen is a static notice.
+    if (id === screenId && wasHidden && id !== 'result-screen' && id !== 'message-screen') {
+      el.classList.remove('screen-enter');
+      void el.offsetWidth;
+      el.classList.add('screen-enter');
+      // Children run their own animations (fact card, chart line) that bubble up; wait for ours.
+      const done = (e) => {
+        if (e.target !== el) return;
+        el.classList.remove('screen-enter');
+        el.removeEventListener('animationend', done);
+      };
+      el.addEventListener('animationend', done);
+    }
   }
 }
 
@@ -847,6 +862,14 @@ async function init() {
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
     nextQuestion();
+  });
+  // After submitting a guess, focus sits on the non-interactive receipt so Enter can advance without tabbing to the bottom button.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' || e.repeat || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+    if ($('result-screen').hidden) return;
+    if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable]')) return;
+    e.preventDefault();
+    $('next-btn').click();
   });
   $('share-btn').addEventListener('click', share);
   $('download-btn').addEventListener('click', downloadImage);
