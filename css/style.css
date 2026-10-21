@@ -966,3 +966,32 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   .pc-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: pc-draw 0.9s ease-out 0.3s forwards; }
 }
 @keyframes pc-draw { to { stroke-dashoffset: 0; } }
+
+/* Rubber stamp and post-tear meter fill on the result receipt */
+.receipt-stamp[hidden] { display: none; }
+.receipt-stamp {
+  display: inline-block;
+  margin: 12px 0 0;
+  padding: 4px 10px;
+  font: 700 0.75rem var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--tier);
+  border: 2px solid var(--tier);
+  border-radius: 4px;
+  transform: rotate(-4deg);
+  opacity: 0.9;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .receipt-stamp {
+    opacity: 0;
+    transform: scale(1.6) rotate(-4deg);
+  }
+  .receipt-stamp.stamped {
+    animation: stamp-land 0.35s ease-out forwards;
+  }
+  .meter > span { transition: width 0.6s cubic-bezier(.2,.8,.2,1); }
+}
+@keyframes stamp-land {
+  from { transform: scale(1.6) rotate(-4deg); opacity: 0; }
+  to { transform: scale(1) rotate(-4deg); opacity: 0.9; }
+}
