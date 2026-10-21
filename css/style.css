@@ -566,7 +566,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin-bottom: 24px;
 }
 .timeline-header h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin: 0 0 8px;
   color: var(--text);
 }
@@ -877,7 +877,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   .mode-go { transition: transform 0.15s ease; }
   .mode-main:hover .mode-go { transform: translateX(3px); }
 }
-.fact-card { margin-top: 20px; padding: 14px 16px 16px; background: var(--paper); color: var(--ink); border: 2px dashed var(--line); border-radius: 8px; }
+.fact-card { margin-top: 16px; padding: 14px 16px 16px; background: var(--paper); color: var(--ink); border: 2px dashed var(--line); border-radius: 8px; }
 .fact-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .fact-head h3 { margin: 0; font: 700 0.75rem var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-on-paper); }
 .fact-next { min-height: 44px; padding: 0 4px; background: none; border: 0; color: var(--ink); font: 700 0.875rem var(--font-ui); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
@@ -960,7 +960,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 }
 .timeline-empty-link[hidden] { display: none; }
 .timeline-empty-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
-.timeline-order { display: flex; justify-content: flex-end; margin: 4px 0; }
+.timeline-order { display: flex; justify-content: flex-end; margin: 0 0 4px; }
 .timeline-order-btn {
   min-height: 44px;
   padding: 8px 14px;
@@ -1050,7 +1050,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 }
 
 /* Price history chart on the result receipt and in the archive */
-.price-chart { margin: 14px 0 6px; }
+.price-chart { margin: 16px 0 12px; }
 .price-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
 .price-chart figcaption { margin-top: 2px; text-align: center; font: 400 0.6875rem var(--font-mono); color: var(--muted-on-paper); letter-spacing: 0.04em; }
 .pc-area { fill: var(--accent-on-paper); opacity: 0.1; }
@@ -1123,7 +1123,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 /* Logo mark and the install button on the home screen */
 .logo { gap: 8px; }
 .logo-mark { flex: none; transform: rotate(-6deg); }
-.install-btn { display: block; margin: 16px auto 0; min-height: 44px; padding: 8px 16px; background: transparent; color: var(--text); border: 2px solid var(--text); border-radius: 999px; font: 700 0.875rem var(--font-ui); cursor: pointer; }
+.install-btn { display: block; margin: 16px auto 0; min-height: 44px; padding: 8px 16px; background: transparent; color: var(--text); border: 2px solid var(--text); border-radius: 8px; font: 700 0.875rem var(--font-ui); cursor: pointer; }
 .install-btn[hidden] { display: none; }
 
 /* Screen enter transition (result-screen uses the receipt printer animation instead) */
@@ -1145,7 +1145,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 /* First-visit "how to play": three numbered steps above the menu cards */
 .how-to { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 16px; padding: 0; }
-.how-to li { counter-increment: step; display: grid; gap: 2px; align-content: start; padding: 10px 8px; text-align: center; border: 1.5px dashed var(--muted); border-radius: 8px; color: var(--text); }
+.how-to li { counter-increment: step; display: grid; gap: 2px; align-content: start; padding: 12px 8px; text-align: center; border: 2px dashed var(--muted); border-radius: 8px; color: var(--text); }
 .how-to li::before { content: counter(step); justify-self: center; display: grid; place-items: center; width: 24px; height: 24px; margin-bottom: 4px; border-radius: 50%; background: var(--accent-on-bg); color: var(--bg); font: 700 0.8125rem var(--font-mono); }
 .how-to strong { font: 700 0.875rem var(--font-ui); }
 .how-to span { font-size: 0.75rem; color: var(--muted); line-height: 1.3; }
