@@ -443,6 +443,40 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .question-card .guess-field input { text-align: center; }
 .question-card .currency { padding-right: 18px; }
 
+/* Share preview dialog (receipt style; paper/ink stay light in both themes) */
+.share-preview {
+  width: min(92vw, 420px);
+  max-height: 92vh;
+  margin: auto;
+  padding: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  overflow: auto;
+}
+.share-preview::backdrop { background: rgba(0, 0, 0, 0.55); }
+.share-preview-title { font: 700 1rem var(--font-ui); margin: 0 0 12px; }
+.share-preview-img {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.share-preview-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.share-preview .btn { min-height: 44px; padding: 10px 16px; font-size: 1rem; color: var(--ink); border-color: var(--ink); flex: 1 1 100px; }
+.share-preview .btn[hidden] { display: none; }
+.share-preview .btn.primary { background: var(--ink); color: var(--paper); flex: 1 1 100%; }
+.share-preview .btn:focus-visible { outline: 3px solid var(--accent-on-paper, var(--ink)); outline-offset: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .share-preview[open] { animation: share-preview-in 0.18s ease-out; }
+  .share-preview[open]::backdrop { animation: share-preview-fade 0.18s ease-out; }
+}
+@keyframes share-preview-in { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
+@keyframes share-preview-fade { from { opacity: 0; } }
+
 /* Phones: keep "Sonraki" and sharing in reach at the bottom of the screen */
 @media (max-width: 719px) {
   .session-actions {
