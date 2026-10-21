@@ -977,3 +977,5 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .timeline-receipt .result-image { display: block; margin: 0 auto 8px; }
 .timeline-receipt .result-image[hidden] { display: none; }
 .timeline-summary { margin: 12px 0 0; text-align: center; font: 700 0.9375rem var(--font-mono); color: var(--accent-on-paper); }
+/* The chart above already shows the trend, so the per-row bars only made the list longer. */
+.timeline-receipt .price-chart:not([hidden]) ~ #t-rows-container .timeline-bar-track { display: none; }
