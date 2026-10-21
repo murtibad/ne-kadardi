@@ -1,3 +1,7 @@
+/* Class rules such as `.hint-btn { display: block }` beat the browser's own [hidden] style;
+   this keeps the hidden attribute authoritative everywhere. */
+[hidden] { display: none !important; }
+
 :root {
   /* Warm greige background, a step darker than the creamy receipt paper so the receipt
      stands out in light mode too (the old #f4f1ea page was only 1.1:1 against the paper) */
