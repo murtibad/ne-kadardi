@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.76.1] - 2026-10-22
+### Fixed
+- The receipt and share image row is labelled "Değişim" instead of "Artış", since some prices fell (e.g. "Değişim: %21 düştü").
+
 ## [0.76.0] - 2026-10-22
 ### Added
 - July values 2010-2026 for dolar and euro (first TCMB business day of July), gram altın, çeyrek altın and gram gümüş (July monthly derivation): 85 more questions. The script reproduced 15 existing January values first.

@@ -935,7 +935,7 @@ function renderTimelineScreen(focusProductId = null) {
       <tr role="row">
         <th scope="col" role="columnheader" class="visually-hidden">Tarih</th>
         <th scope="col" role="columnheader" class="visually-hidden">Fiyat</th>
-        <th scope="col" role="columnheader" class="visually-hidden">Artış ve kaynak</th>
+        <th scope="col" role="columnheader" class="visually-hidden">Değişim ve kaynak</th>
       </tr>
     </thead>
     <tbody role="rowgroup">`;
