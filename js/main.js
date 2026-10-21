@@ -778,6 +778,26 @@ function toggleSound() {
   sound.play('beep'); // confirms the new state; stays silent when just muted
 }
 
+// Chrome/Android offer installation through an event we can defer to our own button; other
+// browsers (iOS Safari) never fire it, so the button simply stays hidden there.
+function setupInstallButton() {
+  let deferred = null;
+  const btn = $('install-btn');
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferred = e;
+    btn.hidden = false;
+  });
+  window.addEventListener('appinstalled', () => { deferred = null; btn.hidden = true; });
+  btn.addEventListener('click', async () => {
+    if (!deferred) return;
+    deferred.prompt();
+    try { await deferred.userChoice; } catch {}
+    deferred = null;
+    btn.hidden = true; // the event cannot be reused once prompted
+  });
+}
+
 function toggleTheme() {
   const next = currentTheme() === 'dark' ? 'light' : 'dark';
   const root = document.documentElement;
@@ -799,6 +819,7 @@ async function init() {
   renderThemeToggle();
   $('theme-toggle').addEventListener('click', toggleTheme);
   $('fact-next').addEventListener('click', () => { sound.play('beep'); renderFact(); });
+  setupInstallButton();
   // The tax breakdown prints like a receipt strip.
   $('r-tax-details').addEventListener('toggle', (e) => { if (e.target.open) sound.play('print'); });
   renderSoundToggle();
