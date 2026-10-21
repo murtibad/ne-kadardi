@@ -94,6 +94,21 @@ export function getHalfYear(dateStr) {
   return `${year}-H${month <= 6 ? 1 : 2}`;
 }
 
+// Products paid per month or per holiday read wrong as "17 adet"; they are counted by name.
+const COUNT_UNITS = {
+  'kyk-yurt-ucreti': 'aylık yurt ücreti',
+  'kyk-burs': 'aylık burs',
+  netflix: 'aylık Netflix aboneliği',
+  spotify: 'aylık Spotify aboneliği',
+  'emekli-en-dusuk-aylik': 'en düşük emekli aylığı',
+  'emekli-bayram-ikramiyesi': 'bayram ikramiyesi',
+};
+
+/** Count word for the purchasing-power line: a named unit for monthly items, else the short unit. */
+export function getCountUnit(q) {
+  return COUNT_UNITS[q.productId] || getShortUnit(q.unit);
+}
+
 export function getShortUnit(unit) {
   if (!unit) return 'adet';
   const lower = unit.toLowerCase();
@@ -117,7 +132,7 @@ export function buildContextLine(q, allQuestions) {
   const pastWage = half && wages.find((x) => getHalfYear(x.date) === half);
   if (!pastWage) return null;
 
-  const unit = getShortUnit(q.unit);
+  const unit = getCountUnit(q);
   const currentWage = wages.find((x) => x.current)?.current.price;
   const hasNow = Boolean(q.current && currentWage);
 
@@ -155,7 +170,7 @@ export function buildContextModel(q, allQuestions) {
   if (q.price <= pastWage.price) {
     return {
       kind: 'count',
-      unit: getShortUnit(q.unit),
+      unit: getCountUnit(q),
       then: Math.floor(pastWage.price / q.price),
       now: hasNow ? Math.floor(currentWage / q.current.price) : null,
     };
