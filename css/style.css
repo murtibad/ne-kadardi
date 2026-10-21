@@ -1081,6 +1081,10 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .price-chart { margin: 16px 0 12px; }
 .price-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
 .price-chart figcaption { margin-top: 2px; text-align: center; font: 400 0.6875rem var(--font-mono); color: var(--muted-on-paper); letter-spacing: 0.04em; }
+
+/* v0.74 design A: result receipt (Stitch "Sonuç A") */
+/* end v0.74 result */
+
 .pc-area { fill: var(--accent-on-paper); opacity: 0.1; }
 .pc-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .pc-dot { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
@@ -1224,3 +1228,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .row-to-chart { display: inline-flex; align-items: center; min-height: 44px; margin: -8px 0; padding: 0; /* full tap target without making the row taller */ border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .row-to-chart:hover, .row-to-chart:focus-visible { text-decoration: underline dotted; text-underline-offset: 3px; }
 .row-to-chart:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* v0.74 design A: home + question (Stitch "Ana sayfa A", "Soru A") */
+/* end v0.74 home + question */
