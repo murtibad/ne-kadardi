@@ -399,7 +399,7 @@ function renderResult(q, r) {
   const avg = Math.round(state.total / state.played);
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
   $('r-session').innerHTML = `<span>${state.played} soru · ort. ${avg}${state.best > 0 ? ` · en iyi ${state.best}` : ''}</span>`
-    + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}">${ticks}</span>` : '');
+    + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
   $('r-receipt').focus({ preventScroll: true }); // the submit button just disappeared; read the receipt next
