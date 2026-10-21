@@ -449,7 +449,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   const pad = { top: 22, right: 14, bottom: 22, left: 14 };
   const chart = t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, refPrice: guess, pad });
   fig.hidden = !chart;
-  if (!chart) { fig.innerHTML = ''; return; }
+  if (!chart) { fig.innerHTML = ''; delete fig._activateDate; return; }
   const first = chart.points[0];
   const last = chart.points[chart.points.length - 1];
   const marked = chart.points.find((p) => p.highlight);
@@ -494,7 +494,9 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
       r.classList.toggle('is-linked', active);
       if (active) match = r;
     }
-    if (match && source === 'pointer') {
+    // Scroll only when the row is off screen, so the tapped chart does not jump away.
+    const rect = match?.getBoundingClientRect();
+    if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
       const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
       match.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
     }
@@ -992,7 +994,8 @@ function renderHome() {
   if (!$('fact-body').hasChildNodes()) renderFact();
   renderHomeSpark();
   // Coming back to the menu does not reset the game, so say so instead of "Başla".
-  $('m-go').textContent = state.question ? `Devam et · Soru ${state.round} →` : 'Başla →';
+  $('m-go').textContent = !state.question ? 'Başla →'
+    : state.lastGameScreen === 'result-screen' ? `Sonuca dön · Soru ${state.round} →` : `Devam et · Soru ${state.round} →`;
   $('how-to').hidden = state.played > 0; // only first-time players need the three steps
   show('home-screen');
 }
