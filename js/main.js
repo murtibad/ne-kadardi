@@ -30,12 +30,15 @@ const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt
 const state = {
   recentProducts: [], 
   hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
-  played: 0, total: 0, best: 0, round: 0, 
+  played: 0, total: 0, best: 0, round: 0, recentScores: [], 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false 
 };
 let shareOriginalLabel = '';
 let shareTimeoutId = null;
+
+// The result screen shows the last few scores as coloured ticks, like a till roll tally.
+const RECENT_MAX = 8;
 
 function loadSession() {
   try {
@@ -45,6 +48,7 @@ function loadSession() {
       state.total = data.total;
       // Older saves have no best; the field is optional.
       if (Number.isFinite(data.best)) state.best = data.best;
+      if (Array.isArray(data.recent)) state.recentScores = data.recent.filter(Number.isFinite).slice(-RECENT_MAX);
     }
   } catch(e) {}
 }
@@ -54,7 +58,8 @@ function saveSession() {
     localStorage.setItem('ne-kadardi-session', JSON.stringify({
       played: state.played,
       total: state.total,
-      best: state.best
+      best: state.best,
+      recent: state.recentScores
     }));
   } catch(e) {}
 }
@@ -72,6 +77,7 @@ function showGameScreen(screenId) {
 
 function showMessage(text) {
   $('message-text').textContent = text;
+  document.querySelector('#message-screen .skeleton').hidden = true; // only the first load shows the placeholder
   show('message-screen');
 }
 
@@ -194,6 +200,7 @@ function onGuess(event) {
   state.played += 1;
   state.total += state.result.score;
   state.best = Math.max(state.best, state.result.score);
+  state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
   saveSession();
   hapticIfAllowed(10);
   renderResult(q, state.result);
@@ -328,7 +335,10 @@ function renderResult(q, r) {
   const kindLabel = sourceKindLabel(q.source.kind);
   $('r-source-kind').textContent = kindLabel ? ` · ${kindLabel}` : '';
   $('r-source-kind').hidden = !kindLabel;
-  $('r-session').textContent = `Toplam: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
+  const avg = Math.round(state.total / state.played);
+  const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
+  $('r-session').innerHTML = `<span>${state.played} soru · ort. ${avg}${state.best > 0 ? ` · en iyi ${state.best}` : ''}</span>`
+    + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}">${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
   $('r-receipt').focus({ preventScroll: true }); // the submit button just disappeared; read the receipt next

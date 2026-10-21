@@ -1010,3 +1010,20 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   to { transform: scale(1) rotate(-4deg); opacity: 0.9; }
 }
 
+
+/* Recent scores tally next to the session line on the result screen */
+.session { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 10px; }
+.tally { display: inline-flex; gap: 4px; align-items: center; }
+.tally-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--fill); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.tally-last { width: 13px; height: 13px; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--text); }
+
+/* First-load placeholder: three printed lines on the receipt while the data arrives */
+.loading-card #message-text { text-align: center; font-family: var(--font-mono); }
+.skeleton { display: grid; gap: 10px; margin-top: 16px; }
+.skeleton[hidden] { display: none; }
+.skeleton span { height: 12px; border-radius: 3px; background: var(--line); }
+.skeleton .short { width: 55%; }
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton span { animation: skeleton-pulse 1.1s ease-in-out infinite alternate; }
+}
+@keyframes skeleton-pulse { from { opacity: 0.45; } to { opacity: 1; } }
