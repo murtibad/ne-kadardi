@@ -90,7 +90,8 @@ export function readAmount(value) {
   if (rem > 0 || parts.length === 0) {
     parts.push(decStr ? `${rem},${decStr}` : `${rem}`);
   } else if (decStr) {
-    parts[parts.length - 1] += `,${decStr}`;
+    // "1 bin,5" would read as 1,5 thousand; spell the zero units out instead.
+    parts.push(`0,${decStr}`);
   }
 
   return `${parts.join(' ')} ₺`;

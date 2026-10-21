@@ -38,6 +38,8 @@ test('formatRatio uses a decimal comma', () => {
 
 test('readAmount formats Turkish magnitude groups and decimals', () => {
   assert.equal(readAmount(1250000), '1 milyon 250 bin ₺');
+  assert.equal(readAmount(1000.5), '1 bin 0,5 ₺');
+  assert.equal(readAmount(2000000.25), '2 milyon 0,25 ₺');
   assert.equal(readAmount(1250), '1 bin 250 ₺');
   assert.equal(readAmount(1000000), '1 milyon ₺');
   assert.equal(readAmount(2500000000), '2 milyar 500 milyon ₺');
