@@ -4,6 +4,7 @@ const DEFAULT_WIDTH = 320;
 const DEFAULT_HEIGHT = 140;
 const DEFAULT_PAD = { top: 12, right: 12, bottom: 22, left: 12 };
 const MAX_TICKS = 5;
+const REF_STRETCH = 10;
 
 function round1(value) {
   return Math.round(value * 10) / 10;
@@ -96,8 +97,13 @@ export function buildPriceChart(rows, options = {}) {
   const maxPrice = Math.max(...prices);
   // Include refPrice in the y scale so a wild guess still lands inside the plot box,
   // while keeping minPrice/maxPrice as the actual data bounds.
-  const scaleMin = hasRef ? Math.min(minPrice, refPrice) : minPrice;
-  const scaleMax = hasRef ? Math.max(maxPrice, refPrice) : maxPrice;
+  // ...but a wild guess (1.250.000 for a 17 lira fee) would flatten the data into a line, so the
+  // scale stretches at most REF_STRETCH past the data and the ref pins to the edge beyond that.
+  const lowLimit = minPrice / REF_STRETCH;
+  const highLimit = maxPrice * REF_STRETCH;
+  const refShown = hasRef ? Math.min(highLimit, Math.max(lowLimit, refPrice)) : null;
+  const scaleMin = hasRef ? Math.min(minPrice, refShown) : minPrice;
+  const scaleMax = hasRef ? Math.max(maxPrice, refShown) : maxPrice;
   const minLog = Math.log(scaleMin);
   const maxLog = Math.log(scaleMax);
   const logSpan = maxLog - minLog;
@@ -135,7 +141,9 @@ export function buildPriceChart(rows, options = {}) {
     return plotLeft + ((year - minTime) / timeSpan) * plotWidth;
   };
   const xTicks = buildXTicks(firstYear, lastYear, firstX, minTime, toX);
-  const ref = hasRef ? { y: toY(Math.log(refPrice)), price: refPrice } : null;
+  const ref = hasRef
+    ? { y: toY(Math.log(refShown)), price: refPrice, off: refPrice > highLimit ? 'above' : refPrice < lowLimit ? 'below' : null }
+    : null;
 
   return {
     width,

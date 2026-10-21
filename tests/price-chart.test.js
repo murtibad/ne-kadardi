@@ -230,7 +230,7 @@ test('buildPriceChart maps refPrice inside the data range onto the log y-scale w
   const withRef = buildPriceChart(rows, { width: 320, height: 140, pad, refPrice: 10 });
 
   const verticalMiddle = pad.top + (140 - pad.top - pad.bottom) / 2;
-  assert.deepEqual(withRef.ref, { y: verticalMiddle, price: 10 });
+  assert.deepEqual(withRef.ref, { y: verticalMiddle, price: 10, off: null });
   assert.deepEqual(withRef.points, base.points);
   assert.equal(withRef.minPrice, 1);
   assert.equal(withRef.maxPrice, 100);
@@ -246,7 +246,7 @@ test('buildPriceChart extends the y-scale when refPrice is above maxPrice or bel
 
   // refPrice above maxPrice: scale spans [10, 1000], so 100 sits in the middle and ref sits at pad.top.
   const high = buildPriceChart(rows, { width: 320, height: 140, pad, refPrice: 1000 });
-  assert.deepEqual(high.ref, { y: pad.top, price: 1000 });
+  assert.deepEqual(high.ref, { y: pad.top, price: 1000, off: null });
   assert.equal(high.points[0].y, 140 - pad.bottom);
   assert.equal(high.points[1].y, verticalMiddle);
   assert.equal(high.minPrice, 10);
@@ -254,7 +254,7 @@ test('buildPriceChart extends the y-scale when refPrice is above maxPrice or bel
 
   // refPrice below minPrice: scale spans [1, 100], so 10 sits in the middle and ref sits at height - pad.bottom.
   const low = buildPriceChart(rows, { width: 320, height: 140, pad, refPrice: 1 });
-  assert.deepEqual(low.ref, { y: 140 - pad.bottom, price: 1 });
+  assert.deepEqual(low.ref, { y: 140 - pad.bottom, price: 1, off: null });
   assert.equal(low.points[0].y, verticalMiddle);
   assert.equal(low.points[1].y, pad.top);
   assert.equal(low.minPrice, 10);
@@ -269,4 +269,16 @@ test('refLabelAtStart puts the guess label away from nearby points', async () =>
   // Guess line at y=50: the first point sits on it, the last one far away -> label at the end.
   assert.equal(refLabelAtStart({ width: 300, ref: { y: 50 }, points: pts([50, 30, 10, 0]) }, 60), false);
   assert.equal(refLabelAtStart({ width: 300, ref: { y: 0 }, points: pts([50, 30, 10, 0]) }, 60), true);
+});
+
+test('a wild guess pins to the chart edge instead of flattening the data', () => {
+  const rows = [{ date: '2020', price: 10 }, { date: '2026', price: 20 }];
+  const c = buildPriceChart(rows, { refPrice: 1_000_000 });
+  assert.equal(c.ref.off, 'above');
+  assert.equal(c.ref.y, c.points[0].y > c.ref.y ? c.ref.y : NaN); // ref sits above the data
+  assert.equal(c.ref.y, 12); // pad.top: the top of the plot
+  const low = buildPriceChart(rows, { refPrice: 0.001 });
+  assert.equal(low.ref.off, 'below');
+  const near = buildPriceChart(rows, { refPrice: 15 });
+  assert.equal(near.ref.off, null);
 });

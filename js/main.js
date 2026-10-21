@@ -16,6 +16,7 @@ import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
 import { buildPriceChart, refLabelAtStart } from './price-chart.js';
+import { countUpFrames } from './count-up.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -163,7 +164,8 @@ function nextQuestion(productId = null) {
   state.recentProducts.push(q.productId);
   if (state.recentProducts.length > 12) state.recentProducts.shift();
   state.round += 1;
-  $('q-round').textContent = `Soru ${state.round}`;
+  const cat = CATEGORIES.find((c) => c.id === categoryOf(q.productId));
+  $('q-round').textContent = cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
   $('q-period').textContent = formatPeriod(q.date);
   const anchor = yearAnchor(yearOf(q.date));
   $('q-anchor').textContent = anchor || '';
@@ -239,10 +241,20 @@ function onGuess(event) {
 const PRINT_MS = 1100;
 let printTimer = null;
 let cancelPrint = null;
+let countUpRaf = null;
+
+function stopCountUp() {
+  if (countUpRaf !== null) {
+    cancelAnimationFrame(countUpRaf);
+    countUpRaf = null;
+  }
+  $('r-actual')?.removeAttribute('aria-hidden');
+}
 
 // Cancel any in-flight print timer, click listener, and printer audio when leaving the result screen early.
 function stopPrinting() {
   sound.stop('print');
+  stopCountUp();
   clearTimeout(printTimer);
   printTimer = null;
   if (cancelPrint) {
@@ -259,6 +271,8 @@ function printReceipt(extraSound) {
   $('next-btn').classList.remove('nudge');
   const finish = () => {
     sound.stop('print');
+    stopCountUp();
+    if (state.question) $('r-actual').textContent = formatPrice(state.question.price);
     clearTimeout(printTimer);
     printTimer = null;
     wrap.removeEventListener('click', finish);
@@ -281,6 +295,8 @@ function printReceipt(extraSound) {
     if (state.result?.factor === 1) burstConfetti();
   };
   cancelPrint = () => {
+    stopCountUp();
+    if (state.question) $('r-actual').textContent = formatPrice(state.question.price);
     wrap.removeEventListener('click', finish);
     wrap.classList.remove('printing');
     // Leaving mid-print (e.g. to the archive) must not strand an empty meter and a hidden stamp
@@ -294,6 +310,24 @@ function printReceipt(extraSound) {
     return;
   }
   sound.play('print');
+  const frames = countUpFrames(state.question.price, { frames: 60 });
+  if (frames.length > 0 && typeof requestAnimationFrame === 'function') {
+    const actualEl = $('r-actual');
+    // renderResult already wrote the real price for the aria-live announcement; hide intermediate ticks.
+    actualEl.setAttribute('aria-hidden', 'true');
+    let i = 0;
+    const tick = () => {
+      actualEl.textContent = formatPrice(frames[i]);
+      i += 1;
+      if (i < frames.length) {
+        countUpRaf = requestAnimationFrame(tick);
+      } else {
+        countUpRaf = null;
+        actualEl.removeAttribute('aria-hidden');
+      }
+    };
+    countUpRaf = requestAnimationFrame(tick);
+  }
   void wrap.offsetWidth; // restart the CSS animation for back-to-back results
   wrap.classList.add('printing');
   wrap.addEventListener('click', finish);
@@ -311,6 +345,7 @@ function renderResultImage(q) {
 }
 
 function renderResult(q, r) {
+  stopCountUp();
   $('r-stamp').classList.remove('stamped');
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   renderResultImage(q, r);
@@ -364,7 +399,7 @@ function renderResult(q, r) {
   const avg = Math.round(state.total / state.played);
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
   $('r-session').innerHTML = `<span>${state.played} soru · ort. ${avg}${state.best > 0 ? ` · en iyi ${state.best}` : ''}</span>`
-    + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}">${ticks}</span>` : '');
+    + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
   $('r-receipt').focus({ preventScroll: true }); // the submit button just disappeared; read the receipt next
@@ -390,7 +425,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   // A close guess sits right on the data: put its label at the end whose points are farther away.
   const refStart = chart.ref && refLabelAtStart(chart, 110);
   const refLine = chart.ref
-    ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refStart ? pad.left : chart.width - pad.right}" y="${chart.ref.y < 20 ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="${refStart ? 'start' : 'end'}" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}</text>`
+    ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refStart ? pad.left : chart.width - pad.right}" y="${chart.ref.y < 20 ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="${refStart ? 'start' : 'end'}" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}${chart.ref.off === 'above' ? ' ↑' : chart.ref.off === 'below' ? ' ↓' : ''}</text>`
     : '';
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
@@ -749,6 +784,7 @@ function renderHome() {
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} kaynaklı fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   if (!$('fact-body').hasChildNodes()) renderFact();
+  $('how-to').hidden = state.played > 0; // only first-time players need the three steps
   show('home-screen');
 }
 

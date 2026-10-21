@@ -104,6 +104,8 @@ Done (details in `CHANGELOG.md`):
       removed the quick-add buttons, aged paper, receipt number and POS lines; darker light-mode page.
 - [x] v0.70 UI refresh: price history chart (result + archive), archive search and compact chips, home fact card,
       big-number readout, receipt stamp, SVG header icons, focus and disclosure polish.
+- [x] v0.71 First-visit how-to steps, category on the question card, till-style price roll, score explainer,
+      off-chart guess marker, contrast fix from an axe pass.
 
 Open:
 

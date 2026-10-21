@@ -273,7 +273,7 @@ export async function renderShareImage(model) {
       ctx.lineWidth = 8;
       ctx.lineJoin = 'round';
       ctx.fillStyle = COLORS.muted;
-      const refText = `Tahminin ${formatPrice(chart.ref.price)}`;
+      const refText = `Tahminin ${formatPrice(chart.ref.price)}${chart.ref.off === 'above' ? ' ↑' : chart.ref.off === 'below' ? ' ↓' : ''}`;
       const refLabelY = chart.ref.y < 40 ? chart.ref.y + 30 : chart.ref.y - 10;
       const refX = refStart ? 24 : chart.width - 24;
       ctx.strokeText(refText, refX, refLabelY);
