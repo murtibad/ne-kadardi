@@ -31,7 +31,8 @@ const state = {
   recentProducts: [], 
   hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, 
-  lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '' 
+  lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
+  archiveFromResult: false 
 };
 let shareOriginalLabel = '';
 let shareTimeoutId = null;
@@ -113,6 +114,7 @@ function setBtnStatus(btnId, text) {
 
 function nextQuestion() {
   stopPrinting();
+  state.archiveFromResult = false;
   resetShareBtn();
   if ($('r-tax-details')) {
     $('r-tax-details').hidden = true;
@@ -308,7 +310,7 @@ function renderResult(q, r) {
   $('r-tax').hidden = !taxText;
   renderTaxDetails(q);
 
-  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; };
+  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; state.archiveFromResult = true; };
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
   const kindLabel = sourceKindLabel(q.source.kind);
@@ -569,12 +571,32 @@ function renderTimelineScreen(focusProductId = null) {
   
   const chosen = picker.querySelector('[aria-pressed="true"]');
   if (focusProductId) chosen?.focus({ preventScroll: true });
-  // Keep the chosen chip in view inside its own row without moving the page.
-  chosen?.scrollIntoView({ inline: 'nearest', block: 'nearest',
-    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  // Centre the chosen chip inside its own row (the right edge fades out) without moving the page.
+  if (chosen) {
+    const row = picker.getBoundingClientRect();
+    const chip = chosen.getBoundingClientRect();
+    picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
 
   $('t-title').textContent = product.name;
   $('t-unit').textContent = product.region ? `${product.unit} · ${product.region}` : product.unit;
+  const tImg = $('t-image');
+  tImg.hidden = !product.image;
+  if (product.image) { tImg.src = product.image.src; tImg.onerror = () => { tImg.hidden = true; }; }
+  // One-line takeaway above the chart: oldest sourced price against the current one.
+  const firstRow = product.rows[0];
+  const nowRow = product.rows.find((r) => r.isCurrent);
+  const summary = nowRow && nowRow !== firstRow
+    ? `${formatPeriod(firstRow.date)} → ${formatPeriod(nowRow.date)}: ${formatRatio(nowRow.price / firstRow.price)} kat`
+    : '';
+  $('t-summary').textContent = summary;
+  $('t-summary').hidden = !summary;
+  // Coming from a result, the way back is the game, not the menu.
+  const back = $('timeline-back');
+  const toResult = state.archiveFromResult && state.lastGameScreen === 'result-screen';
+  back.href = toResult ? '#tahmin' : '#';
+  back.textContent = toResult ? '← Sonuca dön' : '← Ana menü';
   
   let html = `<table class="timeline-table">
     <caption class="visually-hidden">Fiyat geçmişi</caption>
@@ -622,6 +644,7 @@ function renderTimelineScreen(focusProductId = null) {
 }
 
 function renderHome() {
+  state.archiveFromResult = false;
   $('m-tahmin').textContent = state.played > 0
     ? `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en iyi ${state.best}` : '')
     : '';
@@ -647,7 +670,7 @@ function renderFact() {
       <p class="fact-now"><span>${escapeHTML(f.nowLabel)}</span><strong>${escapeHTML(f.nowPrice)}</strong></p>
     </div>
     <p class="fact-ratio"><strong>${escapeHTML(f.ratio)}</strong> arttı · <a href="#arsiv" data-product="${escapeHTML(f.productId)}">fiyat geçmişi</a></p>`;
-  $('fact-body').querySelector('a').onclick = () => { state.selectedTimelineProduct = f.productId; state.timelineCategory = 'all'; };
+  $('fact-body').querySelector('a').onclick = () => { state.selectedTimelineProduct = f.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; };
 }
 
 function onHashChange() {

@@ -172,7 +172,7 @@
       <div class="timeline-header">
         <h2>Fiyat Arşivi</h2>
         <p>Doğrulanmış tüm fiyatlar, kaynaklarıyla.</p>
-        <a href="#" class="timeline-back-btn">← Ana menü</a>
+        <a href="#" id="timeline-back" class="timeline-back-btn">← Ana menü</a>
       </div>
 
       <div class="timeline-search">
@@ -188,9 +188,11 @@
       
       <div class="receipt-wrapper">
         <article class="receipt-card result-receipt timeline-receipt">
+          <img id="t-image" class="product-image result-image" width="56" height="56" alt="" decoding="async" hidden>
           <p id="t-title" class="receipt-title"></p>
           <p id="t-unit" class="receipt-unit"></p>
           <hr>
+          <p id="t-summary" class="timeline-summary" hidden></p>
           <figure id="t-chart" class="price-chart" hidden></figure>
           <div id="t-rows-container"></div>
         </article>
