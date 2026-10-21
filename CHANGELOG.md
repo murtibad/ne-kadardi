@@ -14,6 +14,9 @@ All notable changes to this project will be documented in this file.
 - First load: a pulsing receipt placeholder instead of a bare "Yükleniyor…".
 - Receipt logo mark in the header; "Ana ekrana ekle" install button where the browser offers installation.
 - Screens fade in; Enter on the result screen goes to the next question.
+### Fixed
+- The "Fiyatı okut" hint button stayed visible after use and on products without a hint: a class `display` rule beat the `hidden` attribute. `[hidden]` now always hides.
+- Big-number readout no longer shows "1 bin,5 ₺" for 1000,5.
 ### Changed
 - Header sound and theme toggles use SVG icons instead of emoji.
 - Archive rows are compact receipt line items (period and price, then change, source and details), about half the height; the current price row is tinted.
