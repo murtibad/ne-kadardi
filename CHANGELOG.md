@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.68.0] - 2026-10-21
+### Added
+- "Yurt dışı çıkış harcı" (1 exit with a Turkish passport): 7 values, each confirmed on two outlets from different domains (all news, opened 2026-10-21).
+  - 2019-01 15 TL: posta.com.tr (2019-07-20, "15 liradan 50 liraya çıkarılacak") + sozcu.com.tr ("1 Nisan 2007 tarihinde harç bedeli 15 Türk lirası").
+  - 2019-08 50 TL: muhasebenews.com (law 7186, in force 1 Aug 2019) + sozcu.com.tr ("1 Ağustos 2019 tarihinde harç bedeli 50 Türk lirasına yükseltildi") + posta.com.tr.
+  - 2022-03 150 TL: bloomberght.com + istiklal.com.tr + medyascope.tv + diken.com.tr ("50 TL'den 150 TL'ye").
+  - 2024-08 500 TL: bloomberght.com + halktv.com.tr + capital.com.tr (in force 12 Aug 2024).
+  - 2025-01 710 TL: bloomberght.com + medyascope.tv + capital.com.tr.
+  - 2025-09 1.000 TL: ekonomigazetesi.com + medyascope.tv + bloomberght.com (decision of 9 Sep 2025).
+  - current 2026-01 1.250 TL: medyascope.tv + 24saatgazetesi.com + egitim.net.tr. Some articles say "710 TL'den 1.250 TL'ye" although the fee was 1.000 TL since September 2025; the note says so.
+- Original icon `img/yurtdisi-cikis.svg`, cashier lines, entry in the "Harç, ceza ve bedeller" category.
+
 ## [0.67.0] - 2026-10-21
 ### Added
 - Receipt printer: the result receipt slides out of a printer slot in about a second, then is torn off. A tap on the receipt finishes it at once; reduced motion skips the slide.
