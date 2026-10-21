@@ -184,3 +184,81 @@ test('buildPriceChart spaces points evenly by index when all times are equal and
   assert.deepEqual(chart.xTicks, [{ x: 20, label: '2022' }]);
 });
 
+test('buildPriceChart keeps the first tick on the first point for a mid-year start and places later ticks at January', () => {
+  const pad = { top: 12, right: 20, bottom: 22, left: 20 };
+  const chart = buildPriceChart(
+    [
+      { date: '2011-08', price: 2, isCurrent: false },
+      { date: '2015-01', price: 4, isCurrent: false },
+      { date: '2026-01', price: 40, isCurrent: true },
+    ],
+    { width: 340, height: 140, pad }
+  );
+
+  // First tick sits on the Aug 2011 point (pad.left), while the 2015 tick aligns with the Jan 2015 point.
+  assert.equal(chart.xTicks[0].label, '2011');
+  assert.equal(chart.xTicks[0].x, chart.points[0].x);
+  const tick2015 = chart.xTicks.find((t) => t.label === '2015');
+  assert.ok(tick2015);
+  assert.equal(tick2015.x, chart.points[1].x);
+  assert.equal(chart.xTicks[chart.xTicks.length - 1].label, '2026');
+  assert.equal(chart.xTicks[chart.xTicks.length - 1].x, chart.points[2].x);
+});
+
+test('buildPriceChart returns ref: null when refPrice is omitted or not a finite positive number', () => {
+  const rows = [
+    { date: '2010', price: 10, isCurrent: false },
+    { date: '2020', price: 100, isCurrent: true },
+  ];
+
+  assert.equal(buildPriceChart(rows).ref, null);
+  for (const invalid of [null, undefined, 0, -5, NaN, Infinity, -Infinity, '25']) {
+    const chart = buildPriceChart(rows, { refPrice: invalid });
+    assert.equal(chart.ref, null);
+    assert.equal(chart.minPrice, 10);
+    assert.equal(chart.maxPrice, 100);
+  }
+});
+
+test('buildPriceChart maps refPrice inside the data range onto the log y-scale without changing point coordinates', () => {
+  const pad = { top: 10, right: 10, bottom: 30, left: 10 };
+  const rows = [
+    { date: '2010', price: 1, isCurrent: false },
+    { date: '2020', price: 100, isCurrent: true },
+  ];
+  const base = buildPriceChart(rows, { width: 320, height: 140, pad });
+  const withRef = buildPriceChart(rows, { width: 320, height: 140, pad, refPrice: 10 });
+
+  const verticalMiddle = pad.top + (140 - pad.top - pad.bottom) / 2;
+  assert.deepEqual(withRef.ref, { y: verticalMiddle, price: 10 });
+  assert.deepEqual(withRef.points, base.points);
+  assert.equal(withRef.minPrice, 1);
+  assert.equal(withRef.maxPrice, 100);
+});
+
+test('buildPriceChart extends the y-scale when refPrice is above maxPrice or below minPrice while keeping minPrice/maxPrice as data bounds', () => {
+  const pad = { top: 10, right: 10, bottom: 30, left: 10 };
+  const rows = [
+    { date: '2010', price: 10, isCurrent: false },
+    { date: '2020', price: 100, isCurrent: true },
+  ];
+  const verticalMiddle = pad.top + (140 - pad.top - pad.bottom) / 2;
+
+  // refPrice above maxPrice: scale spans [10, 1000], so 100 sits in the middle and ref sits at pad.top.
+  const high = buildPriceChart(rows, { width: 320, height: 140, pad, refPrice: 1000 });
+  assert.deepEqual(high.ref, { y: pad.top, price: 1000 });
+  assert.equal(high.points[0].y, 140 - pad.bottom);
+  assert.equal(high.points[1].y, verticalMiddle);
+  assert.equal(high.minPrice, 10);
+  assert.equal(high.maxPrice, 100);
+
+  // refPrice below minPrice: scale spans [1, 100], so 10 sits in the middle and ref sits at height - pad.bottom.
+  const low = buildPriceChart(rows, { width: 320, height: 140, pad, refPrice: 1 });
+  assert.deepEqual(low.ref, { y: 140 - pad.bottom, price: 1 });
+  assert.equal(low.points[0].y, verticalMiddle);
+  assert.equal(low.points[1].y, pad.top);
+  assert.equal(low.minPrice, 10);
+  assert.equal(low.maxPrice, 100);
+});
+
+

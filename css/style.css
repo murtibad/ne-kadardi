@@ -1056,3 +1056,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
 }
+
+/* Guess reference line on the result price chart */
+.pc-ref { stroke: var(--muted-on-paper); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.pc-ref-label { font: 700 10px var(--font-mono); fill: var(--muted-on-paper); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; }

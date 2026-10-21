@@ -30,23 +30,23 @@ function isValidRow(row) {
   );
 }
 
-// Ticks sit where the year starts on the same time axis as the points (clamped to the plot),
-// so a label lines up with a January point even when the series starts mid-year.
-function buildXTicks(firstYear, lastYear, toX) {
+// First tick stays on the first data point labelled with its year; later ticks sit at
+// their true January positions on the time axis (skipping any year start before minTime).
+function buildXTicks(firstYear, lastYear, firstX, minTime, toX) {
+  const ticks = [{ x: firstX, label: String(firstYear) }];
   const span = lastYear - firstYear;
   if (span <= 0) {
-    return [{ x: round1(toX(firstYear)), label: String(firstYear) }];
+    return ticks;
   }
 
   // Cap at 5 ticks (first, last, and at most 3 evenly spaced years between them).
   const count = Math.min(MAX_TICKS, span + 1);
-  const seen = new Set();
-  const ticks = [];
+  const seen = new Set([String(firstYear)]);
 
-  for (let i = 0; i < count; i++) {
+  for (let i = 1; i < count; i++) {
     const year = Math.round(firstYear + (i * span) / (count - 1));
     const label = String(year);
-    if (seen.has(label)) continue;
+    if (seen.has(label) || year < minTime) continue;
     seen.add(label);
     const x = round1(toX(year));
     ticks.push({ x, label });
@@ -76,6 +76,8 @@ export function buildPriceChart(rows, options = {}) {
   const height = options.height ?? DEFAULT_HEIGHT;
   const pad = { ...DEFAULT_PAD, ...options.pad };
   const highlightDate = options.highlightDate ?? null;
+  const refPrice = options.refPrice ?? null;
+  const hasRef = typeof refPrice === 'number' && Number.isFinite(refPrice) && refPrice > 0;
 
   const plotLeft = pad.left;
   const plotRight = width - pad.right;
@@ -92,17 +94,24 @@ export function buildPriceChart(rows, options = {}) {
   const prices = valid.map((v) => v.row.price);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
-  const minLog = Math.log(minPrice);
-  const maxLog = Math.log(maxPrice);
+  // Include refPrice in the y scale so a wild guess still lands inside the plot box,
+  // while keeping minPrice/maxPrice as the actual data bounds.
+  const scaleMin = hasRef ? Math.min(minPrice, refPrice) : minPrice;
+  const scaleMax = hasRef ? Math.max(maxPrice, refPrice) : maxPrice;
+  const minLog = Math.log(scaleMin);
+  const maxLog = Math.log(scaleMax);
   const logSpan = maxLog - minLog;
+  const toY = (logPrice) => {
+    const yRatio = logSpan === 0 ? 0.5 : (logPrice - minLog) / logSpan;
+    return round1(plotBottom - yRatio * plotHeight);
+  };
 
   const points = valid.map(({ row, time, logPrice }, index) => {
     const xRatio = timeSpan === 0 ? index / (valid.length - 1) : (time - minTime) / timeSpan;
-    const yRatio = logSpan === 0 ? 0.5 : (logPrice - minLog) / logSpan;
 
     return {
       x: round1(plotLeft + xRatio * plotWidth),
-      y: round1(plotBottom - yRatio * plotHeight),
+      y: toY(logPrice),
       date: row.date,
       price: row.price,
       isCurrent: Boolean(row.isCurrent),
@@ -123,10 +132,10 @@ export function buildPriceChart(rows, options = {}) {
   const lastYear = valid[valid.length - 1].year;
   const toX = (year) => {
     if (timeSpan === 0) return plotLeft;
-    const t = Math.min(maxTime, Math.max(minTime, year));
-    return plotLeft + ((t - minTime) / timeSpan) * plotWidth;
+    return plotLeft + ((year - minTime) / timeSpan) * plotWidth;
   };
-  const xTicks = buildXTicks(firstYear, lastYear, toX);
+  const xTicks = buildXTicks(firstYear, lastYear, firstX, minTime, toX);
+  const ref = hasRef ? { y: toY(Math.log(refPrice)), price: refPrice } : null;
 
   return {
     width,
@@ -137,5 +146,6 @@ export function buildPriceChart(rows, options = {}) {
     xTicks,
     minPrice,
     maxPrice,
+    ref,
   };
 }
