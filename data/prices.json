@@ -502,6 +502,18 @@
           }
         },
         {
+          "date": "2016-07",
+          "price": 4.43673,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2016: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2016",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2017-01",
           "price": 5.1734,
           "status": "verified",
@@ -510,6 +522,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2017",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-07",
+          "price": 4.93997,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2017: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2017",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -526,6 +550,18 @@
           }
         },
         {
+          "date": "2018-07",
+          "price": 6.23627,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2018: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2018",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2019-01",
           "price": 5.83065,
           "status": "verified",
@@ -534,6 +570,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2019",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 6.73329,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2019: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2019",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -550,6 +598,18 @@
           }
         },
         {
+          "date": "2020-07",
+          "price": 6.12146,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2020: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2020",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 7.18433,
           "status": "verified",
@@ -558,6 +618,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2021",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 7.73856,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2021: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2021",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -574,6 +646,18 @@
           }
         },
         {
+          "date": "2022-07",
+          "price": 27.27214,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2022: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2022",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2023-01",
           "price": 19.47857,
           "status": "verified",
@@ -582,6 +666,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2023",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 24.05429,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2023: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2023",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -598,6 +694,18 @@
           }
         },
         {
+          "date": "2024-07",
+          "price": 42.4025,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2024: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2024",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2025-01",
           "price": 44.0075,
           "status": "verified",
@@ -610,6 +718,18 @@
           }
         },
         {
+          "date": "2025-07",
+          "price": 48.8875,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2025: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2025",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2026-01",
           "price": 52.235,
           "status": "verified",
@@ -618,6 +738,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2026",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 62.25125,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2026",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         }
@@ -660,6 +792,18 @@
           }
         },
         {
+          "date": "2016-07",
+          "price": 3.81824,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2016: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2016",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2017-01",
           "price": 4.5644,
           "status": "verified",
@@ -668,6 +812,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2017",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-07",
+          "price": 4.32334,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2017: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2017",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -684,6 +840,18 @@
           }
         },
         {
+          "date": "2018-07",
+          "price": 5.6595,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2018: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2018",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2019-01",
           "price": 5.63585,
           "status": "verified",
@@ -692,6 +860,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2019",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 6.42608,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2019: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2019",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -708,6 +888,18 @@
           }
         },
         {
+          "date": "2020-07",
+          "price": 5.71162,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2020: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2020",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 6.57045,
           "status": "verified",
@@ -716,6 +908,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2021",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 7.21753,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2021: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2021",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -732,6 +936,18 @@
           }
         },
         {
+          "date": "2022-07",
+          "price": 26.61438,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2022: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2022",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2023-01",
           "price": 22.03875,
           "status": "verified",
@@ -740,6 +956,18 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2023",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 23.8425,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2023: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2023",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -756,6 +984,18 @@
           }
         },
         {
+          "date": "2024-07",
+          "price": 42.5,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2024: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2024",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2025-01",
           "price": 44.725,
           "status": "verified",
@@ -768,6 +1008,18 @@
           }
         },
         {
+          "date": "2025-07",
+          "price": 50.20625,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2025: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2025",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2026-01",
           "price": 53.635,
           "status": "verified",
@@ -776,6 +1028,308 @@
             "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 02.01.2026",
             "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 64.5125,
+          "status": "verified",
+          "note": "EPDK günlük bülten, 01.07.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2026",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "otogaz",
+      "name": "Otogaz (LPG)",
+      "unit": "1 litre",
+      "region": "İstanbul (Avrupa)",
+      "source_hint": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni (bildirim.epdk.gov.tr, bultenSorgula; tarih girilir). Portal 01.01.2016'dan başlıyor.",
+      "image": {
+        "src": "img/otogaz.svg",
+        "alt": "Otogaz (LPG) pompası",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10",
+        "price": 42.36125,
+        "status": "verified",
+        "note": "EPDK LPG günlük bülten, 21.10.2026: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+        "source": {
+          "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 21.10.2026",
+          "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016-01",
+          "price": 2.52625,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2016: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2016",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-07",
+          "price": 2.43125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2016: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2016",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 2.85125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2017: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2017",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-07",
+          "price": 2.8525,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2017: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2017",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 3.44625,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2018: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2018",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-07",
+          "price": 3.50125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2018: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2018",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 3.54125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2019: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2019",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 3.77375,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2019: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2019",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 3.97125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2020: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2020",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-07",
+          "price": 3.5825,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2020: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2020",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 4.06,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2021: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2021",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 4.49806,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2021: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2021",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 9.07571,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2022: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2022",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-07",
+          "price": 12.3125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2022: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2022",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 10.77875,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2023: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2023",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 11.755,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2023: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2023",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 18.795,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2024: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2024",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 20.6125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2024: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2024",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 26.90625,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2025: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2025",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-07",
+          "price": 25.655,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2025: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2025",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 29.51601,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.01.2026: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.01.2026",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 32.71125,
+          "status": "verified",
+          "note": "EPDK LPG günlük bülten, 01.07.2026: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+          "source": {
+            "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 01.07.2026",
+            "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         }
@@ -2619,6 +3173,236 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gram-gumus",
+      "name": "Gram gümüş",
+      "unit": "1 gram (saf gümüş, piyasa değeri)",
+      "region": null,
+      "source_hint": "Türetilmiş: Dünya Bankası Pink Sheet aylık ortalama ons gümüş ($/troy ons) ÷ 31,1034768 × TCMB döviz satış kurunun aylık ortalaması. Kuyumcu satış fiyatı değildir. Ayrıntı: docs/DATA.md.",
+      "image": {
+        "src": "img/gram-gumus.svg",
+        "alt": "Gümüş külçe çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-09",
+        "price": 101.02,
+        "status": "verified",
+        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-09 ayı gümüş fiyatı (aylık ortalama) 64,6 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 48.6405 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+        "source": {
+          "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-09",
+          "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+          "accessed": "2026-10-22",
+          "kind": "derived"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 0.84,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2010-01 ayı gümüş fiyatı (aylık ortalama) 17,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.4732 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 1.43,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2011-01 ayı gümüş fiyatı (aylık ortalama) 28,5 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.5643 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 1.82,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2012-01 ayı gümüş fiyatı (aylık ortalama) 30,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.8421 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2012-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 1.77,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2013-01 ayı gümüş fiyatı (aylık ortalama) 31,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.7713 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 1.42,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2014-01 ayı gümüş fiyatı (aylık ortalama) 19,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.2272 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2014-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 1.29,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2015-01 ayı gümüş fiyatı (aylık ortalama) 17,2 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.3369 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 1.37,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2016-01 ayı gümüş fiyatı (aylık ortalama) 14,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.0145 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2016-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 2.04,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2017-01 ayı gümüş fiyatı (aylık ortalama) 16,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.7538 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 2.08,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2018-01 ayı gümüş fiyatı (aylık ortalama) 17,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.7783 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2018-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 2.7,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2019-01 ayı gümüş fiyatı (aylık ortalama) 15,6 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 5.3759 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 3.43,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2020-01 ayı gümüş fiyatı (aylık ortalama) 18,0 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 5.9303 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2020-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 6.16,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2021-01 ayı gümüş fiyatı (aylık ortalama) 25,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 7.4024 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 10.1,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2022-01 ayı gümüş fiyatı (aylık ortalama) 23,2 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 13.5471 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2022-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 14.32,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2023-01 ayı gümüş fiyatı (aylık ortalama) 23,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 18.7954 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 22.16,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2024-01 ayı gümüş fiyatı (aylık ortalama) 22,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 30.0928 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2024-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 34.74,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2025-01 ayı gümüş fiyatı (aylık ortalama) 30,4 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 35.5418 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2025-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 127.96,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-01 ayı gümüş fiyatı (aylık ortalama) 92,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 43.2138 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         }
@@ -7675,6 +8459,324 @@
             "url": "https://www.resmigazete.gov.tr/eskiler/2024/12/20241230M2-10-1.pdf",
             "accessed": "2026-10-21",
             "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ea-fc-oyun",
+      "name": "FIFA / EA FC oyunu (PlayStation, standart sürüm)",
+      "unit": "1 oyun, çıkış fiyatı",
+      "region": null,
+      "source_hint": "Yeni FIFA / EA SPORTS FC oyununun Türkiye'de PlayStation standart sürüm çıkış (ön sipariş) fiyatı; FIFA 21'e kadar PS4, FIFA 22'den itibaren PS5. Haber kaynaklı.",
+      "image": {
+        "src": "img/futbol-oyunu.svg",
+        "alt": "Oyun kolu ve futbol topu çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025-09",
+        "price": 2899.99,
+        "status": "verified",
+        "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 26, PlayStation Store standart sürüm (PS5/PS4), çıkış fiyatı 2.899,99 TL (bazı haberlerde 2.899 TL). Bu değer için tek haber kaynağı doğrulandı.",
+        "source": {
+          "title": "Tamindir",
+          "url": "https://www.tamindir.com/haber/ea-sports-fc-26-turkiye-fiyati_97823/",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2017-09",
+          "price": 342,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 18, PS4 standart sürüm, ön sipariş/çıkış listesi fiyatı (PlayStation Store dijital). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "ShiftDelete",
+            "url": "https://shiftdelete.net/?p=5344",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-09",
+          "price": 429,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 20, PS4 standart sürüm, PlayStation Store çıkış fiyatı. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "ShiftDelete",
+            "url": "https://shiftdelete.net/yeni-cikacak-playstation-oyunlari-belli-oldu/8",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-10",
+          "price": 499.9,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 21, PS4 standart sürüm (PS5 sürümü ücretsiz yükseltme olarak sunuldu, ayrı PS5 fiyatı kullanılmadı). Haziran 2020'de duyurulan fiyat. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "Webtekno",
+            "url": "https://www.webtekno.com/fifa-21-duyuruldu-cikis-tarihi-turkiye-fiyati-h95199.html",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-10",
+          "price": 560,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 22, PS5 standart sürüm (PS4: 500 TL). Seri bu yıldan itibaren PS5 fiyatıyla devam ediyor. Temmuz 2021'de duyurulan çıkış fiyatı; Nisan 2022'de zamlandı. Doğrulama: Webtekno https://www.webtekno.com/fifa-22-duyuruldu-fiyati-cikis-tarihi-h112238.html.",
+          "source": {
+            "title": "Posta",
+            "url": "https://www.posta.com.tr/bilim-teknoloji/fifa-22-resmi-olarak-tanitildi-iste-turkiye-fiyati-2350461",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-09",
+          "price": 800,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 23, PS5 standart sürüm ön sipariş fiyatı (PS4 sürümü 700 TL). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "CNN Türk",
+            "url": "https://www.cnnturk.com/oyun/fifa-23-cikis-tarihi-ve-fiyati-ea-sports-fifa-23-ne-zaman-cikacak-1817230",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-09",
+          "price": 1399,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 24, PlayStation standart sürüm, ön sipariş/çıkış fiyatı. Doğrulama: A Spor https://www.aspor.com.tr/e-spor/2023/07/14/ea-sports-fc-24-fiyati-belli-oldu-ea-sports-fc-24-sistem-gereksinimleri-ne/amp.",
+          "source": {
+            "title": "LOG",
+            "url": "https://www.log.com.tr/?p=833850",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-09",
+          "price": 2900,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 25, PlayStation Store standart sürüm, ön sipariş/çıkış fiyatı (2.900 TL). Doğrulama: LOG https://www.log.com.tr/ea-sports-fc-25-incelemesi/5/.",
+          "source": {
+            "title": "DonanımHaber",
+            "url": "https://www.donanimhaber.com/ea-sports-fc-25-trailer-yayinlandi-iste-yenilikler-ve-fiyati--179583",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 2899.99,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 26, PlayStation Store standart sürüm (PS5/PS4), çıkış fiyatı 2.899,99 TL (bazı haberlerde 2.899 TL). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "Tamindir",
+            "url": "https://www.tamindir.com/haber/ea-sports-fc-26-turkiye-fiyati_97823/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kyk-yurt-ucreti",
+      "name": "KYK yurt ücreti (aylık, en düşük)",
+      "unit": "1 ay, en ucuz oda tipi",
+      "region": null,
+      "source_hint": "Kredi ve Yurtlar (GSB/KYK) her öğretim yılı başında açıkladığı en düşük aylık yurt ücreti; 2021'den itibaren 1. tip oda. Haber kaynaklı.",
+      "image": {
+        "src": "img/yurt.svg",
+        "alt": "Ranza ve yurt odası çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-09",
+        "price": 1000,
+        "status": "verified",
+        "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2026-27 yılı en düşük aylık KYK yurt ücreti Doğrulama: Ekonomist https://www.ekonomist.com.tr/gundem/kyk-yurtlarina-zam-geldi-en-dusuk-ve-en-yuksek-oda-ucreti-ne-kadar--78301.",
+        "source": {
+          "title": "Milli Gazete",
+          "url": "https://www.milligazete.com.tr/kyk-yurt-ucretleri-2026-2027-ne-kadar-zam-geldi-mi-1-2-3-4-5-ve-6-tip-yurt-fiyatlari-kyk-ilk-kayit-ucreti-ne-kadar",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2018-09",
+          "price": 168,
+          "status": "verified",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2018-19 yılı standart KYK yurdu aylık ücreti (en düşük); 2019 haberi 168 TL'yi önceki en düşük ücret olarak teyit ediyor Doğrulama: Karar https://www.karar.com/kyk-yurt-fiyatlari-yuzde-20-zamlandi-1301760.",
+          "source": {
+            "title": "Milliyet",
+            "url": "https://www.milliyet.com.tr/gundem/kyk-yurt-sonuc-sorgulama-ekrani-2018-kyk-yurt-ucreti-ne-kadar-2741449",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-09",
+          "price": 200,
+          "status": "verified",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2019-20 yılı en düşük aylık yurt ücreti Doğrulama: Milliyet https://www.milliyet.com.tr/gundem/kyk-burs-basvurusu-ne-zaman-sonuclari-nereden-aciklanir-kyk-yurt-islemleri-nasil-ucretleri-ne-kadar-olur-2020-2021-6331970.",
+          "source": {
+            "title": "Karar",
+            "url": "https://www.karar.com/kyk-yurt-fiyatlari-yuzde-20-zamlandi-1301760",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-09",
+          "price": 230,
+          "status": "verified",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2021-22 yılı 1. tip KYK yurdu aylık ücreti (en düşük tip) Doğrulama: Yeni Şafak https://www.yenisafak.com/kyk-yurt-ucretleri-ne-kadar-2021-2022-yurt-tiplerine-gore-kyk-yurt-fiyatlari-h-3691416.",
+          "source": {
+            "title": "Milliyet",
+            "url": "https://www.milliyet.com.tr/galeri/kyk-yurt-ucretleri-2021-ne-kadar-kyk-yurt-fiyatlari-odemesi-ne-zaman-nereye-yapilir-6592012",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-09",
+          "price": 345,
+          "status": "verified",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2023-24 yılı 1. tip KYK yurdu aylık ücreti (en düşük) Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "Milliyet",
+            "url": "https://www.milliyet.com.tr/galeri/kyk-yurt-ucretleri-ne-kadar-2023-2024-kyk-1-2-3-4-5-6-tip-yurt-ucretleri-7004883",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-09",
+          "price": 517.5,
+          "status": "verified",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2024-25 yılı 1. tip aylık ücret; 2025 haberleri 'geçen sene' diyerek veriyor Doğrulama: Diken https://www.diken.com.tr/?p=1628694.",
+          "source": {
+            "title": "NTV",
+            "url": "https://www.ntv.com.tr/turkiye/kyk-yurtlarinin-ucretlerine-zam,uuuY2KvjD0qS-Hz0qtDDLw",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 750,
+          "status": "verified",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2025-26 yılı 1. tip aylık ücret Doğrulama: Diken https://www.diken.com.tr/?p=1628694.",
+          "source": {
+            "title": "NTV",
+            "url": "https://www.ntv.com.tr/turkiye/kyk-yurtlarinin-ucretlerine-zam,uuuY2KvjD0qS-Hz0qtDDLw",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-09",
+          "price": 1000,
+          "status": "verified",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2026-27 yılı en düşük aylık KYK yurt ücreti Doğrulama: Ekonomist https://www.ekonomist.com.tr/gundem/kyk-yurtlarina-zam-geldi-en-dusuk-ve-en-yuksek-oda-ucreti-ne-kadar--78301.",
+          "source": {
+            "title": "Milli Gazete",
+            "url": "https://www.milligazete.com.tr/kyk-yurt-ucretleri-2026-2027-ne-kadar-zam-geldi-mi-1-2-3-4-5-ve-6-tip-yurt-fiyatlari-kyk-ilk-kayit-ucreti-ne-kadar",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "emekli-bayram-ikramiyesi",
+      "name": "Emekli bayram ikramiyesi",
+      "unit": "1 bayram, dosya başına tam tutar",
+      "region": null,
+      "source_hint": "5510 sayılı Kanun Ek Madde 18: SGK emeklilerine Ramazan ve Kurban bayramlarında ödenen ikramiye; tutar kanun değişiklikleriyle artar. Haber kaynaklı.",
+      "image": {
+        "src": "img/emekli.svg",
+        "alt": "Bastonlu emekli çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025-03",
+        "price": 4000,
+        "status": "verified",
+        "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar); tarih, yeni tutarın ilk uygulandığı bayramın ayı. Ramazan Bayramı 2025 (30 Mart); kanunen 3.000 TL'den 4.000 TL'ye çıktı. DİKKAT: Meclis kararı bayram öncesine yetişmediği için hesaplara önce 3.000 TL yattı, 1.000 TL fark Resmî Gazete sonrası ödendi. Doğrulama: NTV https://www.ntv.com.tr/ekonomi/galeri-emekli-bayram-ikramiyesi-sgk-odeme-takvimi-2025-aciklandi-mi-4-bin-lira-ikramiye-ne-zaman-yatacak,8LUQ8Uda1kW12GRxgqL42Q.",
+        "source": {
+          "title": "Milliyet",
+          "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-emeklilerin-bayram-ikramiyesi-4-bin-liraya-yukseltildi-7338435",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2018-06",
+          "price": 1000,
+          "status": "verified",
+          "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar); tarih, yeni tutarın ilk uygulandığı bayramın ayı. Ramazan Bayramı 2018 (Haziran); emekli bayram ikramiyesi 1.000 TL, dosya başına, 5510 sayılı Kanun Ek Madde 18. Doğrulama: CNN Türk https://www.cnnturk.com/turkiye/emekli-ikramiyesi-ne-zaman-odenecek-1000-tl-emekli-ikramiyesi-951841.",
+          "source": {
+            "title": "Takvim",
+            "url": "https://www.takvim.com.tr/ekonomi/2018/07/31/cifte-bayram-mujdesi-emekliye-bayram-ikramiyesi-ne-zaman-yatacak-emekliye-ikramiye-kac-lira-olacak-2018-emekli-ikramiyesi",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-05",
+          "price": 1100,
+          "status": "verified",
+          "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar); tarih, yeni tutarın ilk uygulandığı bayramın ayı. Ramazan Bayramı 2021 (Mayıs); ikramiye 1.000 TL'den 1.100 TL'ye çıktı, 6-7 Mayıs 2021'de ödendi. Doğrulama: Yeni Akit https://www.yeniakit.com.tr/haber/bayram-ikramiyesi-hesaplara-yatti-mi-ikramiyeler-nasil-cekilecek-1536642.html.",
+          "source": {
+            "title": "Milliyet",
+            "url": "https://www.milliyet.com.tr/galeri/emekli-ikramiyesi-yatti-mi-bugun-hangi-emekliler-ikramiye-alacak-emekli-ikramiyesi-2021-ne-zaman-ve-ne-kadar-yatacak-6497117",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-04",
+          "price": 2000,
+          "status": "verified",
+          "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar); tarih, yeni tutarın ilk uygulandığı bayramın ayı. Ramazan Bayramı 2023 (21 Nisan); ikramiye 1.100 TL'den 2.000 TL'ye çıktı (7447 sayılı Kanun). Doğrulama: Milliyet https://milliyet.com.tr/galeri/bayram-ikramiyesi-odeme-tarihleri-aciklandi-mi-emekli-bayram-ikramiyesi-ne-kadar-oldu-hangi-tarihte-yatacak-6927214.",
+          "source": {
+            "title": "NTV",
+            "url": "https://www.ntv.com.tr/ekonomi/galeri-emeklilere-verilecek-ikramiye-tutari-belli-oldu-bayram-ikramiyesi-ne-kadar-oldu-ne-zaman-yatacak,xvA147u9Z0GMf2B8g6KW5w",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-04",
+          "price": 3000,
+          "status": "verified",
+          "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar); tarih, yeni tutarın ilk uygulandığı bayramın ayı. Ramazan Bayramı 2024 (10 Nisan); ikramiye 2.000 TL'den 3.000 TL'ye çıktı, 2-5 Nisan'da ödendi. Doğrulama: Habertürk https://www.haberturk.com/emekli-bayram-ikramiyesi-odeme-takvimi-2024-ssk-bag-kur-ramazan-bayrami-emekli-ikramiyesi-ne-zaman-yatacak-bayramdan-once-yatar-mi-3671538-ekonomi.",
+          "source": {
+            "title": "Gazete Vatan",
+            "url": "https://www.gazetevatan.com/galeri/emekli-bayram-ikramiyesi-ssk-bayram-ikramiyesi-ne-zaman-yatacak-2024-emeklilere-3000-tl-nisanin-kacinda-odenecek-hangi-tarihte-ikramiye-alinacak-2135628",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-03",
+          "price": 4000,
+          "status": "verified",
+          "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar); tarih, yeni tutarın ilk uygulandığı bayramın ayı. Ramazan Bayramı 2025 (30 Mart); kanunen 3.000 TL'den 4.000 TL'ye çıktı. DİKKAT: Meclis kararı bayram öncesine yetişmediği için hesaplara önce 3.000 TL yattı, 1.000 TL fark Resmî Gazete sonrası ödendi. Doğrulama: NTV https://www.ntv.com.tr/ekonomi/galeri-emekli-bayram-ikramiyesi-sgk-odeme-takvimi-2025-aciklandi-mi-4-bin-lira-ikramiye-ne-zaman-yatacak,8LUQ8Uda1kW12GRxgqL42Q.",
+          "source": {
+            "title": "Milliyet",
+            "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-emeklilerin-bayram-ikramiyesi-4-bin-liraya-yukseltildi-7338435",
+            "accessed": "2026-10-22",
+            "kind": "news"
           }
         }
       ]

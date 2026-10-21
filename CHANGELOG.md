@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.75.0] - 2026-10-22
+### Added
+- Five new products (51 total):
+  - `otogaz`: autogas (LPG) 1 litre, İstanbul Avrupa Yakası, from EPDK's LPG dealer price bulletin. Every January 2016-2026 plus 21.10.2026 (official, 12 values).
+  - `gram-gumus`: gram silver market value, derived like gram gold (World Bank Pink Sheet silver × monthly TCMB USD average), same months as gram gold plus 2026-09 (18 values). The script reproduced all existing gram gold values before building the series.
+  - `ea-fc-oyun`: launch price of the yearly FIFA / EA SPORTS FC game, PlayStation standard edition, 2017-2025 (PS4 until FIFA 21, PS5 from FIFA 22; 8 values, five single-source and flagged in the note).
+  - `kyk-yurt-ucreti`: lowest monthly state dorm (KYK/GSB) fee per academic year, 2018-2026 (7 values).
+  - `emekli-bayram-ikramiyesi`: retiree holiday bonus, every legal step 2018-2025 (5 values, all two-source).
+- July values (first bulletin of July, 2016-2026) for benzin, motorin and otogaz from the same EPDK bulletins: 33 more questions.
+- Icons for otogaz, gram silver, the football game and the dorm. `docs/DATA.md` documents the silver derivation and the EPDK LPG bulletin.
+
 ## [0.74.0] - 2026-10-22
 ### Changed
 - Design refresh "A" (Murti's pick from three Google Stitch directions): calmer spacing and clearer hierarchy on the home menu, question card and result receipt. Stitch output was used as reference only; all rules live in `css/style.css` with the existing tokens.
