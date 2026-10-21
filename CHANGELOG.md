@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 - Chart points can be tapped, hovered or stepped through with the arrow keys (the chart is focusable) to read each period's price; keyboard changes are announced.
 - "İndir" opens a preview of the share image first, with "İndir", "Paylaş" (where files can be shared) and "Kapat"; focus returns to the button.
 - An "Çevrimdışı" badge in the header while offline; the product icon pops onto each new question card (not with reduced motion).
+- A tiny gold price line on the home "Fiyat Arşivi" card.
+### Changed
+- Visual consistency pass: matching dashed borders and spacing on the home cards, 8px radius on the install button, archive title size, chart and order-toggle spacing.
+### Fixed
+- Enter on the focused chart no longer skips to the next question; clicks on the preview dialog's padding no longer close it; navigating away closes the preview; browsers without `<dialog>` download directly.
 
 ## [0.71.0] - 2026-10-21
 ### Added
