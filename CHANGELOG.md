@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.76.2] - 2026-10-22
+### Fixed
+- The purchasing-power line counts monthly and holiday items by name instead of "adet": "1 asgari ücretle 9 aylık yurt ücreti", "76 aylık Netflix aboneliği", "bayram ikramiyesi" (Murti's wording). Names live in `getCountUnit` in `js/game.js`.
+
 ## [0.76.1] - 2026-10-22
 ### Fixed
 - The receipt and share image row is labelled "Değişim" instead of "Artış", since some prices fell (e.g. "Değişim: %21 düştü").

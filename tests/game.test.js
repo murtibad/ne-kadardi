@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, scoreTier } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier } from '../js/game.js';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -52,6 +52,15 @@ test('getShortUnit matches units precisely', () => {
   assert.equal(getShortUnit('1 adet, 250 gr'), 'adet');
   assert.equal(getShortUnit('1 USD'), 'dolar');
   assert.equal(getShortUnit('Bir paket'), 'adet');
+});
+
+test('monthly products are counted by name in the purchasing-power line', () => {
+  const wage = { productId: 'asgari-ucret', date: '2018-07', price: 1603, current: { date: '2026-01', price: 28075 } };
+  const dorm = { productId: 'kyk-yurt-ucreti', name: 'KYK yurt ücreti', unit: '1 ay, en ucuz oda tipi', date: '2018-09', price: 168, current: { date: '2026-09', price: 1000 } };
+  assert.equal(getCountUnit(dorm), 'aylık yurt ücreti');
+  assert.equal(getCountUnit({ productId: 'benzin', unit: '1 litre' }), 'litre');
+  assert.equal(buildContextLine(dorm, [wage, dorm]), 'O tarihte 1 asgari ücretle 9 aylık yurt ücreti alınabiliyordu, bugün 28 aylık yurt ücreti.');
+  assert.equal(buildContextModel(dorm, [wage, dorm]).unit, 'aylık yurt ücreti');
 });
 
 test('pickRandom avoids an immediate repeat', () => {
