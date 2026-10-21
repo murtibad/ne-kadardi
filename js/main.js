@@ -16,6 +16,7 @@ import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
 import { buildPriceChart, refLabelAtStart } from './price-chart.js';
+import { countUpFrames } from './count-up.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -240,10 +241,20 @@ function onGuess(event) {
 const PRINT_MS = 1100;
 let printTimer = null;
 let cancelPrint = null;
+let countUpRaf = null;
+
+function stopCountUp() {
+  if (countUpRaf !== null) {
+    cancelAnimationFrame(countUpRaf);
+    countUpRaf = null;
+  }
+  $('r-actual')?.removeAttribute('aria-hidden');
+}
 
 // Cancel any in-flight print timer, click listener, and printer audio when leaving the result screen early.
 function stopPrinting() {
   sound.stop('print');
+  stopCountUp();
   clearTimeout(printTimer);
   printTimer = null;
   if (cancelPrint) {
@@ -260,6 +271,8 @@ function printReceipt(extraSound) {
   $('next-btn').classList.remove('nudge');
   const finish = () => {
     sound.stop('print');
+    stopCountUp();
+    if (state.question) $('r-actual').textContent = formatPrice(state.question.price);
     clearTimeout(printTimer);
     printTimer = null;
     wrap.removeEventListener('click', finish);
@@ -282,6 +295,8 @@ function printReceipt(extraSound) {
     if (state.result?.factor === 1) burstConfetti();
   };
   cancelPrint = () => {
+    stopCountUp();
+    if (state.question) $('r-actual').textContent = formatPrice(state.question.price);
     wrap.removeEventListener('click', finish);
     wrap.classList.remove('printing');
     // Leaving mid-print (e.g. to the archive) must not strand an empty meter and a hidden stamp
@@ -295,6 +310,24 @@ function printReceipt(extraSound) {
     return;
   }
   sound.play('print');
+  const frames = countUpFrames(state.question.price, { frames: 60 });
+  if (frames.length > 0 && typeof requestAnimationFrame === 'function') {
+    const actualEl = $('r-actual');
+    // renderResult already wrote the real price for the aria-live announcement; hide intermediate ticks.
+    actualEl.setAttribute('aria-hidden', 'true');
+    let i = 0;
+    const tick = () => {
+      actualEl.textContent = formatPrice(frames[i]);
+      i += 1;
+      if (i < frames.length) {
+        countUpRaf = requestAnimationFrame(tick);
+      } else {
+        countUpRaf = null;
+        actualEl.removeAttribute('aria-hidden');
+      }
+    };
+    countUpRaf = requestAnimationFrame(tick);
+  }
   void wrap.offsetWidth; // restart the CSS animation for back-to-back results
   wrap.classList.add('printing');
   wrap.addEventListener('click', finish);
@@ -312,6 +345,7 @@ function renderResultImage(q) {
 }
 
 function renderResult(q, r) {
+  stopCountUp();
   $('r-stamp').classList.remove('stamped');
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   renderResultImage(q, r);
