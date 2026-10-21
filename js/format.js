@@ -52,6 +52,18 @@ export function formatRatio(value) {
   return new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 }).format(value);
 }
 
+/**
+ * Describe a price change from an old price to today's: "12,4 kat arttı" for big jumps,
+ * but "%4 arttı" below 2x, where "1 kat arttı" would read as "it doubled".
+ */
+export function formatIncrease(ratio) {
+  if (!Number.isFinite(ratio) || ratio <= 0) return '';
+  if (ratio >= 2) return `${formatRatio(ratio)} kat arttı`;
+  const pct = Math.round((ratio - 1) * 100);
+  if (pct === 0) return 'değişmedi';
+  return pct > 0 ? `%${pct} arttı` : `%${-pct} düştü`;
+}
+
 /** Format a data date: "2012" -> "2012", "2012-01" or "2012-01-15" -> "Ocak 2012". */
 export function formatPeriod(date) {
   const [year, month] = date.split('-');

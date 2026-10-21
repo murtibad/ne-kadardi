@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount } from './format.js';
+import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease } from './format.js';
 import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -330,7 +330,7 @@ function renderResult(q, r) {
   if (hasCurrent) {
     $('r-current-label').textContent = `${q.current.label || 'Güncel'} (${formatPeriod(q.current.date)})`;
     $('r-current').textContent = formatPrice(q.current.price);
-    $('r-increase').textContent = `${formatRatio(q.current.price / q.price)} kat arttı`;
+    $('r-increase').textContent = formatIncrease(q.current.price / q.price);
   }
 
   renderPriceChart('r-chart', q.productId, q.date);
@@ -635,7 +635,7 @@ function renderTimelineScreen(focusProductId = null) {
   const firstRow = product.rows[0];
   const nowRow = product.rows.find((r) => r.isCurrent);
   const summary = nowRow && nowRow !== firstRow
-    ? `${formatPeriod(firstRow.date)} → ${formatPeriod(nowRow.date)}: ${formatRatio(nowRow.price / firstRow.price)} kat`
+    ? `${formatPeriod(firstRow.date)} → ${formatPeriod(nowRow.date)}: ${formatIncrease(nowRow.price / firstRow.price)}`
     : '';
   $('t-summary').textContent = summary;
   $('t-summary').hidden = !summary;
@@ -659,7 +659,7 @@ function renderTimelineScreen(focusProductId = null) {
   for (const r of product.rows) {
     const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
     const priceStr = formatPrice(r.price);
-    const ratioStr = r.ratioToCurrent ? `${formatRatio(r.ratioToCurrent)} kat arttı` : '';
+    const ratioStr = r.ratioToCurrent ? formatIncrease(r.ratioToCurrent) : '';
     
     const bar = `<div class="timeline-bar-track" aria-hidden="true">
                    <div class="timeline-bar-fill" style="width: ${r.barPercent}%"></div>
