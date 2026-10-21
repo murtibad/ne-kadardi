@@ -48,6 +48,7 @@
   <link rel="modulepreload" href="js/hint.js">
   <link rel="modulepreload" href="js/version.js">
   <link rel="modulepreload" href="js/fact.js">
+  <link rel="modulepreload" href="js/price-chart.js">
 </head>
 <body>
   <header class="site-header">
@@ -143,6 +144,7 @@
             <p class="score">PUAN <span id="r-score"></span></p>
             <div class="meter" aria-hidden="true"><span id="r-meter"></span></div>
           </div>
+          <figure id="r-chart" class="price-chart" hidden></figure>
           <p id="r-context" class="context-line"></p>
           <p id="r-cashier" class="cashier-line"></p>
           <p id="r-ytl" class="ytl-note" hidden></p>
@@ -189,6 +191,7 @@
           <p id="t-title" class="receipt-title"></p>
           <p id="t-unit" class="receipt-unit"></p>
           <hr>
+          <figure id="t-chart" class="price-chart" hidden></figure>
           <div id="t-rows-container"></div>
         </article>
       </div>

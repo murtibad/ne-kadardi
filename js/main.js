@@ -15,6 +15,7 @@ import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
+import { buildPriceChart } from './price-chart.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -296,6 +297,8 @@ function renderResult(q, r) {
     $('r-increase').textContent = `${formatRatio(q.current.price / q.price)} kat arttı`;
   }
 
+  renderPriceChart('r-chart', q.productId, q.date);
+
   const contextText = buildContextLine(q, state.all);
   $('r-context').textContent = contextText || '';
   $('r-context').hidden = !contextText;
@@ -315,6 +318,33 @@ function renderResult(q, r) {
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
   $('r-receipt').focus({ preventScroll: true }); // the submit button just disappeared; read the receipt next
+}
+
+// Draws the product's sourced price history as a small log-scale line. The highlighted
+// point is the question's date; the figcaption carries the same story for screen readers.
+function renderPriceChart(figId, productId, highlightDate = null) {
+  const fig = $(figId);
+  const t = state.timelines.find((x) => x.id === productId);
+  const chart = t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, pad: { top: 22, right: 14, bottom: 22, left: 14 } });
+  fig.hidden = !chart;
+  if (!chart) { fig.innerHTML = ''; return; }
+  const first = chart.points[0];
+  const last = chart.points[chart.points.length - 1];
+  const marked = chart.points.find((p) => p.highlight);
+  const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i);
+  // Keep end labels inside the box: anchor them towards the middle.
+  const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
+  const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
+  const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
+  const ticks = chart.xTicks.map((tk, i, a) => `<text x="${tk.x}" y="${chart.height - 6}" text-anchor="${i === 0 ? 'start' : i === a.length - 1 ? 'end' : 'middle'}" class="pc-tick">${tk.label}</text>`).join('');
+  const story = `${formatPeriod(first.date)}: ${formatPrice(first.price)}, ${formatPeriod(last.date)}: ${formatPrice(last.price)}`
+    + (marked && marked !== first && marked !== last ? `; işaretli ${formatPeriod(marked.date)}: ${formatPrice(marked.price)}` : '');
+  fig.innerHTML = `<svg viewBox="0 0 ${chart.width} ${chart.height}" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
+      <path d="${chart.area}" class="pc-area"/>
+      <path d="${chart.line}" class="pc-line"/>
+      ${dots}${priceLabels}${ticks}
+    </svg>
+    <figcaption>Fiyatın yolculuğu · logaritmik ölçek</figcaption>`;
 }
 
 function renderTaxDetails(q) {
@@ -588,6 +618,7 @@ function renderTimelineScreen(focusProductId = null) {
   html += `</tbody></table>`;
   
   $('t-rows-container').innerHTML = html;
+  renderPriceChart('t-chart', product.id);
 }
 
 function renderHome() {

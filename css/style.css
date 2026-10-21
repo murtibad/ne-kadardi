@@ -949,3 +949,20 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   66% { transform: translateX(6px); }
   83% { transform: translateX(-6px); }
 }
+
+/* Price history chart on the result receipt and in the archive */
+.price-chart { margin: 14px 0 6px; }
+.price-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.price-chart figcaption { margin-top: 2px; text-align: center; font: 400 0.6875rem var(--font-mono); color: var(--muted-on-paper); letter-spacing: 0.04em; }
+.pc-area { fill: var(--accent-on-paper); opacity: 0.1; }
+.pc-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.pc-dot { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
+.pc-now { fill: var(--ink); }
+.pc-mark { fill: var(--accent-on-paper); stroke: var(--paper); stroke-width: 2; }
+.pc-label { font: 700 10px var(--font-mono); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+.pc-label-mark { fill: var(--accent-on-paper); }
+.pc-tick { font: 400 10px var(--font-mono); fill: var(--muted-on-paper); }
+@media (prefers-reduced-motion: no-preference) {
+  .pc-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: pc-draw 0.9s ease-out 0.3s forwards; }
+}
+@keyframes pc-draw { to { stroke-dashoffset: 0; } }
