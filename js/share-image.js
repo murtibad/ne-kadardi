@@ -1,4 +1,5 @@
 import { formatPrice } from './format.js';
+import { refLabelAtStart } from './price-chart.js';
 
 const W = 1080;
 
@@ -266,15 +267,17 @@ export async function renderShareImage(model) {
       ctx.setLineDash([]);
 
       ctx.font = 'bold 24px "Space Mono", ui-monospace, monospace';
-      ctx.textAlign = 'left';
+      const refStart = refLabelAtStart(chart, 260);
+      ctx.textAlign = refStart ? 'left' : 'right';
       ctx.strokeStyle = COLORS.paper;
       ctx.lineWidth = 8;
       ctx.lineJoin = 'round';
       ctx.fillStyle = COLORS.muted;
       const refText = `Tahminin ${formatPrice(chart.ref.price)}`;
       const refLabelY = chart.ref.y < 40 ? chart.ref.y + 30 : chart.ref.y - 10;
-      ctx.strokeText(refText, 24, refLabelY);
-      ctx.fillText(refText, 24, refLabelY);
+      const refX = refStart ? 24 : chart.width - 24;
+      ctx.strokeText(refText, refX, refLabelY);
+      ctx.fillText(refText, refX, refLabelY);
     }
 
     // Data points: question date in red, current price in solid ink, others hollow

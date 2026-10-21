@@ -149,3 +149,10 @@ export function buildPriceChart(rows, options = {}) {
     ref,
   };
 }
+
+// True when the guess label fits better at the left end: compares how close the data points
+// under a label-wide strip at each end come to the guess line.
+export function refLabelAtStart(chart, labelWidth) {
+  const gap = (x0, x1) => Math.min(Infinity, ...chart.points.filter((p) => p.x >= x0 && p.x <= x1).map((p) => Math.abs(p.y - chart.ref.y)));
+  return gap(0, labelWidth) >= gap(chart.width - labelWidth, chart.width);
+}
