@@ -43,6 +43,18 @@
           }
         },
         {
+          "date": "2010-07",
+          "price": 59.09,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2010-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1193 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.5406 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2011-01",
           "price": 68.4,
           "status": "verified",
@@ -51,6 +63,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2011-07",
+          "price": 83.82,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2011-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1573 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.6574 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -67,6 +91,18 @@
           }
         },
         {
+          "date": "2012-07",
+          "price": 92.9,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2012-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1594 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.8127 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2012-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2013-01",
           "price": 95.22,
           "status": "verified",
@@ -75,6 +111,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2013-07",
+          "price": 79.97,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2013-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1286 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.9342 TL (23 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -91,6 +139,18 @@
           }
         },
         {
+          "date": "2014-07",
+          "price": 89.48,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2014-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1311 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.1230 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2014-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2015-01",
           "price": 93.99,
           "status": "verified",
@@ -99,6 +159,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-07",
+          "price": 98.17,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2015-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1128 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.7069 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -115,6 +187,18 @@
           }
         },
         {
+          "date": "2016-07",
+          "price": 127.87,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2016-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1337 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.9747 TL (17 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2016-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2017-01",
           "price": 143.86,
           "status": "verified",
@@ -123,6 +207,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-07",
+          "price": 141.84,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2017-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1237 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.5666 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -139,6 +235,18 @@
           }
         },
         {
+          "date": "2018-07",
+          "price": 189.94,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2018-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1238 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 4.7720 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2018-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2019-01",
           "price": 223.31,
           "status": "verified",
@@ -147,6 +255,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 257.66,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2019-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1413 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 5.6718 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -163,6 +283,18 @@
           }
         },
         {
+          "date": "2020-07",
+          "price": 407.59,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2020-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1847 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 6.8638 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2020-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 444.33,
           "status": "verified",
@@ -171,6 +303,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 500.97,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2021-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1808 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 8.6182 TL (16 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -187,6 +331,18 @@
           }
         },
         {
+          "date": "2022-07",
+          "price": 974.99,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2022-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1733 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 17.4989 TL (17 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2022-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2023-01",
           "price": 1146.94,
           "status": "verified",
@@ -195,6 +351,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 1663.7,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2023-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 1951 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 26.5233 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -211,6 +379,18 @@
           }
         },
         {
+          "date": "2024-07",
+          "price": 2536.99,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2024-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 2398 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 32.9062 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2024-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2025-01",
           "price": 3096.71,
           "status": "verified",
@@ -223,6 +403,18 @@
           }
         },
         {
+          "date": "2025-07",
+          "price": 4318.27,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2025-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 3340 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 40.2135 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2025-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2026-01",
           "price": 6603.61,
           "status": "verified",
@@ -231,6 +423,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 6163.7,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-07 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 4073 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 47.0691 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         }
@@ -272,6 +476,18 @@
           }
         },
         {
+          "date": "2010-07-01",
+          "price": 1.5846,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2010",
+            "url": "https://www.tcmb.gov.tr/kurlar/201007/01072010.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2011-01-03",
           "price": 1.5551,
           "status": "verified",
@@ -280,6 +496,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2011",
             "url": "https://www.tcmb.gov.tr/kurlar/201101/03012011.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-07-01",
+          "price": 1.6151,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2011",
+            "url": "https://www.tcmb.gov.tr/kurlar/201107/01072011.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -296,6 +524,18 @@
           }
         },
         {
+          "date": "2012-07-02",
+          "price": 1.8079,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.07.2012",
+            "url": "https://www.tcmb.gov.tr/kurlar/201207/02072012.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2013-01-02",
           "price": 1.7793,
           "status": "verified",
@@ -304,6 +544,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2013",
             "url": "https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-07-01",
+          "price": 1.9269,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2013",
+            "url": "https://www.tcmb.gov.tr/kurlar/201307/01072013.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -320,6 +572,18 @@
           }
         },
         {
+          "date": "2014-07-01",
+          "price": 2.1232,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2014",
+            "url": "https://www.tcmb.gov.tr/kurlar/201407/01072014.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2015-01-02",
           "price": 2.3491,
           "status": "verified",
@@ -328,6 +592,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2015",
             "url": "https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-07-01",
+          "price": 2.6801,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2015",
+            "url": "https://www.tcmb.gov.tr/kurlar/201507/01072015.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -344,6 +620,18 @@
           }
         },
         {
+          "date": "2016-07-01",
+          "price": 2.8898,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2016",
+            "url": "https://www.tcmb.gov.tr/kurlar/201607/01072016.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2017-01-02",
           "price": 3.5402,
           "status": "verified",
@@ -352,6 +640,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2017",
             "url": "https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-07-03",
+          "price": 3.5369,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.07.2017",
+            "url": "https://www.tcmb.gov.tr/kurlar/201707/03072017.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -368,6 +668,18 @@
           }
         },
         {
+          "date": "2018-07-02",
+          "price": 4.6308,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.07.2018",
+            "url": "https://www.tcmb.gov.tr/kurlar/201807/02072018.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2019-01-02",
           "price": 5.3412,
           "status": "verified",
@@ -376,6 +688,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2019",
             "url": "https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-07-01",
+          "price": 5.6895,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2019",
+            "url": "https://www.tcmb.gov.tr/kurlar/201907/01072019.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -392,6 +716,18 @@
           }
         },
         {
+          "date": "2020-07-01",
+          "price": 6.8555,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2020",
+            "url": "https://www.tcmb.gov.tr/kurlar/202007/01072020.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2021-01-04",
           "price": 7.3734,
           "status": "verified",
@@ -400,6 +736,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2021",
             "url": "https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-07-01",
+          "price": 8.6924,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2021",
+            "url": "https://www.tcmb.gov.tr/kurlar/202107/01072021.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -416,6 +764,18 @@
           }
         },
         {
+          "date": "2022-07-01",
+          "price": 16.7456,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2022",
+            "url": "https://www.tcmb.gov.tr/kurlar/202207/01072022.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2023-01-02",
           "price": 18.7366,
           "status": "verified",
@@ -424,6 +784,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2023",
             "url": "https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07-03",
+          "price": 26.0781,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.07.2023",
+            "url": "https://www.tcmb.gov.tr/kurlar/202307/03072023.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -440,6 +812,18 @@
           }
         },
         {
+          "date": "2024-07-01",
+          "price": 32.6795,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2024",
+            "url": "https://www.tcmb.gov.tr/kurlar/202407/01072024.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2025-01-02",
           "price": 35.316,
           "status": "verified",
@@ -452,6 +836,18 @@
           }
         },
         {
+          "date": "2025-07-01",
+          "price": 39.845,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2025",
+            "url": "https://www.tcmb.gov.tr/kurlar/202507/01072025.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2026-01-02",
           "price": 42.9582,
           "status": "verified",
@@ -460,6 +856,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2026",
             "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07-01",
+          "price": 46.6706,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru. Temmuz ayının ilk iş günü.",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2026",
+            "url": "https://www.tcmb.gov.tr/kurlar/202607/01072026.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         }
@@ -2755,6 +3163,18 @@
           }
         },
         {
+          "date": "2010-07-01",
+          "price": 1.9494,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2010",
+            "url": "https://www.tcmb.gov.tr/kurlar/201007/01072010.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2011-01-03",
           "price": 2.0705,
           "status": "verified",
@@ -2763,6 +3183,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2011",
             "url": "https://www.tcmb.gov.tr/kurlar/201101/03012011.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-07-01",
+          "price": 2.3435,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2011",
+            "url": "https://www.tcmb.gov.tr/kurlar/201107/01072011.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -2779,6 +3211,18 @@
           }
         },
         {
+          "date": "2012-07-02",
+          "price": 2.2823,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.07.2012",
+            "url": "https://www.tcmb.gov.tr/kurlar/201207/02072012.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2013-01-02",
           "price": 2.3592,
           "status": "verified",
@@ -2787,6 +3231,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2013",
             "url": "https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-07-01",
+          "price": 2.5131,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2013",
+            "url": "https://www.tcmb.gov.tr/kurlar/201307/01072013.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -2803,6 +3259,18 @@
           }
         },
         {
+          "date": "2014-07-01",
+          "price": 2.9064,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2014",
+            "url": "https://www.tcmb.gov.tr/kurlar/201407/01072014.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2015-01-02",
           "price": 2.8309,
           "status": "verified",
@@ -2811,6 +3279,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2015",
             "url": "https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-07-01",
+          "price": 2.9803,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2015",
+            "url": "https://www.tcmb.gov.tr/kurlar/201507/01072015.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -2827,6 +3307,18 @@
           }
         },
         {
+          "date": "2016-07-01",
+          "price": 3.2102,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2016",
+            "url": "https://www.tcmb.gov.tr/kurlar/201607/01072016.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2017-01-02",
           "price": 3.7153,
           "status": "verified",
@@ -2835,6 +3327,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2017",
             "url": "https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-07-03",
+          "price": 4.0261,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.07.2017",
+            "url": "https://www.tcmb.gov.tr/kurlar/201707/03072017.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -2851,6 +3355,18 @@
           }
         },
         {
+          "date": "2018-07-02",
+          "price": 5.3901,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.07.2018",
+            "url": "https://www.tcmb.gov.tr/kurlar/201807/02072018.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2019-01-02",
           "price": 6.1171,
           "status": "verified",
@@ -2859,6 +3375,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2019",
             "url": "https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-07-01",
+          "price": 6.4469,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2019",
+            "url": "https://www.tcmb.gov.tr/kurlar/201907/01072019.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -2875,6 +3403,18 @@
           }
         },
         {
+          "date": "2020-07-01",
+          "price": 7.6912,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2020",
+            "url": "https://www.tcmb.gov.tr/kurlar/202007/01072020.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2021-01-04",
           "price": 9.0545,
           "status": "verified",
@@ -2883,6 +3423,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2021",
             "url": "https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-07-01",
+          "price": 10.3074,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2021",
+            "url": "https://www.tcmb.gov.tr/kurlar/202107/01072021.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -2899,6 +3451,18 @@
           }
         },
         {
+          "date": "2022-07-01",
+          "price": 17.5018,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2022",
+            "url": "https://www.tcmb.gov.tr/kurlar/202207/01072022.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2023-01-02",
           "price": 20.0166,
           "status": "verified",
@@ -2907,6 +3471,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2023",
             "url": "https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07-03",
+          "price": 28.3958,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.07.2023",
+            "url": "https://www.tcmb.gov.tr/kurlar/202307/03072023.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         },
@@ -2923,6 +3499,18 @@
           }
         },
         {
+          "date": "2024-07-01",
+          "price": 35.1571,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2024",
+            "url": "https://www.tcmb.gov.tr/kurlar/202407/01072024.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2025-01-02",
           "price": 36.5462,
           "status": "verified",
@@ -2935,6 +3523,18 @@
           }
         },
         {
+          "date": "2025-07-01",
+          "price": 47.0221,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2025",
+            "url": "https://www.tcmb.gov.tr/kurlar/202507/01072025.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2026-01-02",
           "price": 50.3839,
           "status": "verified",
@@ -2943,6 +3543,18 @@
             "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2026",
             "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
             "accessed": "2026-10-04",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07-01",
+          "price": 53.1847,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2026",
+            "url": "https://www.tcmb.gov.tr/kurlar/202607/01072026.xml",
+            "accessed": "2026-10-22",
             "kind": "official"
           }
         }
@@ -2985,6 +3597,18 @@
           }
         },
         {
+          "date": "2010-07",
+          "price": 94.79,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 59.09 TL × 1.6042 g has altın (1,75 g × 22/24) = 94.79 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2011-01",
           "price": 109.73,
           "status": "verified",
@@ -2993,6 +3617,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2011-07",
+          "price": 134.46,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 83.82 TL × 1.6042 g has altın (1,75 g × 22/24) = 134.46 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -3009,6 +3645,18 @@
           }
         },
         {
+          "date": "2012-07",
+          "price": 149.03,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 92.9 TL × 1.6042 g has altın (1,75 g × 22/24) = 149.03 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2012-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2013-01",
           "price": 152.75,
           "status": "verified",
@@ -3017,6 +3665,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2013-07",
+          "price": 128.29,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 79.97 TL × 1.6042 g has altın (1,75 g × 22/24) = 128.29 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -3033,6 +3693,18 @@
           }
         },
         {
+          "date": "2014-07",
+          "price": 143.54,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 89.48 TL × 1.6042 g has altın (1,75 g × 22/24) = 143.54 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2014-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2015-01",
           "price": 150.78,
           "status": "verified",
@@ -3041,6 +3713,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-07",
+          "price": 157.48,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 98.17 TL × 1.6042 g has altın (1,75 g × 22/24) = 157.48 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -3057,6 +3741,18 @@
           }
         },
         {
+          "date": "2016-07",
+          "price": 205.12,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 127.87 TL × 1.6042 g has altın (1,75 g × 22/24) = 205.12 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2016-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2017-01",
           "price": 230.78,
           "status": "verified",
@@ -3065,6 +3761,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-07",
+          "price": 227.53,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 141.84 TL × 1.6042 g has altın (1,75 g × 22/24) = 227.53 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -3081,6 +3789,18 @@
           }
         },
         {
+          "date": "2018-07",
+          "price": 304.7,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 189.94 TL × 1.6042 g has altın (1,75 g × 22/24) = 304.7 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2018-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2019-01",
           "price": 358.23,
           "status": "verified",
@@ -3089,6 +3809,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 413.33,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 257.66 TL × 1.6042 g has altın (1,75 g × 22/24) = 413.33 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -3105,6 +3837,18 @@
           }
         },
         {
+          "date": "2020-07",
+          "price": 653.84,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 407.59 TL × 1.6042 g has altın (1,75 g × 22/24) = 653.84 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2020-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 712.78,
           "status": "verified",
@@ -3113,6 +3857,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 803.64,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 500.97 TL × 1.6042 g has altın (1,75 g × 22/24) = 803.64 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -3129,6 +3885,18 @@
           }
         },
         {
+          "date": "2022-07",
+          "price": 1564.05,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 974.99 TL × 1.6042 g has altın (1,75 g × 22/24) = 1564.05 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2022-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2023-01",
           "price": 1839.88,
           "status": "verified",
@@ -3137,6 +3905,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 2668.85,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 1663.7 TL × 1.6042 g has altın (1,75 g × 22/24) = 2668.85 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         },
@@ -3153,6 +3933,18 @@
           }
         },
         {
+          "date": "2024-07",
+          "price": 4069.75,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 2536.99 TL × 1.6042 g has altın (1,75 g × 22/24) = 4069.75 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2024-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2025-01",
           "price": 4967.64,
           "status": "verified",
@@ -3165,6 +3957,18 @@
           }
         },
         {
+          "date": "2025-07",
+          "price": 6927.22,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 4318.27 TL × 1.6042 g has altın (1,75 g × 22/24) = 6927.22 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2025-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2026-01",
           "price": 10593.29,
           "status": "verified",
@@ -3173,6 +3977,18 @@
             "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-04",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 9887.6,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 6163.7 TL × 1.6042 g has altın (1,75 g × 22/24) = 9887.6 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
             "kind": "derived"
           }
         }
@@ -3215,12 +4031,36 @@
           }
         },
         {
+          "date": "2010-07",
+          "price": 0.89,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2010-07 ayı gümüş fiyatı (aylık ortalama) 18,0 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.5406 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2011-01",
           "price": 1.43,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2011-01 ayı gümüş fiyatı (aylık ortalama) 28,5 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.5643 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2011-07",
+          "price": 2.02,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2011-07 ayı gümüş fiyatı (aylık ortalama) 37,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.6574 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2011-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -3239,12 +4079,36 @@
           }
         },
         {
+          "date": "2012-07",
+          "price": 1.6,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2012-07 ayı gümüş fiyatı (aylık ortalama) 27,4 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.8127 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2012-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2013-01",
           "price": 1.77,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2013-01 ayı gümüş fiyatı (aylık ortalama) 31,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.7713 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2013-07",
+          "price": 1.23,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2013-07 ayı gümüş fiyatı (aylık ortalama) 19,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 1.9342 TL (23 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2013-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -3263,12 +4127,36 @@
           }
         },
         {
+          "date": "2014-07",
+          "price": 1.43,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2014-07 ayı gümüş fiyatı (aylık ortalama) 20,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.1230 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2014-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2015-01",
           "price": 1.29,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2015-01 ayı gümüş fiyatı (aylık ortalama) 17,2 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.3369 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-07",
+          "price": 1.31,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2015-07 ayı gümüş fiyatı (aylık ortalama) 15,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.7069 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2015-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -3287,12 +4175,36 @@
           }
         },
         {
+          "date": "2016-07",
+          "price": 1.91,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2016-07 ayı gümüş fiyatı (aylık ortalama) 20,0 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 2.9747 TL (17 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2016-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2017-01",
           "price": 2.04,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2017-01 ayı gümüş fiyatı (aylık ortalama) 16,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.7538 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-07",
+          "price": 1.86,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2017-07 ayı gümüş fiyatı (aylık ortalama) 16,2 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 3.5666 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2017-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -3311,12 +4223,36 @@
           }
         },
         {
+          "date": "2018-07",
+          "price": 2.41,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2018-07 ayı gümüş fiyatı (aylık ortalama) 15,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 4.7720 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2018-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2019-01",
           "price": 2.7,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2019-01 ayı gümüş fiyatı (aylık ortalama) 15,6 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 5.3759 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 2.88,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2019-07 ayı gümüş fiyatı (aylık ortalama) 15,8 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 5.6718 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2019-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -3335,12 +4271,36 @@
           }
         },
         {
+          "date": "2020-07",
+          "price": 4.55,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2020-07 ayı gümüş fiyatı (aylık ortalama) 20,6 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 6.8638 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2020-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 6.16,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2021-01 ayı gümüş fiyatı (aylık ortalama) 25,9 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 7.4024 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 7.12,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2021-07 ayı gümüş fiyatı (aylık ortalama) 25,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 8.6182 TL (16 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2021-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -3359,12 +4319,36 @@
           }
         },
         {
+          "date": "2022-07",
+          "price": 10.75,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2022-07 ayı gümüş fiyatı (aylık ortalama) 19,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 17.4989 TL (17 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2022-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2023-01",
           "price": 14.32,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2023-01 ayı gümüş fiyatı (aylık ortalama) 23,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 18.7954 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 20.72,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2023-07 ayı gümüş fiyatı (aylık ortalama) 24,3 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 26.5233 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2023-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -3383,6 +4367,18 @@
           }
         },
         {
+          "date": "2024-07",
+          "price": 31.53,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2024-07 ayı gümüş fiyatı (aylık ortalama) 29,8 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 32.9062 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2024-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2025-01",
           "price": 34.74,
           "status": "verified",
@@ -3395,12 +4391,36 @@
           }
         },
         {
+          "date": "2025-07",
+          "price": 48.74,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2025-07 ayı gümüş fiyatı (aylık ortalama) 37,7 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 40.2135 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2025-07",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
           "date": "2026-01",
           "price": 127.96,
           "status": "verified",
           "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-01 ayı gümüş fiyatı (aylık ortalama) 92,1 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 43.2138 TL (21 iş günü). Sonuç iki ondalığa yuvarlandı.",
           "source": {
             "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-01",
+            "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+            "accessed": "2026-10-22",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 88.98,
+          "status": "verified",
+          "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-07 ayı gümüş fiyatı (aylık ortalama) 58,8 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 47.0691 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+          "source": {
+            "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-07",
             "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
             "accessed": "2026-10-22",
             "kind": "derived"
@@ -8775,6 +9795,104 @@
           "source": {
             "title": "Milliyet",
             "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-emeklilerin-bayram-ikramiyesi-4-bin-liraya-yukseltildi-7338435",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "firin-ekmegi",
+      "name": "Fırın ekmeği (İstanbul, 200 g)",
+      "unit": "1 adet, 200 gram",
+      "region": "İstanbul",
+      "source_hint": "İstanbul Ticaret Odası'nın (İTO) fırınlar için belirlediği 200 gram ekmek azami satış fiyatı. Halk Ekmek değil. Haber kaynaklı.",
+      "image": {
+        "src": "img/ekmek.svg",
+        "alt": "Ekmek somunu çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-04",
+        "price": 17.5,
+        "status": "verified",
+        "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. 1 Nisan 2026'dan itibaren (230 g = 20 TL). Doğrulama: Gazete GZT https://www.gzt.com/ekonomi/ekmege-zam-mi-geldi-2026-ekmek-fiyatlari-ne-kadar-oldu-istanbul-ankara-izmir-ekmek-fiyatlari-kac-tl-4203113.",
+        "source": {
+          "title": "TGRT Haber",
+          "url": "https://www.tgrthaber.com/ekonomi/istanbulda-200-gram-ekmek-ne-kadar-oldu-zamli-ekmek-fiyatlari-3291851",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2023-01",
+          "price": 5.0,
+          "status": "verified",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. 1 Ocak 2023'ten itibaren İTO azami tarifesi (kg başına azami 25 TL). Bir haber (bianet) aynı tarifeyi 210 g olarak yazıyor. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "Ekonomi Gazetesi",
+            "url": "https://www.ekonomigazetesi.com/ekonomi/istanbulda-ekmege-yuzde-30-zam-17930",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-08",
+          "price": 6.5,
+          "status": "verified",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO meclis kararı, azami tarife (kg başına azami 32,5 TL). Doğrulama: Ekonomi Gazetesi https://www.ekonomigazetesi.com/ekonomi/istanbulda-ekmege-yuzde-30-zam-17930.",
+          "source": {
+            "title": "Ekonomim",
+            "url": "https://www.ekonomim.com/ekonomi/istanbulda-ekmege-tarife-zammi-haberi-704060",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-11",
+          "price": 8.0,
+          "status": "verified",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO Kasım 2023 meclis kararı (kg başına azami 40 TL). NTV aynı fiyatı 210 g için yazıyor; karar metnini aktaran haber 200 g diyor. Doğrulama: NTV https://www.ntv.com.tr/ntvpara/istanbulda-ekmege-zam-geldi,p_gyndRJ4EGkk6cZON1iNQ.",
+          "source": {
+            "title": "Bloomberg HT",
+            "url": "https://www.bloomberght.com/istanbulda-ekmege-zam-geldi-2341799",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-05",
+          "price": 10.0,
+          "status": "verified",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO Mayıs 2024 meclis kararı, 8 TL'den 10 TL'ye. Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "NTV",
+            "url": "https://www.ntv.com.tr/ntvpara/istanbulda-ekmege-zam-geldi,p_gyndRJ4EGkk6cZON1iNQ",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-07",
+          "price": 15.0,
+          "status": "verified",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO meclis kararı, Temmuz 2025 (240 g = 18 TL). Bu değer için tek haber kaynağı doğrulandı.",
+          "source": {
+            "title": "Haber Hürriyeti",
+            "url": "https://www.haberhurriyeti.com/haber/25501882/istanbulda-ekmege-zam",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-04",
+          "price": 17.5,
+          "status": "verified",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. 1 Nisan 2026'dan itibaren (230 g = 20 TL). Doğrulama: Gazete GZT https://www.gzt.com/ekonomi/ekmege-zam-mi-geldi-2026-ekmek-fiyatlari-ne-kadar-oldu-istanbul-ankara-izmir-ekmek-fiyatlari-kac-tl-4203113.",
+          "source": {
+            "title": "TGRT Haber",
+            "url": "https://www.tgrthaber.com/ekonomi/istanbulda-200-gram-ekmek-ne-kadar-oldu-zamli-ekmek-fiyatlari-3291851",
             "accessed": "2026-10-22",
             "kind": "news"
           }
