@@ -710,13 +710,22 @@ async function downloadImage() {
     return;
   }
   resetShareBtn();
+  // The player may have left the result while the image was drawn.
+  if ($('result-screen').hidden) return;
 
   cleanupPreview();
   previewFile = new File([blob], buildShareFileName(state.question), { type: 'image/png' });
   previewUrl = URL.createObjectURL(blob);
+  const dlg = $('share-preview');
+  if (typeof dlg.showModal !== 'function') {
+    // Very old browsers have no <dialog>: download straight away as before.
+    saveFromPreview();
+    cleanupPreview();
+    return;
+  }
   $('share-preview-img').src = previewUrl;
   $('share-preview-share').hidden = !canShareImageFiles();
-  $('share-preview').showModal();
+  dlg.showModal();
   $('share-preview-save').focus();
 }
 
@@ -725,11 +734,15 @@ function initSharePreview() {
   $('share-preview-save').addEventListener('click', saveFromPreview);
   $('share-preview-share').addEventListener('click', sharePreviewFile);
   $('share-preview-close').addEventListener('click', closePreview);
-  // A click on the backdrop targets the dialog element itself, not its content.
-  dlg.addEventListener('click', (e) => { if (e.target === dlg) closePreview(); });
+  // Backdrop clicks target the dialog itself, but so do clicks on its padding: check the box.
+  dlg.addEventListener('click', (e) => {
+    if (e.target !== dlg) return;
+    const r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closePreview();
+  });
   dlg.addEventListener('close', () => {
     cleanupPreview();
-    $('download-btn').focus();
+    if (!$('result-screen').hidden) $('download-btn').focus();
   });
 }
 
@@ -937,6 +950,7 @@ function renderFact() {
 }
 
 function onHashChange() {
+  closePreview(); // Back while the preview is open must not leave the modal over another screen
   const hash = location.hash;
   if (state.all.length === 0) return;
   if (hash !== '#tahmin' || !state.question || state.lastGameScreen !== 'result-screen') {
@@ -1128,7 +1142,8 @@ async function init() {
     if ($('result-screen').hidden) return;
     // A quick second Enter right after submitting would skip the receipt before it prints.
     if (document.querySelector('#result-screen .receipt-wrapper').classList.contains('printing')) return;
-    if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable]')) return;
+    // The chart is focusable for arrow-key inspection; Enter there must not drop the receipt.
+    if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable], .price-chart')) return;
     e.preventDefault();
     $('next-btn').click();
   });

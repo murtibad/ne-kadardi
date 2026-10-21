@@ -1172,5 +1172,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .pc-tip text { font: 700 10px var(--font-mono); fill: var(--ink); }
 .pc-tip .pc-tip-period { font-weight: 400; fill: var(--muted-on-paper); }
 .pc-active { r: 5; }
+.pc-mark.pc-active { r: 6.5; } /* the marked dot is already 5.5: grow it, never shrink it */
 .price-chart svg:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 .pc-hit { fill: transparent; cursor: pointer; pointer-events: all; }
