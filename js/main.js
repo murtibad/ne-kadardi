@@ -160,7 +160,8 @@ function nextQuestion(productId = null) {
   state.recentProducts.push(q.productId);
   if (state.recentProducts.length > 12) state.recentProducts.shift();
   state.round += 1;
-  $('q-round').textContent = `Soru ${state.round}`;
+  const cat = CATEGORIES.find((c) => c.id === categoryOf(q.productId));
+  $('q-round').textContent = cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
   $('q-period').textContent = formatPeriod(q.date);
   const anchor = yearAnchor(yearOf(q.date));
   $('q-anchor').textContent = anchor || '';
@@ -742,6 +743,7 @@ function renderHome() {
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} kaynaklı fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   if (!$('fact-body').hasChildNodes()) renderFact();
+  $('how-to').hidden = state.played > 0; // only first-time players need the three steps
   show('home-screen');
 }
 
