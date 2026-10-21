@@ -10,7 +10,7 @@
   --ink: #181818;
   --text: #181818;
   --muted: #5f5c55; /* 4.98:1 on --bg */
-  --muted-on-paper: #737068;
+  --muted-on-paper: #66635b; /* 4.77:1 even on the tinted current-row in the archive */
   --accent-on-paper: #d32f2f; /* red text on the receipt paper */ /* secondary text on the receipt paper */
   --accent: #d32f2f; /* Bold red */
   --accent-on-bg: #b02323; /* the logo on the page background: 5.0:1 */
