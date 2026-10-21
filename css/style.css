@@ -261,7 +261,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   text-align: center;
 }
 .verdict { 
-  color: var(--accent); 
+  color: var(--accent-on-paper); 
   font-weight: 700; 
   font-size: 1.25rem; 
   margin: 0;
@@ -331,12 +331,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   text-align: center;
   padding: 2px 0;
   color: var(--ink);
-  list-style-position: inside;
-}
-.tax-details summary:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 4px;
 }
 .tax-details-table {
   width: 100%;
@@ -618,7 +612,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 }
 .timeline-ratio {
   font-size: 0.75rem;
-  color: #b3261e; /* darker red: --accent is only 3.9:1 on the dark-mode paper */
+  color: var(--accent-on-paper);
   font-weight: 700;
 }
 
@@ -639,8 +633,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .timeline-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 16px;
+  align-items: center;
+  gap: 4px 12px;
   font-family: var(--font-ui);
   font-size: 0.75rem;
   color: var(--muted-on-paper);
@@ -715,10 +709,22 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .theme-toggle { width: 44px; height: 44px; }
 .hint-btn { min-height: 44px; padding: 8px 12px; }
 .picker-chip { min-height: 44px; }
-.site-footer a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
-.tax-details summary, .timeline-note summary { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+.site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+.tax-details summary, .timeline-note summary { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; min-width: 44px; list-style: none; }
 .tax-details summary { display: flex; justify-content: center; }
+.tax-details summary::-webkit-details-marker, .timeline-note summary::-webkit-details-marker { display: none; }
+/* Explicit disclosure marker: flex summaries lose the native one */
+.tax-details summary::before, .timeline-note summary::before { content: ""; flex: none; width: 0.4em; height: 0.4em; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(-45deg); }
+.tax-details[open] > summary::before, .timeline-note[open] > summary::before { transform: rotate(45deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .tax-details summary::before, .timeline-note summary::before { transition: transform 0.15s ease; }
+}
 .timeline-source, .source a, .tax-period-sources a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+/* Consistent keyboard focus ring (--accent is >= 3.5:1 on page and paper in both themes) */
+.btn:focus-visible, .picker-chip:focus-visible, .hint-btn:focus-visible, .archive-link:focus-visible,
+.timeline-source:focus-visible, details summary:focus-visible, .timeline-search-input:focus-visible,
+.site-footer a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+#r-actual { font-size: 1.25rem; font-weight: 700; color: var(--ink); }
 .archive-link { font-weight: 700; }
 
 #category-picker { margin-bottom: 8px; }
