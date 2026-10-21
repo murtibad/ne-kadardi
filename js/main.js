@@ -586,27 +586,74 @@ async function share() {
   }
 }
 
+let previewUrl = null;
+let previewFile = null;
+
+function closePreview() {
+  const dlg = $('share-preview');
+  if (dlg.open) dlg.close();
+}
+
+function cleanupPreview() {
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+  previewUrl = null;
+  previewFile = null;
+  $('share-preview-img').removeAttribute('src');
+}
+
+function saveFromPreview() {
+  if (!previewUrl) return;
+  const a = document.createElement('a');
+  a.href = previewUrl;
+  a.download = previewFile.name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  announce('İndiriliyor…');
+}
+
+async function sharePreviewFile() {
+  if (!previewFile) return;
+  const text = buildShareText(state.question, state.result, location.href);
+  try {
+    if (navigator.canShare({ files: [previewFile] })) await navigator.share({ files: [previewFile], text });
+  } catch (err) {
+    if (err.name !== 'AbortError') console.warn(err);
+  }
+}
+
+// "İndir" first shows what will be saved, so players know the image before it leaves the page.
 async function downloadImage() {
   const btn = $('download-btn');
   if (btn.hasAttribute('aria-busy')) return;
-  
+
   const blob = await prepareShareImage('download-btn');
   if (!blob) {
     setBtnStatus('download-btn', 'Görsel hazırlanamadı.');
     return;
   }
-  
-  const q = state.question;
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = buildShareFileName(q);
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  
-  setBtnStatus('download-btn', 'İndiriliyor…');
+  resetShareBtn();
+
+  cleanupPreview();
+  previewFile = new File([blob], buildShareFileName(state.question), { type: 'image/png' });
+  previewUrl = URL.createObjectURL(blob);
+  $('share-preview-img').src = previewUrl;
+  $('share-preview-share').hidden = !canShareImageFiles();
+  $('share-preview').showModal();
+  $('share-preview-save').focus();
+}
+
+function initSharePreview() {
+  const dlg = $('share-preview');
+  $('share-preview-save').addEventListener('click', saveFromPreview);
+  $('share-preview-share').addEventListener('click', sharePreviewFile);
+  $('share-preview-close').addEventListener('click', closePreview);
+  // A click on the backdrop targets the dialog element itself, not its content.
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) closePreview(); });
+  dlg.addEventListener('close', () => {
+    cleanupPreview();
+    $('download-btn').focus();
+  });
 }
 
 const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
@@ -1005,6 +1052,7 @@ async function init() {
   });
   $('share-btn').addEventListener('click', share);
   $('download-btn').addEventListener('click', downloadImage);
+  initSharePreview();
   
   onHashChange();
 }
