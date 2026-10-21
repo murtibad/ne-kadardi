@@ -14,6 +14,9 @@ All notable changes to this project will be documented in this file.
 - First load: a pulsing receipt placeholder instead of a bare "Yükleniyor…".
 - Receipt logo mark in the header; "Ana ekrana ekle" install button where the browser offers installation.
 - Screens fade in; Enter on the result screen goes to the next question.
+- Charts on the result receipt and the share image mark the player's guess with a dashed "Tahminin" line.
+- Home fact card: "Bunu tahmin et →" starts a round with that product; the footer hides its "Ana menü" link on the menu.
+- Archive: a clear (×) button and Escape for the search, "Tüm kategorilerde ara (N ürün)" when the chosen category has no match, and an oldest/newest-first order toggle that is remembered.
 ### Fixed
 - The "Fiyatı okut" hint button stayed visible after use and on products without a hint: a class `display` rule beat the `hidden` attribute. `[hidden]` now always hides.
 - Big-number readout no longer shows "1 bin,5 ₺" for 1000,5.
