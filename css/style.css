@@ -1122,3 +1122,13 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .score-help summary::-webkit-details-marker { display: none; }
 .score-help p { max-width: 34ch; margin: auto; text-align: left; font: 400 0.8125rem/1.45 var(--font-ui); color: var(--ink); }
 .tally-label { font: 700 0.6875rem var(--font-mono); color: var(--muted); margin-right: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Interactive tooltip and keyboard focus on the price history chart */
+.pc-tip[hidden] { display: none; }
+.pc-tip { pointer-events: none; }
+.pc-tip rect { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+.pc-tip text { font: 700 10px var(--font-mono); fill: var(--ink); }
+.pc-tip .pc-tip-period { font-weight: 400; fill: var(--muted-on-paper); }
+.pc-active { r: 5; }
+.price-chart svg:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.pc-hit { fill: transparent; cursor: pointer; pointer-events: all; }

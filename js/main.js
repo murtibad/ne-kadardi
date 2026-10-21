@@ -428,6 +428,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refStart ? pad.left : chart.width - pad.right}" y="${chart.ref.y < 20 ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="${refStart ? 'start' : 'end'}" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}${chart.ref.off === 'above' ? ' ↑' : chart.ref.off === 'below' ? ' ↓' : ''}</text>`
     : '';
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
+  const hits = chart.points.map((p, i) => `<circle class="pc-hit" cx="${p.x}" cy="${p.y}" r="12" data-i="${i}"/>`).join('');
   const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
   // Drop a year label that would touch its neighbour; the last year always stays.
   const shownTicks = chart.xTicks.filter((tk, i, a) => i === a.length - 1
@@ -441,12 +442,85 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   const key = `${productId}|${highlightDate}`;
   const fresh = fig.dataset.key !== key;
   fig.dataset.key = key;
-  fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
+  fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" tabindex="0" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
-      ${refLine}${dots}${priceLabels}${ticks}
+      ${refLine}${dots}${priceLabels}${ticks}${hits}
+      <g class="pc-tip" hidden><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
+    <span class="visually-hidden" aria-live="polite"></span>
     <figcaption>Fiyatın yolculuğu · logaritmik ölçek</figcaption>`;
+  bindPriceChart(fig, chart);
+}
+
+// Wires pointer and keyboard inspection onto the rendered chart SVG without global state.
+function bindPriceChart(fig, chart) {
+  const { points, width } = chart;
+  const svgEl = fig.querySelector('svg');
+  const tip = svgEl.querySelector('.pc-tip');
+  const rect = tip.querySelector('rect');
+  const periodTspan = tip.querySelector('.pc-tip-period');
+  const priceTspan = tip.querySelector('.pc-tip-price');
+  const dotEls = svgEl.querySelectorAll('.pc-dot, .pc-now, .pc-mark');
+  const live = fig.querySelector('[aria-live]');
+  const markedIdx = points.findIndex((p) => p.highlight);
+  let activeIdx = markedIdx >= 0 ? markedIdx : points.length - 1;
+
+  const showTip = (idx, viaKeyboard = false) => {
+    const p = points[idx];
+    if (!p) return;
+    dotEls.forEach((d, i) => d.classList.toggle('pc-active', i === idx));
+    activeIdx = idx;
+    const period = formatPeriod(p.date) + (p.isCurrent ? ' · güncel' : '');
+    const price = formatPrice(p.price);
+    const boxW = Math.ceil(Math.max(period.length, price.length) * 6.2 + 12);
+    const boxX = Math.max(0, Math.min(width - boxW, Math.round(p.x - boxW / 2)));
+    const boxY = p.y < 40 ? p.y + 8 : p.y - 38;
+    rect.setAttribute('x', boxX);
+    rect.setAttribute('y', boxY);
+    rect.setAttribute('width', boxW);
+    periodTspan.setAttribute('x', boxX + 6);
+    periodTspan.setAttribute('y', boxY + 12);
+    periodTspan.textContent = period;
+    priceTspan.setAttribute('x', boxX + 6);
+    priceTspan.setAttribute('y', boxY + 24);
+    priceTspan.textContent = price;
+    tip.hidden = false;
+    tip.removeAttribute('hidden');
+    if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
+  };
+
+  const hideTip = () => {
+    dotEls.forEach((d) => d.classList.remove('pc-active'));
+    tip.hidden = true;
+    tip.setAttribute('hidden', '');
+  };
+
+  const handle = (e) => {
+    if (e.type === 'pointerenter' || e.type === 'pointerdown') {
+      const hit = e.target instanceof Element ? e.target.closest('.pc-hit') : null;
+      if (hit) showTip(Number(hit.dataset.i));
+    } else if (e.type === 'pointerleave') {
+      if (e.pointerType !== 'touch' && e.target === svgEl) hideTip();
+    } else if (e.type === 'blur') {
+      hideTip();
+    } else if (e.type === 'keydown') {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        const step = e.key === 'ArrowRight' ? 1 : -1;
+        const next = Math.max(0, Math.min(points.length - 1, activeIdx + step));
+        showTip(next, true);
+      } else if (e.key === 'Escape') {
+        hideTip();
+      }
+    }
+  };
+
+  svgEl.addEventListener('pointerenter', handle, true);
+  svgEl.addEventListener('pointerdown', handle);
+  svgEl.addEventListener('pointerleave', handle);
+  svgEl.addEventListener('blur', handle);
+  svgEl.addEventListener('keydown', handle);
 }
 
 function renderTaxDetails(q) {
