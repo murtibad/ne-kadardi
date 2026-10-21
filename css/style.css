@@ -1033,3 +1033,12 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .logo-mark { flex: none; transform: rotate(-6deg); }
 .install-btn { display: block; margin: 16px auto 0; min-height: 44px; padding: 8px 16px; background: transparent; color: var(--text); border: 2px solid var(--text); border-radius: 999px; font: 700 0.875rem var(--font-ui); cursor: pointer; }
 .install-btn[hidden] { display: none; }
+
+/* Screen enter transition (result-screen uses the receipt printer animation instead) */
+@media (prefers-reduced-motion: no-preference) {
+  .screen-enter { animation: screen-in 0.22s ease-out both; }
+}
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
