@@ -388,7 +388,19 @@ function renderResult(q, r) {
   $('r-guess').textContent = formatPrice(r.guess);
   $('r-actual').textContent = formatPrice(q.price);
   $('r-verdict').textContent = verdictText(r);
-  $('r-score').textContent = r.hinted ? `${r.score}/100 (ipucu: -%20)` : `${r.score}/100`;
+  // Number, "/100" and the hint note are separate spans so CSS can size them; the text reads the same.
+  const scoreEl = $('r-score');
+  scoreEl.textContent = String(r.score);
+  const max = document.createElement('span');
+  max.className = 'score-max';
+  max.textContent = '/100';
+  scoreEl.append(max);
+  if (r.hinted) {
+    const hint = document.createElement('span');
+    hint.className = 'score-hint';
+    hint.textContent = ' (ipucu: -%20)';
+    scoreEl.append(hint);
+  }
   const tier = scoreTier(r.score);
   const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId) })
     ?? cashierComment(tier);

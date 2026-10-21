@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.74.0] - 2026-10-22
+### Changed
+- Design refresh "A" (Murti's pick from three Google Stitch directions): calmer spacing and clearer hierarchy on the home menu, question card and result receipt. Stitch output was used as reference only; all rules live in `css/style.css` with the existing tokens.
+- Home: bigger "Başla →" button, framed fact-card icon, mono dates, full-width install button.
+- Question: bolder round label, mono unit line, dashed rule above the guess, no empty gap above "Tahmin et" when the hint and error lines are empty.
+- Result: centred header with framed icon, thin-border verdict, big score number with "/100", framed chart with its caption on top and 12 px labels, Paylaş/İndir side by side with a full-width "Sonraki soru".
+### Fixed
+- Tap targets: fact-card "fiyat geçmişi", source and archive links are 44 px tall; chart labels are no longer 10 px.
+
 ## [0.73.0] - 2026-10-21
 ### Added
 - Minimum-wage purchasing power on the result receipt gets "O gün" / "Bugün" bars (`buildContextModel` in `js/game.js`); red when it fell, green when it rose. The sentence stays for screen readers and the share image.
