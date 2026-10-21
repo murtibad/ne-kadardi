@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.71.0] - 2026-10-21
+### Added
+- First-time players see three numbered "how to play" steps on the home screen (hidden after the first answer).
+- The question card names the product's category next to the round number ("SORU 3 · PARA VE ALTIN").
+- The real price rolls up from zero like a till display while the receipt prints (`js/count-up.js`); skipped with reduced motion, hidden from screen readers while rolling.
+- "Puan nasıl hesaplanır?" disclosure under the score; the recent-score tally gets a "SON N" label.
+### Changed
+- A guess far outside the price range pins the chart's "Tahminin" line to the edge with ↑/↓ instead of flattening the price line.
+- Light-mode secondary text on the receipt is a little darker (#66635b) so it keeps 4.5:1 on the tinted current-price row (found with an axe-core and manual contrast pass; axe reported no violations on any screen in either theme).
+
 ## [0.70.0] - 2026-10-21
 ### Added
 - Price history chart (log scale, `js/price-chart.js`) on the result receipt, with the question's date marked, and at the top of each archive receipt.
