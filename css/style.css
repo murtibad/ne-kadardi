@@ -1175,3 +1175,9 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .pc-mark.pc-active { r: 6.5; } /* the marked dot is already 5.5: grow it, never shrink it */
 .price-chart svg:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 .pc-hit { fill: transparent; cursor: pointer; pointer-events: all; }
+
+/* Mini price line next to "Fiyat Arşivi" on the home card */
+.mode-spark { display: inline-block; vertical-align: -2px; margin-left: 4px; }
+.mode-spark svg { display: block; overflow: visible; }
+.mode-spark path { fill: none; stroke: var(--accent-on-paper); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.mode-spark circle { fill: var(--accent-on-paper); }

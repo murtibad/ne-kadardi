@@ -921,8 +921,20 @@ function renderHome() {
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} kaynaklı fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   if (!$('fact-body').hasChildNodes()) renderFact();
+  renderHomeSpark();
   $('how-to').hidden = state.played > 0; // only first-time players need the three steps
   show('home-screen');
+}
+
+// A tiny gold-price line on the archive card hints at what is inside; decorative only.
+function renderHomeSpark() {
+  const el = $('m-spark');
+  if (el.hasChildNodes()) return;
+  const t = state.timelines.find((x) => x.id === 'gram-altin') ?? state.timelines[0];
+  const chart = t && buildPriceChart(t.rows, { width: 44, height: 18, pad: { top: 3, right: 3, bottom: 3, left: 3 } });
+  if (!chart) return;
+  const last = chart.points[chart.points.length - 1];
+  el.innerHTML = `<svg viewBox="0 0 44 18" width="44" height="18" focusable="false"><path d="${chart.line}"/><circle cx="${last.x}" cy="${last.y}" r="2.5"/></svg>`;
 }
 
 let lastFactId = null;
