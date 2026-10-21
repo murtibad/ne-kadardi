@@ -2,20 +2,14 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   contextComment,
-  posLine,
   hintComment,
   yearAnchor,
   ytlNote,
-  receiptFooter,
   stampTitle,
   OVER_COMMENTS,
   UNDER_COMMENTS,
   PRODUCT_POOLS,
-  POS_UNDER_LINES,
-  POS_OVER_LINES,
   HINT_LINES,
-  FOOTER_TIER_WORDS,
-  FOOTER_TAGLINES,
 } from '../js/banter.js';
 
 test('every pool line is a non-empty string, <= 90 characters, and contains no digits', () => {
@@ -23,11 +17,7 @@ test('every pool line is a non-empty string, <= 90 characters, and contains no d
     ...Object.values(PRODUCT_POOLS),
     OVER_COMMENTS,
     UNDER_COMMENTS,
-    POS_UNDER_LINES,
-    POS_OVER_LINES,
     HINT_LINES,
-    ...Object.values(FOOTER_TIER_WORDS),
-    FOOTER_TAGLINES,
   ];
 
   for (const pool of allPools) {
@@ -44,14 +34,8 @@ test('every pool line is a non-empty string, <= 90 characters, and contains no d
 test('pools meet required minimum sizes', () => {
   assert.ok(OVER_COMMENTS.length >= 4, 'OVER_COMMENTS should have >= 4 lines');
   assert.ok(UNDER_COMMENTS.length >= 4, 'UNDER_COMMENTS should have >= 4 lines');
-  assert.ok(POS_UNDER_LINES.length >= 4, 'POS_UNDER_LINES should have >= 4 lines');
-  assert.ok(POS_OVER_LINES.length >= 4, 'POS_OVER_LINES should have >= 4 lines');
   assert.ok(HINT_LINES.length >= 5, 'HINT_LINES should have >= 5 lines');
-  assert.ok(FOOTER_TAGLINES.length >= 5, 'FOOTER_TAGLINES should have >= 5 lines');
 
-  for (const [tier, words] of Object.entries(FOOTER_TIER_WORDS)) {
-    assert.ok(words.length >= 4, `footer words for ${tier} must have >= 4 lines`);
-  }
 
   const requiredProductIds = [
     'plastik-poset',
@@ -127,37 +111,6 @@ test('contextComment deterministic rng checks', () => {
   const over1 = contextComment({ direction: 'over', factor: 4 }, fixedRngHigh);
   const over2 = contextComment({ direction: 'over', factor: 4 }, fixedRngHigh);
   assert.equal(over1, over2);
-});
-
-test('posLine thresholds (factor 2 vs 1.9) and prefixes', () => {
-  // factor 1.9 is below threshold 2: returns null
-  assert.equal(posLine({ direction: 'under', factor: 1.9 }, () => 0), null);
-  assert.equal(posLine({ direction: 'over', factor: 1.9 }, () => 0), null);
-
-  // factor 2.0 meets threshold
-  const underLine = posLine({ direction: 'under', factor: 2.0 }, () => 0);
-  assert.ok(typeof underLine === 'string');
-  assert.ok(underLine.startsWith('POS HATASI: YETERSİZ BAKİYE'));
-  assert.ok(POS_UNDER_LINES.includes(underLine));
-
-  const overLine = posLine({ direction: 'over', factor: 2.0 }, () => 0);
-  assert.ok(typeof overLine === 'string');
-  assert.ok(overLine.startsWith('PARA ÜSTÜ:'));
-  assert.ok(POS_OVER_LINES.includes(overLine));
-
-  // direction 'exact' returns null
-  assert.equal(posLine({ direction: 'exact', factor: 5 }, () => 0), null);
-
-  // safe defaults for empty or missing argument
-  assert.equal(posLine(), null);
-  assert.equal(posLine(null), null);
-});
-
-test('posLine deterministic with fixed rng', () => {
-  const fixedRng = () => 0.42;
-  const first = posLine({ direction: 'under', factor: 2.5 }, fixedRng);
-  const second = posLine({ direction: 'under', factor: 2.5 }, fixedRng);
-  assert.equal(first, second);
 });
 
 test('hintComment returns line from HINT_LINES and is deterministic', () => {
@@ -240,33 +193,6 @@ test('ytlNote exact string for known input and null outside range', () => {
   assert.equal(ytlNote(2005, null), null);
   assert.equal(ytlNote(2005, undefined), null);
   assert.equal(ytlNote(2005, '4.5'), null);
-});
-
-test('receiptFooter returns receipt number and tagline, and is deterministic', () => {
-  const footerGood = receiptFooter({ year: 2018, tier: 'good' }, () => 0);
-  assert.equal(footerGood.no, 'FİŞ NO: #2018-GÜZEL-GÜNLERDİ');
-  assert.equal(footerGood.tagline, 'KDV DAHİL, HÜZÜN HARİÇ');
-
-  const footerGreat = receiptFooter({ year: 2021, tier: 'great' }, () => 0);
-  assert.equal(footerGreat.no, 'FİŞ NO: #2021-HAFIZA-AÇIK');
-
-  // Unknown tier falls back to mid tier words
-  const footerUnknown = receiptFooter({ year: 2020, tier: 'unknown' }, () => 0);
-  assert.equal(footerUnknown.no, 'FİŞ NO: #2020-NE-ÇABUK-GEÇTİ');
-
-  // Deterministic check
-  const fixedRng = () => 0.5;
-  const f1 = receiptFooter({ year: 2019, tier: 'poor' }, fixedRng);
-  const f2 = receiptFooter({ year: 2019, tier: 'poor' }, fixedRng);
-  assert.deepEqual(f1, f2);
-
-  // Tagline is one of FOOTER_TAGLINES
-  assert.ok(FOOTER_TAGLINES.includes(f1.tagline));
-
-  // Safe defaults
-  const emptyFooter = receiptFooter();
-  assert.ok(typeof emptyFooter.no === 'string');
-  assert.ok(typeof emptyFooter.tagline === 'string');
 });
 
 test('stampTitle boundaries (49/50/74/75/89/90), clamping, and non-finite values', () => {

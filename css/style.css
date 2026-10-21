@@ -1,14 +1,16 @@
 :root {
-  /* Warm off-white background and slightly creamy receipt paper */
-  --bg: #f4f1ea;
+  /* Warm greige background, a step darker than the creamy receipt paper so the receipt
+     stands out in light mode too (the old #f4f1ea page was only 1.1:1 against the paper) */
+  --bg: #e4ded1;
   --paper: #fffcf5;
   --ink: #181818;
   --text: #181818;
-  --muted: #6b6860; /* #737068 was 4.38:1 on --bg */
+  --muted: #5f5c55; /* 4.98:1 on --bg */
   --muted-on-paper: #737068;
   --accent-on-paper: #d32f2f; /* red text on the receipt paper */ /* secondary text on the receipt paper */
   --accent: #d32f2f; /* Bold red */
-  --accent-on-bg: #c62828; /* the logo on the page background; --accent is 4.4:1 there */
+  --accent-on-bg: #b02323; /* the logo on the page background: 5.0:1 */
+  --receipt-shadow: drop-shadow(0 1px 1px rgba(60, 45, 20, 0.18)) drop-shadow(0 8px 18px rgba(60, 45, 20, 0.2));
   --line: #d6d3cb;
   /* Result tiers; all three stay >= 4.5:1 on the receipt paper in both colour modes */
   --tier-great: #14532d;
@@ -40,6 +42,7 @@
     --accent-on-paper: #b3261e; /* --accent is only 3.9:1 on the dark-mode paper */
     --accent-on-bg: #ef5350; /* --accent is 3.5:1 on the dark page */
     --line: #b5b1a8; /* Darker dashes on the light receipt */
+    --receipt-shadow: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
   }
 }
 :root[data-theme="dark"] {
@@ -54,6 +57,7 @@
     --accent-on-paper: #b3261e; /* --accent is only 3.9:1 on the dark-mode paper */
     --accent-on-bg: #ef5350; /* --accent is 3.5:1 on the dark page */
     --line: #b5b1a8; /* Darker dashes on the light receipt */
+    --receipt-shadow: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
 }
 
 * { box-sizing: border-box; }
@@ -98,14 +102,12 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 /* The Ripped Receipt Base (Variant B) */
 .receipt-card {
-  /* Older questions print on yellowed paper: main.js sets --age from 0 (new) to 1 (2008 or older) */
-  --paper-aged: color-mix(in srgb, var(--paper) calc(100% - var(--age, 0) * 32%), #c9a45a);
-  background: var(--paper-aged);
+  background: var(--paper);
   color: var(--ink);
   position: relative;
   padding: 32px 24px;
   /* Keep overflow visible so pseudo-elements show */
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.08));
+  filter: var(--receipt-shadow, drop-shadow(0 4px 16px rgba(0, 0, 0, 0.08)));
 }
 
 /* Zigzag borders logic using linear gradients */
@@ -123,8 +125,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .receipt-card::after {
   bottom: -8px;
   background-image: 
-    linear-gradient(135deg, var(--paper-aged) 25%, transparent 25%), 
-    linear-gradient(-135deg, var(--paper-aged) 25%, transparent 25%);
+    linear-gradient(135deg, var(--paper) 25%, transparent 25%), 
+    linear-gradient(-135deg, var(--paper) 25%, transparent 25%);
   background-position: 0 0;
 }
 
@@ -132,8 +134,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .result-receipt::before {
   top: -8px;
   background-image: 
-    linear-gradient(45deg, var(--paper-aged) 25%, transparent 25%), 
-    linear-gradient(-45deg, var(--paper-aged) 25%, transparent 25%);
+    linear-gradient(45deg, var(--paper) 25%, transparent 25%), 
+    linear-gradient(-45deg, var(--paper) 25%, transparent 25%);
   background-position: 0 100%;
 }
 
@@ -460,6 +462,9 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   .session-actions .btn.primary { flex: 1.3 1 0; }
   .session-actions .wide-only { display: none; }
 }
+@media (max-width: 379px) {
+  .session-actions .btn.next-btn { font-size: 0.875rem; }
+}
 
 .narrow-only { display: none; }
 @media (max-width: 719px) { .session-actions .narrow-only { display: inline; } }
@@ -657,8 +662,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   line-height: 1.4;
 }
 
-.guess-steps { display: flex; gap: 8px; justify-content: center; margin: 0 0 12px; }
-.guess-steps .step { color: var(--ink); border-color: var(--ink); flex: 1; padding: 8px 4px; font-size: 0.875rem; min-height: 40px; }
 .cashier-line { font-family: var(--font-ui); font-style: italic; text-align: center; font-size: 0.875rem; color: var(--muted-on-paper); margin: 0 0 16px; }
 
 .site-header { flex-wrap: wrap; }
@@ -710,7 +713,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .logo { display: inline-flex; align-items: center; min-height: 44px; }
 .site-title { margin: 0; font-size: inherit; line-height: inherit; }
 .theme-toggle { width: 44px; height: 44px; }
-.guess-steps .step { min-height: 44px; }
 .hint-btn { min-height: 44px; padding: 8px 12px; }
 .picker-chip { min-height: 44px; }
 .site-footer a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
@@ -724,9 +726,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .note-link:hover { background: var(--ink); color: var(--paper); }
 .note-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
-
-/* Yellowed old receipts: darker secondary text keeps the 4.5:1 contrast on the tinted paper */
-.receipt-card[data-aged] { --muted-on-paper: #4a463f; --accent-on-paper: #a82019; }
 
 /* Sound toggle sits next to the theme toggle */
 .header-tools { display: flex; gap: 8px; align-items: center; }
@@ -742,9 +741,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 @keyframes icon-shake { 0%, 100% { transform: none; } 20% { transform: translateX(-8px) rotate(-6deg); } 40% { transform: translateX(8px) rotate(6deg); } 60% { transform: translateX(-5px) rotate(-3deg); } 80% { transform: translateX(4px) rotate(2deg); } }
 
 /* Cashier banter extras on the receipt */
-.pos-line { margin: -8px 0 12px; text-align: center; font: 700 0.8125rem var(--font-mono); color: var(--accent-on-paper); letter-spacing: 0.02em; }
 .ytl-note { margin: 0 0 12px; text-align: center; font: 400 0.8125rem var(--font-mono); color: var(--muted-on-paper); }
-.receipt-foot { margin: 16px 0 8px; text-align: center; font: 400 0.6875rem var(--font-mono); letter-spacing: 0.04em; color: var(--muted-on-paper); }
 .year-anchor { margin: 0 0 12px; text-align: center; font: italic 0.875rem var(--font-ui); color: var(--muted-on-paper); }
 .year-anchor[hidden] { display: none; }
 .hint-cashier { margin: 0 0 8px; font: italic 0.875rem var(--font-ui); color: var(--muted-on-paper); }
@@ -752,3 +749,67 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 /* Skip link under the submit button */
 .skip-btn { display: block; margin: 8px auto 0; min-height: 44px; padding: 8px 12px; background: none; border: 0; font: inherit; font-size: 0.875rem; font-weight: 700; color: var(--muted-on-paper); text-decoration: underline; cursor: pointer; }
 .skip-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Question counter: tells first-time players this is a series, not a single question */
+.round-label { margin: 0 0 10px; font: 700 0.75rem var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-on-paper); }
+.round-label:empty { display: none; }
+
+/* The input is the only way to answer, so it gets a visible question above it */
+.guess-label { display: block; margin: 0 0 8px; font-weight: 700; font-size: 1rem; color: var(--ink); }
+
+/* "Next question" is the main way forward: accent colour so it never reads as just another button */
+.btn.next-btn { background: var(--accent); border-color: var(--accent); color: #fff; white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .btn.next-btn.nudge { animation: next-nudge 1.4s ease 0.2s 2; }
+}
+@keyframes next-nudge {
+  0%, 100% { transform: none; box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+  30% { transform: translateX(4px); box-shadow: 0 0 0 6px rgba(211, 47, 47, 0.25); }
+  60% { transform: none; box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+}
+
+/* Receipt printer: the result receipt slides out of this slot, then is torn off.
+   The wrapper clips everything above the slot so the paper seems to come out of it. */
+.printer {
+  position: relative;
+  z-index: 2;
+  height: 22px;
+  margin: 4px -10px 0;
+  border-radius: 12px 12px 6px 6px;
+  background: linear-gradient(#45423d, #27251f);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.printer::after {
+  /* the paper slit */
+  content: "";
+  position: absolute;
+  left: 18px; right: 18px; bottom: 5px;
+  height: 5px;
+  border-radius: 3px;
+  background: #0c0b0a;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.8);
+}
+#result-screen .receipt-wrapper { clip-path: inset(0 -40px -60px -40px); margin-top: -6px; }
+/* Prevent a tap that skips the print animation from accidentally opening a link or <details> on the moving receipt */
+#result-screen .receipt-wrapper.printing :is(a, summary, button) { pointer-events: none; }
+#result-screen .result-receipt::before { display: none; } /* the top edge is still in the printer */
+#result-screen .result-receipt { padding-top: 24px; }
+@media (prefers-reduced-motion: no-preference) {
+  #result-screen .receipt-wrapper.printing .result-receipt { animation: receipt-print 1.1s cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+  #result-screen .receipt-wrapper.torn .result-receipt { animation: receipt-tear 0.3s ease-out; transform-origin: 50% 0; }
+  #result-screen .printer:has(+ .receipt-wrapper.torn) { animation: printer-shake 0.25s ease-out; }
+}
+@keyframes receipt-print {
+  from { transform: translateY(-100%); }
+  to { transform: none; }
+}
+@keyframes receipt-tear {
+  0% { transform: none; }
+  35% { transform: translateY(5px) rotate(-0.8deg); }
+  70% { transform: translateY(2px) rotate(0.3deg); }
+  100% { transform: none; }
+}
+@keyframes printer-shake {
+  0%, 100% { transform: none; }
+  40% { transform: translateY(-2px); }
+}

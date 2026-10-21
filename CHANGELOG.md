@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.67.0] - 2026-10-21
+### Added
+- Receipt printer: the result receipt slides out of a printer slot in about a second, then is torn off. A tap on the receipt finishes it at once; reduced motion skips the slide.
+- Question counter ("Soru 3") on the question card, so new players see that the game is a series of questions.
+- A visible question above the price field ("Sence kaç liraydı?").
+
+### Changed
+- Sounds are short CC0 recordings instead of synthesized beeps: old receipt printer, paper tear, checkout beep and a counter bell for an exact guess (BigSoundBank, Joseph Sardin). The good/bad score jingles are gone. Samples are decoded on the first tap or key press so the printer sound starts in sync.
+- "Sonraki" is now "Sonraki soru →" in the accent colour, and it nudges once after the first three results.
+- Light mode: the page background is darker (#e4ded1) and the receipt has a stronger shadow; before, the receipt almost disappeared on the page (1.1:1).
+
+### Fixed (QA before merge)
+- Leaving the result screen during the print (next question, skip, archive) cancels it, so the tear sound, bell and confetti no longer fire on the next screen.
+- Returning to a result with the browser's back button puts focus on the receipt again.
+- The audio context also resumes from the iOS "interrupted" state; turning sound back on preloads the samples.
+- "Sonraki soru →" stays on one line at 360 px.
+- From a second review (Gemini): the icon bounce/shake waits until the receipt is out; an early tap or leaving the screen cuts the printer sound; reduced motion plays only the tear; links on the moving receipt cannot be hit by the tap that finishes it; audio unlocks on touchend/click (iOS) instead of pointerdown; the nudge is for players with three or fewer answered questions.
+
+### Removed
+- The +10 / +100 / +1.000 buttons: players thought they were the only way to enter a price.
+- Yellowed paper for old years (it only changed the colour), the "FİŞ NO" line with its tagline (also on the share image) and the "POS HATASI" / "PARA ÜSTÜ" lines.
+
 ## [0.66.1] - 2026-10-16
 ### Added
 - Fiat Egea: 2018-02 value (68.900, 2018 model year), confirmed by a news page and the arabalar.com.tr monthly table. The series now has 10 values.

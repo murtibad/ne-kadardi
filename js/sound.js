@@ -1,51 +1,24 @@
-// Synthesized Web Audio sound effects and haptic feedback.
+// Recorded CC0 Web Audio sound effects and haptic feedback.
 // Pure module, testable without a real browser AudioContext.
 
-export const SOUND_PLANS = {
-  // Supermarket barcode scanner single beep.
-  beep: [
-    { kind: 'tone', wave: 'sine', freq: 900, start: 0, dur: 0.07, gain: 0.15 },
-  ],
-  // Thermal receipt printer paper advance noise through bandpass.
-  print: [
-    { kind: 'noise', filter: 3000, start: 0, dur: 0.26, gain: 0.08 },
-  ],
-  // Cash register ka-ching: mechanical click followed by two metallic tones.
-  cashbox: [
-    { kind: 'noise', filter: 4000, start: 0, dur: 0.03, gain: 0.12 },
-    { kind: 'tone', wave: 'triangle', freq: 1760, start: 0.03, dur: 0.35, gain: 0.18 },
-    { kind: 'tone', wave: 'sine', freq: 2349, start: 0.03, dur: 0.35, gain: 0.15 },
-  ],
-  // Pleasant two-note rise for high scores.
-  good: [
-    { kind: 'tone', wave: 'sine', freq: 660, start: 0, dur: 0.12, gain: 0.16 },
-    { kind: 'tone', wave: 'sine', freq: 880, start: 0.12, dur: 0.18, gain: 0.18 },
-  ],
-  // Three falling notes for poor guesses.
-  sad: [
-    { kind: 'tone', wave: 'triangle', freq: 392, start: 0, dur: 0.14, gain: 0.16 },
-    { kind: 'tone', wave: 'triangle', freq: 330, start: 0.14, dur: 0.14, gain: 0.16 },
-    { kind: 'tone', wave: 'triangle', freq: 262, start: 0.28, dur: 0.14, gain: 0.16 },
-  ],
-  // Subtle click for UI buttons and quick actions.
-  tick: [
-    { kind: 'tone', wave: 'sine', freq: 1200, start: 0, dur: 0.025, gain: 0.12 },
-  ],
-};
+export const SOUND_FILES = Object.freeze({
+  print: Object.freeze({ url: 'sounds/print.mp3', gain: 0.55 }),
+  tear: Object.freeze({ url: 'sounds/tear.mp3', gain: 0.45 }),
+  beep: Object.freeze({ url: 'sounds/beep.mp3', gain: 0.35 }),
+  bell: Object.freeze({ url: 'sounds/bell.mp3', gain: 0.45 }),
+});
+
+const MAX_LOAD_WAIT_MS = 400;
+const STORAGE_KEY = 'ne-kadardi-sound';
 
 /**
- * Return sound effect name appropriate for the guess result, or null if neutral.
+ * Return sound effect name for an exact guess, or null otherwise.
+ * The receipt printer sound plays on every result; score jingles are omitted.
  */
 export function soundForResult(score, factor) {
-  if (factor === 1) return 'cashbox';
-  if (typeof score === 'number' && Number.isFinite(score)) {
-    if (score >= 70) return 'good';
-    if (score < 20) return 'sad';
-  }
+  if (factor === 1) return 'bell';
   return null;
 }
-
-const STORAGE_KEY = 'ne-kadardi-sound';
 
 function getDefaultStorage() {
   try {
@@ -63,110 +36,42 @@ function getDefaultAudioContext() {
   }
 }
 
-/**
- * Schedule a single synthesis step (tone or bandpassed noise) with attack/release envelopes.
- */
-function scheduleStep(ctx, step, baseTime) {
-  const startOffset = typeof step.start === 'number' && Number.isFinite(step.start)
-    ? Math.max(0, step.start)
-    : 0;
-  const dur = typeof step.dur === 'number' && Number.isFinite(step.dur)
-    ? Math.max(0.001, step.dur)
-    : 0.05;
-  const t0 = baseTime + startOffset;
-  const t1 = t0 + dur;
-  const peakGain = Math.min(0.25, Math.max(0, typeof step.gain === 'number' ? step.gain : 0.1));
-
-  // Short attack and release ramps prevent audible clicks/pops.
-  const attack = Math.min(0.005, dur * 0.2);
-  const release = Math.min(0.015, dur * 0.3);
-
-  const gainNode = ctx.createGain();
-  const gainParam = gainNode?.gain;
-
-  if (gainParam) {
-    if (typeof gainParam.setValueAtTime === 'function') {
-      gainParam.setValueAtTime(0, t0);
-      if (typeof gainParam.linearRampToValueAtTime === 'function') {
-        gainParam.linearRampToValueAtTime(peakGain, t0 + attack);
-        const sustainEnd = Math.max(t0 + attack, t1 - release);
-        gainParam.setValueAtTime(peakGain, sustainEnd);
-        gainParam.linearRampToValueAtTime(0, t1);
-      } else {
-        gainParam.setValueAtTime(peakGain, t0);
-      }
-    } else {
-      gainParam.value = peakGain;
-    }
-  }
-
-  if (step.kind === 'noise') {
-    const sampleRate = ctx.sampleRate || 44100;
-    const sampleCount = Math.max(1, Math.floor(sampleRate * dur));
-    const buffer = ctx.createBuffer(1, sampleCount, sampleRate);
-    if (buffer && typeof buffer.getChannelData === 'function') {
-      const channelData = buffer.getChannelData(0);
-      if (channelData && typeof channelData.length === 'number') {
-        for (let i = 0; i < channelData.length; i++) {
-          channelData[i] = Math.random() * 2 - 1;
-        }
-      }
-    }
-
-    const source = ctx.createBufferSource();
-    source.buffer = buffer;
-
-    if (typeof step.filter === 'number' && typeof ctx.createBiquadFilter === 'function') {
-      const filterNode = ctx.createBiquadFilter();
-      filterNode.type = 'bandpass';
-      if (filterNode.frequency) {
-        if (typeof filterNode.frequency.setValueAtTime === 'function') {
-          filterNode.frequency.setValueAtTime(step.filter, t0);
-        } else {
-          filterNode.frequency.value = step.filter;
-        }
-      }
-      if (filterNode.Q) {
-        filterNode.Q.value = 1;
-      }
-      source.connect(filterNode);
-      filterNode.connect(gainNode);
-    } else {
-      source.connect(gainNode);
-    }
-
-    gainNode.connect(ctx.destination);
-    if (typeof source.start === 'function') source.start(t0);
-    if (typeof source.stop === 'function') source.stop(t1 + 0.05);
-  } else {
-    const osc = ctx.createOscillator();
-    osc.type = step.wave || 'sine';
-    if (typeof step.freq === 'number') {
-      if (typeof osc.frequency?.setValueAtTime === 'function') {
-        osc.frequency.setValueAtTime(step.freq, t0);
-        if (typeof step.endFreq === 'number' && typeof osc.frequency.linearRampToValueAtTime === 'function') {
-          osc.frequency.linearRampToValueAtTime(step.endFreq, t1);
-        }
-      } else if (osc.frequency) {
-        osc.frequency.value = step.freq;
-      }
-    }
-
-    osc.connect(gainNode);
-    gainNode.connect(ctx.destination);
-    if (typeof osc.start === 'function') osc.start(t0);
-    if (typeof osc.stop === 'function') osc.stop(t1 + 0.05);
+function getDefaultFetch() {
+  try {
+    return typeof globalThis.fetch === 'function'
+      ? globalThis.fetch.bind(globalThis)
+      : undefined;
+  } catch {
+    return undefined;
   }
 }
 
 /**
- * Sound effects player managing Web Audio lifecycle and persistence.
+ * Support both modern Promise-returning decodeAudioData and legacy Safari callbacks.
+ */
+function decodeAudio(ctx, arrayBuffer) {
+  return new Promise((resolve, reject) => {
+    try {
+      const result = ctx.decodeAudioData(arrayBuffer, resolve, reject);
+      if (result && typeof result.then === 'function') {
+        result.then(resolve, reject);
+      }
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
+/**
+ * Sound effects player managing Web Audio lifecycle, buffer caching, and persistence.
  */
 export function createSoundPlayer(options = {}) {
   const {
     storage = getDefaultStorage(),
     AudioContextCtor = getDefaultAudioContext(),
+    fetchFn = getDefaultFetch(),
     now,
+    clock = Date.now,
   } = options;
 
   let enabled = true;
@@ -182,13 +87,35 @@ export function createSoundPlayer(options = {}) {
   }
 
   let ctx = null;
+  const bufferPromises = new Map();
+  const decodedBuffers = new Map();
+  const activeSources = new Map();
 
   function isEnabled() {
     return enabled;
   }
 
+  function stop(name) {
+    if (typeof name !== 'string') return;
+    const set = activeSources.get(name);
+    if (!set) return;
+    activeSources.delete(name);
+    for (const src of set) {
+      try {
+        src.stop();
+      } catch {
+        // Ignore already-stopped or invalid state errors.
+      }
+    }
+  }
+
   function setEnabled(val) {
     enabled = Boolean(val);
+    if (!enabled) {
+      for (const name of [...activeSources.keys()]) {
+        stop(name);
+      }
+    }
     try {
       if (storage && typeof storage.setItem === 'function') {
         storage.setItem(STORAGE_KEY, enabled ? '1' : '0');
@@ -203,42 +130,127 @@ export function createSoundPlayer(options = {}) {
     return setEnabled(!enabled);
   }
 
-  function play(name) {
-    if (!enabled) return false;
-    if (!AudioContextCtor) return false;
-    const plan = SOUND_PLANS[name];
-    if (!plan || !Array.isArray(plan) || plan.length === 0) return false;
-
+  function ensureContext() {
+    if (!AudioContextCtor) return null;
     try {
       if (!ctx) {
         ctx = new AudioContextCtor();
       }
-      if (ctx && ctx.state === 'suspended' && typeof ctx.resume === 'function') {
+      // iOS Safari reports 'interrupted' after a phone call or Siri.
+      if (ctx && (ctx.state === 'suspended' || ctx.state === 'interrupted') && typeof ctx.resume === 'function') {
         const res = ctx.resume();
         if (res && typeof res.catch === 'function') {
           res.catch(() => {});
         }
       }
-
-      const baseTime = typeof now === 'function'
-        ? now(ctx)
-        : (typeof ctx?.currentTime === 'number' ? ctx.currentTime : 0);
-
-      for (const step of plan) {
-        scheduleStep(ctx, step, baseTime);
-      }
-      return true;
+      return ctx;
     } catch {
-      // Audio errors must never crash caller logic.
-      return false;
+      return null;
     }
+  }
+
+  function load(audioCtx, name) {
+    if (bufferPromises.has(name)) {
+      return bufferPromises.get(name);
+    }
+    const spec = SOUND_FILES[name];
+    const promise = (async () => {
+      const res = await fetchFn(spec.url);
+      if (!res || res.ok === false || typeof res.arrayBuffer !== 'function') {
+        throw new Error(`Failed to fetch sound: ${spec.url}`);
+      }
+      const arrayBuffer = await res.arrayBuffer();
+      const audioBuffer = await decodeAudio(audioCtx, arrayBuffer);
+      if (!audioBuffer) {
+        throw new Error(`Failed to decode sound: ${spec.url}`);
+      }
+      decodedBuffers.set(name, audioBuffer);
+      return audioBuffer;
+    })().catch(() => {
+      // Evict failed loads so a later play() or unlock() can retry.
+      bufferPromises.delete(name);
+      return null;
+    });
+
+    bufferPromises.set(name, promise);
+    return promise;
+  }
+
+  function unlock() {
+    if (!enabled) return false;
+    if (typeof fetchFn !== 'function') return false;
+    const audioCtx = ensureContext();
+    if (!audioCtx) return false;
+
+    for (const name of Object.keys(SOUND_FILES)) {
+      load(audioCtx, name);
+    }
+    return true;
+  }
+
+  function play(name, { delay = 0 } = {}) {
+    if (!enabled) return false;
+    const spec = typeof name === 'string' && Object.hasOwn(SOUND_FILES, name)
+      ? SOUND_FILES[name]
+      : null;
+    if (!spec) return false;
+    if (typeof fetchFn !== 'function') return false;
+
+    const audioCtx = ensureContext();
+    if (!audioCtx) return false;
+
+    const wasCached = decodedBuffers.has(name);
+    const startMs = typeof clock === 'function' ? clock() : Date.now();
+    const safeDelay = typeof delay === 'number' && Number.isFinite(delay) && delay > 0
+      ? delay
+      : 0;
+
+    load(audioCtx, name).then((buffer) => {
+      if (!buffer || !enabled) return;
+      if (!wasCached) {
+        const elapsedMs = (typeof clock === 'function' ? clock() : Date.now()) - startMs;
+        // Skip sounds that took too long on first fetch so feedback never feels detached.
+        if (elapsedMs > MAX_LOAD_WAIT_MS) return;
+      }
+
+      try {
+        const baseTime = typeof now === 'function'
+          ? now(audioCtx)
+          : (typeof audioCtx.currentTime === 'number' ? audioCtx.currentTime : 0);
+
+        const source = audioCtx.createBufferSource();
+        const gainNode = audioCtx.createGain();
+        source.buffer = buffer;
+        if (gainNode && gainNode.gain) {
+          gainNode.gain.value = spec.gain;
+        }
+        source.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        let set = activeSources.get(name);
+        if (!set) {
+          set = new Set();
+          activeSources.set(name, set);
+        }
+        set.add(source);
+        source.onended = () => {
+          set.delete(source);
+        };
+        source.start(baseTime + safeDelay);
+      } catch {
+        // Audio errors must never crash caller logic.
+      }
+    });
+
+    return true;
   }
 
   return {
     isEnabled,
     setEnabled,
     toggle,
+    unlock,
     play,
+    stop,
   };
 }
 

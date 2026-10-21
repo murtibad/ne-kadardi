@@ -1,7 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
 import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
-import { paperAge } from './paper.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { linkifyNote } from './linkify.js';
@@ -11,7 +10,7 @@ import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment } from './cashier.js';
-import { contextComment, posLine, hintComment, yearAnchor, ytlNote, receiptFooter, stampTitle } from './banter.js';
+import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './banter.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 
@@ -28,7 +27,7 @@ const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt
 const state = {
   recentProducts: [], 
   hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
-  played: 0, total: 0, best: 0, 
+  played: 0, total: 0, best: 0, round: 0, 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all' 
 };
 let shareOriginalLabel = '';
@@ -110,6 +109,7 @@ function setBtnStatus(btnId, text) {
 }
 
 function nextQuestion() {
+  stopPrinting();
   resetShareBtn();
   if ($('r-tax-details')) {
     $('r-tax-details').hidden = true;
@@ -125,8 +125,9 @@ function nextQuestion() {
   state.question = q;
   state.recentProducts.push(q.productId);
   if (state.recentProducts.length > 12) state.recentProducts.shift();
+  state.round += 1;
+  $('q-round').textContent = `Soru ${state.round}`;
   $('q-period').textContent = formatPeriod(q.date);
-  applyPaperAge(document.querySelector('.question-card'), q.date);
   const anchor = yearAnchor(yearOf(q.date));
   $('q-anchor').textContent = anchor || '';
   $('q-anchor').hidden = !anchor;
@@ -160,9 +161,9 @@ function nextQuestion() {
     $('hint-btn').hidden = true;
     $('guess-input').focus();
   };
-  renderGuessSteps();
   $('guess-error').textContent = '';
   showGameScreen('question-screen');
+  window.scrollTo(0, 0); // "Sonraki soru" sits at the bottom of a long receipt
   $('guess-input').focus();
 }
 
@@ -182,54 +183,82 @@ function onGuess(event) {
   saveSession();
   hapticIfAllowed(10);
   renderResult(q, state.result);
-  // A close or way-off guess gets its own jingle; everything else just hears the receipt printer.
-  sound.play(soundForResult(state.result.score, state.result.direction === 'exact' ? 1 : state.result.factor) ?? 'print');
+  printReceipt(soundForResult(state.result.score, state.result.direction === 'exact' ? 1 : state.result.factor));
 }
 
-// Quick-add chips. Fixed steps on purpose: scaling them to the price would leak its magnitude.
-function renderGuessSteps() {
-  const box = $('guess-steps');
-  box.textContent = '';
-  for (const step of [10, 100, 1000]) {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'btn step';
-    b.textContent = `+${step.toLocaleString('tr-TR')}`;
-    b.addEventListener('click', () => {
-      sound.play('tick');
-      hapticIfAllowed(8);
-      const input = $('guess-input');
-      const cur = parseGuess(input.value);
-      input.value = String((Number.isFinite(cur) ? cur : 0) + step).replace('.', ',');
-      input.focus();
-    });
-    box.appendChild(b);
+// The receipt slides out of the printer slot while the printer sound plays, then gets torn off.
+// Kept short (about a second) so it never stands between the player and the next question;
+// a tap on the receipt finishes it at once, and reduced motion skips the slide.
+const PRINT_MS = 1100;
+let printTimer = null;
+let cancelPrint = null;
+
+// Cancel any in-flight print timer, click listener, and printer audio when leaving the result screen early.
+function stopPrinting() {
+  sound.stop('print');
+  clearTimeout(printTimer);
+  printTimer = null;
+  if (cancelPrint) {
+    cancelPrint();
+    cancelPrint = null;
   }
 }
 
-// Old questions print on yellowed paper; the flag lets CSS darken the small text to keep contrast.
-function applyPaperAge(card, date) {
-  const age = paperAge(yearOf(date));
-  card.style.setProperty('--age', String(age));
-  card.toggleAttribute('data-aged', age >= 0.1);
+function printReceipt(extraSound) {
+  const wrap = document.querySelector('#result-screen .receipt-wrapper');
+  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  stopPrinting();
+  wrap.classList.remove('printing', 'torn');
+  $('next-btn').classList.remove('nudge');
+  const finish = () => {
+    sound.stop('print');
+    clearTimeout(printTimer);
+    printTimer = null;
+    wrap.removeEventListener('click', finish);
+    cancelPrint = null;
+    if ($('result-screen').hidden || !wrap.classList.contains('printing')) return;
+    wrap.classList.remove('printing');
+    wrap.classList.add('torn');
+    sound.play('tear');
+    if (extraSound) sound.play(extraSound);
+    // New players tend to miss that there are more questions, so the button waves once.
+    if (state.played <= 3) $('next-btn').classList.add('nudge');
+    // The product icon bounces after a close guess and shakes after a way-off one once the receipt is out.
+    if (state.result) {
+      const tier = scoreTier(state.result.score);
+      if (tier === 'great') $('r-image').classList.add('bounce');
+      else if (tier === 'bad') $('r-image').classList.add('shake');
+    }
+    if (state.result?.factor === 1) burstConfetti();
+  };
+  cancelPrint = () => {
+    wrap.removeEventListener('click', finish);
+    wrap.classList.remove('printing');
+  };
+  if (reduced) {
+    wrap.classList.add('printing');
+    finish();
+    return;
+  }
+  sound.play('print');
+  void wrap.offsetWidth; // restart the CSS animation for back-to-back results
+  wrap.classList.add('printing');
+  wrap.addEventListener('click', finish);
+  printTimer = setTimeout(finish, PRINT_MS);
 }
 
-// The product icon bounces after a close guess and shakes after a way-off one.
-function renderResultImage(q, r) {
+
+function renderResultImage(q) {
   const img = $('r-image');
   img.classList.remove('bounce', 'shake');
   if (!q.image) { img.hidden = true; return; }
   img.src = q.image.src;
   img.hidden = false;
   img.onerror = () => { img.hidden = true; };
-  const tier = scoreTier(r.score);
-  if (tier === 'great') requestAnimationFrame(() => img.classList.add('bounce'));
-  else if (tier === 'bad') requestAnimationFrame(() => img.classList.add('shake'));
 }
 
 function renderResult(q, r) {
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
-  applyPaperAge($('r-receipt'), q.date);
   renderResultImage(q, r);
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('r-guess').textContent = formatPrice(r.guess);
@@ -240,20 +269,12 @@ function renderResult(q, r) {
   const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId) })
     ?? cashierComment(tier);
   $('r-cashier').textContent = `“${line}”`;
-  const pos = posLine({ direction: r.direction, factor: r.factor });
-  $('r-pos').textContent = pos || '';
-  $('r-pos').hidden = !pos;
   const ytl = ytlNote(yearOf(q.date), q.price);
   $('r-ytl').textContent = ytl || '';
   $('r-ytl').hidden = !ytl;
-  const foot = receiptFooter({ year: yearOf(q.date), tier });
-  $('r-foot-no').textContent = foot.no;
-  $('r-foot-tag').textContent = foot.tagline;
-  state.footer = foot;
   document.querySelector('.verdict-box').dataset.tier = tier;
   document.querySelector('.score-box').dataset.tier = tier;
   $('r-meter').style.setProperty('--score', `${r.score}%`);
-  if (r.factor === 1) burstConfetti();
 
   // The newest launch is both a question and the "current" price: no comparison with itself.
   const hasCurrent = q.current !== null && !(q.current.date === q.date && q.current.price === q.price);
@@ -281,6 +302,7 @@ function renderResult(q, r) {
   $('r-source-kind').hidden = !kindLabel;
   $('r-session').textContent = `Toplam: ${state.played} soru · ortalama ${Math.round(state.total / state.played)} puan`;
   showGameScreen('result-screen');
+  window.scrollTo(0, 0);
   $('r-receipt').focus({ preventScroll: true }); // the submit button just disappeared; read the receipt next
 }
 
@@ -358,7 +380,7 @@ async function prepareShareImage(btnId) {
   const q = state.question;
   const r = state.result;
   const contextText = buildContextLine(q, state.all);
-  const model = buildShareImageModel(q, r, { contextLine: contextText, footer: state.footer });
+  const model = buildShareImageModel(q, r, { contextLine: contextText });
   // After a few rounds the stamp rates the whole session instead of this one guess.
   if (state.played >= 3) model.stamp = stampTitle(state.total / state.played) ?? model.stamp;
   
@@ -554,11 +576,20 @@ function renderHome() {
 function onHashChange() {
   const hash = location.hash;
   if (state.all.length === 0) return;
+  if (hash !== '#tahmin' || !state.question || state.lastGameScreen !== 'result-screen') {
+    stopPrinting();
+  }
   if (hash === '#arsiv') {
     renderTimelineScreen();
   } else if (hash === '#tahmin') {
     if (!state.question) nextQuestion();
-    else show(state.lastGameScreen);
+    else {
+      show(state.lastGameScreen);
+      // Returning from #arsiv via history.back() leaves focus on <body> or the hidden screen.
+      if (state.lastGameScreen === 'result-screen' && (!document.activeElement || document.activeElement === document.body || document.activeElement.closest('[hidden]'))) {
+        $('r-receipt').focus({ preventScroll: true });
+      }
+    }
   } else {
     renderHome();
   }
@@ -601,9 +632,9 @@ function renderSoundToggle() {
 }
 
 function toggleSound() {
-  sound.toggle();
+  if (sound.toggle()) sound.unlock(); // preload samples if the player was muted on the first gesture
   renderSoundToggle();
-  sound.play('tick'); // confirms the new state; stays silent when just muted
+  sound.play('beep'); // confirms the new state; stays silent when just muted
 }
 
 function toggleTheme() {
@@ -630,6 +661,10 @@ async function init() {
   $('r-tax-details').addEventListener('toggle', (e) => { if (e.target.open) sound.play('print'); });
   renderSoundToggle();
   $('sound-toggle').addEventListener('click', toggleSound);
+  // iOS Safari only treats touchend/click (not pointerdown) as user activation for Web Audio; decoding then keeps the first print in sync.
+  for (const type of ['touchend', 'click', 'keydown']) {
+    window.addEventListener(type, () => sound.unlock(), { once: true, capture: true });
+  }
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

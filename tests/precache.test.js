@@ -37,6 +37,12 @@ test('every image is precached', () => {
   }
 });
 
+test('every sound is precached', () => {
+  for (const name of readdirSync(new URL('sounds/', root))) {
+    assert.ok(precache.includes(`sounds/${name}`), `add sounds/${name} to PRECACHE in sw.js`);
+  }
+});
+
 test('app shell and data are precached', () => {
   for (const path of ['./', 'index.html', 'css/style.css', 'data/prices.json', 'manifest.webmanifest']) {
     assert.ok(precache.includes(path), `${path} must be precached`);

@@ -30,7 +30,7 @@ export function buildShareFileName(q) {
   return `ne-kadardi-${safeName}-${q.date}.png`;
 }
 
-export function buildShareImageModel(q, r, { contextLine = null, taxLine = null, footer = null } = {}) {
+export function buildShareImageModel(q, r, { contextLine = null, taxLine = null } = {}) {
   const hasCurrent = q.current !== null && q.current !== undefined &&
     !(q.current.date === q.date && q.current.price === q.price);
 
@@ -62,7 +62,6 @@ export function buildShareImageModel(q, r, { contextLine = null, taxLine = null,
     stamp: stampTitle(r.score),
     contextText: contextLine || null,
     taxLine: compactTaxLine || null,
-    footer: footer || null,
     iconSrc: q.image ? q.image.src : null,
     siteAddress: 'murtibad.github.io/ne-kadardi'
   };

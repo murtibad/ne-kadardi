@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  SOUND_PLANS,
+  SOUND_FILES,
   soundForResult,
   createSoundPlayer,
   haptic,
@@ -29,14 +29,11 @@ function createFakeAudioContextClass() {
       constructorCallCount++;
       this.state = 'suspended';
       this.currentTime = 0;
-      this.sampleRate = 44100;
       this.destination = { name: 'destination' };
       this.resumed = false;
-      this.oscillators = [];
       this.gains = [];
-      this.buffers = [];
       this.bufferSources = [];
-      this.filters = [];
+      this.decodedBuffers = [];
       instances.push(this);
     }
 
@@ -46,19 +43,16 @@ function createFakeAudioContextClass() {
       return Promise.resolve();
     }
 
+    decodeAudioData(arrayBuffer) {
+      const fakeBuffer = { byteLength: arrayBuffer.byteLength, duration: 0.5 };
+      this.decodedBuffers.push(fakeBuffer);
+      return Promise.resolve(fakeBuffer);
+    }
+
     createGain() {
       const node = {
         type: 'gain',
-        gain: {
-          value: 1,
-          calls: [],
-          setValueAtTime(val, time) {
-            this.calls.push({ method: 'setValueAtTime', val, time });
-          },
-          linearRampToValueAtTime(val, time) {
-            this.calls.push({ method: 'linearRampToValueAtTime', val, time });
-          },
-        },
+        gain: { value: 1 },
         connections: [],
         connect(target) {
           this.connections.push(target);
@@ -66,51 +60,6 @@ function createFakeAudioContextClass() {
       };
       this.gains.push(node);
       return node;
-    }
-
-    createOscillator() {
-      const node = {
-        type: 'oscillator',
-        wave: 'sine',
-        frequency: {
-          value: 440,
-          calls: [],
-          setValueAtTime(val, time) {
-            this.calls.push({ method: 'setValueAtTime', val, time });
-          },
-          linearRampToValueAtTime(val, time) {
-            this.calls.push({ method: 'linearRampToValueAtTime', val, time });
-          },
-        },
-        connections: [],
-        connect(target) {
-          this.connections.push(target);
-        },
-        startedAt: null,
-        stoppedAt: null,
-        start(time) {
-          this.startedAt = time;
-        },
-        stop(time) {
-          this.stoppedAt = time;
-        },
-      };
-      this.oscillators.push(node);
-      return node;
-    }
-
-    createBuffer(channels, length, sampleRate) {
-      const channelData = new Float32Array(length);
-      const buf = {
-        channels,
-        length,
-        sampleRate,
-        getChannelData(index) {
-          return channelData;
-        },
-      };
-      this.buffers.push(buf);
-      return buf;
     }
 
     createBufferSource() {
@@ -122,36 +71,18 @@ function createFakeAudioContextClass() {
           this.connections.push(target);
         },
         startedAt: null,
-        stoppedAt: null,
-        start(time) {
+        stopped: false,
+        stopCalls: 0,
+        onended: null,
+        start(time = 0) {
           this.startedAt = time;
         },
-        stop(time) {
-          this.stoppedAt = time;
+        stop() {
+          this.stopped = true;
+          this.stopCalls++;
         },
       };
       this.bufferSources.push(node);
-      return node;
-    }
-
-    createBiquadFilter() {
-      const node = {
-        type: 'biquadFilter',
-        filterType: 'bandpass',
-        frequency: {
-          value: 350,
-          calls: [],
-          setValueAtTime(val, time) {
-            this.calls.push({ method: 'setValueAtTime', val, time });
-          },
-        },
-        Q: { value: 1 },
-        connections: [],
-        connect(target) {
-          this.connections.push(target);
-        },
-      };
-      this.filters.push(node);
       return node;
     }
   }
@@ -163,73 +94,74 @@ function createFakeAudioContextClass() {
   };
 }
 
-test('soundForResult boundaries', () => {
-  // Exact match (factor === 1) always triggers cashbox regardless of score.
-  assert.equal(soundForResult(100, 1), 'cashbox');
-  assert.equal(soundForResult(70, 1), 'cashbox');
-  assert.equal(soundForResult(50, 1), 'cashbox');
-  assert.equal(soundForResult(10, 1), 'cashbox');
-  assert.equal(soundForResult(0, 1), 'cashbox');
-  assert.equal(soundForResult(undefined, 1), 'cashbox');
+function createFakeFetch({ shouldFail = false, onFetch } = {}) {
+  const counts = new Map();
+  let totalCalls = 0;
 
-  // Score >= 70 triggers good when factor !== 1.
-  assert.equal(soundForResult(100, 1.05), 'good');
-  assert.equal(soundForResult(85, 1.2), 'good');
-  assert.equal(soundForResult(70, 1.1), 'good');
+  async function fetchFn(url) {
+    totalCalls++;
+    counts.set(url, (counts.get(url) || 0) + 1);
+    if (onFetch) onFetch(url);
+    if (shouldFail) {
+      throw new Error(`Network error for ${url}`);
+    }
+    return {
+      ok: true,
+      arrayBuffer: async () => new ArrayBuffer(8),
+    };
+  }
 
-  // Just below 70 is neutral.
-  assert.equal(soundForResult(69.9, 1.1), null);
+  return {
+    fetchFn,
+    getCount: (url) => counts.get(url) || 0,
+    getTotalCalls: () => totalCalls,
+    setShouldFail: (val) => {
+      shouldFail = val;
+    },
+  };
+}
+
+async function flushAsync(ticks = 5) {
+  for (let i = 0; i < ticks; i++) {
+    await new Promise((r) => setTimeout(r, 0));
+  }
+}
+
+test('soundForResult returns bell only for exact match (factor === 1)', () => {
+  assert.equal(soundForResult(100, 1), 'bell');
+  assert.equal(soundForResult(70, 1), 'bell');
+  assert.equal(soundForResult(0, 1), 'bell');
+  assert.equal(soundForResult(undefined, 1), 'bell');
+
+  // Non-exact results always return null regardless of score.
+  assert.equal(soundForResult(100, 1.05), null);
+  assert.equal(soundForResult(85, 1.2), null);
+  assert.equal(soundForResult(70, 1.1), null);
   assert.equal(soundForResult(50, 1.5), null);
-  assert.equal(soundForResult(20, 2), null);
+  assert.equal(soundForResult(10, 3), null);
+  assert.equal(soundForResult(0, 5), null);
 
-  // Score < 20 triggers sad.
-  assert.equal(soundForResult(19.9, 2), 'sad');
-  assert.equal(soundForResult(10, 3), 'sad');
-  assert.equal(soundForResult(0, 5), 'sad');
-  assert.equal(soundForResult(-10, 10), 'sad');
-
-  // Invalid or undefined values return null when factor !== 1.
+  // Invalid inputs return null.
   assert.equal(soundForResult(null, null), null);
   assert.equal(soundForResult(undefined, undefined), null);
   assert.equal(soundForResult(NaN, NaN), null);
+  assert.equal(soundForResult(100, '1'), null);
 });
 
-test('every plan step has valid fields and gain <= 0.25 and finite non-negative start/dur', () => {
-  const expectedNames = ['beep', 'print', 'cashbox', 'good', 'sad', 'tick'];
-  assert.deepEqual(Object.keys(SOUND_PLANS).sort(), expectedNames.sort());
+test('SOUND_FILES contains expected keys, urls, and gains', () => {
+  const expectedNames = ['print', 'tear', 'beep', 'bell'];
+  assert.deepEqual(Object.keys(SOUND_FILES).sort(), expectedNames.sort());
 
-  for (const [name, steps] of Object.entries(SOUND_PLANS)) {
-    assert.ok(Array.isArray(steps), `${name} plan should be an array`);
-    assert.ok(steps.length > 0, `${name} plan must have at least one step`);
-
-    for (const step of steps) {
-      assert.ok(['tone', 'noise'].includes(step.kind), `${name} step kind must be tone or noise`);
-
-      assert.equal(typeof step.start, 'number', `${name} step start must be a number`);
-      assert.ok(Number.isFinite(step.start) && step.start >= 0, `${name} step start must be finite non-negative`);
-
-      assert.equal(typeof step.dur, 'number', `${name} step dur must be a number`);
-      assert.ok(Number.isFinite(step.dur) && step.dur > 0, `${name} step dur must be finite positive`);
-
-      assert.equal(typeof step.gain, 'number', `${name} step gain must be a number`);
-      assert.ok(
-        Number.isFinite(step.gain) && step.gain >= 0 && step.gain <= 0.25,
-        `${name} step gain must be between 0 and 0.25 (got ${step.gain})`,
-      );
-
-      if (step.kind === 'tone') {
-        assert.equal(typeof step.freq, 'number', `${name} tone step must have freq`);
-        assert.ok(Number.isFinite(step.freq) && step.freq > 0);
-        if (step.wave !== undefined) {
-          assert.ok(['sine', 'square', 'triangle', 'sawtooth'].includes(step.wave));
-        }
-      }
-
-      if (step.kind === 'noise' && step.filter !== undefined) {
-        assert.equal(typeof step.filter, 'number', `${name} noise filter must be a number`);
-        assert.ok(Number.isFinite(step.filter) && step.filter > 0);
-      }
-    }
+  for (const name of expectedNames) {
+    const entry = SOUND_FILES[name];
+    assert.equal(typeof entry.url, 'string');
+    assert.ok(entry.url.startsWith('sounds/'), `${name} url must start with sounds/`);
+    assert.ok(entry.url.endsWith('.mp3'), `${name} url must end with .mp3`);
+    assert.equal(typeof entry.gain, 'number');
+    assert.ok(
+      Number.isFinite(entry.gain) && entry.gain > 0 && entry.gain <= 1,
+      `${name} gain must be in (0, 1], got ${entry.gain}`,
+    );
   }
 });
 
@@ -267,7 +199,9 @@ test('setEnabled persists 0 and 1 and toggle flips state', () => {
   assert.equal(storage.getItem('ne-kadardi-sound'), '1');
 
   // Starts disabled if storage already holds '0'.
-  const restoredPlayer = createSoundPlayer({ storage: createMemoryStorage({ 'ne-kadardi-sound': '0' }) });
+  const restoredPlayer = createSoundPlayer({
+    storage: createMemoryStorage({ 'ne-kadardi-sound': '0' }),
+  });
   assert.equal(restoredPlayer.isEnabled(), false);
 });
 
@@ -299,95 +233,57 @@ test('broken storage (throws) does not throw', () => {
   assert.equal(player.isEnabled(), true);
 });
 
-test('disabled player never constructs the AudioContext (fake constructor counting calls)', () => {
+test('disabled player never constructs the AudioContext and never fetches', async () => {
   const { FakeAudioContext, getConstructorCallCount } = createFakeAudioContextClass();
+  const { fetchFn, getTotalCalls } = createFakeFetch();
   const storage = createMemoryStorage({ 'ne-kadardi-sound': '0' });
 
   const player = createSoundPlayer({
     storage,
     AudioContextCtor: FakeAudioContext,
+    fetchFn,
   });
 
   assert.equal(player.isEnabled(), false);
   assert.equal(getConstructorCallCount(), 0);
 
-  const playedBeep = player.play('beep');
-  assert.equal(playedBeep, false);
-  assert.equal(getConstructorCallCount(), 0);
+  assert.equal(player.play('beep'), false);
+  assert.equal(player.play('bell'), false);
+  assert.equal(player.unlock(), false);
+  await flushAsync();
 
-  const playedCashbox = player.play('cashbox');
-  assert.equal(playedCashbox, false);
   assert.equal(getConstructorCallCount(), 0);
+  assert.equal(getTotalCalls(), 0);
 });
 
-test('play with a fake AudioContext returns true and schedules nodes', () => {
-  const { FakeAudioContext, getConstructorCallCount, getInstances } = createFakeAudioContextClass();
-  const storage = createMemoryStorage();
-
-  const player = createSoundPlayer({
-    storage,
-    AudioContextCtor: FakeAudioContext,
-    now: () => 1.5,
-  });
-
-  // Not constructed until first play.
-  assert.equal(getConstructorCallCount(), 0);
-
-  // Play tone ('beep').
-  const beepResult = player.play('beep');
-  assert.equal(beepResult, true);
-  assert.equal(getConstructorCallCount(), 1);
-
-  const [ctx] = getInstances();
-  assert.equal(ctx.resumed, true);
-  assert.ok(ctx.oscillators.length >= 1, 'expected oscillator to be created');
-  assert.ok(ctx.gains.length >= 1, 'expected gain node to be created');
-
-  const osc = ctx.oscillators[0];
-  assert.equal(osc.wave, 'sine');
-  assert.equal(osc.startedAt, 1.5);
-  assert.equal(osc.connections[0], ctx.gains[0]);
-  assert.equal(ctx.gains[0].connections[0], ctx.destination);
-
-  // Play noise ('print').
-  const printResult = player.play('print');
-  assert.equal(printResult, true);
-  // Reuses existing AudioContext instance.
-  assert.equal(getConstructorCallCount(), 1);
-
-  assert.ok(ctx.buffers.length >= 1, 'expected noise buffer to be created');
-  assert.ok(ctx.bufferSources.length >= 1, 'expected buffer source to be created');
-  assert.ok(ctx.filters.length >= 1, 'expected bandpass filter to be created');
-
-  const source = ctx.bufferSources[0];
-  assert.equal(source.startedAt, 1.5);
-  assert.equal(source.connections[0], ctx.filters[0]);
-  assert.equal(ctx.filters[0].connections[0], ctx.gains[1]);
-
-  // Play multi-step ('cashbox').
-  const cashboxResult = player.play('cashbox');
-  assert.equal(cashboxResult, true);
-  assert.equal(getConstructorCallCount(), 1);
-});
-
-test('unknown name returns false and does not construct AudioContext', () => {
+test('unknown name returns false without constructing AudioContext or fetching', async () => {
   const { FakeAudioContext, getConstructorCallCount } = createFakeAudioContextClass();
+  const { fetchFn, getTotalCalls } = createFakeFetch();
   const player = createSoundPlayer({
     AudioContextCtor: FakeAudioContext,
+    fetchFn,
   });
 
   assert.equal(player.play('nonexistent'), false);
+  assert.equal(player.play('cashbox'), false);
   assert.equal(player.play(''), false);
   assert.equal(player.play(null), false);
   assert.equal(player.play(undefined), false);
+  await flushAsync();
+
   assert.equal(getConstructorCallCount(), 0);
+  assert.equal(getTotalCalls(), 0);
 });
 
-test('play handles missing AudioContextCtor or failing constructor gracefully', () => {
+test('missing ctor or throwing ctor makes play and unlock return false', () => {
+  const { fetchFn } = createFakeFetch();
+
   const playerWithoutCtor = createSoundPlayer({
     AudioContextCtor: null,
+    fetchFn,
   });
   assert.equal(playerWithoutCtor.play('beep'), false);
+  assert.equal(playerWithoutCtor.unlock(), false);
 
   class ThrowingAudioContext {
     constructor() {
@@ -397,8 +293,221 @@ test('play handles missing AudioContextCtor or failing constructor gracefully', 
 
   const playerWithFailingCtor = createSoundPlayer({
     AudioContextCtor: ThrowingAudioContext,
+    fetchFn,
   });
   assert.equal(playerWithFailingCtor.play('beep'), false);
+  assert.equal(playerWithFailingCtor.unlock(), false);
+});
+
+test('play("beep") fetches, decodes, connects source -> gain -> destination, and starts at now() + delay', async () => {
+  const { FakeAudioContext, getConstructorCallCount, getInstances } = createFakeAudioContextClass();
+  const { fetchFn, getCount } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+    now: () => 2.0,
+  });
+
+  assert.equal(getConstructorCallCount(), 0);
+
+  const ok = player.play('beep', { delay: 0.35 });
+  assert.equal(ok, true);
+  assert.equal(getConstructorCallCount(), 1);
+
+  await flushAsync();
+
+  assert.equal(getCount('sounds/beep.mp3'), 1);
+  const [ctx] = getInstances();
+  assert.equal(ctx.resumed, true);
+  assert.equal(ctx.bufferSources.length, 1);
+  assert.equal(ctx.gains.length, 1);
+
+  const source = ctx.bufferSources[0];
+  const gainNode = ctx.gains[0];
+  assert.equal(gainNode.gain.value, SOUND_FILES.beep.gain);
+  assert.equal(source.connections[0], gainNode);
+  assert.equal(gainNode.connections[0], ctx.destination);
+  assert.ok(Math.abs(source.startedAt - 2.35) < 1e-9);
+});
+
+test('context in "interrupted" state gets resume() called on play', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+  });
+
+  player.unlock();
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  ctx.state = 'interrupted';
+  ctx.resumed = false;
+
+  assert.equal(player.play('beep'), true);
+  assert.equal(ctx.resumed, true);
+  assert.equal(ctx.state, 'running');
+});
+
+test('each file is fetched only once across repeated plays; unlock() preloads all four files without playing', async () => {
+  const { FakeAudioContext, getConstructorCallCount, getInstances } = createFakeAudioContextClass();
+  const { fetchFn, getCount, getTotalCalls } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+    now: () => 1.0,
+  });
+
+  assert.equal(player.unlock(), true);
+  assert.equal(getConstructorCallCount(), 1);
+  await flushAsync();
+
+  assert.equal(getTotalCalls(), 4);
+  for (const spec of Object.values(SOUND_FILES)) {
+    assert.equal(getCount(spec.url), 1);
+  }
+
+  const [ctx] = getInstances();
+  // unlock() only loads buffers and does not start any buffer sources.
+  assert.equal(ctx.bufferSources.length, 0);
+
+  // Subsequent plays reuse cached buffers without fetching again.
+  assert.equal(player.play('print'), true);
+  assert.equal(player.play('print', { delay: 0.1 }), true);
+  assert.equal(player.play('tear', { delay: 0.5 }), true);
+  await flushAsync();
+
+  assert.equal(getTotalCalls(), 4);
+  assert.equal(ctx.bufferSources.length, 3);
+});
+
+test('failing fetch does not throw and a later play retries the fetch', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn, getCount, setShouldFail } = createFakeFetch({ shouldFail: true });
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+    now: () => 0.5,
+  });
+
+  assert.equal(player.play('bell'), true);
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  assert.equal(getCount('sounds/bell.mp3'), 1);
+  assert.equal(ctx.bufferSources.length, 0);
+
+  // Recover network and play again: should re-fetch and play.
+  setShouldFail(false);
+  assert.equal(player.play('bell'), true);
+  await flushAsync();
+
+  assert.equal(getCount('sounds/bell.mp3'), 2);
+  assert.equal(ctx.bufferSources.length, 1);
+  assert.equal(ctx.gains[0].gain.value, SOUND_FILES.bell.gain);
+});
+
+test('slow uncached load (> 400 ms) is skipped silently', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  let currentMs = 1000;
+  const { fetchFn } = createFakeFetch({
+    onFetch: () => {
+      // Simulate a 450 ms network + decode delay on the initial load.
+      currentMs += 450;
+    },
+  });
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+    now: () => 1.0,
+    clock: () => currentMs,
+  });
+
+  assert.equal(player.play('tear'), true);
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  assert.equal(ctx.bufferSources.length, 0, 'slow initial load must not play late');
+
+  // Once cached, a subsequent play plays immediately even though clock advanced.
+  currentMs += 1000;
+  assert.equal(player.play('tear'), true);
+  await flushAsync();
+
+  assert.equal(ctx.bufferSources.length, 1, 'cached buffer should play on next call');
+});
+
+test('stop() stops started sources of that name, forgets them, and ignores ended or unknown sources', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+  });
+
+  // Unknown or never-played names are a no-op.
+  assert.doesNotThrow(() => {
+    player.stop('print');
+    player.stop('nonexistent');
+    player.stop(null);
+  });
+
+  player.play('print');
+  player.play('print');
+  player.play('beep');
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  assert.equal(ctx.bufferSources.length, 3);
+  const [print1, print2, beep1] = ctx.bufferSources;
+
+  // Simulate print1 finishing naturally before stop('print') is called.
+  print1.onended();
+
+  player.stop('print');
+  assert.equal(print1.stopped, false, 'already ended source should not be stopped again');
+  assert.equal(print2.stopped, true);
+  assert.equal(print2.stopCalls, 1);
+  assert.equal(beep1.stopped, false, 'other sound names must not be affected');
+
+  // Calling stop('print') a second time is a no-op because sources were forgotten.
+  player.stop('print');
+  assert.equal(print2.stopCalls, 1);
+});
+
+test('setEnabled(false) stops all playing sources', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+  });
+
+  player.play('print');
+  player.play('bell');
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  assert.equal(ctx.bufferSources.length, 2);
+
+  player.setEnabled(false);
+  assert.equal(ctx.bufferSources[0].stopped, true);
+  assert.equal(ctx.bufferSources[1].stopped, true);
 });
 
 test('haptic with fake nav', () => {
