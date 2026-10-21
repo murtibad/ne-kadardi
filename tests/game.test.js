@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, getShortUnit, scoreTier } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, scoreTier } from '../js/game.js';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -154,4 +154,22 @@ test('pickByCategory works with a single product', () => {
   const qs = [{ id: 'x@1', productId: 'x' }, { id: 'x@2', productId: 'x' }];
   assert.notEqual(pickByCategory(qs, ['x'], 'x@1').id, 'x@1');
   assert.equal(pickByCategory([], [], null), null);
+});
+
+test('buildContextModel mirrors buildContextLine numbers and nulls', () => {
+  const cheap = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-03', price: 1, current: { price: 10 } };
+  assert.deepEqual(buildContextModel(cheap, wages), { kind: 'count', unit: 'adet', then: 500, now: 2000 });
+
+  const dear = { productId: 'x', name: 'iPhone', unit: '1 adet', date: '2010-05', price: 1300, current: { price: 60000 } };
+  assert.deepEqual(buildContextModel(dear, wages), { kind: 'wages', then: 1300 / 500, now: 3 });
+
+  // One wage no longer buys a single item: now is 0, not negative or null.
+  const pricey = { ...cheap, price: 400, current: { price: 30000 } };
+  assert.equal(buildContextModel(pricey, wages).now, 0);
+  assert.match(buildContextLine(pricey, wages), /bugün 1 asgari ücret yetmiyor/);
+
+  // No current price: now is null; no wage in the same half-year or the wage itself: null.
+  assert.deepEqual(buildContextModel({ ...cheap, current: null }, wages), { kind: 'count', unit: 'adet', then: 500, now: null });
+  assert.equal(buildContextModel({ ...cheap, date: '2010-08' }, wages), null);
+  assert.equal(buildContextModel({ ...cheap, productId: 'asgari-ucret' }, wages), null);
 });
