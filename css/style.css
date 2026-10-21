@@ -1028,7 +1028,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .pc-label-mark { fill: var(--accent-on-paper); }
 .pc-tick { font: 400 10px var(--font-mono); fill: var(--muted-on-paper); }
 @media (prefers-reduced-motion: no-preference) {
-  .pc-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: pc-draw 0.9s ease-out 0.3s forwards; }
+  .pc-draw .pc-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: pc-draw 0.9s ease-out 0.3s forwards; }
 }
 @keyframes pc-draw { to { stroke-dashoffset: 0; } }
 
