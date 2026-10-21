@@ -78,6 +78,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | dolar | 1 USD | TCMB EVDS exchange rates | very high |
 | euro | 1 EUR | TCMB exchange-rate XML files (same dates as dolar) | very high |
 | ceyrek-altin | 1 coin, 1.75 g, 22 carat | derived from gram-altin x 1.604 g pure gold | high (market value) |
+| gram-gumus | 1 g, pure silver | World Bank silver price x TCMB rate (same method as gram-altin) | high (market value) |
+| otogaz | 1 L autogas, İstanbul (Avrupa) | EPDK LPG bayi satış fiyatı bulletin (from 2016) | high (date it) |
 | asgari-ucret | net, AGİ dahil (2022 öncesi) | ÇSGB, Resmî Gazete (bekâr işçi ele geçen tutar) | very high |
 | big-mac | 1 sandwich | The Economist big-mac-data (GitHub) | high |
 | benzin / motorin | 1 L, İstanbul | EPDK bulletins, distributor price archives | high (date it) |
@@ -164,6 +166,20 @@ policy allows when the method and both sources are documented:
   scoring this difference does not matter for the game, and the product unit says "piyasa değeri".
 - The XLSX link in the entries is versioned by the World Bank and may change; the download page above
   stays valid.
+
+## Gram gümüş (derived value)
+
+Same formula and exchange-rate months as gram altın, with the Pink Sheet "Silver" column ($/troy oz,
+one decimal) instead of gold. The derivation script reproduced every existing gram-altin value to
+the cent before the silver series was built. Market value, not a jeweller's price.
+
+## Otogaz (EPDK LPG bulletin)
+
+EPDK publishes an LPG counterpart of the fuel bulletin:
+`https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml`.
+It is queried the same way (PrimeFaces ajax POST with the date). The "Otogaz" row is the average of
+the prices distributors declared for İstanbul Avrupa Yakası dealers, taxes included, in TL/litre.
+The portal starts on 01.01.2016.
 
 ## Tax estimate (derived value)
 
