@@ -920,3 +920,32 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   white-space: nowrap;
 }
 .timeline-scroll .picker-chip img { flex: none; }
+
+/* Live magnitude readout under the guess input and invalid-guess shake feedback */
+.guess-readout {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--muted-on-paper);
+  min-height: 1.3em;
+  margin: 6px 0 0;
+}
+
+.guess-field.invalid {
+  border-color: var(--accent-on-paper);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .guess-field.invalid {
+    animation: guess-shake 0.3s ease;
+  }
+}
+
+@keyframes guess-shake {
+  0%, 100% { transform: none; }
+  16% { transform: translateX(-6px); }
+  33% { transform: translateX(6px); }
+  50% { transform: translateX(-6px); }
+  66% { transform: translateX(6px); }
+  83% { transform: translateX(-6px); }
+}

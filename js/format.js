@@ -57,3 +57,41 @@ export function formatPeriod(date) {
   const [year, month] = date.split('-');
   return month ? `${MONTHS_TR[Number(month) - 1]} ${year}` : year;
 }
+
+/**
+ * Convert a positive number into a readable Turkish magnitude string so players
+ * do not lose count of zeros when typing large prices, e.g. 1250000 -> "1 milyon 250 bin ₺".
+ */
+export function readAmount(value) {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) return '';
+  const rounded = Math.round(value * 100) / 100;
+  if (rounded <= 0) return '';
+
+  const intPart = Math.floor(rounded);
+  const decCents = Math.round((rounded - intPart) * 100);
+  const decStr = decCents > 0 ? String(decCents).padStart(2, '0').replace(/0+$/, '') : '';
+
+  const groups = [
+    { scale: 1e9, label: 'milyar' },
+    { scale: 1e6, label: 'milyon' },
+    { scale: 1e3, label: 'bin' },
+  ];
+
+  let rem = intPart;
+  const parts = [];
+  for (const { scale, label } of groups) {
+    const count = Math.floor(rem / scale);
+    if (count > 0) {
+      parts.push(`${count} ${label}`);
+      rem %= scale;
+    }
+  }
+
+  if (rem > 0 || parts.length === 0) {
+    parts.push(decStr ? `${rem},${decStr}` : `${rem}`);
+  } else if (decStr) {
+    parts[parts.length - 1] += `,${decStr}`;
+  }
+
+  return `${parts.join(' ')} ₺`;
+}
