@@ -7508,6 +7508,176 @@
           }
         }
       ]
+    },
+    {
+      "id": "basvurma-harci",
+      "name": "Asliye mahkemesinde dava başvurma harcı",
+      "unit": "1 dava açılışı, asliye mahkemesi (maktu başvurma harcı)",
+      "region": null,
+      "source_hint": "492 sayılı Harçlar Kanunu (1) sayılı tarife I-2 (asliye mahkemelerinde başvurma harcı); tutar her yıl sonu Resmî Gazete'de yayımlanan Harçlar Kanunu Genel Tebliği ile belirlenir. Resmî kaynaklı.",
+      "image": {
+        "src": "img/basvurma-harci.svg",
+        "alt": "Mahkeme binası çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 732,
+        "status": "verified",
+        "note": "Resmî Gazete 31 Aralık 2025 sayı 33124 (5. Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 98, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+        "source": {
+          "title": "Resmî Gazete 31 Aralık 2025, Harçlar Kanunu Genel Tebliği (Seri No: 98), ek tarife",
+          "url": "https://www.resmigazete.gov.tr/eskiler/2025/12/20251231M5-28.pdf",
+          "accessed": "2026-10-21",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 17.15,
+          "status": "verified",
+          "note": "Resmî Gazete 31 Aralık 2009 sayı 27449, Harçlar Kanunu Genel Tebliği Seri No 60, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 31 Aralık 2009, Harçlar Kanunu Genel Tebliği (Seri No: 60), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2009/12/20091231-11-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 21.15,
+          "status": "verified",
+          "note": "Resmî Gazete 31 Aralık 2011 sayı 28159, Harçlar Kanunu Genel Tebliği Seri No 65, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 31 Aralık 2011, Harçlar Kanunu Genel Tebliği (Seri No: 65), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2011/12/20111231-17-1.xls",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 27.7,
+          "status": "verified",
+          "note": "Resmî Gazete 30 Aralık 2014 sayı 29221, Harçlar Kanunu Genel Tebliği Seri No 73, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 30 Aralık 2014, Harçlar Kanunu Genel Tebliği (Seri No: 73), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2014/12/20141230-14-1.xls",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 31.4,
+          "status": "verified",
+          "note": "Resmî Gazete 27 Aralık 2016 sayı 29931, Harçlar Kanunu Genel Tebliği Seri No 78, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 27 Aralık 2016, Harçlar Kanunu Genel Tebliği (Seri No: 78), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2016/12/20161227-13-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 35.9,
+          "status": "verified",
+          "note": "Resmî Gazete 29 Aralık 2017 sayı 30285 (Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 80, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 29 Aralık 2017, Harçlar Kanunu Genel Tebliği (Seri No: 80), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2017/12/20171229M1-5-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 44.4,
+          "status": "verified",
+          "note": "Resmî Gazete 31 Aralık 2018 sayı 30642 (3. Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 82, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 31 Aralık 2018, Harçlar Kanunu Genel Tebliği (Seri No: 82), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2018/12/20181231M3-10-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 54.4,
+          "status": "verified",
+          "note": "Resmî Gazete 27 Aralık 2019 sayı 30991 (2. Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 84, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 27 Aralık 2019, Harçlar Kanunu Genel Tebliği (Seri No: 84), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2019/12/20191227M2-9-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 59.3,
+          "status": "verified",
+          "note": "Resmî Gazete 29 Aralık 2020 sayı 31349 (Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 86, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 29 Aralık 2020, Harçlar Kanunu Genel Tebliği (Seri No: 86), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2020/12/20201229M1-10-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 80.7,
+          "status": "verified",
+          "note": "Resmî Gazete 21 Aralık 2021 sayı 31696, Harçlar Kanunu Genel Tebliği Seri No 89, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 21 Aralık 2021, Harçlar Kanunu Genel Tebliği (Seri No: 89), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2021/12/20211221-14-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 179.9,
+          "status": "verified",
+          "note": "Resmî Gazete 30 Aralık 2022 sayı 32059 (2. Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 91, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 30 Aralık 2022, Harçlar Kanunu Genel Tebliği (Seri No: 91), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2022/12/20221230M2-10-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 427.6,
+          "status": "verified",
+          "note": "Resmî Gazete 30 Aralık 2023 sayı 32415 (2. Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 94, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 30 Aralık 2023, Harçlar Kanunu Genel Tebliği (Seri No: 94), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2023/12/20231230M2-10.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 615.4,
+          "status": "verified",
+          "note": "Resmî Gazete 30 Aralık 2024 sayı 32768 (2. Mükerrer), Harçlar Kanunu Genel Tebliği Seri No 96, (1) sayılı tarife I-2 asliye satırı (\"2.Asliye mahkemelerinde, idare mahkemelerinde\"). Ek tabloda okundu.",
+          "source": {
+            "title": "Resmî Gazete 30 Aralık 2024, Harçlar Kanunu Genel Tebliği (Seri No: 96), ek tarife",
+            "url": "https://www.resmigazete.gov.tr/eskiler/2024/12/20241230M2-10-1.pdf",
+            "accessed": "2026-10-21",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }

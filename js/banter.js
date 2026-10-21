@@ -139,6 +139,12 @@ export const PRODUCT_POOLS = {
     'Uçak kalkmadan cüzdan kalkış yapıyor.',
     'Gidiş pulu ucuz değil, dönüşü bedava sanma.',
   ],
+  'basvurma-harci': [
+    'Dava açmadan önce mahkeme kapısında ilk duran şey bu harç.',
+    'Haklı olsan da önce pul yapıştırırsın, sonra dilekçe okunur.',
+    'Dosya kapağı ucuz, kapıdan girmek ise kasayı yoklar.',
+    'Adalet arayanın ilk durağı gişe, ikincisi bekleme salonu.',
+  ],
   'schengen-vize': [
     'Ret yesen de parayı peşin alan o meşhur konsolosluk.',
     'Evrak toplama stresi fiyattan daha çok yoruyor.',
