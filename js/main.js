@@ -560,6 +560,14 @@ async function downloadImage() {
   setBtnStatus('download-btn', 'İndiriliyor…');
 }
 
+const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
+function loadArchiveNewestFirst() {
+  try { return localStorage.getItem(ARCHIVE_ORDER_KEY) === 'newest'; } catch { return false; }
+}
+function saveArchiveNewestFirst(newest) {
+  try { localStorage.setItem(ARCHIVE_ORDER_KEY, newest ? 'newest' : 'oldest'); } catch { /* storage unavailable */ }
+}
+
 function renderTimelineScreen(focusProductId = null) {
   show('timeline-screen');
   if (state.timelines.length === 0) return;
@@ -596,6 +604,19 @@ function renderTimelineScreen(focusProductId = null) {
   if (search.value !== state.timelineQuery) search.value = state.timelineQuery;
   $('product-count').textContent = `${visible.length} ürün`;
   $('product-empty').hidden = visible.length > 0;
+  $('product-search-clear').hidden = state.timelineQuery === '';
+  // Offer the same query across all categories when only the selected category has no hit.
+  const allBtn = $('search-all-cats');
+  const elsewhere = visible.length === 0 && state.timelineCategory !== 'all' && state.timelineQuery.trim() !== ''
+    ? filterByQuery(state.timelines, state.timelineQuery).length : 0;
+  allBtn.hidden = elsewhere === 0;
+  allBtn.textContent = `Tüm kategorilerde ara (${elsewhere} ürün)`;
+  allBtn.onclick = () => {
+    state.timelineCategory = 'all';
+    state.selectedTimelineProduct = null;
+    renderTimelineScreen();
+    $('product-search').focus({ preventScroll: true });
+  };
 
   const picker = $('timeline-picker');
   picker.innerHTML = '';
@@ -664,7 +685,13 @@ function renderTimelineScreen(focusProductId = null) {
     </thead>
     <tbody role="rowgroup">`;
 
-  for (const r of product.rows) {
+  const newestFirst = state.archiveNewestFirst;
+  const orderBtn = $('archive-order');
+  orderBtn.textContent = newestFirst ? 'Yeniden eskiye ↑' : 'Eskiden yeniye ↓';
+  orderBtn.setAttribute('aria-pressed', newestFirst ? 'true' : 'false');
+  orderBtn.title = newestFirst ? 'Sıra: yeniden eskiye. Değiştirmek için dokun.' : 'Sıra: eskiden yeniye. Değiştirmek için dokun.';
+  const orderedRows = newestFirst ? [...product.rows].reverse() : product.rows;
+  for (const r of orderedRows) {
     const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
     const priceStr = formatPrice(r.price);
     const ratioStr = r.ratioToCurrent ? formatIncrease(r.ratioToCurrent) : '';
@@ -878,6 +905,23 @@ async function init() {
   $('product-search').addEventListener('input', (e) => {
     state.timelineQuery = e.target.value;
     renderTimelineScreen();
+  });
+  const clearSearch = () => {
+    state.timelineQuery = '';
+    state.selectedTimelineProduct = null;
+    renderTimelineScreen();
+    $('product-search').focus({ preventScroll: true });
+  };
+  $('product-search-clear').addEventListener('click', clearSearch);
+  $('product-search').addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && e.target.value !== '') { e.preventDefault(); clearSearch(); }
+  });
+  state.archiveNewestFirst = loadArchiveNewestFirst();
+  $('archive-order').addEventListener('click', () => {
+    state.archiveNewestFirst = !state.archiveNewestFirst;
+    saveArchiveNewestFirst(state.archiveNewestFirst);
+    renderTimelineScreen();
+    $('archive-order').focus({ preventScroll: true });
   });
   $('guess-form').addEventListener('submit', onGuess);
   const guessField = document.querySelector('#question-screen .guess-field');
