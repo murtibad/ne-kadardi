@@ -106,6 +106,7 @@ Done (details in `CHANGELOG.md`):
       big-number readout, receipt stamp, SVG header icons, focus and disclosure polish.
 - [x] v0.71 First-visit how-to steps, category on the question card, till-style price roll, score explainer,
       off-chart guess marker, contrast fix from an axe pass.
+- [x] v0.72 Explorable chart points, share image preview dialog, offline badge, icon pop.
 
 Open:
 

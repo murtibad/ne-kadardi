@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.72.0] - 2026-10-21
+### Added
+- Chart points can be tapped, hovered or stepped through with the arrow keys (the chart is focusable) to read each period's price; keyboard changes are announced.
+- "İndir" opens a preview of the share image first, with "İndir", "Paylaş" (where files can be shared) and "Kapat"; focus returns to the button.
+- An "Çevrimdışı" badge in the header while offline; the product icon pops onto each new question card (not with reduced motion).
+
 ## [0.71.0] - 2026-10-21
 ### Added
 - First-time players see three numbered "how to play" steps on the home screen (hidden after the first answer).
