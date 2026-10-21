@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.70.0] - 2026-10-21
+### Added
+- Price history chart (log scale, `js/price-chart.js`) on the result receipt, with the question's date marked, and at the top of each archive receipt.
+- Home: "Biliyor muydun?" card with a random sourced then-vs-now pair (`js/fact.js`, "Başka ↻" for another), a "45 ürün · 532 kaynaklı fiyat" line and a "Başla →" cue on the main card.
+- Archive: product search that ignores Turkish accents (`js/search.js`), single-row scrolling category and product chips with a count, product icon and a "2010 → 2026: 20 kat" line on the receipt, and "← Sonuca dön" when opened from a result.
+- Guess field: live reading of big numbers ("1 milyon 250 bin ₺") and a shake on an invalid guess.
+- Result receipt: the score title is stamped on the receipt after it is torn off; the score meter fills at that moment too.
+### Changed
+- Header sound and theme toggles use SVG icons instead of emoji.
+- Consistent keyboard focus rings, visible open/close markers on "Verginin dökümü" and "Ayrıntı", bigger real price, archive rows without the per-row bars when the chart is shown, footer link spacing.
+
 ## [0.69.0] - 2026-10-21
 ### Added
 - "Asliye mahkemesinde dava başvurma harcı" (1 dava açılışı, maktu): 13 values, each read in the attached tariff of the official Harçlar Kanunu Genel Tebliği ((1) sayılı tarife, I-2 "Asliye mahkemelerinde, idare mahkemelerinde" row), source kind `official` (opened 2026-10-21).

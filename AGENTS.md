@@ -102,6 +102,8 @@ Done (details in `CHANGELOG.md`):
       yılbaşı çeyrek bilet.
 - [x] v0.67 Receipt printer animation, recorded CC0 sounds, question counter, clearer "Sonraki soru";
       removed the quick-add buttons, aged paper, receipt number and POS lines; darker light-mode page.
+- [x] v0.70 UI refresh: price history chart (result + archive), archive search and compact chips, home fact card,
+      big-number readout, receipt stamp, SVG header icons, focus and disclosure polish.
 
 Open:
 
