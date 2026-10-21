@@ -172,7 +172,10 @@ function nextQuestion(productId = null) {
   $('q-anchor').hidden = !anchor;
   
   const img = $('q-image');
+  img.classList.remove('pop');
   if (q.image) {
+    void img.offsetWidth; // replay the pop for back-to-back questions
+    img.classList.add('pop');
     img.src = q.image.src;
     img.alt = q.image.alt;
     img.hidden = false;
@@ -428,6 +431,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refStart ? pad.left : chart.width - pad.right}" y="${chart.ref.y < 20 ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="${refStart ? 'start' : 'end'}" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}${chart.ref.off === 'above' ? ' ↑' : chart.ref.off === 'below' ? ' ↓' : ''}</text>`
     : '';
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
+  const hits = chart.points.map((p, i) => `<circle class="pc-hit" cx="${p.x}" cy="${p.y}" r="12" data-i="${i}"/>`).join('');
   const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
   // Drop a year label that would touch its neighbour; the last year always stays.
   const shownTicks = chart.xTicks.filter((tk, i, a) => i === a.length - 1
@@ -441,12 +445,85 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   const key = `${productId}|${highlightDate}`;
   const fresh = fig.dataset.key !== key;
   fig.dataset.key = key;
-  fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
+  fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" tabindex="0" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
-      ${refLine}${dots}${priceLabels}${ticks}
+      ${refLine}${dots}${priceLabels}${ticks}${hits}
+      <g class="pc-tip" hidden><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
+    <span class="visually-hidden" aria-live="polite"></span>
     <figcaption>Fiyatın yolculuğu · logaritmik ölçek</figcaption>`;
+  bindPriceChart(fig, chart);
+}
+
+// Wires pointer and keyboard inspection onto the rendered chart SVG without global state.
+function bindPriceChart(fig, chart) {
+  const { points, width } = chart;
+  const svgEl = fig.querySelector('svg');
+  const tip = svgEl.querySelector('.pc-tip');
+  const rect = tip.querySelector('rect');
+  const periodTspan = tip.querySelector('.pc-tip-period');
+  const priceTspan = tip.querySelector('.pc-tip-price');
+  const dotEls = svgEl.querySelectorAll('.pc-dot, .pc-now, .pc-mark');
+  const live = fig.querySelector('[aria-live]');
+  const markedIdx = points.findIndex((p) => p.highlight);
+  let activeIdx = markedIdx >= 0 ? markedIdx : points.length - 1;
+
+  const showTip = (idx, viaKeyboard = false) => {
+    const p = points[idx];
+    if (!p) return;
+    dotEls.forEach((d, i) => d.classList.toggle('pc-active', i === idx));
+    activeIdx = idx;
+    const period = formatPeriod(p.date) + (p.isCurrent ? ' · güncel' : '');
+    const price = formatPrice(p.price);
+    const boxW = Math.ceil(Math.max(period.length, price.length) * 6.2 + 12);
+    const boxX = Math.max(0, Math.min(width - boxW, Math.round(p.x - boxW / 2)));
+    const boxY = p.y < 40 ? p.y + 8 : p.y - 38;
+    rect.setAttribute('x', boxX);
+    rect.setAttribute('y', boxY);
+    rect.setAttribute('width', boxW);
+    periodTspan.setAttribute('x', boxX + 6);
+    periodTspan.setAttribute('y', boxY + 12);
+    periodTspan.textContent = period;
+    priceTspan.setAttribute('x', boxX + 6);
+    priceTspan.setAttribute('y', boxY + 24);
+    priceTspan.textContent = price;
+    tip.hidden = false;
+    tip.removeAttribute('hidden');
+    if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
+  };
+
+  const hideTip = () => {
+    dotEls.forEach((d) => d.classList.remove('pc-active'));
+    tip.hidden = true;
+    tip.setAttribute('hidden', '');
+  };
+
+  const handle = (e) => {
+    if (e.type === 'pointerenter' || e.type === 'pointerdown') {
+      const hit = e.target instanceof Element ? e.target.closest('.pc-hit') : null;
+      if (hit) showTip(Number(hit.dataset.i));
+    } else if (e.type === 'pointerleave') {
+      if (e.pointerType !== 'touch' && e.target === svgEl) hideTip();
+    } else if (e.type === 'blur') {
+      hideTip();
+    } else if (e.type === 'keydown') {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        const step = e.key === 'ArrowRight' ? 1 : -1;
+        const next = Math.max(0, Math.min(points.length - 1, activeIdx + step));
+        showTip(next, true);
+      } else if (e.key === 'Escape') {
+        hideTip();
+      }
+    }
+  };
+
+  svgEl.addEventListener('pointerenter', handle, true);
+  svgEl.addEventListener('pointerdown', handle);
+  svgEl.addEventListener('pointerleave', handle);
+  svgEl.addEventListener('blur', handle);
+  svgEl.addEventListener('keydown', handle);
 }
 
 function renderTaxDetails(q) {
@@ -586,27 +663,87 @@ async function share() {
   }
 }
 
+let previewUrl = null;
+let previewFile = null;
+
+function closePreview() {
+  const dlg = $('share-preview');
+  if (dlg.open) dlg.close();
+}
+
+function cleanupPreview() {
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+  previewUrl = null;
+  previewFile = null;
+  $('share-preview-img').removeAttribute('src');
+}
+
+function saveFromPreview() {
+  if (!previewUrl) return;
+  const a = document.createElement('a');
+  a.href = previewUrl;
+  a.download = previewFile.name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  announce('İndiriliyor…');
+}
+
+async function sharePreviewFile() {
+  if (!previewFile) return;
+  const text = buildShareText(state.question, state.result, location.href);
+  try {
+    if (navigator.canShare({ files: [previewFile] })) await navigator.share({ files: [previewFile], text });
+  } catch (err) {
+    if (err.name !== 'AbortError') console.warn(err);
+  }
+}
+
+// "İndir" first shows what will be saved, so players know the image before it leaves the page.
 async function downloadImage() {
   const btn = $('download-btn');
   if (btn.hasAttribute('aria-busy')) return;
-  
+
   const blob = await prepareShareImage('download-btn');
   if (!blob) {
     setBtnStatus('download-btn', 'Görsel hazırlanamadı.');
     return;
   }
-  
-  const q = state.question;
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = buildShareFileName(q);
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  
-  setBtnStatus('download-btn', 'İndiriliyor…');
+  resetShareBtn();
+  // The player may have left the result while the image was drawn.
+  if ($('result-screen').hidden) return;
+
+  cleanupPreview();
+  previewFile = new File([blob], buildShareFileName(state.question), { type: 'image/png' });
+  previewUrl = URL.createObjectURL(blob);
+  const dlg = $('share-preview');
+  if (typeof dlg.showModal !== 'function') {
+    // Very old browsers have no <dialog>: download straight away as before.
+    saveFromPreview();
+    cleanupPreview();
+    return;
+  }
+  $('share-preview-img').src = previewUrl;
+  $('share-preview-share').hidden = !canShareImageFiles();
+  dlg.showModal();
+  $('share-preview-save').focus();
+}
+
+function initSharePreview() {
+  const dlg = $('share-preview');
+  $('share-preview-save').addEventListener('click', saveFromPreview);
+  $('share-preview-share').addEventListener('click', sharePreviewFile);
+  $('share-preview-close').addEventListener('click', closePreview);
+  // Backdrop clicks target the dialog itself, but so do clicks on its padding: check the box.
+  dlg.addEventListener('click', (e) => {
+    if (e.target !== dlg) return;
+    const r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closePreview();
+  });
+  dlg.addEventListener('close', () => {
+    cleanupPreview();
+    if (!$('result-screen').hidden) $('download-btn').focus();
+  });
 }
 
 const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
@@ -784,8 +921,20 @@ function renderHome() {
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} kaynaklı fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   if (!$('fact-body').hasChildNodes()) renderFact();
+  renderHomeSpark();
   $('how-to').hidden = state.played > 0; // only first-time players need the three steps
   show('home-screen');
+}
+
+// A tiny gold-price line on the archive card hints at what is inside; decorative only.
+function renderHomeSpark() {
+  const el = $('m-spark');
+  if (el.hasChildNodes()) return;
+  const t = state.timelines.find((x) => x.id === 'gram-altin') ?? state.timelines[0];
+  const chart = t && buildPriceChart(t.rows, { width: 44, height: 18, pad: { top: 3, right: 3, bottom: 3, left: 3 } });
+  if (!chart) return;
+  const last = chart.points[chart.points.length - 1];
+  el.innerHTML = `<svg viewBox="0 0 44 18" width="44" height="18" focusable="false"><path d="${chart.line}"/><circle cx="${last.x}" cy="${last.y}" r="2.5"/></svg>`;
 }
 
 let lastFactId = null;
@@ -813,6 +962,7 @@ function renderFact() {
 }
 
 function onHashChange() {
+  closePreview(); // Back while the preview is open must not leave the modal over another screen
   const hash = location.hash;
   if (state.all.length === 0) return;
   if (hash !== '#tahmin' || !state.question || state.lastGameScreen !== 'result-screen') {
@@ -927,6 +1077,11 @@ async function init() {
   $('theme-toggle').addEventListener('click', toggleTheme);
   $('fact-next').addEventListener('click', () => { sound.play('beep'); renderFact(); });
   setupInstallButton();
+  // The game keeps working offline (service worker); the badge just says why links may not open.
+  const syncOnline = () => { $('offline-badge').hidden = navigator.onLine !== false; };
+  window.addEventListener('online', syncOnline);
+  window.addEventListener('offline', syncOnline);
+  syncOnline();
   // The tax breakdown prints like a receipt strip.
   $('r-tax-details').addEventListener('toggle', (e) => { if (e.target.open) sound.play('print'); });
   renderSoundToggle();
@@ -999,12 +1154,14 @@ async function init() {
     if ($('result-screen').hidden) return;
     // A quick second Enter right after submitting would skip the receipt before it prints.
     if (document.querySelector('#result-screen .receipt-wrapper').classList.contains('printing')) return;
-    if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable]')) return;
+    // The chart is focusable for arrow-key inspection; Enter there must not drop the receipt.
+    if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable], .price-chart')) return;
     e.preventDefault();
     $('next-btn').click();
   });
   $('share-btn').addEventListener('click', share);
   $('download-btn').addEventListener('click', downloadImage);
+  initSharePreview();
   
   onHashChange();
 }
