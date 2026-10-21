@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod } from './format.js';
+import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount } from './format.js';
 import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -147,6 +147,8 @@ function nextQuestion() {
   $('q-name').textContent = questionTitle(q);
   $('q-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('guess-input').value = '';
+  $('guess-readout').textContent = '';
+  document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
   state.hinted = false;
   const hint = buildHint(q, state.all);
   $('hint-btn').hidden = !hint;
@@ -172,6 +174,13 @@ function onGuess(event) {
   const guess = parseGuess($('guess-input').value);
   if (guess === null) {
     $('guess-error').textContent = 'Geçerli bir fiyat yaz (ör. 4,5).';
+    const field = document.querySelector('#question-screen .guess-field');
+    if (field) {
+      field.classList.remove('invalid');
+      void field.offsetWidth; // restart the shake if the user submits twice in a row
+      field.classList.add('invalid');
+    }
+    $('guess-input').focus();
     return;
   }
   const q = state.question;
@@ -684,6 +693,15 @@ async function init() {
   shareOriginalLabel = $('share-btn').textContent;
   downloadOriginalLabel = $('download-btn').innerHTML;
   $('guess-form').addEventListener('submit', onGuess);
+  const guessField = document.querySelector('#question-screen .guess-field');
+  guessField?.addEventListener('animationend', () => {
+    guessField.classList.remove('invalid');
+  });
+  $('guess-input').addEventListener('input', (e) => {
+    guessField?.classList.remove('invalid'); // also clears when reduced motion skips animationend
+    const v = parseGuess(e.target.value);
+    $('guess-readout').textContent = v !== null && v >= 1000 ? readAmount(v) : '';
+  });
   // Skipping is free: no score, no round counted, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
     nextQuestion(); // its barcode beep doubles as the skip sound
