@@ -7410,6 +7410,104 @@
           }
         }
       ]
+    },
+    {
+      "id": "yurtdisi-cikis-harci",
+      "name": "Yurt dışı çıkış harcı",
+      "unit": "1 çıkış, Türkiye Cumhuriyeti pasaportuyla",
+      "region": null,
+      "source_hint": "5597 sayılı Yurt Dışına Çıkış Harcı Hakkında Kanun; tutar Cumhurbaşkanı kararı, kanun değişikliği veya yeniden değerleme tebliğiyle değişir (Resmî Gazete). Haber kaynaklı.",
+      "image": {
+        "src": "img/yurtdisi-cikis.svg",
+        "alt": "Kalkan uçak ve harç pulu çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 1250,
+        "status": "verified",
+        "note": "Türkiye Cumhuriyeti vatandaşlarından çıkış başına alınan Yurt Dışına Çıkış Harcı (5597 sayılı Kanun). 31 Aralık 2025 tebliği, 1 Ocak 2026'dan itibaren. Not: bazı haberler (ör. medyascope.tv) 710 TL'den 1.250 TL'ye yazıyor; oysa Eylül 2025'ten beri 1.000 TL'ydi, 1.250 tutarı ayrı sitelerde aynı. Doğrulama: 24saatgazetesi.com https://www.24saatgazetesi.com/resmi-gazetede-yayimlandi-yurt-disina-cikis-harcina-zam · egitim.net.tr https://egitim.net.tr/guncel/yurt-disi-cikis-harcina-buyuk-zam-710-tlden-1-250-tlye-yukseldi-14180h.",
+        "source": {
+          "title": "medyascope.tv",
+          "url": "https://medyascope.tv/2025/12/31/resmi-gazetede-yayimlandi-yurtdisi-cikis-harci-1-250-tl-oldu/",
+          "accessed": "2026-10-21",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-01",
+          "price": 15,
+          "status": "verified",
+          "note": "Türkiye Cumhuriyeti vatandaşlarından çıkış başına alınan Yurt Dışına Çıkış Harcı (5597 sayılı Kanun). 2007'den beri 15 TL; 2019 Ağustos'ta 50 TL oldu. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/yurt-disi-cikis-harci-ne-kadar-oldu-yuzde-233-zam-geldi-p66667.",
+          "source": {
+            "title": "posta.com.tr",
+            "url": "https://www.posta.com.tr/yurt-disi-cikis-harci-ne-kadar-oldu-yurtdisi-cikis-harci-zammi-ne-zaman-gecerli-olacak-2184589",
+            "accessed": "2026-10-21",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-08",
+          "price": 50,
+          "status": "verified",
+          "note": "Türkiye Cumhuriyeti vatandaşlarından çıkış başına alınan Yurt Dışına Çıkış Harcı (5597 sayılı Kanun). 7186 sayılı Kanun 19 Temmuz 2019'da yayımlandı; muhasebenews.com (GİB kaynaklı) 1/8/2019'dan itibaren yürürlük yazıyor, posta.com.tr yayımdan sonra yürürlük diyor; ay olarak Ağustos alındı. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/yurt-disi-cikis-harci-ne-kadar-oldu-yuzde-233-zam-geldi-p66667 · posta.com.tr https://www.posta.com.tr/yurt-disi-cikis-harci-ne-kadar-oldu-yurtdisi-cikis-harci-zammi-ne-zaman-gecerli-olacak-2184589.",
+          "source": {
+            "title": "muhasebenews.com",
+            "url": "https://www.muhasebenews.com/?p=64384",
+            "accessed": "2026-10-21",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-03",
+          "price": 150,
+          "status": "verified",
+          "note": "Türkiye Cumhuriyeti vatandaşlarından çıkış başına alınan Yurt Dışına Çıkış Harcı (5597 sayılı Kanun). 18 Mart 2022 Resmî Gazete'deki Cumhurbaşkanı Kararı. Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/ekonomi/yurt-disi-cikis-harcina-buyuk-zam-679081h · medyascope.tv https://medyascope.tv/2022/03/18/yurtdisi-cikis-harci-50-liradan-150-liraya-yukseltildi/ · diken.com.tr https://www.diken.com.tr/?p=1095155.",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/yurt-disina-cikis-harci-artti-2301937",
+            "accessed": "2026-10-21",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-08",
+          "price": 500,
+          "status": "verified",
+          "note": "Türkiye Cumhuriyeti vatandaşlarından çıkış başına alınan Yurt Dışına Çıkış Harcı (5597 sayılı Kanun). Kanun 2 Ağustos 2024'te yayımlandı, 12 Ağustos 2024'ten itibaren geçerli. Doğrulama: halktv.com.tr https://halktv.com.tr/ekonomi/10-gun-sonra-gecerli-olacak-500-lira-oldu-857860h · capital.com.tr https://www.capital.com.tr/haberler/tum-haberler/yurt-disi-cikis-harc-pulu-icin-zamli-tarife-basladi.",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/yurt-disi-cikis-harc-pulu-500-lira-oldu-2358214",
+            "accessed": "2026-10-21",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 710,
+          "status": "verified",
+          "note": "Türkiye Cumhuriyeti vatandaşlarından çıkış başına alınan Yurt Dışına Çıkış Harcı (5597 sayılı Kanun). Yeniden değerleme oranıyla 1 Ocak 2025'ten itibaren (28 Aralık 2024 tebliği). Doğrulama: medyascope.tv https://medyascope.tv/2024/12/28/yurtdisi-cikis-harci-710-tl-oldu/ · capital.com.tr https://www.capital.com.tr/haberler/tum-haberler/yurt-disina-cikis-harci-710-tl-oldu.",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/yurt-disina-cikis-harci-710-tl-oldu-3738091",
+            "accessed": "2026-10-21",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 1000,
+          "status": "verified",
+          "note": "Türkiye Cumhuriyeti vatandaşlarından çıkış başına alınan Yurt Dışına Çıkış Harcı (5597 sayılı Kanun). 9 Eylül 2025 Resmî Gazete'deki Cumhurbaşkanı Kararı; 18 Eylül'e kadar yapılan çıkışlarda fark istenmedi. Doğrulama: medyascope.tv https://medyascope.tv/2025/09/09/yurtdisi-cikis-harci-kac-tl-oldu-yuzde-kac-zam-geldi/ · bloomberght.com https://www.bloomberght.com/yurt-disina-cikis-harci-bin-tl-oldu-3756694.",
+          "source": {
+            "title": "ekonomigazetesi.com",
+            "url": "https://www.ekonomigazetesi.com/ekonomi/yurt-disi-cikis-harci-1-yilda-yuzde-566-artirildi-58705",
+            "accessed": "2026-10-21",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }

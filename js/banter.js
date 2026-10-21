@@ -133,6 +133,12 @@ export const PRODUCT_POOLS = {
     'Sayfaları boş kalsa da damgası çok kıymetli.',
     'Yurt dışı hayali pasaport kuyruğunda başlar.',
   ],
+  'yurtdisi-cikis-harci': [
+    'Tatil henüz başlamadı ama kasa çoktan açıldı.',
+    'Havalimanında ilk bilet değil, ilk harç gelir.',
+    'Uçak kalkmadan cüzdan kalkış yapıyor.',
+    'Gidiş pulu ucuz değil, dönüşü bedava sanma.',
+  ],
   'schengen-vize': [
     'Ret yesen de parayı peşin alan o meşhur konsolosluk.',
     'Evrak toplama stresi fiyattan daha çok yoruyor.',
