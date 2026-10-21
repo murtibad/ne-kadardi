@@ -254,6 +254,29 @@ export async function renderShareImage(model) {
     ctx.lineCap = 'round';
     ctx.stroke();
 
+    // Dashed horizontal reference line for the player's guess
+    if (chart.ref) {
+      ctx.beginPath();
+      ctx.setLineDash([12, 10]);
+      ctx.moveTo(24, chart.ref.y);
+      ctx.lineTo(chart.width - 24, chart.ref.y);
+      ctx.strokeStyle = COLORS.muted;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.font = 'bold 24px "Space Mono", ui-monospace, monospace';
+      ctx.textAlign = 'left';
+      ctx.strokeStyle = COLORS.paper;
+      ctx.lineWidth = 8;
+      ctx.lineJoin = 'round';
+      ctx.fillStyle = COLORS.muted;
+      const refText = `Tahminin ${formatPrice(chart.ref.price)}`;
+      const refLabelY = chart.ref.y < 40 ? chart.ref.y + 30 : chart.ref.y - 10;
+      ctx.strokeText(refText, 24, refLabelY);
+      ctx.fillText(refText, 24, refLabelY);
+    }
+
     // Data points: question date in red, current price in solid ink, others hollow
     for (const p of chart.points) {
       ctx.beginPath();
@@ -296,10 +319,20 @@ export async function renderShareImage(model) {
       ctx.fillText(text, p.x, labelY);
     }
 
-    // Year axis ticks
+    // Year axis ticks (drop any tick closer than 90px to the previous kept one; the last tick always stays)
+    const keptTicks = [];
+    for (let i = 0; i < chart.xTicks.length; i++) {
+      const tk = chart.xTicks[i];
+      const prev = keptTicks[keptTicks.length - 1];
+      if (!prev || tk.x - prev.x >= 90) {
+        keptTicks.push(tk);
+      } else if (i === chart.xTicks.length - 1) {
+        keptTicks[keptTicks.length - 1] = tk;
+      }
+    }
     ctx.font = '26px "Space Mono", ui-monospace, monospace';
     ctx.fillStyle = COLORS.muted;
-    chart.xTicks.forEach((tk, i, a) => {
+    keptTicks.forEach((tk, i, a) => {
       ctx.textAlign = i === 0 ? 'left' : i === a.length - 1 ? 'right' : 'center';
       ctx.fillText(tk.label, tk.x, chart.height - 8);
     });
@@ -342,7 +375,7 @@ export async function renderShareImage(model) {
   ctx.fillStyle = 'rgba(0,0,0,0.12)';
   ctx.fillRect(cx - meterW / 2, y + 20, meterW, 18);
   ctx.fillStyle = COLORS.fill[model.tier] || COLORS.accent;
-  ctx.fillRect(cx - meterW / 2, y + 24, meterW * pct, 18);
+  ctx.fillRect(cx - meterW / 2, y + 20, meterW * pct, 18);
   
   // Tilted red rubber stamp with the player's title
   if (model.stamp) {

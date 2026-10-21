@@ -341,7 +341,7 @@ function renderResult(q, r) {
     $('r-increase').textContent = formatIncrease(q.current.price / q.price);
   }
 
-  renderPriceChart('r-chart', q.productId, q.date);
+  renderPriceChart('r-chart', q.productId, q.date, r.guess);
 
   const contextText = buildContextLine(q, state.all);
   $('r-context').textContent = contextText || '';
@@ -369,10 +369,11 @@ function renderResult(q, r) {
 
 // Draws the product's sourced price history as a small log-scale line. The highlighted
 // point is the question's date; the figcaption carries the same story for screen readers.
-function renderPriceChart(figId, productId, highlightDate = null) {
+function renderPriceChart(figId, productId, highlightDate = null, guess = null) {
   const fig = $(figId);
   const t = state.timelines.find((x) => x.id === productId);
-  const chart = t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, pad: { top: 22, right: 14, bottom: 22, left: 14 } });
+  const pad = { top: 22, right: 14, bottom: 22, left: 14 };
+  const chart = t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, refPrice: guess, pad });
   fig.hidden = !chart;
   if (!chart) { fig.innerHTML = ''; return; }
   const first = chart.points[0];
@@ -383,6 +384,9 @@ function renderPriceChart(figId, productId, highlightDate = null) {
     && (!marked || p === marked || Math.abs(p.x - marked.x) > 52));
   // Keep end labels inside the box: anchor them towards the middle.
   const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
+  const refLine = chart.ref
+    ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${pad.left}" y="${chart.ref.y < 20 ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="start" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}</text>`
+    : '';
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
   // Drop a year label that would touch its neighbour; the last year always stays.
@@ -391,7 +395,8 @@ function renderPriceChart(figId, productId, highlightDate = null) {
     : a[a.length - 1].x - tk.x >= 34 && (i === 0 || tk.x - a[i - 1].x >= 34));
   const ticks = shownTicks.map((tk, i, a) => `<text x="${tk.x}" y="${chart.height - 6}" text-anchor="${i === 0 ? 'start' : i === a.length - 1 ? 'end' : 'middle'}" class="pc-tick">${tk.label}</text>`).join('');
   const story = `${formatPeriod(first.date)}: ${formatPrice(first.price)}, ${formatPeriod(last.date)}: ${formatPrice(last.price)}`
-    + (marked && marked !== first && marked !== last ? `; işaretli ${formatPeriod(marked.date)}: ${formatPrice(marked.price)}` : '');
+    + (marked && marked !== first && marked !== last ? `; işaretli ${formatPeriod(marked.date)}: ${formatPrice(marked.price)}` : '')
+    + (chart.ref ? `; tahminin: ${formatPrice(guess)}` : '');
   // Redraw the line only for a new product, not on every archive re-render (search keystrokes, chips).
   const key = `${productId}|${highlightDate}`;
   const fresh = fig.dataset.key !== key;
@@ -399,7 +404,7 @@ function renderPriceChart(figId, productId, highlightDate = null) {
   fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
-      ${dots}${priceLabels}${ticks}
+      ${refLine}${dots}${priceLabels}${ticks}
     </svg>
     <figcaption>Fiyatın yolculuğu · logaritmik ölçek</figcaption>`;
 }
@@ -481,7 +486,7 @@ async function prepareShareImage(btnId) {
   const model = buildShareImageModel(q, r, { contextLine: contextText });
   const t = state.timelines.find((t) => t.id === q.productId);
   model.chart = t
-    ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
+    ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, refPrice: r.guess, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
     : null;
   // After a few rounds the stamp rates the whole session instead of this one guess.
   if (state.played >= 3) model.stamp = stampTitle(state.total / state.played) ?? model.stamp;
