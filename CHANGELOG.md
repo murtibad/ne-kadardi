@@ -12,8 +12,12 @@ All notable changes to this project will be documented in this file.
 - Share image: the price history chart with the question's date marked; long unit lines shrink to fit.
 - Result screen: the last 8 scores as a coloured tally next to the session line ("3 soru · ort. 42 · en iyi 80").
 - First load: a pulsing receipt placeholder instead of a bare "Yükleniyor…".
+- Receipt logo mark in the header; "Ana ekrana ekle" install button where the browser offers installation.
+- Screens fade in; Enter on the result screen goes to the next question.
 ### Changed
 - Header sound and theme toggles use SVG icons instead of emoji.
+- Archive rows are compact receipt line items (period and price, then change, source and details), about half the height; the current price row is tinted.
+- Price changes below 2x read as a percentage ("%4 arttı") instead of "1 kat arttı".
 - Consistent keyboard focus rings, visible open/close markers on "Verginin dökümü" and "Ayrıntı", bigger real price, archive rows without the per-row bars when the chart is shown, footer link spacing.
 
 ## [0.69.0] - 2026-10-21
