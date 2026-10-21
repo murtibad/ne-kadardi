@@ -1,3 +1,5 @@
+import { formatPrice } from './format.js';
+
 const W = 1080;
 
 export const COLORS = {
@@ -87,7 +89,7 @@ export async function renderShareImage(model) {
   await loadFonts();
   const icon = await loadIcon(model.iconSrc);
 
-  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0);
+  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0) + (model.chart ? 320 : 0);
 
   const canvas = document.createElement('canvas');
   canvas.width = W;
@@ -207,6 +209,104 @@ export async function renderShareImage(model) {
   if (model.hasCurrent) {
     drawRow(model.currentLabel, model.current);
     drawRow('Artış', model.increase);
+    y += 20;
+  }
+
+  if (model.chart) {
+    const chart = model.chart;
+    const originX = (W - chart.width) / 2;
+    const originY = y;
+    const bottomY = chart.height - 44;
+
+    ctx.save();
+    ctx.translate(originX, originY);
+
+    // Fill area under the price line down to the plot bottom
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(chart.points[0].x, chart.points[0].y);
+    for (let i = 1; i < chart.points.length; i++) {
+      ctx.lineTo(chart.points[i].x, chart.points[i].y);
+    }
+    ctx.lineTo(chart.points[chart.points.length - 1].x, bottomY);
+    ctx.lineTo(chart.points[0].x, bottomY);
+    ctx.closePath();
+    ctx.fillStyle = COLORS.accent;
+    ctx.globalAlpha = 0.1;
+    ctx.fill();
+    ctx.restore();
+
+    // Logarithmic price curve
+    ctx.beginPath();
+    ctx.moveTo(chart.points[0].x, chart.points[0].y);
+    for (let i = 1; i < chart.points.length; i++) {
+      ctx.lineTo(chart.points[i].x, chart.points[i].y);
+    }
+    ctx.strokeStyle = COLORS.ink;
+    ctx.lineWidth = 5;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Data points: question date in red, current price in solid ink, others hollow
+    for (const p of chart.points) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.highlight ? 13 : 7, 0, Math.PI * 2);
+      if (p.highlight) {
+        ctx.fillStyle = COLORS.accent;
+        ctx.strokeStyle = COLORS.paper;
+        ctx.lineWidth = 5;
+        ctx.fill();
+        ctx.stroke();
+      } else if (p.isCurrent) {
+        ctx.fillStyle = COLORS.ink;
+        ctx.fill();
+      } else {
+        ctx.fillStyle = COLORS.paper;
+        ctx.strokeStyle = COLORS.ink;
+        ctx.lineWidth = 3;
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
+
+    // Price labels above first, last and highlighted points (skip ends that collide with the highlight)
+    const first = chart.points[0];
+    const last = chart.points[chart.points.length - 1];
+    const marked = chart.points.find((p) => p.highlight);
+    const labels = [first, last, marked].filter(
+      (p, i, a) => p && a.indexOf(p) === i && (!marked || p === marked || Math.abs(p.x - marked.x) > 130)
+    );
+    ctx.font = 'bold 28px "Space Mono", ui-monospace, monospace';
+    ctx.strokeStyle = COLORS.paper;
+    ctx.lineWidth = 8;
+    ctx.lineJoin = 'round';
+    for (const p of labels) {
+      ctx.textAlign = p.x < chart.width * 0.25 ? 'left' : p.x > chart.width * 0.75 ? 'right' : 'center';
+      ctx.fillStyle = p.highlight ? COLORS.accent : COLORS.ink;
+      const labelY = Math.max(28, p.y - 22);
+      const text = formatPrice(p.price);
+      ctx.strokeText(text, p.x, labelY);
+      ctx.fillText(text, p.x, labelY);
+    }
+
+    // Year axis ticks
+    ctx.font = '26px "Space Mono", ui-monospace, monospace';
+    ctx.fillStyle = COLORS.muted;
+    chart.xTicks.forEach((tk, i, a) => {
+      ctx.textAlign = i === 0 ? 'left' : i === a.length - 1 ? 'right' : 'center';
+      ctx.fillText(tk.label, tk.x, chart.height - 8);
+    });
+
+    ctx.restore();
+
+    y += chart.height + 40;
+    ctx.save();
+    ctx.font = '26px "Space Mono", ui-monospace, monospace';
+    ctx.fillStyle = COLORS.muted;
+    ctx.textAlign = 'center';
+    ctx.fillText('Fiyatın yolculuğu · logaritmik ölçek', cx, y);
+    ctx.restore();
     y += 20;
   }
 
