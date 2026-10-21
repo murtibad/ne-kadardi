@@ -250,6 +250,10 @@ function printReceipt(extraSound) {
   cancelPrint = () => {
     wrap.removeEventListener('click', finish);
     wrap.classList.remove('printing');
+    // Leaving mid-print (e.g. to the archive) must not strand an empty meter and a hidden stamp
+    // on the receipt the player can come back to.
+    if (state.result) $('r-meter').style.setProperty('--score', `${state.result.score}%`);
+    $('r-stamp').classList.add('stamped');
   };
   if (reduced) {
     wrap.classList.add('printing');
@@ -341,7 +345,9 @@ function renderPriceChart(figId, productId, highlightDate = null) {
   const first = chart.points[0];
   const last = chart.points[chart.points.length - 1];
   const marked = chart.points.find((p) => p.highlight);
-  const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i);
+  // The question's own price wins when an end label would collide with it.
+  const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i
+    && (!marked || p === marked || Math.abs(p.x - marked.x) > 52));
   // Keep end labels inside the box: anchor them towards the middle.
   const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
