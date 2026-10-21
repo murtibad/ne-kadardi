@@ -172,7 +172,10 @@ function nextQuestion(productId = null) {
   $('q-anchor').hidden = !anchor;
   
   const img = $('q-image');
+  img.classList.remove('pop');
   if (q.image) {
+    void img.offsetWidth; // replay the pop for back-to-back questions
+    img.classList.add('pop');
     img.src = q.image.src;
     img.alt = q.image.alt;
     img.hidden = false;
@@ -927,6 +930,11 @@ async function init() {
   $('theme-toggle').addEventListener('click', toggleTheme);
   $('fact-next').addEventListener('click', () => { sound.play('beep'); renderFact(); });
   setupInstallButton();
+  // The game keeps working offline (service worker); the badge just says why links may not open.
+  const syncOnline = () => { $('offline-badge').hidden = navigator.onLine !== false; };
+  window.addEventListener('online', syncOnline);
+  window.addEventListener('offline', syncOnline);
+  syncOnline();
   // The tax breakdown prints like a receipt strip.
   $('r-tax-details').addEventListener('toggle', (e) => { if (e.target.open) sound.play('print'); });
   renderSoundToggle();
