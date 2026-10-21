@@ -813,3 +813,73 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   0%, 100% { transform: none; }
   40% { transform: translateY(-2px); }
 }
+
+/* Archive picker: search, count and single-row chip scrollers (added on top of the rules above). */
+.timeline-back-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent-on-bg);
+  text-decoration: none;
+  border-radius: 6px;
+}
+.timeline-back-btn:hover { text-decoration: underline; }
+.timeline-header p { margin-bottom: 4px; }
+.timeline-header { margin-bottom: 12px; }
+
+.timeline-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.timeline-search-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 2px solid var(--line);
+  border-radius: 24px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 1rem var(--font-ui);
+}
+.timeline-search-input::placeholder { color: var(--muted-on-paper); opacity: 1; }
+.timeline-count {
+  flex: none;
+  color: var(--muted);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.timeline-empty {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.timeline-scroll {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  padding: 4px 28px 4px 4px; /* room for the fade and the focus ring */
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+}
+.timeline-scroll::-webkit-scrollbar { display: none; }
+.timeline-scroll .picker-chip {
+  flex: none;
+  max-width: 220px;
+  scroll-snap-align: start;
+}
+.timeline-scroll .picker-chip span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.timeline-scroll .picker-chip img { flex: none; }

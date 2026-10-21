@@ -5,6 +5,7 @@ import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { linkifyNote } from './linkify.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
+import { filterByQuery } from './search.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
@@ -28,7 +29,7 @@ const state = {
   recentProducts: [], 
   hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, 
-  lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all' 
+  lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '' 
 };
 let shareOriginalLabel = '';
 let shareTimeoutId = null;
@@ -294,7 +295,7 @@ function renderResult(q, r) {
   $('r-tax').hidden = !taxText;
   renderTaxDetails(q);
 
-  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; };
+  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; };
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
   const kindLabel = sourceKindLabel(q.source.kind);
@@ -485,12 +486,20 @@ function renderTimelineScreen(focusProductId = null) {
     catPicker.appendChild(btn);
   }
 
-  const visible = filterTimelines(state.timelines, state.timelineCategory);
-  if (!visible.some(t => t.id === state.selectedTimelineProduct)) {
-    state.selectedTimelineProduct = visible[0].id;
+  const inCategory = filterTimelines(state.timelines, state.timelineCategory);
+  const visible = filterByQuery(inCategory, state.timelineQuery);
+  // With no search hit the chips are empty but the table keeps showing a product of the category.
+  const pool = visible.length > 0 ? visible : inCategory;
+  if (!pool.some(t => t.id === state.selectedTimelineProduct)) {
+    state.selectedTimelineProduct = pool[0].id;
   }
-  const product = visible.find(t => t.id === state.selectedTimelineProduct);
-  
+  const product = pool.find(t => t.id === state.selectedTimelineProduct);
+
+  const search = $('product-search');
+  if (search.value !== state.timelineQuery) search.value = state.timelineQuery;
+  $('product-count').textContent = `${visible.length} ürün`;
+  $('product-empty').hidden = visible.length > 0;
+
   const picker = $('timeline-picker');
   picker.innerHTML = '';
   for (const t of visible) {
@@ -499,7 +508,8 @@ function renderTimelineScreen(focusProductId = null) {
     btn.className = 'picker-chip';
     btn.setAttribute('aria-pressed', t.id === product.id ? 'true' : 'false');
     btn.dataset.id = t.id;
-    
+    btn.title = t.name; // the label is truncated with an ellipsis
+
     if (t.image) {
       const img = document.createElement('img');
       img.src = t.image.src;
@@ -517,7 +527,11 @@ function renderTimelineScreen(focusProductId = null) {
     picker.appendChild(btn);
   }
   
-  if (focusProductId) picker.querySelector(`[data-id="${focusProductId}"]`)?.focus();
+  const chosen = picker.querySelector('[aria-pressed="true"]');
+  if (focusProductId) chosen?.focus({ preventScroll: true });
+  // Keep the chosen chip in view inside its own row without moving the page.
+  chosen?.scrollIntoView({ inline: 'nearest', block: 'nearest',
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 
   $('t-title').textContent = product.name;
   $('t-unit').textContent = product.region ? `${product.unit} · ${product.region}` : product.unit;
@@ -683,6 +697,11 @@ async function init() {
   }
   shareOriginalLabel = $('share-btn').textContent;
   downloadOriginalLabel = $('download-btn').innerHTML;
+  // The search input lives outside the rebuilt chip rows, so it keeps focus while typing.
+  $('product-search').addEventListener('input', (e) => {
+    state.timelineQuery = e.target.value;
+    renderTimelineScreen();
+  });
   $('guess-form').addEventListener('submit', onGuess);
   // Skipping is free: no score, no round counted, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {

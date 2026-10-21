@@ -26,6 +26,7 @@ const PRECACHE = [
   'js/main.js',
   'js/share-image.js',
   'js/share-model.js',
+  'js/search.js',
   'js/sound.js',
   'js/source-kind.js',
   'js/tax.js',
