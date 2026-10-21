@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.69.0] - 2026-10-21
+### Added
+- "Asliye mahkemesinde dava başvurma harcı" (1 dava açılışı, maktu): 13 values, each read in the attached tariff of the official Harçlar Kanunu Genel Tebliği ((1) sayılı tarife, I-2 "Asliye mahkemelerinde, idare mahkemelerinde" row), source kind `official` (opened 2026-10-21).
+  - 2010-01 17,15 TL: RG 31.12.2009 no 27449, Seri No 60.
+  - 2012-01 21,15 TL: RG 31.12.2011 no 28159, Seri No 65.
+  - 2015-01 27,70 TL: RG 30.12.2014 no 29221, Seri No 73.
+  - 2017-01 31,40 TL: RG 27.12.2016 no 29931, Seri No 78.
+  - 2018-01 35,90 TL: RG 29.12.2017 no 30285 (Mükerrer), Seri No 80.
+  - 2019-01 44,40 TL: RG 31.12.2018 no 30642 (3. Mükerrer), Seri No 82.
+  - 2020-01 54,40 TL: RG 27.12.2019 no 30991 (2. Mükerrer), Seri No 84.
+  - 2021-01 59,30 TL: RG 29.12.2020 no 31349 (Mükerrer), Seri No 86.
+  - 2022-01 80,70 TL: RG 21.12.2021 no 31696, Seri No 89.
+  - 2023-01 179,90 TL: RG 30.12.2022 no 32059 (2. Mükerrer), Seri No 91.
+  - 2024-01 427,60 TL: RG 30.12.2023 no 32415 (2. Mükerrer), Seri No 94.
+  - 2025-01 615,40 TL: RG 30.12.2024 no 32768 (2. Mükerrer), Seri No 96.
+  - current 2026-01 732,00 TL: RG 31.12.2025 no 33124 (5. Mükerrer), Seri No 98.
+  - Not included: 2011, 2013, 2014, 2016 (tebliğ not opened) and July 2023 (mid-year change not confirmed in an official document).
+- Original icon `img/basvurma-harci.svg`, cashier lines, entry in the "Harç, ceza ve bedeller" category.
+
 ## [0.68.0] - 2026-10-21
 ### Added
 - "Yurt dışı çıkış harcı" (1 exit with a Turkish passport): 7 values, each confirmed on two outlets from different domains (all news, opened 2026-10-21).
