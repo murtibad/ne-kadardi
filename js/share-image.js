@@ -215,7 +215,7 @@ export async function renderShareImage(model) {
   
   if (model.hasCurrent) {
     drawRow(model.currentLabel, model.current);
-    drawRow('Artış', model.increase);
+    drawRow('Değişim', model.increase);
     y += 20;
   }
 
