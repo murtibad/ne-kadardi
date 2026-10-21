@@ -71,8 +71,15 @@ function createFakeAudioContextClass() {
           this.connections.push(target);
         },
         startedAt: null,
+        stopped: false,
+        stopCalls: 0,
+        onended: null,
         start(time = 0) {
           this.startedAt = time;
+        },
+        stop() {
+          this.stopped = true;
+          this.stopCalls++;
         },
       };
       this.bufferSources.push(node);
@@ -439,6 +446,68 @@ test('slow uncached load (> 400 ms) is skipped silently', async () => {
   await flushAsync();
 
   assert.equal(ctx.bufferSources.length, 1, 'cached buffer should play on next call');
+});
+
+test('stop() stops started sources of that name, forgets them, and ignores ended or unknown sources', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+  });
+
+  // Unknown or never-played names are a no-op.
+  assert.doesNotThrow(() => {
+    player.stop('print');
+    player.stop('nonexistent');
+    player.stop(null);
+  });
+
+  player.play('print');
+  player.play('print');
+  player.play('beep');
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  assert.equal(ctx.bufferSources.length, 3);
+  const [print1, print2, beep1] = ctx.bufferSources;
+
+  // Simulate print1 finishing naturally before stop('print') is called.
+  print1.onended();
+
+  player.stop('print');
+  assert.equal(print1.stopped, false, 'already ended source should not be stopped again');
+  assert.equal(print2.stopped, true);
+  assert.equal(print2.stopCalls, 1);
+  assert.equal(beep1.stopped, false, 'other sound names must not be affected');
+
+  // Calling stop('print') a second time is a no-op because sources were forgotten.
+  player.stop('print');
+  assert.equal(print2.stopCalls, 1);
+});
+
+test('setEnabled(false) stops all playing sources', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+  });
+
+  player.play('print');
+  player.play('bell');
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  assert.equal(ctx.bufferSources.length, 2);
+
+  player.setEnabled(false);
+  assert.equal(ctx.bufferSources[0].stopped, true);
+  assert.equal(ctx.bufferSources[1].stopped, true);
 });
 
 test('haptic with fake nav', () => {

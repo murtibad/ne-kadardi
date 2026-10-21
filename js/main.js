@@ -193,8 +193,9 @@ const PRINT_MS = 1100;
 let printTimer = null;
 let cancelPrint = null;
 
-// Cancel any in-flight print timer and click listener when leaving the result screen early.
+// Cancel any in-flight print timer, click listener, and printer audio when leaving the result screen early.
 function stopPrinting() {
+  sound.stop('print');
   clearTimeout(printTimer);
   printTimer = null;
   if (cancelPrint) {
@@ -209,8 +210,8 @@ function printReceipt(extraSound) {
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
   $('next-btn').classList.remove('nudge');
-  sound.play('print');
   const finish = () => {
+    sound.stop('print');
     clearTimeout(printTimer);
     printTimer = null;
     wrap.removeEventListener('click', finish);
@@ -221,7 +222,13 @@ function printReceipt(extraSound) {
     sound.play('tear');
     if (extraSound) sound.play(extraSound);
     // New players tend to miss that there are more questions, so the button waves once.
-    if (state.round <= 3) $('next-btn').classList.add('nudge');
+    if (state.played <= 3) $('next-btn').classList.add('nudge');
+    // The product icon bounces after a close guess and shakes after a way-off one once the receipt is out.
+    if (state.result) {
+      const tier = scoreTier(state.result.score);
+      if (tier === 'great') $('r-image').classList.add('bounce');
+      else if (tier === 'bad') $('r-image').classList.add('shake');
+    }
     if (state.result?.factor === 1) burstConfetti();
   };
   cancelPrint = () => {
@@ -233,6 +240,7 @@ function printReceipt(extraSound) {
     finish();
     return;
   }
+  sound.play('print');
   void wrap.offsetWidth; // restart the CSS animation for back-to-back results
   wrap.classList.add('printing');
   wrap.addEventListener('click', finish);
@@ -240,17 +248,13 @@ function printReceipt(extraSound) {
 }
 
 
-// The product icon bounces after a close guess and shakes after a way-off one.
-function renderResultImage(q, r) {
+function renderResultImage(q) {
   const img = $('r-image');
   img.classList.remove('bounce', 'shake');
   if (!q.image) { img.hidden = true; return; }
   img.src = q.image.src;
   img.hidden = false;
   img.onerror = () => { img.hidden = true; };
-  const tier = scoreTier(r.score);
-  if (tier === 'great') requestAnimationFrame(() => img.classList.add('bounce'));
-  else if (tier === 'bad') requestAnimationFrame(() => img.classList.add('shake'));
 }
 
 function renderResult(q, r) {
@@ -657,8 +661,8 @@ async function init() {
   $('r-tax-details').addEventListener('toggle', (e) => { if (e.target.open) sound.play('print'); });
   renderSoundToggle();
   $('sound-toggle').addEventListener('click', toggleSound);
-  // Browsers only allow audio after a user gesture; decoding the samples then keeps the first print in sync.
-  for (const type of ['pointerdown', 'keydown']) {
+  // iOS Safari only treats touchend/click (not pointerdown) as user activation for Web Audio; decoding then keeps the first print in sync.
+  for (const type of ['touchend', 'click', 'keydown']) {
     window.addEventListener(type, () => sound.unlock(), { once: true, capture: true });
   }
   try {

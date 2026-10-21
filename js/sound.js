@@ -89,13 +89,33 @@ export function createSoundPlayer(options = {}) {
   let ctx = null;
   const bufferPromises = new Map();
   const decodedBuffers = new Map();
+  const activeSources = new Map();
 
   function isEnabled() {
     return enabled;
   }
 
+  function stop(name) {
+    if (typeof name !== 'string') return;
+    const set = activeSources.get(name);
+    if (!set) return;
+    activeSources.delete(name);
+    for (const src of set) {
+      try {
+        src.stop();
+      } catch {
+        // Ignore already-stopped or invalid state errors.
+      }
+    }
+  }
+
   function setEnabled(val) {
     enabled = Boolean(val);
+    if (!enabled) {
+      for (const name of [...activeSources.keys()]) {
+        stop(name);
+      }
+    }
     try {
       if (storage && typeof storage.setItem === 'function') {
         storage.setItem(STORAGE_KEY, enabled ? '1' : '0');
@@ -206,6 +226,15 @@ export function createSoundPlayer(options = {}) {
         }
         source.connect(gainNode);
         gainNode.connect(audioCtx.destination);
+        let set = activeSources.get(name);
+        if (!set) {
+          set = new Set();
+          activeSources.set(name, set);
+        }
+        set.add(source);
+        source.onended = () => {
+          set.delete(source);
+        };
         source.start(baseTime + safeDelay);
       } catch {
         // Audio errors must never crash caller logic.
@@ -221,6 +250,7 @@ export function createSoundPlayer(options = {}) {
     toggle,
     unlock,
     play,
+    stop,
   };
 }
 

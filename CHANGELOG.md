@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file.
 - Returning to a result with the browser's back button puts focus on the receipt again.
 - The audio context also resumes from the iOS "interrupted" state; turning sound back on preloads the samples.
 - "Sonraki soru →" stays on one line at 360 px.
+- From a second review (Gemini): the icon bounce/shake waits until the receipt is out; an early tap or leaving the screen cuts the printer sound; reduced motion plays only the tear; links on the moving receipt cannot be hit by the tap that finishes it; audio unlocks on touchend/click (iOS) instead of pointerdown; the nudge is for players with three or fewer answered questions.
 
 ### Removed
 - The +10 / +100 / +1.000 buttons: players thought they were the only way to enter a price.

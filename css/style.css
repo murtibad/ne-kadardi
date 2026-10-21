@@ -790,6 +790,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.8);
 }
 #result-screen .receipt-wrapper { clip-path: inset(0 -40px -60px -40px); margin-top: -6px; }
+/* Prevent a tap that skips the print animation from accidentally opening a link or <details> on the moving receipt */
+#result-screen .receipt-wrapper.printing :is(a, summary, button) { pointer-events: none; }
 #result-screen .result-receipt::before { display: none; } /* the top edge is still in the printer */
 #result-screen .result-receipt { padding-top: 24px; }
 @media (prefers-reduced-motion: no-preference) {
