@@ -65,6 +65,7 @@ function saveSession() {
 }
 
 function show(screenId) {
+  syncFooter(screenId);
   for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
     const el = $(id);
     const wasHidden = el.hidden;
@@ -83,6 +84,11 @@ function show(screenId) {
       el.addEventListener('animationend', done);
     }
   }
+}
+
+// The footer's "Ana menü" link is pointless on the menu itself.
+function syncFooter(screenId) {
+  document.querySelector('.site-footer .footer-link').parentElement.hidden = screenId === 'home-screen';
 }
 
 function showGameScreen(screenId) {
@@ -133,7 +139,8 @@ function setBtnStatus(btnId, text) {
   }, 2000);
 }
 
-function nextQuestion() {
+// `productId` starts with a question about one product (the home fact card's "Bunu tahmin et").
+function nextQuestion(productId = null) {
   stopPrinting();
   state.archiveFromResult = false;
   resetShareBtn();
@@ -141,7 +148,8 @@ function nextQuestion() {
     $('r-tax-details').hidden = true;
     $('r-tax-details').open = false;
   }
-  const q = pickByCategory(state.all, state.recentProducts, state.question?.id);
+  const pool = productId ? state.all.filter((x) => x.productId === productId && x.id !== state.question?.id) : [];
+  const q = pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id);
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;
@@ -715,7 +723,13 @@ function renderFact() {
       <p class="fact-arrow" aria-hidden="true">→</p>
       <p class="fact-now"><span>${escapeHTML(f.nowLabel)}</span><strong>${escapeHTML(f.nowPrice)}</strong></p>
     </div>
-    <p class="fact-ratio"><strong>${escapeHTML(f.ratio)}</strong> arttı · <a href="#arsiv" data-product="${escapeHTML(f.productId)}">fiyat geçmişi</a></p>`;
+    <p class="fact-ratio"><strong>${escapeHTML(f.ratio)}</strong> arttı · <a href="#arsiv" data-product="${escapeHTML(f.productId)}">fiyat geçmişi</a></p>
+    <button type="button" class="fact-play">Bunu tahmin et →</button>`;
+  $('fact-body').querySelector('.fact-play').onclick = () => {
+    // pushState keeps Back working without firing hashchange, which would show the old question.
+    history.pushState(null, '', '#tahmin');
+    nextQuestion(f.productId);
+  };
   $('fact-body').querySelector('a').onclick = () => { state.selectedTimelineProduct = f.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; };
 }
 
