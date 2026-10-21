@@ -52,8 +52,59 @@ export function formatRatio(value) {
   return new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 }).format(value);
 }
 
+/**
+ * Describe a price change from an old price to today's: "12,4 kat arttı" for big jumps,
+ * but "%4 arttı" below 2x, where "1 kat arttı" would read as "it doubled".
+ */
+export function formatIncrease(ratio) {
+  if (!Number.isFinite(ratio) || ratio <= 0) return '';
+  if (ratio >= 2) return `${formatRatio(ratio)} kat arttı`;
+  const pct = Math.round((ratio - 1) * 100);
+  if (pct === 0) return 'değişmedi';
+  return pct > 0 ? `%${pct} arttı` : `%${-pct} düştü`;
+}
+
 /** Format a data date: "2012" -> "2012", "2012-01" or "2012-01-15" -> "Ocak 2012". */
 export function formatPeriod(date) {
   const [year, month] = date.split('-');
   return month ? `${MONTHS_TR[Number(month) - 1]} ${year}` : year;
+}
+
+/**
+ * Convert a positive number into a readable Turkish magnitude string so players
+ * do not lose count of zeros when typing large prices, e.g. 1250000 -> "1 milyon 250 bin ₺".
+ */
+export function readAmount(value) {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) return '';
+  const rounded = Math.round(value * 100) / 100;
+  if (rounded <= 0) return '';
+
+  const intPart = Math.floor(rounded);
+  const decCents = Math.round((rounded - intPart) * 100);
+  const decStr = decCents > 0 ? String(decCents).padStart(2, '0').replace(/0+$/, '') : '';
+
+  const groups = [
+    { scale: 1e9, label: 'milyar' },
+    { scale: 1e6, label: 'milyon' },
+    { scale: 1e3, label: 'bin' },
+  ];
+
+  let rem = intPart;
+  const parts = [];
+  for (const { scale, label } of groups) {
+    const count = Math.floor(rem / scale);
+    if (count > 0) {
+      parts.push(`${count} ${label}`);
+      rem %= scale;
+    }
+  }
+
+  if (rem > 0 || parts.length === 0) {
+    parts.push(decStr ? `${rem},${decStr}` : `${rem}`);
+  } else if (decStr) {
+    // "1 bin,5" would read as 1,5 thousand; spell the zero units out instead.
+    parts.push(`0,${decStr}`);
+  }
+
+  return `${parts.join(' ')} ₺`;
 }

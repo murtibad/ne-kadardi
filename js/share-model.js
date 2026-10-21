@@ -1,4 +1,4 @@
-import { formatPeriod, formatPrice, formatRatio } from './format.js';
+import { formatPeriod, formatPrice, formatRatio, formatIncrease } from './format.js';
 import { scoreTier } from './game.js';
 import { taxBreakdown } from './tax.js';
 import { stampTitle } from './banter.js';
@@ -56,7 +56,7 @@ export function buildShareImageModel(q, r, { contextLine = null, taxLine = null 
       ? (q.current.label ? q.current.label.replace(/^En yeni /, '') : `Güncel (${formatPeriod(q.current.date)})`)
       : null,
     current: hasCurrent ? formatPrice(q.current.price) : null,
-    increase: hasCurrent ? `${formatRatio(q.current.price / q.price)} kat arttı` : null,
+    increase: hasCurrent ? formatIncrease(q.current.price / q.price) : null,
     score: `${r.score}/100`,
     tier: scoreTier(r.score),
     stamp: stampTitle(r.score),

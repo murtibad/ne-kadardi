@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.70.0] - 2026-10-21
+### Added
+- Price history chart (log scale, `js/price-chart.js`) on the result receipt, with the question's date marked, and at the top of each archive receipt.
+- Home: "Biliyor muydun?" card with a random sourced then-vs-now pair (`js/fact.js`, "Başka ↻" for another), a "45 ürün · 532 kaynaklı fiyat" line and a "Başla →" cue on the main card.
+- Archive: product search that ignores Turkish accents (`js/search.js`), single-row scrolling category and product chips with a count, product icon and a "2010 → 2026: 20 kat" line on the receipt, and "← Sonuca dön" when opened from a result.
+- Guess field: live reading of big numbers ("1 milyon 250 bin ₺") and a shake on an invalid guess.
+- Result receipt: the score title is stamped on the receipt after it is torn off; the score meter fills at that moment too.
+- Share image: the price history chart with the question's date marked; long unit lines shrink to fit.
+- Result screen: the last 8 scores as a coloured tally next to the session line ("3 soru · ort. 42 · en iyi 80").
+- First load: a pulsing receipt placeholder instead of a bare "Yükleniyor…".
+- Receipt logo mark in the header; "Ana ekrana ekle" install button where the browser offers installation.
+- Screens fade in; Enter on the result screen goes to the next question.
+- Charts on the result receipt and the share image mark the player's guess with a dashed "Tahminin" line.
+- Home fact card: "Bunu tahmin et →" starts a round with that product; the footer hides its "Ana menü" link on the menu.
+- Archive: a clear (×) button and Escape for the search, "Tüm kategorilerde ara (N ürün)" when the chosen category has no match, and an oldest/newest-first order toggle that is remembered.
+### Fixed
+- The "Fiyatı okut" hint button stayed visible after use and on products without a hint: a class `display` rule beat the `hidden` attribute. `[hidden]` now always hides.
+- Big-number readout no longer shows "1 bin,5 ₺" for 1000,5.
+### Changed
+- Header sound and theme toggles use SVG icons instead of emoji.
+- Archive rows are compact receipt line items (period and price, then change, source and details), about half the height; the current price row is tinted.
+- Price changes below 2x read as a percentage ("%4 arttı") instead of "1 kat arttı".
+- Consistent keyboard focus rings, visible open/close markers on "Verginin dökümü" and "Ayrıntı", bigger real price, archive rows without the per-row bars when the chart is shown, footer link spacing.
+
 ## [0.69.0] - 2026-10-21
 ### Added
 - "Asliye mahkemesinde dava başvurma harcı" (1 dava açılışı, maktu): 13 values, each read in the attached tariff of the official Harçlar Kanunu Genel Tebliği ((1) sayılı tarife, I-2 "Asliye mahkemelerinde, idare mahkemelerinde" row), source kind `official` (opened 2026-10-21).

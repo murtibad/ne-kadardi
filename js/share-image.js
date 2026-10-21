@@ -1,3 +1,6 @@
+import { formatPrice } from './format.js';
+import { refLabelAtStart } from './price-chart.js';
+
 const W = 1080;
 
 export const COLORS = {
@@ -87,7 +90,7 @@ export async function renderShareImage(model) {
   await loadFonts();
   const icon = await loadIcon(model.iconSrc);
 
-  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0);
+  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0) + (model.chart ? 400 : 0);
 
   const canvas = document.createElement('canvas');
   canvas.width = W;
@@ -144,7 +147,13 @@ export async function renderShareImage(model) {
   
   // Unit
   y -= titleSize < 56 ? 0 : 10;
-  ctx.font = '40px "Space Mono", ui-monospace, monospace';
+  // Long units ("1 biniş, tam bilet (elektronik kart) · İstanbul") ran past the paper edges.
+  let unitSize = 40;
+  ctx.font = `${unitSize}px "Space Mono", ui-monospace, monospace`;
+  while (ctx.measureText(model.unit).width > cardW - 120 && unitSize > 26) {
+    unitSize -= 2;
+    ctx.font = `${unitSize}px "Space Mono", ui-monospace, monospace`;
+  }
   ctx.fillStyle = COLORS.muted;
   ctx.fillText(model.unit, cx, y);
   
@@ -210,6 +219,139 @@ export async function renderShareImage(model) {
     y += 20;
   }
 
+  if (model.chart) {
+    const chart = model.chart;
+    const originX = (W - chart.width) / 2;
+    const originY = y;
+    const bottomY = chart.height - 44;
+
+    ctx.save();
+    ctx.translate(originX, originY);
+
+    // Fill area under the price line down to the plot bottom
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(chart.points[0].x, chart.points[0].y);
+    for (let i = 1; i < chart.points.length; i++) {
+      ctx.lineTo(chart.points[i].x, chart.points[i].y);
+    }
+    ctx.lineTo(chart.points[chart.points.length - 1].x, bottomY);
+    ctx.lineTo(chart.points[0].x, bottomY);
+    ctx.closePath();
+    ctx.fillStyle = COLORS.accent;
+    ctx.globalAlpha = 0.1;
+    ctx.fill();
+    ctx.restore();
+
+    // Logarithmic price curve
+    ctx.beginPath();
+    ctx.moveTo(chart.points[0].x, chart.points[0].y);
+    for (let i = 1; i < chart.points.length; i++) {
+      ctx.lineTo(chart.points[i].x, chart.points[i].y);
+    }
+    ctx.strokeStyle = COLORS.ink;
+    ctx.lineWidth = 5;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Dashed horizontal reference line for the player's guess
+    if (chart.ref) {
+      ctx.beginPath();
+      ctx.setLineDash([12, 10]);
+      ctx.moveTo(24, chart.ref.y);
+      ctx.lineTo(chart.width - 24, chart.ref.y);
+      ctx.strokeStyle = COLORS.muted;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.font = 'bold 24px "Space Mono", ui-monospace, monospace';
+      const refStart = refLabelAtStart(chart, 260);
+      ctx.textAlign = refStart ? 'left' : 'right';
+      ctx.strokeStyle = COLORS.paper;
+      ctx.lineWidth = 8;
+      ctx.lineJoin = 'round';
+      ctx.fillStyle = COLORS.muted;
+      const refText = `Tahminin ${formatPrice(chart.ref.price)}`;
+      const refLabelY = chart.ref.y < 40 ? chart.ref.y + 30 : chart.ref.y - 10;
+      const refX = refStart ? 24 : chart.width - 24;
+      ctx.strokeText(refText, refX, refLabelY);
+      ctx.fillText(refText, refX, refLabelY);
+    }
+
+    // Data points: question date in red, current price in solid ink, others hollow
+    for (const p of chart.points) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.highlight ? 13 : 7, 0, Math.PI * 2);
+      if (p.highlight) {
+        ctx.fillStyle = COLORS.accent;
+        ctx.strokeStyle = COLORS.paper;
+        ctx.lineWidth = 5;
+        ctx.fill();
+        ctx.stroke();
+      } else if (p.isCurrent) {
+        ctx.fillStyle = COLORS.ink;
+        ctx.fill();
+      } else {
+        ctx.fillStyle = COLORS.paper;
+        ctx.strokeStyle = COLORS.ink;
+        ctx.lineWidth = 3;
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
+
+    // Price labels above first, last and highlighted points (skip ends that collide with the highlight)
+    const first = chart.points[0];
+    const last = chart.points[chart.points.length - 1];
+    const marked = chart.points.find((p) => p.highlight);
+    const labels = [first, last, marked].filter(
+      (p, i, a) => p && a.indexOf(p) === i && (!marked || p === marked || Math.abs(p.x - marked.x) > 130)
+    );
+    ctx.font = 'bold 28px "Space Mono", ui-monospace, monospace';
+    ctx.strokeStyle = COLORS.paper;
+    ctx.lineWidth = 8;
+    ctx.lineJoin = 'round';
+    for (const p of labels) {
+      ctx.textAlign = p.x < chart.width * 0.25 ? 'left' : p.x > chart.width * 0.75 ? 'right' : 'center';
+      ctx.fillStyle = p.highlight ? COLORS.accent : COLORS.ink;
+      const labelY = Math.max(28, p.y - 22);
+      const text = formatPrice(p.price);
+      ctx.strokeText(text, p.x, labelY);
+      ctx.fillText(text, p.x, labelY);
+    }
+
+    // Year axis ticks (drop any tick closer than 90px to the previous kept one; the last tick always stays)
+    const keptTicks = [];
+    for (let i = 0; i < chart.xTicks.length; i++) {
+      const tk = chart.xTicks[i];
+      const prev = keptTicks[keptTicks.length - 1];
+      if (!prev || tk.x - prev.x >= 90) {
+        keptTicks.push(tk);
+      } else if (i === chart.xTicks.length - 1) {
+        keptTicks[keptTicks.length - 1] = tk;
+      }
+    }
+    ctx.font = '26px "Space Mono", ui-monospace, monospace';
+    ctx.fillStyle = COLORS.muted;
+    keptTicks.forEach((tk, i, a) => {
+      ctx.textAlign = i === 0 ? 'left' : i === a.length - 1 ? 'right' : 'center';
+      ctx.fillText(tk.label, tk.x, chart.height - 8);
+    });
+
+    ctx.restore();
+
+    y += chart.height + 40;
+    ctx.save();
+    ctx.font = '26px "Space Mono", ui-monospace, monospace';
+    ctx.fillStyle = COLORS.muted;
+    ctx.textAlign = 'center';
+    ctx.fillText('Fiyatın yolculuğu · logaritmik ölçek', cx, y);
+    ctx.restore();
+    y += 100; // the score below is drawn at 64px from its baseline
+  }
+
   if (model.taxLine) {
     let taxFontSize = 36;
     ctx.font = `${taxFontSize}px "Space Mono", ui-monospace, monospace`;
@@ -236,7 +378,7 @@ export async function renderShareImage(model) {
   ctx.fillStyle = 'rgba(0,0,0,0.12)';
   ctx.fillRect(cx - meterW / 2, y + 20, meterW, 18);
   ctx.fillStyle = COLORS.fill[model.tier] || COLORS.accent;
-  ctx.fillRect(cx - meterW / 2, y + 24, meterW * pct, 18);
+  ctx.fillRect(cx - meterW / 2, y + 20, meterW * pct, 18);
   
   // Tilted red rubber stamp with the player's title
   if (model.stamp) {
