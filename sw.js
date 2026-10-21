@@ -25,6 +25,7 @@ const PRECACHE = [
   'js/hint.js',
   'js/linkify.js',
   'js/main.js',
+  'js/price-chart.js',
   'js/share-image.js',
   'js/share-model.js',
   'js/search.js',
