@@ -36,6 +36,7 @@
   <link rel="modulepreload" href="js/game.js">
   <link rel="modulepreload" href="js/timeline.js">
   <link rel="modulepreload" href="js/categories.js">
+  <link rel="modulepreload" href="js/search.js">
   <link rel="modulepreload" href="js/linkify.js">
   <link rel="modulepreload" href="js/source-kind.js">
   <link rel="modulepreload" href="js/confetti.js">
@@ -168,13 +169,19 @@
       <div class="timeline-header">
         <h2>Fiyat Arşivi</h2>
         <p>Doğrulanmış tüm fiyatlar, kaynaklarıyla.</p>
-        <a href="#" class="btn primary timeline-back-btn">Ana menü</a>
+        <a href="#" class="timeline-back-btn">← Ana menü</a>
       </div>
-      
-      <div class="timeline-picker" role="group" aria-label="Kategori seç" id="category-picker"></div>
 
-      <div class="timeline-picker" role="group" aria-label="Ürün seç" id="timeline-picker">
+      <div class="timeline-search">
+        <label for="product-search" class="visually-hidden">Ürün ara</label>
+        <input type="search" id="product-search" class="timeline-search-input" placeholder="Ürün ara: altın, benzin…" autocomplete="off" enterkeyhint="search">
+        <span id="product-count" class="timeline-count" aria-live="polite"></span>
       </div>
+
+      <div class="timeline-picker timeline-scroll" role="group" aria-label="Kategori seç" id="category-picker"></div>
+
+      <div class="timeline-picker timeline-scroll" role="group" aria-label="Ürün seç" id="timeline-picker"></div>
+      <p id="product-empty" class="timeline-empty" hidden>Eşleşen ürün yok.</p>
       
       <div class="receipt-wrapper">
         <article class="receipt-card result-receipt timeline-receipt">
