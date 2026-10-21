@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.76.0] - 2026-10-22
+### Added
+- July values 2010-2026 for dolar and euro (first TCMB business day of July), gram altın, çeyrek altın and gram gümüş (July monthly derivation): 85 more questions. The script reproduced 15 existing January values first.
+- `firin-ekmegi`: İstanbul bakery bread, 200 g, İTO maximum tariff, 2023-2026 (6 values; Halk Ekmek stays a separate product).
+
 ## [0.75.0] - 2026-10-22
 ### Added
 - Five new products (51 total):
