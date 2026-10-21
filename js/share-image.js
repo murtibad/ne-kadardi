@@ -89,7 +89,7 @@ export async function renderShareImage(model) {
   await loadFonts();
   const icon = await loadIcon(model.iconSrc);
 
-  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0) + (model.chart ? 320 : 0);
+  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0) + (model.chart ? 400 : 0);
 
   const canvas = document.createElement('canvas');
   canvas.width = W;
@@ -146,7 +146,13 @@ export async function renderShareImage(model) {
   
   // Unit
   y -= titleSize < 56 ? 0 : 10;
-  ctx.font = '40px "Space Mono", ui-monospace, monospace';
+  // Long units ("1 biniş, tam bilet (elektronik kart) · İstanbul") ran past the paper edges.
+  let unitSize = 40;
+  ctx.font = `${unitSize}px "Space Mono", ui-monospace, monospace`;
+  while (ctx.measureText(model.unit).width > cardW - 120 && unitSize > 26) {
+    unitSize -= 2;
+    ctx.font = `${unitSize}px "Space Mono", ui-monospace, monospace`;
+  }
   ctx.fillStyle = COLORS.muted;
   ctx.fillText(model.unit, cx, y);
   
@@ -307,7 +313,7 @@ export async function renderShareImage(model) {
     ctx.textAlign = 'center';
     ctx.fillText('Fiyatın yolculuğu · logaritmik ölçek', cx, y);
     ctx.restore();
-    y += 20;
+    y += 100; // the score below is drawn at 64px from its baseline
   }
 
   if (model.taxLine) {
