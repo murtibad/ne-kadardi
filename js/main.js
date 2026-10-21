@@ -109,6 +109,7 @@ function setBtnStatus(btnId, text) {
 }
 
 function nextQuestion() {
+  stopPrinting();
   resetShareBtn();
   if ($('r-tax-details')) {
     $('r-tax-details').hidden = true;
@@ -190,17 +191,31 @@ function onGuess(event) {
 // a tap on the receipt finishes it at once, and reduced motion skips the slide.
 const PRINT_MS = 1100;
 let printTimer = null;
+let cancelPrint = null;
+
+// Cancel any in-flight print timer and click listener when leaving the result screen early.
+function stopPrinting() {
+  clearTimeout(printTimer);
+  printTimer = null;
+  if (cancelPrint) {
+    cancelPrint();
+    cancelPrint = null;
+  }
+}
+
 function printReceipt(extraSound) {
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
   const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  clearTimeout(printTimer);
+  stopPrinting();
   wrap.classList.remove('printing', 'torn');
   $('next-btn').classList.remove('nudge');
   sound.play('print');
   const finish = () => {
     clearTimeout(printTimer);
+    printTimer = null;
     wrap.removeEventListener('click', finish);
-    if (!wrap.classList.contains('printing')) return;
+    cancelPrint = null;
+    if ($('result-screen').hidden || !wrap.classList.contains('printing')) return;
     wrap.classList.remove('printing');
     wrap.classList.add('torn');
     sound.play('tear');
@@ -208,6 +223,10 @@ function printReceipt(extraSound) {
     // New players tend to miss that there are more questions, so the button waves once.
     if (state.round <= 3) $('next-btn').classList.add('nudge');
     if (state.result?.factor === 1) burstConfetti();
+  };
+  cancelPrint = () => {
+    wrap.removeEventListener('click', finish);
+    wrap.classList.remove('printing');
   };
   if (reduced) {
     wrap.classList.add('printing');
@@ -553,11 +572,20 @@ function renderHome() {
 function onHashChange() {
   const hash = location.hash;
   if (state.all.length === 0) return;
+  if (hash !== '#tahmin' || !state.question || state.lastGameScreen !== 'result-screen') {
+    stopPrinting();
+  }
   if (hash === '#arsiv') {
     renderTimelineScreen();
   } else if (hash === '#tahmin') {
     if (!state.question) nextQuestion();
-    else show(state.lastGameScreen);
+    else {
+      show(state.lastGameScreen);
+      // Returning from #arsiv via history.back() leaves focus on <body> or the hidden screen.
+      if (state.lastGameScreen === 'result-screen' && (!document.activeElement || document.activeElement === document.body || document.activeElement.closest('[hidden]'))) {
+        $('r-receipt').focus({ preventScroll: true });
+      }
+    }
   } else {
     renderHome();
   }
@@ -600,7 +628,7 @@ function renderSoundToggle() {
 }
 
 function toggleSound() {
-  sound.toggle();
+  if (sound.toggle()) sound.unlock(); // preload samples if the player was muted on the first gesture
   renderSoundToggle();
   sound.play('beep'); // confirms the new state; stays silent when just muted
 }

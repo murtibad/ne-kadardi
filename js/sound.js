@@ -116,7 +116,8 @@ export function createSoundPlayer(options = {}) {
       if (!ctx) {
         ctx = new AudioContextCtor();
       }
-      if (ctx && ctx.state === 'suspended' && typeof ctx.resume === 'function') {
+      // iOS Safari reports 'interrupted' after a phone call or Siri.
+      if (ctx && (ctx.state === 'suspended' || ctx.state === 'interrupted') && typeof ctx.resume === 'function') {
         const res = ctx.resume();
         if (res && typeof res.catch === 'function') {
           res.catch(() => {});

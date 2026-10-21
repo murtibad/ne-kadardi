@@ -13,6 +13,12 @@ All notable changes to this project will be documented in this file.
 - "Sonraki" is now "Sonraki soru →" in the accent colour, and it nudges once after the first three results.
 - Light mode: the page background is darker (#e4ded1) and the receipt has a stronger shadow; before, the receipt almost disappeared on the page (1.1:1).
 
+### Fixed (QA before merge)
+- Leaving the result screen during the print (next question, skip, archive) cancels it, so the tear sound, bell and confetti no longer fire on the next screen.
+- Returning to a result with the browser's back button puts focus on the receipt again.
+- The audio context also resumes from the iOS "interrupted" state; turning sound back on preloads the samples.
+- "Sonraki soru →" stays on one line at 360 px.
+
 ### Removed
 - The +10 / +100 / +1.000 buttons: players thought they were the only way to enter a price.
 - Yellowed paper for old years (it only changed the colour), the "FİŞ NO" line with its tagline (also on the share image) and the "POS HATASI" / "PARA ÜSTÜ" lines.

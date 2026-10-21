@@ -325,6 +325,28 @@ test('play("beep") fetches, decodes, connects source -> gain -> destination, and
   assert.ok(Math.abs(source.startedAt - 2.35) < 1e-9);
 });
 
+test('context in "interrupted" state gets resume() called on play', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+
+  const player = createSoundPlayer({
+    storage: createMemoryStorage(),
+    AudioContextCtor: FakeAudioContext,
+    fetchFn,
+  });
+
+  player.unlock();
+  await flushAsync();
+
+  const [ctx] = getInstances();
+  ctx.state = 'interrupted';
+  ctx.resumed = false;
+
+  assert.equal(player.play('beep'), true);
+  assert.equal(ctx.resumed, true);
+  assert.equal(ctx.state, 'running');
+});
+
 test('each file is fetched only once across repeated plays; unlock() preloads all four files without playing', async () => {
   const { FakeAudioContext, getConstructorCallCount, getInstances } = createFakeAudioContextClass();
   const { fetchFn, getCount, getTotalCalls } = createFakeFetch();
