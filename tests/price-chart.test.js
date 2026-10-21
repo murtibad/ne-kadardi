@@ -262,3 +262,11 @@ test('buildPriceChart extends the y-scale when refPrice is above maxPrice or bel
 });
 
 
+
+test('refLabelAtStart puts the guess label away from nearby points', async () => {
+  const { refLabelAtStart } = await import('../js/price-chart.js');
+  const pts = (ys) => ys.map((y, i) => ({ x: i * 100, y }));
+  // Guess line at y=50: the first point sits on it, the last one far away -> label at the end.
+  assert.equal(refLabelAtStart({ width: 300, ref: { y: 50 }, points: pts([50, 30, 10, 0]) }, 60), false);
+  assert.equal(refLabelAtStart({ width: 300, ref: { y: 0 }, points: pts([50, 30, 10, 0]) }, 60), true);
+});

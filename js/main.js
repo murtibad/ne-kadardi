@@ -15,7 +15,7 @@ import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
-import { buildPriceChart } from './price-chart.js';
+import { buildPriceChart, refLabelAtStart } from './price-chart.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -148,7 +148,10 @@ function nextQuestion(productId = null) {
     $('r-tax-details').hidden = true;
     $('r-tax-details').open = false;
   }
-  const pool = productId ? state.all.filter((x) => x.productId === productId && x.id !== state.question?.id) : [];
+  const ofProduct = productId ? state.all.filter((x) => x.productId === productId) : [];
+  // Avoid repeating the last question, unless it is the product's only one.
+  const fresh = ofProduct.filter((x) => x.id !== state.question?.id);
+  const pool = fresh.length ? fresh : ofProduct;
   const q = pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id);
   if (!q) {
     showMessage('Gösterilecek soru yok.');
@@ -384,8 +387,10 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     && (!marked || p === marked || Math.abs(p.x - marked.x) > 52));
   // Keep end labels inside the box: anchor them towards the middle.
   const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
+  // A close guess sits right on the data: put its label at the end whose points are farther away.
+  const refStart = chart.ref && refLabelAtStart(chart, 110);
   const refLine = chart.ref
-    ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${pad.left}" y="${chart.ref.y < 20 ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="start" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}</text>`
+    ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refStart ? pad.left : chart.width - pad.right}" y="${chart.ref.y < 20 ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="${refStart ? 'start' : 'end'}" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}</text>`
     : '';
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
@@ -613,6 +618,8 @@ function renderTimelineScreen(focusProductId = null) {
   if (search.value !== state.timelineQuery) search.value = state.timelineQuery;
   $('product-count').textContent = `${visible.length} ürün`;
   $('product-empty').hidden = visible.length > 0;
+  // With no hit, a receipt of some other product below would read like a search result.
+  document.querySelector('#timeline-screen .receipt-wrapper').hidden = visible.length === 0;
   $('product-search-clear').hidden = state.timelineQuery === '';
   // Offer the same query across all categories when only the selected category has no hit.
   const allBtn = $('search-all-cats');
@@ -954,6 +961,8 @@ async function init() {
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' || e.repeat || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
     if ($('result-screen').hidden) return;
+    // A quick second Enter right after submitting would skip the receipt before it prints.
+    if (document.querySelector('#result-screen .receipt-wrapper').classList.contains('printing')) return;
     if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable]')) return;
     e.preventDefault();
     $('next-btn').click();
