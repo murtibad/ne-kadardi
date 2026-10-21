@@ -135,3 +135,34 @@ export function buildContextLine(q, allQuestions) {
   const nowName = q.current.label ? `${q.current.label.replace(/^En yeni /, '')} ise ` : '';
   return `${past}, bugün ${nowName}${formatRatio(q.current.price / currentWage)} asgari ücret.`;
 }
+
+/**
+ * Structured twin of buildContextLine (same branching, same numbers) for the receipt bars.
+ * kind 'count': items per minimum wage, then/now (now 0 = one wage no longer buys one, null = no current price).
+ * kind 'wages': cost in minimum wages, then/now (now null = no current price).
+ * Returns null exactly when buildContextLine does.
+ */
+export function buildContextModel(q, allQuestions) {
+  if (q.productId === 'asgari-ucret') return null;
+  const wages = allQuestions.filter((x) => x.productId === 'asgari-ucret');
+  const half = getHalfYear(q.date);
+  const pastWage = half && wages.find((x) => getHalfYear(x.date) === half);
+  if (!pastWage) return null;
+
+  const currentWage = wages.find((x) => x.current)?.current.price;
+  const hasNow = Boolean(q.current && currentWage);
+
+  if (q.price <= pastWage.price) {
+    return {
+      kind: 'count',
+      unit: getShortUnit(q.unit),
+      then: Math.floor(pastWage.price / q.price),
+      now: hasNow ? Math.floor(currentWage / q.current.price) : null,
+    };
+  }
+  return {
+    kind: 'wages',
+    then: q.price / pastWage.price,
+    now: hasNow ? q.current.price / currentWage : null,
+  };
+}

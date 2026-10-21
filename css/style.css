@@ -330,6 +330,34 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 :root[data-theme="dark"] .tax-line,
 :root[data-theme="dark"] .tax-details { background: rgba(0,0,0,0.1); }
 
+.context-line.has-bars { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-bottom: 6px; }
+.context-bars {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 16px;
+  padding: 0 12px 12px;
+  background: rgba(0,0,0,0.03);
+  border-radius: 0 0 6px 6px;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--muted-on-paper);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .context-bars { background: rgba(0,0,0,0.1); }
+}
+:root[data-theme="dark"] .context-bars { background: rgba(0,0,0,0.1); }
+.ctx-row { display: grid; grid-template-columns: 3.4rem 1fr auto; align-items: center; gap: 8px; }
+.ctx-label { font-weight: 600; }
+.ctx-track { height: 10px; border-radius: 5px; background: rgba(0,0,0,.08); overflow: hidden; }
+.ctx-bar { display: block; height: 100%; border-radius: 5px; background: var(--muted-on-paper); }
+.ctx-bar.down { background: var(--accent-on-paper); }
+.ctx-bar.up { background: var(--tier-good); }
+.ctx-value { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink); white-space: nowrap; min-width: 5.5rem; text-align: right; }
+@media (prefers-reduced-motion: no-preference) {
+  .ctx-bar { transform-origin: left; animation: ctx-grow .7s ease-out both; }
+  @keyframes ctx-grow { from { transform: scaleX(0); } }
+}
+
 .tax-details summary {
   cursor: pointer;
   font-weight: 600;

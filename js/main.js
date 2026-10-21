@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease } from './format.js';
-import { buildQuestions, buildContextLine, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
+import { buildQuestions, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { linkifyNote } from './linkify.js';
@@ -347,6 +347,38 @@ function renderResultImage(q) {
   img.onerror = () => { img.hidden = true; };
 }
 
+// Decorative before/after bars under the context sentence (the sentence stays the accessible text).
+function renderContextBars(model) {
+  const box = $('r-context-bars');
+  const hasBars = Boolean(model && model.then != null && model.now != null);
+  box.hidden = !hasBars;
+  box.replaceChildren();
+  $('r-context').classList.toggle('has-bars', hasBars);
+  if (!hasBars) return;
+  const max = Math.max(model.then, model.now) || 1;
+  // More items per wage is better; more wages per item is worse.
+  const better = model.kind === 'count' ? model.now >= model.then : model.now <= model.then;
+  const fmt = (v) => (model.kind === 'count' ? `${v.toLocaleString('tr-TR')} ${model.unit}` : `${formatRatio(v)} asgari ücret`);
+  [['O gün', model.then, ''], ['Bugün', model.now, model.now === model.then ? '' : better ? 'up' : 'down']].forEach(([label, value, tone]) => {
+    const row = document.createElement('div');
+    row.className = 'ctx-row';
+    const name = document.createElement('span');
+    name.className = 'ctx-label';
+    name.textContent = label;
+    const track = document.createElement('span');
+    track.className = 'ctx-track';
+    const bar = document.createElement('span');
+    bar.className = `ctx-bar ${tone}`.trim();
+    bar.style.width = `${Math.max(4, (value / max) * 100)}%`;
+    track.append(bar);
+    const num = document.createElement('span');
+    num.className = 'ctx-value';
+    num.textContent = fmt(value);
+    row.append(name, track, num);
+    box.append(row);
+  });
+}
+
 function renderResult(q, r) {
   stopCountUp();
   $('r-stamp').classList.remove('stamped');
@@ -387,6 +419,7 @@ function renderResult(q, r) {
   const contextText = buildContextLine(q, state.all);
   $('r-context').textContent = contextText || '';
   $('r-context').hidden = !contextText;
+  renderContextBars(buildContextModel(q, state.all));
 
   const taxText = buildTaxLine(q);
   $('r-tax').textContent = taxText || '';
