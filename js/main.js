@@ -647,14 +647,14 @@ function renderTimelineScreen(focusProductId = null) {
   
   let html = `<table class="timeline-table" role="table">
     <caption class="visually-hidden">Fiyat geçmişi</caption>
-    <thead>
-      <tr>
-        <th scope="col" class="visually-hidden">Tarih</th>
-        <th scope="col" class="visually-hidden">Fiyat</th>
-        <th scope="col" class="visually-hidden">Artış ve kaynak</th>
+    <thead role="rowgroup">
+      <tr role="row">
+        <th scope="col" role="columnheader" class="visually-hidden">Tarih</th>
+        <th scope="col" role="columnheader" class="visually-hidden">Fiyat</th>
+        <th scope="col" role="columnheader" class="visually-hidden">Artış ve kaynak</th>
       </tr>
     </thead>
-    <tbody>`;
+    <tbody role="rowgroup">`;
 
   for (const r of product.rows) {
     const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
@@ -670,10 +670,10 @@ function renderTimelineScreen(focusProductId = null) {
     const sourceLink = r.source ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>${kindSpan}` : '';
     const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${linkifyNote(r.note)}</p></details>` : '';
     
-    html += `<tr${r.isCurrent ? ' class="is-current"' : ''}>
-      <th scope="row">${period}</th>
-      <td class="timeline-price-cell"><span class="timeline-price">${priceStr}</span></td>
-      <td class="timeline-detail-cell">
+    html += `<tr role="row"${r.isCurrent ? ' class="is-current"' : ''}>
+      <th scope="row" role="rowheader">${period}</th>
+      <td role="cell" class="timeline-price-cell"><span class="timeline-price">${priceStr}</span></td>
+      <td role="cell" class="timeline-detail-cell">
         ${bar}
         <div class="timeline-meta">
           ${ratioStr ? `<span class="timeline-ratio">${ratioStr}</span>` : ''}
