@@ -438,6 +438,10 @@ async function prepareShareImage(btnId) {
   const r = state.result;
   const contextText = buildContextLine(q, state.all);
   const model = buildShareImageModel(q, r, { contextLine: contextText });
+  const t = state.timelines.find((t) => t.id === q.productId);
+  model.chart = t
+    ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
+    : null;
   // After a few rounds the stamp rates the whole session instead of this one guess.
   if (state.played >= 3) model.stamp = stampTitle(state.total / state.played) ?? model.stamp;
   
