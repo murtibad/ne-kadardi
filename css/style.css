@@ -585,31 +585,41 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   font-family: var(--font-mono);
   font-size: 0.875rem;
 }
-.timeline-table th, .timeline-table td {
-  padding: 16px 0;
+.timeline-table tbody { display: block; }
+.timeline-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.timeline-table tr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 12px;
+  align-items: baseline;
+  padding: 8px 0 0;
   border-bottom: 1px dashed var(--line);
-  text-align: left;
-  vertical-align: top;
 }
-.timeline-table tr:last-child th,
-.timeline-table tr:last-child td {
-  border-bottom: none;
+.timeline-table tr:last-child { border-bottom: none; }
+.timeline-table th, .timeline-table td {
+  padding: 0;
+  text-align: left;
+  font-weight: inherit;
 }
 .timeline-table th[scope="row"] {
-  font-weight: 700;
-  width: 38%;
-  padding-right: 12px;
+  font-weight: 400;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
+.timeline-price-cell { text-align: right; }
+.timeline-detail-cell { grid-column: 1 / -1; }
+.timeline-table tr.is-current {
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  padding-inline: 8px;
+  margin-inline: -8px;
+  border-radius: 6px;
+}
+.timeline-table tr.is-current th[scope="row"] { font-weight: 700; }
 
-.timeline-price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 8px;
-}
 .timeline-price {
   font-weight: 700;
   font-size: 1rem;
+  white-space: nowrap;
 }
 .timeline-ratio {
   font-size: 0.75rem;
@@ -622,7 +632,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   height: 6px;
   background: var(--line);
   border-radius: 3px;
-  margin-bottom: 8px;
+  margin: 4px 0 0;
   overflow: hidden;
 }
 .timeline-bar-fill {
@@ -635,7 +645,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px 12px;
+  gap: 0 14px;
   font-family: var(--font-ui);
   font-size: 0.75rem;
   color: var(--muted-on-paper);
