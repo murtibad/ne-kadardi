@@ -13,6 +13,7 @@ import { cashierComment } from './cashier.js';
 import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './banter.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
+import { pickFact } from './fact.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -570,7 +571,29 @@ function renderHome() {
   $('m-tahmin').textContent = state.played > 0
     ? `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en iyi ${state.best}` : '')
     : '';
+  const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
+  $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} kaynaklı fiyat`;
+  $('home-stats').hidden = state.timelines.length === 0;
+  if (!$('fact-body').hasChildNodes()) renderFact();
   show('home-screen');
+}
+
+let lastFactId = null;
+function renderFact() {
+  const f = pickFact(state.timelines, { skipId: lastFactId });
+  $('fact-card').hidden = !f;
+  if (!f) return;
+  lastFactId = f.productId;
+  const img = f.image ? `<img src="${escapeHTML(f.image.src)}" alt="" width="40" height="40" class="fact-img">` : '';
+  $('fact-body').innerHTML = `
+    <p class="fact-product">${img}<span><strong>${escapeHTML(f.name)}</strong><small>${escapeHTML(f.unit)}</small></span></p>
+    <div class="fact-pair">
+      <p class="fact-then"><span>${escapeHTML(f.thenLabel)}</span><strong>${escapeHTML(f.thenPrice)}</strong></p>
+      <p class="fact-arrow" aria-hidden="true">→</p>
+      <p class="fact-now"><span>${escapeHTML(f.nowLabel)}</span><strong>${escapeHTML(f.nowPrice)}</strong></p>
+    </div>
+    <p class="fact-ratio"><strong>${escapeHTML(f.ratio)}</strong> arttı · <a href="#arsiv" data-product="${escapeHTML(f.productId)}">fiyat geçmişi</a></p>`;
+  $('fact-body').querySelector('a').onclick = () => { state.selectedTimelineProduct = f.productId; state.timelineCategory = 'all'; };
 }
 
 function onHashChange() {
@@ -616,17 +639,26 @@ function currentTheme() {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
+// Inline SVG instead of emoji: emoji render in colour and differ per platform.
+const svg = (body) => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}</svg>`;
+const ICONS = {
+  sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
+  moon: svg('<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>'),
+  soundOn: svg('<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>'),
+  soundOff: svg('<path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/>'),
+};
+
 function renderThemeToggle() {
   const dark = currentTheme() === 'dark';
   const btn = $('theme-toggle');
-  btn.textContent = dark ? '☀' : '☾';
+  btn.innerHTML = dark ? ICONS.sun : ICONS.moon;
   btn.setAttribute('aria-label', dark ? 'Açık temaya geç' : 'Koyu temaya geç');
 }
 
 function renderSoundToggle() {
   const on = sound.isEnabled();
   const btn = $('sound-toggle');
-  btn.textContent = on ? '🔊' : '🔇';
+  btn.innerHTML = on ? ICONS.soundOn : ICONS.soundOff;
   btn.setAttribute('aria-pressed', String(on));
   btn.title = on ? 'Sesi kapat' : 'Sesi aç'; // the label stays fixed: aria-pressed carries the state
 }
@@ -657,6 +689,7 @@ async function init() {
   loadSession();
   renderThemeToggle();
   $('theme-toggle').addEventListener('click', toggleTheme);
+  $('fact-next').addEventListener('click', () => { sound.play('beep'); renderFact(); });
   // The tax breakdown prints like a receipt strip.
   $('r-tax-details').addEventListener('toggle', (e) => { if (e.target.open) sound.play('print'); });
   renderSoundToggle();

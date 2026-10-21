@@ -19,6 +19,7 @@ const PRECACHE = [
   'js/cashier.js',
   'js/categories.js',
   'js/confetti.js',
+  'js/fact.js',
   'js/format.js',
   'js/game.js',
   'js/hint.js',
