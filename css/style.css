@@ -1181,3 +1181,9 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .mode-spark svg { display: block; overflow: visible; }
 .mode-spark path { fill: none; stroke: var(--accent-on-paper); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .mode-spark circle { fill: var(--accent-on-paper); }
+
+/* Two-way link between the archive price chart and the timeline table rows */
+.timeline-table tr.is-linked { background: color-mix(in srgb, var(--accent-on-paper) 10%, transparent); outline: 2px solid var(--accent-on-paper); outline-offset: -2px; border-radius: 4px; }
+.row-to-chart { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.row-to-chart:hover, .row-to-chart:focus-visible { text-decoration: underline dotted; text-underline-offset: 3px; }
+.row-to-chart:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }

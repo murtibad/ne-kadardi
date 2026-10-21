@@ -453,11 +453,23 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     </svg>
     <span class="visually-hidden" aria-live="polite"></span>
     <figcaption>Fiyatın yolculuğu · logaritmik ölçek</figcaption>`;
-  bindPriceChart(fig, chart);
+  bindPriceChart(fig, chart, figId === 't-chart' ? (point, source) => {
+    const rows = $('t-rows-container').querySelectorAll('tr[data-date]');
+    let match = null;
+    for (const r of rows) {
+      const active = point !== null && r.dataset.date === point.date;
+      r.classList.toggle('is-linked', active);
+      if (active) match = r;
+    }
+    if (match && source === 'pointer') {
+      const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      match.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+    }
+  } : undefined);
 }
 
 // Wires pointer and keyboard inspection onto the rendered chart SVG without global state.
-function bindPriceChart(fig, chart) {
+function bindPriceChart(fig, chart, onActive) {
   const { points, width } = chart;
   const svgEl = fig.querySelector('svg');
   const tip = svgEl.querySelector('.pc-tip');
@@ -469,7 +481,7 @@ function bindPriceChart(fig, chart) {
   const markedIdx = points.findIndex((p) => p.highlight);
   let activeIdx = markedIdx >= 0 ? markedIdx : points.length - 1;
 
-  const showTip = (idx, viaKeyboard = false) => {
+  const showTip = (idx, viaKeyboard = false, source = viaKeyboard ? 'keyboard' : 'pointer') => {
     const p = points[idx];
     if (!p) return;
     dotEls.forEach((d, i) => d.classList.toggle('pc-active', i === idx));
@@ -491,18 +503,26 @@ function bindPriceChart(fig, chart) {
     tip.hidden = false;
     tip.removeAttribute('hidden');
     if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
+    onActive?.(p, source);
   };
 
   const hideTip = () => {
     dotEls.forEach((d) => d.classList.remove('pc-active'));
     tip.hidden = true;
     tip.setAttribute('hidden', '');
+    onActive?.(null, null);
+  };
+
+  // Lets the archive table highlight and announce a chart point by date when a row is tapped.
+  fig._activateDate = (date) => {
+    const idx = points.findIndex((p) => p.date === date);
+    if (idx >= 0) showTip(idx, true, 'keyboard');
   };
 
   const handle = (e) => {
     if (e.type === 'pointerenter' || e.type === 'pointerdown') {
       const hit = e.target instanceof Element ? e.target.closest('.pc-hit') : null;
-      if (hit) showTip(Number(hit.dataset.i));
+      if (hit) showTip(Number(hit.dataset.i), false, e.type === 'pointerdown' ? 'pointer' : 'hover');
     } else if (e.type === 'pointerleave') {
       if (e.pointerType !== 'touch' && e.target === svgEl) hideTip();
     } else if (e.type === 'blur') {
@@ -512,7 +532,7 @@ function bindPriceChart(fig, chart) {
         e.preventDefault();
         const step = e.key === 'ArrowRight' ? 1 : -1;
         const next = Math.max(0, Math.min(points.length - 1, activeIdx + step));
-        showTip(next, true);
+        showTip(next, true, 'keyboard');
       } else if (e.key === 'Escape') {
         hideTip();
       }
@@ -893,8 +913,9 @@ function renderTimelineScreen(focusProductId = null) {
     const sourceLink = r.source ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>${kindSpan}` : '';
     const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${linkifyNote(r.note)}</p></details>` : '';
     
-    html += `<tr role="row"${r.isCurrent ? ' class="is-current"' : ''}>
-      <th scope="row" role="rowheader">${period}</th>
+    const safeDate = escapeHTML(r.date);
+    html += `<tr role="row" data-date="${safeDate}"${r.isCurrent ? ' class="is-current"' : ''}>
+      <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${safeDate}">${escapeHTML(period)}</button></th>
       <td role="cell" class="timeline-price-cell"><span class="timeline-price">${priceStr}</span></td>
       <td role="cell" class="timeline-detail-cell">
         ${bar}
@@ -908,8 +929,23 @@ function renderTimelineScreen(focusProductId = null) {
   }
   html += `</tbody></table>`;
   
-  $('t-rows-container').innerHTML = html;
+  const rowsContainer = $('t-rows-container');
+  rowsContainer.innerHTML = html;
   renderPriceChart('t-chart', product.id);
+  // Delegated once on the permanent container because renderTimelineScreen rebuilds the table often.
+  if (!rowsContainer.dataset.chartLinked) {
+    rowsContainer.dataset.chartLinked = 'true';
+    rowsContainer.addEventListener('click', (e) => {
+      const btn = e.target instanceof Element ? e.target.closest('.row-to-chart') : null;
+      if (!btn) return;
+      const fig = $('t-chart');
+      fig._activateDate?.(btn.dataset.date);
+      if (!fig.hidden) {
+        const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+      }
+    });
+  }
 }
 
 function renderHome() {
