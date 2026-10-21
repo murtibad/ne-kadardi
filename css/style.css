@@ -1181,3 +1181,12 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .mode-spark svg { display: block; overflow: visible; }
 .mode-spark path { fill: none; stroke: var(--accent-on-paper); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .mode-spark circle { fill: var(--accent-on-paper); }
+
+/* Skip note, left fade on scrolled chip rows, and the guess text centred on the field rather than the input */
+.skip-note { font-weight: 400; }
+.timeline-scroll.scrolled {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+}
+/* The ₺ sign takes ~40px on the right; mirror it on the left so "Fiyatı yaz" and the number sit in the middle. */
+.question-card .guess-field input { padding-left: 46px; }

@@ -922,6 +922,8 @@ function renderHome() {
   $('home-stats').hidden = state.timelines.length === 0;
   if (!$('fact-body').hasChildNodes()) renderFact();
   renderHomeSpark();
+  // Coming back to the menu does not reset the game, so say so instead of "Başla".
+  $('m-go').textContent = state.question ? `Devam et · Soru ${state.round} →` : 'Başla →';
   $('how-to').hidden = state.played > 0; // only first-time players need the three steps
   show('home-screen');
 }
@@ -1077,6 +1079,10 @@ async function init() {
   $('theme-toggle').addEventListener('click', toggleTheme);
   $('fact-next').addEventListener('click', () => { sound.play('beep'); renderFact(); });
   setupInstallButton();
+  // Chip rows fade at the right edge; once scrolled, the left edge fades too.
+  for (const row of document.querySelectorAll('.timeline-scroll')) {
+    row.addEventListener('scroll', () => row.classList.toggle('scrolled', row.scrollLeft > 4), { passive: true });
+  }
   // The game keeps working offline (service worker); the badge just says why links may not open.
   const syncOnline = () => { $('offline-badge').hidden = navigator.onLine !== false; };
   window.addEventListener('online', syncOnline);
