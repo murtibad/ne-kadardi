@@ -107,6 +107,7 @@ Done (details in `CHANGELOG.md`):
 - [x] v0.71 First-visit how-to steps, category on the question card, till-style price roll, score explainer,
       off-chart guess marker, contrast fix from an axe pass.
 - [x] v0.72 Explorable chart points, share image preview dialog, offline badge, icon pop.
+- [x] v0.73 Purchasing power bars, chart/table link in the archive, "Devam et" on the menu, skip note.
 
 Open:
 

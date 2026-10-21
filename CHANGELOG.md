@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.73.0] - 2026-10-21
+### Added
+- Minimum-wage purchasing power on the result receipt gets "O gün" / "Bugün" bars (`buildContextModel` in `js/game.js`); red when it fell, green when it rose. The sentence stays for screen readers and the share image.
+- Archive chart and table are linked: tapping a chart point highlights and scrolls to its row; the row's period is a button that shows the point on the chart.
+- The menu card says "Devam et · Soru N →" (or "Sonuca dön") once a round is in progress, since going back to the menu does not reset the game.
+### Changed
+- "Bu soruyu geç · puanı etkilemez" makes clear skipping is free.
+- Scrolled chip rows in the archive fade at both edges; the guess text is centred on the whole field, not just the input.
+
 ## [0.72.0] - 2026-10-21
 ### Added
 - Chart points can be tapped, hovered or stepped through with the arrow keys (the chart is focusable) to read each period's price; keyboard changes are announced.
