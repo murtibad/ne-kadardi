@@ -12,7 +12,8 @@ The game is one mode, plus a price archive:
 
 - **Fiyat Tahmini:** guess a past price, get a receipt with the real price, how far off you
   were, today's price and the source. Optional hint (that year's dollar rate and minimum
-  wage) for a 20% score cut, quick +10/+100/+1.000 buttons, a cashier comment on each result (product jokes, POS lines, a remark when you ask for a hint).
+  wage) for a 20% score cut, a cashier comment on each result (product jokes, a remark when you ask for a hint).
+  The receipt prints out of a receipt printer and is torn off.
 - **Fiyat Arşivi:** browse the verified price history of each product with its sources, filtered by category; the
   result screen links straight to the product's history.
 
@@ -23,8 +24,8 @@ Also:
 - Shareable result image (Canvas 2D) with a score stamp, to download or post directly
 - Installable app (PWA) that works offline after the first visit; new prices arrive on the
   next visit (stale-while-revalidate, cache versioned with the release)
-- Synthesized sound effects (Web Audio, no audio files) with a mute button; light vibration on phones
-- Old questions print on yellowed receipt paper; the result icon bounces or shakes with your score
+- Recorded sound effects with a mute button: an old receipt printer, the receipt being torn off, a checkout beep and a counter bell for an exact guess (CC0 recordings by Joseph Sardin, [BigSoundBank](https://bigsoundbank.com/), trimmed to ~30 KB in total in `sounds/`); light vibration on phones
+- The result icon bounces or shakes with your score
 - Light/dark theme toggle, keyboard friendly, respects reduced motion
 - Every price is sourced and labelled by source type (official, dataset, news, derived);
   unverified data never reaches the game
@@ -39,9 +40,8 @@ index.html          markup
 css/style.css       styles (design tokens as CSS custom properties)
 js/main.js          UI: screens, routing and events
 js/game.js          question selection and scoring (pure, tested)
-js/sound.js         Web Audio effects and haptics (pure plan, tested)
-js/banter.js        cashier jokes, POS lines, year notes, receipt footer (pure, tested)
-js/paper.js         receipt paper age by year (pure, tested)
+js/sound.js         Web Audio sample player and haptics (tested with a fake AudioContext)
+js/banter.js        cashier jokes, year notes, share stamp titles (pure, tested)
 js/format.js        Turkish number parsing and formatting (pure, tested)
 js/timeline.js      price archive rows
 js/categories.js    product categories for the archive filter (pure, tested)

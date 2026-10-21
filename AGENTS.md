@@ -100,6 +100,8 @@ Done (details in `CHANGELOG.md`):
 - [x] v0.58–v0.61 Archive categories, tappable note links, sound with mute toggle, contextual cashier
       banter, aged receipt paper, score stamp on the share image; new data: aile cüzdanı, Milli Piyango
       yılbaşı çeyrek bilet.
+- [x] v0.67 Receipt printer animation, recorded CC0 sounds, question counter, clearer "Sonraki soru";
+      removed the quick-add buttons, aged paper, receipt number and POS lines; darker light-mode page.
 
 Open:
 

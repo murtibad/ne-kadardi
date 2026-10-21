@@ -141,22 +141,6 @@ export const PRODUCT_POOLS = {
   ],
 };
 
-export const POS_UNDER_LINES = [
-  'POS HATASI: YETERSİZ BAKİYE - Kartı koklatsan bile kurtarmaz.',
-  'POS HATASI: YETERSİZ BAKİYE - Hesaptaki son kuruş da erimiş.',
-  'POS HATASI: YETERSİZ BAKİYE - Bu tutarla kasadan çıkamazsınız.',
-  'POS HATASI: YETERSİZ BAKİYE - Başka kartınız var mı acaba?',
-  'POS HATASI: YETERSİZ BAKİYE - Limitiniz geçmişe yetmedi.',
-];
-
-export const POS_OVER_LINES = [
-  'PARA ÜSTÜ: Bozuk yok, sakız versek kurtarır mı?',
-  'PARA ÜSTÜ: Fazlasını bahşiş olarak yazdım.',
-  'PARA ÜSTÜ: Fazlasını sonraki alışverişe sayalım.',
-  'PARA ÜSTÜ: Kalanıyla marketin yarısını alırsın.',
-  'PARA ÜSTÜ: Üstünü bayram harçlığı olarak bıraktın.',
-];
-
 export const HINT_LINES = [
   'Dur abi, barkodu okutayım hemen…',
   'Reyonda etiketi düşmüş, depoya sorup geliyorum…',
@@ -164,23 +148,6 @@ export const HINT_LINES = [
   'Sistem biraz yavaş, eski fiyatı bulmaya çalışıyorum…',
   'Kasada sıra oluştu ama senin için arşive bakıyorum…',
   'Katalog biraz tozlanmış, sayfaları çeviriyorum…',
-];
-
-export const FOOTER_TIER_WORDS = {
-  great: ['HAFIZA-AÇIK', 'NOSTALJİ-USTASI', 'FİYAT-BİLİR', 'ETİKET-KURDU'],
-  good: ['GÜZEL-GÜNLERDİ', 'YAKIN-TAHMİN', 'PİYASA-KURDU', 'HESAP-BİLİR'],
-  mid: ['NE-ÇABUK-GEÇTİ', 'ORTA-ŞEKERLİ', 'FARK-VAR-BİRAZ', 'ENFLASYON-YORGUNU'],
-  poor: ['ZAMAN-ÇOK-ACIMASIZ', 'ESKİ-ÇAMLAR-BARDAK', 'HESAP-ŞAŞTI', 'BÜTÇE-SARSILDI'],
-  bad: ['BAMBAŞKA-EVREN', 'HAYAL-DÜNYASI', 'UZAYDAN-GELEN', 'FİYATTAN-KOPUK'],
-};
-
-export const FOOTER_TAGLINES = [
-  'KDV DAHİL, HÜZÜN HARİÇ',
-  'ENFLASYON FARKI MÜŞTERİYE AİTTİR',
-  'BİZİ TERCİH ETTİĞİNİZ İÇİN TEŞEKKÜR EDERİZ',
-  'İADE VE DEĞİŞİM GEÇMİŞ YILLARDA GEÇERLİ DEĞİLDİR',
-  'FİYAT ETİKETLERİ HATIRALARDAN DAHA HIZLI DEĞİŞİR',
-  'KASADA KAVGA ÇIKARMAK KESİNLİKLE YASAKTIR',
 ];
 
 const YEAR_ANCHORS = {
@@ -219,20 +186,6 @@ export function contextComment(params, rng = Math.random) {
 }
 
 /**
- * Return a POS error line for extreme guesses (factor >= 2) or null.
- */
-export function posLine(params, rng = Math.random) {
-  const { direction, factor } = params ?? {};
-  if (direction === 'under' && factor >= 2) {
-    return pick(POS_UNDER_LINES, rng);
-  }
-  if (direction === 'over' && factor >= 2) {
-    return pick(POS_OVER_LINES, rng);
-  }
-  return null;
-}
-
-/**
  * Return a random cashier comment when the player requests a hint.
  */
 export function hintComment(rng = Math.random) {
@@ -256,21 +209,6 @@ export function ytlNote(year, price) {
   if (typeof price !== 'number' || !Number.isFinite(price) || price <= 0) return null;
   const oldLira = Math.round(price * 1_000_000);
   return `Yeni Türk Lirası dönemi: eski parayla ${oldLira.toLocaleString('tr-TR')} lira`;
-}
-
-/**
- * Return receipt footer details: receipt number and humorous tagline.
- */
-export function receiptFooter(params, rng = Math.random) {
-  const { year, tier } = params ?? {};
-  const pool = FOOTER_TIER_WORDS[tier] ?? FOOTER_TIER_WORDS.mid;
-  const word = pick(pool, rng);
-  const tagline = pick(FOOTER_TAGLINES, rng);
-  const y = year ?? '';
-  return {
-    no: `FİŞ NO: #${y}-${word}`,
-    tagline,
-  };
 }
 
 /**

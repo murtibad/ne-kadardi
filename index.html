@@ -8,7 +8,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#e4ded1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1917" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Ne Kadardı? · Fiyat tahmin oyunu">
   <meta property="og:description" content="Geçmiş yıllarda fiyatlar ne kadardı? Tahmin et, gerçek fiyatla karşılaştır ve enflasyonu gör.">
@@ -42,7 +42,6 @@
   <link rel="modulepreload" href="js/share-model.js">
   <link rel="modulepreload" href="js/tax.js">
   <link rel="modulepreload" href="js/cashier.js">
-  <link rel="modulepreload" href="js/paper.js">
   <link rel="modulepreload" href="js/sound.js">
   <link rel="modulepreload" href="js/banter.js">
   <link rel="modulepreload" href="js/hint.js">
@@ -84,6 +83,7 @@
 
     <section id="question-screen" hidden>
       <div class="receipt-card question-card">
+        <p id="q-round" class="round-label"></p>
         <div class="period-badge"><span id="q-period"></span></div>
         <img id="q-image" class="product-image" width="72" height="72" alt="" decoding="async" hidden>
         <h2 id="q-name" class="product"></h2>
@@ -91,13 +91,12 @@
         <p id="q-anchor" class="year-anchor" hidden></p>
         
         <form id="guess-form" novalidate>
-          <label for="guess-input" class="visually-hidden">Tahminin (TL)</label>
+          <label for="guess-input" class="guess-label">Sence kaç liraydı?</label>
           <div class="guess-field">
             <input id="guess-input" type="text" inputmode="decimal" autocomplete="off"
-                   placeholder="Tahminin" aria-describedby="hint-text guess-error">
+                   placeholder="Fiyatı yaz" aria-describedby="hint-text guess-error">
             <span class="currency">₺</span>
           </div>
-          <div id="guess-steps" class="guess-steps" role="group" aria-label="Hızlı artır"></div>
           <button type="button" id="hint-btn" class="hint-btn" hidden>Fiyatı okut: ipucu al (puan %20 düşer)</button>
           <div id="hint-text" class="hint-slip" role="status" aria-live="polite" hidden></div>
           <p id="guess-error" class="error" role="alert"></p>
@@ -108,6 +107,7 @@
     </section>
 
     <section id="result-screen" hidden>
+      <div class="printer" aria-hidden="true"></div>
       <div class="receipt-wrapper">
         <article id="r-receipt" class="receipt-card result-receipt" aria-live="polite" tabindex="-1">
           <p class="receipt-head">*** NE KADARDI? ***</p>
@@ -133,7 +133,6 @@
           </div>
           <p id="r-context" class="context-line"></p>
           <p id="r-cashier" class="cashier-line"></p>
-          <p id="r-pos" class="pos-line" hidden></p>
           <p id="r-ytl" class="ytl-note" hidden></p>
           <p id="r-tax" class="tax-line" hidden></p>
           <details id="r-tax-details" class="tax-details" hidden>
@@ -141,7 +140,6 @@
             <div id="r-tax-body"></div>
           </details>
           <p class="source"><a id="r-archive" href="#arsiv" class="archive-link">Bu ürünün fiyat geçmişi →</a></p>
-          <p class="receipt-foot"><span id="r-foot-no"></span><br><span id="r-foot-tag"></span></p>
           <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a><span id="r-source-kind" class="source-kind" hidden></span></p>
         </article>
       </div>
@@ -151,7 +149,7 @@
         <div class="actions">
           <button id="share-btn" type="button" class="btn">Paylaş</button>
           <button id="download-btn" type="button" class="btn" aria-label="Görseli indir"><span class="wide-only">Görseli </span><span class="wide-only">i</span><span class="narrow-only">İ</span>ndir</button>
-          <button id="next-btn" type="button" class="btn primary">Sonraki</button>
+          <button id="next-btn" type="button" class="btn primary next-btn">Sonraki soru →</button>
         </div>
       </div>
     </section>

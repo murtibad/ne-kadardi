@@ -8,8 +8,8 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f4f1ea",
-  "theme_color": "#f4f1ea",
+  "background_color": "#e4ded1",
+  "theme_color": "#e4ded1",
   "categories": ["games", "education"],
   "icons": [
     { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

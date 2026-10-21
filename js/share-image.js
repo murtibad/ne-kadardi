@@ -87,7 +87,7 @@ export async function renderShareImage(model) {
   await loadFonts();
   const icon = await loadIcon(model.iconSrc);
 
-  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0) + (model.footer ? 110 : 0);
+  const H = (model.taxLine ? 1470 : 1350) + (model.stamp ? 150 : 0);
 
   const canvas = document.createElement('canvas');
   canvas.width = W;
@@ -261,20 +261,6 @@ export async function renderShareImage(model) {
 
   // Bottom Icon and URL
   const bottomY = endY - 70;
-
-  if (model.footer) {
-    ctx.font = '26px "Space Mono", ui-monospace, monospace';
-    ctx.fillStyle = COLORS.muted;
-    ctx.textAlign = 'center';
-    const tagLines = wrapText(ctx, model.footer.tagline, cardW - 200);
-    const lineH = 34;
-    let footY = bottomY - 80 - tagLines.length * lineH;
-    ctx.fillText(model.footer.no, cx, footY);
-    for (const line of tagLines) {
-      footY += lineH;
-      ctx.fillText(line, cx, footY);
-    }
-  }
 
   ctx.font = 'bold 36px "Space Mono", ui-monospace, monospace';
   ctx.fillStyle = COLORS.muted;

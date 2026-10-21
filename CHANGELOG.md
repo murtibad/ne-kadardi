@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.67.0] - 2026-10-21
+### Added
+- Receipt printer: the result receipt slides out of a printer slot in about a second, then is torn off. A tap on the receipt finishes it at once; reduced motion skips the slide.
+- Question counter ("Soru 3") on the question card, so new players see that the game is a series of questions.
+- A visible question above the price field ("Sence kaç liraydı?").
+
+### Changed
+- Sounds are short CC0 recordings instead of synthesized beeps: old receipt printer, paper tear, checkout beep and a counter bell for an exact guess (BigSoundBank, Joseph Sardin). The good/bad score jingles are gone. Samples are decoded on the first tap or key press so the printer sound starts in sync.
+- "Sonraki" is now "Sonraki soru →" in the accent colour, and it nudges once after the first three results.
+- Light mode: the page background is darker (#e4ded1) and the receipt has a stronger shadow; before, the receipt almost disappeared on the page (1.1:1).
+
+### Removed
+- The +10 / +100 / +1.000 buttons: players thought they were the only way to enter a price.
+- Yellowed paper for old years (it only changed the colour), the "FİŞ NO" line with its tagline (also on the share image) and the "POS HATASI" / "PARA ÜSTÜ" lines.
+
 ## [0.66.1] - 2026-10-16
 ### Added
 - Fiat Egea: 2018-02 value (68.900, 2018 model year), confirmed by a news page and the arabalar.com.tr monthly table. The series now has 10 values.
