@@ -239,10 +239,12 @@ function printReceipt(extraSound) {
     if (state.played <= 3) $('next-btn').classList.add('nudge');
     // The product icon bounces after a close guess and shakes after a way-off one once the receipt is out.
     if (state.result) {
+      $('r-meter').style.setProperty('--score', `${state.result.score}%`);
       const tier = scoreTier(state.result.score);
       if (tier === 'great') $('r-image').classList.add('bounce');
       else if (tier === 'bad') $('r-image').classList.add('shake');
     }
+    $('r-stamp').classList.add('stamped');
     if (state.result?.factor === 1) burstConfetti();
   };
   cancelPrint = () => {
@@ -272,6 +274,7 @@ function renderResultImage(q) {
 }
 
 function renderResult(q, r) {
+  $('r-stamp').classList.remove('stamped');
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   renderResultImage(q, r);
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
@@ -288,7 +291,12 @@ function renderResult(q, r) {
   $('r-ytl').hidden = !ytl;
   document.querySelector('.verdict-box').dataset.tier = tier;
   document.querySelector('.score-box').dataset.tier = tier;
-  $('r-meter').style.setProperty('--score', `${r.score}%`);
+  const stamp = stampTitle(r.score);
+  $('r-stamp').textContent = stamp || '';
+  $('r-stamp').hidden = !stamp;
+  $('r-stamp').dataset.tier = tier;
+  // Hold the meter at 0% while the receipt is still inside the printer; printReceipt fills it on tear-off.
+  $('r-meter').style.setProperty('--score', '0%');
 
   // The newest launch is both a question and the "current" price: no comparison with itself.
   const hasCurrent = q.current !== null && !(q.current.date === q.date && q.current.price === q.price);
