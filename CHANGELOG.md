@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 - Archive: product search that ignores Turkish accents (`js/search.js`), single-row scrolling category and product chips with a count, product icon and a "2010 → 2026: 20 kat" line on the receipt, and "← Sonuca dön" when opened from a result.
 - Guess field: live reading of big numbers ("1 milyon 250 bin ₺") and a shake on an invalid guess.
 - Result receipt: the score title is stamped on the receipt after it is torn off; the score meter fills at that moment too.
+- Share image: the price history chart with the question's date marked; long unit lines shrink to fit.
+- Result screen: the last 8 scores as a coloured tally next to the session line ("3 soru · ort. 42 · en iyi 80").
+- First load: a pulsing receipt placeholder instead of a bare "Yükleniyor…".
 ### Changed
 - Header sound and theme toggles use SVG icons instead of emoji.
 - Consistent keyboard focus rings, visible open/close markers on "Verginin dökümü" and "Ayrıntı", bigger real price, archive rows without the per-row bars when the chart is shown, footer link spacing.
