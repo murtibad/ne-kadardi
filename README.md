@@ -39,17 +39,24 @@ dependencies, so GitHub Pages serves the repo as it is.
 index.html          markup
 css/style.css       styles (design tokens as CSS custom properties)
 js/main.js          UI: screens, routing and events
-js/game.js          question selection and scoring (pure, tested)
+js/game.js          question selection, scoring and the "1 asgari ücretle" line (pure, tested)
 js/sound.js         Web Audio sample player and haptics (tested with a fake AudioContext)
 js/banter.js        cashier jokes, year notes, share stamp titles (pure, tested)
-js/format.js        Turkish number parsing and formatting (pure, tested)
-js/timeline.js      price archive rows
+js/cashier.js       cashier comments (pure, tested)
+js/format.js        Turkish number parsing, formatting and HTML escaping (pure, tested)
+js/timeline.js      price archive rows (pure, tested)
+js/archive-table.js archive price table HTML (pure, tested)
+js/price-chart.js   price chart geometry for the receipt, archive and share image (pure, tested)
 js/categories.js    product categories for the archive filter (pure, tested)
+js/search.js        accent-insensitive archive search (pure, tested)
+js/source-kind.js   source labels ("resmî kayıt", "haberlerden", "hesaplandı")
 js/linkify.js       turns URLs in notes into link buttons (pure, tested)
+js/fact.js          the home page "Biliyor muydun?" card (pure, tested)
 js/hint.js          hint values and exclusions
-js/cashier.js       cashier comments
-js/share-*.js       share text and image
-js/year-share-image.js  yearly receipt image
+js/count-up.js      price count-up frames on the receipt
+js/confetti.js      confetti on an exact guess
+js/share-model.js   share text and image model (pure, tested)
+js/share-image.js   share image drawing (canvas, loaded on demand)
 js/tax.js           estimated tax share (iPhone)
 js/version.js       version shown in the footer
 sw.js               service worker: offline cache (version must match package.json)
