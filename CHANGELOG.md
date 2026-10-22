@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.81.1] - 2026-10-22
+### Changed
+- Price archive: one line above the list explains the red ratio on every row ("Kırmızı yazı: o tarihten bugüne ne kadar arttı"); "Eskiden yeniye" stays on one line.
+
 ## [0.81.0] - 2026-10-22
 ### Changed
 - Product names and units in everyday words, same definitions (Murti's rule: readable for his parents). Examples: "1 USD (TCMB döviz satış kuru)" → "1 dolar (Merkez Bankası satış kuru)"; "Sürücü belgesi değerli kâğıt bedeli" → "Ehliyet kartı ücreti"; "maktu başvurma harcı" → "sabit harç"; "dosya bazında" and "periyodik" are gone; launch prices read "Türkiye'de ilk satış fiyatı"; taxi: "Taksiye binince taksimetrenin ilk yazdığı ücret"; hunger line: "4 kişilik bir ailenin bir aylık mutfak masrafı". 61 strings in `data/prices.json`, no price or source changed.
