@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.90.0] - 2026-10-22
+### Added
+- `kidem-tavani`: severance pay ceiling per year of service, every half-year 2010-2026 (35 values, 2.427 → 73.730 TL), from the Ministry of Labour's official table. The receipt calls it "Gerçek Tutar".
+- Left out: Ankara EGO bus fare (no source for 2011-2018).
+
 ## [0.89.3] - 2026-10-22
 ### Changed
 - Code tidy, no visible change: the 170-line archive render is split into small functions; the price table HTML moved to `js/archive-table.js` (pure, tested); `escapeHTML` lives once in `js/format.js` instead of two copies.
