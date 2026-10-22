@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease } from './format.js';
-import { buildQuestions, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
+import { actualLabel, buildQuestions, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { linkifyNote } from './linkify.js';
@@ -449,6 +449,7 @@ function renderResult(q, r) {
   renderResultImage(q, r);
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('r-guess').textContent = formatPrice(r.guess);
+  $('r-actual-label').textContent = actualLabel(q.productId);
   $('r-actual').textContent = formatPrice(q.price);
   $('r-verdict').textContent = verdictText(r);
   // Number, "/100" and the hint note are separate spans so CSS can size them; the text reads the same.

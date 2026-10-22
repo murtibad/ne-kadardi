@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE, percentOf } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE, percentOf, actualLabel } from '../js/game.js';
 import { readFileSync } from 'node:fs';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
@@ -231,4 +231,10 @@ test('paper fees are paid, not bought, and a wage that no longer covers one says
 test('the newest value is not compared with itself as "bugün"', () => {
   const q = { productId: 'simit', name: 'Simit', unit: '1 adet', date: '2015-03', price: 1, current: { date: '2015-03', price: 1 } };
   assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 1.000 simit alınabiliyordu.');
+});
+
+test('pensions and wages are labelled as an amount, prices as a price', () => {
+  assert.equal(actualLabel('emekli-en-dusuk-aylik'), 'Gerçek Tutar');
+  assert.equal(actualLabel('asgari-ucret'), 'Gerçek Tutar');
+  assert.equal(actualLabel('simit'), 'Gerçek Fiyat');
 });

@@ -160,6 +160,11 @@ export const WAGE_SHARE = {
   'aclik-siniri': { better: 'lower', name: 'Açlık sınırı' },
 };
 
+/** Receipt label for the answer: a pension or a wage is an amount, not a price. */
+export function actualLabel(productId) {
+  return productId === 'asgari-ucret' || WAGE_SHARE[productId] ? 'Gerçek Tutar' : 'Gerçek Fiyat';
+}
+
 /** Count word for the purchasing-power line: the product's plain name, else the short unit. */
 export function getCountUnit(q) {
   return COUNT_UNITS[q.productId] || getShortUnit(q.unit);

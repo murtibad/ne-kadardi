@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.81.2] - 2026-10-22
+### Changed
+- The receipt (and the share image) says "Gerçek Tutar" instead of "Gerçek Fiyat" for amounts people receive or earn: minimum wage, pension, holiday bonus, KYK bursu, birth benefit and the hunger line (`actualLabel` in `js/game.js`).
+
 ## [0.81.1] - 2026-10-22
 ### Changed
 - Price archive: one line above the list explains the red ratio on every row ("Kırmızı yazı: o tarihten bugüne ne kadar arttı"); "Eskiden yeniye" stays on one line.
