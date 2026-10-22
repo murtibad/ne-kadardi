@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.83.3] - 2026-10-22
+### Changed
+- Footer says "Sürüm 0.83.3" instead of a bare "v0.83.3".
+
 ## [0.83.2] - 2026-10-22
 ### Changed
 - Cashier lines no longer call the player "abi": mothers and grandmothers play too.
