@@ -1864,7 +1864,7 @@
         },
         {
           "date": "2014-01",
-          "price": 846.0,
+          "price": 846,
           "status": "verified",
           "note": "Net, AGİ dahil (bekâr, çocuksuz işçi). PDF dipnotu: net ele geçen asgari ücrete 80,33 TL AGİ ilave edilmiştir. Dönem: 01.01.2014-30.06.2014.",
           "source": {
@@ -2876,7 +2876,7 @@
         },
         {
           "date": "2020-09",
-          "price": 1.0,
+          "price": 1,
           "status": "verified",
           "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 21.09.2020'de 0,75 TL'den 1 TL'ye çıktı. Doğrulama: Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
           "source": {
@@ -2900,7 +2900,7 @@
         },
         {
           "date": "2022-02",
-          "price": 2.0,
+          "price": 2,
           "status": "verified",
           "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 11.02.2022'de 1,25 TL'den 2 TL'ye çıktı. Doğrulama: Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
           "source": {
@@ -2912,7 +2912,7 @@
         },
         {
           "date": "2022-08",
-          "price": 3.0,
+          "price": 3,
           "status": "verified",
           "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 08.08.2022'de 2 TL'den 3 TL'ye çıktı. Doğrulama: Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
           "source": {
@@ -2924,7 +2924,7 @@
         },
         {
           "date": "2023-07",
-          "price": 5.0,
+          "price": 5,
           "status": "verified",
           "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 27.07.2023'te 3 TL'den 5 TL'ye çıktı. Doğrulama: BloombergHT (26.07.2023) https://www.bloomberght.com/istanbul-da-halk-ekmek-e-zam-2335342 · Yeni Şafak, İstanbul Halk Ekmek'e dev zam (26.07.2023) https://www.yenisafak.com/gundem/istanbul-halk-ekmeke-dev-zam-halk-ekmek-ne-kadar-oldu-kac-tl-4548215.",
           "source": {
@@ -2936,7 +2936,7 @@
         },
         {
           "date": "2024-06",
-          "price": 8.0,
+          "price": 8,
           "status": "verified",
           "note": "İBB Halk Ekmek A.Ş. büfelerinde normal ekmek. 20.06.2024'te 5 TL'den 8 TL'ye çıktı. Doğrulama: Dünya (20.06.2024) https://www.dunya.com/ekonomi/son-dakika-istanbulda-halk-ekmeke-zam-haberi-733006 · Yeni Mesaj (20.06.2024) https://www.yenimesaj.com.tr/halk-ekmeke-zam-geldi-H1531780.htm.",
           "source": {
@@ -3018,7 +3018,7 @@
         },
         {
           "date": "2017-01",
-          "price": 7.0,
+          "price": 7,
           "status": "verified",
           "note": "01.01.2017'de 4,75 TL'den 7 TL'ye çıktı (%48; tek yönde alınırdı). Doğrulama: BloombergHT (31.12.2017, eski fiyat 7 TL) https://www.bloomberght.com/bogaz-kopruleri-ve-otoyol-gecis-ucretlerine-zam-2082807.",
           "source": {
@@ -8396,7 +8396,7 @@
       },
       "current": {
         "date": "2026",
-        "price": 1202.0,
+        "price": 1202,
         "status": "verified",
         "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
         "source": {
@@ -8409,7 +8409,7 @@
       "prices": [
         {
           "date": "2016",
-          "price": 80.0,
+          "price": 80,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8421,7 +8421,7 @@
         },
         {
           "date": "2017",
-          "price": 86.0,
+          "price": 86,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8445,7 +8445,7 @@
         },
         {
           "date": "2019",
-          "price": 121.0,
+          "price": 121,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8457,7 +8457,7 @@
         },
         {
           "date": "2020",
-          "price": 140.0,
+          "price": 140,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8469,7 +8469,7 @@
         },
         {
           "date": "2022",
-          "price": 200.0,
+          "price": 200,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8481,7 +8481,7 @@
         },
         {
           "date": "2023",
-          "price": 445.0,
+          "price": 445,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8493,7 +8493,7 @@
         },
         {
           "date": "2024",
-          "price": 705.0,
+          "price": 705,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu. 2024 tebliğinde uygulanan bedel 705 TL (kanunla getirilen üst bedel 1.000 TL).",
           "source": {
@@ -8505,7 +8505,7 @@
         },
         {
           "date": "2025",
-          "price": 1010.0,
+          "price": 1010,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8517,7 +8517,7 @@
         },
         {
           "date": "2026",
-          "price": 1202.0,
+          "price": 1202,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır '7 – Aile cüzdanları'; bedel o yılın 1 Ocağından geçerli. Resmî Gazete metninin alomaliye.com yansısında okundu.",
           "source": {
@@ -8542,7 +8542,7 @@
       },
       "current": {
         "date": "2025",
-        "price": 200.0,
+        "price": 200,
         "status": "verified",
         "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: iscihaber.net https://www.iscihaber.net/gundem/milli-piyango-yilbasi-cekilisi-buyuk-ikramiye-ve-bilet-fiyatlari-ne-kadar/190735.",
         "source": {
@@ -8567,7 +8567,7 @@
         },
         {
           "date": "2016",
-          "price": 15.0,
+          "price": 15,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: trthaber.com https://www.trthaber.com/haber/ekonomi/buyuk-ikramiye-heyecani-yarin-basliyor-285044.html.",
           "source": {
@@ -8579,7 +8579,7 @@
         },
         {
           "date": "2017",
-          "price": 15.0,
+          "price": 15,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/2018-milli-piyango-yilbasi-buyuk-ikramiye-tutari-ne-kadar-iste-milli-piyango-bilet-fiyatlari-2580551.",
           "source": {
@@ -8603,7 +8603,7 @@
         },
         {
           "date": "2019",
-          "price": 20.0,
+          "price": 20,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: fanatik.com.tr https://www.fanatik.com.tr/plus/milli-piyango-yilbasi-biletleri-ne-kadar-milli-piyango-bilet-sorgulama-ekrani-2111867.",
           "source": {
@@ -8615,7 +8615,7 @@
         },
         {
           "date": "2020",
-          "price": 25.0,
+          "price": 25,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: takvim.com.tr https://www.takvim.com.tr/yasam/2020/12/22/milli-piyango-yilbasi-bilet-fiyatlari-ne-kadar-ceyrek-yarim-ve-tam-bilet-kac-tl-iste-fiyat-listesi.",
           "source": {
@@ -8627,7 +8627,7 @@
         },
         {
           "date": "2021",
-          "price": 30.0,
+          "price": 30,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: gazetevatan.com https://www.gazetevatan.com/gundem/yilbasi-biletleri-ne-kadar-yilbasi-ikramiyesi-kac-lira-oldu-ceyrek-yarim-ve-tam-bilet-ne-kadar-2007644.",
           "source": {
@@ -8639,7 +8639,7 @@
         },
         {
           "date": "2022",
-          "price": 50.0,
+          "price": 50,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: ahaber.com.tr https://www.ahaber.com.tr/yasam/2022/12/19/yilbasi-bilet-fiyatlari-ne-kadar-kac-tl-2022-2023-tam-ceyrek-yilbasi-bilet-fiyatlari-ne-kadar-satisa-cikti-mi.",
           "source": {
@@ -8651,7 +8651,7 @@
         },
         {
           "date": "2023",
-          "price": 100.0,
+          "price": 100,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: takvim.com.tr https://www.takvim.com.tr/ekonomi/2023/11/30/2024-yilbasi-bilet-fiyatlari-2024-yilbasi-ikramiyesi-ne-kadar-milli-piyango-ceyrek-yarim-tam-yilbasi-biletleri-fiyat-listesi · milliyet.com.tr https://www.milliyet.com.tr/galeri/milli-piyango-2024-yilbasi-bilet-fiyatlari-milli-piyango-bileti-ne-kadar-ceyrek-yarim-tam-yilbasi-bileti-online-satin-al-7048745.",
           "source": {
@@ -8663,7 +8663,7 @@
         },
         {
           "date": "2024",
-          "price": 150.0,
+          "price": 150,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: cnnturk.com https://www.cnnturk.com/turkiye/galeri/2025-milli-piyango-bilet-fiyatlari-milli-piyango-yilbasi-ceyrek-yarim-tam-bilet-ne-kadar-kac-tl-2208386 · turkgun.com https://www.turkgun.com/faydali-bilgiler/yilbasi-biletleri-2025-ne-kadar-tam-yarim-ve-ceyrek-bilet-fiyatlari-kac-tl/254756.",
           "source": {
@@ -8675,7 +8675,7 @@
         },
         {
           "date": "2025",
-          "price": 200.0,
+          "price": 200,
           "status": "verified",
           "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). Doğrulama: iscihaber.net https://www.iscihaber.net/gundem/milli-piyango-yilbasi-cekilisi-buyuk-ikramiye-ve-bilet-fiyatlari-ne-kadar/190735.",
           "source": {
@@ -8700,7 +8700,7 @@
       },
       "current": {
         "date": "2026",
-        "price": 1690.0,
+        "price": 1690,
         "status": "verified",
         "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
         "source": {
@@ -8725,7 +8725,7 @@
         },
         {
           "date": "2017",
-          "price": 117.0,
+          "price": 117,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8737,7 +8737,7 @@
         },
         {
           "date": "2018",
-          "price": 134.0,
+          "price": 134,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8749,7 +8749,7 @@
         },
         {
           "date": "2019",
-          "price": 166.0,
+          "price": 166,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8761,7 +8761,7 @@
         },
         {
           "date": "2020",
-          "price": 200.0,
+          "price": 200,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8773,7 +8773,7 @@
         },
         {
           "date": "2022",
-          "price": 280.0,
+          "price": 280,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8785,7 +8785,7 @@
         },
         {
           "date": "2023",
-          "price": 624.0,
+          "price": 624,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8797,7 +8797,7 @@
         },
         {
           "date": "2024",
-          "price": 990.0,
+          "price": 990,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8809,7 +8809,7 @@
         },
         {
           "date": "2025",
-          "price": 1420.0,
+          "price": 1420,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8821,7 +8821,7 @@
         },
         {
           "date": "2026",
-          "price": 1690.0,
+          "price": 1690,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8846,7 +8846,7 @@
       },
       "current": {
         "date": "2026",
-        "price": 1511.0,
+        "price": 1511,
         "status": "verified",
         "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
         "source": {
@@ -8871,7 +8871,7 @@
         },
         {
           "date": "2017",
-          "price": 88.0,
+          "price": 88,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8883,7 +8883,7 @@
         },
         {
           "date": "2018",
-          "price": 120.0,
+          "price": 120,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8907,7 +8907,7 @@
         },
         {
           "date": "2020",
-          "price": 180.0,
+          "price": 180,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8919,7 +8919,7 @@
         },
         {
           "date": "2022",
-          "price": 250.0,
+          "price": 250,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8931,7 +8931,7 @@
         },
         {
           "date": "2023",
-          "price": 557.0,
+          "price": 557,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8943,7 +8943,7 @@
         },
         {
           "date": "2024",
-          "price": 885.0,
+          "price": 885,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8955,7 +8955,7 @@
         },
         {
           "date": "2025",
-          "price": 1270.0,
+          "price": 1270,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8967,7 +8967,7 @@
         },
         {
           "date": "2026",
-          "price": 1511.0,
+          "price": 1511,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -8992,7 +8992,7 @@
       },
       "current": {
         "date": "2026",
-        "price": 220.0,
+        "price": 220,
         "status": "verified",
         "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
         "source": {
@@ -9005,7 +9005,7 @@
       "prices": [
         {
           "date": "2017",
-          "price": 16.0,
+          "price": 16,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -9041,7 +9041,7 @@
         },
         {
           "date": "2020",
-          "price": 25.0,
+          "price": 25,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -9065,7 +9065,7 @@
         },
         {
           "date": "2023",
-          "price": 83.0,
+          "price": 83,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -9077,7 +9077,7 @@
         },
         {
           "date": "2024",
-          "price": 130.0,
+          "price": 130,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -9089,7 +9089,7 @@
         },
         {
           "date": "2025",
-          "price": 185.0,
+          "price": 185,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -9101,7 +9101,7 @@
         },
         {
           "date": "2026",
-          "price": 220.0,
+          "price": 220,
           "status": "verified",
           "note": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"; bedel o yılın 1 Ocağından geçerli (2024'te tebliğdeki uygulanan bedel). Resmî Gazete tebliğ metninin web yansısında okundu.",
           "source": {
@@ -9272,7 +9272,7 @@
       },
       "current": {
         "date": "2026-09",
-        "price": 30.0,
+        "price": 30,
         "status": "verified",
         "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://www.politikam.com/istanbulda-simide-zam-geldi-26-eylul-2026-simit-fiyati-kac-tl-oldu.",
         "source": {
@@ -9297,7 +9297,7 @@
         },
         {
           "date": "2020-01",
-          "price": 2.0,
+          "price": 2,
           "status": "verified",
           "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://cnnturk.com/turkiye/istanbulda-simit-fiyatlari-artti-1469819.",
           "source": {
@@ -9333,7 +9333,7 @@
         },
         {
           "date": "2023-08",
-          "price": 10.0,
+          "price": 10,
           "status": "verified",
           "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://serbestiyet.com/haberler/secim-sonrasi-zam-firtinasi-hiz-kesmiyor-istanbulda-ekmek-8-simit-10-tl-oldu-135101/.",
           "source": {
@@ -9345,7 +9345,7 @@
         },
         {
           "date": "2026-09",
-          "price": 30.0,
+          "price": 30,
           "status": "verified",
           "note": "İstanbul'da 100 gramlık simidin yeni fiyatı (zam haberi); tarih zammın yürürlüğe girdiği aydır. İkinci haber: https://www.politikam.com/istanbulda-simide-zam-geldi-26-eylul-2026-simit-fiyati-kac-tl-oldu.",
           "source": {
@@ -9516,7 +9516,7 @@
       },
       "current": {
         "date": "2025-10",
-        "price": 999900.0,
+        "price": 999900,
         "status": "verified",
         "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2025/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
         "source": {
@@ -9529,7 +9529,7 @@
       "prices": [
         {
           "date": "2017-02",
-          "price": 57900.0,
+          "price": 57900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2017/1-4-fire-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9541,7 +9541,7 @@
         },
         {
           "date": "2018-02",
-          "price": 68900.0,
+          "price": 68900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) 2018 model yılı teslim fiyatı (tavsiye edilen liste, kampanyalı değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2018/1-4-easy (Şubat satırı). Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9553,7 +9553,7 @@
         },
         {
           "date": "2019-06",
-          "price": 83900.0,
+          "price": 83900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2019/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9565,7 +9565,7 @@
         },
         {
           "date": "2020-03",
-          "price": 94900.0,
+          "price": 94900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://sifiraracal.com/fiat-haberleri/2020-fiat-egea-sedan-fiyati-ve-donanimlari/12490 . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9577,7 +9577,7 @@
         },
         {
           "date": "2020-09",
-          "price": 110900.0,
+          "price": 110900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.otomobil.com.tr/fiat-egea-sedan-fiyat-listesi/ . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9589,7 +9589,7 @@
         },
         {
           "date": "2020-11",
-          "price": 123900.0,
+          "price": 123900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2020/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9601,7 +9601,7 @@
         },
         {
           "date": "2021-01",
-          "price": 130900.0,
+          "price": 130900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2021/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9613,7 +9613,7 @@
         },
         {
           "date": "2021-04",
-          "price": 142900.0,
+          "price": 142900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2021/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9625,7 +9625,7 @@
         },
         {
           "date": "2024-01",
-          "price": 872900.0,
+          "price": 872900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.haberler.com/2024-fiat-egea-sedan-fiyat-listesi-16710756-haberi/ . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9637,7 +9637,7 @@
         },
         {
           "date": "2025-10",
-          "price": 999900.0,
+          "price": 999900,
           "status": "verified",
           "note": "Egea Sedan 1.4 Fire 95 HP Easy (manuel, benzinli) tavsiye edilen anahtar teslim liste fiyatı (kampanyalı fiyat değil). Aynı fiyat ikinci kaynakta da görüldü: https://www.arabalar.com.tr/fiat/egea/2025/1-4-easy . Yıl içinde zam ve kampanyayla değişir; tarih haberin ayıdır.",
           "source": {
@@ -9929,14 +9929,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2025-09",
-        "label": "EA FC 26",
-        "price": 2899.99,
+        "date": "2026-09",
+        "label": "EA FC 27",
+        "price": 3999,
         "status": "verified",
-        "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 26, PlayStation Store standart sürüm (PS5/PS4), çıkış fiyatı 2.899,99 TL (bazı haberlerde 2.899 TL). Bu değer için tek haber kaynağı doğrulandı.",
+        "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 27 (çıkış 25 Eylül 2026), PlayStation Store / Microsoft Store standart sürüm 3.999 TL; Temmuz 2026 ön sipariş açılışında üç haber aynı fiyatı verdi: Teknoblog https://www.teknoblog.com/ea-sports-fc-27-fiyati-cikis-tarihi-ve-the-grounds-modu/ (\"PlayStation ve Xbox tarafında Standart Edition 3.999 TL\"), LOG https://www.log.com.tr/?p=1020758 . PlayStation Store sayfası fiyatı okunabilir biçimde göstermediği için Store'dan doğrulanamadı.",
         "source": {
-          "title": "Tamindir",
-          "url": "https://www.tamindir.com/haber/ea-sports-fc-26-turkiye-fiyati_97823/",
+          "title": "İtopya Blog: EA SPORTS FC 27 ön siparişe açıldı, Türkiye fiyatı",
+          "url": "https://www.itopya.com/blog/ea-sports-fc-27-on-siparise-acildi-turkiye-fiyati-ve-cikis-tarihi-aciklandi/",
           "accessed": "2026-10-22",
           "kind": "news"
         }
@@ -10042,6 +10042,19 @@
           "source": {
             "title": "Tamindir",
             "url": "https://www.tamindir.com/haber/ea-sports-fc-26-turkiye-fiyati_97823/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-09",
+          "label": "EA FC 27",
+          "price": 3999,
+          "status": "verified",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 27 (çıkış 25 Eylül 2026), PlayStation Store / Microsoft Store standart sürüm 3.999 TL; Temmuz 2026 ön sipariş açılışında üç haber aynı fiyatı verdi: Teknoblog https://www.teknoblog.com/ea-sports-fc-27-fiyati-cikis-tarihi-ve-the-grounds-modu/ (\"PlayStation ve Xbox tarafında Standart Edition 3.999 TL\"), LOG https://www.log.com.tr/?p=1020758 . PlayStation Store sayfası fiyatı okunabilir biçimde göstermediği için Store'dan doğrulanamadı.",
+          "source": {
+            "title": "İtopya Blog: EA SPORTS FC 27 ön siparişe açıldı, Türkiye fiyatı",
+            "url": "https://www.itopya.com/blog/ea-sports-fc-27-on-siparise-acildi-turkiye-fiyati-ve-cikis-tarihi-aciklandi/",
             "accessed": "2026-10-22",
             "kind": "news"
           }
@@ -10170,13 +10183,13 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2025-03",
+        "date": "2026-05",
         "price": 4000,
         "status": "verified",
-        "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar); tarih, yeni tutarın ilk uygulandığı bayramın ayı. Ramazan Bayramı 2025 (30 Mart); kanunen 3.000 TL'den 4.000 TL'ye çıktı. DİKKAT: Meclis kararı bayram öncesine yetişmediği için hesaplara önce 3.000 TL yattı, 1.000 TL fark Resmî Gazete sonrası ödendi. Doğrulama: NTV https://www.ntv.com.tr/ekonomi/galeri-emekli-bayram-ikramiyesi-sgk-odeme-takvimi-2025-aciklandi-mi-4-bin-lira-ikramiye-ne-zaman-yatacak,8LUQ8Uda1kW12GRxgqL42Q.",
+        "note": "SGK emeklilerine bayramda ödenen ikramiye (dosya başına tam tutar), Kurban Bayramı 2026: tutar değişmedi, 4.000 TL 17-22 Mayıs 2026'da ödendi (Bakan Işıkhan'ın açıklaması). Ramazan Bayramı 2026'da da 4.000 TL. İkinci kaynak: Medyascope https://medyascope.tv/2026/05/12/emekli-kurban-bayrami-ikramiyesi-ne-zaman-alacak/ .",
         "source": {
-          "title": "Milliyet",
-          "url": "https://www.milliyet.com.tr/ekonomi/son-dakika-emeklilerin-bayram-ikramiyesi-4-bin-liraya-yukseltildi-7338435",
+          "title": "Sözcü: Kurban Bayramı emekli ikramiyesi ödeme tarihleri açıklandı",
+          "url": "https://www.sozcu.com.tr/kurban-bayrami-emekli-ikramiyesi-odeme-tarihleri-aciklandi-p318982",
           "accessed": "2026-10-22",
           "kind": "news"
         }
@@ -10270,7 +10283,7 @@
       "prices": [
         {
           "date": "2023-01",
-          "price": 5.0,
+          "price": 5,
           "status": "verified",
           "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. 1 Ocak 2023'ten itibaren İTO azami tarifesi (kg başına azami 25 TL). Bir haber (bianet) aynı tarifeyi 210 g olarak yazıyor. Bu değer için tek haber kaynağı doğrulandı.",
           "source": {
@@ -10294,7 +10307,7 @@
         },
         {
           "date": "2023-11",
-          "price": 8.0,
+          "price": 8,
           "status": "verified",
           "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO Kasım 2023 meclis kararı (kg başına azami 40 TL). NTV aynı fiyatı 210 g için yazıyor; karar metnini aktaran haber 200 g diyor. Doğrulama: NTV https://www.ntv.com.tr/ntvpara/istanbulda-ekmege-zam-geldi,p_gyndRJ4EGkk6cZON1iNQ.",
           "source": {
@@ -10306,7 +10319,7 @@
         },
         {
           "date": "2024-05",
-          "price": 10.0,
+          "price": 10,
           "status": "verified",
           "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO Mayıs 2024 meclis kararı, 8 TL'den 10 TL'ye. Bu değer için tek haber kaynağı doğrulandı.",
           "source": {
@@ -10318,7 +10331,7 @@
         },
         {
           "date": "2025-07",
-          "price": 15.0,
+          "price": 15,
           "status": "verified",
           "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO meclis kararı, Temmuz 2025 (240 g = 18 TL). Bu değer için tek haber kaynağı doğrulandı.",
           "source": {

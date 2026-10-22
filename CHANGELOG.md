@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.79.1] - 2026-10-22
+### Added
+- EA SPORTS FC 27 (25 Eylül 2026), PlayStation standard edition 3.999 TL, now also the product's current price. Three news sites gave the same PlayStation Store / Microsoft Store pre-order price in July 2026 (İtopya, Teknoblog, LOG); the Store page itself shows no readable price.
+### Changed
+- Emekli bayram ikramiyesi: current price moved to Kurban Bayramı 2026 (2026-05), still 4.000 TL (Sözcü, Medyascope; Ramazan 2026 was 4.000 too), so the "Güncel" row no longer looks a year old.
+- `data/prices.json` rewritten by the script: whole numbers lost a trailing ".0" (846.0 → 846); values unchanged.
+
 ## [0.79.0] - 2026-10-22
 ### Added
 - `sterlin`: İngiliz sterlini, TCMB döviz satış kuru on the same 34 dates as euro (first business day of January and July, 2010-2026) plus the current 02.10.2026 value: 2010-01-04 2,4063 … 2026-07-01 61,9245; today 64,9163. Each value comes from that day's TCMB XML file (`kurlar/YYYYMM/DDMMYYYY.xml`, GBP `ForexSelling`); the script first re-read every stored euro value from the same files and all 35 matched. Original icon `img/sterlin.svg`, "Para ve altın" category, no hint (like the other currencies).
