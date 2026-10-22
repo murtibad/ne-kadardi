@@ -931,7 +931,7 @@ function renderCategoryChips() {
       state.timelineCategory = c.id;
       state.selectedTimelineProduct = null; // pick the first product of the new category
       renderTimelineScreen();
-      catPicker.querySelector(`[data-cat="${c.id}"]`)?.focus(); // the chips were rebuilt
+      catPicker.querySelector(`[data-cat="${c.id}"]`)?.focus({ preventScroll: true }); // the chips were rebuilt
     };
     catPicker.appendChild(btn);
   }
@@ -1187,12 +1187,15 @@ function setupInstallButton() {
   });
 }
 
+// A second tap within the fade restarts the timer instead of cutting the new fade short.
+let themeAnimTimer = null;
 function toggleTheme() {
   const next = currentTheme() === 'dark' ? 'light' : 'dark';
   const root = document.documentElement;
   root.classList.add('theme-anim');
   $('theme-toggle').classList.add('spin');
-  setTimeout(() => {
+  clearTimeout(themeAnimTimer);
+  themeAnimTimer = setTimeout(() => {
     root.classList.remove('theme-anim');
     $('theme-toggle').classList.remove('spin');
   }, 450);

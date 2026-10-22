@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.90.3] - 2026-10-22
+### Fixed
+- Two quick taps on the day/night button no longer cut the second fade short.
+- Choosing an archive category keeps the page where it is (focus without scrolling), like the other chips.
+
 ## [0.90.2] - 2026-10-22
 ### Fixed
 From a read-only Gemini Flash review of `js/main.js`, each finding checked against the code (most were not real):
