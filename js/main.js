@@ -67,6 +67,9 @@ function saveSession() {
 
 function show(screenId) {
   syncFooter(screenId);
+  clearTimeout(handTimer);
+  $('question-screen').classList.remove('as-machine', 'folded');
+  $('question-screen').getAnimations?.().forEach((a) => a.cancel());
   for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
     const el = $(id);
     const wasHidden = el.hidden;
@@ -243,6 +246,7 @@ function onGuess(event) {
 // a tap on the receipt finishes it at once, and reduced motion skips the slide.
 const PRINT_MS = 1100;
 let printTimer = null;
+let handTimer = null;
 let cancelPrint = null;
 let countUpRaf = null;
 
@@ -260,10 +264,48 @@ function stopPrinting() {
   stopCountUp();
   clearTimeout(printTimer);
   printTimer = null;
+  clearTimeout(handTimer);
   if (cancelPrint) {
     cancelPrint();
     cancelPrint = null;
   }
+}
+
+// One flow instead of two screens: on "Tahmin et" the question card stays on screen, folds its
+// form away and becomes the till; the receipt prints out of the slot under it. After the tear the
+// till slides up and away and the receipt is left floating on its own, "handed" to the player.
+function turnIntoMachine() {
+  const qs = $('question-screen');
+  const form = $('guess-form');
+  const h = form.offsetHeight;
+  qs.hidden = false;
+  qs.classList.add('as-machine');
+  if (!(h > 0 && form.animate)) { qs.classList.add('folded'); return; }
+  form.style.overflow = 'hidden';
+  form.animate([{ height: `${h}px`, opacity: 1 }, { height: '0px', opacity: 0, paddingTop: '0px', marginTop: '0px' }], { duration: 220, easing: 'ease-in', fill: 'forwards' })
+    .onfinish = (e) => {
+      form.style.overflow = '';
+      e.target.cancel();
+      if (qs.classList.contains('as-machine')) qs.classList.add('folded');
+    };
+}
+
+function handOver() {
+  const qs = $('question-screen');
+  $('result-screen').classList.add('handed');
+  if (qs.hidden || !qs.classList.contains('as-machine')) return;
+  const h = qs.offsetHeight;
+  if (!qs.animate) { qs.hidden = true; qs.classList.remove('as-machine', 'folded'); return; }
+  qs.style.overflow = 'hidden';
+  // The till slides up out of view while its space closes, so the receipt rises into its place.
+  const timing = { duration: 380, easing: 'cubic-bezier(0.5, 0, 0.75, 0)' };
+  qs.querySelector('.question-card')?.animate([{ transform: 'none' }, { transform: `translateY(-${h}px)` }], timing);
+  const anim = qs.animate([{ height: `${h}px`, opacity: 1 }, { height: '0px', opacity: 0.4 }], timing);
+  anim.onfinish = () => {
+    qs.style.overflow = '';
+    if (state.lastGameScreen === 'result-screen') qs.hidden = true;
+    qs.classList.remove('as-machine', 'folded');
+  };
 }
 
 function printReceipt(extraSound) {
@@ -271,6 +313,7 @@ function printReceipt(extraSound) {
   const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
+  $('result-screen').classList.remove('handed');
   $('next-btn').classList.remove('nudge');
   const finish = () => {
     sound.stop('print');
@@ -296,6 +339,9 @@ function printReceipt(extraSound) {
     }
     $('r-stamp').classList.add('stamped');
     if (state.result?.factor === 1) burstConfetti();
+    // Let the tear finish (0.3 s) before the till leaves; reduced motion hands over at once.
+    if (reduced) handOver();
+    else handTimer = setTimeout(handOver, 320);
   };
   cancelPrint = () => {
     stopCountUp();
@@ -306,12 +352,14 @@ function printReceipt(extraSound) {
     // on the receipt the player can come back to.
     if (state.result) $('r-meter').style.setProperty('--score', `${state.result.score}%`);
     $('r-stamp').classList.add('stamped');
+    $('result-screen').classList.add('handed');
   };
   if (reduced) {
     wrap.classList.add('printing');
     finish();
     return;
   }
+  turnIntoMachine();
   sound.play('print');
   const frames = countUpFrames(state.question.price, { frames: 60 });
   if (frames.length > 0 && typeof requestAnimationFrame === 'function') {

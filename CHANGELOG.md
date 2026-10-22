@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.78.0] - 2026-10-22
+### Changed
+- One flow from guess to receipt (Murti: "siteye gir, fiş var, fiyat yaz, sıfırdan yeni fiş çıkıyor: kopuk"). After "Tahmin et" the question card no longer disappears: it folds its form away and becomes the till, and the receipt prints out of the slot right under it. When the receipt is torn off, the till slides up out of view, the receipt rises into its place with its torn top edge and a deeper shadow, and then floats gently on the page (`turnIntoMachine` / `handOver` in `js/main.js`). Reduced motion skips straight to the finished receipt, as before.
+
 ## [0.77.1] - 2026-10-22
 ### Fixed
 - Sounds no longer come out late after the tab sat in the background or on the first tap (Murti's report). The sound files are downloaded once the page has loaded (`prefetch`), so the first tap only decodes them; every tap and returning to the tab wakes a sleeping audio context and the output with a silent sample (`wake`); a sound whose context is still waking is played only if it can start within 400 ms, otherwise skipped instead of arriving out of sync.
