@@ -256,7 +256,9 @@ export function buildContextModel(q, allQuestions) {
   if (!pastWage) return null;
 
   const currentWage = wages.find((x) => x.current)?.current.price;
-  const hasNow = Boolean(q.current && currentWage);
+  // The newest value is both a question and "today": comparing it with itself says nothing.
+  const isToday = q.current && q.current.date === q.date && q.current.price === q.price;
+  const hasNow = Boolean(q.current && currentWage && !isToday);
 
   if (WAGE_SHARE[q.productId]) {
     return {

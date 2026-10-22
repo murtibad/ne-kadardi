@@ -62,7 +62,7 @@ Turkish label next to the source; a missing or unknown value shows nothing.
 | `official` | resmî kayıt | A public institution published it: Resmî Gazete, ministries, EPDK, TCMB, ÇSGB, KGM, İBB. |
 | `dataset` | yayımlanmış veri | A published third-party dataset, e.g. the Economist Big Mac Index. |
 | `news` | haber kaynaklı | News articles, only when no official source exists; use two independent outlets that agree. |
-| `derived` | türetilmiş değer | Computed from sourced inputs; the method and inputs go in `note`. |
+| `derived` | hesaplanmış değer | Computed from sourced inputs; the method and inputs go in `note`. |
 
 ## Product images
 
