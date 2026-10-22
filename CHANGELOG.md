@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.79.0] - 2026-10-22
+### Added
+- `sterlin`: İngiliz sterlini, TCMB döviz satış kuru on the same 34 dates as euro (first business day of January and July, 2010-2026) plus the current 02.10.2026 value: 2010-01-04 2,4063 … 2026-07-01 61,9245; today 64,9163. Each value comes from that day's TCMB XML file (`kurlar/YYYYMM/DDMMYYYY.xml`, GBP `ForexSelling`); the script first re-read every stored euro value from the same files and all 35 matched. Original icon `img/sterlin.svg`, "Para ve altın" category, no hint (like the other currencies).
+### Changed
+- `docs/DATA.md`: TCMB section covers dolar, euro and sterlin; the purchasing-power note now says "wage in force on the question's date" (v0.77.0 behaviour).
+
 ## [0.78.0] - 2026-10-22
 ### Changed
 - One flow from guess to receipt (Murti: "siteye gir, fiş var, fiyat yaz, sıfırdan yeni fiş çıkıyor: kopuk"). After "Tahmin et" the question card no longer disappears: it folds its form away and becomes the till, and the receipt prints out of the slot right under it. When the receipt is torn off, the till slides up out of view, the receipt rises into its place with its torn top edge and a deeper shadow, and then floats gently on the page (`turnIntoMachine` / `handOver` in `js/main.js`). Reduced motion skips straight to the finished receipt, as before.

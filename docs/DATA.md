@@ -77,6 +77,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | gram-altin | 1 g, 24k | World Bank gold price x TCMB rate (derived, see below) | high (market value) |
 | dolar | 1 USD | TCMB EVDS exchange rates | very high |
 | euro | 1 EUR | TCMB exchange-rate XML files (same dates as dolar) | very high |
+| sterlin | 1 GBP | TCMB exchange-rate XML files (same dates as euro; the script re-read every stored EUR value first) | very high |
 | ceyrek-altin | 1 coin, 1.75 g, 22 carat | derived from gram-altin x 1.604 g pure gold | high (market value) |
 | gram-gumus | 1 g, pure silver | World Bank silver price x TCMB rate (same method as gram-altin) | high (market value) |
 | otogaz | 1 L autogas, İstanbul (Avrupa) | EPDK LPG bayi satış fiyatı bulletin (from 2016) | high (date it) |
@@ -123,10 +124,10 @@ Source: EPDK "Petrol Piyasası Bayi Satış Fiyatı Bülteni"
   "(Diğer)" rows (differentiated fuels); do not use them.
 - The URL does not encode the date, so the entry title and `note` carry the bulletin date.
 
-## TCMB exchange rates (dolar)
+## TCMB exchange rates (dolar, euro, sterlin)
 
 - File per day: `https://www.tcmb.gov.tr/kurlar/YYYYMM/DDMMYYYY.xml`. The files are ISO-8859-9 encoded.
-- Take USD `ForexSelling` ("döviz satış"). Weekends and holidays have no file, so the entry uses the
+- Take `ForexSelling` ("döviz satış") of USD, EUR or GBP (`Unit` is 1 for all three). Weekends and holidays have no file, so the entry uses the
   first business day of January and its real date.
 
 ## ÇSGB minimum wage
@@ -138,7 +139,7 @@ Source: EPDK "Petrol Piyasası Bayi Satış Fiyatı Bülteni"
 - 2016-2021 PDFs cover the whole year, earlier ones and 2022/2023 cover the first half. July
   values (`YYYY-07`, the `ikincialtiay` / `tem` PDFs) are in for 2010-2015, 2022 and 2023; each
   note names an independent second publisher. The result's purchasing-power line uses the wage
-  of the same half-year, the hint uses the first value of the year.
+  in force on the question's date (the latest raise of that year), the hint uses the first value of the year.
 
 ## Economist Big Mac Index (Türkiye)
 

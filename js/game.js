@@ -92,6 +92,7 @@ export const COUNT_UNITS = {
   'gram-altin': 'gram altın',
   dolar: 'dolar',
   euro: 'euro',
+  sterlin: 'sterlin',
   benzin: 'litre benzin',
   motorin: 'litre motorin',
   otogaz: 'litre otogaz',
