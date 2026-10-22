@@ -110,6 +110,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | netflix | Netflix Standard plan, monthly (2016 HD tier) | price-rise news (2019+) | high |
 | spotify | Spotify Premium Individual, monthly | price-rise news (2013+) | high |
 | youtube-premium | YouTube Premium Individual, monthly, Türkiye | price-rise news, two domains each (2019-07 launch, 2022-11, 2023-11, 2024-11, 2026-06); no official TL page | high |
+| iski-su | İSKİ household water, 1 m³, lowest tier, water + wastewater, VAT excluded, first tariff of each year (2012+); current is the monthly tariff | İSKİ tariff PDFs and tariff page (official). 2010-2011 left out (wastewater fee listed separately) | high |
+| togg-t10x | Togg T10X cheapest version (V1 RWD Standard Range), list price without campaigns | Togg price list (official, web.archive.org copies with "valid from" dates, 2024+); 2023 from two news domains each | high |
 | imei-kayit-harci | IMEI registration fee for a phone brought from abroad | Harçlar Kanunu via news (2012+, incl. mid-year rises) | high |
 | aclik-siniri | Türk-İş hunger line, monthly food spending of a family of four, January | union survey via news (2019+); not official data, title says Türk-İş | medium-high |
 

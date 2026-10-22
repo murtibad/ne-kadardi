@@ -10928,6 +10928,346 @@
           }
         }
       ]
+    },
+    {
+      "id": "iski-su",
+      "name": "Musluk suyu",
+      "unit": "1 ton (1 m³) ev suyu, KDV hariç",
+      "region": "İstanbul",
+      "source_hint": "İSKİ su birim fiyatları; yılın ilk tarifesi.",
+      "image": {
+        "src": "img/su.svg",
+        "alt": "Su damlası ve musluk çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10",
+        "price": 65.52,
+        "status": "verified",
+        "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). 2023'ten beri fiyat her ay güncelleniyor; bu, 5 Ekim 2026 tarifesi. İSKİ sayfası: \"Konut 0 - 15 m³/ay 43,70 21,82 65,52\" (2026 su satış tarifeleri, KDV hariç); aynı değer 2026 PDF'inin 5.10.2026 sütununda.",
+        "source": {
+          "title": "İSKİ su birim fiyatları (2026 tarifeleri, KDV hariç)",
+          "url": "https://iski.istanbul/abone-hizmetleri/abone-rehberi/su-birim-fiyatlari/",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2012-01",
+          "price": 3.16,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konutların Tüm Kullanımları 3,16 3,18 3,20 …\".",
+          "source": {
+            "title": "İSKİ 2012 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2012_Su_Birim_Fiyatlari_4ee847d20f.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 3.45,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konutların Tüm Kullanımları 3,45 3,51 3,53 …\".",
+          "source": {
+            "title": "İSKİ 2013 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2013_Su_Birim_Fiyatlari_260bfdf7d3.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 3.75,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konutların Tüm Kullanımları 3,75 3,82 3,85 …\".",
+          "source": {
+            "title": "İSKİ 2014 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2014_Su_Birim_Fiyatlari_85a90e596b.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 3.7,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1 (Konut başına 0-10 (10 dahil) m3/ay'a kadar kullanım) 3,70 3,75 3,78 …\".",
+          "source": {
+            "title": "İSKİ 2015 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2015_Su_Birim_Fiyatlari_dea5d2c8f6.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 3.9,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1(0-10m3/ay) 3,90 3,97 3,97 …\".",
+          "source": {
+            "title": "İSKİ 2016 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2016_Su_Birim_Fiyatlari_bbdbca12ca.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 4.2,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1(0-10m3/ay) 4,20 4,30 4,34 …\".",
+          "source": {
+            "title": "İSKİ 2017 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2017_Su_Birim_Fiyatlari_aab2d581fe.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 4.37,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1(0-10m3/ay) 4,37 4,41 4,45 …\".",
+          "source": {
+            "title": "İSKİ 2018 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2018_Su_Birim_Fiyatlar_e2ffee2459.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 4.53,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1.Kademe Konut başına 0-10 (10 dahil) m3/ay'a kadar kullanım 4,53 4,58 4,59 4,63 4,71 4,00 …\".",
+          "source": {
+            "title": "İSKİ 2019 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2019_Su_Birim_Fiyatlar_8e2c053681.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 4,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1.Kademe Konut başına 0-15 (15 dahil) m3/ay'a kadar kullanım 4,00 4,00 4,00 …\".",
+          "source": {
+            "title": "İSKİ 2020 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2020_Su_Birim_Fiyatlar_2_1a8f009607.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 4.81,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1. Kademe (Konut başına 0-15 (15 dâhil) m3/ay a kadar kullanım) 4,81 4,81 4,81 …\".",
+          "source": {
+            "title": "İSKİ 2021 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/sukalite_OCAK_2021t_381a3b4588.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 5.56,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1.Kademe ( Konut Başına 0 – 15 ) (15 dahil ) m3/aya kadar kullanım 5,56 5,56 5,56 8,33 …\".",
+          "source": {
+            "title": "İSKİ 2022 su birim fiyatları (KDV hariç)",
+            "url": "https://cdn.iski.istanbul/uploads/2022tarife_2b9c461852.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 14.61,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1.Kademe … 9,74 4,87 14,61\".",
+          "source": {
+            "title": "İSKİ 2023 su birim fiyatları (KDV hariç)",
+            "url": "https://iskiapi.iski.gov.tr/uploads/2023_Su_Birim_Fiyatlari_9fb0b19361.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 23.72,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1.Kademe ( Konut Başına 0 – 15 ) (15 dahil ) m3/aya kadar kullanım 15,82 7,90 23,72\".",
+          "source": {
+            "title": "İSKİ 2024 su birim fiyatları (KDV hariç)",
+            "url": "https://iskiapi.iski.gov.tr/uploads/2024_YILI_SU_BIRIM_FIYATLARI_b298a12f61.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 37.92,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1.Kademe ( Konut Başına 0 – 15 ) (15 dahil ) m³/aya kadar kullanım 25,28 12,64 37,92\".",
+          "source": {
+            "title": "İSKİ 2025 su birim fiyatları (KDV hariç)",
+            "url": "https://iskiapi.iski.gov.tr/uploads/2025_aylik_su_ve_atiksu_birim_fiyatlari1_KLAS_Oe_R_ff46816e7a.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 52.88,
+          "status": "verified",
+          "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). İSKİ tarifesi: \"Konut 1.Kademe ( Konut Başına 0 – 15 ) (15 dahil ) m³/aya kadar kullanım 35,26 17,62 52,88\".",
+          "source": {
+            "title": "İSKİ 2026 su birim fiyatları (KDV hariç)",
+            "url": "https://iskiapi.iski.gov.tr/uploads/2026_aylik_su_ve_atiksu_birim_fiyatlari_KLAS_Oe_R_cc27482ca8.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "togg-t10x",
+      "name": "Sıfır Togg T10X (en ucuz sürüm)",
+      "unit": "1 araç, Togg liste fiyatı (kampanyasız)",
+      "region": null,
+      "source_hint": "Togg fiyat listesi (2024'ten beri), 2023 için zam haberleri.",
+      "image": {
+        "src": "img/egea.svg",
+        "alt": "Otomobil çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-06",
+        "price": 1909048,
+        "status": "verified",
+        "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". Togg fiyat listesi (22.10.2026'da canlı): \"V1 RWD Standard Range … Turnkey Price 1.909.048 ₺\" … \"Prices are valid from 15/06/2026.\"",
+        "source": {
+          "title": "Togg fiyat listesi",
+          "url": "https://www.togg.com.tr/en/price-list",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2023-03",
+          "price": 953000,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". 14 Mart 2023 satış duyurusu: \"T10X modelinin V1 RWD standart menzil versiyonu 953 bin TL\". Doğrulama: tgrthaber.com https://www.tgrthaber.com/otomobil/togga-ilk-zam-iste-guncel-fiyat-listesi-2895515 (\"953 bin TL'den başlayan fiyatlarla\").",
+          "source": {
+            "title": "Webrazzi: Togg T10X 953 bin TL'den başlayan fiyatlarla satışa sunuldu",
+            "url": "https://webrazzi.com/2023/03/14/togg-un-ilk-elektrikli-otomobili-olan-togg-t10x-953-bin-tl-den-baslayan-fiyatlarla-satisa-sunuldu/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 1227500,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". 5 Temmuz'da 1.207.000, 10 Temmuz'da KDV artışıyla \"1 milyon 227 bin 500 TL'ye yükseldi\" (ayın çoğunda geçerli olan bu). Doğrulama: haberturk.com https://www.haberturk.com/togg-a-otv-zammi-3641564-ekonomi (\"1 milyon 227 bin 500 liradan\").",
+          "source": {
+            "title": "Sözcü: Togg'a bir haftada ikinci zam",
+            "url": "https://www.sozcu.com.tr/togga-bir-haftada-ikinci-zam-wp7738895",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-11",
+          "price": 1430000,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". 30 Kasım 2023: \"T10X V1 RWD Standart Menzil 1.430.000 TL\". Doğrulama: haberturk.com https://www.haberturk.com/togg-a-otv-zammi-3641564-ekonomi (\"1 milyon 227 bin 500 liradan 1 milyon 430 bin liraya\").",
+          "source": {
+            "title": "Log: Togg zam",
+            "url": "https://www.log.com.tr/?p=861577",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 1432600,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". Togg fiyat listesi: \"Turnkey Price 1.432.600 ₺ … Prices are valid from 05/01/2024.\" (web.archive.org kopyası). Doğrulama: shiftdelete.net (\"1.432.600 TL (Eski fiyatı: 1.430.000 TL)\").",
+          "source": {
+            "title": "Togg fiyat listesi (web.archive.org kopyası, 22.12.2024)",
+            "url": "https://web.archive.org/web/20241222113338/https://www.togg.com.tr/price-list",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 1440000,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". Togg fiyat listesi: \"Teslim Fiyatları 1.440.000 ₺ … Fiyatlar 17/01/2025'ten itibaren geçerlidir\".",
+          "source": {
+            "title": "Togg fiyat listesi (web.archive.org kopyası, 17.01.2025)",
+            "url": "https://web.archive.org/web/20250117161501/https://www.togg.com.tr/price-list",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-08",
+          "price": 1862000,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". Togg fiyat listesi: \"Turnkey Price 1.862.000 ₺ … Prices are valid from 01/08/2025.\" (Temmuz 2025 ÖTV kararından sonra). Capital aynı haberde anahtar teslim için 1.952.000 de yazıyor; Togg'un kendi listesi esas alındı.",
+          "source": {
+            "title": "Togg fiyat listesi (web.archive.org kopyası, 03.08.2025)",
+            "url": "https://web.archive.org/web/20250803133739/https://www.togg.com.tr/price-list",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 1870000,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". Togg fiyat listesi: \"Turnkey Price 1.870.000 ₺ … Prices are valid from 07/01/2026.\"",
+          "source": {
+            "title": "Togg fiyat listesi (web.archive.org kopyası, 11.03.2026)",
+            "url": "https://web.archive.org/web/20260311070119/https://www.togg.com.tr/price-list",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-04",
+          "price": 1869048,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". Togg fiyat listesi: \"Turnkey Price 1.869.048 ₺ … Prices are valid from 02/04/2026.\"",
+          "source": {
+            "title": "Togg fiyat listesi (web.archive.org kopyası, 05.04.2026)",
+            "url": "https://web.archive.org/web/20260405190039/https://www.togg.com.tr/price-list",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-06",
+          "price": 1909048,
+          "status": "verified",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". Togg fiyat listesi (22.10.2026'da canlı): \"V1 RWD Standard Range … Turnkey Price 1.909.048 ₺\" … \"Prices are valid from 15/06/2026.\"",
+          "source": {
+            "title": "Togg fiyat listesi",
+            "url": "https://www.togg.com.tr/en/price-list",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
