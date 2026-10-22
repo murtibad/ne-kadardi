@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.90.5] - 2026-10-22
+### Fixed
+- Screen readers hear "Görsel hazır." when the image preview opens; the status used to stay on "Hazırlanıyor…" (found by a read-only regression check of 0.90.4, which found nothing else).
+
 ## [0.90.4] - 2026-10-22
 ### Removed
 - Dead CSS for the old header links (`.header-link`, `.header-nav`): no page uses them since the v0.74 redesign. A scan found no other unused selectors and no unused JS exports.
