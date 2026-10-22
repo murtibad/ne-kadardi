@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.90.2] - 2026-10-22
+### Fixed
+From a read-only Gemini Flash review of `js/main.js`, each finding checked against the code (most were not real):
+- Leaving the result during the 0.3 s tear left a stale timer id, so the next receipt could start already "handed over".
+- A saved session without a valid total no longer turns the average into NaN.
+- `getAnimations` guarded on browsers without it.
+- A failure while preparing the share image can no longer leave the button stuck on "Hazırlanıyor…".
+- The count-up writes the final price in one place (`stopCountUp`) instead of three.
+
 ## [0.90.1] - 2026-10-22
 ### Added
 - `milli-piyango-ceyrek`: 2010 8, 2012 10, 2013 12,5, 2015 12,5 (two news domains each; 2013 and 2015 are probably one agency text). 2011 left out (one source).
