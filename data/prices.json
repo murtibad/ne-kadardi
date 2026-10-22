@@ -11268,6 +11268,164 @@
           }
         }
       ]
+    },
+    {
+      "id": "okul-servisi",
+      "name": "Okul servisi",
+      "unit": "1 ay, en kısa mesafe (0-1 km), belediyenin tavan ücreti",
+      "region": "İstanbul",
+      "source_hint": "UKOME kararları (İBB tarife belgeleri ve haberler); okul açılışında geçerli ücret.",
+      "image": {
+        "src": "img/otobus.svg",
+        "alt": "Otobüs çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-09",
+        "price": 4456,
+        "status": "verified",
+        "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. İBB tarifesi: \"Öğrenci Servis Taşımacılığı Ücret Tarifesi. (20.07.2026 tarihinden itibaren geçerli olacaktır) ... 0-1 km 4.456,00\". Doğrulama: birgun.net (\"0-1 kilometre 4.456 TL\").",
+        "source": {
+          "title": "İBB öğrenci servis ücret tarifesi (20 Temmuz 2026)",
+          "url": "https://tuhim.ibb.gov.tr/media/27490/2027ucretler.pdf",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2015-09",
+          "price": 160,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. Ağustos 2015 UKOME kararı (%5): \"EN KISA MESAFE 160 TL\"; önceki yıl 151 TL (tek kaynak, alınmadı). Doğrulama: mynet https://finans.mynet.com/haber/detay/ekonomi/okul-servis-ucretleri-belli-oldu/102883/.",
+          "source": {
+            "title": "Türkiye Gazetesi: Okul servislerinin ücretleri belli oldu",
+            "url": "https://www.turkiyegazetesi.com.tr/ekonomi/okul-servislerinin-ucretleri-belli-oldu-298970",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-09",
+          "price": 175,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 24 Ağustos 2016: \"Okul servis ücretleri, 0-1 kilometre 160 liradan 175 liraya\". Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/gundem/istanbulda-yine-zam-51746h (tablo \"0 -- 1 175\").",
+          "source": {
+            "title": "TRT Haber: İstanbul'da okul servis ücretleri belli oldu",
+            "url": "https://www.trthaber.com/haber/turkiye/istanbulda-okul-servis-ucretleri-belli-oldu-270770.html",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-09",
+          "price": 190,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 7 Eylül 2017: \"Geçen yıl aylık 175 lira olan 0-1 kilometrelerdeki servis ücreti bu yıl 190 liraya çıkarıldı.\" Doğrulama: birgun.net https://www.birgun.net/haber/okul-servisi-ucretleri-belli-oldu-178311 (aynı ajans metni).",
+          "source": {
+            "title": "Milliyet: Okul servisi ücretleri belli oldu",
+            "url": "https://www.milliyet.com.tr/ekonomi/okul-servisi-ucretleri-belli-oldu-2515643",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-09",
+          "price": 215,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. İBB tarife belgesi: \"0 – 1 KM 215,00 TL\" (web.archive.org kopyası; canlı adres kalktı). Haber: mynet \"Geçen yıl aylık 190 lira olan 0-1 kilometrelerdeki servis ücreti bu yıl 215 liraya çıkarıldı.\"",
+          "source": {
+            "title": "İBB okul servis taşımacılığı ücret tarifeleri (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20250726083819/https://tuhim.ibb.gov.tr/media/2168/okul-servis-ta%C5%9F%C4%B1mac%C4%B1l%C4%B1%C4%9F%C4%B1-%C3%BCcret-tarifeleri.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-09",
+          "price": 243,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. Ağustos 2019: \"Geçen yıl aylık 215 lira olan 0-1 kilometrelerdeki servis ücreti bu yıl 243 liraya çıkarıldı.\" Doğrulama: diken.com.tr https://www.diken.com.tr/?p=714950 (\"215 TL'den 243 TL'ye\").",
+          "source": {
+            "title": "NTV: İstanbul'da okul servisi ücretlerine yüzde 13 zam",
+            "url": "https://www.ntv.com.tr/turkiye/son-dakika-istanbulda-okul-servisi-ucretlerine-yuzde-13-zam,-PdVwVAIpU-hWwxXf9npkw",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-09",
+          "price": 271,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 24 Eylül 2020 (%11,5): \"0-1 km 271 TL\". Doğrulama: milliyet.com.tr (\"en yakın mesafe 271 liradan 312 liraya\", 2021). Mart 2021'de salgın döneminde geçici 243 TL indirimli tarife de uygulandı.",
+          "source": {
+            "title": "Ekonomim: Okul servis ücretlerine yüzde 11,5 zam",
+            "url": "https://www.ekonomim.com/ekonomi/okul-servis-ucretlerine-yuzde-115-zam-haberi-482936",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-09",
+          "price": 311.65,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 29 Temmuz 2021 (%15): \"0-1 kilometre arasında 271 TL olan fiyat 311,65 liraya yükseltilirken\"; TRT Haber yuvarlayıp \"312 lira\" yazdı https://www.trthaber.com/haber/gundem/istanbulda-okul-servis-ucretleri-belli-oldu-603153.html.",
+          "source": {
+            "title": "Yeni Akit: İstanbul'da servis ücretleri ne kadar oldu",
+            "url": "https://www.yeniakit.com.tr/haber/istanbulda-servis-ucretleri-ne-kadar-oldu-2021-2022-servis-ucretleri-zam-oranlari-1561681.html",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-09",
+          "price": 660,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 24 Ağustos 2022: \"En kısa mesafe olan 0-1 kilometrenin ücreti 660 lira olarak belirlendi.\" Doğrulama: posta.com.tr (\"0-1 km 554 liradan 660 liraya\"). Aralık 2022'de 792'ye çıktı. 2023-24 için haberler 1.200 ve 1.300 diye ayrıştığı için o yıl alınmadı.",
+          "source": {
+            "title": "Hürriyet: İstanbul'da okul servisi ücretleri belli oldu",
+            "url": "https://www.hurriyet.com.tr/ekonomi/son-dakika-istanbulda-okul-servisi-ucretleri-belli-oldu-42124841",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-09",
+          "price": 1931,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. İBB tarifesi: \"29 TEMMUZ 2024 TARİHİNDEN İTİBAREN GEÇERLİDİR ... 0-1 km 1.931,00\" (aylık), \"Tarifedeki ücretlere KDV dahildir.\" Haberlerde 1.931,40.",
+          "source": {
+            "title": "İBB öğrenci servis ücret tarifesi (29 Temmuz 2024)",
+            "url": "https://tuhim.ibb.gov.tr/media/24486/servis_ucret.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 2605,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. Ocak 2025'teki artıştan sonra, okul açılışında: \"UKOME'den yeni karar çıkana kadar veliler 0-1 kilometre için aylık 2605 lira\" (Temmuz 2025 artış önerisi reddedildi). Doğrulama: teknotalk.com (\"0-1 km için aylık 2.605 TL\").",
+          "source": {
+            "title": "NTV: İstanbul'da okul servisi ücretleri ne kadar",
+            "url": "https://www.ntv.com.tr/ntvpara/istanbulda-okul-servisi-ucretleri-ne-kadar,sH7jHy6rikiVagD30TZ7TA",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-09",
+          "price": 4456,
+          "status": "verified",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. İBB tarifesi: \"Öğrenci Servis Taşımacılığı Ücret Tarifesi. (20.07.2026 tarihinden itibaren geçerli olacaktır) ... 0-1 km 4.456,00\". Doğrulama: birgun.net (\"0-1 kilometre 4.456 TL\").",
+          "source": {
+            "title": "İBB öğrenci servis ücret tarifesi (20 Temmuz 2026)",
+            "url": "https://tuhim.ibb.gov.tr/media/27490/2027ucretler.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
