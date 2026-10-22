@@ -25,7 +25,7 @@ export function pickFact(timelines, { random = Math.random, skipId = null } = {}
   return {
     productId: t.id,
     name: t.name,
-    unit: t.unit,
+    unit: t.region ? `${t.unit} · ${t.region}` : t.unit,
     image: t.image,
     thenLabel: formatPeriod(first.date),
     thenPrice: formatPrice(first.price),

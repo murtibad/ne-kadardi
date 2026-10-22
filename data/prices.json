@@ -5508,7 +5508,7 @@
     },
     {
       "id": "taksi-acilis",
-      "name": "İstanbul taksi açılış ücreti",
+      "name": "Taksi açılış ücreti",
       "unit": "Taksiye binince taksimetrenin ilk yazdığı ücret (sarı taksi)",
       "region": "İstanbul",
       "source_hint": "UKOME kararları ve haber arşivi; sarı taksi açılış ücreti. Tarih zammın yürürlüğe girdiği aydır.",
@@ -7610,7 +7610,7 @@
     },
     {
       "id": "istanbul-ulasim",
-      "name": "İstanbul toplu taşıma",
+      "name": "Toplu taşıma bileti",
       "unit": "1 biniş, tam bilet (kartla)",
       "region": "İstanbul",
       "source_hint": "İBB UKOME kararıyla belirlenen tam elektronik bilet (Akbil, sonra İstanbulkart) ilk biniş ücreti; haber kaynaklı. Tarih kararın/zammın ayıdır.",
@@ -9274,7 +9274,7 @@
     },
     {
       "id": "simit",
-      "name": "Simit (İstanbul sokak/fırın simidi)",
+      "name": "Simit (sokak ve fırın)",
       "unit": "1 adet, 100 gram",
       "region": "İstanbul",
       "source_hint": "İstanbul Simitçiler/Fırıncılar Odası zam haberleri",
@@ -10272,7 +10272,7 @@
     },
     {
       "id": "firin-ekmegi",
-      "name": "Fırın ekmeği (İstanbul, 200 g)",
+      "name": "Fırın ekmeği",
       "unit": "1 adet, 200 gram",
       "region": "İstanbul",
       "source_hint": "İstanbul Ticaret Odası'nın (İTO) fırınlar için belirlediği 200 gram ekmek azami satış fiyatı. Halk Ekmek değil. Haber kaynaklı.",

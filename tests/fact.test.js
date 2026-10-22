@@ -51,3 +51,8 @@ test('real data yields facts', () => {
   const f = pickFact(buildTimelines(data), { random: () => 0.5 });
   assert.ok(f && f.thenPrice && f.nowPrice);
 });
+
+test('the fact card unit names the region, as the question card does', () => {
+  const ist = { id: 'simit', name: 'Simit', unit: '1 adet', region: 'İstanbul', image: null, rows: [row('2018', 1), row('2026', 20, true)] };
+  assert.equal(pickFact([ist], () => 0).unit, '1 adet · İstanbul');
+});

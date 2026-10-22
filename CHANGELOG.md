@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.89.2] - 2026-10-22
+### Changed
+- Names no longer repeat the city shown next to the unit: "Taksi açılış ücreti", "Toplu taşıma bileti", "Simit (sokak ve fırın)", "Fırın ekmeği" (was "İstanbul taksi açılış ücreti" … · İstanbul).
+- The home "Biliyor muydun?" card shows the city with the unit, as the question card does.
+
 ## [0.89.1] - 2026-10-22
 ### Changed
 After a read-only data QA (no blockers):
