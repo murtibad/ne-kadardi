@@ -510,7 +510,7 @@ function renderResult(q, r) {
   $('r-source-kind').hidden = !kindLabel;
   const avg = Math.round(state.total / state.played);
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
-  $('r-session').innerHTML = `<span>${state.played} soru · ort. ${avg}${state.best > 0 ? ` · en iyi ${state.best}` : ''}</span>`
+  $('r-session').innerHTML = `<span>${state.played} soru · ortalama puan ${avg}${state.best > 0 ? ` · en yüksek ${state.best}` : ''}</span>`
     + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
@@ -542,10 +542,17 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const hits = chart.points.map((p, i) => `<circle class="pc-hit" cx="${p.x}" cy="${p.y}" r="12" data-i="${i}"/>`).join('');
   const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
-  // Drop a year label that would touch its neighbour; the last year always stays.
-  const shownTicks = chart.xTicks.filter((tk, i, a) => i === a.length - 1
-    ? true
-    : a[a.length - 1].x - tk.x >= 34 && (i === 0 || tk.x - a[i - 1].x >= 34));
+  // Drop a year label that would touch the one shown before it or the last one (which always stays).
+  // A year label is about 36 units wide: centred ones take half each side, the first grows right and the last left.
+  const gap = (aEdge, bEdge) => (aEdge ? 36 : 18) + (bEdge ? 36 : 18) + 4;
+  const all = chart.xTicks;
+  const shownTicks = [];
+  all.forEach((tk, i) => {
+    const last = i === all.length - 1;
+    const prev = shownTicks[shownTicks.length - 1];
+    if (last || ((!prev || tk.x - prev.x >= gap(shownTicks.length === 1, false))
+      && all[all.length - 1].x - tk.x >= gap(i === 0, true))) shownTicks.push(tk);
+  });
   const ticks = shownTicks.map((tk, i, a) => `<text x="${tk.x}" y="${chart.height - 6}" text-anchor="${i === 0 ? 'start' : i === a.length - 1 ? 'end' : 'middle'}" class="pc-tick">${tk.label}</text>`).join('');
   const story = `${formatPeriod(first.date)}: ${formatPrice(first.price)}, ${formatPeriod(last.date)}: ${formatPrice(last.price)}`
     + (marked && marked !== first && marked !== last ? `; işaretli ${formatPeriod(marked.date)}: ${formatPrice(marked.price)}` : '')
@@ -1062,10 +1069,10 @@ function renderTimelineScreen(focusProductId = null) {
 function renderHome() {
   state.archiveFromResult = false;
   $('m-tahmin').textContent = state.played > 0
-    ? `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en iyi ${state.best}` : '')
+    ? `${state.played} soru · ortalama puan ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '')
     : '';
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
-  $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} kaynaklı fiyat`;
+  $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   if (!$('fact-body').hasChildNodes()) renderFact();
   renderHomeSpark();

@@ -23,6 +23,7 @@ test('verdictText handles over, under and exact', () => {
   assert.equal(verdictText({ direction: 'exact', factor: 1.04 }), 'Neredeyse tam isabet!');
   assert.equal(verdictText({ direction: 'over', factor: 2.34 }), '2,3 kat fazla tahmin ettin');
   assert.equal(verdictText({ direction: 'under', factor: 1.5 }), '1,5 kat az tahmin ettin');
+  assert.equal(verdictText({ direction: 'under', factor: 1.2 }), 'Biraz az tahmin ettin');
 });
 
 test('buildShareFileName generates ascii lowercase hyphenated names', () => {

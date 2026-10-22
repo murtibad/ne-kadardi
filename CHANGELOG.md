@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.87.4] - 2026-10-22
+### Changed
+Plainer words after a read-only "parent born in 1971" review:
+- Session line "1 soru · ortalama puan 0 · en yüksek 92" (was "ort." and "en iyi").
+- Home "60 ürün · 817 gerçek fiyat" (was "kaynaklı fiyat"); footer "Her fiyatın kaynağı yazılı."
+- Install button "Telefonun ana ekranına ekle"; skip button "Bu soruyu geç (puanın düşmez)".
+- Source labels "haberlerden" and "başka fiyatlardan hesaplandı" (were "haber kaynaklı", "hesaplanmış değer").
+- A near miss says "Biraz fazla / az tahmin ettin" instead of "1,2 kat az tahmin ettin".
+- Score help drops the "2 katı / yarısı" puzzle sentence; two cashier lines without "türbülans" and "dalgalanma".
+### Fixed
+- Chart year labels no longer overlap ("20182020"): spacing now uses the measured label width and the first and last labels' anchors.
+
 ## [0.87.3] - 2026-10-22
 ### Changed
 - Model-named questions lead with the model: "AirPods 5 (kablosuz kulaklık, temel model)", "iPhone 11", "PlayStation 5 Pro (oyun konsolu)", "FIFA 18 (PlayStation futbol oyunu, standart sürüm)" instead of "AirPods kablosuz kulaklık (temel model): AirPods 5". Same in the receipt and the share text.
