@@ -1,9 +1,9 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease } from './format.js';
+import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, escapeHTML } from './format.js';
 import { actualLabel, buildQuestions, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
-import { linkifyNote } from './linkify.js';
+import { timelineTableHtml } from './archive-table.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
 import { filterByQuery } from './search.js';
 import { sourceKindLabel } from './source-kind.js';
@@ -26,7 +26,6 @@ const hapticIfAllowed = (ms) => {
   if (!sound.isEnabled() || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
   haptic(ms);
 };
-const escapeHTML = (str) => (str ? str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '');
 
 const state = {
   recentProducts: [], 
@@ -895,7 +894,27 @@ function saveArchiveNewestFirst(newest) {
 function renderTimelineScreen(focusProductId = null) {
   show('timeline-screen');
   if (state.timelines.length === 0) return;
-  
+
+  renderCategoryChips();
+  const inCategory = filterTimelines(state.timelines, state.timelineCategory);
+  const visible = filterByQuery(inCategory, state.timelineQuery);
+  // With no search hit the chips are empty but the table keeps showing a product of the category.
+  const pool = visible.length > 0 ? visible : inCategory;
+  if (!pool.some(t => t.id === state.selectedTimelineProduct)) {
+    state.selectedTimelineProduct = pool[0].id;
+  }
+  const product = pool.find(t => t.id === state.selectedTimelineProduct);
+
+  renderSearchState(visible.length);
+  renderProductChips(visible, product.id, focusProductId);
+  renderTimelineHeader(product);
+  renderArchiveOrder();
+  $('t-rows-container').innerHTML = timelineTableHtml(product.rows, { newestFirst: state.archiveNewestFirst });
+  renderPriceChart('t-chart', product.id);
+  linkRowsToChart();
+}
+
+function renderCategoryChips() {
   const catPicker = $('category-picker');
   catPicker.textContent = '';
   for (const c of [{ id: 'all', label: 'Tümü' }, ...CATEGORIES]) {
@@ -914,26 +933,19 @@ function renderTimelineScreen(focusProductId = null) {
     };
     catPicker.appendChild(btn);
   }
+}
 
-  const inCategory = filterTimelines(state.timelines, state.timelineCategory);
-  const visible = filterByQuery(inCategory, state.timelineQuery);
-  // With no search hit the chips are empty but the table keeps showing a product of the category.
-  const pool = visible.length > 0 ? visible : inCategory;
-  if (!pool.some(t => t.id === state.selectedTimelineProduct)) {
-    state.selectedTimelineProduct = pool[0].id;
-  }
-  const product = pool.find(t => t.id === state.selectedTimelineProduct);
-
+function renderSearchState(hits) {
   const search = $('product-search');
   if (search.value !== state.timelineQuery) search.value = state.timelineQuery;
-  $('product-count').textContent = `${visible.length} ürün`;
-  $('product-empty').hidden = visible.length > 0;
+  $('product-count').textContent = `${hits} ürün`;
+  $('product-empty').hidden = hits > 0;
   // With no hit, a receipt of some other product below would read like a search result.
-  document.querySelector('#timeline-screen .receipt-wrapper').hidden = visible.length === 0;
+  document.querySelector('#timeline-screen .receipt-wrapper').hidden = hits === 0;
   $('product-search-clear').hidden = state.timelineQuery === '';
   // Offer the same query across all categories when only the selected category has no hit.
   const allBtn = $('search-all-cats');
-  const elsewhere = visible.length === 0 && state.timelineCategory !== 'all' && state.timelineQuery.trim() !== ''
+  const elsewhere = hits === 0 && state.timelineCategory !== 'all' && state.timelineQuery.trim() !== ''
     ? filterByQuery(state.timelines, state.timelineQuery).length : 0;
   allBtn.hidden = elsewhere === 0;
   allBtn.textContent = `Tüm kategorilerde ara (${elsewhere} ürün)`;
@@ -943,17 +955,18 @@ function renderTimelineScreen(focusProductId = null) {
     renderTimelineScreen();
     $('product-search').focus({ preventScroll: true });
   };
+}
 
+function renderProductChips(visible, selectedId, focusProductId) {
   const picker = $('timeline-picker');
-  picker.innerHTML = '';
+  picker.textContent = '';
   for (const t of visible) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'picker-chip';
-    btn.setAttribute('aria-pressed', t.id === product.id ? 'true' : 'false');
+    btn.setAttribute('aria-pressed', t.id === selectedId ? 'true' : 'false');
     btn.dataset.id = t.id;
     btn.title = t.name; // the label is truncated with an ellipsis
-
     if (t.image) {
       const img = document.createElement('img');
       img.src = t.image.src;
@@ -963,24 +976,24 @@ function renderTimelineScreen(focusProductId = null) {
     const nameSpan = document.createElement('span');
     nameSpan.textContent = t.name;
     btn.appendChild(nameSpan);
-    
     btn.onclick = () => {
       state.selectedTimelineProduct = t.id;
       renderTimelineScreen(t.id); // the picker is rebuilt, so put keyboard focus back on the chosen chip
     };
     picker.appendChild(btn);
   }
-  
-  const chosen = picker.querySelector('[aria-pressed="true"]');
-  if (focusProductId) chosen?.focus({ preventScroll: true });
-  // Centre the chosen chip inside its own row (the right edge fades out) without moving the page.
-  if (chosen) {
-    const row = picker.getBoundingClientRect();
-    const chip = chosen.getBoundingClientRect();
-    picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  }
 
+  const chosen = picker.querySelector('[aria-pressed="true"]');
+  if (!chosen) return;
+  if (focusProductId) chosen.focus({ preventScroll: true });
+  // Centre the chosen chip inside its own row (the right edge fades out) without moving the page.
+  const row = picker.getBoundingClientRect();
+  const chip = chosen.getBoundingClientRect();
+  picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+
+function renderTimelineHeader(product) {
   $('t-title').textContent = product.name;
   $('t-unit').textContent = product.region ? `${product.unit} · ${product.region}` : product.unit;
   const tImg = $('t-image');
@@ -999,71 +1012,31 @@ function renderTimelineScreen(focusProductId = null) {
   const toResult = state.archiveFromResult && state.lastGameScreen === 'result-screen';
   back.href = toResult ? '#tahmin' : '#';
   back.textContent = toResult ? '← Sonuca dön' : '← Ana menü';
-  
-  let html = `<table class="timeline-table" role="table">
-    <caption class="visually-hidden">Fiyat geçmişi</caption>
-    <thead role="rowgroup">
-      <tr role="row">
-        <th scope="col" role="columnheader" class="visually-hidden">Tarih</th>
-        <th scope="col" role="columnheader" class="visually-hidden">Fiyat</th>
-        <th scope="col" role="columnheader" class="visually-hidden">Değişim ve kaynak</th>
-      </tr>
-    </thead>
-    <tbody role="rowgroup">`;
+}
 
+function renderArchiveOrder() {
   const newestFirst = state.archiveNewestFirst;
   const orderBtn = $('archive-order');
   orderBtn.textContent = newestFirst ? 'Yeniden eskiye ↑' : 'Eskiden yeniye ↓';
   orderBtn.setAttribute('aria-pressed', newestFirst ? 'true' : 'false');
   orderBtn.title = newestFirst ? 'Sıra: yeniden eskiye. Değiştirmek için dokun.' : 'Sıra: eskiden yeniye. Değiştirmek için dokun.';
-  const orderedRows = newestFirst ? [...product.rows].reverse() : product.rows;
-  for (const r of orderedRows) {
-    const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
-    const priceStr = formatPrice(r.price);
-    const ratioStr = r.ratioToCurrent ? formatIncrease(r.ratioToCurrent) : '';
-    
-    const bar = `<div class="timeline-bar-track" aria-hidden="true">
-                   <div class="timeline-bar-fill" style="width: ${r.barPercent}%"></div>
-                 </div>`;
-                 
-    const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
-    const kindSpan = kindLabel ? `<span class="source-kind">${escapeHTML(kindLabel)}</span>` : '';
-    const sourceLink = r.source ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>${kindSpan}` : '';
-    const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${linkifyNote(r.note)}</p></details>` : '';
-    
-    const safeDate = escapeHTML(r.date);
-    html += `<tr role="row" data-date="${safeDate}"${r.isCurrent ? ' class="is-current"' : ''}>
-      <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${safeDate}">${escapeHTML(period)}</button></th>
-      <td role="cell" class="timeline-price-cell"><span class="timeline-price">${priceStr}</span></td>
-      <td role="cell" class="timeline-detail-cell">
-        ${bar}
-        <div class="timeline-meta">
-          ${ratioStr ? `<span class="timeline-ratio">${ratioStr}</span>` : ''}
-          ${sourceLink}
-          ${note}
-        </div>
-      </td>
-    </tr>`;
-  }
-  html += `</tbody></table>`;
-  
+}
+
+// Delegated once on the permanent container because renderTimelineScreen rebuilds the table often.
+function linkRowsToChart() {
   const rowsContainer = $('t-rows-container');
-  rowsContainer.innerHTML = html;
-  renderPriceChart('t-chart', product.id);
-  // Delegated once on the permanent container because renderTimelineScreen rebuilds the table often.
-  if (!rowsContainer.dataset.chartLinked) {
-    rowsContainer.dataset.chartLinked = 'true';
-    rowsContainer.addEventListener('click', (e) => {
-      const btn = e.target instanceof Element ? e.target.closest('.row-to-chart') : null;
-      if (!btn) return;
-      const fig = $('t-chart');
-      fig._activateDate?.(btn.dataset.date);
-      if (!fig.hidden) {
-        const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-        fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
-      }
-    });
-  }
+  if (rowsContainer.dataset.chartLinked) return;
+  rowsContainer.dataset.chartLinked = 'true';
+  rowsContainer.addEventListener('click', (e) => {
+    const btn = e.target instanceof Element ? e.target.closest('.row-to-chart') : null;
+    if (!btn) return;
+    const fig = $('t-chart');
+    fig._activateDate?.(btn.dataset.date);
+    if (!fig.hidden) {
+      const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+    }
+  });
 }
 
 function renderHome() {
