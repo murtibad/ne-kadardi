@@ -140,6 +140,7 @@ export const COUNT_UNITS = {
   'okul-servisi': 'aylık okul servisi',
   mtv: 'yıllık araba vergisi',
   'ehliyet-esinav': 'ehliyet yazılı sınavı',
+  'kidem-tavani': 'kıdem tazminatı tavanı',
   'iski-su': 'ton musluk suyu',
   'yurtdisi-cikis-harci': 'yurt dışı çıkış harcı',
   'basvurma-harci': 'dava harcı',
@@ -169,8 +170,11 @@ export const WAGE_SHARE = {
 };
 
 /** Receipt label for the answer: a pension or a wage is an amount, not a price. */
+// Money people receive or a legal limit, not something bought: the receipt says "Tutar".
+const AMOUNTS = new Set(['asgari-ucret', 'kidem-tavani']);
+
 export function actualLabel(productId) {
-  return productId === 'asgari-ucret' || WAGE_SHARE[productId] ? 'Gerçek Tutar' : 'Gerçek Fiyat';
+  return AMOUNTS.has(productId) || WAGE_SHARE[productId] ? 'Gerçek Tutar' : 'Gerçek Fiyat';
 }
 
 /** Count word for the purchasing-power line: the product's plain name, else the short unit. */

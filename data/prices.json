@@ -11815,6 +11815,452 @@
           }
         }
       ]
+    },
+    {
+      "id": "kidem-tavani",
+      "name": "Kıdem tazminatı tavanı",
+      "unit": "1 çalışma yılı için en fazla ödenen tutar (brüt)",
+      "region": null,
+      "source_hint": "ÇSGB kıdem tazminatı tavanı tablosu; her yarıyıl.",
+      "image": {
+        "src": "img/asgari-ucret.svg",
+        "alt": "Cüzdan",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 73729.87,
+        "status": "verified",
+        "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2026 ... 73.729,87 ₺\".",
+        "source": {
+          "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+          "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 2427.04,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2010 ... 2.427,04 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2010-07",
+          "price": 2517.01,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2010 ... 2.517,01 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 2623.23,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2011 ... 2.623,23 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-07",
+          "price": 2731.85,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2011 ... 2.731,85 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 2917.27,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2012 ... 2.917,27 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-07",
+          "price": 3033.98,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2012 ... 3.033,98 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 3129.25,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2013 ... 3.129,25 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-07",
+          "price": 3254.44,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2013 ... 3.254,44 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 3438.22,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2014 ... 3.438,22 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-07",
+          "price": 3438.22,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2014 ... 3.438,22 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 3541.37,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2015 ... 3.541,37 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-07",
+          "price": 3709.98,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2015 ... 3.709,98 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-09",
+          "price": 3828.37,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.09.2015 ... 3.828,37 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 4092.53,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2016 ... 4.092,53 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-07",
+          "price": 4297.21,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2016 ... 4.297,21 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 4426.16,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2017 ... 4.426,16 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-07",
+          "price": 4732.48,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2017 ... 4.732,48 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 5001.76,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2018 ... 5.001,76 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-07",
+          "price": 5434.42,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2018 ... 5.434,42 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 6017.6,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2019 ... 6.017,60 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-07",
+          "price": 6379.86,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2019 ... 6.379,86 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 6730.15,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2020 ... 6.730,15 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-07",
+          "price": 7117.17,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2020 ... 7.117,17 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 7638.96,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2021 ... 7.638,96 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-07",
+          "price": 8284.51,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2021 ... 8.284,51 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 10848.59,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2022 ... 10.848,59 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-07",
+          "price": 15371.4,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2022 ... 15.371,40 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 19982.83,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2023 ... 19.982,83 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 23489.83,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2023 ... 23.489,83 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 35058.58,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2024 ... 35.058,58 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 41828.42,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2024 ... 41.828,42 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 46655.43,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2025 ... 46.655,43 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-07",
+          "price": 53919.68,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2025 ... 53.919,68 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 64948.77,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.01.2026 ... 64.948,77 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 73729.87,
+          "status": "verified",
+          "note": "Kıdem tazminatı tavanı: bir çalışma yılı için ödenebilecek en yüksek kıdem tazminatı (en yüksek devlet memuru emekli ikramiyesine bağlı), brüt; Çalışma ve Sosyal Güvenlik Bakanlığı tablosundaki yürürlük dönemi. ÇSGB tablosu: \"01.07.2026 ... 73.729,87 ₺\".",
+          "source": {
+            "title": "ÇSGB: Kıdem tazminatı tavanı, yıllara göre (1980-2026)",
+            "url": "https://csgb.gov.tr/Media/ydelgoxf/kidem-tazminati-yillar-1980-2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
