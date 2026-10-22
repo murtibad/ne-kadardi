@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.80.0] - 2026-10-22
+### Added
+- `ales`: ALES exam fee (first session of the year, ALES/1), 6 values: 2019-03 120 · 2021-03 145 · 2022-02 185 · 2024-03 490 · 2025-02 750 · 2026-03 1.200 TL. Each value on two news domains quoting the ÖSYM guide, checked with `verify.py`. 2020 (only one web source besides a PDF) and 2023 (ALES/1 and ALES/2 fees conflict) are left out.
+- `osmangazi-koprusu`: Osmangazi Bridge, one car crossing, 7 tariff points: 2016-07 88,75 · 2017-01 65,65 (the toll was cut) · 2021-01 147,50 · 2022-01 184,50 · 2025-01 795 · 2026-01 995 · 2026-07 1.170 TL, each on two news domains. 2018-2020 and 2023-2024 had no second source and are left out.
+- Both in their categories (Harç, ceza ve bedeller / Ulaşım ve yakıt), with plain count names and "ödenebiliyordu".
+
 ## [0.79.2] - 2026-10-22
 ### Fixed
 Findings of a read-only QA pass over v0.77-v0.78, mostly wording for first-time readers:

@@ -10354,6 +10354,214 @@
           }
         }
       ]
+    },
+    {
+      "id": "ales",
+      "name": "ALES sınav ücreti",
+      "unit": "1 sınav (ALES, yılın ilk oturumu)",
+      "region": null,
+      "source_hint": "ÖSYM ALES/1 kılavuzu ve başvuru duyuruları; yıl içindeki ilk ALES.",
+      "image": {
+        "src": "img/sinav.svg",
+        "alt": "Sınav kâğıdı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-03",
+        "price": 1200,
+        "status": "verified",
+        "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2026/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"Kılavuza göre ALES/1 sınav ücreti 1200 TL olarak belirlendi.\"; diğer kaynak: ekonomist.com.tr https://www.ekonomist.com.tr/egitim/-ales-basvurulari-basladi-mi-2026-ales-sinav-ve-basvuru-tarihleri--72722 (\"Sınav Ücreti: 1200 TL\").",
+        "source": {
+          "title": "ALES başvuru ekranı erişime açıldı! 2026 ALES/1",
+          "url": "https://www.haberturk.com/ales-basvuru-tarihleri-2026-ales1-basvurulari-ne-zaman-basvuru-ucreti-ne-kadar-nasil-basvuru-yapilir-3872058",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-03",
+          "price": 120,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2019/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"ÖSYM'den yapılan açıklamada ALES sınav ücreti 120 TL olarak açıklandı.\"; diğer kaynak: egitimsistem.com https://egitimsistem.com/2019-ales1-basvurularinin-alinmasi-64549h.htm (\"ALES/1 BAŞVURU TARİHLERİ : 05 – 13 Mart 2019 (Ücret ödeme için son gün, 14 Mart 2019) SINAV SAATİ VE SÜRESİ : 10.15, 150 dakika SINAV ÜCRETİ : 120,00 TL\").",
+          "source": {
+            "title": "2019 ALES başvuruları ÖSYM 'ais' sayfası üzerinden başladı",
+            "url": "https://www.cnnturk.com/turkiye/2019-ales-basvurulari-osym-ais-sayfasi-uzerinden-basladi-951170",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-03",
+          "price": 145,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2021/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"Bu yıl adaylardan istenen başvuru ücreti ise 145 TL olacak.\"; diğer kaynak: takvim.com.tr https://www.takvim.com.tr/guncel/2021/03/12/osym-giris-ales-basvuru-ekrani-20211-ales-basvuru-ucreti-ne-kadar-ales-puani-kac-yil-gecerli (\"Başvuru ücreti olarak adaylardan 145 TL talep edilecek.\").",
+          "source": {
+            "title": "ÖSYM ALES 2021 başvuru ücreti ne kadar?",
+            "url": "https://www.cnnturk.com/turkiye/ales-basvurusu-nasil-yapilir-basvurular-ne-zaman-bitecek-osym-ales-2021-basvuru-ucreti-ne-kadar-1682066",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-02",
+          "price": 185,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2022/02 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"ALES/1 başvuru ücreti 185,00 TL olarak açıklandı.\"; diğer kaynak: posta.com.tr https://www.posta.com.tr/egitim-kariyer/ales-basvuru-ucreti-ne-kadar-2022-ales-basvurusu-nasil-yapilir-iste-2022-ales-basvuru-kilavuzu-2439867 (\"2022 ALES başvuru ücreti 185 TL olarak belirlendi.\"); cnnturk.com https://www.cnnturk.com/egitim/ales-2022-basvurusu-nasil-yapilir-ales-2-basvuru-ucreti-ve-basvuru-kilavuzu-1807894 (\"ALES/1 başvuruları 21 Şubat – 3 Mart 2022 tarihleri aralığında alınmış, başvuru ücreti 185 TL olarak açıklanmıştı.\").",
+          "source": {
+            "title": "ALES başvuru ücreti 2022 ne kadar",
+            "url": "https://www.milliyet.com.tr/gundem/ales-basvuru-ucreti-2022-ne-kadar-kac-tl-nereye-odenir-ales-sinavi-ne-zaman-osymden-ales-basvuru-sinav-tarihleri-6705638",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-03",
+          "price": 490,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2024/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"ALES başvuru ücreti ne kadar? ÖSYM (Ölçme, Seçme ve Yerleştirme Merkezi) tarafından düzenlenen Akademik Personel ve Lisansüstü Eğitimi Giriş Sınavı (ALES) için bu yılın sınav ücreti 490 TL olarak belirlendi.\"; diğer kaynak: haberturk.com https://www.haberturk.com/son-dakika-ales-basvuru-osym-ais-ekrani-acildi-2024-ales1-basvurusu-nasil-yapilir-ucreti-ne-kadar-3665505 (\"Ales sınav başvuru ücreti: 490 TL\").",
+          "source": {
+            "title": "2024 ALES başvuruları başladı",
+            "url": "https://www.gzt.com/jurnalist/ales-basvurulari-basladi-2024-ales-basvuru-ucreti-ne-kadar-basvurular-nasil-yapiliyor-3774886",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-02",
+          "price": 750,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2025/02 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"ALES/1 başvuru ücreti, 750 TL olarak belirlendi.\"; diğer kaynak: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/egitim/2025-ales-gec-basvurulari-ne-zaman-2025-ales1-basvurusu-nasil-ve-2305471 (\"ALES/1 başvuru ücreti, 750 TL olarak belirlendi.\").",
+          "source": {
+            "title": "ALES başvuruları başladı! ÖSYM 2025 ALES/1",
+            "url": "https://www.haberturk.com/ales-basvuru-ekrani-ve-ucreti-osym-ile-2025-ales1-basvurusu-nasil-ve-nereden-yapilir-ucreti-ne-kadar-3766775",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-03",
+          "price": 1200,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2026/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"Kılavuza göre ALES/1 sınav ücreti 1200 TL olarak belirlendi.\"; diğer kaynak: ekonomist.com.tr https://www.ekonomist.com.tr/egitim/-ales-basvurulari-basladi-mi-2026-ales-sinav-ve-basvuru-tarihleri--72722 (\"Sınav Ücreti: 1200 TL\").",
+          "source": {
+            "title": "ALES başvuru ekranı erişime açıldı! 2026 ALES/1",
+            "url": "https://www.haberturk.com/ales-basvuru-tarihleri-2026-ales1-basvurulari-ne-zaman-basvuru-ucreti-ne-kadar-nasil-basvuru-yapilir-3872058",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "osmangazi-koprusu",
+      "name": "Osmangazi Köprüsü geçişi",
+      "unit": "1 geçiş, otomobil",
+      "region": "İzmit Körfezi",
+      "source_hint": "KGM / Otoyol A.Ş. tarifesi, haberlerden; tarifenin yürürlüğe girdiği ay.",
+      "image": {
+        "src": "img/kopru.svg",
+        "alt": "Asma köprü çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 1170,
+        "status": "verified",
+        "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"Osmangazi Köprüsü geçişi otomobiller için 995 TL'den 1170 TL'ye\"; diğer kaynak: karekod.org https://www.karekod.org/blog/?p=61803 (\"1 Temmuz 2026 tarihinde yürürlüğe giren son tarifeyle birlikte otomobil geçiş ücreti 995 TL’den 1.170 TL’ye yükseldi.\").",
+        "source": {
+          "title": "Otoyol ve köprü geçiş ücretlerine zam 2026",
+          "url": "https://www.haberturk.com/bilgi/foto/son-dakika-otoyol-ve-kopru-gecis-ucretlerine-zam-2026-osmangazi-ve-canakkale-koprusu-gecis-ucreti-ne-kadar-oldu-3895288",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016-07",
+          "price": 88.75,
+          "status": "verified",
+          "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"1'sınıf araçlar (Aks aralığı 3.20'den küçük 2 akslı araç) Osmangazi Köprüsü'nden geçerken 88.75 TL\"; diğer kaynak: capital.com.tr https://www.capital.com.tr/gundem/aktuel/osmangazi-koprusu-artik-ucretli (\"Köprüden geçiş ücretleri ise 1'inci sınıf araçlar (otomobil) için 88,75, 2'nci sınıf (minibüs, otobüs, kamyonet) 141,95\").",
+          "source": {
+            "title": "Osmangazi Köprüsü'nün geçiş ücretleri belli oldu",
+            "url": "https://uzmanpara.milliyet.com.tr/haber-detay/gundem2/osmangazi-koprusunun-gecis-ucretleri-belli-oldu/51000/51541/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 65.65,
+          "status": "verified",
+          "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"Buna göre Osmangazi Köprüsü geçiş ücreti 65.65 TL olarak belirlenmiştir.\"; diğer kaynak: cnnturk.com https://cnnturk.com/turkiye/osmangaziden-sonra-eskihisar-topcular-araba-vapuru-hattinda-da-indirim-587939 (\"Osmangazi Köprüsü ücretlerinin 1 Ocak'tan itibaren 89 liradan 65,65 liraya düşürülmesinden sonra\").",
+          "source": {
+            "title": "Otoyol ve köprü geçişlerine büyük zam!",
+            "url": "https://www.sozcu.com.tr/son-dakika-otoyol-ve-kopru-gecislerine-buyuk-zam-wp1596703",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 147.5,
+          "status": "verified",
+          "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"Osmangazi Köprüsü'nde 117,90 TL'den 147,50 TL'ye yükseldi.\"; diğer kaynak: indigodergisi.com https://indigodergisi.com/2021/01/kopru-ve-otoyol-gecis-ucretlerine-zam/ (\"Osmangazi Köprüsü'nde otomobiller için geçiş ücreti 117,90 TL'den 147,50 TL'ye yükseldi.\"); ensonhaber.com https://www.ensonhaber.com/yasam/kopru-gecis-fiyatlari-2021-kopru-gecis-ucretleri-ne-kadar (\"Osmangazi Köprüsü Geçiş Ücretleri 2021 Otomobiller 147,50 TL\").",
+          "source": {
+            "title": "Otoyol ve köprülere büyük zam",
+            "url": "https://www.sozcu.com.tr/otoyol-ve-koprulere-buyuk-zam-iste-yeni-ucret-tarifeleri-wp6192987",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 184.5,
+          "status": "verified",
+          "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"Osmangazi Köprüsü'nden geçiş ücreti 1 Ocak 2022 itibari ile 184.5 TL olarak belirlenmiştir.\"; diğer kaynak: yeniakit.com.tr https://www.yeniakit.com.tr/haber/osmangazi-koprusu-gecis-ucreti-ne-kadar-2022-kopru-gecisleri-ne-kadar-oldu-1613130.html (\"2021 yılında Osmangazi Köprüsü'nden geçiş ücreti 147.5 TL idi, yeni yılla birlikte bu rakam yüzde 25 artarak 184.5 TL oldu.\").",
+          "source": {
+            "title": "2022 otoyol köprü ve tünel geçiş ücretleri",
+            "url": "https://www.tgrthaber.com/ekonomi/2022-otoyol-kopru-ve-tunel-gecis-ucretleri-ne-kadar-2807622",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 795,
+          "status": "verified",
+          "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"Osmangazi köprüsü geçiş ücreti otomobiller için 795 lira, minibüsler için bin 270 lira oldu.\"; diğer kaynak: cnnturk.com https://cnnturk.com/ekonomi/galeri/2025-kopru-ve-otoyol-gecis-ucretleri-aciklandi-iste-yeni-tarifeler-son-dakika-2219316 (\"Osmangazi Köprüsü'nde bu tutar 795 TL\"); tamindir.com https://www.tamindir.com/haber/kopru-otoyol-gecis-ucretleri-2025_92399/ (\"Osmangazi Köprüsü: 399 TL → 795 TL\").",
+          "source": {
+            "title": "Yeni yılda otoyol ve köprü geçiş ücretleri belli oldu",
+            "url": "https://www.ntv.com.tr/turkiye/son-dakika-haberi-yeni-yilda-otoyol-ve-kopru-gecis-ucretleri-belli-oldu-2025-yili-otoyol-ve-kopru-gecis-ucretleri,RAZczYiJKE-e1MdKNhy5gg",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 995,
+          "status": "verified",
+          "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"Osmangazi Köprüsü geçişi otomobiller için 795 TL'den 995 TL'ye\"; diğer kaynak: medyascope.tv https://medyascope.tv/2025/12/31/kopru-ve-otoyol-ucretlerine-zam-yapildi/ (\"Osmangazi Köprüsü'nde otomobil geçiş ücreti 795 TL'den 995 TL'ye çıkarıldı\"); donanimhaber.com https://www.donanimhaber.com/2026-kopru-ve-otoyol-gecis-ucretleri-aciklandi--200330 (\"Aynı şekilde Osmangazi Köprüsü geçiş ücreti de 2026'da 995 TL olarak uygulanacak.\").",
+          "source": {
+            "title": "Köprü ve otoyol ücretleri belli oldu",
+            "url": "https://www.cnnturk.com/ekonomi/kopru-ve-otoyol-ucretleri-belli-oldu-2379264",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 1170,
+          "status": "verified",
+          "note": "Osmangazi Köprüsü otomobil (1. sınıf) tek geçiş ücreti; tarih, tarifenin yürürlüğe girdiği ay. Kaynak alıntısı: \"Osmangazi Köprüsü geçişi otomobiller için 995 TL'den 1170 TL'ye\"; diğer kaynak: karekod.org https://www.karekod.org/blog/?p=61803 (\"1 Temmuz 2026 tarihinde yürürlüğe giren son tarifeyle birlikte otomobil geçiş ücreti 995 TL’den 1.170 TL’ye yükseldi.\").",
+          "source": {
+            "title": "Otoyol ve köprü geçiş ücretlerine zam 2026",
+            "url": "https://www.haberturk.com/bilgi/foto/son-dakika-otoyol-ve-kopru-gecis-ucretlerine-zam-2026-osmangazi-ve-canakkale-koprusu-gecis-ucreti-ne-kadar-oldu-3895288",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
