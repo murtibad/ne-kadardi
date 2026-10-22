@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.77.1] - 2026-10-22
+### Fixed
+- Sounds no longer come out late after the tab sat in the background or on the first tap (Murti's report). The sound files are downloaded once the page has loaded (`prefetch`), so the first tap only decodes them; every tap and returning to the tab wakes a sleeping audio context and the output with a silent sample (`wake`); a sound whose context is still waking is played only if it can start within 400 ms, otherwise skipped instead of arriving out of sync.
+
 ## [0.77.0] - 2026-10-22
 ### Changed
 - Plain words everywhere, so someone who never played reads the receipt at a glance (Murti's rule: his parents, born 1971, must understand it).

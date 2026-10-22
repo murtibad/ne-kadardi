@@ -8,6 +8,7 @@ export const SOUND_FILES = Object.freeze({
   bell: Object.freeze({ url: 'sounds/bell.mp3', gain: 0.45 }),
 });
 
+// A click sound that arrives later than this feels detached from the tap, so it is skipped.
 const MAX_LOAD_WAIT_MS = 400;
 const STORAGE_KEY = 'ne-kadardi-sound';
 
@@ -87,6 +88,8 @@ export function createSoundPlayer(options = {}) {
   }
 
   let ctx = null;
+  let resuming = null;
+  const rawPromises = new Map();
   const bufferPromises = new Map();
   const decodedBuffers = new Map();
   const activeSources = new Map();
@@ -139,8 +142,8 @@ export function createSoundPlayer(options = {}) {
       // iOS Safari reports 'interrupted' after a phone call or Siri.
       if (ctx && (ctx.state === 'suspended' || ctx.state === 'interrupted') && typeof ctx.resume === 'function') {
         const res = ctx.resume();
-        if (res && typeof res.catch === 'function') {
-          res.catch(() => {});
+        if (res && typeof res.then === 'function') {
+          resuming = res.then(() => {}, () => {});
         }
       }
       return ctx;
@@ -149,17 +152,40 @@ export function createSoundPlayer(options = {}) {
     }
   }
 
-  function load(audioCtx, name) {
-    if (bufferPromises.has(name)) {
-      return bufferPromises.get(name);
-    }
+  // Downloading needs no AudioContext, so it can start at page load, before the first tap;
+  // only decoding waits for the context. This keeps the very first sound from being skipped.
+  function fetchRaw(name) {
+    if (rawPromises.has(name)) return rawPromises.get(name);
     const spec = SOUND_FILES[name];
     const promise = (async () => {
       const res = await fetchFn(spec.url);
       if (!res || res.ok === false || typeof res.arrayBuffer !== 'function') {
         throw new Error(`Failed to fetch sound: ${spec.url}`);
       }
-      const arrayBuffer = await res.arrayBuffer();
+      return res.arrayBuffer();
+    })();
+    rawPromises.set(name, promise);
+    promise.catch(() => rawPromises.delete(name));
+    return promise;
+  }
+
+  function prefetch() {
+    if (!enabled || typeof fetchFn !== 'function') return false;
+    for (const name of Object.keys(SOUND_FILES)) {
+      fetchRaw(name).catch(() => {});
+    }
+    return true;
+  }
+
+  function load(audioCtx, name) {
+    if (bufferPromises.has(name)) {
+      return bufferPromises.get(name);
+    }
+    const spec = SOUND_FILES[name];
+    const promise = (async () => {
+      const arrayBuffer = await fetchRaw(name);
+      // decodeAudioData detaches the bytes; a failed decode must fetch them again.
+      rawPromises.delete(name);
       const audioBuffer = await decodeAudio(audioCtx, arrayBuffer);
       if (!audioBuffer) {
         throw new Error(`Failed to decode sound: ${spec.url}`);
@@ -205,11 +231,13 @@ export function createSoundPlayer(options = {}) {
       ? delay
       : 0;
 
-    load(audioCtx, name).then((buffer) => {
+    // A context waking from the background (or from a phone call on iOS) keeps its clock frozen
+    // until resume() settles, so a sound scheduled now would come out late: wait, then check.
+    const ready = audioCtx.state === 'running' || !resuming ? null : resuming;
+    Promise.all([load(audioCtx, name), ready]).then(([buffer]) => {
       if (!buffer || !enabled) return;
-      if (!wasCached) {
+      if (!wasCached || ready) {
         const elapsedMs = (typeof clock === 'function' ? clock() : Date.now()) - startMs;
-        // Skip sounds that took too long on first fetch so feedback never feels detached.
         if (elapsedMs > MAX_LOAD_WAIT_MS) return;
       }
 
@@ -244,11 +272,32 @@ export function createSoundPlayer(options = {}) {
     return true;
   }
 
+  // Called on every tap and when the tab becomes visible again: resumes a sleeping context and
+  // plays a silent sample so the audio output is awake before the real sound is needed.
+  function wake() {
+    if (!enabled || !ctx) return false;
+    const wasRunning = ctx.state === 'running';
+    ensureContext();
+    if (wasRunning) return true;
+    try {
+      const silent = ctx.createBuffer(1, 1, ctx.sampleRate || 44100);
+      const src = ctx.createBufferSource();
+      src.buffer = silent;
+      src.connect(ctx.destination);
+      src.start(0);
+    } catch {
+      // Older engines without createBuffer still get the resume above.
+    }
+    return true;
+  }
+
   return {
     isEnabled,
     setEnabled,
     toggle,
     unlock,
+    prefetch,
+    wake,
     play,
     stop,
   };

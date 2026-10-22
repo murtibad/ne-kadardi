@@ -552,3 +552,65 @@ test('haptic with fake nav', () => {
   };
   assert.equal(haptic(10, throwingNav), false);
 });
+
+test('prefetch() downloads all sounds without an AudioContext; the first play only decodes', async () => {
+  const { FakeAudioContext, getConstructorCallCount, getInstances } = createFakeAudioContextClass();
+  const { fetchFn, getTotalCalls } = createFakeFetch();
+  const player = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: FakeAudioContext, fetchFn, now: () => 0 });
+
+  assert.equal(player.prefetch(), true);
+  await flushAsync();
+  assert.equal(getTotalCalls(), 4);
+  assert.equal(getConstructorCallCount(), 0, 'no context before a user gesture');
+
+  player.play('print');
+  await flushAsync();
+  assert.equal(getTotalCalls(), 4, 'play reuses the prefetched bytes');
+  assert.equal(getInstances()[0].bufferSources.length, 1);
+});
+
+test('prefetch() does nothing while muted', () => {
+  const { fetchFn, getTotalCalls } = createFakeFetch();
+  const player = createSoundPlayer({ storage: createMemoryStorage({ 'ne-kadardi-sound': '0' }), fetchFn });
+  assert.equal(player.prefetch(), false);
+  assert.equal(getTotalCalls(), 0);
+});
+
+test('a sound waits for a sleeping context and is skipped when waking takes too long', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+  let currentMs = 0;
+  const player = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: FakeAudioContext, fetchFn, now: () => 0, clock: () => currentMs });
+  player.unlock();
+  await flushAsync();
+  const [ctx] = getInstances();
+
+  // The tab slept: the context is suspended again and resume() takes 600 ms.
+  ctx.state = 'suspended';
+  ctx.resume = () => new Promise((r) => setTimeout(() => { currentMs += 600; ctx.state = 'running'; r(); }, 5));
+  player.play('beep');
+  await new Promise((r) => setTimeout(r, 20));
+  await flushAsync();
+  assert.equal(ctx.bufferSources.length, 0, 'late sound is dropped, not played out of sync');
+
+  // Awake now: the next sound plays at once.
+  player.play('beep');
+  await flushAsync();
+  assert.equal(ctx.bufferSources.length, 1);
+});
+
+test('wake() resumes a suspended context and ignores a running one or a missing one', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+  const player = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: FakeAudioContext, fetchFn });
+  assert.equal(player.wake(), false, 'no context before the first gesture');
+  player.unlock();
+  const [ctx] = getInstances();
+  ctx.state = 'suspended';
+  ctx.resumed = false;
+  assert.equal(player.wake(), true);
+  assert.equal(ctx.resumed, true);
+  ctx.resumed = false;
+  assert.equal(player.wake(), true);
+  assert.equal(ctx.resumed, false, 'a running context is left alone');
+});
