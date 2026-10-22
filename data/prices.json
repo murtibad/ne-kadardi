@@ -443,7 +443,7 @@
     {
       "id": "dolar",
       "name": "Amerikan doları",
-      "unit": "1 USD (TCMB döviz satış kuru)",
+      "unit": "1 dolar (Merkez Bankası satış kuru)",
       "region": null,
       "image": {
         "src": "img/dolar.svg",
@@ -1745,7 +1745,7 @@
     },
     {
       "id": "asgari-ucret",
-      "name": "Asgari ücret (net, aylık)",
+      "name": "Asgari ücret (ele geçen, aylık)",
       "unit": "1 ay, bekâr işçi",
       "region": null,
       "image": {
@@ -2381,7 +2381,7 @@
     {
       "id": "plastik-poset",
       "name": "Plastik poşet",
-      "unit": "1 adet (market kasası, vergiler dahil)",
+      "unit": "1 poşet (market kasasında, vergiler dahil)",
       "region": null,
       "source_hint": "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı'nın belirlediği asgari ücret; 2019'dan beri 25 kuruş, 2026'dan itibaren 1 TL.",
       "image": {
@@ -2419,7 +2419,7 @@
     {
       "id": "iphone",
       "name": "Yeni iPhone",
-      "unit": "1 adet, Türkiye çıkış fiyatı",
+      "unit": "1 adet, Türkiye'de ilk satış fiyatı",
       "region": null,
       "tax": {
         "method": "Vergisiz taban fiyat üzerine Kültür Bakanlığı payı ve TRT bandrolü eklenir, toplam matrah üzerinden %50 ÖTV, tüm tutar üzerinden KDV hesaplanır: raf = taban × (1 + kültür + trt) × (1 + ötv) × (1 + kdv).",
@@ -2562,7 +2562,7 @@
         "price": 77999,
         "status": "verified",
         "label": "En yeni iPhone 17",
-        "unit": "1 adet, 256 GB, Türkiye çıkış fiyatı",
+        "unit": "1 adet, 256 GB, Türkiye'de ilk satış fiyatı",
         "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 09.09.2025. Doğrulama: NTV https://www.ntv.com.tr/teknoloji/galeri-iphone-17-apple-turkiyede-on-siparise-acildi-magazada-satis-tarihi-belli-oldu,gIaoGFPKPEWOUa9RYqi0NA. Taban depolama 2025'te 256 GB. Apple Türkiye mağazasında bugün 256 GB iPhone 17 için 99.999 TL gösteriliyor (zamlı), ama oyun çıkış fiyatlarını kıyaslar (2026-10-04, https://www.apple.com/tr/shop/buy-iphone/iphone-17).",
         "source": {
           "title": "DonanımHaber, iPhone 17 Türkiye fiyatı ve çıkış tarihi",
@@ -2583,7 +2583,7 @@
             "url": "https://www.hurriyet.com.tr/ekonomi/iphone-4-turkiyede-ne-kadara-satilacak-15843405",
             "accessed": "2026-10-03"
           },
-          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 16 GB, Türkiye'de ilk satış fiyatı",
           "image": {
             "src": "img/iphone-home.svg",
             "alt": "Ana tuşlu iPhone çizimi",
@@ -2595,7 +2595,7 @@
           "price": 2149,
           "status": "verified",
           "label": "iPhone 5s",
-          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 16 GB, Türkiye'de ilk satış fiyatı",
           "note": "Apple Türkiye internet mağazasının açıldığı gün (01.11.2013) gösterilen liste fiyatı (KDV ve ÖTV dahil). Aynı günlerde operatör fiyatları farklıydı (ör. Turkcell 2.279 TL), bu yüzden Apple'ın kendi fiyatı alındı. Doğrulama: Hürriyet, En pahalısı yine bize (02.11.2013) https://www.hurriyet.com.tr/ekonomi/en-pahalisi-yine-bize-25028846.",
           "source": {
             "title": "Webrazzi, Apple Türkiye internet mağazası açıldı (01.11.2013)",
@@ -2614,7 +2614,7 @@
           "price": 2349,
           "status": "verified",
           "label": "iPhone 6",
-          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 16 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 09.09.2014; satış 26.09.2014. Doğrulama: ShiftDelete https://shiftdelete.net/iphone-6-ve-iphone-6-plus-turkiye-fiyati-54674.",
           "source": {
             "title": "Webrazzi, iPhone 6'nın Türkiye'de piyasaya çıkış tarihi ve fiyatları",
@@ -2633,7 +2633,7 @@
           "price": 3099,
           "status": "verified",
           "label": "iPhone 6s",
-          "unit": "1 adet, 16 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 16 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 28.09.2015. Doğrulama: Webrazzi https://webrazzi.com/2015/09/28/iphone-6s-ve-6s-plusin-turkiye-satis-tarihi-ve-fiyatlari-belli-oldu/.",
           "source": {
             "title": "Apple Türkiye basın bülteni (28.09.2015)",
@@ -2652,7 +2652,7 @@
           "price": 3249,
           "status": "verified",
           "label": "iPhone 7",
-          "unit": "1 adet, 32 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 32 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 14.10.2016. Doğrulama: Habertürk (sonraki yazı, 3249 TL çıkış fiyatını yazıyor) https://www.haberturk.com/iphone-fiyatlari-ne-kadar-artti-2140636-ekonomi.",
           "source": {
             "title": "Teknoblog, iPhone 7 ve iPhone 7 Plus Türkiye fiyatları",
@@ -2671,7 +2671,7 @@
           "price": 4199,
           "status": "verified",
           "label": "iPhone 8",
-          "unit": "1 adet, 64 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 64 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 13.10.2017; satış 20.10.2017. Doğrulama: Habertürk https://www.haberturk.com/iphone-fiyatlari-ne-kadar-artti-2140636-ekonomi. Bazı derleme sayfalar 4.100-4.150 TL yazıyor (yuvarlama); 4.199 iki kaynakta.",
           "source": {
             "title": "DonanımHaber, iPhone 8 ve iPhone 8 Plus Türkiye fiyatı belli oldu",
@@ -2690,7 +2690,7 @@
           "price": 7399,
           "status": "verified",
           "label": "iPhone XR",
-          "unit": "1 adet, 64 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 64 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 30.11.2018. Doğrulama: ShiftDelete https://shiftdelete.net/iphone-xr-ozellikleri-fiyati?amp=1.",
           "source": {
             "title": "Milliyet, iPhone XR, XS ve XS Max Türkiye'de satışa sunuldu",
@@ -2709,7 +2709,7 @@
           "price": 7299,
           "status": "verified",
           "label": "iPhone 11",
-          "unit": "1 adet, 64 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 64 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 09.10.2019; satış 18.10.2019. Doğrulama: Teknoblog https://www.teknoblog.com/iphone-11-iphone-11-pro-iphone-11-pro-max-turkiye-fiyatlari-belli-oldu/.",
           "source": {
             "title": "Webrazzi, iPhone 11, Pro ve Pro Max Türkiye fiyatları",
@@ -2728,7 +2728,7 @@
           "price": 10999,
           "status": "verified",
           "label": "iPhone 12",
-          "unit": "1 adet, 64 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 64 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 27.11.2020 (ön sipariş). Doğrulama: Posta https://www.posta.com.tr/iphone-12-ailesinin-turkiye-fiyatlari-ortaya-cikti-haber-fotograf-2287907.",
           "source": {
             "title": "Teknoblog, iPhone 12 ve 12 Pro Türkiye'de ön satışa çıktı",
@@ -2747,7 +2747,7 @@
           "price": 11999,
           "status": "verified",
           "label": "iPhone 13",
-          "unit": "1 adet, 128 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 128 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 14.09.2021; satış 01.10.2021. Doğrulama: Teknoblog https://www.teknoblog.com/iphone-13-ve-iphone-13-pro-turkiye-fiyati-ve-cikis-tarihi/.",
           "source": {
             "title": "DonanımHaber, iPhone 13 Türkiye fiyatları açıklandı",
@@ -2766,7 +2766,7 @@
           "price": 30999,
           "status": "verified",
           "label": "iPhone 14",
-          "unit": "1 adet, 128 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 128 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 08.09.2022. Doğrulama: Haberler.com https://www.haberler.com/iphone-14-turkiye-fiyati-iphone-14-turkiye-15251272-haberi/.",
           "source": {
             "title": "BloombergHT, Apple'ın iPhone 14 serisinin Türkiye satış fiyatları belli oldu",
@@ -2785,7 +2785,7 @@
           "price": 49999,
           "status": "verified",
           "label": "iPhone 15",
-          "unit": "1 adet, 128 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 128 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 13.09.2023. Doğrulama: Tamindir https://www.tamindir.com/haber/iphone-15-on-siparis-turkiye_83179/.",
           "source": {
             "title": "CNN Türk, iPhone 15 Türkiye fiyatı",
@@ -2804,7 +2804,7 @@
           "price": 64999,
           "status": "verified",
           "label": "iPhone 16",
-          "unit": "1 adet, 128 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 128 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 09.09.2024. Doğrulama: Tamindir https://www.tamindir.com/haber/iphone-16-serisi-turkiye-satisa-cikti_90476/.",
           "source": {
             "title": "NTV, iPhone 16 Türkiye fiyatı belli oldu",
@@ -2823,7 +2823,7 @@
           "price": 77999,
           "status": "verified",
           "label": "iPhone 17",
-          "unit": "1 adet, 256 GB, Türkiye çıkış fiyatı",
+          "unit": "1 adet, 256 GB, Türkiye'de ilk satış fiyatı",
           "note": "Türkiye'de ilk duyurulan/satışa çıkan taban model liste fiyatı (KDV ve ÖTV dahil). Kaynaklardaki tarih: 09.09.2025. Doğrulama: NTV https://www.ntv.com.tr/teknoloji/galeri-iphone-17-apple-turkiyede-on-siparise-acildi-magazada-satis-tarihi-belli-oldu,gIaoGFPKPEWOUa9RYqi0NA. Taban depolama 2025'te 256 GB.",
           "source": {
             "title": "DonanımHaber, iPhone 17 Türkiye fiyatı ve çıkış tarihi",
@@ -2847,7 +2847,7 @@
     {
       "id": "ekmek",
       "name": "Halk Ekmek (İBB)",
-      "unit": "1 adet, 250 gr",
+      "unit": "1 adet, 250 gram",
       "region": "İstanbul",
       "current": {
         "date": "2026-05",
@@ -2971,7 +2971,7 @@
     {
       "id": "kopru",
       "name": "Boğaz köprüsü geçişi",
-      "unit": "1 geçiş, otomobil (ücret alınan yönde)",
+      "unit": "1 geçiş, otomobil (parası alınan yönde)",
       "region": "İstanbul",
       "source_hint": "KGM duyuruları ve haber arşivi: 15 Temmuz Şehitler ve Fatih Sultan Mehmet köprüleri otomobil ücreti aynıdır. 01.01.2022'den beri iki yönlü ve yarı fiyatlı alınır; önceden yalnız tek yönde alınırdı.",
       "image": {
@@ -3129,7 +3129,7 @@
     {
       "id": "euro",
       "name": "Euro",
-      "unit": "1 EUR (TCMB döviz satış kuru)",
+      "unit": "1 euro (Merkez Bankası satış kuru)",
       "region": null,
       "source_hint": "TCMB Gösterge Niteliğindeki Döviz Kurları; dolar ile aynı tarihler.",
       "image": {
@@ -3563,7 +3563,7 @@
     {
       "id": "sterlin",
       "name": "İngiliz sterlini",
-      "unit": "1 GBP (TCMB döviz satış kuru)",
+      "unit": "1 sterlin (Merkez Bankası satış kuru)",
       "region": null,
       "source_hint": "TCMB Gösterge Niteliğindeki Döviz Kurları; dolar ve euro ile aynı tarihler.",
       "image": {
@@ -4999,7 +4999,7 @@
     {
       "id": "emekli-en-dusuk-aylik",
       "name": "En düşük emekli aylığı",
-      "unit": "1 ay (SSK ve Bağ-Kur, dosya bazında en düşük aylık)",
+      "unit": "1 ay (SSK ve Bağ-Kur emeklisine ödenen en düşük aylık)",
       "region": null,
       "source_hint": "Kanunla belirlenen en düşük emekli aylığı; Ocak ve Temmuz'da değişebilir. Haber kaynaklı, iki sitede doğrulandı.",
       "image": {
@@ -5168,8 +5168,8 @@
     },
     {
       "id": "trafik-cezasi",
-      "name": "Kırmızı ışık ihlali cezası",
-      "unit": "1 ihlal (otomobil sürücüsü, ilk ihlal)",
+      "name": "Kırmızı ışıkta geçme cezası",
+      "unit": "1 ceza (otomobil sürücüsü, ilk kez)",
       "region": null,
       "source_hint": "2918 sayılı Karayolları Trafik Kanunu madde 47/1-b; ceza her Ocak yeniden değerleme oranıyla artar. Haber kaynaklı.",
       "image": {
@@ -5509,7 +5509,7 @@
     {
       "id": "taksi-acilis",
       "name": "İstanbul taksi açılış ücreti",
-      "unit": "1 açılış (sarı taksi, taksimetre açılışı)",
+      "unit": "Taksiye binince taksimetrenin ilk yazdığı ücret (sarı taksi)",
       "region": "İstanbul",
       "source_hint": "UKOME kararları ve haber arşivi; sarı taksi açılış ücreti. Tarih zammın yürürlüğe girdiği aydır.",
       "image": {
@@ -5631,7 +5631,7 @@
     {
       "id": "playstation",
       "name": "PlayStation konsolu",
-      "unit": "1 adet (standart, disk sürücülü), Türkiye çıkış fiyatı",
+      "unit": "1 konsol (standart, diskli model), Türkiye'de ilk satış fiyatı",
       "region": null,
       "source_hint": "Sony Türkiye tavsiye edilen çıkış fiyatı, haber arşivi.",
       "image": {
@@ -5697,7 +5697,7 @@
     {
       "id": "airpods",
       "name": "AirPods (temel model)",
-      "unit": "1 adet, Türkiye çıkış fiyatı",
+      "unit": "1 adet, Türkiye'de ilk satış fiyatı",
       "region": null,
       "source_hint": "Apple Türkiye çıkış fiyatı, haber arşivi. AirPods Pro ve Max değil, temel (standart) model.",
       "image": {
@@ -5826,7 +5826,7 @@
     {
       "id": "bedelli-askerlik",
       "name": "Bedelli askerlik bedeli",
-      "unit": "1 başvuru (dönem bedeli)",
+      "unit": "1 kişi (o dönemin bedeli)",
       "region": null,
       "source_hint": "Milli Savunma Bakanlığı; 240.000 gösterge x memur aylık katsayısı, Ocak ve Temmuz'da yenilenir (2019 sonrası kalıcı düzen).",
       "image": {
@@ -6189,8 +6189,8 @@
     },
     {
       "id": "kyk-burs",
-      "name": "KYK aylık burs (lisans)",
-      "unit": "1 ay, lisans öğrencisi (burs veya kredi tutarı)",
+      "name": "KYK bursu (aylık, üniversite)",
+      "unit": "1 ay, üniversite öğrencisi (burs ya da kredi)",
       "region": null,
       "source_hint": "Kredi ve Yurtlar Kurumu / Gençlik ve Spor Bakanlığı; lisans için aylık burs-kredi tutarı, yıl bazlı. Burs ve kredi aynı tutardır.",
       "image": {
@@ -6420,7 +6420,7 @@
     {
       "id": "pasaport-harci",
       "name": "10 yıllık pasaport harcı",
-      "unit": "1 pasaport, 10 yıllık (3 yıldan uzun süreli tarife), defter bedeli hariç",
+      "unit": "1 pasaport, 10 yıllık (pasaport defterinin parası hariç)",
       "region": null,
       "source_hint": "492 sayılı Harçlar Kanunu (8) sayılı tarife; harç her Ocak yeniden değerleme oranıyla artar, 7 Temmuz 2023'te Cumhurbaşkanı Kararıyla %50 ara zam yapıldı. Defter bedeli ayrıca ödenir. Haber kaynaklı.",
       "image": {
@@ -6578,7 +6578,7 @@
     {
       "id": "ehliyet-harci",
       "name": "B sınıfı ehliyet harcı",
-      "unit": "1 sürücü belgesi, B sınıfı (otomobil), yalnız harç; kart ve vakıf bedeli hariç",
+      "unit": "1 ehliyet, B sınıfı (otomobil); yalnız harç, kart parası hariç",
       "region": null,
       "source_hint": "492 sayılı Harçlar Kanunu sürücü belgesi harcı; her Ocak yeniden değerleme oranıyla artar. Değerli kâğıt (kart) ve vakıf hizmet bedeli ayrıca ödenir. Haber kaynaklı.",
       "image": {
@@ -6700,7 +6700,7 @@
     {
       "id": "schengen-vize",
       "name": "Schengen vize ücreti",
-      "unit": "1 yetişkin başvurusu, TL karşılığı (aracı kurum hizmet bedeli hariç)",
+      "unit": "1 yetişkin başvurusu, lira karşılığı (vize şirketinin hizmet ücreti hariç)",
       "region": null,
       "source_hint": "Türetilmiş: AB Vize Kodu'ndaki euro cinsi ücret (2020 Şubat öncesi 60, sonra 80, 11 Haziran 2024'ten beri 90 euro) × o yılın ilk iş günü TCMB euro satış kuru.",
       "image": {
@@ -7221,7 +7221,7 @@
     },
     {
       "id": "imei-kayit-harci",
-      "name": "IMEI kayıt harcı",
+      "name": "Yurt dışından getirilen telefonun kayıt harcı",
       "unit": "Yurt dışından getirilen 1 telefon",
       "region": null,
       "source_hint": "492 sayılı Harçlar Kanunu cep telefonu kayıt harcı; her Ocak yeniden değerleme oranıyla artar, bazı yıllarda yıl içinde Cumhurbaşkanı Kararıyla ayrıca artırıldı. Haber kaynaklı.",
@@ -7452,7 +7452,7 @@
     {
       "id": "aclik-siniri",
       "name": "Açlık sınırı (Türk-İş)",
-      "unit": "4 kişilik ailenin aylık gıda harcaması, Ocak",
+      "unit": "4 kişilik bir ailenin bir aylık mutfak masrafı (Ocak)",
       "region": null,
       "source_hint": "Türk-İş Konfederasyonu her ay açıklar; sendika araştırmasıdır, devlet verisi değildir. Ocak değeri, haberler üzerinden.",
       "image": {
@@ -7598,7 +7598,7 @@
     {
       "id": "istanbul-ulasim",
       "name": "İstanbul toplu taşıma",
-      "unit": "1 biniş, tam bilet (elektronik kart)",
+      "unit": "1 biniş, tam bilet (kartla)",
       "region": "İstanbul",
       "source_hint": "İBB UKOME kararıyla belirlenen tam elektronik bilet (Akbil, sonra İstanbulkart) ilk biniş ücreti; haber kaynaklı. Tarih kararın/zammın ayıdır.",
       "image": {
@@ -7780,7 +7780,7 @@
     {
       "id": "kurban-vekalet-bedeli",
       "name": "Kurban vekâlet bedeli (Diyanet / TDV)",
-      "unit": "1 kurban, yurt içi vekâletle kesim bedeli",
+      "unit": "1 kurban, yurt içinde vekâletle kestirme bedeli",
       "region": null,
       "source_hint": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı her yıl Kurban Bayramı öncesi açıklar; haber arşivi.",
       "image": {
@@ -7961,8 +7961,8 @@
     },
     {
       "id": "arac-muayene-ucreti",
-      "name": "Araç muayene ücreti (TÜVTÜRK, otomobil)",
-      "unit": "1 periyodik muayene, otomobil (KDV dahil, egzoz ölçümü hariç)",
+      "name": "Araç muayene ücreti (otomobil)",
+      "unit": "1 muayene, otomobil (KDV dahil, egzoz ölçümü hariç)",
       "region": null,
       "source_hint": "TÜVTÜRK fiyat listesi; ücret her yıl Ocak'ta yeniden değerleme oranıyla güncellenir (2918 sayılı Kanun m.35); haber arşivi.",
       "image": {
@@ -8192,7 +8192,7 @@
     {
       "id": "sigara-marlboro",
       "name": "Sigara (Marlboro Kırmızı, 20'li paket)",
-      "unit": "1 paket, 20'li, Marlboro Kırmızı (Red, kısa boy)",
+      "unit": "1 paket (20'li, Marlboro Kırmızı, kısa)",
       "region": null,
       "source_hint": "Philip Morris zam duyuruları ve Tekel bayileri fiyat listeleri; haber arşivi.",
       "image": {
@@ -8385,7 +8385,7 @@
     },
     {
       "id": "aile-cuzdani",
-      "name": "Aile cüzdanı (evlenme cüzdanı) değerli kâğıt bedeli",
+      "name": "Aile cüzdanı ücreti (nikâhta verilen cüzdan)",
       "unit": "1 adet",
       "region": null,
       "source_hint": "Muhasebat Genel Müdürlüğü Değerli Kâğıtlar Genel Tebliği (Resmî Gazete), satır '7 – Aile cüzdanları'",
@@ -8689,8 +8689,8 @@
     },
     {
       "id": "surucu-belgesi-bedeli",
-      "name": "Sürücü belgesi değerli kâğıt bedeli",
-      "unit": "1 adet (ehliyet kartının değerli kâğıt bedeli; harç ayrı)",
+      "name": "Ehliyet kartı ücreti",
+      "unit": "1 kart (harç ayrı)",
       "region": null,
       "source_hint": "Değerli Kâğıtlar Genel Tebliği, satır \"9 – Sürücü belgeleri\"",
       "image": {
@@ -8835,8 +8835,8 @@
     },
     {
       "id": "arac-tescil-belgesi",
-      "name": "Motorlu araç tescil belgesi (ruhsat) değerli kâğıt bedeli",
-      "unit": "1 adet (araç ruhsatının değerli kâğıt bedeli; harç ayrı)",
+      "name": "Araç ruhsatı kartı ücreti",
+      "unit": "1 ruhsat kartı (harç ayrı)",
       "region": null,
       "source_hint": "Değerli Kâğıtlar Genel Tebliği, satır \"12 – Motorlu araç tescil belgesi\"",
       "image": {
@@ -8981,8 +8981,8 @@
     },
     {
       "id": "kimlik-karti",
-      "name": "T.C. kimlik kartı (değiştirme) değerli kâğıt bedeli",
-      "unit": "1 adet (değiştirme veya doğum nedeniyle düzenlenen kimlik kartı)",
+      "name": "Kimlik kartı ücreti",
+      "unit": "1 kart (yenilerken ya da doğumda verilen kart)",
       "region": null,
       "source_hint": "Değerli Kâğıtlar Genel Tebliği, satır 6 b) \"Değiştirme nedeniyle düzenlenen Türkiye Cumhuriyeti kimlik kartı\"",
       "image": {
@@ -9115,8 +9115,8 @@
     },
     {
       "id": "noter-asgari-ucret",
-      "name": "Asgari noter ücreti (bir noterlik işleminin alt sınırı)",
-      "unit": "1 noterlik işlemi, alınabilecek en düşük ücret",
+      "name": "Noterde en az ücret",
+      "unit": "1 noter işlemi, alınabilecek en az ücret",
       "region": null,
       "source_hint": "Türkiye Noterler Birliği Noterlik Ücret Tarifesi, Madde 1 (yıllık, Resmî Gazete ilanı)",
       "image": {
@@ -9359,8 +9359,8 @@
     },
     {
       "id": "sinema-ortalama-bilet",
-      "name": "Sinema bileti ortalama fiyatı (Türkiye geneli)",
-      "unit": "1 bilet, yıllık ortalama (gişe hasılatı ÷ seyirci)",
+      "name": "Sinema bileti (Türkiye ortalaması)",
+      "unit": "1 bilet, o yıl ödenen ortalama fiyat",
       "region": null,
       "source_hint": "Box Office Türkiye yıllık karşılaştırma tablosu",
       "image": {
@@ -9505,8 +9505,8 @@
     },
     {
       "id": "fiat-egea-easy",
-      "name": "Sıfır Fiat Egea Sedan 1.4 Fire Easy (manuel, benzinli)",
-      "unit": "1 araç, anahtar teslim liste fiyatı",
+      "name": "Sıfır Fiat Egea Sedan (1.4 benzinli, Easy donanım)",
+      "unit": "1 araç, bayi liste fiyatı (anahtar teslim)",
       "region": null,
       "source_hint": "Fiat/Tofaş fiyat listesi haberleri (otomobil siteleri) ve arabalar.com.tr aylık tablosu",
       "image": {
@@ -9749,8 +9749,8 @@
     },
     {
       "id": "basvurma-harci",
-      "name": "Asliye mahkemesinde dava başvurma harcı",
-      "unit": "1 dava açılışı, asliye mahkemesi (maktu başvurma harcı)",
+      "name": "Dava açma harcı (asliye mahkemesi)",
+      "unit": "1 dava açılışı (sabit harç)",
       "region": null,
       "source_hint": "492 sayılı Harçlar Kanunu (1) sayılı tarife I-2 (asliye mahkemelerinde başvurma harcı); tutar her yıl sonu Resmî Gazete'de yayımlanan Harçlar Kanunu Genel Tebliği ile belirlenir. Resmî kaynaklı.",
       "image": {
@@ -9919,8 +9919,8 @@
     },
     {
       "id": "ea-fc-oyun",
-      "name": "FIFA / EA FC oyunu (PlayStation, standart sürüm)",
-      "unit": "1 oyun, çıkış fiyatı",
+      "name": "FIFA / EA FC oyunu (PlayStation, standart)",
+      "unit": "1 oyun, ilk satış fiyatı",
       "region": null,
       "source_hint": "Yeni FIFA / EA SPORTS FC oyununun Türkiye'de PlayStation standart sürüm çıkış (ön sipariş) fiyatı; FIFA 21'e kadar PS4, FIFA 22'den itibaren PS5. Haber kaynaklı.",
       "image": {
@@ -10174,7 +10174,7 @@
     {
       "id": "emekli-bayram-ikramiyesi",
       "name": "Emekli bayram ikramiyesi",
-      "unit": "1 bayram, dosya başına tam tutar",
+      "unit": "1 bayram, tam tutar",
       "region": null,
       "source_hint": "5510 sayılı Kanun Ek Madde 18: SGK emeklilerine Ramazan ve Kurban bayramlarında ödenen ikramiye; tutar kanun değişiklikleriyle artar. Haber kaynaklı.",
       "image": {

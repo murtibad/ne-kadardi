@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.81.0] - 2026-10-22
+### Changed
+- Product names and units in everyday words, same definitions (Murti's rule: readable for his parents). Examples: "1 USD (TCMB döviz satış kuru)" → "1 dolar (Merkez Bankası satış kuru)"; "Sürücü belgesi değerli kâğıt bedeli" → "Ehliyet kartı ücreti"; "maktu başvurma harcı" → "sabit harç"; "dosya bazında" and "periyodik" are gone; launch prices read "Türkiye'de ilk satış fiyatı"; taxi: "Taksiye binince taksimetrenin ilk yazdığı ücret"; hunger line: "4 kişilik bir ailenin bir aylık mutfak masrafı". 61 strings in `data/prices.json`, no price or source changed.
+- Source label "türetilmiş değer" → "hesaplanmış değer".
+### Fixed
+- When the question is the newest value itself (e.g. Osmangazi July 2026), the purchasing-power line no longer compares it with itself ("23 … bugün 23").
+
 ## [0.80.0] - 2026-10-22
 ### Added
 - `ales`: ALES exam fee (first session of the year, ALES/1), 6 values: 2019-03 120 · 2021-03 145 · 2022-02 185 · 2024-03 490 · 2025-02 750 · 2026-03 1.200 TL. Each value on two news domains quoting the ÖSYM guide, checked with `verify.py`. 2020 (only one web source besides a PDF) and 2023 (ALES/1 and ALES/2 fees conflict) are left out.

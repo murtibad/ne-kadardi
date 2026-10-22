@@ -227,3 +227,8 @@ test('paper fees are paid, not bought, and a wage that no longer covers one says
   const imei = { productId: 'imei-kayit-harci', name: 'IMEI', unit: '1 telefon', date: '2010-03', price: 100, current: { price: 30000 } };
   assert.equal(buildContextLine(imei, wages), 'O tarihte 1 asgari ücretle 5 yurt dışı telefon kaydı ödenebiliyordu; bugün 1 asgari ücretle bir tane bile ödenemiyor.');
 });
+
+test('the newest value is not compared with itself as "bugün"', () => {
+  const q = { productId: 'simit', name: 'Simit', unit: '1 adet', date: '2015-03', price: 1, current: { date: '2015-03', price: 1 } };
+  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 1.000 simit alınabiliyordu.');
+});
