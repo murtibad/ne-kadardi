@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.9] - 2026-10-22
+### Added
+- `anadolu-otoyolu` 2019-02 25 (KGM table archived 14.02.2019). The 30 TL "2019" table is only archived from 2021, so its month is unknown and it stays out.
+
 ## [0.92.8] - 2026-10-22
 ### Added
 - `ales` 2010-2018: 40 (2010, 2011), 50 (2013) from ÖSYM's own guides, 70 (2016) and 100 (2018) from two news domains each. 2012, 2014, 2015 and 2017 spring fees were not verified.
