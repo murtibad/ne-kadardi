@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.0] - 2026-10-22
+### Added
+- `anadolu-otoyolu`: İstanbul-Ankara motorway (Çamlıca-Akıncı) one-way car toll, 2021 37,50 → 2026 338, from KGM tariff PDFs (archived copies) and two news domains for August 2024. Older tariffs exist in KGM's tables but were not read in time; left for later.
+- Left out: exhaust emission test fee (only 2026 verified).
+
 ## [0.91.0] - 2026-10-22
 ### Added
 - `tmo-bugday`: bread wheat purchase price announced by TMO at harvest, per kg: 2017 0,94 → 2026 16,50 (7 years, two news domains each; 2022 left out because 6.050 was raised to 6.450 within the month). Icon `img/bugday.svg`.

@@ -12541,6 +12541,104 @@
           }
         }
       ]
+    },
+    {
+      "id": "anadolu-otoyolu",
+      "name": "İstanbul-Ankara otoyolu",
+      "unit": "1 geçiş, otomobil, Çamlıca-Akıncı (tek yön)",
+      "region": null,
+      "source_hint": "KGM otoyol ücret tarifeleri (arşiv kopyaları) ve zam haberleri.",
+      "image": {
+        "src": "img/egea.svg",
+        "alt": "Otomobil çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 338,
+        "status": "verified",
+        "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM tablosu: \"ANADOLU (ÇAMLICA) 1 338,00 2 390,00 3 522,00\". Doğrulama: kartal24.com https://www.kartal24.com/87209-camlica-giseleri (\"KGM’nin 1 Ocak 2026’dan itibaren geçerli tarifesinde 1. sınıf araç için Çamlıca-Gerede arası 325 TL, Çamlıca-Akıncı arası ise 338 TL.\").",
+        "source": {
+          "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi",
+          "url": "https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2026Gecis_Ucret/5-AnadoluOtoyoluCamlica-Akinci.pdf",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2021-01",
+          "price": 37.5,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM tablosu: \"AKINCI ... 1 37,50 33,75 33,75 ... 37,50 (Anadolu istasyonu - Akinci, 1. sinif)\".",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20210225230938id_/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2021AnadoluOtoyoluTurkce.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 47,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM tablosu: \"ANADOLU 1 47,00 2 54,00 3 72,75 (Anadolu-Akinci kesimi, arac sinifi 1)\".",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20220101100728id_/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2022Gecis_Ucret/2022AnadoluOtoyolu_TR.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-05",
+          "price": 134,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM tablosu: \"ANADOLU 1 134,00 2 155,00 3 207,00\". Doğrulama: donanimhaber.com https://www.donanimhaber.com/kopru-ve-otoyol-ucretlerine-zam-geldi-iste-yeni-fiyatlar--177320 (\"İstanbul-Ankara arasındaki Anadolu Otoyolu ücreti otomobiller için 134 lira oldu.\").",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20240515103250id_/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2024Gecis_Ucret/KGMAnadoluOtoyolu(%C3%87aml%C4%B1ca-Ak%C4%B1nc%C4%B1%20Kesimi)%20Ge%C3%A7i%C5%9F%20%C3%9Ccretleri.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-08",
+          "price": 187,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. Haber: \"İstanbul-Ankara Anadolu Otoyolu otomobiller için 187 TL oldu.\". Doğrulama: donanimhaber.com https://www.donanimhaber.com/kopru-ve-otoyol-ucretlerine-zam-geldi--180762 (\"Son zamla birlikte İstanbul-Ankara Anadolu Otoyolu otomobiller için 187 TL oldu.\").",
+          "source": {
+            "title": "medyascope.tv",
+            "url": "https://medyascope.tv/2024/08/15/kopru-gecis-ucretlerine-zam-osmangazi-koprusunden-gecis-555-tlden-bin-915-tlye-yukseldi/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 269,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM tablosu: \"ANADOLU (ÇAMLICA) 1 269,00 2 311,00 3 416,00\".",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20250113231816id_/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2025Gecis_Ucret/KGM%20Anadolu%20Otoyolu%20(%C3%87aml%C4%B1ca%20%C4%B0stasyonu%20-%20Ak%C4%B1nc%C4%B1%20Kesimi%20)%20Ge%C3%A7i%C5%9F%20%C3%9Ccretleri.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 338,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM tablosu: \"ANADOLU (ÇAMLICA) 1 338,00 2 390,00 3 522,00\". Doğrulama: kartal24.com https://www.kartal24.com/87209-camlica-giseleri (\"KGM’nin 1 Ocak 2026’dan itibaren geçerli tarifesinde 1. sınıf araç için Çamlıca-Gerede arası 325 TL, Çamlıca-Akıncı arası ise 338 TL.\").",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi",
+            "url": "https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2026Gecis_Ucret/5-AnadoluOtoyoluCamlica-Akinci.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
