@@ -112,6 +112,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | youtube-premium | YouTube Premium Individual, monthly, Türkiye | price-rise news, two domains each (2019-07 launch, 2022-11, 2023-11, 2024-11, 2026-06); no official TL page | high |
 | iski-su | İSKİ household water, 1 m³, lowest tier, water + wastewater, VAT excluded, first tariff of each year (2012+); current is the monthly tariff | İSKİ tariff PDFs and tariff page (official). 2010-2011 left out (wastewater fee listed separately) | high |
 | togg-t10x | Togg T10X cheapest version (V1 RWD Standard Range), list price without campaigns | Togg price list (official, web.archive.org copies with "valid from" dates, 2024+); 2023 from two news domains each | high |
+| okul-servisi | İstanbul school bus, monthly ceiling fee set by UKOME, shortest band (0-1 km), VAT included, value in force at school start (September), 2015-2026 | İBB tariff PDFs (2018, 2024, 2026, official) and news, two domains each; 2023 left out (1.200 vs 1.300), 2014 single source | medium |
 | imei-kayit-harci | IMEI registration fee for a phone brought from abroad | Harçlar Kanunu via news (2012+, incl. mid-year rises) | high |
 | aclik-siniri | Türk-İş hunger line, monthly food spending of a family of four, January | union survey via news (2019+); not official data, title says Türk-İş | medium-high |
 

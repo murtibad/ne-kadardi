@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.87.0] - 2026-10-22
+### Added
+- `okul-servisi`: İstanbul school bus monthly ceiling fee (UKOME, 0-1 km, VAT included), value at school start, 2015-09 160 → 2026-09 4.456; İBB tariff PDFs for 2018, 2024 and 2026, two news domains for the other years. 2023 left out (reports split 1.200 / 1.300).
+- Left out: İstanbul Ramazan pidesi (the Halk Ekmek weight changes almost every year).
+
 ## [0.86.1] - 2026-10-22
 ### Changed
 - Source notes after a read-only QA: the current water price cites only İSKİ's tariff page (the 2026 PDF stops earlier); the 2023 Togg note says news reports do not state the turnkey basis.

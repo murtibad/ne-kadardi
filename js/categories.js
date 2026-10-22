@@ -2,7 +2,7 @@
 // Kept here instead of prices.json: it is presentation, not sourced data.
 export const CATEGORIES = [
   { id: 'para', label: 'Para ve altın', products: ['dolar', 'euro', 'sterlin', 'gram-altin', 'ceyrek-altin', 'gram-gumus'] },
-  { id: 'ulasim', label: 'Ulaşım ve yakıt', products: ['benzin', 'motorin', 'otogaz', 'kopru', 'osmangazi-koprusu', 'avrasya-tuneli', 'taksi-acilis', 'istanbul-ulasim', 'fiat-egea-easy', 'togg-t10x'] },
+  { id: 'ulasim', label: 'Ulaşım ve yakıt', products: ['benzin', 'motorin', 'otogaz', 'kopru', 'osmangazi-koprusu', 'avrasya-tuneli', 'taksi-acilis', 'istanbul-ulasim', 'okul-servisi', 'fiat-egea-easy', 'togg-t10x'] },
   { id: 'gunluk', label: 'Gıda ve gündelik', products: ['ekmek', 'firin-ekmegi', 'cay', 'big-mac', 'sigara-marlboro', 'plastik-poset', 'simit', 'mektup-pulu', 'iski-su'] },
   { id: 'teknoloji', label: 'Teknoloji ve eğlence', products: ['iphone', 'playstation', 'ea-fc-oyun', 'airpods', 'spotify', 'netflix', 'youtube-premium', 'milli-piyango-ceyrek', 'sinema-ortalama-bilet'] },
   { id: 'maas', label: 'Maaş ve yardımlar', products: ['asgari-ucret', 'emekli-en-dusuk-aylik', 'emekli-bayram-ikramiyesi', 'dogum-yardimi', 'kyk-burs', 'aclik-siniri'] },
