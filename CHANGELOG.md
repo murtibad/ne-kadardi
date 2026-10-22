@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.89.1] - 2026-10-22
+### Changed
+After a read-only data QA (no blockers):
+- `ehliyet-esinav` dates are years (the MEB guides say "2016 yılında", not a month), except 2025-02; the 2026 note says the guide gives no start month. Unit "1 sınav hakkı (MEB, KDV dahil)".
+- `mtv` unit says "2017 sonuna kadar tescilli"; the 2018 note explains that its source shows the row of the lowest value bracket, which equals the pre-2018 table that year.
+- `okul-servisi` 2025 note says the value comes from news (no İBB document found).
+
 ## [0.89.0] - 2026-10-22
 ### Added
 - `ehliyet-esinav`: driving licence written e-exam fee (MEB, per sitting, VAT included), 2016 60 → 2026 1.250, from MEB's yearly e-sınav guides. 2022 left out (no guide found; news conflicts).
