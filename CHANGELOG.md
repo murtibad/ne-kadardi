@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.4] - 2026-10-22
+### Added
+- `trafik-cezasi` 2015-01 189 and `milli-piyango-ceyrek` 2011 9 (two news domains each, quotes checked on the pages). Red-light fine 2016, 2017 and 2019 stay out (one source or 206 / 206,5 / 207 conflict).
+
 ## [0.92.3] - 2026-10-22
 ### Added
 - `emekli-bayram-ikramiyesi`: 2019-05, 2020-04 (1.000) and 2022-04 (1.100), years the amount stayed the same; two news domains each.

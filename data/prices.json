@@ -5203,6 +5203,18 @@
           }
         },
         {
+          "date": "2015-01",
+          "price": 189,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. \"kırmızı ışıkta geçmenin 172 lira olan cezası, yeni yılda 189 liraya yükselecek\" (02.01.2015). Doğrulama: takvim.com.tr https://www.takvim.com.tr/Guncel/2014/12/27/iste-2015-yili-harc-vergi-ve-ceza-rakamlari-1419703033 (\"Kırmızı ışıkta geçme: 172 - 189\").",
+          "source": {
+            "title": "Mynet Finans: Kırmızıda geçene 189 TL ceza kesilecek",
+            "url": "https://finans.mynet.com/haber/detay/ekonomi/kirmizida-gecene-189-tl-ceza-kesilecek/98378/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2018-01",
           "price": 235,
           "status": "verified",
@@ -8610,6 +8622,18 @@
           "source": {
             "title": "NTV: Büyük ikramiye 35 milyon lira",
             "url": "https://www.ntv.com.tr/ekonomi/galeri-buyuk-ikramiye-35-milyon-lira,kiPAY4bpKEOHliDds_cbEw",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2011",
+          "price": 9,
+          "status": "verified",
+          "note": "Yılbaşı özel çekilişi çeyrek bilet fiyatı; tarih biletlerin satıldığı yıldır (çekiliş 31 Aralık gecesi). \"Özel çekilişte tam bilet 36 liradan, yarım bilet 18 liradan, çeyrek biletler ise 9 liradan satılacak\" (29.11.2011). Doğrulama: bloomberght.com https://www.bloomberght.com/milli-piyangodan-tarihin-en-buyuk-ikramiyesi-1008637 (\"çeyrek biletin de 8 liradan 9 liraya\").",
+          "source": {
+            "title": "Gazete Van: 2011-2012 yılbaşı bilet fiyatları",
+            "url": "https://www.gazetevan.com/haber/gunun-haberleri/42748/2011-2012-yilbasi-fiyatlari-ne-kadar-yarim-ceyrek-tam-bilet-fiyatlari-haberi",
             "accessed": "2026-10-22",
             "kind": "news"
           }
