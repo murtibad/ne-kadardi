@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.88.0] - 2026-10-22
+### Added
+- `mtv`: yearly motor vehicle tax for an ordinary car (1301-1600 cm³, 7-11 years old, registered by 2017), 2010 283 → 2026 4.354, from each year's MTV genel tebliğ, two copies of the Resmî Gazete text per year.
+- Left out: state hospital visit fee (only four solid points; from July 2026 it splits into two tiers).
+
 ## [0.87.5] - 2026-10-22
 ### Fixed
 - Share image year labels use the same measured spacing as the receipt chart, so the first two years no longer crowd each other.

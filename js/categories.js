@@ -6,7 +6,7 @@ export const CATEGORIES = [
   { id: 'gunluk', label: 'Gıda ve gündelik', products: ['ekmek', 'firin-ekmegi', 'cay', 'big-mac', 'sigara-marlboro', 'plastik-poset', 'simit', 'mektup-pulu', 'iski-su'] },
   { id: 'teknoloji', label: 'Teknoloji ve eğlence', products: ['iphone', 'playstation', 'ea-fc-oyun', 'airpods', 'spotify', 'netflix', 'youtube-premium', 'milli-piyango-ceyrek', 'sinema-ortalama-bilet'] },
   { id: 'maas', label: 'Maaş ve yardımlar', products: ['asgari-ucret', 'emekli-en-dusuk-aylik', 'emekli-bayram-ikramiyesi', 'dogum-yardimi', 'kyk-burs', 'aclik-siniri'] },
-  { id: 'harc', label: 'Harç, ceza ve bedeller', products: ['trafik-cezasi', 'kyk-yurt-ucreti', 'pasaport-harci', 'yurtdisi-cikis-harci', 'basvurma-harci', 'ehliyet-harci', 'schengen-vize', 'imei-kayit-harci', 'arac-muayene-ucreti', 'bedelli-askerlik', 'yks', 'kpss-lisans', 'ales', 'fitre', 'kurban-vekalet-bedeli', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti', 'noter-asgari-ucret'] },
+  { id: 'harc', label: 'Harç, ceza ve bedeller', products: ['trafik-cezasi', 'mtv', 'kyk-yurt-ucreti', 'pasaport-harci', 'yurtdisi-cikis-harci', 'basvurma-harci', 'ehliyet-harci', 'schengen-vize', 'imei-kayit-harci', 'arac-muayene-ucreti', 'bedelli-askerlik', 'yks', 'kpss-lisans', 'ales', 'fitre', 'kurban-vekalet-bedeli', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti', 'noter-asgari-ucret'] },
 ];
 
 /** Category id of a product, or null when it is not listed. */

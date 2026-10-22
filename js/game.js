@@ -138,6 +138,7 @@ export const COUNT_UNITS = {
   'fiat-egea-easy': 'Fiat Egea',
   'togg-t10x': 'Togg T10X',
   'okul-servisi': 'aylık okul servisi',
+  mtv: 'yıllık araba vergisi',
   'iski-su': 'ton musluk suyu',
   'yurtdisi-cikis-harci': 'yurt dışı çıkış harcı',
   'basvurma-harci': 'dava harcı',
@@ -151,7 +152,7 @@ const PAID = new Set([
   'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
-  'spotify', 'netflix', 'youtube-premium', 'iski-su', 'okul-servisi', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
+  'spotify', 'netflix', 'youtube-premium', 'iski-su', 'okul-servisi', 'mtv', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
 ]);
 
 // Money people receive (pensions, grants) or a cost-of-living line cannot be "bought" with a wage:
