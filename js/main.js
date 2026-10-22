@@ -1184,7 +1184,13 @@ async function init() {
   // iOS Safari only treats touchend/click (not pointerdown) as user activation for Web Audio; decoding then keeps the first print in sync.
   for (const type of ['touchend', 'click', 'keydown']) {
     window.addEventListener(type, () => sound.unlock(), { once: true, capture: true });
+    // Later taps keep the context awake; a tab that sat in the background otherwise answers late.
+    window.addEventListener(type, () => sound.wake(), { capture: true, passive: true });
   }
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') sound.wake(); });
+  // Sounds are small and precached; fetch them once the page has loaded so the first one is ready.
+  if (document.readyState === 'complete') sound.prefetch();
+  else window.addEventListener('load', () => sound.prefetch(), { once: true });
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
