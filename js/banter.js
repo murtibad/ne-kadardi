@@ -21,12 +21,12 @@ export const UNDER_COMMENTS = [
 export const PRODUCT_POOLS = {
   'plastik-poset': [
     'Poşet ister misiniz, yoksa kucağınızda mı taşırsınız?',
-    'Çift kat yapayım mı abi, yırtılırsa karışmam.',
+    'Çift kat yapayım mı, yırtılırsa karışmam.',
     'Eskiden marketler tomar tomar dağıtırdı, hey gidi.',
     'Poşete para vereceğimiz aklına gelir miydi hiç?',
   ],
   'ekmek': [
-    'Bozuk yoksa yerine sakız vereyim mi abi?',
+    'Bozuk para yoksa yerine sakız vereyim mi?',
     'Fırından yeni çıktı, sıcacık ama fiyatı yakmasın.',
     'Köşedeki bakkal veresiye defterini çoktan kapattı.',
     'Askıda ekmek var ama askıda fiyat maalesef yok.',
@@ -98,7 +98,7 @@ export const PRODUCT_POOLS = {
     'Hızlı geçiş sisteminden çok hızlı para çekiş sistemi.',
   ],
   'taksi-acilis': [
-    'Kısa mesafe gideceksen taksiciyle baştan anlaş abi.',
+    'Kısa mesafe gideceksen taksiciyle baştan anlaş.',
     'Kapıyı açtığın an başlayan o tatlı gerilim.',
     'Taksimetre değil sanki zamana karşı yarış pisti.',
     'Yağmur yağınca taksi bulmak fiyattan daha zor.',
@@ -154,7 +154,7 @@ export const PRODUCT_POOLS = {
 };
 
 export const HINT_LINES = [
-  'Dur abi, barkodu okutayım hemen…',
+  'Bir dakika, barkodu okutayım hemen…',
   'Reyonda etiketi düşmüş, depoya sorup geliyorum…',
   'Müdüre sesleniyorum, eski listeyi çıkarsın…',
   'Sistem biraz yavaş, eski fiyatı bulmaya çalışıyorum…',
