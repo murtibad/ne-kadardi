@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.87.3] - 2026-10-22
+### Changed
+- Model-named questions lead with the model: "AirPods 5 (kablosuz kulaklık, temel model)", "iPhone 11", "PlayStation 5 Pro (oyun konsolu)", "FIFA 18 (PlayStation futbol oyunu, standart sürüm)" instead of "AirPods kablosuz kulaklık (temel model): AirPods 5". Same in the receipt and the share text.
+
 ## [0.87.2] - 2026-10-22
 ### Changed
 - A question about today's price no longer reads "O tarihte … alınabiliyordu": it says "Bugün 1 asgari ücretle 2 tane AirPods 5 alınabiliyor." and uses today's wage, not the wage of the month the price started.
