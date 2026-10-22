@@ -322,18 +322,19 @@ export async function renderShareImage(model) {
       ctx.fillText(text, p.x, labelY);
     }
 
-    // Year axis ticks (drop any tick closer than 90px to the previous kept one; the last tick always stays)
-    const keptTicks = [];
-    for (let i = 0; i < chart.xTicks.length; i++) {
-      const tk = chart.xTicks[i];
-      const prev = keptTicks[keptTicks.length - 1];
-      if (!prev || tk.x - prev.x >= 90) {
-        keptTicks.push(tk);
-      } else if (i === chart.xTicks.length - 1) {
-        keptTicks[keptTicks.length - 1] = tk;
-      }
-    }
+    // Year axis ticks: drop a tick that would touch the one kept before it or the last one (which always stays).
+    // The first label grows right and the last grows left, so they need a whole label width; centred ones need half.
     ctx.font = '26px "Space Mono", ui-monospace, monospace';
+    const w = ctx.measureText('2026').width;
+    const gap = (aEdge, bEdge) => (aEdge ? w : w / 2) + (bEdge ? w : w / 2) + 12;
+    const ticks = chart.xTicks;
+    const keptTicks = [];
+    ticks.forEach((tk, i) => {
+      const last = i === ticks.length - 1;
+      const prev = keptTicks[keptTicks.length - 1];
+      if (last || ((!prev || tk.x - prev.x >= gap(keptTicks.length === 1, false))
+        && ticks[ticks.length - 1].x - tk.x >= gap(i === 0, true))) keptTicks.push(tk);
+    });
     ctx.fillStyle = COLORS.muted;
     keptTicks.forEach((tk, i, a) => {
       ctx.textAlign = i === 0 ? 'left' : i === a.length - 1 ? 'right' : 'center';
