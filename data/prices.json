@@ -5631,7 +5631,7 @@
     {
       "id": "playstation",
       "name": "PlayStation konsolu",
-      "unit": "1 konsol (standart, diskli model), Türkiye'de ilk satış fiyatı",
+      "unit": "1 konsol, yeni çıkan model, Türkiye'de ilk satış fiyatı",
       "region": null,
       "source_hint": "Sony Türkiye tavsiye edilen çıkış fiyatı, haber arşivi.",
       "image": {
@@ -5706,17 +5706,17 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2024-09",
-        "price": 5779,
+        "date": "2026-09",
+        "price": 9999,
         "status": "verified",
-        "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Doğrulama: sanayigazetesi.com.tr https://sanayigazetesi.com.tr/?p=223136 · log.com.tr https://www.log.com.tr/?p=912449.",
+        "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart (Pro olmayan) en ucuz model. Apple Türkiye: \"AirPods 5 9.999,00 TL\" (Kablosuz Şarj Kutulu sürüm 11.499 TL). Doğrulama: internethaber.com https://www.internethaber.com/airpods-5-turkiye-fiyati-aciklandi-airpods-5-kac-tl-ozellikleri-neler-2458814h.htm · webrazzi.com https://webrazzi.com/2026/09/09/airpods-5-in-fiyati-ve-one-cikan-ozellikleri/ (9 Eylül 2026). Webrazzi ucuz modelde gürültü engelleme olmadığını yazıyor, Apple ikisinde de var diyor; fiyat aynı.",
         "source": {
-          "title": "donanimhaber.com",
-          "url": "https://www.donanimhaber.com/airpods-4-turkiye-de-on-siparise-basliyor--181785",
-          "accessed": "2026-10-04",
-          "kind": "news"
+          "title": "Apple Türkiye: AirPods 5 satın al",
+          "url": "https://www.apple.com/tr/shop/buy-airpods/airpods-5",
+          "accessed": "2026-10-22",
+          "kind": "official"
         },
-        "label": "AirPods 4"
+        "label": "AirPods 5"
       },
       "prices": [
         {
@@ -5770,6 +5770,19 @@
             "kind": "news"
           },
           "label": "AirPods 4"
+        },
+        {
+          "date": "2026-09",
+          "price": 9999,
+          "status": "verified",
+          "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart (Pro olmayan) en ucuz model. Apple Türkiye: \"AirPods 5 9.999,00 TL\" (Kablosuz Şarj Kutulu sürüm 11.499 TL). Doğrulama: internethaber.com https://www.internethaber.com/airpods-5-turkiye-fiyati-aciklandi-airpods-5-kac-tl-ozellikleri-neler-2458814h.htm · webrazzi.com https://webrazzi.com/2026/09/09/airpods-5-in-fiyati-ve-one-cikan-ozellikleri/ (9 Eylül 2026). Webrazzi ucuz modelde gürültü engelleme olmadığını yazıyor, Apple ikisinde de var diyor; fiyat aynı.",
+          "source": {
+            "title": "Apple Türkiye: AirPods 5 satın al",
+            "url": "https://www.apple.com/tr/shop/buy-airpods/airpods-5",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          },
+          "label": "AirPods 5"
         }
       ]
     },

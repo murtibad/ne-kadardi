@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.87.1] - 2026-10-22
+### Changed
+- `airpods`: AirPods 5, 2026-09, 9.999 TL (Apple Türkiye, two news domains).
+- `playstation` unit now says "yeni çıkan model": the series already moves PS4 → PS5 → PS5 Pro, and the Pro has no disc drive, so "standart, diskli" was wrong.
+- Checked and unchanged: base iPhone (no base iPhone 18 yet), Boğaz bridge toll (July 2026 tariff left it at 59), PlayStation (no new console), doğum yardımı (still 5.000). Fiat Egea 1.4 Easy is no longer sold, so its last price stays.
+
 ## [0.87.0] - 2026-10-22
 ### Added
 - `okul-servisi`: İstanbul school bus monthly ceiling fee (UKOME, 0-1 km, VAT included), value at school start, 2015-09 160 → 2026-09 4.456; İBB tariff PDFs for 2018, 2024 and 2026, two news domains for the other years. 2023 left out (reports split 1.200 / 1.300).
