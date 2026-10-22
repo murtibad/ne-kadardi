@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE, percentOf } from '../js/game.js';
 import { readFileSync } from 'node:fs';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
@@ -61,7 +61,7 @@ test('monthly products are counted by name in the purchasing-power line', () => 
   assert.equal(getCountUnit(dorm), 'aylık yurt ücreti');
   assert.equal(getCountUnit({ productId: 'benzin', unit: '1 litre' }), 'litre benzin');
   assert.equal(getCountUnit({ productId: 'unknown', unit: '1 litre' }), 'litre');
-  assert.equal(buildContextLine(dorm, [wage, dorm]), 'O tarihte 1 asgari ücretle 9 aylık yurt ücreti ödenebiliyordu, bugün 28 aylık yurt ücreti.');
+  assert.equal(buildContextLine(dorm, [wage, dorm]), 'O tarihte 1 asgari ücretle 9 aylık yurt ücreti ödenebiliyordu, bugün 28 aylık yurt ücreti ödenebiliyor.');
   assert.equal(buildContextModel(dorm, [wage, dorm]).unit, 'aylık yurt ücreti');
 });
 
@@ -99,7 +99,7 @@ const wages = [
 
 test('buildContextLine counts cheap items and compares with today', () => {
   const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-03', price: 1, current: { price: 10 } };
-  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu, bugün 2.000 adet.');
+  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu, bugün 2.000 adet alınabiliyor.');
 });
 
 test('buildContextLine expresses expensive items as wage multiples, never "0 adet"', () => {
@@ -182,7 +182,7 @@ test('buildContextModel mirrors buildContextLine numbers and nulls', () => {
   // One wage no longer buys a single item: now is 0, not negative or null.
   const pricey = { ...cheap, price: 400, current: { price: 30000 } };
   assert.equal(buildContextModel(pricey, wages).now, 0);
-  assert.match(buildContextLine(pricey, wages), /bugün 1 asgari ücret yetmiyor/);
+  assert.match(buildContextLine(pricey, wages), /bugün 1 asgari ücretle bir tane bile alınamıyor/);
 
   // No current price: now is null; no wage in the same half-year or the wage itself: null.
   assert.deepEqual(buildContextModel({ ...cheap, current: null }, wages), { kind: 'count', unit: 'adet', nowUnit: 'adet', then: 500, now: null });
@@ -200,16 +200,30 @@ test('every product has a plain count name or compares as a share of the wage', 
 
 test('pensions and grants read as a share of the minimum wage, not as items bought', () => {
   const pension = { productId: 'emekli-en-dusuk-aylik', name: 'En düşük emekli aylığı', unit: '1 ay', date: '2010-03', price: 250, current: { price: 15000 } };
-  assert.equal(buildContextLine(pension, wages), 'Asgari ücretin yüzde kaçı: o tarihte %50, bugün %75.');
-  assert.deepEqual(buildContextModel(pension, wages), { kind: 'share', better: 'higher', then: 0.5, now: 0.75 });
-  assert.equal(buildContextLine({ ...pension, current: null }, wages), 'Asgari ücretin yüzde kaçı: o tarihte %50.');
+  assert.equal(buildContextLine(pension, wages), "En düşük emekli aylığı o tarihte asgari ücretin %50'si kadardı; bugün %75'i.");
+  assert.deepEqual(buildContextModel(pension, wages), { kind: 'share', better: 'higher', name: 'En düşük emekli aylığı', then: 0.5, now: 0.75 });
+  assert.equal(buildContextLine({ ...pension, current: null }, wages), "En düşük emekli aylığı o tarihte asgari ücretin %50'si kadardı.");
 });
 
 test('model-changing products name the model on both sides of the count', () => {
   const pods = { productId: 'airpods', name: 'AirPods', label: 'AirPods 2', unit: '1 adet', date: '2010-03', price: 100, current: { price: 5000, label: 'AirPods 4' } };
-  assert.equal(buildContextLine(pods, wages), 'O tarihte 1 asgari ücretle 5 tane AirPods 2 alınabiliyordu, bugün 4 tane AirPods 4.');
+  assert.equal(buildContextLine(pods, wages), 'O tarihte 1 asgari ücretle 5 tane AirPods 2 alınabiliyordu, bugün 4 tane AirPods 4 alınabiliyor.');
   const bread = { productId: 'simit', name: 'Simit', unit: '1 adet, 100 gram', date: '2010-03', price: 1, current: { price: 10 } };
-  assert.equal(buildContextLine(bread, wages), 'O tarihte 1 asgari ücretle 500 simit alınabiliyordu, bugün 2.000 simit.');
+  assert.equal(buildContextLine(bread, wages), 'O tarihte 1 asgari ücretle 500 simit alınabiliyordu, bugün 2.000 simit alınabiliyor.');
   const car = { productId: 'fiat-egea-easy', name: 'Sıfır Fiat Egea Sedan 1.4 Fire Easy (manuel, benzinli)', unit: '1 araç', date: '2010-03', price: 5000, current: { price: 200000 } };
   assert.equal(buildContextLine(car, wages), 'O tarihte bir Fiat Egea 10 asgari ücret ediyordu, bugün 10 asgari ücret.');
+});
+
+test('percentOf adds the Turkish possessive the way the number is read aloud', () => {
+  const cases = { 0: "%0'ı", 0.49: "%49'u", 0.84: "%84'ü", 0.32: "%32'si", 1.05: "%105'i", 1.11: "%111'i",
+    0.14: "%14'ü", 0.62: "%62'si", 0.6: "%60'ı", 1: "%100'ü", 0.1: "%10'u", 0.4: "%40'ı", 0.5: "%50'si",
+    0.7: "%70'i", 0.8: "%80'i", 0.9: "%90'ı", 0.2: "%20'si", 0.3: "%30'u", 0.03: "%3'ü", 0.06: "%6'sı", 10: "%1.000'i" };
+  for (const [share, text] of Object.entries(cases)) assert.equal(percentOf(Number(share)), text);
+});
+
+test('paper fees are paid, not bought, and a wage that no longer covers one says so plainly', () => {
+  const card = { productId: 'kimlik-karti', name: 'Kimlik kartı', unit: '1 adet', date: '2010-03', price: 50, current: { price: 1000 } };
+  assert.equal(buildContextLine(card, wages), 'O tarihte 1 asgari ücretle 10 kimlik kartı ödenebiliyordu, bugün 20 kimlik kartı ödenebiliyor.');
+  const imei = { productId: 'imei-kayit-harci', name: 'IMEI', unit: '1 telefon', date: '2010-03', price: 100, current: { price: 30000 } };
+  assert.equal(buildContextLine(imei, wages), 'O tarihte 1 asgari ücretle 5 yurt dışı telefon kaydı ödenebiliyordu; bugün 1 asgari ücretle bir tane bile ödenemiyor.');
 });

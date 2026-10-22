@@ -65,3 +65,8 @@ test('formatIncrease uses percent below 2x', () => {
   assert.equal(formatIncrease(1.001), 'değişmedi');
   assert.equal(formatIncrease(NaN), '');
 });
+
+test('readAmount gives up on absurdly large numbers instead of reading them', () => {
+  assert.equal(readAmount(1e20), 'çok büyük bir sayı');
+  assert.notEqual(readAmount(999999999999), 'çok büyük bir sayı');
+});

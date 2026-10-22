@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.79.2] - 2026-10-22
+### Fixed
+Findings of a read-only QA pass over v0.77-v0.78, mostly wording for first-time readers:
+- Pensions, grants and the hunger line name themselves and use proper Turkish suffixes: "Bayram ikramiyesi o tarihte asgari ücretin %62'si kadardı; bugün %14'ü." (`percentOf` in `js/game.js`, tested for every ending).
+- Count lines end with a verb ("bugün 4 gram altın alınabiliyor"); "bugün 1 asgari ücret yetmiyor" now says what: "bugün 1 asgari ücretle bir tane bile ödenemiyor".
+- Ehliyet kartı, araç ruhsatı, kimlik kartı and aile cüzdanı fees are "ödenebiliyordu", not bought; IMEI reads "yurt dışı telefon kaydı"; "bir bedelli askerlik bedeli".
+- New stamp "ÇOK UZAK" under 20 points, so a guess a thousand times off no longer reads "BİRAZ UZAK".
+- Clearer score explainer and hint note ("ipucu aldığın için %20 düştü").
+- A guess of 10 billion or more is refused with "Bu sayı çok büyük" (it used to run off the receipt); the spoken readout says "çok büyük bir sayı" instead of "100000000000 milyar".
+- "Soru N" no longer counts skipped questions, so it matches "N soru" under the receipt.
+- Leaving the result during the till animation no longer leaves clipping on the question screen or a receipt that never floats; the receipt drops its focus frame.
+- A print sound stopped while still loading stays silent; sounds are not downloaded when the browser has no Web Audio.
+
 ## [0.79.1] - 2026-10-22
 ### Added
 - EA SPORTS FC 27 (25 Eylül 2026), PlayStation standard edition 3.999 TL, now also the product's current price. Three news sites gave the same PlayStation Store / Microsoft Store pre-order price in July 2026 (İtopya, Teknoblog, LOG); the Store page itself shows no readable price.

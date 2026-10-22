@@ -614,3 +614,23 @@ test('wake() resumes a suspended context and ignores a running one or a missing 
   assert.equal(player.wake(), true);
   assert.equal(ctx.resumed, false, 'a running context is left alone');
 });
+
+test('stop() also silences a play() that is still loading', async () => {
+  const { FakeAudioContext, getInstances } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+  const player = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: FakeAudioContext, fetchFn, now: () => 0 });
+  player.play('print');
+  player.stop('print');
+  await flushAsync();
+  assert.equal(getInstances()[0].bufferSources.length, 0);
+  player.play('print');
+  await flushAsync();
+  assert.equal(getInstances()[0].bufferSources.length, 1, 'a later play is not affected');
+});
+
+test('prefetch() skips the download when the browser has no Web Audio', () => {
+  const { fetchFn, getTotalCalls } = createFakeFetch();
+  const player = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: undefined, fetchFn });
+  assert.equal(player.prefetch(), false);
+  assert.equal(getTotalCalls(), 0);
+});
