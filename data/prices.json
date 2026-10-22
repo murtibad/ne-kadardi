@@ -10944,7 +10944,7 @@
         "date": "2026-10",
         "price": 65.52,
         "status": "verified",
-        "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). 2023'ten beri fiyat her ay güncelleniyor; bu, 5 Ekim 2026 tarifesi. İSKİ sayfası: \"Konut 0 - 15 m³/ay 43,70 21,82 65,52\" (2026 su satış tarifeleri, KDV hariç); aynı değer 2026 PDF'inin 5.10.2026 sütununda.",
+        "note": "İSKİ konut suyu, en düşük kademe, 1 m³ (1 ton), su + atık su toplamı, KDV hariç (İSKİ yalnız KDV hariç yayımlıyor); yılın ilk tarifesi. 2012-2014 tek kademe, 2015-2019 ilk kademe 0-10 m³, 2020'den beri 0-15 m³. 2023'ten beri tabloda su ve atık su ayrı, toplamı alındı; önceki tek sütun aynı toplamdır (Aralık 2022 14,61 = Ocak 2023 9,74 + 4,87). 2023'ten beri fiyat her ay güncelleniyor; bu, 5 Ekim 2026 tarifesi. İSKİ sayfası: \"Konut 0 - 15 m³/ay 43,70 21,82 65,52\" (2026 su satış tarifeleri, KDV hariç), 22.10.2026'da sayfadan okundu.",
         "source": {
           "title": "İSKİ su birim fiyatları (2026 tarifeleri, KDV hariç)",
           "url": "https://iski.istanbul/abone-hizmetleri/abone-rehberi/su-birim-fiyatlari/",
@@ -11163,7 +11163,7 @@
           "date": "2023-03",
           "price": 953000,
           "status": "verified",
-          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". 14 Mart 2023 satış duyurusu: \"T10X modelinin V1 RWD standart menzil versiyonu 953 bin TL\". Doğrulama: tgrthaber.com https://www.tgrthaber.com/otomobil/togga-ilk-zam-iste-guncel-fiyat-listesi-2895515 (\"953 bin TL'den başlayan fiyatlarla\").",
+          "note": "Togg T10X en ucuz sürüm (V1 RWD Standart Menzil) liste fiyatı, kampanyasız; 2024'ten beri Togg fiyat listesinde \"anahtar teslim\". 2023 fiyatları haberlerden; haberler anahtar teslim olduğunu açıkça yazmıyor. 14 Mart 2023 satış duyurusu: \"T10X modelinin V1 RWD standart menzil versiyonu 953 bin TL\". Doğrulama: tgrthaber.com https://www.tgrthaber.com/otomobil/togga-ilk-zam-iste-guncel-fiyat-listesi-2895515 (\"953 bin TL'den başlayan fiyatlarla\").",
           "source": {
             "title": "Webrazzi: Togg T10X 953 bin TL'den başlayan fiyatlarla satışa sunuldu",
             "url": "https://webrazzi.com/2023/03/14/togg-un-ilk-elektrikli-otomobili-olan-togg-t10x-953-bin-tl-den-baslayan-fiyatlarla-satisa-sunuldu/",
