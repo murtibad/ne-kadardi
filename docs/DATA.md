@@ -80,6 +80,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | sterlin | 1 GBP | TCMB exchange-rate XML files (same dates as euro; the script re-read every stored EUR value first) | very high |
 | ales | ALES exam fee, first session of the year (ALES/1), excluding the separate application service fee | news reports of the ÖSYM guide, two domains each (2019, 2021-2022, 2024-2026; 2020 and 2023 left out) | high |
 | osmangazi-koprusu | Osmangazi Bridge, one car crossing, tariff from its start month | news reports of the KGM tariff, two domains each (2016-07, 2017, 2021, 2022, 2025, 2026-01, 2026-07) | high |
+| mektup-pulu | PTT domestic letter up to 20 g, basic fee incl. KDV | BTK board decisions (2022, 2024) and PTT tariff PDFs (2025-2026, effective date in the file name), 2019 from two news sites | high |
 | ceyrek-altin | 1 coin, 1.75 g, 22 carat | derived from gram-altin x 1.604 g pure gold | high (market value) |
 | gram-gumus | 1 g, pure silver | World Bank silver price x TCMB rate (same method as gram-altin) | high (market value) |
 | otogaz | 1 L autogas, İstanbul (Avrupa) | EPDK LPG bayi satış fiyatı bulletin (from 2016) | high (date it) |
