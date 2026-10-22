@@ -11669,6 +11669,152 @@
           }
         }
       ]
+    },
+    {
+      "id": "ehliyet-esinav",
+      "name": "Ehliyet yazılı sınavı ücreti",
+      "unit": "1 sınav (MEB e-sınav, KDV dahil)",
+      "region": null,
+      "source_hint": "MEB MTSK e-Sınav Uygulama Kılavuzu, her yılın ücreti.",
+      "image": {
+        "src": "img/ehliyet.svg",
+        "alt": "Ehliyet kartı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026",
+        "price": 1250,
+        "status": "verified",
+        "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Adaylar, her sınav oturumu için ayrı ayrı olmak üzere, KDV dâhil 1.250 (bin iki yüz elli) TL e-Sınav ücretini\".",
+        "source": {
+          "title": "MEB MTSK e-Sınav Kılavuzu 2026",
+          "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2026_07/6a6b50c06daf3993652350_MTSK_e-Sinav_Kilavuzu_2026.pdf",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016-01",
+          "price": 60,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Kursiyer, 2016 yılında her sınav dönemi için ayrı ayrı olmak üzere KDV dâhil 60.00 TL MTSK e-sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2016",
+            "url": "https://balikesir.meb.gov.tr/meb_iys_dosyalar/2016_12/20092644_2016_mtsks_esinav_uygulama_kilavuzu_degisiklik.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 70,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Kursiyer, 2017 yılında her sınav dönemi için ayrı ayrı olmak üzere KDV dâhil 70.00 (yetmiş) TL MTSK e-sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2017",
+            "url": "https://www.meb.gov.tr/sinavlar/dokumanlar/2017/2017_esinavvmtsk.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 75,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"2018 yılında her sınav dönemi için ayrı ayrı olmak üzere KDV dâhil 75.00 (yetmişbeş) TL MTSK e-sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2018",
+            "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2018_09/18172621_2018_mtsk_ekilavuz.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 80,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"2019 yılında her sınav dönemi için ayrı ayrı olmak üzere KDV dâhil 80.00 (seksen) TL MTSK e-sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2019",
+            "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2019_01/10141843_2019_mtsk_ekilavuz.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 90,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Kursiyer, 2020 yılında her sınav dönemi için ayrı ayrı olmak üzere KDV dâhil 90 (doksan) TL MTSK e-sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2020",
+            "url": "https://mevzuat.meb.gov.tr/dosyalar/2036.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 100,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Kursiyerler, 2021 yılında her sınav oturumu için ayrı olmak üzere KDV dâhil 100,00 (yüz) TL e-Sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2021",
+            "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2020_12/29160145_MTSK_e-SYnavY_BaYvuru_ve_Uygulama_KYlavuzu_2021.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 400,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Kursiyerler, 2023 yılında her sınav oturumu için ayrı ayrı olmak üzere KDV dâhil 400,00 (dörtyüz) TL e-sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2023",
+            "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2023_02/15112806_MTSK_e-Sinavi_Basvuru_ve_Uygulama_Kilavuzu_2023.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 600,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Kursiyerler, 2024 yılında her sınav oturumu için ayrı ayrı olmak üzere KDV dâhil 600 (altı yüz ) TL e-Sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2024",
+            "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2024_02/01102616_MTSK_e-SYnavY_BaYvuru_ve_Uygulama_KYlavuzu_2024.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-02",
+          "price": 900,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Adaylar, 1 Şubat 2025 tarihinden itibaren her sınav oturumu için ayrı ayrı olmak üzere , KDV dâhil 900 (dokuz yüz) TL e-Sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2025",
+            "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2025_01/31152757_MTSK_e-SYnav_KYlavuzu_2025.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026",
+          "price": 1250,
+          "status": "verified",
+          "note": "Sürücü kursu (MTSK) yazılı e-sınav ücreti, her sınav oturumu için, KDV dahil; MEB'in o yılki e-sınav kılavuzundaki tutar. Direksiyon sınavı ücreti dahil değil. MEB kılavuzu: \"Adaylar, her sınav oturumu için ayrı ayrı olmak üzere, KDV dâhil 1.250 (bin iki yüz elli) TL e-Sınav ücretini\".",
+          "source": {
+            "title": "MEB MTSK e-Sınav Kılavuzu 2026",
+            "url": "https://www.meb.gov.tr/meb_iys_dosyalar/2026_07/6a6b50c06daf3993652350_MTSK_e-Sinav_Kilavuzu_2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }

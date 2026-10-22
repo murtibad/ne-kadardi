@@ -114,6 +114,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | togg-t10x | Togg T10X cheapest version (V1 RWD Standard Range), list price without campaigns | Togg price list (official, web.archive.org copies with "valid from" dates, 2024+); 2023 from two news domains each | high |
 | okul-servisi | İstanbul school bus, monthly ceiling fee set by UKOME, shortest band (0-1 km), VAT included, value in force at school start (September), 2015-2026 | İBB tariff PDFs (2018, 2024, 2026, official) and news, two domains each; 2023 left out (1.200 vs 1.300), 2014 single source | medium |
 | mtv | Yearly motor vehicle tax, car 1301-1600 cm³, 7-11 years old, registered by 31.12.2017 (table without value brackets), January amount, 2010-2026 | MTV genel tebliğ text (Resmî Gazete) via alomaliye / Lexpera / TÜRMOB / KPMG, two copies each | high |
+| ehliyet-esinav | Driving licence written e-exam fee per sitting, VAT included, from MEB's yearly MTSK e-sınav guide (2016-2026; 2022 and January 2025 not stated) | MEB guide PDFs (official) | high |
 | imei-kayit-harci | IMEI registration fee for a phone brought from abroad | Harçlar Kanunu via news (2012+, incl. mid-year rises) | high |
 | aclik-siniri | Türk-İş hunger line, monthly food spending of a family of four, January | union survey via news (2019+); not official data, title says Türk-İş | medium-high |
 
