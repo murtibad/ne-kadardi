@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.91.0] - 2026-10-22
+### Added
+- `tmo-bugday`: bread wheat purchase price announced by TMO at harvest, per kg: 2017 0,94 → 2026 16,50 (7 years, two news domains each; 2022 left out because 6.050 was raised to 6.450 within the month). Icon `img/bugday.svg`.
+- `findik-alim`: state purchase price for in-shell hazelnuts, per kg: 2018 14 → 2026 250 (6 years, two news domains each). Icon `img/findik.svg`.
+- Left out: Müzekart and the seat-belt fine (too few verified values). Ideas came from Gemini Flash; research and checks by Sonnet and Claude.
+
 ## [0.90.5] - 2026-10-22
 ### Fixed
 - Screen readers hear "Görsel hazır." when the image preview opens; the status used to stay on "Hazırlanıyor…" (found by a read-only regression check of 0.90.4, which found nothing else).

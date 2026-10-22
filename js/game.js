@@ -141,6 +141,8 @@ export const COUNT_UNITS = {
   mtv: 'yıllık araba vergisi',
   'ehliyet-esinav': 'ehliyet yazılı sınavı',
   'kidem-tavani': 'kıdem tazminatı tavanı',
+  'tmo-bugday': 'kilo buğday',
+  'findik-alim': 'kilo fındık',
   'iski-su': 'ton musluk suyu',
   'yurtdisi-cikis-harci': 'yurt dışı çıkış harcı',
   'basvurma-harci': 'dava harcı',
