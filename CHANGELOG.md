@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.90.1] - 2026-10-22
+### Added
+- `milli-piyango-ceyrek`: 2010 8, 2012 10, 2013 12,5, 2015 12,5 (two news domains each; 2013 and 2015 are probably one agency text). 2011 left out (one source).
+- `trafik-cezasi`: 2014 172 and 2018 235. 2015-2017 left out (weak or conflicting reports), 2019 not found.
+
 ## [0.90.0] - 2026-10-22
 ### Added
 - `kidem-tavani`: severance pay ceiling per year of service, every half-year 2010-2026 (35 values, 2.427 → 73.730 TL), from the Ministry of Labour's official table. The receipt calls it "Gerçek Tutar".
