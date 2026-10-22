@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.1] - 2026-10-22
+### Added
+- `anadolu-otoyolu` 2010-2018: 13,50 (2010-10, 2011-10), 15 (2012-05, 2014-09, 2015-07), 17,50 (2017-01), 20 (2017-02), 25 (2018-01), read from the class-1 Anadolu-Akıncı cell of KGM's archived tariff tables. Each date is the archived copy's month, i.e. the tariff in force then.
+
 ## [0.92.0] - 2026-10-22
 ### Added
 - `anadolu-otoyolu`: İstanbul-Ankara motorway (Çamlıca-Akıncı) one-way car toll, 2021 37,50 → 2026 338, from KGM tariff PDFs (archived copies) and two news domains for August 2024. Older tariffs exist in KGM's tables but were not read in time; left for later.

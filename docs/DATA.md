@@ -118,7 +118,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | kidem-tavani | Severance pay ceiling per year of service (gross), every half-year from 2010 (plus 2015-09) | ÇSGB table kidem-tazminati-yillar-1980-2026.pdf (official) | high |
 | tmo-bugday | Wheat (bread wheat, reference class) purchase price announced by TMO at harvest, per kg (ton price / 1000); 2017, 2018, 2021, 2023-2026 | news, two domains each (2021 one shared text); 2022 left out (6.050 announced, 6.450 applied) | medium |
 | findik-alim | State purchase price for Levant in-shell hazelnuts, per kg, announced at harvest; 2018, 2020, 2022, 2024-2026 | news, two domains each | medium |
-| anadolu-otoyolu | Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı one-way car toll, 2021-2026 | KGM tariff PDFs (official, archived copies) and two news domains for 2024-08 | high |
+| anadolu-otoyolu | Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı one-way car toll, 2010-2026 (2010-2018 dated by the archived copy: the tariff in force that month) | KGM tariff PDFs (official, archived copies) and two news domains for 2024-08 | high |
 | imei-kayit-harci | IMEI registration fee for a phone brought from abroad | Harçlar Kanunu via news (2012+, incl. mid-year rises) | high |
 | aclik-siniri | Türk-İş hunger line, monthly food spending of a family of four, January | union survey via news (2019+); not official data, title says Türk-İş | medium-high |
 
