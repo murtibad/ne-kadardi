@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.88.1] - 2026-10-22
+### Changed
+- Derived prices are labelled "hesaplandı": "başka fiyatlardan hesaplandı" broke the archive rows onto two lines; the "Ayrıntı" note under each row explains the calculation.
+
 ## [0.88.0] - 2026-10-22
 ### Added
 - `mtv`: yearly motor vehicle tax for an ordinary car (1301-1600 cm³, 7-11 years old, registered by 2017), 2010 283 → 2026 4.354, from each year's MTV genel tebliğ, two copies of the Resmî Gazete text per year.
