@@ -3,7 +3,7 @@
 // everywhere yet, so the version is repeated here and tests/version.test.js checks it
 // against package.json. A release bump therefore always changes this file, which makes
 // browsers install the new worker, precache fresh files and drop the old cache.
-const VERSION = '0.78.0';
+const VERSION = '0.79.0';
 const CACHE = `ne-kadardi-v${VERSION}`;
 const FONT_CACHE = 'ne-kadardi-fonts';
 
@@ -58,6 +58,7 @@ const PRECACHE = [
   'img/ekmek.svg',
   'img/emekli.svg',
   'img/euro.svg',
+  'img/sterlin.svg',
   'img/fitre.svg',
   'img/gram-altin.svg',
   'img/imei.svg',

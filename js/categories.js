@@ -1,7 +1,7 @@
 // Category of each product for the price archive filter. Pure, no DOM.
 // Kept here instead of prices.json: it is presentation, not sourced data.
 export const CATEGORIES = [
-  { id: 'para', label: 'Para ve altın', products: ['dolar', 'euro', 'gram-altin', 'ceyrek-altin', 'gram-gumus'] },
+  { id: 'para', label: 'Para ve altın', products: ['dolar', 'euro', 'sterlin', 'gram-altin', 'ceyrek-altin', 'gram-gumus'] },
   { id: 'ulasim', label: 'Ulaşım ve yakıt', products: ['benzin', 'motorin', 'otogaz', 'kopru', 'taksi-acilis', 'istanbul-ulasim', 'fiat-egea-easy'] },
   { id: 'gunluk', label: 'Gıda ve gündelik', products: ['ekmek', 'firin-ekmegi', 'cay', 'big-mac', 'sigara-marlboro', 'plastik-poset', 'simit'] },
   { id: 'teknoloji', label: 'Teknoloji ve eğlence', products: ['iphone', 'playstation', 'ea-fc-oyun', 'airpods', 'spotify', 'netflix', 'milli-piyango-ceyrek', 'sinema-ortalama-bilet'] },

@@ -8,7 +8,7 @@ export const HINT_FACTOR = 0.8; // 20% off the score
 // dollar), the euro-priced Schengen fee, and amounts tied to the minimum wage or set by law
 // from it (wage, scholarship, pension, hunger line, birth benefit).
 const NO_HINT = new Set([
-  'dolar', 'euro', 'gram-altin', 'ceyrek-altin', 'schengen-vize',
+  'dolar', 'euro', 'sterlin', 'gram-altin', 'ceyrek-altin', 'schengen-vize',
   'asgari-ucret', 'kyk-burs', 'emekli-en-dusuk-aylik', 'aclik-siniri', 'dogum-yardimi',
 ]);
 const HINT_PRODUCTS = [

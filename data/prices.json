@@ -3561,6 +3561,440 @@
       ]
     },
     {
+      "id": "sterlin",
+      "name": "İngiliz sterlini",
+      "unit": "1 GBP (TCMB döviz satış kuru)",
+      "region": null,
+      "source_hint": "TCMB Gösterge Niteliğindeki Döviz Kurları; dolar ve euro ile aynı tarihler.",
+      "image": {
+        "src": "img/sterlin.svg",
+        "alt": "Sterlin banknotu",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10-02",
+        "price": 64.9163,
+        "status": "verified",
+        "note": "TCMB döviz satış, o günkü gösterge kuru",
+        "source": {
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.10.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202610/02102026.xml",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01-04",
+          "price": 2.4063,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2010",
+            "url": "https://www.tcmb.gov.tr/kurlar/201001/04012010.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2010-07-01",
+          "price": 2.3669,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2010",
+            "url": "https://www.tcmb.gov.tr/kurlar/201007/01072010.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-01-03",
+          "price": 2.4081,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2011",
+            "url": "https://www.tcmb.gov.tr/kurlar/201101/03012011.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-07-01",
+          "price": 2.5884,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2011",
+            "url": "https://www.tcmb.gov.tr/kurlar/201107/01072011.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-01-02",
+          "price": 2.9243,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2012",
+            "url": "https://www.tcmb.gov.tr/kurlar/201201/02012012.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-07-02",
+          "price": 2.8335,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.07.2012",
+            "url": "https://www.tcmb.gov.tr/kurlar/201207/02072012.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-01-02",
+          "price": 2.9017,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2013",
+            "url": "https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-07-01",
+          "price": 2.9381,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2013",
+            "url": "https://www.tcmb.gov.tr/kurlar/201307/01072013.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-01-02",
+          "price": 3.6028,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2014",
+            "url": "https://www.tcmb.gov.tr/kurlar/201401/02012014.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-07-01",
+          "price": 3.6435,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2014",
+            "url": "https://www.tcmb.gov.tr/kurlar/201407/01072014.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-01-02",
+          "price": 3.642,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2015",
+            "url": "https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-07-01",
+          "price": 4.2084,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2015",
+            "url": "https://www.tcmb.gov.tr/kurlar/201507/01072015.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-01-04",
+          "price": 4.361,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2016",
+            "url": "https://www.tcmb.gov.tr/kurlar/201601/04012016.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-07-01",
+          "price": 3.8489,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2016",
+            "url": "https://www.tcmb.gov.tr/kurlar/201607/01072016.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01-02",
+          "price": 4.3715,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2017",
+            "url": "https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-07-03",
+          "price": 4.5974,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.07.2017",
+            "url": "https://www.tcmb.gov.tr/kurlar/201707/03072017.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01-02",
+          "price": 5.1175,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2018",
+            "url": "https://www.tcmb.gov.tr/kurlar/201801/02012018.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-07-02",
+          "price": 6.1042,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.07.2018",
+            "url": "https://www.tcmb.gov.tr/kurlar/201807/02072018.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01-02",
+          "price": 6.7996,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2019",
+            "url": "https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-07-01",
+          "price": 7.2095,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2019",
+            "url": "https://www.tcmb.gov.tr/kurlar/201907/01072019.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01-02",
+          "price": 7.8873,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2020",
+            "url": "https://www.tcmb.gov.tr/kurlar/202001/02012020.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-07-01",
+          "price": 8.5085,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2020",
+            "url": "https://www.tcmb.gov.tr/kurlar/202007/01072020.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01-04",
+          "price": 10.1069,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.01.2021",
+            "url": "https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-07-01",
+          "price": 12.0155,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2021",
+            "url": "https://www.tcmb.gov.tr/kurlar/202107/01072021.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01-03",
+          "price": 18.1999,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.01.2022",
+            "url": "https://www.tcmb.gov.tr/kurlar/202201/03012022.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-07-01",
+          "price": 20.2682,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2022",
+            "url": "https://www.tcmb.gov.tr/kurlar/202207/01072022.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01-02",
+          "price": 22.6283,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2023",
+            "url": "https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-07-03",
+          "price": 33.1074,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 03.07.2023",
+            "url": "https://www.tcmb.gov.tr/kurlar/202307/03072023.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01-02",
+          "price": 37.8539,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2024",
+            "url": "https://www.tcmb.gov.tr/kurlar/202401/02012024.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-07-01",
+          "price": 41.4886,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2024",
+            "url": "https://www.tcmb.gov.tr/kurlar/202407/01072024.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01-02",
+          "price": 44.1805,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2025",
+            "url": "https://www.tcmb.gov.tr/kurlar/202501/02012025.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-07-01",
+          "price": 54.9371,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2025",
+            "url": "https://www.tcmb.gov.tr/kurlar/202507/01072025.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01-02",
+          "price": 57.8988,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 02.01.2026",
+            "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07-01",
+          "price": 61.9245,
+          "status": "verified",
+          "note": "TCMB döviz satış, o günkü gösterge kuru",
+          "source": {
+            "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 01.07.2026",
+            "url": "https://www.tcmb.gov.tr/kurlar/202607/01072026.xml",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
       "id": "ceyrek-altin",
       "name": "Çeyrek altın",
       "unit": "1 adet (1,75 g, 22 ayar, piyasa değeri)",
