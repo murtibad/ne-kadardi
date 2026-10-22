@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.2] - 2026-10-22
+### Changed
+After a read-only QA of the four newest products (no blockers; sources matched):
+- Wheat and hazelnut lines say the price is the state's purchase price, not a shop price: "130 kilo kabuklu fındık (devletin alım fiyatıyla)", "kilo buğday (devletin alım fiyatıyla)".
+
 ## [0.92.1] - 2026-10-22
 ### Added
 - `anadolu-otoyolu` 2010-2018: 13,50 (2010-10, 2011-10), 15 (2012-05, 2014-09, 2015-07), 17,50 (2017-01), 20 (2017-02), 25 (2018-01), read from the class-1 Anadolu-Akıncı cell of KGM's archived tariff tables. Each date is the archived copy's month, i.e. the tariff in force then.
