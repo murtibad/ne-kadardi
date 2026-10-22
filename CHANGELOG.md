@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.89.0] - 2026-10-22
+### Added
+- `ehliyet-esinav`: driving licence written e-exam fee (MEB, per sitting, VAT included), 2016 60 → 2026 1.250, from MEB's yearly e-sınav guides. 2022 left out (no guide found; news conflicts).
+- Left out: İSPARK first-hour parking (no source before 2023).
+
 ## [0.88.1] - 2026-10-22
 ### Changed
 - Derived prices are labelled "hesaplandı": "başka fiyatlardan hesaplandı" broke the archive rows onto two lines; the "Ayrıntı" note under each row explains the calculation.
