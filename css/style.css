@@ -1382,3 +1382,5 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   0%, 100% { transform: none; }
   50% { transform: translateY(-4px) rotate(0.3deg); }
 }
+/* The receipt takes focus after "Tahmin et" only so screen readers start there; no frame needed. */
+#r-receipt:focus { outline: none; }

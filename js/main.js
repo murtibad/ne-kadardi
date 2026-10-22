@@ -69,7 +69,10 @@ function show(screenId) {
   syncFooter(screenId);
   clearTimeout(handTimer);
   $('question-screen').classList.remove('as-machine', 'folded');
-  $('question-screen').getAnimations?.().forEach((a) => a.cancel());
+  // Cancelled animations never reach onfinish, so undo their inline clipping here too.
+  $('question-screen').getAnimations?.({ subtree: true }).forEach((a) => a.cancel());
+  $('question-screen').style.overflow = '';
+  $('guess-form').style.overflow = '';
   for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
     const el = $(id);
     const wasHidden = el.hidden;
@@ -166,8 +169,9 @@ function nextQuestion(productId = null) {
   state.question = q;
   state.recentProducts.push(q.productId);
   if (state.recentProducts.length > 12) state.recentProducts.shift();
-  state.round += 1;
   const cat = CATEGORIES.find((c) => c.id === categoryOf(q.productId));
+  // Skipped questions do not count, so the number matches "N soru" under the receipt.
+  state.round = state.played + 1;
   $('q-round').textContent = cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
   $('q-period').textContent = formatPeriod(q.date);
   const anchor = yearAnchor(yearOf(q.date));
@@ -217,8 +221,10 @@ function nextQuestion(productId = null) {
 function onGuess(event) {
   event.preventDefault();
   const guess = parseGuess($('guess-input').value);
-  if (guess === null) {
-    $('guess-error').textContent = 'Geçerli bir fiyat yaz (ör. 4,5).';
+  // The dearest answer is a car (about 1,5 million); a longer number only breaks the receipt layout.
+  const tooBig = guess !== null && guess >= 1e10;
+  if (guess === null || tooBig) {
+    $('guess-error').textContent = tooBig ? 'Bu sayı çok büyük, daha küçük bir fiyat yaz.' : 'Geçerli bir fiyat yaz (ör. 4,5).';
     const field = document.querySelector('#question-screen .guess-field');
     if (field) {
       field.classList.remove('invalid');
@@ -264,7 +270,10 @@ function stopPrinting() {
   stopCountUp();
   clearTimeout(printTimer);
   printTimer = null;
+  // Torn but not yet handed over (left during the 0.3 s tear): finish the hand-over now.
+  if (handTimer !== null) $('result-screen').classList.add('handed');
   clearTimeout(handTimer);
+  handTimer = null;
   if (cancelPrint) {
     cancelPrint();
     cancelPrint = null;
@@ -291,6 +300,7 @@ function turnIntoMachine() {
 }
 
 function handOver() {
+  handTimer = null;
   const qs = $('question-screen');
   $('result-screen').classList.add('handed');
   if (qs.hidden || !qs.classList.contains('as-machine')) return;
@@ -451,7 +461,7 @@ function renderResult(q, r) {
   if (r.hinted) {
     const hint = document.createElement('span');
     hint.className = 'score-hint';
-    hint.textContent = ' (ipucu: -%20)';
+    hint.textContent = ' (ipucu aldığın için %20 düştü)';
     scoreEl.append(hint);
   }
   const tier = scoreTier(r.score);

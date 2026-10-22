@@ -93,6 +93,8 @@ export function createSoundPlayer(options = {}) {
   const bufferPromises = new Map();
   const decodedBuffers = new Map();
   const activeSources = new Map();
+  // stop() bumps a name's generation, so a play() still loading when it was stopped stays silent.
+  const generations = new Map();
 
   function isEnabled() {
     return enabled;
@@ -100,6 +102,7 @@ export function createSoundPlayer(options = {}) {
 
   function stop(name) {
     if (typeof name !== 'string') return;
+    generations.set(name, (generations.get(name) || 0) + 1);
     const set = activeSources.get(name);
     if (!set) return;
     activeSources.delete(name);
@@ -170,7 +173,7 @@ export function createSoundPlayer(options = {}) {
   }
 
   function prefetch() {
-    if (!enabled || typeof fetchFn !== 'function') return false;
+    if (!enabled || typeof fetchFn !== 'function' || !AudioContextCtor) return false;
     for (const name of Object.keys(SOUND_FILES)) {
       fetchRaw(name).catch(() => {});
     }
@@ -234,8 +237,9 @@ export function createSoundPlayer(options = {}) {
     // A context waking from the background (or from a phone call on iOS) keeps its clock frozen
     // until resume() settles, so a sound scheduled now would come out late: wait, then check.
     const ready = audioCtx.state === 'running' || !resuming ? null : resuming;
+    const generation = generations.get(name) || 0;
     Promise.all([load(audioCtx, name), ready]).then(([buffer]) => {
-      if (!buffer || !enabled) return;
+      if (!buffer || !enabled || (generations.get(name) || 0) !== generation) return;
       if (!wasCached || ready) {
         const elapsedMs = (typeof clock === 'function' ? clock() : Date.now()) - startMs;
         if (elapsedMs > MAX_LOAD_WAIT_MS) return;

@@ -76,6 +76,8 @@ export function formatPeriod(date) {
  */
 export function readAmount(value) {
   if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) return '';
+  // Past a trillion the words stop helping ("100000000000 milyar"); the form asks for a smaller number.
+  if (value >= 1e12) return 'çok büyük bir sayı';
   const rounded = Math.round(value * 100) / 100;
   if (rounded <= 0) return '';
 

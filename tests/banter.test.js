@@ -207,10 +207,12 @@ test('stampTitle boundaries (49/50/74/75/89/90), clamping, and non-finite values
   assert.equal(stampTitle(50), 'FENA DEĞİL');
 
   assert.equal(stampTitle(49), 'BİRAZ UZAK');
-  assert.equal(stampTitle(0), 'BİRAZ UZAK');
+  assert.equal(stampTitle(20), 'BİRAZ UZAK');
+  assert.equal(stampTitle(19), 'ÇOK UZAK');
+  assert.equal(stampTitle(0), 'ÇOK UZAK');
 
   // Clamping out-of-range values
-  assert.equal(stampTitle(-15), 'BİRAZ UZAK');
+  assert.equal(stampTitle(-15), 'ÇOK UZAK');
   assert.equal(stampTitle(120), 'TAM İSABET');
 
   // Non-finite or invalid types return null

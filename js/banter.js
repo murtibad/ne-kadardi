@@ -235,5 +235,6 @@ export function stampTitle(averageScore) {
   if (clamped >= 90) return 'TAM İSABET';
   if (clamped >= 75) return 'ÇOK YAKIN';
   if (clamped >= 50) return 'FENA DEĞİL';
-  return 'BİRAZ UZAK';
+  if (clamped >= 20) return 'BİRAZ UZAK';
+  return 'ÇOK UZAK';
 }

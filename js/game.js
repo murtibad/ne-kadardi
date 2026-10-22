@@ -110,14 +110,14 @@ export const COUNT_UNITS = {
   iphone: 'iPhone',
   playstation: 'PlayStation',
   airpods: 'AirPods',
-  'bedelli-askerlik': 'bedelli askerlik',
+  'bedelli-askerlik': 'bedelli askerlik bedeli',
   'kpss-lisans': 'KPSS sınav ücreti',
   'pasaport-harci': 'pasaport harcı',
   'ehliyet-harci': 'ehliyet harcı',
   'schengen-vize': 'Schengen vizesi',
   spotify: 'aylık Spotify aboneliği',
   netflix: 'aylık Netflix aboneliği',
-  'imei-kayit-harci': 'telefon kaydı (IMEI)',
+  'imei-kayit-harci': 'yurt dışı telefon kaydı',
   'istanbul-ulasim': 'otobüs/metro binişi',
   'kurban-vekalet-bedeli': 'kurban bedeli',
   'arac-muayene-ucreti': 'araç muayenesi',
@@ -143,18 +143,19 @@ const PAID = new Set([
   'yks', 'trafik-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
-  'spotify', 'netflix',
+  'spotify', 'netflix', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
 ]);
 
 // Money people receive (pensions, grants) or a cost-of-living line cannot be "bought" with a wage:
 // "1 asgari ücretle 2 emekli aylığı" makes no sense. These compare as a share of the wage instead.
 // `better` says which way is good news for the colour of the "Bugün" bar.
+// `name` opens the sentence so the reader knows which amount the percentages are about.
 export const WAGE_SHARE = {
-  'emekli-en-dusuk-aylik': 'higher',
-  'emekli-bayram-ikramiyesi': 'higher',
-  'kyk-burs': 'higher',
-  'dogum-yardimi': 'higher',
-  'aclik-siniri': 'lower',
+  'emekli-en-dusuk-aylik': { better: 'higher', name: 'En düşük emekli aylığı' },
+  'emekli-bayram-ikramiyesi': { better: 'higher', name: 'Bayram ikramiyesi' },
+  'kyk-burs': { better: 'higher', name: 'KYK bursu' },
+  'dogum-yardimi': { better: 'higher', name: 'Doğum yardımı' },
+  'aclik-siniri': { better: 'lower', name: 'Açlık sınırı' },
 };
 
 /** Count word for the purchasing-power line: the product's plain name, else the short unit. */
@@ -173,6 +174,21 @@ function count(n) {
 
 function percent(share) {
   return `%${Math.round(share * 100).toLocaleString('tr-TR')}`;
+}
+
+// Turkish possessive after a number follows how its last word is read aloud: %49'u (dokuz),
+// %84'ü (dört), %32'si (iki), %105'i (beş), %60'ı (altmış), %100'ü (yüz).
+const ONES = ['', 'i', 'si', 'ü', 'ü', 'i', 'sı', 'si', 'i', 'u'];
+const TENS = ['', 'u', 'si', 'u', 'ı', 'si', 'ı', 'i', 'i', 'ı'];
+export function percentOf(share) {
+  const n = Math.round(share * 100);
+  let suffix;
+  if (n === 0) suffix = 'ı';
+  else if (n % 10) suffix = ONES[n % 10];
+  else if (n % 100) suffix = TENS[(n % 100) / 10];
+  else if (n % 1000) suffix = 'ü';
+  else suffix = 'i';
+  return `${percent(share)}'${suffix}`;
 }
 
 export function getShortUnit(unit) {
@@ -206,17 +222,17 @@ export function buildContextLine(q, allQuestions) {
   if (!m) return null;
 
   if (m.kind === 'share') {
-    const past = `Asgari ücretin yüzde kaçı: o tarihte ${percent(m.then)}`;
-    return m.now == null ? `${past}.` : `${past}, bugün ${percent(m.now)}.`;
+    const past = `${m.name} o tarihte asgari ücretin ${percentOf(m.then)} kadardı`;
+    return m.now == null ? `${past}.` : `${past}; bugün ${percentOf(m.now)}.`;
   }
 
   if (m.kind === 'count') {
-    const verb = PAID.has(q.productId) ? 'ödenebiliyordu' : 'alınabiliyordu';
-    const past = `O tarihte 1 asgari ücretle ${count(m.then)} ${m.unit} ${verb}`;
+    const paid = PAID.has(q.productId);
+    const past = `O tarihte 1 asgari ücretle ${count(m.then)} ${m.unit} ${paid ? 'ödenebiliyordu' : 'alınabiliyordu'}`;
     if (m.now == null) return `${past}.`;
     return m.now >= 1
-      ? `${past}, bugün ${count(m.now)} ${m.nowUnit}.`
-      : `${past}; bugün 1 asgari ücret yetmiyor.`;
+      ? `${past}, bugün ${count(m.now)} ${m.nowUnit} ${paid ? 'ödenebiliyor' : 'alınabiliyor'}.`
+      : `${past}; bugün 1 asgari ücretle bir tane bile ${paid ? 'ödenemiyor' : 'alınamıyor'}.`;
   }
 
   const past = `O tarihte bir ${m.name} ${formatRatio(m.then)} asgari ücret ediyordu`;
@@ -243,7 +259,8 @@ export function buildContextModel(q, allQuestions) {
   if (WAGE_SHARE[q.productId]) {
     return {
       kind: 'share',
-      better: WAGE_SHARE[q.productId],
+      better: WAGE_SHARE[q.productId].better,
+      name: WAGE_SHARE[q.productId].name,
       then: q.price / pastWage.price,
       now: hasNow ? q.current.price / currentWage : null,
     };
