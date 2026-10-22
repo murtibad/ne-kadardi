@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.83.0] - 2026-10-22
+### Added
+- `mektup-pulu`: PTT domestic letter up to 20 g, basic fee incl. KDV, 7 values: 2019-10 2,40 · 2022-01 5 · 2024-02 20 · 2024-06 29 · 2025-03 35 · 2026-02 45 · 2026-10 50 TL (also today's price). 2022 and 2024 from BTK board decisions (PDF text checked), 2024-06 from the decision text on Lexpera, 2025-2026 from PTT's own tariff PDFs (first row "20 grama kadar"; the effective date is only in the file name, noted per entry), 2019 from two news sites. 2018 (one news site), 2020, 2021 and 2023 left out. Original envelope icon, "Gıda ve gündelik" category.
+- Tried and not added: İstanbul household gas per m³ (no open archive of İGDAŞ tariffs; sources mix tax-inclusive and tax-exclusive prices).
+
 ## [0.82.0] - 2026-10-22
 ### Changed
 - Larger reading text for older eyes: the source line (14 px), source label, archive ratio and legend, how-to steps, hint note, chart caption and footer (13 px), chart labels 10 → 11 px. Decorative uppercase labels keep their size. Checked at 390 px: no overflow.

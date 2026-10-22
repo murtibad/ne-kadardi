@@ -10562,6 +10562,116 @@
           }
         }
       ]
+    },
+    {
+      "id": "mektup-pulu",
+      "name": "Mektup pulu (PTT, yurt içi)",
+      "unit": "1 mektup, 20 grama kadar (KDV dahil)",
+      "region": null,
+      "source_hint": "BTK kurul kararları (temel ücret) ve PTT Posta ve Telgraf Ücret Tarifesi.",
+      "image": {
+        "src": "img/mektup.svg",
+        "alt": "Pullu zarf çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10",
+        "price": 50,
+        "status": "verified",
+        "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. PTT Posta ve Telgraf Ücret Tarifesi, ilk satır \"20 grama kadar ₺50,00\"; yürürlük tarihi dosya adında (01.10.2026).",
+        "source": {
+          "title": "PTT Posta ve Telgraf Ücret Tarifesi 01.10.2026",
+          "url": "https://pttwebdosya.ptt.gov.tr/api/file/getFile?FileName=c8112564-3587-43cd-b03f-631c2fa01bb2*Posta+ve+Telgraf+Ucret+Tarifesi+01.10.2026.pdf",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-10",
+          "price": 2.4,
+          "status": "verified",
+          "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. 7 Ekim 2019'dan itibaren 2 TL'den 2,4 TL'ye. İkinci kaynak: borsaningundemi.com https://www.borsaningundemi.com/haber/haberlesme-gonderileri-temel-ucreti-24-lira-oldu-1441587 (aynı cümle).",
+          "source": {
+            "title": "Habertürk: Tren bileti ve posta ücretlerine zam geldi",
+            "url": "https://www.haberturk.com/son-dakika-tren-bileti-ve-posta-ucretlerine-zam-geldi-haberler-2528600-ekonomi",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 5,
+          "status": "verified",
+          "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. BTK Kurul Kararı 2022/DK-SRD/5 (04.01.2022): 17.01.2022'den itibaren \"5,00 TL (%18 KDV dâhil)\".",
+          "source": {
+            "title": "BTK Kurul Kararı 2022/DK-SRD/5, haberleşme gönderilerine ilişkin temel ücret",
+            "url": "https://www.btk.gov.tr/uploads/boarddecisions/haberlesme-gonderilerine-iliskin-temel-ucret/5-2022-web.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-02",
+          "price": 20,
+          "status": "verified",
+          "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. BTK Kurul Kararı 2024/DK-SRD/32 (16.01.2024): 01.02.2024'ten itibaren \"20,00.-TL (KDV dahil)\".",
+          "source": {
+            "title": "BTK Kurul Kararı 2024/DK-SRD/32, haberleşme gönderilerine ilişkin temel ücret",
+            "url": "https://www.btk.gov.tr/uploads/boarddecisions/haberlesme-gonderilerine-iliskin-temel-ucret/32-2024-web.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-06",
+          "price": 29,
+          "status": "verified",
+          "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. BTK Kurul Kararı 2024/DK-SRD/240 (28.05.2024): \"29,00.-TL (yirmidokuzTürkLirası) (KDV dahil)\"; Lexpera'daki karar metni.",
+          "source": {
+            "title": "Lexpera: BTK Kurul Kararı 2024/DK-SRD/240, haberleşme gönderilerine ilişkin temel ücret",
+            "url": "https://www.lexpera.com.tr/mevzuat/kurul-kararlari/haberlesme-gonderilerine-iliskin-temel-ucret-2024-dk-srd-240",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-03",
+          "price": 35,
+          "status": "verified",
+          "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. PTT Posta ve Telgraf Ücret Tarifesi, ilk satır \"20 grama kadar ₺35,00\"; yürürlük tarihi dosya adında (03.03.2025).",
+          "source": {
+            "title": "PTT Posta ve Telgraf Ücret Tarifesi 03.03.2025",
+            "url": "https://pttwebdosya.ptt.gov.tr/api/file/getFile?FileName=d7a7d301-1a84-4c3f-88a4-62eadfe4485f*Posta_Telgraf_ucret_Tarifesi-03.03.2025.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 45,
+          "status": "verified",
+          "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. PTT Posta ve Telgraf Ücret Tarifesi, ilk satır \"20 grama kadar ₺45,00\"; yürürlük tarihi dosya adında (04.02.2026).",
+          "source": {
+            "title": "PTT Posta ve Telgraf Ücret Tarifesi 04.02.2026",
+            "url": "https://pttwebdosya.ptt.gov.tr/api/file/getFile?FileName=5ca0a84b-938e-4f00-8a29-40efbba33a93*POSTA+VE+TELGRAF+%C3%9CCRET+TAR%C4%B0FESi+04.02.2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-10",
+          "price": 50,
+          "status": "verified",
+          "note": "PTT yurt içi, 20 grama kadar haberleşme gönderisi (mektup) temel ücreti, KDV dahil; tarih, ücretin yürürlüğe girdiği ay. PTT Posta ve Telgraf Ücret Tarifesi, ilk satır \"20 grama kadar ₺50,00\"; yürürlük tarihi dosya adında (01.10.2026).",
+          "source": {
+            "title": "PTT Posta ve Telgraf Ücret Tarifesi 01.10.2026",
+            "url": "https://pttwebdosya.ptt.gov.tr/api/file/getFile?FileName=c8112564-3587-43cd-b03f-631c2fa01bb2*Posta+ve+Telgraf+Ucret+Tarifesi+01.10.2026.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }

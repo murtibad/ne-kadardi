@@ -131,6 +131,7 @@ export const COUNT_UNITS = {
   'kimlik-karti': 'kimlik kartı',
   'noter-asgari-ucret': 'noter işlemi',
   simit: 'simit',
+  'mektup-pulu': 'mektup pulu',
   'sinema-ortalama-bilet': 'sinema bileti',
   'fiat-egea-easy': 'Fiat Egea',
   'yurtdisi-cikis-harci': 'yurt dışı çıkış harcı',
