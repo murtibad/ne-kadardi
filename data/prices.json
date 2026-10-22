@@ -11439,6 +11439,236 @@
           }
         }
       ]
+    },
+    {
+      "id": "mtv",
+      "name": "Araba vergisi (MTV)",
+      "unit": "1 yıl, 1.3-1.6 litre motorlu, 7-11 yaşında otomobil",
+      "region": null,
+      "source_hint": "MTV genel tebliğleri (Resmî Gazete metni); yılın Ocak tutarı.",
+      "image": {
+        "src": "img/egea.svg",
+        "alt": "Otomobil çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 4354,
+        "status": "verified",
+        "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 58 (RG 31.12.2025, 33124 5. Mük.): \"1301 - 1600 cm3 e kadar 10.016 7.510 4.354 3.077 1.181\". Doğrulama: alomaliye.com 2026 MTV (%18,95 artış).",
+        "source": {
+          "title": "KPMG: 2026 yılı motorlu taşıtlar vergisi tutarları",
+          "url": "https://www.kpmgvergi.com/yayinlar/mali-bultenler/vergi/2026-yili-motorlu-tasitlar-vergisi-tutarlari/3352",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 283,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 34 (RG 31.12.2009, 27449): \"1301 - 1600 cm3 e kadar 648,00 486,00 283,00 200,00 78,00\". Doğrulama: turmob.org.tr Resmî Gazete 27449 kopyası.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 34 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2009/12/31/motorlu-tasitlar-vergisi-genel-tebligi-seri-no-34/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 304,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 37: \"1301 - 1600 cm3 e kadar 697 523 304 215 84\". Doğrulama: lexpera.com.tr Seri 37.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 37 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2010/12/29/motorlu-tasitlar-vergisi-genel-tebligi-seri-no37-mtv-2011-yili",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 335,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 39 (RG 26.12.2011, 28154): \"1301 - 1600 cm3 e kadar 768,00 576,00 335,00 237,00 92,00\". Doğrulama: lexpera.com.tr Seri 39.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 39 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2011/12/26/motorlu-tasitlar-vergisi-genel-tebligi-seri-no39/amp/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-01",
+          "price": 361,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 42: \"1301 - 1600 cm3 e kadar 827,00 620,00 361,00 255,00 99,00\". Doğrulama: turmob.org.tr e-kütüphane.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 42 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2012/12/31/motorlu-tasitlar-vergisi-genel-tebligi-seri-no-42/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 375,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 43 (RG 30.12.2013, 28867 Mük.): \"1301 - 1600 cm3 e kadar 859,00 644,00 375,00 265,00 102,00\". Doğrulama: lexpera.com.tr Seri 43, turmob.org.tr.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 43 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2013/12/30/motorlu-tasitlar-vergisi-genel-tebligi-seri-no-43",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-01",
+          "price": 412,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 45 (RG 30.12.2014, 29221): \"1301 - 1600 cm3 e kadar 945,00 709,00 412,00 291,00 112,00\". Doğrulama: lexpera.com.tr Seri 45.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 45 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2014/12/30/motorlu-tasitlar-vergisi-genel-tebligi-seri-no-45/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 434,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 46 (RG 25.12.2015, 29573): \"1301 - 1600 cm3 e kadar 997,00 748,00 434,00 307,00 118,00\". Doğrulama: lexpera.com.tr Seri 46, turmob.org.tr.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 46 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2015/12/25/motorlu-tasitlar-vergisi-genel-tebligi-seri-no-46-mtv-2016/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 450,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 47 (RG 27.12.2016, 29931): \"1301 - 1600 cm3 e kadar 1.035,00 776,00 450,00 318,00 122,00\". Doğrulama: Grant Thornton vergi sirküleri 2017/3.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 47 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2016/12/27/2017-yili-mtv/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 563,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). 2018 (31.12.2017 öncesi tescilli araç tablosu): \"1301 - 1600 cm3 e kadar 1.294 970 563 398 153\". Doğrulama: bloomberght.com https://www.bloomberght.com/mtv-de-2018-rakamlari-belli-oldu-2074071 (\"1301-1600 cc 1.294 970 563 398 153\"); 2017'ye göre %25 artış.",
+          "source": {
+            "title": "2018 MTV tutarları (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2017/12/29/2018-mtv-ne-kadar/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 652,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 51 (RG 31.12.2018, 30642 3. Mük.): \"1301 - 1600 cm3 e kadar 1.499 1.124 652 461 177\". Doğrulama: milliyet.com.tr (\"7-11 yaş, 1301-1600 cc aralığı, 2019 MTV'si: 652 lira\").",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 51 (TÜRMOB e-kütüphane)",
+            "url": "https://www.turmob.org.tr/ekutuphane/Read/cf4b4aad-be1f-4194-8715-fa8c35ff25e6",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 730,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 52 (RG 27.12.2019, 30991 2. Mük.): \"1301 - 1600 cm3 e kadar 1.678 1.258 730 516 198\". Doğrulama: milliyet.com.tr (\"2020 MTV'si: 730 lira\").",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 52 (TÜRMOB e-kütüphane)",
+            "url": "https://www.turmob.org.tr/ekutuphane/Read/3d151e67-0bb7-4797-a3a3-d5568c18da4f",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 796,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 53 (RG 31349): \"1301 - 1600 cm3 e kadar 1.830 1.372 796 563 216\". Doğrulama: yontemymm.com.tr, KPMG.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 53 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2020/12/29/2021-mtv-2021-motorlu-tasitlar-vergisi/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 995,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 54: \"1301 - 1600 cm3 e kadar 2.287 1.715 995 703 270\". Doğrulama: lexpera.com.tr Seri 54.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 54 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2021/12/21/2022-mtv/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 1606,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 55 (RG 30.12.2022, 32059 2. Mük.): \"1301 - 1600 cm3 e kadar 3.693 2.769 1.606 1.135 436\". Doğrulama: lexpera.com.tr Seri 55, turmob.org.tr.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 55 (alomaliye.com'da Resmî Gazete metni)",
+            "url": "https://www.alomaliye.com/2022/12/30/2023-mtv-genel-tebligi-seri-no-55/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 2544,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 56 (RG 30.12.2023, 32415 2. Mük.): \"1301 - 1600 cm3 e kadar 5.851 4.387 2.544 1.798 690\". Doğrulama: cnnturk.com (\"7-11 yaş - 2544 TL\").",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 56 (Lexpera'da Resmî Gazete metni)",
+            "url": "https://www.lexpera.com.tr/mevzuat/tebligler/motorlu-tasitlar-vergisi-genel-tebligi-seri-no-56",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 3661,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 57 (RG 30.12.2024, 32768 2. Mük.): \"1301 - 1600 cm3 e kadar 8.421 6.314 3.661 2.587 993\". Doğrulama: alomaliye.com 2025 MTV tutarları.",
+          "source": {
+            "title": "MTV Genel Tebliği Seri No: 57 (Lexpera'da Resmî Gazete metni)",
+            "url": "https://www.lexpera.com.tr/mevzuat/tebligler/motorlu-tasitlar-vergisi-genel-tebligi-seri-no-57",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 4354,
+          "status": "verified",
+          "note": "Motorlu Taşıtlar Vergisi, otomobil, motor 1301-1600 cm³, 7-11 yaş, 31.12.2017'ye kadar tescilli (değer dilimi olmayan tablo); yıllık toplam, Ocak ve Temmuz'da iki eşit taksit. Değer, o yılın MTV genel tebliğindeki satırdan (\"1301 - 1600 cm3'e kadar\", sütunlar 1-3 / 4-6 / 7-11 / 12-15 / 16+ yaş). Seri 58 (RG 31.12.2025, 33124 5. Mük.): \"1301 - 1600 cm3 e kadar 10.016 7.510 4.354 3.077 1.181\". Doğrulama: alomaliye.com 2026 MTV (%18,95 artış).",
+          "source": {
+            "title": "KPMG: 2026 yılı motorlu taşıtlar vergisi tutarları",
+            "url": "https://www.kpmgvergi.com/yayinlar/mali-bultenler/vergi/2026-yili-motorlu-tasitlar-vergisi-tutarlari/3352",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
