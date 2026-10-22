@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.6] - 2026-10-22
+### Added
+- `aclik-siniri` 2015-01 1.256,80 and 2016-01 1.447,20 from Türk-İş's own January bulletins (read on the pages). 2014 page did not load.
+
 ## [0.92.5] - 2026-10-22
 ### Added
 - `sinema-ortalama-bilet` 2010-2015 (9,23 → 11,27) from the same Box Office Türkiye yearly table (archived copy of 10.08.2020, whose 2016 row equals the existing 2016 value); each printed average was checked against the printed gross and admissions.
