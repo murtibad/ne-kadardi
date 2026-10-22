@@ -108,6 +108,8 @@ Done (details in `CHANGELOG.md`):
       off-chart guess marker, contrast fix from an axe pass.
 - [x] v0.72 Explorable chart points, share image preview dialog, offline badge, icon pop.
 - [x] v0.73 Purchasing power bars, chart/table link in the archive, "Devam et" on the menu, skip note.
+- [x] v0.74-v0.78 Stitch A redesign, new products, plain-language pass (Murti's rule: readable for his parents,
+      born 1971), sound latency fix, one flow from guess to a torn, floating receipt.
 
 Open:
 

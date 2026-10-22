@@ -1356,3 +1356,29 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   color: var(--muted-on-paper);
 }
 /* end v0.74 home + question */
+
+/* One flow (v0.78): after "Tahmin et" the question card stays and becomes the till; the receipt
+   prints out of the slot under it, is torn off, and the till slides away (js: turnIntoMachine,
+   handOver). The receipt then floats on its own. */
+#question-screen.as-machine .question-card { margin-bottom: 0; padding-bottom: 14px; border-radius: 12px 12px 0 0; }
+#question-screen.as-machine .question-card::after { display: none; }
+#question-screen.as-machine #q-anchor,
+#question-screen.folded #guess-form { display: none; }
+#question-screen.as-machine + #result-screen .printer { margin-top: 0; border-radius: 0 0 6px 6px; }
+#result-screen .printer { transition: height 0.35s ease, opacity 0.35s ease, margin 0.35s ease; }
+#result-screen.handed .printer { height: 0; opacity: 0; margin-top: 0; box-shadow: none; }
+#result-screen.handed .printer::after { display: none; }
+#result-screen.handed .receipt-wrapper { clip-path: none; }
+#result-screen.handed .result-receipt::before { display: block; } /* the torn top edge, now free */
+#result-screen.handed { --receipt-shadow: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.18)); }
+@media (prefers-reduced-motion: no-preference) {
+  #result-screen.handed .receipt-wrapper.torn .result-receipt { animation: receipt-hand 0.45s ease-out, receipt-float 7s ease-in-out 0.45s infinite; }
+}
+@keyframes receipt-hand {
+  from { transform: translateY(6px) rotate(-1.2deg) scale(0.985); }
+  to { transform: none; }
+}
+@keyframes receipt-float {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(-4px) rotate(0.3deg); }
+}
