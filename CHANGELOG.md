@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.3] - 2026-10-22
+### Added
+- `emekli-bayram-ikramiyesi`: 2019-05, 2020-04 (1.000) and 2022-04 (1.100), years the amount stayed the same; two news domains each.
+- `dogum-yardimi`: 2020-09 300 from the Ministry's own page (unchanged 2015-2025).
+
 ## [0.92.2] - 2026-10-22
 ### Changed
 After a read-only QA of the four newest products (no blockers; sources matched):
