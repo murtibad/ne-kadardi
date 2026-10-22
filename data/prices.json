@@ -12333,6 +12333,214 @@
           }
         }
       ]
+    },
+    {
+      "id": "tmo-bugday",
+      "name": "Buğday (devletin alım fiyatı)",
+      "unit": "1 kg ekmeklik buğday, TMO alım fiyatı",
+      "region": null,
+      "source_hint": "Hasat dönemi alım fiyatı duyuruları (haberler, iki site).",
+      "image": {
+        "src": "img/bugday.svg",
+        "alt": "Buğday başağı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-06",
+        "price": 16.5,
+        "status": "verified",
+        "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 16.500 TL. Haber: \"ekmeklik buğday alım fiyatını ton başına 16 bin 500 TL\". Doğrulama: bigpara.hurriyet.com.tr https://bigpara.hurriyet.com.tr/haberler/genel-haberler/2026-yili-hububat-alim-fiyatlari-belirlendi_ID101988781/ (\"Ekmeklik buğdayda 16.500 TL\").",
+        "source": {
+          "title": "cnbce.com",
+          "url": "https://www.cnbce.com/haberler/tmo-2026-hububat-alim-fiyatlarini-acikladi-h30887",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2017-07",
+          "price": 0.94,
+          "status": "verified",
+          "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 940 TL. Haber: \"2017 yılı için Anadolu ekmeklik kırmızı sert buğdayın alım fiyatı, ton başına 940 lira olarak belirlenmiştir.\". Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/bakan-celik-bugdayin-taban-fiyatini-acikladi-657256 (\"2017 yılı için Anadolu ekmeklik kırmızı sert buğdayın alım fiyatını, ton başına 940 lira olarak açıkladı.\").",
+          "source": {
+            "title": "trthaber.com",
+            "url": "https://www.trthaber.com/haber/ekonomi/bugday-alim-fiyati-aciklandi-324125.html",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-05",
+          "price": 1.05,
+          "status": "verified",
+          "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 1.050 TL. Haber: \"Bu sene 1050 lira olacak.\". Doğrulama: dunya.com https://www.dunya.com/kose-yazisi/bugdaya-1050-lira-secim-fiyati/415492 (\"bu sene 1050 liradan alacak\").",
+          "source": {
+            "title": "memurlar.net",
+            "url": "https://www.memurlar.net/haber/748320/ciftcilere-hububat-alim-fiyati-mujdesi.html",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-05",
+          "price": 2.25,
+          "status": "verified",
+          "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 2.250 TL. Haber: \"Geçen yıl tonu 1650 olan Kırmızı/Beyaz Sert Ekmeklik Buğday fiyatı bu yıl yüzde 36,4 artırılarak ton başına 2 bin 250 lira olarak belirlendi.\". Doğrulama: ntv.com.tr https://www.ntv.com.tr/ekonomi/hububat-ve-bakliyat-alim-detaylari-belirlendi,ftaMps6KW0OWTm_iUHyt5Q (\"Geçen yıl tonu 1650 olan Kırmızı/Beyaz Sert Ekmeklik Buğday fiyatı bu yıl yüzde 36,4 artırılarak ton başına 2 bin 250 lira olarak belirlendi.\").",
+          "source": {
+            "title": "ekonomim.com",
+            "url": "https://www.ekonomim.com/ekonomik-veriler/tmo-2021-hububat-ve-bakliyat-alim-fiyatlarini-acikladi-haberi-621460",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-06",
+          "price": 8.25,
+          "status": "verified",
+          "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 8.250 TL. Haber: \"ekmeklik buğdayda ton başına 8 bin 250 lira\". Doğrulama: ahaber.com.tr https://www.ahaber.com.tr/ekonomi/2023/06/07/bugday-ve-arpa-fiyatlari-2023-arpa-ve-bugday-alim-fiyatlari-ne-kadar-kac-tl-oldu-tmo-1-ton-bugday-taban-fiyati (\"ekmeklik buğdayda ton başına 8 bin 250 lira\").",
+          "source": {
+            "title": "istiklal.com.tr",
+            "url": "https://www.istiklal.com.tr/gundem/bugday-ve-arpa-alim-fiyatlari-belli-oldu-ciftciye-mujde-verildi-765728h",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-06",
+          "price": 9.25,
+          "status": "verified",
+          "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 9.250 TL. Haber: \"ekmeklik buğdayda 9 bin 250 lira ve arpada 7 bin 250 lira olarak belirlendiği\". Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/hububat-alim-fiyatlari-belli-oldu-2121275 (\"Ekmeklik buğdayda 9.250 TL\").",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/2024-hububat-alim-fiyatlari-belli-oldu-p55728",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-06",
+          "price": 13.5,
+          "status": "verified",
+          "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 13.500 TL. Haber: \"makarnalık buğday ve ekmeklik buğdayda ton başına 13 bin 500 lira\". Doğrulama: politikam.com https://www.politikam.com/2025-hububat-alim-fiyatlari-belli-oldu-hububat-alim-odemeleri-ne-zaman-gerceklestirilecek (\"Ekmeklik Buğday: 13.500 TL\").",
+          "source": {
+            "title": "dha.com.tr",
+            "url": "https://www.dha.com.tr/gundem/2025-yili-hububat-alim-fiyatlari-belli-oldu-2652022",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-06",
+          "price": 16.5,
+          "status": "verified",
+          "note": "Devletin (TMO) hasat döneminde açıkladığı ekmeklik buğday alım fiyatı, kilo başına (ton fiyatının binde biri); 2013-2018 \"Anadolu kırmızı sert ekmeklik\", 2021-2023 \"kırmızı/beyaz sert ekmeklik\", 2024'ten beri \"2. grup ekmeklik\" adıyla aynı referans sınıf. 2022 yılı alınmadı (6.050 açıklandı, ay sonunda 6.450'ye çıktı). ton başına 16.500 TL. Haber: \"ekmeklik buğday alım fiyatını ton başına 16 bin 500 TL\". Doğrulama: bigpara.hurriyet.com.tr https://bigpara.hurriyet.com.tr/haberler/genel-haberler/2026-yili-hububat-alim-fiyatlari-belirlendi_ID101988781/ (\"Ekmeklik buğdayda 16.500 TL\").",
+          "source": {
+            "title": "cnbce.com",
+            "url": "https://www.cnbce.com/haberler/tmo-2026-hububat-alim-fiyatlarini-acikladi-h30887",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "findik-alim",
+      "name": "Fındık (devletin alım fiyatı)",
+      "unit": "1 kg kabuklu fındık, devletin alım fiyatı",
+      "region": null,
+      "source_hint": "Hasat dönemi alım fiyatı duyuruları (haberler, iki site).",
+      "image": {
+        "src": "img/findik.svg",
+        "alt": "Fındık çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-08",
+        "price": 250,
+        "status": "verified",
+        "note": "Devletin hasat döneminde açıkladığı Levant kalite kabuklu fındık alım fiyatı, kilo başına (Giresun kalitesi biraz daha yüksek). Haber: \"levant kalite için kilogram başına 250 lira\". Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/findik-alim-fiyatlari-belli-oldu-tmo-2026-2027-sezonu-fiyatlarini-acikladi-3451152 (\"levant kalite fındık için ise 250 lira alım fiyatı uygulanacak\").",
+        "source": {
+          "title": "ntv.com.tr",
+          "url": "https://www.ntv.com.tr/ntvpara/tmonun-2026-2027-sezonu-findik-alim-fiyati-belli-oldu-1736241",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2018-10",
+          "price": 14,
+          "status": "verified",
+          "note": "Devletin hasat döneminde açıkladığı Levant kalite kabuklu fındık alım fiyatı, kilo başına (Giresun kalitesi biraz daha yüksek). Haber: \"1. kalite levant fındığın kilosunu 14\". Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/tmonun-karari-sonrasi-findik-fiyatlari-yukseldi-883852 (\"levant kalite fındığın kilogramının 14, Giresun kalite fındığın kilogramının ise 14,5 liradan\").",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2018/10/26/son-dakika-findik-fiyatlari-aciklandi-findik-fiyati-kilogrami-ne-kadar-oldu",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-07",
+          "price": 22,
+          "status": "verified",
+          "note": "Devletin hasat döneminde açıkladığı Levant kalite kabuklu fındık alım fiyatı, kilo başına (Giresun kalitesi biraz daha yüksek). Haber: \"levant kalite kabuklu için 22 lira olarak belirlediklerini açıkladı\". Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/findik-fiyati-ureticileri-sevindirdi-1549879 (\"Giresun kalite fındık 22,5 TL, levant kalite fındığın 22 TL\").",
+          "source": {
+            "title": "capital.com.tr",
+            "url": "https://www.capital.com.tr/haberler/tum-haberler/findik-alim-fiyatlarini-acikladi",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-07",
+          "price": 52,
+          "status": "verified",
+          "note": "Devletin hasat döneminde açıkladığı Levant kalite kabuklu fındık alım fiyatı, kilo başına (Giresun kalitesi biraz daha yüksek). Haber: \"Levant kalite için 52 lira\". Doğrulama: bloomberght.com https://www.bloomberght.com/tmo-findik-alim-fiyatlarinin-detayini-acikladi-2311990 (\"Levant kalite için 52,00 TL/Kg\").",
+          "source": {
+            "title": "istiklal.com.tr",
+            "url": "https://www.istiklal.com.tr/ekonomi/findik-alim-fiyatlarinin-detaylari-belli-oldu-704733h",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-08",
+          "price": 130,
+          "status": "verified",
+          "note": "Devletin hasat döneminde açıkladığı Levant kalite kabuklu fındık alım fiyatı, kilo başına (Giresun kalitesi biraz daha yüksek). Haber: \"Levant kalite için 130TL/Kg, Giresun kalite için 132TL/Kg\". Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/galeri/tmo-findik-fiyatlari-2024-levant-ve-giresun-findik-alim-fiyati-aciklandi-mi-ne-kadar-oldu-7165305 (\"levant kalite için kilogram başına 130 lira\").",
+          "source": {
+            "title": "posta.com.tr",
+            "url": "https://www.posta.com.tr/ekonomi/findik-alim-fiyati-belirlendi-2736220",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-08",
+          "price": 195,
+          "status": "verified",
+          "note": "Devletin hasat döneminde açıkladığı Levant kalite kabuklu fındık alım fiyatı, kilo başına (Giresun kalitesi biraz daha yüksek). Haber: \"Levant kalite fındık ise 195 TL/Kg\". Doğrulama: bloomberght.com https://www.bloomberght.com/tmo-findik-alim-fiyatini-acikladi-3754237 (\"Levant kalite için 195 TL/Kg\").",
+          "source": {
+            "title": "sozcu.com.tr",
+            "url": "https://www.sozcu.com.tr/son-dakika-findik-alim-fiyati-belli-oldu-p203128",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-08",
+          "price": 250,
+          "status": "verified",
+          "note": "Devletin hasat döneminde açıkladığı Levant kalite kabuklu fındık alım fiyatı, kilo başına (Giresun kalitesi biraz daha yüksek). Haber: \"levant kalite için kilogram başına 250 lira\". Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/findik-alim-fiyatlari-belli-oldu-tmo-2026-2027-sezonu-fiyatlarini-acikladi-3451152 (\"levant kalite fındık için ise 250 lira alım fiyatı uygulanacak\").",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/ntvpara/tmonun-2026-2027-sezonu-findik-alim-fiyati-belli-oldu-1736241",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }

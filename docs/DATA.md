@@ -116,6 +116,8 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | mtv | Yearly motor vehicle tax, car 1301-1600 cm³, 7-11 years old, registered by 31.12.2017 (table without value brackets), January amount, 2010-2026 | MTV genel tebliğ text (Resmî Gazete) via alomaliye / Lexpera / TÜRMOB / KPMG, two copies each | high |
 | ehliyet-esinav | Driving licence written e-exam fee per sitting, VAT included, from MEB's yearly MTSK e-sınav guide (2016-2026; 2022 and January 2025 not stated) | MEB guide PDFs (official) | high |
 | kidem-tavani | Severance pay ceiling per year of service (gross), every half-year from 2010 (plus 2015-09) | ÇSGB table kidem-tazminati-yillar-1980-2026.pdf (official) | high |
+| tmo-bugday | Wheat (bread wheat, reference class) purchase price announced by TMO at harvest, per kg (ton price / 1000); 2017, 2018, 2021, 2023-2026 | news, two domains each (2021 one shared text); 2022 left out (6.050 announced, 6.450 applied) | medium |
+| findik-alim | State purchase price for Levant in-shell hazelnuts, per kg, announced at harvest; 2018, 2020, 2022, 2024-2026 | news, two domains each | medium |
 | imei-kayit-harci | IMEI registration fee for a phone brought from abroad | Harçlar Kanunu via news (2012+, incl. mid-year rises) | high |
 | aclik-siniri | Türk-İş hunger line, monthly food spending of a family of four, January | union survey via news (2019+); not official data, title says Türk-İş | medium-high |
 
