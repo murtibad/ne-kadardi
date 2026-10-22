@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.85.0] - 2026-10-22
+### Added
+- `youtube-premium`: YouTube Premium individual monthly plan in Türkiye, 5 points, two news domains each: 2019-07 16,99 · 2022-11 29,99 · 2023-11 57,99 · 2024-11 79,99 · 2026-06 119,99. Icon `img/video.svg`.
+- Left out: Türk-İş poverty line (same release as the hunger line already in the game; a second near-identical item would confuse).
+
 ## [0.84.0] - 2026-10-22
 ### Added
 - `avrasya-tuneli`: Avrasya Tunnel, one car crossing (daytime tariff, VAT included), 12 points from ATAŞ's own tariff notices: 2016-12 15 · 2017-01 16,60 · 2018-07 23,30 · 2020-02 36,40 · 2021-02 46 · 2022-01 53 · 2024-01 80 · 2024-05 112 · 2024-08 156 · 2025-01 225 · 2026-01 280 · 2026-07 330. Tunnel icon `img/tunel.svg`.
