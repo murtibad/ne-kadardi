@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.87.2] - 2026-10-22
+### Changed
+- A question about today's price no longer reads "O tarihte … alınabiliyordu": it says "Bugün 1 asgari ücretle 2 tane AirPods 5 alınabiliyor." and uses today's wage, not the wage of the month the price started.
+
 ## [0.87.1] - 2026-10-22
 ### Changed
 - `airpods`: AirPods 5, 2026-09, 9.999 TL (Apple Türkiye, two news domains).

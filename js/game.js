@@ -234,6 +234,12 @@ export function buildContextLine(q, allQuestions) {
   const m = buildContextModel(q, allQuestions);
   if (!m) return null;
 
+  if (m.today) {
+    if (m.kind === 'share') return `${m.name} bugün asgari ücretin ${percentOf(m.then)} kadar.`;
+    if (m.kind === 'count') return `Bugün 1 asgari ücretle ${count(m.then)} ${m.unit} ${PAID.has(q.productId) ? 'ödenebiliyor' : 'alınabiliyor'}.`;
+    return `Bugün bir ${m.name} ${formatRatio(m.then)} asgari ücret ediyor.`;
+  }
+
   if (m.kind === 'share') {
     const past = `${m.name} o tarihte asgari ücretin ${percentOf(m.then)} kadardı`;
     return m.now == null ? `${past}.` : `${past}; bugün ${percentOf(m.now)}.`;
@@ -270,26 +276,31 @@ export function buildContextModel(q, allQuestions) {
   // The newest value is both a question and "today": comparing it with itself says nothing.
   const isToday = q.current && q.current.date === q.date && q.current.price === q.price;
   const hasNow = Boolean(q.current && currentWage && !isToday);
+  // A question about today's price is told in the present, against today's wage.
+  const today = Boolean(isToday && currentWage);
+  const baseWage = today ? currentWage : pastWage.price;
 
   if (WAGE_SHARE[q.productId]) {
     return {
       kind: 'share',
       better: WAGE_SHARE[q.productId].better,
       name: WAGE_SHARE[q.productId].name,
-      then: q.price / pastWage.price,
+      today,
+      then: q.price / baseWage,
       now: hasNow ? q.current.price / currentWage : null,
     };
   }
 
   const thenModel = modelName(q);
   const nowModel = hasNow ? modelName(q.current) : null;
-  if (q.price <= pastWage.price) {
+  if (q.price <= baseWage) {
     const unit = getCountUnit(q);
     return {
       kind: 'count',
+      today,
       unit: thenModel ? `tane ${thenModel}` : unit,
       nowUnit: nowModel ? `tane ${nowModel}` : unit,
-      then: Math.floor(pastWage.price / q.price),
+      then: Math.floor(baseWage / q.price),
       now: hasNow ? Math.floor(currentWage / q.current.price) : null,
     };
   }
@@ -297,7 +308,8 @@ export function buildContextModel(q, allQuestions) {
     kind: 'wages',
     name: thenModel || COUNT_UNITS[q.productId] || q.name,
     nowName: nowModel && nowModel !== thenModel ? nowModel : null,
-    then: q.price / pastWage.price,
+    today,
+    then: q.price / baseWage,
     now: hasNow ? q.current.price / currentWage : null,
   };
 }
