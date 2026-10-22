@@ -20,8 +20,19 @@ export function verdictText(r) {
   return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
 }
 
+// Products whose label is a model name: the title leads with the model and says what it is ("AirPods 5" alone says little).
+const MODEL_KIND = {
+  iphone: '',
+  airpods: 'kablosuz kulaklık, temel model',
+  playstation: 'oyun konsolu',
+  'ea-fc-oyun': 'PlayStation futbol oyunu, standart sürüm',
+};
+
 export function questionTitle(q) {
-  return q.label ? `${q.name}: ${q.label}` : q.name;
+  if (!q.label) return q.name;
+  const kind = MODEL_KIND[q.productId];
+  if (kind == null) return `${q.name}: ${q.label}`;
+  return kind ? `${q.label} (${kind})` : q.label;
 }
 
 export function buildShareFileName(q) {

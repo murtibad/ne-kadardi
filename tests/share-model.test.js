@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildShareText, verdictText, buildShareFileName, buildShareImageModel } from '../js/share-model.js';
+import { buildShareText, verdictText, buildShareFileName, buildShareImageModel, questionTitle } from '../js/share-model.js';
 import { formatPrice } from '../js/format.js';
 
 test('buildShareText formats exactly like the old share text', () => {
@@ -82,3 +82,9 @@ test('buildShareImageModel handles taxLine and keeps contextLine separate', () =
   assert.equal(modelOnlyTax.taxLine, 'Vergi payı: yaklaşık %51 (₺33.000)');
 });
 
+
+test('a model-named question leads with the model and says what it is', () => {
+  assert.equal(questionTitle({ productId: 'airpods', name: 'AirPods kablosuz kulaklık (temel model)', label: 'AirPods 5' }), 'AirPods 5 (kablosuz kulaklık, temel model)');
+  assert.equal(questionTitle({ productId: 'iphone', name: 'Yeni iPhone', label: 'iPhone 11' }), 'iPhone 11');
+  assert.equal(questionTitle({ productId: 'simit', name: 'Simit', label: null }), 'Simit');
+});
