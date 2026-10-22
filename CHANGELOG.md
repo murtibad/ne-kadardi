@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.89.3] - 2026-10-22
+### Changed
+- Code tidy, no visible change: the 170-line archive render is split into small functions; the price table HTML moved to `js/archive-table.js` (pure, tested); `escapeHTML` lives once in `js/format.js` instead of two copies.
+
 ## [0.89.2] - 2026-10-22
 ### Changed
 - Names no longer repeat the city shown next to the unit: "Taksi açılış ücreti", "Toplu taşıma bileti", "Simit (sokak ve fırın)", "Fırın ekmeği" (was "İstanbul taksi açılış ücreti" … · İstanbul).

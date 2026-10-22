@@ -1,8 +1,8 @@
 // Turns plain URLs inside a note into safe link buttons. Pure, no DOM.
+import { escapeHTML } from './format.js';
+
 const URL_RE = /https?:\/\/[^\s<>"]+/g;
 const TRAILING = /[.,;:!?)\]'’]+$/;
-
-const escapeHTML = (str) => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 function hostOf(url) {
   try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return null; }

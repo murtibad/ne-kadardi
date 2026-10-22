@@ -6,6 +6,9 @@ const MONTHS_TR = [
   'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık',
 ];
 
+/** Escapes text for safe use inside HTML text and double-quoted attributes. */
+export const escapeHTML = (str) => (str ? String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '');
+
 /**
  * Parse a price typed by the user. Returns a positive number or null.
  *
