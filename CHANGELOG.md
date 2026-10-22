@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.90.4] - 2026-10-22
+### Removed
+- Dead CSS for the old header links (`.header-link`, `.header-nav`): no page uses them since the v0.74 redesign. A scan found no other unused selectors and no unused JS exports.
+
 ## [0.90.3] - 2026-10-22
 ### Fixed
 - Two quick taps on the day/night button no longer cut the second fade short.

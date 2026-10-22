@@ -575,13 +575,13 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 
 /* Timeline Screen */
-.header-link, .footer-link {
+.footer-link {
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
 }
-.header-link:hover, .footer-link:hover {
+.footer-link:hover {
   text-decoration: underline;
 }
 .site-footer .footer-link {
@@ -736,7 +736,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .cashier-line { font-family: var(--font-ui); font-style: italic; text-align: center; font-size: 0.875rem; color: var(--muted-on-paper); margin: 0 0 16px; }
 
 .site-header { flex-wrap: wrap; }
-.header-nav { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
 
 .hint-btn { display: block; margin: 0 auto 12px; padding: 4px 8px; background: none; border: 0; font: inherit; font-size: 0.875rem; font-weight: 700; color: var(--ink); text-decoration: underline; cursor: pointer; }
 
@@ -1271,11 +1270,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .row-to-chart:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
 /* v0.74 design A: home + question (Stitch "Ana sayfa A", "Soru A") */
-.header-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
 .mode-card.mode-main {
   padding: 20px 20px 18px;
 }
