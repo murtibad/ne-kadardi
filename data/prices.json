@@ -5847,6 +5847,18 @@
           }
         },
         {
+          "date": "2020-09",
+          "price": 300,
+          "status": "verified",
+          "note": "Devletin ilk çocuk için verdiği tek seferlik doğum yardımı (2015'ten 2025'e kadar değişmedi). \"birinci bebeği için 300, ikincisi için 400, üçüncü ve sonrakiler için de 600 lira ödeme gerçekleştirildiğini (page dated 24 Eylül 2020)\".",
+          "source": {
+            "title": "aile.gov.tr",
+            "url": "https://www.aile.gov.tr/canakkale/haberler/bakan-selcuk-yarin-itibariyle-83-bin-annemize-36-7-milyon-tl-dogum-yardimi-yapacagiz/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2025-01",
           "price": 5000,
           "status": "verified",
@@ -10293,6 +10305,30 @@
           }
         },
         {
+          "date": "2019-05",
+          "price": 1000,
+          "status": "verified",
+          "note": "Emekliye ödenen bayram ikramiyesi (SSK, Bağ-Kur, memur emeklisi aynı tutar); tarih, yılın ilk bayram ikramiyesinin ödendiği ay. \"emeklilerin hesabına 1000 lira tutarındaki ödemeler SSK, Bağkur ve memur dahil 12 milyon emekliye aynı gün yatacak. / Emeklilerin Ramazan Bayramı ikramiyesi 31 Mayıs'ta hesapta olacak.\". Doğrulama: yeniasir.com.tr https://www.yeniasir.com.tr/yazarlar/faruk-erdem/2019/05/26/emekli-ikramiyeleri-31-mayista-odenecek (\"Emeklilere bin liralık bayram ikramiyesi 31 Mayıs'ta ödenecek.\").",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2019/05/29/emekliye-ikramiye-ve-erken-maas-emekli-ikramiyesi-ne-kadar",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-04",
+          "price": 1000,
+          "status": "verified",
+          "note": "Emekliye ödenen bayram ikramiyesi (SSK, Bağ-Kur, memur emeklisi aynı tutar); tarih, yılın ilk bayram ikramiyesinin ödendiği ay. \"Emekliler, 1.000'er TL tutarındaki Ramazan Bayramı ikramiyesini dünden itibaren almaya başladı.\". Doğrulama: alomaliye.com https://www.alomaliye.com/2020/03/30/2020-yili-ramazan-bayrami-ikramiye-odeme-gunlerine-iliskin-duyuru/ (\"dosya bazında 1.000 TL, ... 17, 18, 19 olanlara 7 Nisan 2020\").",
+          "source": {
+            "title": "takvim.com.tr",
+            "url": "https://www.takvim.com.tr/ekonomi/2020/04/08/emeklinin-1000-lira-bayram-ikramiyesi-hesapta-tahsis-numarasina-gore-kim-ne-zaman-alacak",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2021-05",
           "price": 1100,
           "status": "verified",
@@ -10300,6 +10336,18 @@
           "source": {
             "title": "Milliyet",
             "url": "https://www.milliyet.com.tr/galeri/emekli-ikramiyesi-yatti-mi-bugun-hangi-emekliler-ikramiye-alacak-emekli-ikramiyesi-2021-ne-zaman-ve-ne-kadar-yatacak-6497117",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-04",
+          "price": 1100,
+          "status": "verified",
+          "note": "Emekliye ödenen bayram ikramiyesi (SSK, Bağ-Kur, memur emeklisi aynı tutar); tarih, yılın ilk bayram ikramiyesinin ödendiği ay. \"Yaklaşık 12 milyon emeklinin 2022 yılı Ramazan Bayramı ikramiyeleri 27-29 Nisan tarihlerinde hesaplara yatırılacak. / Ödemeler geçtiğimiz yıl olduğu gibi bu yıl da 1100 TL olarak ödenecek.\". Doğrulama: milliyet.com.tr https://www.milliyet.com.tr/gundem/emeklilere-bayram-ikramiyesi-ne-zaman-verilecek-ne-kadar-2022-emekli-bayram-ikramiyesine-zam-geldi-mi-6740447 (\"Çalışma ve Sosyal Güvenlik Bakanı Vedat Bilgin, emekli ikramiyesinin 1100 TL olacağını açıkladı. / ... 28 veya 29 Nisan'da ödeneceğini belirtti.\").",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/ekonomi/ramazan-bayrami-emekli-bayram-ikramiyeleri-ne-zaman-yatacak-2022-emekli-bayram-ikramiyesi-ne-kadar-kac-tl-1768101",
             "accessed": "2026-10-22",
             "kind": "news"
           }
