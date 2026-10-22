@@ -12567,6 +12567,102 @@
       },
       "prices": [
         {
+          "date": "2010-10",
+          "price": 13.5,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 10.10.2010 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 13,5 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20101010234415/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/AnadoluOtoyoluGecis.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-10",
+          "price": 13.5,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 26.10.2011 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 13,5 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20111026235015/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/AnadoluOtoyoluGecis.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-05",
+          "price": 15,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 03.05.2012 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 15 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20120503115410/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/AnadoluOtoyoluGecis.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-09",
+          "price": 15,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 03.09.2014 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 15 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20140903182225/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/AnadoluOtoyoluGecis.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2015-07",
+          "price": 15,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 01.07.2015 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 15 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20150701180527/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/AnadoluOtoyoluGecis.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 17.5,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 10.01.2017 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 17,5 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20170110164803/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/AnadoluOtoyoluGecis.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-02",
+          "price": 20,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 15.02.2017 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 20 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20170215035647/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/Anadolu.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 25,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun 27.01.2018 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 25 TL (o tarihte geçerli tarife; değişikliğin ayı değil). 2010 tablosunda Akıncı'nın eski adı Mürted.",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20180127122353/https://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2018Anadolu.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 37.5,
           "status": "verified",
