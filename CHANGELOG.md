@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.5] - 2026-10-22
+### Added
+- `sinema-ortalama-bilet` 2010-2015 (9,23 → 11,27) from the same Box Office Türkiye yearly table (archived copy of 10.08.2020, whose 2016 row equals the existing 2016 value); each printed average was checked against the printed gross and admissions.
+
 ## [0.92.4] - 2026-10-22
 ### Added
 - `trafik-cezasi` 2015-01 189 and `milli-piyango-ceyrek` 2011 9 (two news domains each, quotes checked on the pages). Red-light fine 2016, 2017 and 2019 stay out (one source or 206 / 206,5 / 207 conflict).

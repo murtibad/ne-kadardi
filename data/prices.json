@@ -9503,6 +9503,78 @@
       },
       "prices": [
         {
+          "date": "2010",
+          "price": 9.23,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺383.369.769 bölü 41.534.146 seyirci (sitenin yazdığı ortalama 9,23). Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır. 2010-2015 satırları tablonun 10.08.2020 arşiv kopyasından; aynı kopyadaki 2016 satırı bu serideki 2016 değeriyle aynı.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu (web.archive.org kopyası, 10.08.2020)",
+            "url": "https://web.archive.org/web/20200810224020/https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-22",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2011",
+          "price": 9.42,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺398.294.091 bölü 42.294.040 seyirci (sitenin yazdığı ortalama 9,42). Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır. 2010-2015 satırları tablonun 10.08.2020 arşiv kopyasından; aynı kopyadaki 2016 satırı bu serideki 2016 değeriyle aynı.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu (web.archive.org kopyası, 10.08.2020)",
+            "url": "https://web.archive.org/web/20200810224020/https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-22",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2012",
+          "price": 9.6,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺425.630.479 bölü 44.339.549 seyirci (sitenin yazdığı ortalama 9,6). Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır. 2010-2015 satırları tablonun 10.08.2020 arşiv kopyasından; aynı kopyadaki 2016 satırı bu serideki 2016 değeriyle aynı.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu (web.archive.org kopyası, 10.08.2020)",
+            "url": "https://web.archive.org/web/20200810224020/https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-22",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2013",
+          "price": 10.03,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺504.346.814 bölü 50.295.757 seyirci (sitenin yazdığı ortalama 10,03). Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır. 2010-2015 satırları tablonun 10.08.2020 arşiv kopyasından; aynı kopyadaki 2016 satırı bu serideki 2016 değeriyle aynı.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu (web.archive.org kopyası, 10.08.2020)",
+            "url": "https://web.archive.org/web/20200810224020/https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-22",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2014",
+          "price": 10.66,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺652.906.723 bölü 61.245.258 seyirci (sitenin yazdığı ortalama 10,66). Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır. 2010-2015 satırları tablonun 10.08.2020 arşiv kopyasından; aynı kopyadaki 2016 satırı bu serideki 2016 değeriyle aynı.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu (web.archive.org kopyası, 10.08.2020)",
+            "url": "https://web.archive.org/web/20200810224020/https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-22",
+            "kind": "dataset"
+          }
+        },
+        {
+          "date": "2015",
+          "price": 11.27,
+          "status": "verified",
+          "note": "Yıllık gişe hasılatı ₺678.557.824 bölü 60.228.409 seyirci (sitenin yazdığı ortalama 11,27). Tam bilet fiyatı değildir: indirimli biletler dahil, Türkiye geneli ortalamadır. 2010-2015 satırları tablonun 10.08.2020 arşiv kopyasından; aynı kopyadaki 2016 satırı bu serideki 2016 değeriyle aynı.",
+          "source": {
+            "title": "Box Office Türkiye, yıllık karşılaştırma tablosu (web.archive.org kopyası, 10.08.2020)",
+            "url": "https://web.archive.org/web/20200810224020/https://boxofficeturkiye.com/yillik",
+            "accessed": "2026-10-22",
+            "kind": "dataset"
+          }
+        },
+        {
           "date": "2016",
           "price": 11.87,
           "status": "verified",
