@@ -45,7 +45,7 @@ function loadSession() {
     const data = JSON.parse(localStorage.getItem('ne-kadardi-session'));
     if (data && typeof data.played === 'number') {
       state.played = data.played;
-      state.total = data.total;
+      state.total = Number.isFinite(data.total) ? data.total : 0;
       // Older saves have no best; the field is optional.
       if (Number.isFinite(data.best)) state.best = data.best;
       if (Array.isArray(data.recent)) state.recentScores = data.recent.filter(Number.isFinite).slice(-RECENT_MAX);
@@ -67,9 +67,10 @@ function saveSession() {
 function show(screenId) {
   syncFooter(screenId);
   clearTimeout(handTimer);
+  handTimer = null; // a stale id would make the next stopPrinting() hand over a receipt that was never torn
   $('question-screen').classList.remove('as-machine', 'folded');
   // Cancelled animations never reach onfinish, so undo their inline clipping here too.
-  $('question-screen').getAnimations?.({ subtree: true }).forEach((a) => a.cancel());
+  $('question-screen').getAnimations?.({ subtree: true })?.forEach((a) => a.cancel());
   $('question-screen').style.overflow = '';
   $('guess-form').style.overflow = '';
   for (const id of ['message-screen', 'home-screen', 'question-screen', 'result-screen', 'timeline-screen']) {
@@ -255,12 +256,15 @@ let handTimer = null;
 let cancelPrint = null;
 let countUpRaf = null;
 
+// Stops the price count-up and leaves the real price on the receipt.
 function stopCountUp() {
   if (countUpRaf !== null) {
     cancelAnimationFrame(countUpRaf);
     countUpRaf = null;
   }
-  $('r-actual')?.removeAttribute('aria-hidden');
+  const el = $('r-actual');
+  el?.removeAttribute('aria-hidden');
+  if (el && state.question) el.textContent = formatPrice(state.question.price);
 }
 
 // Cancel any in-flight print timer, click listener, and printer audio when leaving the result screen early.
@@ -327,7 +331,6 @@ function printReceipt(extraSound) {
   const finish = () => {
     sound.stop('print');
     stopCountUp();
-    if (state.question) $('r-actual').textContent = formatPrice(state.question.price);
     clearTimeout(printTimer);
     printTimer = null;
     wrap.removeEventListener('click', finish);
@@ -354,7 +357,6 @@ function printReceipt(extraSound) {
   };
   cancelPrint = () => {
     stopCountUp();
-    if (state.question) $('r-actual').textContent = formatPrice(state.question.price);
     wrap.removeEventListener('click', finish);
     wrap.classList.remove('printing');
     // Leaving mid-print (e.g. to the archive) must not strand an empty meter and a hidden stamp
@@ -734,18 +736,18 @@ async function prepareShareImage(btnId) {
   btn.textContent = 'Hazırlanıyor…';
   announce('Hazırlanıyor…');
 
-  const q = state.question;
-  const r = state.result;
-  const contextText = buildContextLine(q, state.all);
-  const model = buildShareImageModel(q, r, { contextLine: contextText });
-  const t = state.timelines.find((t) => t.id === q.productId);
-  model.chart = t
-    ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, refPrice: r.guess, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
-    : null;
-  // After a few rounds the stamp rates the whole session instead of this one guess.
-  if (state.played >= 3) model.stamp = stampTitle(state.total / state.played) ?? model.stamp;
-  
+  // Everything after the busy mark sits in the try, so a failure never leaves the button stuck on "Hazırlanıyor…".
   try {
+    const q = state.question;
+    const r = state.result;
+    const contextText = buildContextLine(q, state.all);
+    const model = buildShareImageModel(q, r, { contextLine: contextText });
+    const t = state.timelines.find((t) => t.id === q.productId);
+    model.chart = t
+      ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, refPrice: r.guess, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
+      : null;
+    // After a few rounds the stamp rates the whole session instead of this one guess.
+    if (state.played >= 3) model.stamp = stampTitle(state.total / state.played) ?? model.stamp;
     const { renderShareImage } = await import('./share-image.js');
     return await renderShareImage(model);
   } catch (err) {
