@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.82.0] - 2026-10-22
+### Changed
+- Larger reading text for older eyes: the source line (14 px), source label, archive ratio and legend, how-to steps, hint note, chart caption and footer (13 px), chart labels 10 → 11 px. Decorative uppercase labels keep their size. Checked at 390 px: no overflow.
+
 ## [0.81.2] - 2026-10-22
 ### Changed
 - The receipt (and the share image) says "Gerçek Tutar" instead of "Gerçek Fiyat" for amounts people receive or earn: minimum wage, pension, holiday bonus, KYK bursu, birth benefit and the hunger line (`actualLabel` in `js/game.js`).
