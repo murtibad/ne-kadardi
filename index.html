@@ -57,7 +57,7 @@
     <div class="header-tools">
       <span id="offline-badge" class="offline-badge" role="status" hidden>Çevrimdışı</span>
       <button type="button" id="sound-toggle" class="theme-toggle sound-toggle" aria-pressed="true" aria-label="Ses" title="Sesi kapat"></button>
-      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Açık / koyu temayı değiştir"></button>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Gündüz / gece görünümü"></button>
     </div>
   </header>
 
@@ -119,7 +119,7 @@
             <span class="currency">₺</span>
           </div>
           <p id="guess-readout" class="guess-readout" aria-hidden="true"></p>
-          <button type="button" id="hint-btn" class="hint-btn" hidden>Fiyatı okut: ipucu al (puan %20 düşer)</button>
+          <button type="button" id="hint-btn" class="hint-btn" hidden>İpucu al (puanın %20 düşer)</button>
           <div id="hint-text" class="hint-slip" role="status" aria-live="polite" hidden></div>
           <p id="guess-error" class="error" role="alert"></p>
           <button type="submit" class="btn primary">Tahmin et</button>
@@ -169,7 +169,7 @@
           <!-- Rarely needed: kept at the very bottom so the curious find it and nobody else trips over it. -->
           <details class="score-help">
             <summary>Puan nasıl hesaplanır?</summary>
-            <p>Tahminin gerçek fiyata ne kadar yakınsa puan o kadar yüksek. Gerçek fiyatın yüzde 10 altında ya da üstündeysen 100 puan alırsın. 5 kat pahalı ya da 5 kat ucuz tahmin edersen 0 puan. 2 kat pahalı söylemek de 2 kat ucuz söylemek de aynı puanı getirir. İpucu alırsan puanın %20 düşer.</p>
+            <p>Tahminin gerçek fiyata ne kadar yakınsa puan o kadar yüksek. Gerçek fiyatın yüzde 10 altında ya da üstündeysen 100 puan alırsın. Gerçek fiyatın 5 katını ya da beşte birini söylersen 0 puan. Gerçek fiyatın 2 katını söylemekle yarısını söylemek aynı puanı getirir. İpucu alırsan puanın %20 düşer.</p>
           </details>
         </article>
       </div>

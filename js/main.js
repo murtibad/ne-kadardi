@@ -1168,7 +1168,7 @@ function renderThemeToggle() {
   const dark = currentTheme() === 'dark';
   const btn = $('theme-toggle');
   btn.innerHTML = dark ? ICONS.sun : ICONS.moon;
-  btn.setAttribute('aria-label', dark ? 'Açık temaya geç' : 'Koyu temaya geç');
+  btn.setAttribute('aria-label', dark ? 'Gündüz görünümüne geç' : 'Gece görünümüne geç');
 }
 
 function renderSoundToggle() {
