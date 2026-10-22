@@ -10672,6 +10672,176 @@
           }
         }
       ]
+    },
+    {
+      "id": "avrasya-tuneli",
+      "name": "Avrasya Tüneli geçişi",
+      "unit": "1 geçiş, otomobil (gündüz)",
+      "region": "İstanbul",
+      "source_hint": "ATAŞ (avrasyatuneli.com) tarife duyuruları; tarifenin yürürlüğe girdiği ay.",
+      "image": {
+        "src": "img/tunel.svg",
+        "alt": "Tünel girişi çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 330,
+        "status": "verified",
+        "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"gündüz tarifesinde tek yönde 1. sınıf araçlar için 330 TL ... %10 KDV dahildir.\"",
+        "source": {
+          "title": "ATAŞ: 1 Temmuz 2026 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+          "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-temmuz-2026-itibariyla-gecerli-avrasya-tuneli-gecis-ucretleri-tarifesi",
+          "accessed": "2026-10-22",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016-12",
+          "price": 15,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. Tünel 22 Aralık 2016'da açıldı. ATAŞ'ın ücretler sayfasının 21.12.2016 arşiv kopyası: \"Otomobil 15,00 TL Minibüs 22,50 TL\".",
+          "source": {
+            "title": "ATAŞ: Avrasya Tüneli ücretler sayfası (web.archive.org kopyası, 21.12.2016)",
+            "url": "https://web.archive.org/web/20161221164324/http://www.avrasyatuneli.com/ucretlendirme/",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 16.6,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"Avrasya Tüneli'nin geçiş ücreti 3 Ocak 2017 tarihinden itibaren otomobiller için 16,60 TL, minibüsler için 24,90 TL olarak belirlendi.\"",
+          "source": {
+            "title": "ATAŞ: Avrasya Tüneli'nin geçiş ücreti belirlendi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/avrasya-tunelinin-gecis-ucreti-belirlendi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-07",
+          "price": 23.3,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"Avrasya Tüneli tek yön geçiş ücretleri otomobiller için 23,30 TL, minibüsler için ise 34,90 TL olarak belirlenmiştir.\" Ücretler sayfasının 2019 arşiv kopyaları 2019 boyunca 23,30 gösteriyor; Şubat 2019 için haberlerde geçen 32,10 uygulanmadı. Şubat 2018'deki 19,20 yalnız basında geçtiği için alınmadı.",
+          "source": {
+            "title": "ATAŞ: 1 Temmuz 2018 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-temmuz-2018-itibariyla-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-02",
+          "price": 36.4,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"1 Şubat 2020 saat 00:00 itibarıyla geçerli olmak üzere Avrasya Tüneli tek yön geçiş ücretleri otomobiller için 36,40 TL\".",
+          "source": {
+            "title": "ATAŞ: 1 Şubat 2020 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-subat-2020-itibariyla-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-02",
+          "price": 46,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"1 Şubat 2021 tarihi itibarıyla geçerli olmak üzere Avrasya Tüneli tek yön geçiş ücretleri otomobiller için 46 TL\". İkinci kaynak: Medyascope (01.02.2021).",
+          "source": {
+            "title": "ATAŞ: 1 Şubat 2021 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-subat-2021-itibariyla-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 53,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"gündüz tarifesinde otomobiller için 53 TL\". 2022-2023 boyunca değişmedi; Ekim 2023'te duyurulan 80 TL ertelendi ve Ocak 2024'te başladı.",
+          "source": {
+            "title": "ATAŞ: 1 Ocak 2022 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-ocak-2022-itibariyla-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 80,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"gündüz tarifesinde otomobiller için 80 TL\".",
+          "source": {
+            "title": "ATAŞ: 1 Ocak 2024 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-ocak-2024-itibariyla-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-05",
+          "price": 112,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"16 Mayıs 2024 tarihi itibarıyla ... gündüz tarifesinde otomobiller için 112 TL\". İkinci kaynak: CNN Türk.",
+          "source": {
+            "title": "ATAŞ: 16 Mayıs 2024 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/16-mayis-2024-itibariyla-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-08",
+          "price": 156,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"16 Ağustos 2024 tarihi itibarıyla ... otomobiller için 156 TL\". İkinci kaynak: Ekonomist.",
+          "source": {
+            "title": "ATAŞ: 16 Ağustos 2024 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/16-agustos-2024-itibariyla-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 225,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"gündüz tarifesinde otomobiller için 225 TL\" (13 Ocak 2025). İkinci kaynak: Medyascope.",
+          "source": {
+            "title": "ATAŞ: 13 Ocak 2025 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/13-ocak-2025-itibariyla-gecerli-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 280,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"gündüz tarifesinde tek yönde 1. sınıf araçlar için 280 TL\" (1 Ocak 2026). Bazı haberlerde geçen 228 TL / 13 Ocak resmî tarifeyle çelişiyor.",
+          "source": {
+            "title": "ATAŞ: 1 Ocak 2026 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-ocak-2026-itibariyla-gecerli-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 330,
+          "status": "verified",
+          "note": "Avrasya Tüneli otomobil (1. sınıf) tek yön geçiş ücreti, gündüz tarifesi (2022'den beri gece %50 indirimli ayrı tarife var), KDV dahil; tarih, tarifenin yürürlüğe girdiği ay. ATAŞ: \"gündüz tarifesinde tek yönde 1. sınıf araçlar için 330 TL ... %10 KDV dahildir.\"",
+          "source": {
+            "title": "ATAŞ: 1 Temmuz 2026 itibarıyla Avrasya Tüneli geçiş ücretleri tarifesi",
+            "url": "https://www.avrasyatuneli.com/haberler-ve-duyurular/detay/1-temmuz-2026-itibariyla-gecerli-avrasya-tuneli-gecis-ucretleri-tarifesi",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        }
+      ]
     }
   ]
 }
