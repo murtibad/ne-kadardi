@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.86.1] - 2026-10-22
+### Changed
+- Source notes after a read-only QA: the current water price cites only İSKİ's tariff page (the 2026 PDF stops earlier); the 2023 Togg note says news reports do not state the turnkey basis.
+
 ## [0.86.0] - 2026-10-22
 ### Added
 - `iski-su`: İstanbul household tap water, 1 m³ (1 ton), lowest tier, water + wastewater, VAT excluded (İSKİ publishes only that), January tariff 2012-2026 from İSKİ's own PDFs (3,16 → 52,88) and the October 2026 tariff 65,52. Icon `img/su.svg`.
