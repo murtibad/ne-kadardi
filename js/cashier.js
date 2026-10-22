@@ -60,7 +60,7 @@ export const CASHIER_COMMENTS = {
   bad: [
     'Maliye Bakanı gibisin, her şey ucuz sanıyorsun',
     'Piyasa gerçeklerinden tamamen kopuk bir tahmin',
-    'Hangi paralel evrenin fiyatı bu?',
+    'Bu fiyat hangi dönemden kaldı acaba?',
     'Bu tahminle o dönem kasada mahsur kalırdın',
     'Fiyat hissin bambaşka bir galaksiden geliyor',
     'Geçmişle bağların epey zayıflamış görünüyor',

@@ -130,13 +130,13 @@ test('hintComment returns line from HINT_LINES and is deterministic', () => {
 
 test('yearAnchor returns verified time capsules and null for 2019 / unverified years', () => {
   // Verified years
-  assert.ok(typeof yearAnchor(2015) === 'string' && yearAnchor(2015).includes('elbise'));
+  assert.equal(yearAnchor(2015), null);
   assert.ok(typeof yearAnchor(2016) === 'string' && yearAnchor(2016).includes('Pokémon'));
   assert.ok(typeof yearAnchor(2020) === 'string' && yearAnchor(2020).includes('ekmek'));
   assert.ok(typeof yearAnchor(2023) === 'string' && yearAnchor(2023).includes('Cumhuriyet'));
 
   // Numeric strings are handled
-  assert.equal(yearAnchor('2015'), yearAnchor(2015));
+  assert.equal(yearAnchor('2016'), yearAnchor(2016));
 
   // Explicitly required check: null for 2019
   assert.equal(yearAnchor(2019), null);

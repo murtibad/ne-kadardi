@@ -2,8 +2,8 @@
 
 export const OVER_COMMENTS = [
   'Gelecekten mi geliyorsun, o fiyata henüz gelmedik!',
-  'Sakin ol şampiyon, piyasa o kadar da delirmedi henüz.',
-  'Enflasyon travması seni biraz fazla hırpalamış sanki.',
+  'Dur bakalım, fiyatlar henüz o kadar yükselmedi.',
+  'Zamlar aklını biraz karıştırmış sanki.',
   'Dur yahu, o seviyelere gelmemize biraz daha zaman var.',
   'Gelecek günlerin zamlarını şimdiden yüklemişsin.',
   'Hangi yılın faturası bu, birkaç sene ilerdesin.',
@@ -13,7 +13,7 @@ export const UNDER_COMMENTS = [
   'O paraya bugün sadece boş kutusunu verirler.',
   'En son ne zaman alışverişe çıktın, her şey çok değişti.',
   'Eski güzel günlerin hayaline fazla dalmışsın.',
-  'Kasada bu parayı uzatsan kasiyer yüzüne bön bön bakar.',
+  'Bu parayı uzatsan kasiyer ne diyeceğini bilemezdi.',
   'O fiyata ancak vitrindeki fotoğrafına bakabilirsin.',
   'Rüya gibi bir fiyat ama gerçekler maalesef çok başka.',
 ];
@@ -38,7 +38,7 @@ export const PRODUCT_POOLS = {
     'Ateşi olan var mı bilmem ama dumanı pahalıya patlıyor.',
   ],
   'benzin': [
-    'Depoyu fullemek mi, yoksa sadece ışığı söndürmek mi?',
+    'Depoyu doldurmak mı, yoksa biraz koyup idare etmek mi?',
     'Fişi muhasebeye verirsin de cebindeki sızıyı kime?',
     'Pompacı bile fiyatı söylerken gözlerini kaçırıyor.',
     'Kontak çevirmeden önce derin bir nefes al bence.',
@@ -81,7 +81,7 @@ export const PRODUCT_POOLS = {
   ],
   'iphone': [
     'Kutusunu açarken bile eldiven takasım geliyor.',
-    'Böbrek şakaları bitti ama fiyat şoku hâlâ taze.',
+    'Her yeni modelde fiyatı duyan bir kez daha şaşırıyor.',
     'Taksit sayısı azaldıkça düşünme süresi uzadı.',
     'Kılıf ve ekran koruyucu için ayrı bütçe lazım.',
   ],
@@ -122,7 +122,7 @@ export const PRODUCT_POOLS = {
     'Aynı anda kaç ekran açabiliyoruz diye hesaplayanlar.',
   ],
   'playstation': [
-    'Konsol yetmiyor; kol derken, oyun derken ev parası.',
+    'Cihaz yetmiyor; kumandası, oyunu derken masraf büyüyor.',
     'Kardeş payı yapalım desek kol fiyatı can yakıyor.',
     'Gençliğimiz ekrana bakarak, bütçemiz eriyerek geçti.',
     'Grafikler gerçeğe yakın, etiket gerçeklerden de sert.',
@@ -146,7 +146,7 @@ export const PRODUCT_POOLS = {
     'Adalet arayanın ilk durağı gişe, ikincisi bekleme salonu.',
   ],
   'schengen-vize': [
-    'Ret yesen de parayı peşin alan o meşhur konsolosluk.',
+    'Başvuru reddedilse bile parayı peşin alan konsolosluk.',
     'Evrak toplama stresi fiyattan daha çok yoruyor.',
     'Seyahat planı yapmadan önce bütçeyi eriten başvuru.',
     'Randevu bulabilenler kendini şanslı sayıyordu.',
@@ -163,7 +163,6 @@ export const HINT_LINES = [
 ];
 
 const YEAR_ANCHORS = {
-  2015: 'Herkesin elbise mavi-siyah mı, beyaz-altın mı diye tartıştığı sene.',
   2016: 'Bütün yaz sokaklarda herkesin harıl harıl Pokémon peşinde koştuğu o meşhur dönem.',
   2020: 'Evlerde ekmek yapıp bidonlarla kolonya stokladığımız karantina günleri.',
   2023: 'Cumhuriyetimizin yüzüncü yaşını gururla kutladığımız tarihi yıl.',

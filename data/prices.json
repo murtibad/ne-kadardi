@@ -2971,7 +2971,7 @@
     {
       "id": "kopru",
       "name": "Boğaz köprüsü geçişi",
-      "unit": "1 geçiş, otomobil (parası alınan yönde)",
+      "unit": "1 geçiş, otomobil (ücretli yönde)",
       "region": "İstanbul",
       "source_hint": "KGM duyuruları ve haber arşivi: 15 Temmuz Şehitler ve Fatih Sultan Mehmet köprüleri otomobil ücreti aynıdır. 01.01.2022'den beri iki yönlü ve yarı fiyatlı alınır; önceden yalnız tek yönde alınırdı.",
       "image": {
@@ -5696,7 +5696,7 @@
     },
     {
       "id": "airpods",
-      "name": "AirPods (temel model)",
+      "name": "AirPods kablosuz kulaklık (temel model)",
       "unit": "1 adet, Türkiye'de ilk satış fiyatı",
       "region": null,
       "source_hint": "Apple Türkiye çıkış fiyatı, haber arşivi. AirPods Pro ve Max değil, temel (standart) model.",
@@ -9505,7 +9505,7 @@
     },
     {
       "id": "fiat-egea-easy",
-      "name": "Sıfır Fiat Egea Sedan (1.4 benzinli, Easy donanım)",
+      "name": "Sıfır Fiat Egea Sedan (1.4 benzinli, en sade donanım)",
       "unit": "1 araç, bayi liste fiyatı (anahtar teslim)",
       "region": null,
       "source_hint": "Fiat/Tofaş fiyat listesi haberleri (otomobil siteleri) ve arabalar.com.tr aylık tablosu",
@@ -9919,7 +9919,7 @@
     },
     {
       "id": "ea-fc-oyun",
-      "name": "FIFA / EA FC oyunu (PlayStation, standart)",
+      "name": "FIFA / EA FC futbol oyunu (PlayStation, standart)",
       "unit": "1 oyun, ilk satış fiyatı",
       "region": null,
       "source_hint": "Yeni FIFA / EA SPORTS FC oyununun Türkiye'de PlayStation standart sürüm çıkış (ön sipariş) fiyatı; FIFA 21'e kadar PS4, FIFA 22'den itibaren PS5. Haber kaynaklı.",

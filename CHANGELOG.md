@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.83.1] - 2026-10-22
+### Changed
+Wording from an independent plain-language review (Gemini Flash, read-only, judged against "a parent born in 1971"):
+- Hint button "İpucu al (puanın %20 düşer)": "Fiyatı okut" could read as "scan a barcode".
+- Score help no longer says "2 kat ucuz" (not a real amount): "Gerçek fiyatın 2 katını söylemekle yarısını söylemek aynı puanı getirir."
+- Cashier and product lines without slang or harsh words (böbrek, bön bön, travma, fullemek, ret yemek, paralel evren, kol). The 2015 year note about an internet meme is gone.
+- Clearer names: "AirPods kablosuz kulaklık", "FIFA / EA FC futbol oyunu", Fiat Egea "en sade donanım"; bridge "ücretli yönde"; paper fees count as "aile cüzdanı ücreti", "ehliyet kartı ücreti" and so on.
+- Theme button speaks of "gündüz / gece görünümü" instead of "tema".
+
 ## [0.83.0] - 2026-10-22
 ### Added
 - `mektup-pulu`: PTT domestic letter up to 20 g, basic fee incl. KDV, 7 values: 2019-10 2,40 · 2022-01 5 · 2024-02 20 · 2024-06 29 · 2025-03 35 · 2026-02 45 · 2026-10 50 TL (also today's price). 2022 and 2024 from BTK board decisions (PDF text checked), 2024-06 from the decision text on Lexpera, 2025-2026 from PTT's own tariff PDFs (first row "20 grama kadar"; the effective date is only in the file name, noted per entry), 2019 from two news sites. 2018 (one news site), 2020, 2021 and 2023 left out. Original envelope icon, "Gıda ve gündelik" category.

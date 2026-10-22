@@ -223,7 +223,7 @@ test('percentOf adds the Turkish possessive the way the number is read aloud', (
 
 test('paper fees are paid, not bought, and a wage that no longer covers one says so plainly', () => {
   const card = { productId: 'kimlik-karti', name: 'Kimlik kartı', unit: '1 adet', date: '2010-03', price: 50, current: { price: 1000 } };
-  assert.equal(buildContextLine(card, wages), 'O tarihte 1 asgari ücretle 10 kimlik kartı ödenebiliyordu, bugün 20 kimlik kartı ödenebiliyor.');
+  assert.equal(buildContextLine(card, wages), 'O tarihte 1 asgari ücretle 10 kimlik kartı ücreti ödenebiliyordu, bugün 20 kimlik kartı ücreti ödenebiliyor.');
   const imei = { productId: 'imei-kayit-harci', name: 'IMEI', unit: '1 telefon', date: '2010-03', price: 100, current: { price: 30000 } };
   assert.equal(buildContextLine(imei, wages), 'O tarihte 1 asgari ücretle 5 yurt dışı telefon kaydı ödenebiliyordu; bugün 1 asgari ücretle bir tane bile ödenemiyor.');
 });
