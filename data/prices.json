@@ -12891,6 +12891,18 @@
           }
         },
         {
+          "date": "2019-02",
+          "price": 25,
+          "status": "verified",
+          "note": "Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı arası tek yön geçiş ücreti, otomobil (1. sınıf); KGM tarifesi. KGM ücret tablosunun (2018Anadolu.pdf) 14.02.2019 tarihli arşiv kopyasında Anadolu-Akıncı 1. sınıf hücresi 25,00 TL (o tarihte geçerli tarife; değişikliğin ayı değil).",
+          "source": {
+            "title": "KGM Anadolu Otoyolu geçiş ücret tarifesi (web.archive.org kopyası)",
+            "url": "https://web.archive.org/web/20190214173256/http://www.kgm.gov.tr/SiteCollectionDocuments/KGMdocuments/Otoyollar/OtoyolKopruUcret/2018Anadolu.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2021-01",
           "price": 37.5,
           "status": "verified",
