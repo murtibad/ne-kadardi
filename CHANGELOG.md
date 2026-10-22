@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.83.2] - 2026-10-22
+### Changed
+- Cashier lines no longer call the player "abi": mothers and grandmothers play too.
+
 ## [0.83.1] - 2026-10-22
 ### Changed
 Wording from an independent plain-language review (Gemini Flash, read-only, judged against "a parent born in 1971"):
