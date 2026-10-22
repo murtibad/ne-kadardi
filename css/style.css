@@ -1388,3 +1388,16 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 }
 /* The receipt takes focus after "Tahmin et" only so screen readers start there; no frame needed. */
 #r-receipt:focus { outline: none; }
+
+/* Readable text for older eyes (v0.82): anything a player reads, not just decorates, is at least
+   13 px; chart labels go from 10 to 11 px in the 320-unit viewBox. Uppercase decorative labels stay. */
+.source { font-size: 0.875rem; }
+.source-kind,
+.timeline-ratio,
+.timeline-legend,
+.how-to span,
+.site-footer { font-size: 0.8125rem; }
+.score-box .score-hint { font-size: 0.875rem; }
+.price-chart figcaption { font-size: 0.75rem; }
+#r-chart figcaption { font-size: 0.8125rem; }
+.pc-label, .pc-tick, .pc-ref-label, .pc-tip text { font-size: 11px; }
