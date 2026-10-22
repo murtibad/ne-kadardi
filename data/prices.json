@@ -11683,7 +11683,7 @@
     {
       "id": "mtv",
       "name": "Araba vergisi (MTV)",
-      "unit": "1 yıl, 1.3-1.6 litre, 7-11 yaşında otomobil (2017 sonuna kadar tescilli)",
+      "unit": "1 yıl, 1.3-1.6 litre motorlu, 7-11 yaşında otomobil (2017 sonuna kadar trafiğe çıkmış)",
       "region": null,
       "source_hint": "MTV genel tebliğleri (Resmî Gazete metni); yılın Ocak tutarı.",
       "image": {
@@ -11913,7 +11913,7 @@
     {
       "id": "ehliyet-esinav",
       "name": "Ehliyet yazılı sınavı ücreti",
-      "unit": "1 sınav hakkı (MEB, KDV dahil)",
+      "unit": "1 sınav hakkı (Milli Eğitim, KDV dahil)",
       "region": null,
       "source_hint": "MEB MTSK e-Sınav Uygulama Kılavuzu, her yılın ücreti.",
       "image": {
@@ -12505,7 +12505,7 @@
     {
       "id": "tmo-bugday",
       "name": "Buğday (devletin alım fiyatı)",
-      "unit": "1 kg ekmeklik buğday, TMO alım fiyatı",
+      "unit": "1 kg ekmeklik buğday, devletin (TMO) alım fiyatı",
       "region": null,
       "source_hint": "Hasat dönemi alım fiyatı duyuruları (haberler, iki site).",
       "image": {

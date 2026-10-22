@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.7] - 2026-10-22
+### Changed
+Plainer wording for today's new products after a Gemini Flash read (suggestions checked one by one):
+- "24 ehliyet yazılı sınavı ücreti ödenebiliyordu" (a fee is paid, an exam is not); unit "Milli Eğitim" instead of "MEB".
+- "tek yön İstanbul-Ankara otoyol geçişi" keeps the one-way detail in the sentence.
+- MTV unit "1.3-1.6 litre motorlu … (2017 sonuna kadar trafiğe çıkmış)" instead of "tescilli"; wheat unit "devletin (TMO) alım fiyatı".
+
 ## [0.92.6] - 2026-10-22
 ### Added
 - `aclik-siniri` 2015-01 1.256,80 and 2016-01 1.447,20 from Türk-İş's own January bulletins (read on the pages). 2014 page did not load.
