@@ -6,7 +6,7 @@ test('sourceKindLabel maps the four known kinds', () => {
   assert.equal(sourceKindLabel('official'), 'resmî kayıt');
   assert.equal(sourceKindLabel('dataset'), 'yayımlanmış veri');
   assert.equal(sourceKindLabel('news'), 'haberlerden');
-  assert.equal(sourceKindLabel('derived'), 'başka fiyatlardan hesaplandı');
+  assert.equal(sourceKindLabel('derived'), 'hesaplandı');
 });
 
 test('sourceKindLabel returns an empty string for unknown or missing kinds', () => {

@@ -4,7 +4,7 @@ const LABELS = {
   official: 'resmî kayıt',
   dataset: 'yayımlanmış veri',
   news: 'haberlerden',
-  derived: 'başka fiyatlardan hesaplandı',
+  derived: 'hesaplandı',
 };
 
 /** Unknown or missing kinds return "" so the UI can simply hide the label. */
