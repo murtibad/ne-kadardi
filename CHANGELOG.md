@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.84.0] - 2026-10-22
+### Added
+- `avrasya-tuneli`: Avrasya Tunnel, one car crossing (daytime tariff, VAT included), 12 points from ATAŞ's own tariff notices: 2016-12 15 · 2017-01 16,60 · 2018-07 23,30 · 2020-02 36,40 · 2021-02 46 · 2022-01 53 · 2024-01 80 · 2024-05 112 · 2024-08 156 · 2025-01 225 · 2026-01 280 · 2026-07 330. Tunnel icon `img/tunel.svg`.
+- Left out: YHT Ankara-İstanbul ticket (press only, class and station not stated).
+
 ## [0.83.3] - 2026-10-22
 ### Changed
 - Footer says "Sürüm 0.83.3" instead of a bare "v0.83.3".

@@ -114,6 +114,7 @@ export const COUNT_UNITS = {
   'kpss-lisans': 'KPSS sınav ücreti',
   ales: 'ALES sınav ücreti',
   'osmangazi-koprusu': 'Osmangazi Köprüsü geçişi',
+  'avrasya-tuneli': 'Avrasya Tüneli geçişi',
   'pasaport-harci': 'pasaport harcı',
   'ehliyet-harci': 'ehliyet harcı',
   'schengen-vize': 'Schengen vizesi',
@@ -143,7 +144,7 @@ export const COUNT_UNITS = {
 
 // Fees, fines and tolls are paid, not bought: "3 ehliyet harcı ödenebiliyordu".
 const PAID = new Set([
-  'yks', 'ales', 'osmangazi-koprusu', 'trafik-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
+  'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
   'spotify', 'netflix', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
