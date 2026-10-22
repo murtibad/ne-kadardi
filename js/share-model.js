@@ -17,6 +17,8 @@ export function buildShareText(q, r, url) {
 export function verdictText(r) {
   if (r.factor === 1) return 'Tam isabet! 🎯';
   if (r.direction === 'exact') return 'Neredeyse tam isabet!';
+  // "1,2 kat az" reads like a puzzle; a near miss says so in words.
+  if (r.factor < 1.5) return `Biraz ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
   return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
 }
 

@@ -5,8 +5,8 @@ import { sourceKindLabel } from '../js/source-kind.js';
 test('sourceKindLabel maps the four known kinds', () => {
   assert.equal(sourceKindLabel('official'), 'resmî kayıt');
   assert.equal(sourceKindLabel('dataset'), 'yayımlanmış veri');
-  assert.equal(sourceKindLabel('news'), 'haber kaynaklı');
-  assert.equal(sourceKindLabel('derived'), 'hesaplanmış değer');
+  assert.equal(sourceKindLabel('news'), 'haberlerden');
+  assert.equal(sourceKindLabel('derived'), 'başka fiyatlardan hesaplandı');
 });
 
 test('sourceKindLabel returns an empty string for unknown or missing kinds', () => {

@@ -3,8 +3,8 @@
 const LABELS = {
   official: 'resmî kayıt',
   dataset: 'yayımlanmış veri',
-  news: 'haber kaynaklı',
-  derived: 'hesaplanmış değer',
+  news: 'haberlerden',
+  derived: 'başka fiyatlardan hesaplandı',
 };
 
 /** Unknown or missing kinds return "" so the UI can simply hide the label. */
