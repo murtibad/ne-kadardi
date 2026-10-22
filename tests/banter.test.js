@@ -197,21 +197,21 @@ test('ytlNote exact string for known input and null outside range', () => {
 
 test('stampTitle boundaries (49/50/74/75/89/90), clamping, and non-finite values', () => {
   // Exact boundaries
-  assert.equal(stampTitle(100), 'TÜİK BAŞKANI MISIN MÜBAREK?');
-  assert.equal(stampTitle(90), 'TÜİK BAŞKANI MISIN MÜBAREK?');
+  assert.equal(stampTitle(100), 'TAM İSABET');
+  assert.equal(stampTitle(90), 'TAM İSABET');
 
-  assert.equal(stampTitle(89), 'ETİKET HAFIZASI KUVVETLİ');
-  assert.equal(stampTitle(75), 'ETİKET HAFIZASI KUVVETLİ');
+  assert.equal(stampTitle(89), 'ÇOK YAKIN');
+  assert.equal(stampTitle(75), 'ÇOK YAKIN');
 
-  assert.equal(stampTitle(74), 'FİYAT SORMADAN SEPETE ATANLAR');
-  assert.equal(stampTitle(50), 'FİYAT SORMADAN SEPETE ATANLAR');
+  assert.equal(stampTitle(74), 'FENA DEĞİL');
+  assert.equal(stampTitle(50), 'FENA DEĞİL');
 
-  assert.equal(stampTitle(49), "FİYAT ALGISI 2018'DE KALMIŞ");
-  assert.equal(stampTitle(0), "FİYAT ALGISI 2018'DE KALMIŞ");
+  assert.equal(stampTitle(49), 'BİRAZ UZAK');
+  assert.equal(stampTitle(0), 'BİRAZ UZAK');
 
   // Clamping out-of-range values
-  assert.equal(stampTitle(-15), "FİYAT ALGISI 2018'DE KALMIŞ");
-  assert.equal(stampTitle(120), 'TÜİK BAŞKANI MISIN MÜBAREK?');
+  assert.equal(stampTitle(-15), 'BİRAZ UZAK');
+  assert.equal(stampTitle(120), 'TAM İSABET');
 
   // Non-finite or invalid types return null
   assert.equal(stampTitle(NaN), null);

@@ -9496,6 +9496,7 @@
       },
       "current": {
         "date": "2025-09",
+        "label": "EA FC 26",
         "price": 2899.99,
         "status": "verified",
         "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 26, PlayStation Store standart sürüm (PS5/PS4), çıkış fiyatı 2.899,99 TL (bazı haberlerde 2.899 TL). Bu değer için tek haber kaynağı doğrulandı.",
@@ -9509,6 +9510,7 @@
       "prices": [
         {
           "date": "2017-09",
+          "label": "FIFA 18",
           "price": 342,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 18, PS4 standart sürüm, ön sipariş/çıkış listesi fiyatı (PlayStation Store dijital). Bu değer için tek haber kaynağı doğrulandı.",
@@ -9521,6 +9523,7 @@
         },
         {
           "date": "2019-09",
+          "label": "FIFA 20",
           "price": 429,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 20, PS4 standart sürüm, PlayStation Store çıkış fiyatı. Bu değer için tek haber kaynağı doğrulandı.",
@@ -9533,6 +9536,7 @@
         },
         {
           "date": "2020-10",
+          "label": "FIFA 21",
           "price": 499.9,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 21, PS4 standart sürüm (PS5 sürümü ücretsiz yükseltme olarak sunuldu, ayrı PS5 fiyatı kullanılmadı). Haziran 2020'de duyurulan fiyat. Bu değer için tek haber kaynağı doğrulandı.",
@@ -9545,6 +9549,7 @@
         },
         {
           "date": "2021-10",
+          "label": "FIFA 22",
           "price": 560,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 22, PS5 standart sürüm (PS4: 500 TL). Seri bu yıldan itibaren PS5 fiyatıyla devam ediyor. Temmuz 2021'de duyurulan çıkış fiyatı; Nisan 2022'de zamlandı. Doğrulama: Webtekno https://www.webtekno.com/fifa-22-duyuruldu-fiyati-cikis-tarihi-h112238.html.",
@@ -9557,6 +9562,7 @@
         },
         {
           "date": "2022-09",
+          "label": "FIFA 23",
           "price": 800,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 23, PS5 standart sürüm ön sipariş fiyatı (PS4 sürümü 700 TL). Bu değer için tek haber kaynağı doğrulandı.",
@@ -9569,6 +9575,7 @@
         },
         {
           "date": "2023-09",
+          "label": "EA FC 24",
           "price": 1399,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 24, PlayStation standart sürüm, ön sipariş/çıkış fiyatı. Doğrulama: A Spor https://www.aspor.com.tr/e-spor/2023/07/14/ea-sports-fc-24-fiyati-belli-oldu-ea-sports-fc-24-sistem-gereksinimleri-ne/amp.",
@@ -9581,6 +9588,7 @@
         },
         {
           "date": "2024-09",
+          "label": "EA FC 25",
           "price": 2900,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 25, PlayStation Store standart sürüm, ön sipariş/çıkış fiyatı (2.900 TL). Doğrulama: LOG https://www.log.com.tr/ea-sports-fc-25-incelemesi/5/.",
@@ -9593,6 +9601,7 @@
         },
         {
           "date": "2025-09",
+          "label": "EA FC 26",
           "price": 2899.99,
           "status": "verified",
           "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 26, PlayStation Store standart sürüm (PS5/PS4), çıkış fiyatı 2.899,99 TL (bazı haberlerde 2.899 TL). Bu değer için tek haber kaynağı doğrulandı.",
