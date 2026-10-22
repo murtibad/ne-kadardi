@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.87.5] - 2026-10-22
+### Fixed
+- Share image year labels use the same measured spacing as the receipt chart, so the first two years no longer crowd each other.
+
 ## [0.87.4] - 2026-10-22
 ### Changed
 Plainer words after a read-only "parent born in 1971" review:
