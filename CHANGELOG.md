@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.8] - 2026-10-22
+### Added
+- `ales` 2010-2018: 40 (2010, 2011), 50 (2013) from ÖSYM's own guides, 70 (2016) and 100 (2018) from two news domains each. 2012, 2014, 2015 and 2017 spring fees were not verified.
+
 ## [0.92.7] - 2026-10-22
 ### Changed
 Plainer wording for today's new products after a Gemini Flash read (suggestions checked one by one):

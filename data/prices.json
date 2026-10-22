@@ -10633,6 +10633,66 @@
       },
       "prices": [
         {
+          "date": "2010-03",
+          "price": 40,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2010/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. ÖSYM kılavuzu: \"SINAV ÜCRETİ : 40,00 TL\".",
+          "source": {
+            "title": "ÖSYM 2010 ALES kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/web/eskidosyalar/2242.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-03",
+          "price": 40,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2011/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. ÖSYM kılavuzu: \"SINAV ÜCRETİ : 40,00 TL\".",
+          "source": {
+            "title": "ÖSYM 2011 ALES kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/web/eskidosyalar/2232.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2013-03",
+          "price": 50,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2013/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. ÖSYM kılavuzu: \"SINAV ÜCRETİ : 50,00 TL\".",
+          "source": {
+            "title": "ÖSYM 2013 ALES kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/web/eskidosyalar/2208.pdf",
+            "accessed": "2026-10-22",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-03",
+          "price": 70,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2016/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"ALES sınavına girecek olan adayların, 70,00 TL olan sınav ücretlerini ... 15 Mart 2016 Salı tarihinde başlayacak, 28 Mart 2016 Pazartesi tarihinde sona erecek.\". Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/egitim/2016-ales-basvurulari-son-dakika-basladi-33635h (\"ALES sınavına girecek olan adayların, 70,00 TL olan sınav ücretlerini ... Sınav ücreti ödeme işlemleri 15 - 28 Mart tarihleri arasında saat 23:59'a kadar devam edecek.\").",
+          "source": {
+            "title": "egitimsistem.com",
+            "url": "https://egitimsistem.com/2016-ales-basvuru-tarihi-osym-basvuru-islemi-ve-ucreti-45630h.htm",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-03",
+          "price": 100,
+          "status": "verified",
+          "note": "ÖSYM ALES sınav ücreti, yılın ilk oturumu (ALES/1); başvuru 2018/03 döneminde açıldı. Ayrıca alınan başvuru hizmet bedeli dahil değil. Kaynak alıntısı: \"100 TL olan sınav ücreti ... Sınava başvurular, 7– 15 Mart 2018 tarihleri arasında elektronik ortamda alınacaktır.\". Doğrulama: karar.com https://www.karar.com/2018-ales-basvuru-ucreti-odeme-ekrani-ales-basvurulari-nasil-yapilir-777884 (\"Sınav Ücreti:100,00 TL; Başlangıç Tarihi :07.03.2018 10:00; Bitiş Tarihi :15.03.2018 23:59\").",
+          "source": {
+            "title": "hurriyet.com.tr",
+            "url": "https://www.hurriyet.com.tr/egitim/2018-ales-ilkbahar-donemi-basvurulari-basladi-40763532",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2019-03",
           "price": 120,
           "status": "verified",
