@@ -10842,6 +10842,92 @@
           }
         }
       ]
+    },
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "unit": "1 ay, bireysel üyelik (reklamsız YouTube)",
+      "region": null,
+      "source_hint": "Zam haberleri, iki site; tarih, yeni fiyatın geçtiği ay.",
+      "image": {
+        "src": "img/video.svg",
+        "alt": "Oynat düğmeli ekran çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-06",
+        "price": 119.99,
+        "status": "verified",
+        "note": "YouTube Premium bireysel aylık ücreti (Türkiye; aile ve öğrenci planı değil). Google TL fiyatını resmî bir sayfada yayımlamıyor; her değer en az iki haber sitesinde aynı. \"Bireysel abonelik 79,99 TL'den 119,99 TL'ye\" (11 Haziran 2026). Doğrulama: tamindir.com https://www.tamindir.com/haber/turkiye-youtube-premium-zam_109734/, shiftdelete.net, cumhuriyet.com.tr. Technopat 22.08.2026'da hâlâ bu fiyatı veriyor.",
+        "source": {
+          "title": "Technopat: YouTube Premium Türkiye fiyatları zamlandı",
+          "url": "https://www.technopat.net/2026/06/11/youtube-premium-turkiye-fiyatlari-zam/",
+          "accessed": "2026-10-22",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-07",
+          "price": 16.99,
+          "status": "verified",
+          "note": "YouTube Premium bireysel aylık ücreti (Türkiye; aile ve öğrenci planı değil). Google TL fiyatını resmî bir sayfada yayımlamıyor; her değer en az iki haber sitesinde aynı. Türkiye'de 17 Temmuz 2019'da açıldı: \"aylık 16,99 TL ödeme yapması gerekecek\". Doğrulama: haberturk.com https://www.haberturk.com/youtube-premium-turkiye-de-kullanima-acildi-iste-ozellikleri-ve-fiyati-2505017-teknoloji (\"aylık 16.99 TL\"). Ekim 2022'ye kadar değişmedi (\"aylık ₺16,99 olan\").",
+          "source": {
+            "title": "Hürriyet: YouTube Premium Türkiye'de kullanıma sunuldu",
+            "url": "https://www.hurriyet.com.tr/teknoloji/youtube-premium-nedir-turkiyede-kullanima-sunuldu-41276304",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-11",
+          "price": 29.99,
+          "status": "verified",
+          "note": "YouTube Premium bireysel aylık ücreti (Türkiye; aile ve öğrenci planı değil). Google TL fiyatını resmî bir sayfada yayımlamıyor; her değer en az iki haber sitesinde aynı. Ekim 2022 bildirimi: \"aylık ₺16,99 olan Premium aboneliğinizin fiyatını aylık ₺29,99 olarak güncelleyeceğiz\"; faturalara 21 Kasım 2022'den itibaren. Doğrulama: webrazzi.com https://webrazzi.com/2022/10/21/youtube-premium-servisinin-abonelik-ucretlerine-zam-geldi.",
+          "source": {
+            "title": "DonanımHaber: YouTube Premium abonelik ücretleri ne kadar oldu",
+            "url": "https://www.donanimhaber.com/youtube-premium-abonelik-ucretleri-ne-kadar-oldu--154915",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-11",
+          "price": 57.99,
+          "status": "verified",
+          "note": "YouTube Premium bireysel aylık ücreti (Türkiye; aile ve öğrenci planı değil). Google TL fiyatını resmî bir sayfada yayımlamıyor; her değer en az iki haber sitesinde aynı. \"aylık 29,99 TL'den aylık 57,99 TL'ye\" (1 Kasım 2023). Doğrulama: teknoblog.com https://www.teknoblog.com/youtube-premium-turkiyede-fiyat-artisi/ (\"tek kullanıcıların aylık 57,99 TL\").",
+          "source": {
+            "title": "Webrazzi: YouTube Premium zam 2023",
+            "url": "https://webrazzi.com/2023/11/02/youtube-premium-zam-2023/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-11",
+          "price": 79.99,
+          "status": "verified",
+          "note": "YouTube Premium bireysel aylık ücreti (Türkiye; aile ve öğrenci planı değil). Google TL fiyatını resmî bir sayfada yayımlamıyor; her değer en az iki haber sitesinde aynı. \"57,99 TL olan bireysel abonelik fiyatı 79,99 TL'ye\" (7 Kasım 2024). Doğrulama: teknoblog.com https://www.teknoblog.com/youtube-premium-zam-2024-kasim/. tamindir.com 77,99 yazdı; 2026 zam haberlerinin hepsi eski fiyatı 79,99 veriyor.",
+          "source": {
+            "title": "DonanımHaber: YouTube Premium Türkiye'de zamlandı",
+            "url": "https://www.donanimhaber.com/youtube-premium-turkiye-de-zamlandi-iste-yeni-fiyatlar--183937",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-06",
+          "price": 119.99,
+          "status": "verified",
+          "note": "YouTube Premium bireysel aylık ücreti (Türkiye; aile ve öğrenci planı değil). Google TL fiyatını resmî bir sayfada yayımlamıyor; her değer en az iki haber sitesinde aynı. \"Bireysel abonelik 79,99 TL'den 119,99 TL'ye\" (11 Haziran 2026). Doğrulama: tamindir.com https://www.tamindir.com/haber/turkiye-youtube-premium-zam_109734/, shiftdelete.net, cumhuriyet.com.tr. Technopat 22.08.2026'da hâlâ bu fiyatı veriyor.",
+          "source": {
+            "title": "Technopat: YouTube Premium Türkiye fiyatları zamlandı",
+            "url": "https://www.technopat.net/2026/06/11/youtube-premium-turkiye-fiyatlari-zam/",
+            "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }

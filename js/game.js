@@ -119,6 +119,7 @@ export const COUNT_UNITS = {
   'ehliyet-harci': 'ehliyet harcı',
   'schengen-vize': 'Schengen vizesi',
   spotify: 'aylık Spotify aboneliği',
+  'youtube-premium': 'aylık YouTube Premium üyeliği',
   netflix: 'aylık Netflix aboneliği',
   'imei-kayit-harci': 'yurt dışı telefon kaydı',
   'istanbul-ulasim': 'otobüs/metro binişi',
@@ -147,7 +148,7 @@ const PAID = new Set([
   'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
-  'spotify', 'netflix', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
+  'spotify', 'netflix', 'youtube-premium', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
 ]);
 
 // Money people receive (pensions, grants) or a cost-of-living line cannot be "bought" with a wage:
