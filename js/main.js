@@ -866,6 +866,7 @@ async function downloadImage() {
   $('share-preview-share').hidden = !canShareImageFiles();
   dlg.showModal();
   $('share-preview-save').focus();
+  announce('Görsel hazır.'); // replaces "Hazırlanıyor…" for screen readers
 }
 
 function initSharePreview() {
