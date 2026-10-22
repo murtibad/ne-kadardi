@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.86.0] - 2026-10-22
+### Added
+- `iski-su`: İstanbul household tap water, 1 m³ (1 ton), lowest tier, water + wastewater, VAT excluded (İSKİ publishes only that), January tariff 2012-2026 from İSKİ's own PDFs (3,16 → 52,88) and the October 2026 tariff 65,52. Icon `img/su.svg`.
+- `togg-t10x`: Togg T10X cheapest version list price, 2023-03 953.000 → 2026-06 1.909.048; Togg's own price list for 2024 on, two news domains each for 2023.
+
 ## [0.85.0] - 2026-10-22
 ### Added
 - `youtube-premium`: YouTube Premium individual monthly plan in Türkiye, 5 points, two news domains each: 2019-07 16,99 · 2022-11 29,99 · 2023-11 57,99 · 2024-11 79,99 · 2026-06 119,99. Icon `img/video.svg`.
