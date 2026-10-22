@@ -186,7 +186,7 @@ export async function renderShareImage(model) {
   }
 
   drawRow('Tahminin', model.guess);
-  drawRow('Gerçek Fiyat', model.actual, true);
+  drawRow(model.actualLabel || 'Gerçek Fiyat', model.actual, true);
   
   y += 30;
   
