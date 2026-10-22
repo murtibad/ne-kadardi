@@ -153,10 +153,6 @@
             <p class="score">PUAN <span id="r-score"></span></p>
             <div class="meter" aria-hidden="true"><span id="r-meter"></span></div>
             <p id="r-stamp" class="receipt-stamp" hidden></p>
-            <details class="score-help">
-              <summary>Puan nasıl hesaplanır?</summary>
-              <p>Puan farka değil orana bakar: tahminin gerçek fiyatın %10 yakınındaysa 100 puan, 5 kat uzaksa 0. 2 kat fazla da 2 kat az da aynı puanı alır. İpucu alınca puan %20 düşer.</p>
-            </details>
           </div>
           <figure id="r-chart" class="price-chart" hidden></figure>
           <p id="r-context" class="context-line"></p>
@@ -170,6 +166,11 @@
           </details>
           <p class="source"><a id="r-archive" href="#arsiv" class="archive-link">Bu ürünün fiyat geçmişi →</a></p>
           <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a><span id="r-source-kind" class="source-kind" hidden></span></p>
+          <!-- Rarely needed: kept at the very bottom so the curious find it and nobody else trips over it. -->
+          <details class="score-help">
+            <summary>Puan nasıl hesaplanır?</summary>
+            <p>Tahminin gerçek fiyata ne kadar yakınsa puan o kadar yüksek. Gerçek fiyatın %10 yakınındaysan 100 puan, 5 kat fazla ya da 5 kat az dersen 0 puan. 2 kat fazla demekle 2 kat az demek aynı puanı alır. İpucu alırsan puan %20 düşer.</p>
+          </details>
         </article>
       </div>
       

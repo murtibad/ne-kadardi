@@ -356,10 +356,15 @@ function renderContextBars(model) {
   $('r-context').classList.toggle('has-bars', hasBars);
   if (!hasBars) return;
   const max = Math.max(model.then, model.now) || 1;
-  // More items per wage is better; more wages per item is worse.
-  const better = model.kind === 'count' ? model.now >= model.then : model.now <= model.then;
-  const fmt = (v) => (model.kind === 'count' ? `${v.toLocaleString('tr-TR')} ${model.unit}` : `${formatRatio(v)} asgari ücret`);
-  [['O gün', model.then, ''], ['Bugün', model.now, model.now === model.then ? '' : better ? 'up' : 'down']].forEach(([label, value, tone]) => {
+  // More items per wage is better; more wages per item is worse; a share says which way itself.
+  const higherIsBetter = model.kind === 'count' || (model.kind === 'share' && model.better === 'higher');
+  const better = higherIsBetter ? model.now >= model.then : model.now <= model.then;
+  const fmt = (v, unit) => {
+    if (model.kind === 'count') return `${v.toLocaleString('tr-TR')} ${unit}`;
+    if (model.kind === 'share') return `%${Math.round(v * 100).toLocaleString('tr-TR')}`;
+    return `${formatRatio(v)} asgari ücret`;
+  };
+  [['O gün', model.then, '', model.unit], ['Bugün', model.now, model.now === model.then ? '' : better ? 'up' : 'down', model.nowUnit]].forEach(([label, value, tone, unit]) => {
     const row = document.createElement('div');
     row.className = 'ctx-row';
     const name = document.createElement('span');
@@ -373,7 +378,7 @@ function renderContextBars(model) {
     track.append(bar);
     const num = document.createElement('span');
     num.className = 'ctx-value';
-    num.textContent = fmt(value);
+    num.textContent = fmt(value, unit);
     row.append(name, track, num);
     box.append(row);
   });
@@ -497,7 +502,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
       <g class="pc-tip" hidden><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
     <span class="visually-hidden" aria-live="polite"></span>
-    <figcaption>Fiyatın yolculuğu · logaritmik ölçek</figcaption>`;
+    <figcaption>Yıllar içinde fiyatı</figcaption>`;
   bindPriceChart(fig, chart, figId === 't-chart' ? (point, source) => {
     const rows = $('t-rows-container').querySelectorAll('tr[data-date]');
     let match = null;

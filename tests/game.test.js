@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE } from '../js/game.js';
+import { readFileSync } from 'node:fs';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
 const fixture = {
@@ -58,8 +59,9 @@ test('monthly products are counted by name in the purchasing-power line', () => 
   const wage = { productId: 'asgari-ucret', date: '2018-07', price: 1603, current: { date: '2026-01', price: 28075 } };
   const dorm = { productId: 'kyk-yurt-ucreti', name: 'KYK yurt ücreti', unit: '1 ay, en ucuz oda tipi', date: '2018-09', price: 168, current: { date: '2026-09', price: 1000 } };
   assert.equal(getCountUnit(dorm), 'aylık yurt ücreti');
-  assert.equal(getCountUnit({ productId: 'benzin', unit: '1 litre' }), 'litre');
-  assert.equal(buildContextLine(dorm, [wage, dorm]), 'O tarihte 1 asgari ücretle 9 aylık yurt ücreti alınabiliyordu, bugün 28 aylık yurt ücreti.');
+  assert.equal(getCountUnit({ productId: 'benzin', unit: '1 litre' }), 'litre benzin');
+  assert.equal(getCountUnit({ productId: 'unknown', unit: '1 litre' }), 'litre');
+  assert.equal(buildContextLine(dorm, [wage, dorm]), 'O tarihte 1 asgari ücretle 9 aylık yurt ücreti ödenebiliyordu, bugün 28 aylık yurt ücreti.');
   assert.equal(buildContextModel(dorm, [wage, dorm]).unit, 'aylık yurt ücreti');
 });
 
@@ -97,7 +99,7 @@ const wages = [
 
 test('buildContextLine counts cheap items and compares with today', () => {
   const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-03', price: 1, current: { price: 10 } };
-  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu, bugün 2000 adet.');
+  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu, bugün 2.000 adet.');
 });
 
 test('buildContextLine expresses expensive items as wage multiples, never "0 adet"', () => {
@@ -105,10 +107,15 @@ test('buildContextLine expresses expensive items as wage multiples, never "0 ade
   assert.equal(buildContextLine(q, wages), 'O tarihte bir iPhone 2,6 asgari ücret ediyordu, bugün 3 asgari ücret.');
 });
 
-test('buildContextLine needs a wage from the same half-year', () => {
+test('buildContextLine uses the wage in force on the date, from the same year only', () => {
   const q = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-08', price: 1, current: null };
-  assert.equal(buildContextLine(q, wages), null);
-  assert.equal(buildContextLine({ ...q, date: '2015-02' }, wages), 'O tarihte 1 asgari ücretle 1000 adet alınabiliyordu.');
+  assert.equal(buildContextLine(q, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu.');
+  assert.equal(buildContextLine({ ...q, date: '2012-03' }, wages), null);
+  assert.equal(buildContextLine({ ...q, date: '2010' }, wages), 'O tarihte 1 asgari ücretle 500 adet alınabiliyordu.');
+  const twoRaises = [...wages, { productId: 'asgari-ucret', date: '2010-07', price: 600, current: wageNow }];
+  assert.equal(buildContextLine({ ...q, date: '2010' }, twoRaises), null);
+  assert.equal(buildContextLine({ ...q, date: '2010-08' }, twoRaises), 'O tarihte 1 asgari ücretle 600 adet alınabiliyordu.');
+  assert.equal(buildContextLine({ ...q, date: '2015-02' }, wages), 'O tarihte 1 asgari ücretle 1.000 adet alınabiliyordu.');
 });
 test('scoreTier maps scores to five colour tiers', () => {
   assert.equal(scoreTier(100), 'great');
@@ -167,10 +174,10 @@ test('pickByCategory works with a single product', () => {
 
 test('buildContextModel mirrors buildContextLine numbers and nulls', () => {
   const cheap = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-03', price: 1, current: { price: 10 } };
-  assert.deepEqual(buildContextModel(cheap, wages), { kind: 'count', unit: 'adet', then: 500, now: 2000 });
+  assert.deepEqual(buildContextModel(cheap, wages), { kind: 'count', unit: 'adet', nowUnit: 'adet', then: 500, now: 2000 });
 
   const dear = { productId: 'x', name: 'iPhone', unit: '1 adet', date: '2010-05', price: 1300, current: { price: 60000 } };
-  assert.deepEqual(buildContextModel(dear, wages), { kind: 'wages', then: 1300 / 500, now: 3 });
+  assert.deepEqual(buildContextModel(dear, wages), { kind: 'wages', name: 'iPhone', nowName: null, then: 1300 / 500, now: 3 });
 
   // One wage no longer buys a single item: now is 0, not negative or null.
   const pricey = { ...cheap, price: 400, current: { price: 30000 } };
@@ -178,7 +185,31 @@ test('buildContextModel mirrors buildContextLine numbers and nulls', () => {
   assert.match(buildContextLine(pricey, wages), /bugün 1 asgari ücret yetmiyor/);
 
   // No current price: now is null; no wage in the same half-year or the wage itself: null.
-  assert.deepEqual(buildContextModel({ ...cheap, current: null }, wages), { kind: 'count', unit: 'adet', then: 500, now: null });
-  assert.equal(buildContextModel({ ...cheap, date: '2010-08' }, wages), null);
+  assert.deepEqual(buildContextModel({ ...cheap, current: null }, wages), { kind: 'count', unit: 'adet', nowUnit: 'adet', then: 500, now: null });
+  assert.equal(buildContextModel({ ...cheap, date: '2012-08' }, wages), null);
   assert.equal(buildContextModel({ ...cheap, productId: 'asgari-ucret' }, wages), null);
+});
+
+test('every product has a plain count name or compares as a share of the wage', () => {
+  const data = JSON.parse(readFileSync(new URL('../data/prices.json', import.meta.url), 'utf8'));
+  for (const p of data.products) {
+    if (p.id === 'asgari-ucret') continue;
+    assert.ok(COUNT_UNITS[p.id] || WAGE_SHARE[p.id], `${p.id} needs a COUNT_UNITS name in js/game.js`);
+  }
+});
+
+test('pensions and grants read as a share of the minimum wage, not as items bought', () => {
+  const pension = { productId: 'emekli-en-dusuk-aylik', name: 'En düşük emekli aylığı', unit: '1 ay', date: '2010-03', price: 250, current: { price: 15000 } };
+  assert.equal(buildContextLine(pension, wages), 'Asgari ücretin yüzde kaçı: o tarihte %50, bugün %75.');
+  assert.deepEqual(buildContextModel(pension, wages), { kind: 'share', better: 'higher', then: 0.5, now: 0.75 });
+  assert.equal(buildContextLine({ ...pension, current: null }, wages), 'Asgari ücretin yüzde kaçı: o tarihte %50.');
+});
+
+test('model-changing products name the model on both sides of the count', () => {
+  const pods = { productId: 'airpods', name: 'AirPods', label: 'AirPods 2', unit: '1 adet', date: '2010-03', price: 100, current: { price: 5000, label: 'AirPods 4' } };
+  assert.equal(buildContextLine(pods, wages), 'O tarihte 1 asgari ücretle 5 tane AirPods 2 alınabiliyordu, bugün 4 tane AirPods 4.');
+  const bread = { productId: 'simit', name: 'Simit', unit: '1 adet, 100 gram', date: '2010-03', price: 1, current: { price: 10 } };
+  assert.equal(buildContextLine(bread, wages), 'O tarihte 1 asgari ücretle 500 simit alınabiliyordu, bugün 2.000 simit.');
+  const car = { productId: 'fiat-egea-easy', name: 'Sıfır Fiat Egea Sedan 1.4 Fire Easy (manuel, benzinli)', unit: '1 araç', date: '2010-03', price: 5000, current: { price: 200000 } };
+  assert.equal(buildContextLine(car, wages), 'O tarihte bir Fiat Egea 10 asgari ücret ediyordu, bugün 10 asgari ücret.');
 });

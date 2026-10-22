@@ -347,7 +347,7 @@ export async function renderShareImage(model) {
     ctx.font = '26px "Space Mono", ui-monospace, monospace';
     ctx.fillStyle = COLORS.muted;
     ctx.textAlign = 'center';
-    ctx.fillText('Fiyatın yolculuğu · logaritmik ölçek', cx, y);
+    ctx.fillText('Yıllar içinde fiyatı', cx, y);
     ctx.restore();
     y += 100; // the score below is drawn at 64px from its baseline
   }

@@ -231,8 +231,9 @@ export function stampTitle(averageScore) {
     return null;
   }
   const clamped = Math.max(0, Math.min(100, averageScore));
-  if (clamped >= 90) return 'TÜİK BAŞKANI MISIN MÜBAREK?';
-  if (clamped >= 75) return 'ETİKET HAFIZASI KUVVETLİ';
-  if (clamped >= 50) return 'FİYAT SORMADAN SEPETE ATANLAR';
-  return "FİYAT ALGISI 2018'DE KALMIŞ";
+  // Plain words a grandparent reads at a glance; the old jokes ("TÜİK BAŞKANI…") repeated and confused.
+  if (clamped >= 90) return 'TAM İSABET';
+  if (clamped >= 75) return 'ÇOK YAKIN';
+  if (clamped >= 50) return 'FENA DEĞİL';
+  return 'BİRAZ UZAK';
 }

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.77.0] - 2026-10-22
+### Changed
+- Plain words everywhere, so someone who never played reads the receipt at a glance (Murti's rule: his parents, born 1971, must understand it).
+- The purchasing-power line names what is counted: "1 asgari ücretle 102 Big Mac", "304 litre benzin", "3 ehliyet harcı ödenebiliyordu" (fees are paid, not bought). Every product has a name in `COUNT_UNITS` (`js/game.js`); a test fails when a new product has none. Big counts get thousands dots ("8.083 poşet").
+- Pensions, grants and the hunger line no longer say "1 asgari ücretle 2 emekli aylığı": they read "Asgari ücretin yüzde kaçı: o tarihte %49, bugün %84" (`WAGE_SHARE`), with matching bars.
+- The line now uses the minimum wage in force on the question's date (the latest raise of that year), not only a wage from the same half-year, so years without a July raise (2016-2021, 2024-2026) get the line too.
+- Launch-price products name the model on both sides: "1 tane AirPods 2 … bugün 4 tane AirPods 4", "6 tane FIFA 23 … bugün 9 tane EA FC 26". EA FC entries got game-name labels (FIFA 18 … EA FC 26) taken from their own notes.
+- Chart caption "Yıllar içinde fiyatı" instead of "Fiyatın yolculuğu · logaritmik ölçek" (receipt and share image).
+- Score stamp in plain words: TAM İSABET, ÇOK YAKIN, FENA DEĞİL, BİRAZ UZAK (the old joke titles repeated and confused).
+- "Puan nasıl hesaplanır?" moved to the bottom of the receipt, with simpler wording.
+- 30 more cashier lines (12 per score tier), so the same comment comes back less often.
+
 ## [0.76.2] - 2026-10-22
 ### Fixed
 - The purchasing-power line counts monthly and holiday items by name instead of "adet": "1 asgari ücretle 9 aylık yurt ücreti", "76 aylık Netflix aboneliği", "bayram ikramiyesi" (Murti's wording). Names live in `getCountUnit` in `js/game.js`.

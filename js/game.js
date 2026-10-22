@@ -86,27 +86,92 @@ export function pickByCategory(questions, recent = [], previousId = null, rng = 
   return pickRandom(questions.filter((q) => q.productId === productId), previousId, rng);
 }
 
-export function getHalfYear(dateStr) {
-  if (!dateStr || dateStr.length < 4) return null;
-  const year = dateStr.slice(0, 4);
-  const month = dateStr.length >= 7 ? parseInt(dateStr.slice(5, 7), 10) : null;
-  if (month === null) return null; // We need a month to determine half year reliably
-  return `${year}-H${month <= 6 ? 1 : 2}`;
-}
-
-// Products paid per month or per holiday read wrong as "17 adet"; they are counted by name.
-const COUNT_UNITS = {
-  'kyk-yurt-ucreti': 'aylık yurt ücreti',
-  'kyk-burs': 'aylık burs',
-  netflix: 'aylık Netflix aboneliği',
+// "1 asgari ücretle 17 adet" leaves the reader asking "17 of what?", so every product is
+// counted by a plain name. tests/game.test.js fails when a product in prices.json has none.
+export const COUNT_UNITS = {
+  'gram-altin': 'gram altın',
+  dolar: 'dolar',
+  euro: 'euro',
+  benzin: 'litre benzin',
+  motorin: 'litre motorin',
+  otogaz: 'litre otogaz',
+  'big-mac': 'Big Mac',
+  'plastik-poset': 'poşet',
+  ekmek: 'Halk Ekmek',
+  cay: 'kilo çay',
+  kopru: 'köprü geçişi',
+  'ceyrek-altin': 'çeyrek altın',
+  'gram-gumus': 'gram gümüş',
+  yks: 'YKS sınav ücreti',
+  'trafik-cezasi': 'kırmızı ışık cezası',
+  fitre: 'kişilik fitre',
+  'taksi-acilis': 'taksi açılışı',
+  iphone: 'iPhone',
+  playstation: 'PlayStation',
+  airpods: 'AirPods',
+  'bedelli-askerlik': 'bedelli askerlik',
+  'kpss-lisans': 'KPSS sınav ücreti',
+  'pasaport-harci': 'pasaport harcı',
+  'ehliyet-harci': 'ehliyet harcı',
+  'schengen-vize': 'Schengen vizesi',
   spotify: 'aylık Spotify aboneliği',
-  'emekli-en-dusuk-aylik': 'en düşük emekli aylığı',
-  'emekli-bayram-ikramiyesi': 'bayram ikramiyesi',
+  netflix: 'aylık Netflix aboneliği',
+  'imei-kayit-harci': 'telefon kaydı (IMEI)',
+  'istanbul-ulasim': 'otobüs/metro binişi',
+  'kurban-vekalet-bedeli': 'kurban bedeli',
+  'arac-muayene-ucreti': 'araç muayenesi',
+  'sigara-marlboro': 'paket sigara',
+  'aile-cuzdani': 'aile cüzdanı',
+  'milli-piyango-ceyrek': 'çeyrek bilet',
+  'surucu-belgesi-bedeli': 'ehliyet kartı',
+  'arac-tescil-belgesi': 'araç ruhsatı',
+  'kimlik-karti': 'kimlik kartı',
+  'noter-asgari-ucret': 'noter işlemi',
+  simit: 'simit',
+  'sinema-ortalama-bilet': 'sinema bileti',
+  'fiat-egea-easy': 'Fiat Egea',
+  'yurtdisi-cikis-harci': 'yurt dışı çıkış harcı',
+  'basvurma-harci': 'dava harcı',
+  'ea-fc-oyun': 'FIFA/EA FC oyunu',
+  'kyk-yurt-ucreti': 'aylık yurt ücreti',
+  'firin-ekmegi': 'fırın ekmeği',
 };
 
-/** Count word for the purchasing-power line: a named unit for monthly items, else the short unit. */
+// Fees, fines and tolls are paid, not bought: "3 ehliyet harcı ödenebiliyordu".
+const PAID = new Set([
+  'yks', 'trafik-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
+  'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
+  'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
+  'spotify', 'netflix',
+]);
+
+// Money people receive (pensions, grants) or a cost-of-living line cannot be "bought" with a wage:
+// "1 asgari ücretle 2 emekli aylığı" makes no sense. These compare as a share of the wage instead.
+// `better` says which way is good news for the colour of the "Bugün" bar.
+export const WAGE_SHARE = {
+  'emekli-en-dusuk-aylik': 'higher',
+  'emekli-bayram-ikramiyesi': 'higher',
+  'kyk-burs': 'higher',
+  'dogum-yardimi': 'higher',
+  'aclik-siniri': 'lower',
+};
+
+/** Count word for the purchasing-power line: the product's plain name, else the short unit. */
 export function getCountUnit(q) {
   return COUNT_UNITS[q.productId] || getShortUnit(q.unit);
+}
+
+// Launch-price products change model over the years; name the model so "3 tane" is not vague.
+function modelName(entry) {
+  return entry?.label ? entry.label.replace(/^En yeni /, '') : null;
+}
+
+function count(n) {
+  return n.toLocaleString('tr-TR');
+}
+
+function percent(share) {
+  return `%${Math.round(share * 100).toLocaleString('tr-TR')}`;
 }
 
 export function getShortUnit(unit) {
@@ -120,63 +185,85 @@ export function getShortUnit(unit) {
   return 'adet';
 }
 
-/**
- * Purchasing-power line for the result receipt, based on the net minimum wage of the
- * same half-year. Cheap items are counted ("102 adet"); items costing more than a wage
- * are expressed as wage multiples ("2,6 asgari ücret"), so the line never says "0 adet".
- */
-export function buildContextLine(q, allQuestions) {
-  if (q.productId === 'asgari-ucret') return null;
-  const wages = allQuestions.filter((x) => x.productId === 'asgari-ucret');
-  const half = getHalfYear(q.date);
-  const pastWage = half && wages.find((x) => getHalfYear(x.date) === half);
-  if (!pastWage) return null;
-
-  const unit = getCountUnit(q);
-  const currentWage = wages.find((x) => x.current)?.current.price;
-  const hasNow = Boolean(q.current && currentWage);
-
-  if (q.price <= pastWage.price) {
-    const past = `O tarihte 1 asgari ücretle ${Math.floor(pastWage.price / q.price)} ${unit} alınabiliyordu`;
-    if (!hasNow) return `${past}.`;
-    const now = Math.floor(currentWage / q.current.price);
-    return now >= 1
-      ? `${past}, bugün ${now} ${unit}.`
-      : `${past}; bugün 1 asgari ücret yetmiyor.`;
-  }
-
-  const past = `O tarihte bir ${q.label || q.name} ${formatRatio(q.price / pastWage.price)} asgari ücret ediyordu`;
-  if (!hasNow) return `${past}.`;
-  const nowName = q.current.label ? `${q.current.label.replace(/^En yeni /, '')} ise ` : '';
-  return `${past}, bugün ${nowName}${formatRatio(q.current.price / currentWage)} asgari ücret.`;
+// The wage in force on a date: the latest raise of the same year on or before it. Every raise
+// since 2010 is in prices.json (some years had only a January raise), so a gap means missing data
+// and gives null. A year-only date is safe only when that year had a single raise.
+function wageInForce(date, wages) {
+  const year = date.slice(0, 4);
+  const sameYear = wages.filter((x) => x.date.slice(0, 4) === year);
+  if (date.length < 7) return sameYear.length === 1 ? sameYear[0] : null;
+  return sameYear.filter((x) => x.date <= date).sort((a, b) => (a.date < b.date ? 1 : -1))[0] ?? null;
 }
 
 /**
- * Structured twin of buildContextLine (same branching, same numbers) for the receipt bars.
+ * Purchasing-power line for the result receipt, based on the net minimum wage in force
+ * on that date. Cheap items are counted ("102 adet"); items costing more than a wage
+ * are expressed as wage multiples ("2,6 asgari ücret"), so the line never says "0 adet".
+ */
+export function buildContextLine(q, allQuestions) {
+  const m = buildContextModel(q, allQuestions);
+  if (!m) return null;
+
+  if (m.kind === 'share') {
+    const past = `Asgari ücretin yüzde kaçı: o tarihte ${percent(m.then)}`;
+    return m.now == null ? `${past}.` : `${past}, bugün ${percent(m.now)}.`;
+  }
+
+  if (m.kind === 'count') {
+    const verb = PAID.has(q.productId) ? 'ödenebiliyordu' : 'alınabiliyordu';
+    const past = `O tarihte 1 asgari ücretle ${count(m.then)} ${m.unit} ${verb}`;
+    if (m.now == null) return `${past}.`;
+    return m.now >= 1
+      ? `${past}, bugün ${count(m.now)} ${m.nowUnit}.`
+      : `${past}; bugün 1 asgari ücret yetmiyor.`;
+  }
+
+  const past = `O tarihte bir ${m.name} ${formatRatio(m.then)} asgari ücret ediyordu`;
+  if (m.now == null) return `${past}.`;
+  const nowName = m.nowName ? `${m.nowName} ise ` : '';
+  return `${past}, bugün ${nowName}${formatRatio(m.now)} asgari ücret.`;
+}
+
+/**
+ * The numbers behind buildContextLine, also used for the receipt bars.
+ * kind 'share': the item as a share of the minimum wage (pensions, grants); `better` is 'higher' or 'lower'.
  * kind 'count': items per minimum wage, then/now (now 0 = one wage no longer buys one, null = no current price).
  * kind 'wages': cost in minimum wages, then/now (now null = no current price).
- * Returns null exactly when buildContextLine does.
  */
 export function buildContextModel(q, allQuestions) {
   if (q.productId === 'asgari-ucret') return null;
   const wages = allQuestions.filter((x) => x.productId === 'asgari-ucret');
-  const half = getHalfYear(q.date);
-  const pastWage = half && wages.find((x) => getHalfYear(x.date) === half);
+  const pastWage = wageInForce(q.date, wages);
   if (!pastWage) return null;
 
   const currentWage = wages.find((x) => x.current)?.current.price;
   const hasNow = Boolean(q.current && currentWage);
 
+  if (WAGE_SHARE[q.productId]) {
+    return {
+      kind: 'share',
+      better: WAGE_SHARE[q.productId],
+      then: q.price / pastWage.price,
+      now: hasNow ? q.current.price / currentWage : null,
+    };
+  }
+
+  const thenModel = modelName(q);
+  const nowModel = hasNow ? modelName(q.current) : null;
   if (q.price <= pastWage.price) {
+    const unit = getCountUnit(q);
     return {
       kind: 'count',
-      unit: getCountUnit(q),
+      unit: thenModel ? `tane ${thenModel}` : unit,
+      nowUnit: nowModel ? `tane ${nowModel}` : unit,
       then: Math.floor(pastWage.price / q.price),
       now: hasNow ? Math.floor(currentWage / q.current.price) : null,
     };
   }
   return {
     kind: 'wages',
+    name: thenModel || COUNT_UNITS[q.productId] || q.name,
+    nowName: nowModel && nowModel !== thenModel ? nowModel : null,
     then: q.price / pastWage.price,
     now: hasNow ? q.current.price / currentWage : null,
   };
