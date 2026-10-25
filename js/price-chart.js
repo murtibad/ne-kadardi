@@ -179,22 +179,34 @@ function lineYAt(points, x) {
   return null;
 }
 
-// True when the guess label should sit under its dashed line: the line runs through the text
-// above it but leaves the space below free. The label is about 12 units tall.
-export function refLabelBelow(chart, atStart, labelWidth) {
-  const x0 = atStart ? 0 : chart.width - labelWidth;
-  const ys = [];
-  for (let x = x0; x <= x0 + labelWidth; x += 4) {
-    const y = lineYAt(chart.points, x);
-    if (y !== null) ys.push(y);
-  }
+// Where the dashed guess label goes: each end of the line, above or below it. A spot that
+// covers a price label is worst, one the data line runs through is next; ties keep the order
+// (preferred end first, above before below). Boxes are {x0, x1, y0, y1} in chart units and
+// 	extHeight is the label's cap height; the result carries the baseline y to draw at.
+export function placeRefLabel(chart, boxes, { width, left, right, preferStart, textHeight = 8 }) {
   const ref = chart.ref.y;
-  const hitsAbove = ys.some((y) => y > ref - 16 && y < ref + 1);
-  const hitsBelow = ys.some((y) => y > ref - 1 && y < ref + 16);
-  // Stay clear of the year labels under the plot.
-  return hitsAbove && !hitsBelow && ref + 14 < chart.height - 18;
+  const spots = [];
+  for (const atStart of [preferStart, !preferStart]) {
+    for (const below of [false, true]) {
+      const y0 = below ? ref + 4 : ref - 5 - textHeight;
+      const y1 = y0 + textHeight + 2;
+      // Above needs room under the top edge; below must stay clear of the year labels.
+      if (y0 < 0 || y1 > chart.height - 18) continue;
+      const x0 = atStart ? left : right - width;
+      const x1 = x0 + width;
+      const covers = boxes.some((b) => b.x0 < x1 && b.x1 > x0 && b.y0 < y1 && b.y1 > y0);
+      let crosses = false;
+      for (let x = x0; x <= x1 && !crosses; x += 4) {
+        const y = lineYAt(chart.points, x);
+        crosses = y !== null && y > y0 - 2 && y < y1 + 2;
+      }
+      spots.push({ atStart, below, y: below ? ref + 4 + textHeight : ref - 5, score: (covers ? 100 : 0) + (crosses ? 10 : 0) + spots.length });
+    }
+  }
+  if (!spots.length) return { atStart: preferStart, below: true, y: ref + 4 + textHeight };
+  const best = spots.reduce((a, b) => (b.score < a.score ? b : a));
+  return { atStart: best.atStart, below: best.below, y: best.y };
 }
-
 // True when the guess label fits better at the left end: compares how close the data points
 // under a label-wide strip at each end come to the guess line.
 export function refLabelAtStart(chart, labelWidth) {

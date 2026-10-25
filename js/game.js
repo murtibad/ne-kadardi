@@ -312,7 +312,10 @@ export function buildContextModel(q, allQuestions) {
   // "1 asgari ücretle 1 ceza, bugün 1 ceza" hides a 1,6 → 1,1 change: near one wage, say the share.
   const fewThen = q.price <= baseWage && baseWage / q.price < 3;
   const fewNow = hasNow && q.current.price <= currentWage && currentWage / q.current.price < 3;
-  if (!thenModel && (fewThen || fewNow)) {
+  // Equal small counts ("5 ceza, bugün 5 ceza") also hide the change behind rounding.
+  const sameCount = hasNow && q.price <= baseWage && q.current.price <= currentWage
+    && Math.floor(baseWage / q.price) === Math.floor(currentWage / q.current.price) && baseWage / q.price < 10;
+  if (!thenModel && (fewThen || fewNow || sameCount)) {
     const word = COUNT_UNITS[q.productId];
     return {
       kind: 'share',
