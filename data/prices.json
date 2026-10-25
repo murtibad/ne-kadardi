@@ -2981,18 +2981,6 @@
       },
       "prices": [
         {
-          "date": "2010-01",
-          "price": 3.75,
-          "status": "verified",
-          "note": "03.01.2010'da 3,25 TL'den 3,75 TL'ye çıktı (tek yönde alınırdı). Bu değer için tek haber kaynağı bulundu.",
-          "source": {
-            "title": "Takvim, Köprü ve otoyol geçişlerine zam (31.12.2009)",
-            "url": "https://www.takvim.com.tr/Ekonomi/2009/12/31/kopru_ve_otoyol_gecislerine_zam",
-            "accessed": "2026-10-04",
-            "kind": "news"
-          }
-        },
-        {
           "date": "2012-01",
           "price": 4.25,
           "status": "verified",
@@ -4890,7 +4878,7 @@
           "date": "2018-03",
           "price": 50,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: karar.com https://www.karar.com/yks-sinav-ucreti-ne-kadar-yks-basvurulari-nasil-yapilir-2018-osym-yks-basvuru-771961.",
           "source": {
             "title": "YKS'ye başvuru ücretleri belli oldu",
             "url": "https://www.aa.com.tr/tr/egitim/yksye-basvuru-ucretleri-belli-oldu/1008149",
@@ -4914,7 +4902,7 @@
           "date": "2020-02",
           "price": 70,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: cnnturk.com https://www.cnnturk.com/turkiye/2020-yks-basvurulari-icin-son-gun-ne-zaman-basvuru-ucreti-ne-kadar-1493338.",
           "source": {
             "title": "YKS para yatırma nasıl yapılır? 2020 ÖSYM Üniversite sınavı son başvuru günü! YKS sınav ücreti ne kadar? - Güncel Eğitim Haberleri - Habertü",
             "url": "https://www.haberturk.com/yks-para-yatirma-2020-osym-universite-sinavi-son-basvuru-gunu-yks-sinav-ucreti-ne-kadar-2601515",
@@ -4938,7 +4926,7 @@
           "date": "2022-02",
           "price": 115,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı başvuru ücreti, oturum başına. Oturum başına sınav ücreti (TL) Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: birgun.net https://www.birgun.net/haber/2022-yks-basvuru-kilavuzu-yayimlandi-sinav-ucreti-belli-oldu-376849.",
           "source": {
             "title": "YKS başvuru ücreti 2022 ne kadar, nasıl ve nereye yatırılacak? YKS sınav ücreti için son gün ne zaman? TYT,AYT, YDT sınavı başvuru detayları",
             "url": "https://www.haberturk.com/yks-basvuru-ucreti-ne-kadar-hangi-bankalara-yatirilir-2022-yks-sinav-ucreti-icin-son-gun-ne-zaman-tyt-ayt-ydt-sinavi-basvuru-hakkinda-tum-detaylar-3366736",
@@ -5096,7 +5084,7 @@
           "date": "2024-01",
           "price": 10000,
           "status": "verified",
-          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Kanunla taban olarak belirlenen en düşük emekli aylığı. Dosya bazında ödenen en düşük aylık (SSK ve Bağ-Kur). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: turkiyegazetesi.com.tr https://www.turkiyegazetesi.com.tr/ekonomi/en-dusuk-emekli-maasi-bin-10-bin-lira-oldu-kanun-meclisten-1016914.",
           "source": {
             "title": "turkgun.com",
             "url": "https://www.turkgun.com/ekonomi/iste-en-dusuk-emekli-maasi-ve-zam-orani/230800",
@@ -5218,7 +5206,7 @@
           "date": "2018-01",
           "price": 235,
           "status": "verified",
-          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. \"kırmızı ışık kuralına uymayanlara 235 lira ceza kesilecek\" (29.12.2017). Aynı ajans metni alomaliye.com, bloomberght.com ve posta.com.tr'de.",
+          "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. \"kırmızı ışık kuralına uymayanlara 235 lira ceza kesilecek\" (29.12.2017). Aynı ajans metni alomaliye.com, bloomberght.com ve posta.com.tr'de. İkinci kaynak: internethaber.com https://www.internethaber.com/2018-trafik-cezalari-tam-liste-sorgula-yuzde-25-indirim-al-1838877h.htm.",
           "source": {
             "title": "CNN Türk: İşte 2018 yılı zamlı trafik cezaları",
             "url": "https://www.cnnturk.com/ekonomi/turkiye/iste-2018-yili-zamli-trafik-cezalari-717898",
@@ -5459,22 +5447,10 @@
       },
       "prices": [
         {
-          "date": "2010-08",
-          "price": 7,
-          "status": "verified",
-          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "milliyet.com.tr",
-            "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
-            "accessed": "2026-10-04",
-            "kind": "news"
-          }
-        },
-        {
           "date": "2011-08",
           "price": 7.5,
           "status": "verified",
-          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: sozcu.com.tr https://www.sozcu.com.tr/2023/gundem/fitre-ne-kadar-diyanet-2023-fitre-miktarini-belirledi-7594548/.",
           "source": {
             "title": "milliyet.com.tr",
             "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
@@ -5486,7 +5462,7 @@
           "date": "2012-07",
           "price": 8.5,
           "status": "verified",
-          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Din İşleri Yüksek Kurulu'nun o yıl Ramazan için açıkladığı kişi başı fitre miktarı. Kişi başı fitre. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: sozcu.com.tr https://www.sozcu.com.tr/2023/gundem/fitre-ne-kadar-diyanet-2023-fitre-miktarini-belirledi-7594548/.",
           "source": {
             "title": "milliyet.com.tr",
             "url": "https://www.milliyet.com.tr/ramazan/dini-bilgiler/fitre-2023-ne-kadar-fitre-kac-para-oldu-gecmis-yillara-ait-diyanet-fitre-miktarlari-6702930",
@@ -5894,7 +5870,7 @@
           "date": "2019-03",
           "price": 1099,
           "status": "verified",
-          "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Türkiye'de açıklanan çıkış fiyatı (KDV dahil). Standart model. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: teknoblog.com https://www.teknoblog.com/bim-indirimli-airpods-2-satisi-yapacak/.",
           "source": {
             "title": "webtekno.com",
             "url": "https://www.webtekno.com/airpods-2-turkiye-fiyati-h65241.html",
@@ -6094,7 +6070,7 @@
           "date": "2022-01",
           "price": 56506,
           "status": "verified",
-          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2022. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2022. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: kadimhukuk.com.tr https://kadimhukuk.com.tr/?p=25454.",
           "source": {
             "title": "haberturk.com",
             "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-2025-temmuz-bedelli-askerlik-ucreti-ne-kadar-olacak-bedelli-askerlik-ucretine-yuzde-kac-zam-gelecek-3800433",
@@ -6130,7 +6106,7 @@
           "date": "2023-07",
           "price": 122350,
           "status": "verified",
-          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2023. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2023. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: turkgun.com https://www.turkgun.com/gundem/bedelli-askerlik-ucreti-belli-oldu/213623.",
           "source": {
             "title": "haberturk.com",
             "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-belli-oldu-3605356-ekonomi",
@@ -6142,7 +6118,7 @@
           "date": "2024-01",
           "price": 182609,
           "status": "verified",
-          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2024. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Ocak-Haziran 2024. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/ekonomi/bedelli-askerlik-yapacaklar-dikkat-bedelli-askerlik-ucretinde-dolar-2159250.",
           "source": {
             "title": "haberturk.com",
             "url": "https://www.haberturk.com/bedelli-askerlikte-dolar-rekoru-3650759-ekonomi",
@@ -6154,7 +6130,7 @@
           "date": "2024-07",
           "price": 217871,
           "status": "verified",
-          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2024. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Bedelli askerlik bedeli, 240.000 gösterge x memur aylık katsayısı; tarih dönemin ilk ayıdır (Ocak-Haziran veya Temmuz-Aralık). Dönem: Temmuz-Aralık 2024. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: dunya.com https://www.dunya.com/ekonomi/son-dakika-milli-savunma-bakanligi-yeni-bedelli-askerlik-ucretini-acikladi-haberi-736264.",
           "source": {
             "title": "haberturk.com",
             "url": "https://www.haberturk.com/bedelli-askerlik-ucreti-2025-temmuz-bedelli-askerlik-ucreti-ne-kadar-olacak-bedelli-askerlik-ucretine-yuzde-kac-zam-gelecek-3800433",
@@ -6252,7 +6228,7 @@
           "date": "2017-05",
           "price": 60,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: cnnturk.com https://www.cnnturk.com/ajanda/2017-kpss-basvuru-ucretleri-ne-zaman-sona-eriyor-612858.",
           "source": {
             "title": "hurriyet.com.tr",
             "url": "https://www.hurriyet.com.tr/gundem/osym-kpss-basvuru-ucretlerini-acikladi-kpss-basvurulari-nasil-yapilacak-40832965",
@@ -6276,7 +6252,7 @@
           "date": "2019-05",
           "price": 75,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: haberturk.com https://www.haberturk.com/kpss-ne-zaman-2019-kpss-basvurusu-nasil-yapilir-kpss-sinav-ucreti-ne-kadar-2454454.",
           "source": {
             "title": "takvim.com.tr",
             "url": "https://www.takvim.com.tr/egitim/2019-kpss-basvurulari-ne-zaman-ve-nasil-yapilir-kpss-basvuru-ucreti-ne-kadar-3898479",
@@ -6300,7 +6276,7 @@
           "date": "2021-06",
           "price": 90,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: cnnturk.com https://www.cnnturk.com/egitim/kpss-son-basvuru-tarihi-kpss-ucreti-ne-kadar-hangi-bankaya-odenecek-2021-kpss-gec-basvuru-tarihleri-1665033.",
           "source": {
             "title": "aspor.com.tr",
             "url": "https://www.aspor.com.tr/haberler/2022/05/24/kpss-2022-basvuru-ucreti-ne-kadar-kamu-personeli-secme-sinavi-basvuru-tarihleri-ve-basvuru-kilavuzu-kpss-basvuru/amp",
@@ -6312,7 +6288,7 @@
           "date": "2022-05",
           "price": 115,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: trthaber.com https://www.trthaber.com/haber/guncel/kpss-lisans-basvurusu-nasil-yapilir-kpss-basvuru-ucreti-ne-kadar-683557.html.",
           "source": {
             "title": "aspor.com.tr",
             "url": "https://www.aspor.com.tr/haberler/2022/06/06/kpss-basvurulari-bitti-mi-son-basvuru-ne-zaman-kpss-2022-basvuru-ucreti-ne-kadar-nasil-yatirilir/amp",
@@ -6324,7 +6300,7 @@
           "date": "2023-05",
           "price": 150,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: cnnturk.com https://www.cnnturk.com/egitim/osym-kpss-basvuru-ekrani-2023-kpss-lisans-basvurusu-nasil-yapilir-basvuru-ucreti-ne-kadar.",
           "source": {
             "title": "sozcu.com.tr",
             "url": "https://www.sozcu.com.tr/kpss-basvuru-ucreti-ne-kadar-kpss-basvuru-nasil-yapilir-wp7692315",
@@ -6348,7 +6324,7 @@
           "date": "2025-05",
           "price": 570,
           "status": "verified",
-          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "ÖSYM'nin o yıl açıkladığı KPSS Lisans GY-GK oturumu başvuru ücreti. Genel Yetenek-Genel Kültür oturumu, her bir oturum için. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: haberturk.com https://www.haberturk.com/kpss-lisans-basvuru-ekrani-ve-ucreti-osym-ile-gy-gk-alan-bilgisi-2025-kpss-basvurulari-basladi-mi-nasil-ve-nereden-yapilir-ucreti-ne-kadar-3802353.",
           "source": {
             "title": "tgrthaber.com",
             "url": "https://www.tgrthaber.com/ekonomi/kpss-basvuru-ucreti-2026-ne-kadar-oldu-yuzde-kac-zamlandi-osym-kpss-lisans-ortaogreti-3344975",
@@ -6482,7 +6458,7 @@
           "date": "2017",
           "price": 425,
           "status": "verified",
-          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: tgrthaber.com https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008.",
           "source": {
             "title": "ensonhaber.com",
             "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
@@ -6494,7 +6470,7 @@
           "date": "2018",
           "price": 470,
           "status": "verified",
-          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: tgrthaber.com https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008.",
           "source": {
             "title": "ensonhaber.com",
             "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
@@ -6506,7 +6482,7 @@
           "date": "2019",
           "price": 500,
           "status": "verified",
-          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: tgrthaber.com https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008.",
           "source": {
             "title": "ensonhaber.com",
             "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
@@ -6518,7 +6494,7 @@
           "date": "2020",
           "price": 550,
           "status": "verified",
-          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: tgrthaber.com https://www.tgrthaber.com/egitim/2022-kyk-kredi-ve-bursu-ne-kadar-iste-yil-yil-kyk-kredi-ucretleri-ve-burslara-dair-tum-bilinmesi-gerekenler-2839008.",
           "source": {
             "title": "ensonhaber.com",
             "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
@@ -6542,7 +6518,7 @@
           "date": "2022",
           "price": 850,
           "status": "verified",
-          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Lisans öğrencilerine aylık verilen KYK burs/kredi tutarı (o yıl). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/egitim/2022-kyk-burs-ve-kredileri-ne-kadar-oldu,xYzErPbUxEmYuH80ApJl1A.",
           "source": {
             "title": "ensonhaber.com",
             "url": "https://www.ensonhaber.com/galeri/yillara-gore-kyk-burs-ve-kredi-ucretlerindeki-artis",
@@ -8009,18 +7985,6 @@
       },
       "prices": [
         {
-          "date": "2013",
-          "price": 550,
-          "status": "verified",
-          "note": "Diyanet İşleri Başkanlığı ve Türkiye Diyanet Vakfı'nın o yıl açıkladığı yurt içi vekâletle kurban kesim bedeli (yurt dışı bedeli ayrıdır; hisse piyasa fiyatı değildir). Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "takvim.com.tr",
-            "url": "https://www.takvim.com.tr/Ekonomi/2013/09/11/kurban-fiyatlari-belli-oldu",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
-        {
           "date": "2015",
           "price": 625,
           "status": "verified",
@@ -8374,7 +8338,7 @@
           "date": "2025-01",
           "price": 2620.8,
           "status": "verified",
-          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "TÜVTÜRK araç muayene ücreti, otomobil/minibüs/kamyonet grubu, KDV dahil, egzoz gazı emisyon ölçüm bedeli hariç. Ücret her yıl 1 Ocak'ta yeniden değerleme oranıyla artar; 2023 ortasında KDV %18'den %20'ye çıktı. 2010-2016 değerleri yıllık seri tablolarından (üç yayıncı aynı değerleri veriyor). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: habergazetesi.com.tr https://www.habergazetesi.com.tr/2025-arac-muayene-ucretlerine-yuksek-zam-yeni-tarife-aciklandi.",
           "source": {
             "title": "tamindir.com",
             "url": "https://www.tamindir.com/blog/arac-muayene-ucreti_86200/",
@@ -8420,30 +8384,6 @@
         }
       },
       "prices": [
-        {
-          "date": "2010-01",
-          "price": 5.5,
-          "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "dunya.com, Philsa Marlboro Kısa 5,50 TL (07.01.2010)",
-            "url": "https://www.dunya.com/gundem/marlboro039nun-fiyati-550-liraya-dustu-haberi-101880",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2016-07",
-          "price": 13,
-          "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "gazetevatan.com, Marlboro 11 TL'den 13 TL'ye (12.07.2016)",
-            "url": "https://www.gazetevatan.com/gundem/sigaranin-zamli-fiyatlari-ne-kadar-oldu-iste-zamli-sigara-fiyatlari-965869",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
         {
           "date": "2019-04",
           "price": 15,
@@ -8496,70 +8436,10 @@
           "date": "2022-07",
           "price": 31,
           "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: indigodergisi.com https://indigodergisi.com/2022/07/sigara-zam-guncel-sigara-fiyatlari/.",
           "source": {
             "title": "milligazete.com.tr, Philip Morris listesi (4 Temmuz 2022 itibarıyla)",
             "url": "https://www.milligazete.com.tr/2022-guncel-sigara-fiyatlari-listesi-kent-marlboro-sigara-ne-kadar",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2022-08",
-          "price": 34,
-          "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "fanatik.com.tr, Philip Morris listesi (1 Ağustos 2022 itibarıyla)",
-            "url": "https://www.fanatik.com.tr/sigaraya-zam-mi-geldi-sigara-fiyatlari-ne-kadar-kac-tl-oldu-2022-guncel-zamli-sigara-fiyatlari-2293670",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2023-05",
-          "price": 36,
-          "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "milligazete.com.tr, sigara fiyat listesi (11 Mayıs 2023 itibarıyla)",
-            "url": "https://www.milligazete.com.tr/marlboro-sigara-ne-kadar-sigara-guncel-fiyatlari-tam-liste",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2023-07",
-          "price": 46,
-          "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "milligazete.com.tr, PMI zam (10.07.2023)",
-            "url": "https://www.milligazete.com.tr/pmi-sigara-fiyatlarina-en-yeni-zam-iste-sigara-fiyat-listesi-2023",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2024-05",
-          "price": 67,
-          "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "milligazete.com.tr, sigara fiyatları (Mayıs 2024)",
-            "url": "https://www.milligazete.com.tr/sigara-fiyatlari-2024",
-            "accessed": "2026-10-14",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2025-03",
-          "price": 85,
-          "status": "verified",
-          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "habergazetesi.com.tr, 2025 sigara fiyatları (10 Mart 2025)",
-            "url": "https://www.habergazetesi.com.tr/2025-sigara-fiyatlari",
             "accessed": "2026-10-14",
             "kind": "news"
           }
@@ -10282,24 +10162,11 @@
       },
       "prices": [
         {
-          "date": "2017-09",
-          "label": "FIFA 18",
-          "price": 342,
-          "status": "verified",
-          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 18, PS4 standart sürüm, ön sipariş/çıkış listesi fiyatı (PlayStation Store dijital). Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "ShiftDelete",
-            "url": "https://shiftdelete.net/?p=5344",
-            "accessed": "2026-10-22",
-            "kind": "news"
-          }
-        },
-        {
           "date": "2019-09",
           "label": "FIFA 20",
           "price": 429,
           "status": "verified",
-          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 20, PS4 standart sürüm, PlayStation Store çıkış fiyatı. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 20, PS4 standart sürüm, PlayStation Store çıkış fiyatı. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: goal.com https://www.goal.com/tr/haber/fifa-20-ne-zaman-cikacak-ne-kadara-satilacak-yeni/1ovkp4mcb61f717qbcoty36bq7.",
           "source": {
             "title": "ShiftDelete",
             "url": "https://shiftdelete.net/yeni-cikacak-playstation-oyunlari-belli-oldu/8",
@@ -10312,7 +10179,7 @@
           "label": "FIFA 21",
           "price": 499.9,
           "status": "verified",
-          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 21, PS4 standart sürüm (PS5 sürümü ücretsiz yükseltme olarak sunuldu, ayrı PS5 fiyatı kullanılmadı). Haziran 2020'de duyurulan fiyat. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 21, PS4 standart sürüm (PS5 sürümü ücretsiz yükseltme olarak sunuldu, ayrı PS5 fiyatı kullanılmadı). Haziran 2020'de duyurulan fiyat. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: fanatik.com.tr https://www.fanatik.com.tr/e-spor/fifa-21-ne-zaman-cikiyor-2168361.",
           "source": {
             "title": "Webtekno",
             "url": "https://www.webtekno.com/fifa-21-duyuruldu-cikis-tarihi-turkiye-fiyati-h95199.html",
@@ -10329,19 +10196,6 @@
           "source": {
             "title": "Posta",
             "url": "https://www.posta.com.tr/bilim-teknoloji/fifa-22-resmi-olarak-tanitildi-iste-turkiye-fiyati-2350461",
-            "accessed": "2026-10-22",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2022-09",
-          "label": "FIFA 23",
-          "price": 800,
-          "status": "verified",
-          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. FIFA 23, PS5 standart sürüm ön sipariş fiyatı (PS4 sürümü 700 TL). Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "CNN Türk",
-            "url": "https://www.cnnturk.com/oyun/fifa-23-cikis-tarihi-ve-fiyati-ea-sports-fifa-23-ne-zaman-cikacak-1817230",
             "accessed": "2026-10-22",
             "kind": "news"
           }
@@ -10368,19 +10222,6 @@
           "source": {
             "title": "DonanımHaber",
             "url": "https://www.donanimhaber.com/ea-sports-fc-25-trailer-yayinlandi-iste-yenilikler-ve-fiyati--179583",
-            "accessed": "2026-10-22",
-            "kind": "news"
-          }
-        },
-        {
-          "date": "2025-09",
-          "label": "EA FC 26",
-          "price": 2899.99,
-          "status": "verified",
-          "note": "Yılın yeni FIFA / EA SPORTS FC oyunu, Türkiye PlayStation standart sürüm çıkış fiyatı. EA SPORTS FC 26, PlayStation Store standart sürüm (PS5/PS4), çıkış fiyatı 2.899,99 TL (bazı haberlerde 2.899 TL). Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "Tamindir",
-            "url": "https://www.tamindir.com/haber/ea-sports-fc-26-turkiye-fiyati_97823/",
             "accessed": "2026-10-22",
             "kind": "news"
           }
@@ -10464,7 +10305,7 @@
           "date": "2023-09",
           "price": 345,
           "status": "verified",
-          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2023-24 yılı 1. tip KYK yurdu aylık ücreti (en düşük) Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "Devlet (KYK/GSB) öğrenci yurdunun o öğretim yılı için açıklanan en düşük aylık ücreti. 2023-24 yılı 1. tip KYK yurdu aylık ücreti (en düşük) Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/egitim/galeri-2023-2024-kyk-yurt-ucretleri-aciklandikyk-yurt-ucreti-ne-kadar-olacak,Y1C5zSeCZUO8L5sXUPWHNg.",
           "source": {
             "title": "Milliyet",
             "url": "https://www.milliyet.com.tr/galeri/kyk-yurt-ucretleri-ne-kadar-2023-2024-kyk-1-2-3-4-5-6-tip-yurt-ucretleri-7004883",
@@ -10657,18 +10498,6 @@
       },
       "prices": [
         {
-          "date": "2023-01",
-          "price": 5,
-          "status": "verified",
-          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. 1 Ocak 2023'ten itibaren İTO azami tarifesi (kg başına azami 25 TL). Bir haber (bianet) aynı tarifeyi 210 g olarak yazıyor. Bu değer için tek haber kaynağı doğrulandı.",
-          "source": {
-            "title": "Ekonomi Gazetesi",
-            "url": "https://www.ekonomigazetesi.com/ekonomi/istanbulda-ekmege-yuzde-30-zam-17930",
-            "accessed": "2026-10-22",
-            "kind": "news"
-          }
-        },
-        {
           "date": "2023-08",
           "price": 6.5,
           "status": "verified",
@@ -10696,7 +10525,7 @@
           "date": "2024-05",
           "price": 10,
           "status": "verified",
-          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO Mayıs 2024 meclis kararı, 8 TL'den 10 TL'ye. Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO Mayıs 2024 meclis kararı, 8 TL'den 10 TL'ye. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: medyascope.tv https://medyascope.tv/2024/05/10/istanbulda-ekmege-zam-200-gr-ekmek-10-lira-oldu/.",
           "source": {
             "title": "NTV",
             "url": "https://www.ntv.com.tr/ntvpara/istanbulda-ekmege-zam-geldi,p_gyndRJ4EGkk6cZON1iNQ",
@@ -10708,7 +10537,7 @@
           "date": "2025-07",
           "price": 15,
           "status": "verified",
-          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO meclis kararı, Temmuz 2025 (240 g = 18 TL). Bu değer için tek haber kaynağı doğrulandı.",
+          "note": "İstanbul'da İTO'ya bağlı fırınlarda 200 gram normal ekmeğin azami fiyatı. İTO meclis kararı, Temmuz 2025 (240 g = 18 TL). Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: ekonomigazetesi.com https://www.ekonomigazetesi.com/sektor-haberleri/istanbulda-200-gram-ekmek-15-liradan-satilacak-53970.",
           "source": {
             "title": "Haber Hürriyeti",
             "url": "https://www.haberhurriyeti.com/haber/25501882/istanbulda-ekmege-zam",
@@ -11866,7 +11695,7 @@
           "date": "2020-09",
           "price": 271,
           "status": "verified",
-          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 24 Eylül 2020 (%11,5): \"0-1 km 271 TL\". Doğrulama: milliyet.com.tr (\"en yakın mesafe 271 liradan 312 liraya\", 2021). Mart 2021'de salgın döneminde geçici 243 TL indirimli tarife de uygulandı.",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 24 Eylül 2020 (%11,5): \"0-1 km 271 TL\". Doğrulama: milliyet.com.tr (\"en yakın mesafe 271 liradan 312 liraya\", 2021). Mart 2021'de salgın döneminde geçici 243 TL indirimli tarife de uygulandı. İkinci kaynak: capital.com.tr https://www.capital.com.tr/haberler/tum-haberler/okul-servis-ucretlerine-yuzde-115-zam.",
           "source": {
             "title": "Ekonomim: Okul servis ücretlerine yüzde 11,5 zam",
             "url": "https://www.ekonomim.com/ekonomi/okul-servis-ucretlerine-yuzde-115-zam-haberi-482936",
@@ -11890,7 +11719,7 @@
           "date": "2022-09",
           "price": 660,
           "status": "verified",
-          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 24 Ağustos 2022: \"En kısa mesafe olan 0-1 kilometrenin ücreti 660 lira olarak belirlendi.\" Doğrulama: posta.com.tr (\"0-1 km 554 liradan 660 liraya\"). Aralık 2022'de 792'ye çıktı. 2023-24 için haberler 1.200 ve 1.300 diye ayrıştığı için o yıl alınmadı.",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. UKOME 24 Ağustos 2022: \"En kısa mesafe olan 0-1 kilometrenin ücreti 660 lira olarak belirlendi.\" Doğrulama: posta.com.tr (\"0-1 km 554 liradan 660 liraya\"). Aralık 2022'de 792'ye çıktı. 2023-24 için haberler 1.200 ve 1.300 diye ayrıştığı için o yıl alınmadı. İkinci kaynak: posta.com.tr https://www.posta.com.tr/ekonomi/okul-servis-ucretlerinde-zam-orani-belli-oldu-2553272.",
           "source": {
             "title": "Hürriyet: İstanbul'da okul servisi ücretleri belli oldu",
             "url": "https://www.hurriyet.com.tr/ekonomi/son-dakika-istanbulda-okul-servisi-ucretleri-belli-oldu-42124841",
@@ -11914,7 +11743,7 @@
           "date": "2025-09",
           "price": 2605,
           "status": "verified",
-          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. Ocak 2025'teki artıştan sonra, okul açılışında: \"UKOME'den yeni karar çıkana kadar veliler 0-1 kilometre için aylık 2605 lira\" (Temmuz 2025 artış önerisi reddedildi). Doğrulama: teknotalk.com (\"0-1 km için aylık 2.605 TL\"). Bu yıl için resmî İBB belgesi bulunamadı; değer haberlerden.",
+          "note": "İstanbul okul servisi, UKOME'nin belirlediği aylık tavan ücret, en kısa mesafe (0-1 km), KDV dahil, rehber personel farkı hariç; okul açılışında (Eylül) geçerli olan ücret. Özel okullar bunun üstünde alabiliyor. Ocak 2025'teki artıştan sonra, okul açılışında: \"UKOME'den yeni karar çıkana kadar veliler 0-1 kilometre için aylık 2605 lira\" (Temmuz 2025 artış önerisi reddedildi). Doğrulama: teknotalk.com (\"0-1 km için aylık 2.605 TL\"). Bu yıl için resmî İBB belgesi bulunamadı; değer haberlerden. İkinci kaynak: iscihaber.net https://www.iscihaber.net/gundem/2025-istanbul-okul-servisi-ucretleri-ne-kadar/179373.",
           "source": {
             "title": "NTV: İstanbul'da okul servisi ücretleri ne kadar",
             "url": "https://www.ntv.com.tr/ntvpara/istanbulda-okul-servisi-ucretleri-ne-kadar,sH7jHy6rikiVagD30TZ7TA",

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.95.4] - 2026-10-25
+### Changed
+- Every news-backed price now has a second news report on another domain: 33 notes gained their second link ("İkinci kaynak: ...").
+- Removed 14 values that could not be confirmed twice or conflicted: Marlboro 2010-01, 2016-07, 2022-08, 2023-05, 2023-07, 2024-05, 2025-03; fitre 2010-08; kurban 2013; Boğaz köprüsü 2010-01; EA FC 2017-09 (269 vs 342), 2022-09 (console not named), 2025-09; fırın ekmeği 2023-01 (210 g, not 200 g).
+- `tests/data.test.js` now fails a news price without a second source link; `docs/DATA.md` says so.
+
 ## [0.95.3] - 2026-10-25
 ### Fixed
 - Chart: the dashed guess label tries both ends, above and below its line, and takes the spot that covers no price label and no stretch of the data line (`placeRefLabel`); widths follow the real font size (14px on the receipt, 11px in the archive). Found by the QA pass on `alkol-cezasi.2023-01`, `amazon-prime.2025-04` and others.

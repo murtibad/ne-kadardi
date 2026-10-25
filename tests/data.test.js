@@ -78,3 +78,14 @@ test('prices.json follows the data policy', () => {
     }
   }
 });
+
+// The site promises: every price comes from the publishing body's own document or from at least
+// two separate news reports. A news-backed price must name its second report's link in the note.
+test('every news-backed price carries a second source link', () => {
+  for (const p of data.products) {
+    for (const e of [...p.prices, p.current]) {
+      if (!e || e.status !== 'verified' || e.source?.kind !== 'news') continue;
+      assert.match(e.note ?? '', /https?:\/\//, `${p.id} ${e.date}: news price needs a second source link in its note`);
+    }
+  }
+});
