@@ -3,7 +3,6 @@ const COLORS = ['#d32f2f', '#f5b301', '#1f9d55', '#1e4fa3', '#f97316', '#84cc16'
 
 export function burstConfetti(count = 70) {
   if (typeof window === 'undefined') return;
-  if (document.documentElement.dataset.motion === 'reduce') return;
   const layer = document.createElement('div');
   layer.className = 'confetti-layer';
   layer.setAttribute('aria-hidden', 'true');
