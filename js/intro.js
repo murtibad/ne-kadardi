@@ -1,6 +1,5 @@
 // Animated first-visit intro: pure data helpers (introRows, yearSteps) plus the stage runner (playIntro).
 import { formatPrice, escapeHTML } from './format.js';
-import { easeOutCubic } from './count-up.js';
 
 export const INTRO_NAMES = Object.freeze({
   'big-mac': 'Big Mac',
@@ -32,6 +31,8 @@ export function introRows(timelines, ids = ['big-mac', 'benzin', 'dolar']) {
       toYear,
       from: first.price,
       to: current.price,
+      // Every sourced price, so the receipt can show each year's real price as the year rolls.
+      history: rows.filter((r) => r && r.price > 0).map((r) => ({ year: Number(String(r.date).slice(0, 4)), price: r.price })),
     });
   }
   return out;
@@ -47,12 +48,10 @@ export function yearSteps(fromYear, toYear) {
   return steps;
 }
 
-/** Interpolate a price between `from` and `to` at progress `t` in [0, 1], rounded like formatPrice. */
-function priceAt(from, to, t) {
-  if (t <= 0) return from;
-  if (t >= 1) return to;
-  const raw = from + (to - from) * easeOutCubic(t);
-  return to < 100 ? Math.round(raw * 100) / 100 : Math.round(raw);
+/** The real price shown for `year`: the newest sourced price on or before it (the first one before the series starts). No interpolation, so every number on the receipt is a sourced price. */
+export function priceInYear(row, year) {
+  const known = (row?.history ?? []).filter((h) => h.year <= year);
+  return known.length ? known[known.length - 1].price : row?.from;
 }
 
 /**
@@ -193,16 +192,13 @@ export function playIntro(dialogEl, rows, { reduced = false, sound = null } = {}
       }
     }
 
-    // Staggered price count-ups: row i starts at 400 + i*150 ms and rolls for 1850 ms.
+    // Prices follow the rolling year: each row shows that year's sourced price.
     list.forEach((r, i) => {
       const el = priceEls[i];
       if (!el) return;
-      const rowStart = 400 + i * 150;
-      const rowDur = 1850;
-      if (elapsed < rowStart) return;
-      const rt = Math.min(1, (elapsed - rowStart) / rowDur);
-      el.textContent = formatPrice(priceAt(r.from, r.to, rt));
-      if (rt >= 1 && !el.classList.contains('landed')) {
+      const yearDone = lastYearShown >= r.toYear;
+      el.textContent = formatPrice(yearDone ? r.to : priceInYear(r, lastYearShown));
+      if (yearDone && elapsed > 2400 && !el.classList.contains('landed')) {
         el.classList.add('landed');
         el.removeAttribute('aria-hidden');
       }

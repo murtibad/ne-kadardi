@@ -45,7 +45,7 @@ const fakeTimelines = [
 
 test('introRows extracts short display names, years, and oldest/current prices in requested order', () => {
   const rows = introRows(fakeTimelines);
-  assert.deepEqual(rows, [
+  assert.deepEqual(rows.map(({ history, ...r }) => r), [
     { name: 'Big Mac', fromYear: 2010, toYear: 2026, from: 5.65, to: 325 },
     { name: '1 litre benzin', fromYear: 2016, toYear: 2026, from: 4.28, to: 84.63 },
     { name: '1 dolar', fromYear: 2010, toYear: 2026, from: 1.49, to: 49.65 },
@@ -68,7 +68,7 @@ test('introRows skips missing products and falls back to the last row when none 
     },
   ];
   const rows = introRows(withoutCurrentFlag, ['big-mac', 'dolar', 'single']);
-  assert.deepEqual(rows, [
+  assert.deepEqual(rows.map(({ history, ...r }) => r), [
     { name: '1 dolar', fromYear: 2012, toYear: 2026, from: 1.88, to: 42.96 },
   ]);
 });
@@ -100,4 +100,13 @@ test('yearSteps returns inclusive ascending year list and [] for invalid ranges'
   assert.deepEqual(yearSteps(2026, 2010), []);
   assert.deepEqual(yearSteps(NaN, 2026), []);
   assert.deepEqual(yearSteps(2010, Infinity), []);
+});
+
+test('priceInYear shows the newest sourced price on or before the year, never a blend', async () => {
+  const { priceInYear } = await import('../js/intro.js');
+  const row = { from: 5.65, history: [{ year: 2010, price: 5.65 }, { year: 2015, price: 9.25 }, { year: 2026, price: 325 }] };
+  assert.equal(priceInYear(row, 2009), 5.65);
+  assert.equal(priceInYear(row, 2012), 5.65);
+  assert.equal(priceInYear(row, 2015), 9.25);
+  assert.equal(priceInYear(row, 2026), 325);
 });

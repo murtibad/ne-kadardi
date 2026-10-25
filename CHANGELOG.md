@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.101.0] - 2026-10-26
+### Added
+- Cinematic first-visit intro (Murti: "gerçek bir intro gibi, havalı, okutmayan"): a dark stage, a huge year rolling from 2010 to today, a receipt printing out of a slot where Big Mac, benzin and dolar show each year's real sourced price as the year turns (no blending: `priceInYear`), then a "SEN HATIRLIYOR MUSUN?" stamp slams down and "Hemen oyna →" appears. About 3 seconds; "Geç →", any tap or key jumps to the end; with animations off it opens on the final card. Values come from the data, so they never go stale. `js/intro.js` (`introRows`, `yearSteps`, `priceInYear`, `playIntro`), built with Gemini 4 Argon.
+
 ## [0.100.0] - 2026-10-26
 ### Added
 - First-time players (no saved stats) start with the most talked-about prices, oldest year each: Halk Ekmek (Haziran 2019), benzin (Ocak 2016), Big Mac (Ocak 2010), iPhone 5s (Kasım 2013), dolar (Ocak 2010), Netflix (Eylül 2016); then the usual random mix. Skips count. `OPENER_IDS` / `openerFor` in `js/game.js` (Murti's idea).
