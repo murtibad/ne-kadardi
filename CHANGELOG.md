@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.94.0] - 2026-10-25
+### Added
+﻿- "Bu soruyu arkadaşına sor →" on the receipt shares the question without its answer: "Soru: Temmuz 2020 · Big Mac. Sence kaç liraydı? Tahmin et, gerçeğini gör:" plus a `?soru=<product>.<date>` link (phone share sheet, or copied on desktop). Opening the link starts that exact question with "Bir arkadaşın bu soruyu sana sordu."; the parameter is then dropped from the address. Pure helpers in `js/ask-link.js`. Built with Gemini 4 Argon.
+
 ## [0.93.1] - 2026-10-25
 ### Changed
 ﻿- Today's dollar, euro and pound prices moved from 02.10.2026 to the TCMB rates of 23.10.2026 (49,6540 / 55,5997 / 66,5325).
