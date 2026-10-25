@@ -169,6 +169,32 @@ export function labelSide(points, index) {
   return next.y < prev.y ? 'left' : 'right';
 }
 
+// The data line's y at x (straight segments between points), or null outside the line.
+function lineYAt(points, x) {
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1];
+    const b = points[i];
+    if (x >= a.x && x <= b.x) return b.x === a.x ? a.y : a.y + ((x - a.x) / (b.x - a.x)) * (b.y - a.y);
+  }
+  return null;
+}
+
+// True when the guess label should sit under its dashed line: the line runs through the text
+// above it but leaves the space below free. The label is about 12 units tall.
+export function refLabelBelow(chart, atStart, labelWidth) {
+  const x0 = atStart ? 0 : chart.width - labelWidth;
+  const ys = [];
+  for (let x = x0; x <= x0 + labelWidth; x += 4) {
+    const y = lineYAt(chart.points, x);
+    if (y !== null) ys.push(y);
+  }
+  const ref = chart.ref.y;
+  const hitsAbove = ys.some((y) => y > ref - 16 && y < ref + 1);
+  const hitsBelow = ys.some((y) => y > ref - 1 && y < ref + 16);
+  // Stay clear of the year labels under the plot.
+  return hitsAbove && !hitsBelow && ref + 14 < chart.height - 18;
+}
+
 // True when the guess label fits better at the left end: compares how close the data points
 // under a label-wide strip at each end come to the guess line.
 export function refLabelAtStart(chart, labelWidth) {
