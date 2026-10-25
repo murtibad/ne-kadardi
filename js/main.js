@@ -954,6 +954,40 @@ function initSharePreview() {
   });
 }
 
+const INTRO_KEY = 'ne-kadardi-intro-seen';
+function loadIntroSeen() {
+  try { return localStorage.getItem(INTRO_KEY) === '1'; } catch { return false; }
+}
+function saveIntroSeen() {
+  try { localStorage.setItem(INTRO_KEY, '1'); } catch { /* storage unavailable */ }
+}
+
+function openIntro() {
+  const dlg = $('intro');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  if (!dlg.open) dlg.showModal();
+  $('intro-play')?.focus();
+}
+
+function closeIntro() {
+  saveIntroSeen();
+  const dlg = $('intro');
+  if (dlg?.open) dlg.close();
+}
+
+function initIntro() {
+  const dlg = $('intro');
+  if (!dlg) return;
+  $('intro-play')?.addEventListener('click', () => {
+    closeIntro();
+    location.hash = '#tahmin';
+  });
+  $('intro-close')?.addEventListener('click', closeIntro);
+  $('intro-open')?.addEventListener('click', openIntro);
+  // Pressing Escape dismisses the modal via cancel; mark seen so it does not nag on reload.
+  dlg.addEventListener('cancel', saveIntroSeen);
+}
+
 const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
 function loadArchiveNewestFirst() {
   try { return localStorage.getItem(ARCHIVE_ORDER_KEY) === 'newest'; } catch { return false; }
@@ -1123,7 +1157,6 @@ function renderHome() {
   // Coming back to the menu does not reset the game, so say so instead of "Başla".
   $('m-go').textContent = !state.question ? 'Başla →'
     : state.lastGameScreen === 'result-screen' ? `Sonuca dön · Soru ${state.round} →` : `Devam et · Soru ${state.round} →`;
-  $('how-to').hidden = state.played > 0; // only first-time players need the three steps
   show('home-screen');
 }
 
@@ -1378,6 +1411,7 @@ async function init() {
   $('download-btn').addEventListener('click', downloadImage);
   $('ask-btn').addEventListener('click', askFriend);
   initSharePreview();
+  initIntro();
 
   const rawSoru = new URLSearchParams(location.search).get('soru');
   const parsedSoru = parseQuestionParam(rawSoru);
@@ -1398,6 +1432,9 @@ async function init() {
   }
 
   onHashChange();
+  if (!loadIntroSeen() && (location.hash === '' || location.hash === '#') && state.played === 0) {
+    openIntro();
+  }
 }
 
 // Offline support. On localhost the worker is opt-in (open the page with ?sw) because its

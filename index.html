@@ -77,11 +77,6 @@
         <p>Tahmin et, gerçek fiyatı gör, enflasyonu hisset.</p>
         <p id="home-stats" class="home-stats" hidden></p>
       </div>
-      <ol id="how-to" class="how-to" aria-label="Nasıl oynanır" hidden>
-        <li><strong>Tarihe bak</strong><span>Ürün ve tarih fişte yazar.</span></li>
-        <li><strong>Fiyatı yaz</strong><span>Kaç lira olduğunu tahmin et.</span></li>
-        <li><strong>Fişini al</strong><span>Gerçeği, bugünü ve puanını gör.</span></li>
-      </ol>
       <nav class="mode-list" aria-label="Menü">
         <a class="mode-card mode-main" href="#tahmin">
           <span class="mode-name">Fiyat Tahmini</span>
@@ -238,9 +233,26 @@
   <!-- Announces transient button feedback (copied, downloading...) that would otherwise only change a label. -->
   <div id="sr-status" class="visually-hidden" role="status" aria-live="polite"></div>
 
+  <dialog id="intro" class="intro" aria-labelledby="intro-title">
+    <div class="receipt-card result-receipt intro-card">
+      <p class="receipt-head">*** NE KADARDI? ***</p>
+      <h2 id="intro-title" class="intro-title">Geçmişte fiyatlar ne kadardı?</h2>
+      <ol class="intro-steps">
+        <li><strong>Bir ürün ve tarih görürsün</strong><span>Ör. Ocak 2016'da 1 litre benzin.</span></li>
+        <li><strong>Fiyatını tahmin edersin</strong><span>Kaç lira olduğunu yazman yeter.</span></li>
+        <li><strong>Fişini alırsın</strong><span>Gerçek fiyatı, bugünkü fiyatı ve puanını görürsün.</span></li>
+      </ol>
+      <hr>
+      <p class="intro-trust"><strong>Fiyatlar uydurma değil.</strong> Her fiyat ya o fiyatı açıklayan kurumun kendi belgesinden ya da en az iki ayrı haberden doğrulandı. Kaynağı her fişin altında yazar.</p>
+      <div class="intro-actions">
+        <button type="button" id="intro-play" class="btn primary next-btn">Hemen oyna →</button>
+        <button type="button" id="intro-close" class="link-btn">Ana sayfaya geç</button>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="site-footer">
-    <p>Her fiyatın kaynağı yazılı. Hata görürsen
-      <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a></p>
+    <p>Her fiyat, açıklayan kurumun belgesinden ya da en az iki ayrı haberden. <button type="button" id="intro-open" class="link-btn footer-link-btn">Nasıl çalışıyoruz?</button> · Hata görürsen <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a></p>
     <p><a href="#" class="footer-link">Ana menü</a></p>
     <p class="credit">Sürüm <span id="app-version"></span> · Yapan: <a href="https://github.com/murtibad" target="_blank" rel="noopener">Murat Tokaç</a></p>
   </footer>
