@@ -55,6 +55,7 @@
   <link rel="modulepreload" href="js/ask-link.js">
   <link rel="modulepreload" href="js/intro.js">
   <link rel="modulepreload" href="js/motion.js">
+  <link rel="modulepreload" href="js/report-card.js">
 </head>
 <body>
   <header class="site-header">
@@ -159,6 +160,12 @@
           <p id="r-context" class="context-line"></p>
           <div id="r-context-bars" class="context-bars" aria-hidden="true" hidden></div>
           <p id="r-cashier" class="cashier-line"></p>
+          <section id="r-card" class="report-card" aria-labelledby="r-card-title" hidden>
+            <p id="r-card-title" class="report-card-title"></p>
+            <ol id="r-card-lines" class="report-card-lines"></ol>
+            <p id="r-card-avg" class="report-card-avg"></p>
+            <button type="button" id="r-card-share" class="link-btn">Karneni paylaş →</button>
+          </section>
           <p id="r-ytl" class="ytl-note" hidden></p>
           <p id="r-tax" class="tax-line" hidden></p>
           <details id="r-tax-details" class="tax-details" hidden>

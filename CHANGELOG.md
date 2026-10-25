@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.102.0] - 2026-10-26
+### Added
+- Report card (Murti left the call to Claude): after every 5th answer of a visit the receipt shows "5 SORULUK KARNE": one line per question (date · product · score), the average and the best guess, with "Karneni paylaş →" (text with scores, no prices, so friends can still play). `js/report-card.js`.
+
 ## [0.101.0] - 2026-10-26
 ### Added
 - Cinematic first-visit intro (Murti: "gerçek bir intro gibi, havalı, okutmayan"): a dark stage, a huge year rolling from 2010 to today, a receipt printing out of a slot where Big Mac, benzin and dolar show each year's real sourced price as the year turns (no blending: `priceInYear`), then a "SEN HATIRLIYOR MUSUN?" stamp slams down and "Hemen oyna →" appears. About 3 seconds; "Geç →", any tap or key jumps to the end; with animations off it opens on the final card. Values come from the data, so they never go stale. `js/intro.js` (`introRows`, `yearSteps`, `priceInYear`, `playIntro`), built with Gemini 4 Argon.
