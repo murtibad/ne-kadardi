@@ -105,6 +105,7 @@ export const COUNT_UNITS = {
   'gram-gumus': 'gram gümüş',
   yks: 'YKS sınav ücreti',
   'trafik-cezasi': 'kırmızı ışık cezası',
+  'alkol-cezasi': 'alkollü araç cezası',
   fitre: 'kişilik fitre',
   'taksi-acilis': 'taksi açılışı',
   iphone: 'iPhone',
@@ -120,6 +121,7 @@ export const COUNT_UNITS = {
   'schengen-vize': 'Schengen vizesi',
   spotify: 'aylık Spotify aboneliği',
   'youtube-premium': 'aylık YouTube Premium üyeliği',
+  'amazon-prime': 'aylık Amazon Prime üyeliği',
   netflix: 'aylık Netflix aboneliği',
   'imei-kayit-harci': 'yurt dışı telefon kaydı',
   'istanbul-ulasim': 'otobüs/metro binişi',
@@ -154,10 +156,10 @@ export const COUNT_UNITS = {
 
 // Fees, fines and tolls are paid, not bought: "3 ehliyet harcı ödenebiliyordu".
 const PAID = new Set([
-  'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
+  'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'alkol-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
-  'spotify', 'netflix', 'youtube-premium', 'iski-su', 'okul-servisi', 'mtv', 'ehliyet-esinav', 'anadolu-otoyolu', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
+  'spotify', 'netflix', 'youtube-premium', 'amazon-prime', 'iski-su', 'okul-servisi', 'mtv', 'ehliyet-esinav', 'anadolu-otoyolu', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
 ]);
 
 // Money people receive (pensions, grants) or a cost-of-living line cannot be "bought" with a wage:
@@ -307,6 +309,20 @@ export function buildContextModel(q, allQuestions) {
 
   const thenModel = modelName(q);
   const nowModel = hasNow ? modelName(q.current) : null;
+  // "1 asgari ücretle 1 ceza, bugün 1 ceza" hides a 1,6 → 1,1 change: near one wage, say the share.
+  const fewThen = q.price <= baseWage && baseWage / q.price < 3;
+  const fewNow = hasNow && q.current.price <= currentWage && currentWage / q.current.price < 3;
+  if (!thenModel && (fewThen || fewNow)) {
+    const word = COUNT_UNITS[q.productId];
+    return {
+      kind: 'share',
+      better: 'lower',
+      name: word ? word.charAt(0).toLocaleUpperCase('tr') + word.slice(1) : q.name,
+      today,
+      then: q.price / baseWage,
+      now: hasNow ? q.current.price / currentWage : null,
+    };
+  }
   if (q.price <= baseWage) {
     const unit = getCountUnit(q);
     return {

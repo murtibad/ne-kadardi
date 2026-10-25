@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.95.0] - 2026-10-25
+### Added
+- `alkol-cezasi`: drunk-driving fine, private car over 0.50 promil, first offence: 2018 1.002 · 2020 1.228 · 2022 1.823 · 2023 4.064 · 2024 6.440 · 2025 9.267 · 2026-02 25.000 (Law 7574). Every value on two news domains; 2019 and 2021 (1.339/1.340) left out. New icon `img/alkolmetre.svg`.
+- `amazon-prime`: Amazon Prime Turkey monthly membership: 2020-09 7,90 · 2023-04 39 · 2025-04 49,90 · 2025-10 69,90, each on two news domains. New icon `img/kargo-kutusu.svg`.
+- `trafik-cezasi` 2026-02 5.000: Law 7574 (Resmî Gazete 27.02.2026) fixed the first red-light fine; today's price was still the January 2.719.
+- Purchasing-power line: when one wage buys fewer than 3 of an item (then or now), it compares as a share of the wage ("Alkollü araç cezası o tarihte asgari ücretin %53'ü kadardı; bugün %89'u.") instead of "1 ceza ... bugün 1 ceza".
+- Chart: a question-price label that leans to one side drops the end label it would cover.
+
 ## [0.94.0] - 2026-10-25
 ### Added
 - "Bu soruyu arkadaşına sor →" on the receipt shares the question without its answer: "Soru: Temmuz 2020 · Big Mac. Sence kaç liraydı? Tahmin et, gerçeğini gör:" plus a `?soru=<product>.<date>` link (phone share sheet, or copied on desktop). Opening the link starts that exact question with "Bir arkadaşın bu soruyu sana sordu."; the parameter is then dropped from the address. Pure helpers in `js/ask-link.js`. Built with Gemini 4 Argon.
