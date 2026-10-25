@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.95.1] - 2026-10-25
+### Fixed
+- Chart: the dashed "Tahminin ₺..." label moves under its line when the price line runs through the text above it (`refLabelBelow` in `js/price-chart.js`).
+
 ## [0.95.0] - 2026-10-25
 ### Added
 - `alkol-cezasi`: drunk-driving fine, private car over 0.50 promil, first offence: 2018 1.002 · 2020 1.228 · 2022 1.823 · 2023 4.064 · 2024 6.440 · 2025 9.267 · 2026-02 25.000 (Law 7574). Every value on two news domains; 2019 and 2021 (1.339/1.340) left out. New icon `img/alkolmetre.svg`.

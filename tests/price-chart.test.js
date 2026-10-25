@@ -291,3 +291,16 @@ test('labelSide leans a middle label away from the higher neighbour', async () =
   assert.equal(labelSide(at([90, 80]), 1), 'middle'); // end points keep their own anchor
   assert.equal(labelSide(at([90, 80]), 0), 'middle');
 });
+
+test('refLabelBelow moves the guess label under its line when the data runs through the text', async () => {
+  const { refLabelBelow } = await import('../js/price-chart.js');
+  const pts = (ys) => ys.map((y, i) => ({ x: i * 100, y }));
+  // Line just above the guess line at the right end: text above would sit on it.
+  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 70 }, points: pts([100, 90, 64, 60]) }, false, 110), true);
+  // Line far away: keep the label above.
+  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 70 }, points: pts([20, 20, 20, 20]) }, false, 110), false);
+  // Line crosses both sides: below is no better, keep above.
+  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 70 }, points: pts([100, 90, 64, 78]) }, false, 110), false);
+  // Too close to the year labels at the bottom.
+  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 105 }, points: pts([120, 110, 100, 100]) }, false, 110), false);
+});
