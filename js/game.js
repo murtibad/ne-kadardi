@@ -348,3 +348,15 @@ export function buildContextModel(q, allQuestions) {
     now: hasNow ? q.current.price / currentWage : null,
   };
 }
+
+// A first-time player meets the most talked-about prices first, oldest year each, so the first
+// few receipts land the "it was HOW much?" moment: bread, fuel, Big Mac, iPhone, dollar, Netflix.
+export const OPENER_IDS = ['ekmek', 'benzin', 'big-mac', 'iphone', 'dolar', 'netflix'];
+
+/** The opener for position `index` (oldest question of that product), or null when past the list or missing. */
+export function openerFor(questions, index) {
+  const id = OPENER_IDS[index];
+  if (!id) return null;
+  const own = questions.filter((q) => q.productId === id).sort((a, b) => a.date.localeCompare(b.date));
+  return own[0] ?? null;
+}
