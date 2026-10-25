@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.97.1] - 2026-10-26
+### Changed
+- New link preview (`social.jpg`, 1200x630): the title, "Tahmin et, gerçeğini ve bugününü fişte gör.", a "HER FİYAT KAYNAKLI" stamp and a receipt with three sourced past prices (Big Mac Ocak 2010 ₺5,65, 1 litre benzin Ocak 2016 ₺4,28, 1 dolar Ocak 2010 ₺1,49) asking "Ya bugün?". Only past values, so it does not go stale. Rendered from HTML with the site's fonts in headless Chrome.
+
 ## [0.97.0] - 2026-10-26
 ### Added
 - `disney-plus`: Disney+ Turkey cheapest monthly plan: 2022-06 34,99 · 2022-12 64,99 · 2024-02 134,99 · 2024-10 164,90 · 2025-09 249,90, each on two news domains (the 164,99 some sites print is a typo: their yearly price is 1.649).
