@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.98.0] - 2026-10-26
+### Added
+- Animation setting (Murti: his iPhone has "Reduce Motion" on and he saw no animation): the phone's setting is now only the default. A footer switch "Animasyonlar: açık / kapalı" overrides it and is remembered (`ne-kadardi-motion`). A tiny script in `<head>` sets `<html data-motion>` before first paint; CSS uses `:root[data-motion="reduce"]` instead of the media query and JS reads `reducedMotion()` (`js/motion.js`).
+
 ## [0.97.1] - 2026-10-26
 ### Changed
 - New link preview (`social.jpg`, 1200x630): the title, "Tahmin et, gerçeğini ve bugününü fişte gör.", a "HER FİYAT KAYNAKLI" stamp and a receipt with three sourced past prices (Big Mac Ocak 2010 ₺5,65, 1 litre benzin Ocak 2016 ₺4,28, 1 dolar Ocak 2010 ₺1,49) asking "Ya bugün?". Only past values, so it does not go stale. Rendered from HTML with the site's fonts in headless Chrome.

@@ -296,7 +296,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   background: var(--fill, var(--accent));
   transition: width 0.4s ease-out;
 }
-@media (prefers-reduced-motion: reduce) { .meter > span { transition: none; } }
+:root[data-motion="reduce"] .meter > span { transition: none; }
 
 .score-box {
   text-align: center;
@@ -353,10 +353,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .ctx-bar.down { background: var(--accent-on-paper); }
 .ctx-bar.up { background: var(--tier-good); }
 .ctx-value { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--ink); white-space: nowrap; min-width: 5.5rem; text-align: right; }
-@media (prefers-reduced-motion: no-preference) {
-  .ctx-bar { transform-origin: left; animation: ctx-grow .7s ease-out both; }
-  @keyframes ctx-grow { from { transform: scaleX(0); } }
-}
+@keyframes ctx-grow { from { transform: scaleX(0); } }
+:root:not([data-motion="reduce"]) .ctx-bar { transform-origin: left; animation: ctx-grow .7s ease-out both; }
 
 .tax-details summary {
   cursor: pointer;
@@ -498,10 +496,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .share-preview .btn[hidden] { display: none; }
 .share-preview .btn.primary { background: var(--ink); color: var(--paper); flex: 1 1 100%; }
 .share-preview .btn:focus-visible { outline: 3px solid var(--accent-on-paper, var(--ink)); outline-offset: 2px; }
-@media (prefers-reduced-motion: no-preference) {
-  .share-preview[open] { animation: share-preview-in 0.18s ease-out; }
-  .share-preview[open]::backdrop { animation: share-preview-fade 0.18s ease-out; }
-}
+:root:not([data-motion="reduce"]) .share-preview[open] { animation: share-preview-in 0.18s ease-out; }
+:root:not([data-motion="reduce"]) .share-preview[open]::backdrop { animation: share-preview-fade 0.18s ease-out; }
 @keyframes share-preview-in { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
 @keyframes share-preview-fade { from { opacity: 0; } }
 
@@ -564,14 +560,12 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   clip: rect(0 0 0 0); white-space: nowrap;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
+:root[data-motion="reduce"] * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
 
 
 /* Timeline Screen */
@@ -770,12 +764,10 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 
 /* Short colour fade when the theme is switched by hand (class is set for ~400ms by main.js) */
-@media (prefers-reduced-motion: no-preference) {
-  html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+html:not([data-motion="reduce"]).theme-anim, html:not([data-motion="reduce"]).theme-anim *, html:not([data-motion="reduce"]).theme-anim *::before, html:not([data-motion="reduce"]).theme-anim *::after {
     transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, fill 0.35s ease !important;
   }
-  .theme-toggle.spin { animation: theme-spin 0.4s ease; }
-}
+:root:not([data-motion="reduce"]) .theme-toggle.spin { animation: theme-spin 0.4s ease; }
 @keyframes theme-spin { from { transform: rotate(-90deg) scale(0.8); } to { transform: none; } }
 
 
@@ -792,9 +784,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 /* Explicit disclosure marker: flex summaries lose the native one */
 .tax-details summary::before, .timeline-note summary::before { content: ""; flex: none; width: 0.4em; height: 0.4em; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(-45deg); }
 .tax-details[open] > summary::before, .timeline-note[open] > summary::before { transform: rotate(45deg); }
-@media (prefers-reduced-motion: no-preference) {
-  .tax-details summary::before, .timeline-note summary::before { transition: transform 0.15s ease; }
-}
+:root:not([data-motion="reduce"]) .tax-details summary::before, :root:not([data-motion="reduce"]) .timeline-note summary::before { transition: transform 0.15s ease; }
 .timeline-source, .source a, .tax-period-sources a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
 /* Consistent keyboard focus ring (--accent is >= 3.5:1 on page and paper in both themes) */
 .btn:focus-visible, .picker-chip:focus-visible, .hint-btn:focus-visible, .archive-link:focus-visible,
@@ -815,10 +805,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 /* Result icon reacts to the score; motion only for users who allow it */
 .result-image { width: 56px; height: 56px; margin: 4px auto 8px; }
-@media (prefers-reduced-motion: no-preference) {
-  .result-image.bounce { animation: icon-bounce 0.7s ease; }
-  .result-image.shake { animation: icon-shake 0.6s ease; }
-}
+:root:not([data-motion="reduce"]) .result-image.bounce { animation: icon-bounce 0.7s ease; }
+:root:not([data-motion="reduce"]) .result-image.shake { animation: icon-shake 0.6s ease; }
 @keyframes icon-bounce { 0%, 100% { transform: none; } 30% { transform: translateY(-14px) scale(1.12); } 55% { transform: translateY(0) scale(0.96); } 75% { transform: translateY(-5px); } }
 @keyframes icon-shake { 0%, 100% { transform: none; } 20% { transform: translateX(-8px) rotate(-6deg); } 40% { transform: translateX(8px) rotate(6deg); } 60% { transform: translateX(-5px) rotate(-3deg); } 80% { transform: translateX(4px) rotate(2deg); } }
 
@@ -841,9 +829,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 /* "Next question" is the main way forward: accent colour so it never reads as just another button */
 .btn.next-btn { background: var(--accent); border-color: var(--accent); color: #fff; white-space: nowrap; }
-@media (prefers-reduced-motion: no-preference) {
-  .btn.next-btn.nudge { animation: next-nudge 1.4s ease 0.2s 2; }
-}
+:root:not([data-motion="reduce"]) .btn.next-btn.nudge { animation: next-nudge 1.4s ease 0.2s 2; }
 @keyframes next-nudge {
   0%, 100% { transform: none; box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
   30% { transform: translateX(4px); box-shadow: 0 0 0 6px rgba(211, 47, 47, 0.25); }
@@ -876,11 +862,9 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 #result-screen .receipt-wrapper.printing :is(a, summary, button) { pointer-events: none; }
 #result-screen .result-receipt::before { display: none; } /* the top edge is still in the printer */
 #result-screen .result-receipt { padding-top: 24px; }
-@media (prefers-reduced-motion: no-preference) {
-  #result-screen .receipt-wrapper.printing .result-receipt { animation: receipt-print 1.1s cubic-bezier(0.25, 0.1, 0.25, 1) both; }
-  #result-screen .receipt-wrapper.torn .result-receipt { animation: receipt-tear 0.3s ease-out; transform-origin: 50% 0; }
-  #result-screen .printer:has(+ .receipt-wrapper.torn) { animation: printer-shake 0.25s ease-out; }
-}
+:root:not([data-motion="reduce"]) #result-screen .receipt-wrapper.printing .result-receipt { animation: receipt-print 1.1s cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+:root:not([data-motion="reduce"]) #result-screen .receipt-wrapper.torn .result-receipt { animation: receipt-tear 0.3s ease-out; transform-origin: 50% 0; }
+:root:not([data-motion="reduce"]) #result-screen .printer:has(+ .receipt-wrapper.torn) { animation: printer-shake 0.25s ease-out; }
 @keyframes receipt-print {
   from { transform: translateY(-100%); }
   to { transform: none; }
@@ -900,10 +884,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .home-stats { margin-top: 10px !important; font: 700 0.8125rem var(--font-mono) !important; letter-spacing: 0.02em; }
 .mode-main { position: relative; }
 .mode-go { justify-self: end; font: 700 0.875rem var(--font-ui); color: var(--paper); background: var(--accent-on-paper); padding: 6px 12px; border-radius: 999px; }
-@media (prefers-reduced-motion: no-preference) {
-  .mode-go { transition: transform 0.15s ease; }
-  .mode-main:hover .mode-go { transform: translateX(3px); }
-}
+:root:not([data-motion="reduce"]) .mode-go { transition: transform 0.15s ease; }
+:root:not([data-motion="reduce"]) .mode-main:hover .mode-go { transform: translateX(3px); }
 .fact-card { margin-top: 16px; padding: 14px 16px 16px; background: var(--paper); color: var(--ink); border: 2px dashed var(--line); border-radius: 8px; }
 .fact-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .fact-head h3 { margin: 0; font: 700 0.75rem var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-on-paper); }
@@ -925,9 +907,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .fact-ratio { font-size: 0.875rem; }
 .fact-ratio strong { font-family: var(--font-mono); color: var(--accent-on-paper); }
 .fact-ratio a { color: inherit; font-weight: 600; text-underline-offset: 3px; }
-@media (prefers-reduced-motion: no-preference) {
-  .fact-body > * { animation: fact-in 0.25s ease both; }
-}
+:root:not([data-motion="reduce"]) .fact-body > * { animation: fact-in 0.25s ease both; }
 @keyframes fact-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* Header toggles carry inline SVG icons now */
@@ -1065,11 +1045,9 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   border-color: var(--accent-on-paper);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .guess-field.invalid {
+:root:not([data-motion="reduce"]) .guess-field.invalid {
     animation: guess-shake 0.3s ease;
   }
-}
 
 @keyframes guess-shake {
   0%, 100% { transform: none; }
@@ -1133,9 +1111,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .pc-label { font: 700 10px var(--font-mono); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
 .pc-label-mark { fill: var(--accent-on-paper); }
 .pc-tick { font: 400 10px var(--font-mono); fill: var(--muted-on-paper); }
-@media (prefers-reduced-motion: no-preference) {
-  .pc-draw .pc-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: pc-draw 0.9s ease-out 0.3s forwards; }
-}
+:root:not([data-motion="reduce"]) .pc-draw .pc-line { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: pc-draw 0.9s ease-out 0.3s forwards; }
 @keyframes pc-draw { to { stroke-dashoffset: 0; } }
 
 /* Archive receipt: product icon and the then-vs-now takeaway above the chart */
@@ -1159,16 +1135,14 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   transform: rotate(-4deg);
   opacity: 0.9;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .receipt-stamp {
+:root:not([data-motion="reduce"]) .receipt-stamp {
     opacity: 0;
     transform: scale(1.6) rotate(-4deg);
   }
-  .receipt-stamp.stamped {
+:root:not([data-motion="reduce"]) .receipt-stamp.stamped {
     animation: stamp-land 0.35s ease-out forwards;
   }
-  .meter > span { transition: width 0.6s cubic-bezier(.2,.8,.2,1); }
-}
+:root:not([data-motion="reduce"]) .meter > span { transition: width 0.6s cubic-bezier(.2,.8,.2,1); }
 @keyframes stamp-land {
   from { transform: scale(1.6) rotate(-4deg); opacity: 0; }
   to { transform: scale(1) rotate(-4deg); opacity: 0.9; }
@@ -1187,9 +1161,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .skeleton[hidden] { display: none; }
 .skeleton span { height: 12px; border-radius: 3px; background: var(--line); }
 .skeleton .short { width: 55%; }
-@media (prefers-reduced-motion: no-preference) {
-  .skeleton span { animation: skeleton-pulse 1.1s ease-in-out infinite alternate; }
-}
+:root:not([data-motion="reduce"]) .skeleton span { animation: skeleton-pulse 1.1s ease-in-out infinite alternate; }
 @keyframes skeleton-pulse { from { opacity: 0.45; } to { opacity: 1; } }
 
 /* Logo mark and the install button on the home screen */
@@ -1199,9 +1171,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .install-btn[hidden] { display: none; }
 
 /* Screen enter transition (result-screen uses the receipt printer animation instead) */
-@media (prefers-reduced-motion: no-preference) {
-  .screen-enter { animation: screen-in 0.22s ease-out both; }
-}
+:root:not([data-motion="reduce"]) .screen-enter { animation: screen-in 0.22s ease-out both; }
 @keyframes screen-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
@@ -1224,9 +1194,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 
 /* Offline badge in the header and the product icon popping onto each new question card */
 .offline-badge { display: inline-flex; align-items: center; min-height: 28px; padding: 2px 10px; border: 1.5px dashed var(--muted); border-radius: 999px; font: 700 0.75rem var(--font-mono); color: var(--muted); }
-@media (prefers-reduced-motion: no-preference) {
-  .product-image.pop { animation: icon-pop 0.35s cubic-bezier(.2, 1.4, .4, 1) both; }
-}
+:root:not([data-motion="reduce"]) .product-image.pop { animation: icon-pop 0.35s cubic-bezier(.2, 1.4, .4, 1) both; }
 @keyframes icon-pop { from { transform: scale(0.6) rotate(-8deg); opacity: 0; } to { transform: none; opacity: 1; } }
 .header-tools { margin-left: auto; } /* stays on the right when the badge makes the header wrap */
 
@@ -1348,9 +1316,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 #result-screen.handed .receipt-wrapper { clip-path: none; }
 #result-screen.handed .result-receipt::before { display: block; } /* the torn top edge, now free */
 #result-screen.handed { --receipt-shadow: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.18)); }
-@media (prefers-reduced-motion: no-preference) {
-  #result-screen.handed .receipt-wrapper.torn .result-receipt { animation: receipt-hand 0.45s ease-out, receipt-float 7s ease-in-out 0.45s infinite; }
-}
+:root:not([data-motion="reduce"]) #result-screen.handed .receipt-wrapper.torn .result-receipt { animation: receipt-hand 0.45s ease-out, receipt-float 7s ease-in-out 0.45s infinite; }
 @keyframes receipt-hand {
   from { transform: translateY(6px) rotate(-1.2deg) scale(0.985); }
   to { transform: none; }
@@ -1497,26 +1463,24 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   font-weight: 600;
   color: inherit;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .intro[open] .intro-card {
+:root:not([data-motion="reduce"]) .intro[open] .intro-card {
     animation: intro-card-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
-  .intro[open]::backdrop {
+:root:not([data-motion="reduce"]) .intro[open]::backdrop {
     animation: share-preview-fade 0.25s ease-out both;
   }
-  .intro[open] .intro-steps li:nth-child(1) {
+:root:not([data-motion="reduce"]) .intro[open] .intro-steps li:nth-child(1) {
     animation: intro-item-in 0.32s ease-out 0.12s both;
   }
-  .intro[open] .intro-steps li:nth-child(2) {
+:root:not([data-motion="reduce"]) .intro[open] .intro-steps li:nth-child(2) {
     animation: intro-item-in 0.32s ease-out 0.24s both;
   }
-  .intro[open] .intro-steps li:nth-child(3) {
+:root:not([data-motion="reduce"]) .intro[open] .intro-steps li:nth-child(3) {
     animation: intro-item-in 0.32s ease-out 0.36s both;
   }
-  .intro[open] .intro-trust {
+:root:not([data-motion="reduce"]) .intro[open] .intro-trust {
     animation: intro-item-in 0.32s ease-out 0.48s both;
   }
-}
 @keyframes intro-card-in {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }

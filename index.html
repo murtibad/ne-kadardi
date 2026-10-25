@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
+<script>/* Animations: a saved choice wins, else the phone's reduce-motion switch (same rule as js/motion.js). Set before paint so nothing starts moving first. */try{var m=localStorage.getItem('ne-kadardi-motion');document.documentElement.dataset.motion=m==='full'||m==='reduce'?m:(matchMedia('(prefers-reduced-motion: reduce)').matches?'reduce':'full')}catch(e){document.documentElement.dataset.motion='full'}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ne Kadardı? · Fiyat tahmin oyunu</title>
   <meta name="description" content="Geçmiş yıllarda benzin, altın, ekmek ne kadardı? Tahmin et, gerçek fiyatla karşılaştır.">
@@ -52,6 +53,7 @@
   <link rel="modulepreload" href="js/price-chart.js">
   <link rel="modulepreload" href="js/count-up.js">
   <link rel="modulepreload" href="js/ask-link.js">
+  <link rel="modulepreload" href="js/motion.js">
 </head>
 <body>
   <header class="site-header">
@@ -253,7 +255,7 @@
 
   <footer class="site-footer">
     <p>Her fiyat, açıklayan kurumun belgesinden ya da en az iki ayrı haberden. <button type="button" id="intro-open" class="link-btn footer-link-btn">Nasıl çalışıyoruz?</button> · <span class="nowrap">Hata görürsen <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a></span></p>
-    <p><a href="#" class="footer-link">Ana menü</a></p>
+    <p><a href="#" class="footer-link">Ana menü</a> · <button type="button" id="motion-toggle" class="link-btn footer-link-btn" aria-pressed="true">Animasyonlar: açık</button></p>
     <p class="credit">Sürüm <span id="app-version"></span> · Yapan: <a href="https://github.com/murtibad" target="_blank" rel="noopener">Murat Tokaç</a></p>
   </footer>
 </body>

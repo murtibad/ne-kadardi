@@ -18,13 +18,14 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
+import { MOTION_KEY, motionLabel, reducedMotion } from './motion.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
 const sound = createSoundPlayer();
 // Vibration follows the sound switch and the reduced-motion preference.
 const hapticIfAllowed = (ms) => {
-  if (!sound.isEnabled() || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+  if (!sound.isEnabled() || reducedMotion()) return;
   haptic(ms);
 };
 
@@ -335,7 +336,7 @@ function handOver() {
 
 function printReceipt(extraSound) {
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
-  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const reduced = reducedMotion();
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
   $('result-screen').classList.remove('handed');
@@ -618,7 +619,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     // Scroll only when the row is off screen, so the tapped chart does not jump away.
     const rect = match?.getBoundingClientRect();
     if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
-      const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      const reduced = reducedMotion();
       match.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
     }
   } : undefined);
@@ -975,6 +976,25 @@ function closeIntro() {
   if (dlg?.open) dlg.close();
 }
 
+// Footer switch: the phone's reduce-motion setting is only the default (set in index.html's head).
+function initMotionToggle() {
+  const btn = $('motion-toggle');
+  if (!btn) return;
+  const sync = () => {
+    const mode = reducedMotion() ? 'reduce' : 'full';
+    btn.textContent = motionLabel(mode);
+    btn.setAttribute('aria-pressed', String(mode === 'full'));
+  };
+  btn.addEventListener('click', () => {
+    const next = reducedMotion() ? 'full' : 'reduce';
+    document.documentElement.dataset.motion = next;
+    try { localStorage.setItem(MOTION_KEY, next); } catch { /* storage unavailable */ }
+    sync();
+    announce(motionLabel(next));
+  });
+  sync();
+}
+
 function initIntro() {
   const dlg = $('intro');
   if (!dlg) return;
@@ -1095,7 +1115,7 @@ function renderProductChips(visible, selectedId, focusProductId) {
   const row = picker.getBoundingClientRect();
   const chip = chosen.getBoundingClientRect();
   picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
-    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    behavior: reducedMotion() ? 'auto' : 'smooth' });
 }
 
 function renderTimelineHeader(product) {
@@ -1138,7 +1158,7 @@ function linkRowsToChart() {
     const fig = $('t-chart');
     fig._activateDate?.(btn.dataset.date);
     if (!fig.hidden) {
-      const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      const reduced = reducedMotion();
       fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
     }
   });
@@ -1412,6 +1432,7 @@ async function init() {
   $('ask-btn').addEventListener('click', askFriend);
   initSharePreview();
   initIntro();
+  initMotionToggle();
 
   const rawSoru = new URLSearchParams(location.search).get('soru');
   const parsedSoru = parseQuestionParam(rawSoru);
