@@ -1017,7 +1017,8 @@ async function shareReportCard(e) {
   btn.dataset.label ??= btn.textContent;
   btn.textContent = msg;
   announce(msg);
-  setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
+  clearTimeout(btn.restoreTimer); // a second tap must not let the first timer cut its message short
+  btn.restoreTimer = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
 }
 
 function initIntro() {
@@ -1503,7 +1504,11 @@ function registerServiceWorker() {
       .catch(() => {});
     return;
   }
-  navigator.serviceWorker.register('sw.js').catch(err => console.warn('Service worker:', err));
+  // Wait for 'load' so precaching does not compete with the first screen for bandwidth.
+  const register = () => navigator.serviceWorker.register('sw.js')
+    .catch(err => console.warn('Service worker:', err));
+  if (document.readyState === 'complete') register();
+  else window.addEventListener('load', register, { once: true });
 }
 
 registerServiceWorker();

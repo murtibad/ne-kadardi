@@ -1658,7 +1658,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 
 /* Question card: a quiet way to pass the question to a friend. */
 .ask-q { margin: 4px 0 0; text-align: center; font-size: 0.875rem; color: var(--muted-on-paper); }
-.ask-q .link-btn { font-size: 0.875rem; color: var(--text); }
+/* --ink, not --text: the card stays paper-coloured in dark mode, where --text is the paper colour. */
+.ask-q .link-btn { font-size: 0.875rem; color: var(--ink); }
 
 /* Report card every fifth answer: a dashed box inside the receipt. */
 .report-card { margin: 16px 0 4px; padding: 12px 14px; border: 2px dashed var(--muted-on-paper); border-radius: 6px; font-family: var(--font-mono); }

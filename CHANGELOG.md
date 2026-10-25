@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.104.2] - 2026-10-26
+### Fixed
+- Dark mode: the question card's "Arkadaşına sor →" button was invisible (paper-coloured text on the paper card) since 0.100.0. It now uses the card's ink colour.
+- Screen readers hear the date, product and unit when focus lands on the guess field of a new question.
+- Tapping "Karneni paylaş" twice no longer lets the first timer restore the label early.
+
+### Changed
+- The service worker registers after the page's `load` event, so precaching does not compete with the first screen for bandwidth.
+
 ## [0.104.1] - 2026-10-26
 ### Changed
 - Data notes: Fiat Egea Easy's series ends at the October 2025 list price because the 1.4 Fire sedan left the price list in January 2026 and Egea Sedan production ended on 30 June 2026; iPhone stays at iPhone 17 because September 2026 brought only Pro, Pro Max and Duo models, no base model. Two sources each, no price changed.
