@@ -18,6 +18,7 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
+import { introRows, playIntro } from './intro.js';
 import { MOTION_KEY, motionLabel, reducedMotion } from './motion.js';
 
 const DATA_URL = 'data/prices.json';
@@ -968,14 +969,19 @@ function saveIntroSeen() {
   try { localStorage.setItem(INTRO_KEY, '1'); } catch { /* storage unavailable */ }
 }
 
+let finishIntro = null;
+
 function openIntro() {
   const dlg = $('intro');
   if (!dlg || typeof dlg.showModal !== 'function') return;
+  finishIntro?.({ moveFocus: false });
   if (!dlg.open) dlg.showModal();
-  $('intro-play')?.focus();
+  finishIntro = playIntro(dlg, introRows(state.timelines), { reduced: reducedMotion(), sound });
 }
 
 function closeIntro() {
+  finishIntro?.({ moveFocus: false });
+  finishIntro = null;
   saveIntroSeen();
   const dlg = $('intro');
   if (dlg?.open) dlg.close();
@@ -1009,8 +1015,12 @@ function initIntro() {
   });
   $('intro-close')?.addEventListener('click', closeIntro);
   $('intro-open')?.addEventListener('click', openIntro);
-  // Pressing Escape dismisses the modal via cancel; mark seen so it does not nag on reload.
-  dlg.addEventListener('cancel', saveIntroSeen);
+  // Pressing Escape dismisses the modal via cancel; mark seen and stop any running intro timers/sounds.
+  dlg.addEventListener('cancel', () => {
+    finishIntro?.({ moveFocus: false });
+    finishIntro = null;
+    saveIntroSeen();
+  });
 }
 
 const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
