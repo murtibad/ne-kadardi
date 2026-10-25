@@ -15,6 +15,7 @@ const PRECACHE = [
   'manifest.webmanifest',
   'css/style.css',
   'data/prices.json',
+  'js/ask-link.js',
   'js/banter.js',
   'js/cashier.js',
   'js/categories.js',

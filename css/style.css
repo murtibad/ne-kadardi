@@ -1395,3 +1395,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .price-chart figcaption { font-size: 0.75rem; }
 #r-chart figcaption { font-size: 0.8125rem; }
 .pc-label, .pc-tick, .pc-ref-label, .pc-tip text { font-size: 11px; }
+
+.link-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; font: inherit; font-weight: 700; color: inherit; text-decoration: underline; cursor: pointer; }
+.link-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }

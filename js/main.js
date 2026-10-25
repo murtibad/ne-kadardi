@@ -17,6 +17,7 @@ import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
+import { parseQuestionParam, askUrl, askText } from './ask-link.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -110,11 +111,17 @@ function showMessage(text) {
 }
 
 let downloadOriginalLabel = '';
+let askOriginalLabel = '';
+let askTimeoutId = null;
 
 function resetShareBtn() {
   if (shareTimeoutId !== null) {
     clearTimeout(shareTimeoutId);
     shareTimeoutId = null;
+  }
+  if (askTimeoutId !== null) {
+    clearTimeout(askTimeoutId);
+    askTimeoutId = null;
   }
   if (shareOriginalLabel) {
     $('share-btn').textContent = shareOriginalLabel;
@@ -123,6 +130,9 @@ function resetShareBtn() {
   if (downloadOriginalLabel) {
     $('download-btn').innerHTML = downloadOriginalLabel;
     $('download-btn').removeAttribute('aria-busy');
+  }
+  if (askOriginalLabel && $('ask-btn')) {
+    $('ask-btn').textContent = askOriginalLabel;
   }
 }
 
@@ -146,8 +156,9 @@ function setBtnStatus(btnId, text) {
   }, 2000);
 }
 
-// `productId` starts with a question about one product (the home fact card's "Bunu tahmin et").
-function nextQuestion(productId = null) {
+// `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
+// adding `date` pins the exact question from a shared `?soru=` link.
+function nextQuestion(productId = null, date = null) {
   stopPrinting();
   state.archiveFromResult = false;
   resetShareBtn();
@@ -155,11 +166,12 @@ function nextQuestion(productId = null) {
     $('r-tax-details').hidden = true;
     $('r-tax-details').open = false;
   }
+  const exact = productId && date ? state.all.find((x) => x.productId === productId && x.date === date) : null;
   const ofProduct = productId ? state.all.filter((x) => x.productId === productId) : [];
   // Avoid repeating the last question, unless it is the product's only one.
   const fresh = ofProduct.filter((x) => x.id !== state.question?.id);
   const pool = fresh.length ? fresh : ofProduct;
-  const q = pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id);
+  const q = exact ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id));
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;
@@ -807,6 +819,37 @@ async function share() {
   }
 }
 
+async function askFriend() {
+  const q = state.question;
+  if (!q) return;
+  const base = location.origin + location.pathname;
+  const text = askText(formatPeriod(q.date), questionTitle(q));
+  const url = askUrl(q, base);
+  if (navigator.share) {
+    try {
+      await navigator.share({ text, url });
+    } catch (err) {
+      if (err.name !== 'AbortError') console.warn(err);
+    }
+    return;
+  }
+  const setAskStatus = (msg) => {
+    if (askTimeoutId !== null) clearTimeout(askTimeoutId);
+    announce(msg);
+    $('ask-btn').textContent = msg;
+    askTimeoutId = setTimeout(() => {
+      askTimeoutId = null;
+      if (askOriginalLabel && $('ask-btn')) $('ask-btn').textContent = askOriginalLabel;
+    }, 2000);
+  };
+  try {
+    await navigator.clipboard.writeText(`${text} ${url}`);
+    setAskStatus('Bağlantı kopyalandı ✓');
+  } catch {
+    setAskStatus('Kopyalanamadı');
+  }
+}
+
 let previewUrl = null;
 let previewFile = null;
 
@@ -1259,6 +1302,7 @@ async function init() {
   }
   shareOriginalLabel = $('share-btn').textContent;
   downloadOriginalLabel = $('download-btn').innerHTML;
+  askOriginalLabel = $('ask-btn').textContent;
   // The search input lives outside the rebuilt chip rows, so it keeps focus while typing.
   $('product-search').addEventListener('input', (e) => {
     state.timelineQuery = e.target.value;
@@ -1312,8 +1356,27 @@ async function init() {
   });
   $('share-btn').addEventListener('click', share);
   $('download-btn').addEventListener('click', downloadImage);
+  $('ask-btn').addEventListener('click', askFriend);
   initSharePreview();
-  
+
+  const rawSoru = new URLSearchParams(location.search).get('soru');
+  const parsedSoru = parseQuestionParam(rawSoru);
+  const askedQuestion = parsedSoru && state.all.find((x) => x.productId === parsedSoru.productId && x.date === parsedSoru.date);
+  if (askedQuestion) {
+    // Drop ?soru so a reload does not repeat the shared question, and open it right away.
+    history.replaceState(null, '', location.pathname + '#tahmin');
+    nextQuestion(parsedSoru.productId, parsedSoru.date);
+    $('q-anchor').textContent = 'Bir arkadaşın bu soruyu sana sordu.';
+    $('q-anchor').hidden = false;
+    return;
+  }
+  if (rawSoru !== null) {
+    const params = new URLSearchParams(location.search);
+    params.delete('soru');
+    const rest = params.toString();
+    history.replaceState(null, '', location.pathname + (rest ? `?${rest}` : '') + location.hash);
+  }
+
   onHashChange();
 }
 
