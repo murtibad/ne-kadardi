@@ -15,7 +15,7 @@ import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
-import { buildPriceChart, refLabelAtStart } from './price-chart.js';
+import { buildPriceChart, labelSide, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 
 const DATA_URL = 'data/prices.json';
@@ -542,7 +542,11 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     : '';
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const hits = chart.points.map((p, i) => `<circle class="pc-hit" cx="${p.x}" cy="${p.y}" r="12" data-i="${i}"/>`).join('');
-  const priceLabels = labels.map((p) => `<text x="${p.x}" y="${Math.max(11, p.y - 9)}" text-anchor="${anchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
+  // A marked point in the middle leans its label away from the steeper side of the line.
+  const markSide = marked && anchor(marked) === 'middle' ? labelSide(chart.points, chart.points.indexOf(marked)) : 'middle';
+  const labelX = (p) => (p !== marked || markSide === 'middle' ? p.x : markSide === 'left' ? p.x - 6 : p.x + 6);
+  const labelAnchor = (p) => (p !== marked || markSide === 'middle' ? anchor(p) : markSide === 'left' ? 'end' : 'start');
+  const priceLabels = labels.map((p) => `<text x="${labelX(p)}" y="${Math.max(11, p.y - 9)}" text-anchor="${labelAnchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
   // Drop a year label that would touch the one shown before it or the last one (which always stays).
   // A year label is about 36 units wide: centred ones take half each side, the first grows right and the last left.
   const gap = (aEdge, bEdge) => (aEdge ? 36 : 18) + (bEdge ? 36 : 18) + 4;
