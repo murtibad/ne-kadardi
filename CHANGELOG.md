@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.93.0] - 2026-10-25
+### Changed
+- Amounts people get (minimum wage, pension, holiday bonus, grants, severance ceiling, hunger line) no longer talk like prices: the chart says "Yıllar içinde tutarı", the archive link "Yıllar içindeki tutarları →", far-off guesses get their own lines ("Keşke o kadar olsaydı, ama değildi.") and the cashier skips shop-talk lines (fiyat, kasa, etiket, pazar). `isAmount` in `js/game.js` decides.
+- Togg T10X has its own SUV icon (`img/suv.svg`) instead of sharing the sedan.
+
 ## [0.92.10] - 2026-10-25
 ### Fixed
 - The price chart's red label for the question's own price no longer sits on the line: in the middle of the chart it leans to the side where the line is lower (`labelSide` in `js/price-chart.js`).

@@ -51,3 +51,13 @@ test('different rng values can select different lines', () => {
   }
   assert.ok(selected.size > 1, 'expected different lines across different rng values');
 });
+
+test('amount products get no shop-talk cashier lines', async () => {
+  const { cashierComment, CASHIER_COMMENTS } = await import('../js/cashier.js');
+  for (const tier of Object.keys(CASHIER_COMMENTS)) {
+    for (let i = 0; i < CASHIER_COMMENTS[tier].length; i++) {
+      const line = cashierComment(tier, () => i / CASHIER_COMMENTS[tier].length, { amount: true });
+      assert.doesNotMatch(line, /fiyat|kasa|etiket|pazar|alışveriş/i, `${tier}: ${line}`);
+    }
+  }
+});
