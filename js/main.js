@@ -543,11 +543,15 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   const first = chart.points[0];
   const last = chart.points[chart.points.length - 1];
   const marked = chart.points.find((p) => p.highlight);
-  // The question's own price wins when an end label would collide with it.
-  const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i
-    && (!marked || p === marked || Math.abs(p.x - marked.x) > 52));
   // Keep end labels inside the box: anchor them towards the middle.
   const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
+  // A marked point in the middle leans its label away from the steeper side of the line.
+  const markSide = marked && anchor(marked) === 'middle' ? labelSide(chart.points, chart.points.indexOf(marked)) : 'middle';
+  // The question's own price wins when an end label would collide with it; a leaning label
+  // covers about twice as much room on its side.
+  const room = (p) => ((markSide === 'left' && p.x < marked.x) || (markSide === 'right' && p.x > marked.x) ? 104 : 52);
+  const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i
+    && (!marked || p === marked || Math.abs(p.x - marked.x) > room(p)));
   // A close guess sits right on the data: put its label at the end whose points are farther away.
   const refStart = chart.ref && refLabelAtStart(chart, 110);
   const refLine = chart.ref
@@ -555,8 +559,6 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     : '';
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const hits = chart.points.map((p, i) => `<circle class="pc-hit" cx="${p.x}" cy="${p.y}" r="12" data-i="${i}"/>`).join('');
-  // A marked point in the middle leans its label away from the steeper side of the line.
-  const markSide = marked && anchor(marked) === 'middle' ? labelSide(chart.points, chart.points.indexOf(marked)) : 'middle';
   const labelX = (p) => (p !== marked || markSide === 'middle' ? p.x : markSide === 'left' ? p.x - 6 : p.x + 6);
   const labelAnchor = (p) => (p !== marked || markSide === 'middle' ? anchor(p) : markSide === 'left' ? 'end' : 'start');
   const priceLabels = labels.map((p) => `<text x="${labelX(p)}" y="${Math.max(11, p.y - 9)}" text-anchor="${labelAnchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');

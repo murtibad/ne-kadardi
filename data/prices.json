@@ -5171,21 +5171,21 @@
       "name": "Kırmızı ışıkta geçme cezası",
       "unit": "1 ceza (otomobil sürücüsü, ilk kez)",
       "region": null,
-      "source_hint": "2918 sayılı Karayolları Trafik Kanunu madde 47/1-b; ceza her Ocak yeniden değerleme oranıyla artar. Haber kaynaklı.",
+      "source_hint": "2918 sayılı Karayolları Trafik Kanunu madde 47/1-b; 2026 Şubat'a kadar ceza her Ocak yeniden değerleme oranıyla arttı, 27.02.2026'dan beri 7574 sayılı Kanunla sabit tutar (ilk ihlal). Haber kaynaklı.",
       "image": {
         "src": "img/trafik-isigi.svg",
         "alt": "Trafik ışığı çizimi",
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-01",
-        "price": 2719,
+        "date": "2026-02",
+        "price": 5000,
         "status": "verified",
-        "note": "Kırmızı ışık ihlalinin idari para cezası (47/1-b), o yıl Ocak ayından itibaren geçerli. Kırmızı ışık ihlali idari para cezası. Doğrulama: arabam.com https://www.arabam.com/blog/?p=178807.",
+        "note": "Kırmızı ışık ihlalinin ilk seferdeki idari para cezası (47/1-b). 27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun (Resmî Gazete 33181) cezayı yeniden değerlemeden çıkarıp sabit tutara bağladı; tekrarında tutar artar. Ocak-Şubat 2026 arası 2.719 TL idi. Doğrulama: hesapkurdu.com https://www.hesapkurdu.com/trafik-sigortasi/h/trafik-cezasi-fiyatlari (\"47/1-b Kırmızı ışık kuralına uymamak 5.000 TL\").",
         "source": {
-          "title": "kadimhukuk.com.tr",
-          "url": "https://kadimhukuk.com.tr/?p=27256",
-          "accessed": "2026-10-04",
+          "title": "Harbiye Hukuk: 2026 Trafik Cezaları (7574 sayılı Kanun)",
+          "url": "https://www.harbiyehukuk.com/?p=1004691",
+          "accessed": "2026-10-25",
           "kind": "news"
         }
       },
@@ -5307,6 +5307,128 @@
             "title": "kadimhukuk.com.tr",
             "url": "https://kadimhukuk.com.tr/?p=27256",
             "accessed": "2026-10-04",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 5000,
+          "status": "verified",
+          "note": "Kırmızı ışık ihlalinin ilk seferdeki idari para cezası (47/1-b). 27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun (Resmî Gazete 33181) cezayı yeniden değerlemeden çıkarıp sabit tutara bağladı; tekrarında tutar artar. Ocak-Şubat 2026 arası 2.719 TL idi. Doğrulama: hesapkurdu.com https://www.hesapkurdu.com/trafik-sigortasi/h/trafik-cezasi-fiyatlari (\"47/1-b Kırmızı ışık kuralına uymamak 5.000 TL\").",
+          "source": {
+            "title": "Harbiye Hukuk: 2026 Trafik Cezaları (7574 sayılı Kanun)",
+            "url": "https://www.harbiyehukuk.com/?p=1004691",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alkol-cezasi",
+      "name": "Alkollü araç kullanma cezası",
+      "unit": "1 ceza (otomobil, 0,50 promil üstü, ilk kez)",
+      "region": null,
+      "source_hint": "2918 sayılı Karayolları Trafik Kanunu madde 48; 2026 Şubat'a kadar her Ocak yeniden değerleme oranıyla arttı, 27.02.2026'dan beri 7574 sayılı Kanunla sabit tutar. Haber kaynaklı; 2019 ve 2021 (1.339/1.340 çelişkisi) eklenmedi.",
+      "image": {
+        "src": "img/alkolmetre.svg",
+        "alt": "Alkolmetre çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-02",
+        "price": 25000,
+        "status": "verified",
+        "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk tespitteki idari para cezası (48). 27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun (Resmî Gazete 33181) cezayı yeniden değerlemeden çıkarıp sabit tutara bağladı; tekrarında tutar artar. Doğrulama: harbiyehukuk.com https://www.harbiyehukuk.com/?p=1004691 (\"ilk tespitte 25.000 TL\"), hesapkurdu.com.",
+        "source": {
+          "title": "Hukuki Haber: 7574 sayılı Kanun ile 2918 sayılı Karayolları Trafik Kanununda yapılan değişiklikler",
+          "url": "https://www.hukukihaber.net/7574-sayili-kanun-ile-2918-sayili-karayollari-trafik-kanununda-yapilan-degisiklikler",
+          "accessed": "2026-10-25",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2018-01",
+          "price": 1002,
+          "status": "verified",
+          "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk seferdeki idari para cezası (Karayolları Trafik Kanunu 48), o yıl Ocak ayından itibaren geçerli; ehliyete 6 ay el konması ayrıca uygulanır. Doğrulama: indigodergisi.com https://indigodergisi.com/2017/12/2018-yili-trafik-cezalari-tam-liste/ (\"ilkinde 1002 TL\").",
+          "source": {
+            "title": "CNN Türk: İşte 2018 yılı zamlı trafik cezaları",
+            "url": "https://www.cnnturk.com/ekonomi/turkiye/iste-2018-yili-zamli-trafik-cezalari-717898",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 1228,
+          "status": "verified",
+          "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk seferdeki idari para cezası (Karayolları Trafik Kanunu 48), o yıl Ocak ayından itibaren geçerli; ehliyete 6 ay el konması ayrıca uygulanır. Doğrulama: yenisafak.com https://www.yenisafak.com/2020-yili-trafik-cezalari-ne-kadar-h-3513152 (\"0,50 promilin üzerinde alkollü olarak kullanmak/1.defada 1,228 TL\").",
+          "source": {
+            "title": "Karar: İşte 2020 trafik cezaları listesi",
+            "url": "https://www.karar.com/iste-2020-trafik-cezalari-listesi-1428047",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 1823,
+          "status": "verified",
+          "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk seferdeki idari para cezası (Karayolları Trafik Kanunu 48), o yıl Ocak ayından itibaren geçerli; ehliyete 6 ay el konması ayrıca uygulanır. Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/2022-trafik-cezalari-ucretleri-kac-para-oldu-kirmizi-isikta-gecmenin-cezasi-ne-kadar (\"Alkollü araç kullananlar ...: 1823 lira\").",
+          "source": {
+            "title": "TimeTürk: 2022 zamlı trafik cezaları",
+            "url": "https://www.timeturk.com/genel/2022-zamli-trafik-cezalari-2022-kirmizi-isik-cezasi-ne-kadar-2022-radar-cezasi-hiz-siniri-cezasi-ne-kadar/haber-1717835",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 4064,
+          "status": "verified",
+          "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk seferdeki idari para cezası (Karayolları Trafik Kanunu 48), o yıl Ocak ayından itibaren geçerli; ehliyete 6 ay el konması ayrıca uygulanır. Doğrulama: finans.mynet.com https://finans.mynet.com/haber/detay/ekonomi/trafik-cezalari-2023-trafik-cezalari-ne-kadar-zam-geldi-mi-asiri-hiz-kemer-takmama-kirmizi-isikta-gecme/467985/ (\"Alkollü araçla ilk yakalanma: 4 bin 64 TL\").",
+          "source": {
+            "title": "Posta: Trafik cezaları belli oldu, 2023'te ödenecek yeni rakamlar",
+            "url": "https://www.posta.com.tr/ekonomi/trafik-cezalari-belli-oldu-iste-2023te-odenecek-yeni-rakamlar-2597830",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 6440,
+          "status": "verified",
+          "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk seferdeki idari para cezası (Karayolları Trafik Kanunu 48), o yıl Ocak ayından itibaren geçerli; ehliyete 6 ay el konması ayrıca uygulanır. Doğrulama: tamindir.com https://www.tamindir.com/haber/2024-trafik-cezalari_85414/ (\"Alkollü araç kullanma (ilk yakalanma) 6.440 TL\"); bazı haberler 6.439 TL yazıyor.",
+          "source": {
+            "title": "TGRT Haber: 2024 trafik cezaları belli",
+            "url": "https://www.tgrthaber.com/ekonomi/drift-yapan-kirmizi-isikta-gecen-yandi-2024-trafik-cezalari-belli-2922463",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 9267,
+          "status": "verified",
+          "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk seferdeki idari para cezası (Karayolları Trafik Kanunu 48), o yıl Ocak ayından itibaren geçerli; ehliyete 6 ay el konması ayrıca uygulanır. Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/ekonomi/2025-trafik-cezalari-ne-kadar-guncel-ceza-miktarlari-865154h (\"1. defa: 9.267 TL\"); CNN Türk 9.268 TL yazıyor.",
+          "source": {
+            "title": "Takvim: 2025 trafik cezaları belli oldu",
+            "url": "https://www.takvim.com.tr/guncel/2025/01/01/2025-trafik-cezalari-belli-oldu-yetkisiz-calar-kullanimi-hiz-siniri-ve-kirmizi-isik-ihlali-kim-ne-kadar-odeyecek",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 25000,
+          "status": "verified",
+          "note": "Hususi otomobili 0,50 promil üstü alkollü kullanmanın ilk tespitteki idari para cezası (48). 27 Şubat 2026'da yürürlüğe giren 7574 sayılı Kanun (Resmî Gazete 33181) cezayı yeniden değerlemeden çıkarıp sabit tutara bağladı; tekrarında tutar artar. Doğrulama: harbiyehukuk.com https://www.harbiyehukuk.com/?p=1004691 (\"ilk tespitte 25.000 TL\"), hesapkurdu.com.",
+          "source": {
+            "title": "Hukuki Haber: 7574 sayılı Kanun ile 2918 sayılı Karayolları Trafik Kanununda yapılan değişiklikler",
+            "url": "https://www.hukukihaber.net/7574-sayili-kanun-ile-2918-sayili-karayollari-trafik-kanununda-yapilan-degisiklikler",
+            "accessed": "2026-10-25",
             "kind": "news"
           }
         }
@@ -11237,6 +11359,80 @@
             "title": "Technopat: YouTube Premium Türkiye fiyatları zamlandı",
             "url": "https://www.technopat.net/2026/06/11/youtube-premium-turkiye-fiyatlari-zam/",
             "accessed": "2026-10-22",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "amazon-prime",
+      "name": "Amazon Prime üyeliği",
+      "unit": "1 ay, aylık üyelik",
+      "region": null,
+      "source_hint": "Amazon Prime Türkiye aylık üyelik ücreti (ücretsiz kargo ve Prime Video dahil), zam haberlerinden; her değer iki farklı haber sitesiyle doğrulandı.",
+      "image": {
+        "src": "img/kargo-kutusu.svg",
+        "alt": "Kargo kutusu çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025-10",
+        "price": 69.9,
+        "status": "verified",
+        "note": "Amazon Prime Türkiye aylık üyelik ücreti, yeni üyeler için o tarihten itibaren (mevcut üyelere bir fatura dönemi sonra yansır). 14 Ekim 2025'ten itibaren; Ekim 2026'ya kadar yeni bir zam haberi bulunamadı (Haziran 2026'da gelen reklamsız izleme seçeneği ayrı ücretli, dahil değil). Doğrulama: tamindir.com https://www.tamindir.com/haber/amazon-prime-fiyati-zam_100674/ (\"49,90 TL'den 69,90 TL'ye\").",
+        "source": {
+          "title": "Medyascope: Amazon Prime aylık ücret 69,90 TL oldu",
+          "url": "https://medyascope.tv/2025/10/14/amazon-prime-aylik-ucret-6990-tl-oldu/",
+          "accessed": "2026-10-25",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2020-09",
+          "price": 7.9,
+          "status": "verified",
+          "note": "Amazon Prime Türkiye aylık üyelik ücreti, yeni üyeler için o tarihten itibaren (mevcut üyelere bir fatura dönemi sonra yansır). Türkiye'de hizmetin açıldığı ay. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/amazon-prime-yuzde-393-zam-yapti-wp7664436 (\"2020'den beri aylık 7.90 TL olan paket\").",
+          "source": {
+            "title": "Webrazzi: Amazon Prime Türkiye açıldı",
+            "url": "https://webrazzi.com/2020/09/15/amazon-prime-turkiye-acildi",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-04",
+          "price": 39,
+          "status": "verified",
+          "note": "Amazon Prime Türkiye aylık üyelik ücreti, yeni üyeler için o tarihten itibaren (mevcut üyelere bir fatura dönemi sonra yansır). 25 Nisan 2023'ten itibaren. Doğrulama: sozcu.com.tr https://www.sozcu.com.tr/amazon-prime-yuzde-393-zam-yapti-wp7664436 (\"25 Nisan itibarıyla ... 39 TL\").",
+          "source": {
+            "title": "Webrazzi: Amazon Prime abonelik ücreti 7,90 TL'den 39 TL'ye çıktı",
+            "url": "https://webrazzi.com/2023/04/25/amazon-prime-abonelik-ucreti-39-tl/",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-04",
+          "price": 49.9,
+          "status": "verified",
+          "note": "Amazon Prime Türkiye aylık üyelik ücreti, yeni üyeler için o tarihten itibaren (mevcut üyelere bir fatura dönemi sonra yansır). 22 Nisan 2025 haberleri. Doğrulama: tamindir.com https://www.tamindir.com/haber/amazon-prime-abonelik-fiyati-zam_95259/ (\"aylık 49,90 TL\").",
+          "source": {
+            "title": "CNBC-e: Amazon Prime üyeliklerine 2 yıl sonra zam",
+            "url": "https://www.cnbce.com/haberler/amazon-prime-uyeliklerine-2-yil-sonra-zam-fiyatlar-ne-kadar-artti-amazon-prime-uyelik-fiyatlari-amazon-prime-abonelik-amazon-prime-turkiye-h11912",
+            "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-10",
+          "price": 69.9,
+          "status": "verified",
+          "note": "Amazon Prime Türkiye aylık üyelik ücreti, yeni üyeler için o tarihten itibaren (mevcut üyelere bir fatura dönemi sonra yansır). 14 Ekim 2025'ten itibaren; Ekim 2026'ya kadar yeni bir zam haberi bulunamadı (Haziran 2026'da gelen reklamsız izleme seçeneği ayrı ücretli, dahil değil). Doğrulama: tamindir.com https://www.tamindir.com/haber/amazon-prime-fiyati-zam_100674/ (\"49,90 TL'den 69,90 TL'ye\").",
+          "source": {
+            "title": "Medyascope: Amazon Prime aylık ücret 69,90 TL oldu",
+            "url": "https://medyascope.tv/2025/10/14/amazon-prime-aylik-ucret-6990-tl-oldu/",
+            "accessed": "2026-10-25",
             "kind": "news"
           }
         }
