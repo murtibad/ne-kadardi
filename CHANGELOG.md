@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.96.1] - 2026-10-25
+### Fixed
+- Footer: "Hata görürsen bildir" stays on one line at 360 px instead of leaving "bildir" alone (QA).
+
 ## [0.96.0] - 2026-10-25
 ### Added
 - First-visit intro (Murti's idea): one receipt-styled screen with the three steps and a trust line, "Fiyatlar uydurma değil. Her fiyat ya o fiyatı açıklayan kurumun kendi belgesinden ya da en az iki ayrı haberden doğrulandı." Buttons "Hemen oyna →" and "Ana sayfaya geç"; shown once (`ne-kadardi-intro-seen`), never on a shared `?soru=` link. It replaces the home screen's old three-step list.
