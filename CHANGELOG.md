@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.97.0] - 2026-10-26
+### Added
+- `disney-plus`: Disney+ Turkey cheapest monthly plan: 2022-06 34,99 · 2022-12 64,99 · 2024-02 134,99 · 2024-10 164,90 · 2025-09 249,90, each on two news domains (the 164,99 some sites print is a typo: their yearly price is 1.649).
+- `sigara-marlboro` 2025-03 85 is back: aydinlik.com.tr confirms the habergazetesi list.
+
 ## [0.96.1] - 2026-10-25
 ### Fixed
 - Footer: "Hata görürsen bildir" stays on one line at 360 px instead of leaving "bildir" alone (QA).

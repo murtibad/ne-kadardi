@@ -96,6 +96,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | yks | YKS fee per session | ÖSYM guide via news | high |
 | emekli-en-dusuk-aylik | minimum retiree pension per month | law changes via news (2019+) | high |
 | trafik-cezasi | red-light fine (47/1-b); first offence fixed at 5.000 TL by Law 7574 from 27.02.2026 | yearly revaluation via news | high |
+| disney-plus | Disney+ Turkey cheapest monthly plan (ad-supported from Feb 2025), new-member price | price-rise news, two domains each | high |
 | amazon-prime | Amazon Prime Turkey monthly membership, new-member price | price-rise news, two domains each | high |
 | alkol-cezasi | drunk-driving fine, private car over 0.50 promil, first offence (48) | yearly revaluation via news; Law 7574 fixed amount from 27.02.2026 | high |
 | fitre | per-person fitre | Diyanet announcement via news | high |
