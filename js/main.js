@@ -20,6 +20,7 @@ import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
 import { introRows, playIntro } from './intro.js';
 import { MOTION_KEY, motionLabel, reducedMotion } from './motion.js';
+import { buildReportCard, isCardRound, reportCardText } from './report-card.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -258,6 +259,8 @@ function onGuess(event) {
   state.total += state.result.score;
   state.best = Math.max(state.best, state.result.score);
   state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
+  // This visit's answers feed the every-fifth-question report card (not saved).
+  (state.visitAnswers ??= []).push({ title: q.name.replace(/\s*\(.*\)$/, ''), period: formatPeriod(q.date), score: state.result.score });
   saveSession();
   hapticIfAllowed(10);
   renderResult(q, state.result);
@@ -487,6 +490,7 @@ function renderResult(q, r) {
   const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId), amount: isAmount(q.productId) })
     ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId) });
   $('r-cashier').textContent = `“${line}”`;
+  renderReportCard();
   const ytl = ytlNote(yearOf(q.date), q.price);
   $('r-ytl').textContent = ytl || '';
   $('r-ytl').hidden = !ytl;
@@ -987,6 +991,36 @@ function closeIntro() {
   if (dlg?.open) dlg.close();
 }
 
+// Every fifth answer of the visit the receipt sums up the round (js/report-card.js).
+function renderReportCard() {
+  const answers = state.visitAnswers ?? [];
+  const show = isCardRound(answers.length);
+  $('r-card').hidden = !show;
+  if (!show) return;
+  const card = buildReportCard(answers);
+  state.reportCard = card;
+  $('r-card-title').textContent = card.title;
+  $('r-card-lines').innerHTML = card.lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
+  $('r-card-avg').textContent = `Ortalama ${card.average}/100 · En iyisi: ${card.best.period} ${card.best.title}`;
+}
+
+async function shareReportCard(e) {
+  const btn = e.currentTarget;
+  const card = state.reportCard;
+  if (!card) return;
+  const text = reportCardText(card, location.origin + location.pathname);
+  if (navigator.share) {
+    try { await navigator.share({ text }); } catch (err) { if (err.name !== 'AbortError') console.warn(err); }
+    return;
+  }
+  let msg = 'Karne kopyalandı ✓';
+  try { await navigator.clipboard.writeText(text); } catch { msg = 'Kopyalanamadı'; }
+  btn.dataset.label ??= btn.textContent;
+  btn.textContent = msg;
+  announce(msg);
+  setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
+}
+
 // Footer switch: the phone's reduce-motion setting is only the default (set in index.html's head).
 function initMotionToggle() {
   const btn = $('motion-toggle');
@@ -1449,6 +1483,7 @@ async function init() {
   $('download-btn').addEventListener('click', downloadImage);
   $('ask-btn').addEventListener('click', askFriend);
   $('ask-q-btn').addEventListener('click', askFriend);
+  $('r-card-share').addEventListener('click', shareReportCard);
   initSharePreview();
   initIntro();
   initMotionToggle();

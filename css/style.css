@@ -1664,3 +1664,11 @@ html:not([data-motion="reduce"]).theme-anim, html:not([data-motion="reduce"]).th
 /* Question card: a quiet way to pass the question to a friend. */
 .ask-q { margin: 4px 0 0; text-align: center; font-size: 0.875rem; color: var(--muted-on-paper); }
 .ask-q .link-btn { font-size: 0.875rem; color: var(--text); }
+
+/* Report card every fifth answer: a dashed box inside the receipt. */
+.report-card { margin: 16px 0 4px; padding: 12px 14px; border: 2px dashed var(--muted-on-paper); border-radius: 6px; font-family: var(--font-mono); }
+.report-card-title { margin: 0 0 8px; text-align: center; font-weight: 700; letter-spacing: 1px; }
+.report-card-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.875rem; }
+.report-card-lines li { display: flex; justify-content: space-between; gap: 12px; }
+.report-card-avg { margin: 10px 0 4px; font-size: 0.875rem; font-weight: 700; }
+.report-card .link-btn { font-family: var(--font-mono); }
