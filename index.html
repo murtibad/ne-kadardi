@@ -53,6 +53,7 @@
   <link rel="modulepreload" href="js/price-chart.js">
   <link rel="modulepreload" href="js/count-up.js">
   <link rel="modulepreload" href="js/ask-link.js">
+  <link rel="modulepreload" href="js/intro.js">
   <link rel="modulepreload" href="js/motion.js">
 </head>
 <body>
@@ -237,19 +238,27 @@
   <div id="sr-status" class="visually-hidden" role="status" aria-live="polite"></div>
 
   <dialog id="intro" class="intro" aria-labelledby="intro-title">
-    <div class="receipt-card result-receipt intro-card">
-      <p class="receipt-head">*** NE KADARDI? ***</p>
-      <h2 id="intro-title" class="intro-title">Geçmişte fiyatlar ne kadardı?</h2>
-      <ol class="intro-steps">
-        <li><strong>Bir ürün ve tarih görürsün</strong><span>Ör. Ocak 2016'da 1 litre benzin.</span></li>
-        <li><strong>Fiyatını tahmin edersin</strong><span>Kaç lira olduğunu yazman yeter.</span></li>
-        <li><strong>Fişini alırsın</strong><span>Gerçek fiyatı, bugünkü fiyatı ve puanını görürsün.</span></li>
-      </ol>
-      <hr>
-      <p class="intro-trust"><strong>Fiyatlar uydurma değil.</strong> Her fiyat ya o fiyatı açıklayan kurumun kendi belgesinden ya da en az iki ayrı haberden doğrulandı. Kaynağı her fişin altında yazar.</p>
-      <div class="intro-actions">
-        <button type="button" id="intro-play" class="btn primary next-btn">Hemen oyna →</button>
-        <button type="button" id="intro-close" class="link-btn">Ana sayfaya geç</button>
+    <div class="intro-stage">
+      <button type="button" id="intro-skip" class="intro-skip">Geç →</button>
+      <div class="intro-year" aria-hidden="true">
+        <span class="intro-year-label">YIL</span>
+        <span class="intro-year-slot"><span class="intro-year-value">2026</span></span>
+      </div>
+      <div class="intro-printer" aria-hidden="true"></div>
+      <div class="intro-receipt-clip">
+        <div class="receipt-card result-receipt intro-receipt">
+          <p class="receipt-head">*** NE KADARDI? ***</p>
+          <ul class="intro-rows"></ul>
+          <p class="intro-stamp" aria-hidden="true">SEN HATIRLIYOR MUSUN?</p>
+        </div>
+      </div>
+      <div class="intro-final">
+        <h2 id="intro-title" class="intro-tagline">Geçmişin fiyatlarını tahmin et.</h2>
+        <p class="intro-trust-line"><span class="intro-check" aria-hidden="true">✓</span> Her fiyat kaynaklı</p>
+        <div class="intro-actions">
+          <button type="button" id="intro-play" class="btn primary next-btn">Hemen oyna →</button>
+          <button type="button" id="intro-close" class="link-btn">Ana sayfaya geç</button>
+        </div>
       </div>
     </div>
   </dialog>
