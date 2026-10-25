@@ -247,3 +247,10 @@ test('pensions and wages are labelled as an amount, prices as a price', () => {
   assert.equal(actualLabel('kidem-tavani'), 'Gerçek Tutar');
   assert.equal(actualLabel('simit'), 'Gerçek Fiyat');
 });
+
+test('isAmount marks money people get, not things they buy', async () => {
+  const { isAmount } = await import('../js/game.js');
+  assert.equal(isAmount('emekli-bayram-ikramiyesi'), true);
+  assert.equal(isAmount('asgari-ucret'), true);
+  assert.equal(isAmount('big-mac'), false);
+});

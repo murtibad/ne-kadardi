@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, escapeHTML } from './format.js';
-import { actualLabel, buildQuestions, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { timelineTableHtml } from './archive-table.js';
@@ -467,8 +467,8 @@ function renderResult(q, r) {
     scoreEl.append(hint);
   }
   const tier = scoreTier(r.score);
-  const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId) })
-    ?? cashierComment(tier);
+  const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId), amount: isAmount(q.productId) })
+    ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId) });
   $('r-cashier').textContent = `“${line}”`;
   const ytl = ytlNote(yearOf(q.date), q.price);
   $('r-ytl').textContent = ytl || '';
@@ -503,6 +503,7 @@ function renderResult(q, r) {
   $('r-tax').hidden = !taxText;
   renderTaxDetails(q);
 
+  $('r-archive').textContent = isAmount(q.productId) ? 'Yıllar içindeki tutarları →' : 'Bu ürünün fiyat geçmişi →';
   $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; state.archiveFromResult = true; };
   $('r-source').href = q.source.url;
   $('r-source').textContent = q.source.title;
@@ -573,7 +574,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
       <g class="pc-tip" hidden><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
     <span class="visually-hidden" aria-live="polite"></span>
-    <figcaption>Yıllar içinde fiyatı</figcaption>`;
+    <figcaption>Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}</figcaption>`;
   bindPriceChart(fig, chart, figId === 't-chart' ? (point, source) => {
     const rows = $('t-rows-container').querySelectorAll('tr[data-date]');
     let match = null;

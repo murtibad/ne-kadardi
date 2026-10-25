@@ -18,6 +18,22 @@ export const UNDER_COMMENTS = [
   'Rüya gibi bir fiyat ama gerçekler maalesef çok başka.',
 ];
 
+// Wages, pensions, grants and limits are amounts people get, not prices: "fiyat" and "kasiyer"
+// jokes read wrong there.
+export const AMOUNT_OVER_COMMENTS = [
+  'Keşke o kadar olsaydı, ama değildi.',
+  'Bu rakam o yıllar için fazla cömert.',
+  'Bugünün rakamını geçmişe taşımışsın.',
+  'O tutara gelmemize daha birkaç yıl vardı.',
+];
+
+export const AMOUNT_UNDER_COMMENTS = [
+  'Rakamlar o kadar küçük değildi, para da büyüdü.',
+  'O yıllar için bile bu rakam az kalırdı.',
+  'Eski paraları biraz fazla küçük hatırlıyorsun.',
+  'Bu kadar az değildi, rakamlar çoktan büyümüştü.',
+];
+
 export const PRODUCT_POOLS = {
   'plastik-poset': [
     'Poşet ister misiniz, yoksa kucağınızda mı taşırsınız?',
@@ -178,7 +194,7 @@ function pick(pool, rng = Math.random) {
  * Prioritizes product easter eggs (when available, 45% chance), then extreme over/under guesses.
  */
 export function contextComment(params, rng = Math.random) {
-  const { direction, factor, productId } = params ?? {};
+  const { direction, factor, productId, amount = false } = params ?? {};
   if (productId && PRODUCT_POOLS[productId]) {
     if (rng() < 0.45) {
       return pick(PRODUCT_POOLS[productId], rng);
@@ -186,11 +202,11 @@ export function contextComment(params, rng = Math.random) {
   }
 
   if (direction === 'over' && factor >= 2.5) {
-    return pick(OVER_COMMENTS, rng);
+    return pick(amount ? AMOUNT_OVER_COMMENTS : OVER_COMMENTS, rng);
   }
 
   if (direction === 'under' && factor >= 2.5) {
-    return pick(UNDER_COMMENTS, rng);
+    return pick(amount ? AMOUNT_UNDER_COMMENTS : UNDER_COMMENTS, rng);
   }
 
   return null;

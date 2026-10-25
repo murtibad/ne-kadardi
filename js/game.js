@@ -176,8 +176,13 @@ export const WAGE_SHARE = {
 // Money people receive or a legal limit, not something bought: the receipt says "Tutar".
 const AMOUNTS = new Set(['asgari-ucret', 'kidem-tavani']);
 
+// True for money people get or a limit (wage, pension, grant), not something they buy.
+export function isAmount(productId) {
+  return AMOUNTS.has(productId) || Boolean(WAGE_SHARE[productId]);
+}
+
 export function actualLabel(productId) {
-  return AMOUNTS.has(productId) || WAGE_SHARE[productId] ? 'Gerçek Tutar' : 'Gerçek Fiyat';
+  return isAmount(productId) ? 'Gerçek Tutar' : 'Gerçek Fiyat';
 }
 
 /** Count word for the purchasing-power line: the product's plain name, else the short unit. */

@@ -223,3 +223,9 @@ test('stampTitle boundaries (49/50/74/75/89/90), clamping, and non-finite values
   assert.equal(stampTitle(undefined), null);
   assert.equal(stampTitle('80'), null);
 });
+
+test('far-off guesses on amounts use amount lines, not price lines', async () => {
+  const { contextComment, AMOUNT_OVER_COMMENTS, AMOUNT_UNDER_COMMENTS } = await import('../js/banter.js');
+  assert.ok(AMOUNT_OVER_COMMENTS.includes(contextComment({ direction: 'over', factor: 9, amount: true }, () => 0)));
+  assert.ok(AMOUNT_UNDER_COMMENTS.includes(contextComment({ direction: 'under', factor: 9, amount: true }, () => 0)));
+});

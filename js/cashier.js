@@ -73,12 +73,17 @@ export const CASHIER_COMMENTS = {
   ],
 };
 
+const SHOP_WORDS = /fiyat|kasa|kasiyer|etiket|pazar|alışveriş|cüzdan|ucuz|pahalı/i;
+
 /**
  * Return one short, witty cashier comment for a result receipt.
  * Unknown tier falls back to mid.
  */
-export function cashierComment(tier, rng = Math.random) {
-  const pool = CASHIER_COMMENTS[tier] ?? CASHIER_COMMENTS.mid;
+export function cashierComment(tier, rng = Math.random, { amount = false } = {}) {
+  const all = CASHIER_COMMENTS[tier] ?? CASHIER_COMMENTS.mid;
+  // A wage or pension is not on a shelf: skip the shop-talk lines for amounts.
+  const plain = amount ? all.filter((line) => !SHOP_WORDS.test(line)) : all;
+  const pool = plain.length ? plain : all;
   const index = Math.floor(rng() * pool.length);
   return pool[Math.max(0, Math.min(index, pool.length - 1))];
 }
