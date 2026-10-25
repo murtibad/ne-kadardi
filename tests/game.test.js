@@ -197,6 +197,10 @@ test('buildContextModel mirrors buildContextLine numbers and nulls', () => {
   assert.deepEqual(buildContextModel(near, wages), { kind: 'share', better: 'lower', name: 'Kırmızı ışık cezası', today: false, then: 0.8, now: 0.6 });
   assert.match(buildContextLine(near, wages), /^Kırmızı ışık cezası o tarihte asgari ücretin %80'i kadardı; bugün %60'ı\.$/);
 
+  // Same small count then and now (5 and 5) says nothing changed: share instead.
+  const same = { ...cheap, productId: 'trafik-cezasi', price: 100, current: { price: 3900 } };
+  assert.equal(buildContextModel(same, wages).kind, 'share');
+
   // No current price: now is null; no wage in the same half-year or the wage itself: null.
   assert.deepEqual(buildContextModel({ ...cheap, current: null }, wages), { kind: 'count', today: false, unit: 'adet', nowUnit: 'adet', then: 500, now: null });
   assert.equal(buildContextModel({ ...cheap, date: '2012-08' }, wages), null);

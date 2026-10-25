@@ -15,7 +15,7 @@ import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
-import { buildPriceChart, labelSide, refLabelAtStart, refLabelBelow } from './price-chart.js';
+import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
 
@@ -552,16 +552,33 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   const room = (p) => ((markSide === 'left' && p.x < marked.x) || (markSide === 'right' && p.x > marked.x) ? 104 : 52);
   const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i
     && (!marked || p === marked || Math.abs(p.x - marked.x) > room(p)));
-  // A close guess sits right on the data: put its label at the end whose points are farther away.
-  const refStart = chart.ref && refLabelAtStart(chart, 110);
-  const refBelow = chart.ref && refLabelBelow(chart, refStart, 110);
-  const refLine = chart.ref
-    ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refStart ? pad.left : chart.width - pad.right}" y="${chart.ref.y < 20 || refBelow ? chart.ref.y + 12 : chart.ref.y - 5}" text-anchor="${refStart ? 'start' : 'end'}" class="pc-ref-label">Tahminin ${escapeHTML(formatPrice(guess))}${chart.ref.off === 'above' ? ' ↑' : chart.ref.off === 'below' ? ' ↓' : ''}</text>`
-    : '';
+
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const hits = chart.points.map((p, i) => `<circle class="pc-hit" cx="${p.x}" cy="${p.y}" r="12" data-i="${i}"/>`).join('');
   const labelX = (p) => (p !== marked || markSide === 'middle' ? p.x : markSide === 'left' ? p.x - 6 : p.x + 6);
   const labelAnchor = (p) => (p !== marked || markSide === 'middle' ? anchor(p) : markSide === 'left' ? 'end' : 'start');
+  // Labels are monospace, 14px on the receipt chart and 11px in the archive (css/style.css):
+  // a character is about 0,62 em wide and capitals about 0,75 em tall.
+  const fontSize = figId === 'r-chart' ? 14 : 11;
+  const textWidth = (s) => s.length * fontSize * 0.62;
+  const capHeight = fontSize * 0.75;
+  const labelBoxes = labels.map((p) => {
+    const w = textWidth(formatPrice(p.price));
+    const a = labelAnchor(p);
+    const x0 = a === 'start' ? labelX(p) : a === 'end' ? labelX(p) - w : labelX(p) - w / 2;
+    const y = Math.max(11, p.y - 9);
+    return { x0, x1: x0 + w, y0: y - capHeight, y1: y + 2 };
+  });
+  // The guess label tries both ends, above and below its line, and takes the spot that covers
+  // no price label and no stretch of the data line; a close guess starts at the end whose points
+  // are farther away.
+  const refText = chart.ref ? `Tahminin ${formatPrice(guess)}${chart.ref.off === 'above' ? ' ↑' : chart.ref.off === 'below' ? ' ↓' : ''}` : '';
+  const refSpot = chart.ref && placeRefLabel(chart, labelBoxes, {
+    width: textWidth(refText), left: pad.left, right: chart.width - pad.right, preferStart: refLabelAtStart(chart, 110), textHeight: capHeight,
+  });
+  const refLine = chart.ref
+    ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refSpot.atStart ? pad.left : chart.width - pad.right}" y="${refSpot.y}" text-anchor="${refSpot.atStart ? 'start' : 'end'}" class="pc-ref-label">${escapeHTML(refText)}</text>`
+    : '';
   const priceLabels = labels.map((p) => `<text x="${labelX(p)}" y="${Math.max(11, p.y - 9)}" text-anchor="${labelAnchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
   // Drop a year label that would touch the one shown before it or the last one (which always stays).
   // A year label is about 36 units wide: centred ones take half each side, the first grows right and the last left.

@@ -292,15 +292,20 @@ test('labelSide leans a middle label away from the higher neighbour', async () =
   assert.equal(labelSide(at([90, 80]), 0), 'middle');
 });
 
-test('refLabelBelow moves the guess label under its line when the data runs through the text', async () => {
-  const { refLabelBelow } = await import('../js/price-chart.js');
+test('placeRefLabel avoids price labels first, then the data line', async () => {
+  const { placeRefLabel } = await import('../js/price-chart.js');
   const pts = (ys) => ys.map((y, i) => ({ x: i * 100, y }));
-  // Line just above the guess line at the right end: text above would sit on it.
-  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 70 }, points: pts([100, 90, 64, 60]) }, false, 110), true);
-  // Line far away: keep the label above.
-  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 70 }, points: pts([20, 20, 20, 20]) }, false, 110), false);
-  // Line crosses both sides: below is no better, keep above.
-  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 70 }, points: pts([100, 90, 64, 78]) }, false, 110), false);
-  // Too close to the year labels at the bottom.
-  assert.equal(refLabelBelow({ width: 300, height: 132, ref: { y: 105 }, points: pts([120, 110, 100, 100]) }, false, 110), false);
+  const opts = { width: 100, left: 10, right: 290, preferStart: false, textHeight: 8 };
+  const pick = (s) => ({ atStart: s.atStart, below: s.below });
+  // Free space everywhere: preferred end, above.
+  assert.deepEqual(pick(placeRefLabel({ width: 300, height: 132, ref: { y: 70 }, points: pts([20, 20, 20, 20]) }, [], opts)), { atStart: false, below: false });
+  // Line just above the guess line at the right end: go below there.
+  assert.deepEqual(pick(placeRefLabel({ width: 300, height: 132, ref: { y: 70 }, points: pts([110, 110, 64, 60]) }, [], opts)), { atStart: false, below: true });
+  // A price label sits right above the line at the right end: move to the free left end.
+  const box = { x0: 230, x1: 290, y0: 55, y1: 66 };
+  const flat = { width: 300, height: 132, ref: { y: 70 }, points: pts([20, 20, 20, 20]) };
+  const spot = placeRefLabel(flat, [box], opts);
+  assert.equal(spot.atStart || spot.below, true);
+  assert.notDeepEqual(pick(spot), { atStart: false, below: false });
+  assert.equal(placeRefLabel(flat, [], opts).y, 65); // above: baseline 5 units over the line
 });
