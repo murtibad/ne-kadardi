@@ -8445,6 +8445,18 @@
           }
         },
         {
+          "date": "2025-03",
+          "price": 85,
+          "status": "verified",
+          "note": "Philip Morris'in Marlboro Kırmızı (Red) 20'li paket satış fiyatı; zam tarihinden itibaren geçerlidir, tarih zam/liste tarihidir. 2010'da kısa boy; 2016 Temmuz'dan itibaren kısa ve uzun aynı fiyat; 2023'ten itibaren Red ve Touch aynı fiyatta. Bu değer için tek haber kaynağı doğrulandı. İkinci kaynak: aydinlik.com.tr https://www.aydinlik.com.tr/haber/sigaraya-10-lira-birden-zam-geldi-philip-morris-zamli-sigara-fiyatlari-2025-listesi-514048 (\"Marlboro Red/ touch 85 TL\").",
+          "source": {
+            "title": "habergazetesi.com.tr, 2025 sigara fiyatları (10 Mart 2025)",
+            "url": "https://www.habergazetesi.com.tr/2025-sigara-fiyatlari",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
           "date": "2026-02",
           "price": 110,
           "status": "verified",
@@ -11262,6 +11274,92 @@
             "title": "Medyascope: Amazon Prime aylık ücret 69,90 TL oldu",
             "url": "https://medyascope.tv/2025/10/14/amazon-prime-aylik-ucret-6990-tl-oldu/",
             "accessed": "2026-10-25",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+ üyeliği",
+      "unit": "1 aylık üyelik ücreti (en ucuz plan)",
+      "region": null,
+      "source_hint": "Disney+ Türkiye en ucuz aylık plan, zam haberlerinden; her değer iki farklı haber sitesiyle doğrulandı.",
+      "image": {
+        "src": "img/dizi.svg",
+        "alt": "Oynat düğmeli ekran çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2025-09",
+        "price": 249.9,
+        "status": "verified",
+        "note": "Disney+ Türkiye'nin en ucuz aylık planı, yeni üyeler için (Şubat 2025'e kadar tek plan, sonra \"Reklamlı\" plan). 30 Eylül 2025'ten itibaren, Reklamlı plan; Ekim 2026'ya kadar yeni zam haberi bulunamadı. İkinci kaynak: donanimhaber.com https://www.donanimhaber.com/disney-plus-turkiye-abonelik-ucretlerine-zam-geldi--196753.",
+        "source": {
+          "title": "Dünya: Disney+ fiyatlarına yüzde 50'nin üzerinde zam",
+          "url": "https://www.dunya.com/sektorler/bilim-ve-teknoloji/disney-fiyatlarina-yuzde-50nin-uzerinde-zam-haberi-796576",
+          "accessed": "2026-10-26",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2022-06",
+          "price": 34.99,
+          "status": "verified",
+          "note": "Disney+ Türkiye'nin en ucuz aylık planı, yeni üyeler için (Şubat 2025'e kadar tek plan, sonra \"Reklamlı\" plan). Türkiye'de açılış (14 Haziran 2022). İkinci kaynak: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/yasam/disney-plus-ne-zaman-aciliyor-turkiye-fiyati-ne-kadar-iste-uyelik-ucreti-1920627.",
+          "source": {
+            "title": "Teknoblog: Disney Plus Türkiye açılış tarihi ve fiyatı",
+            "url": "https://www.teknoblog.com/disney-plus-turkiye-acilis-tarihi-ve-fiyati/",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-12",
+          "price": 64.99,
+          "status": "verified",
+          "note": "Disney+ Türkiye'nin en ucuz aylık planı, yeni üyeler için (Şubat 2025'e kadar tek plan, sonra \"Reklamlı\" plan). 8 Aralık 2022'den itibaren. İkinci kaynak: haberturk.com https://www.haberturk.com/disney-plus-turkiye-fiyatlarina-yuzde-85-zam-geldi-disney-plus-yeni-uyelik-ucretleri-ne-kadar-kac-tl-oldu-3545792-teknoloji.",
+          "source": {
+            "title": "Webrazzi: Disney+ abonelik ücretlerine zam yaptı",
+            "url": "https://webrazzi.com/2022/12/08/disney-abonelik-ucretlerine-zam-yapti",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-02",
+          "price": 134.99,
+          "status": "verified",
+          "note": "Disney+ Türkiye'nin en ucuz aylık planı, yeni üyeler için (Şubat 2025'e kadar tek plan, sonra \"Reklamlı\" plan). 14 Şubat 2024'ten itibaren. İkinci kaynak: medyascope.tv https://medyascope.tv/2024/02/14/disney-abonelik-ucretlerine-buyuk-zam/.",
+          "source": {
+            "title": "Teknoblog: Disney Plus Türkiye abonelik fiyatlarına zam (2024)",
+            "url": "https://www.teknoblog.com/disney-plus-turkiye-abonelik-fiyatlari-zam-2024/",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-10",
+          "price": 164.9,
+          "status": "verified",
+          "note": "Disney+ Türkiye'nin en ucuz aylık planı, yeni üyeler için (Şubat 2025'e kadar tek plan, sonra \"Reklamlı\" plan). 17 Ekim 2024'ten itibaren; iki sitede geçen 164,99 yazım hatası (aynı haberlerin yıllık fiyatı 1.649 = 10 × 164,90; Eylül 2025 haberleri \"daha önce 164,90\"). İkinci kaynak: log.com.tr https://www.log.com.tr/?p=917413.",
+          "source": {
+            "title": "Teknoblog: Disney Plus Türkiye zam (Ekim 2024)",
+            "url": "https://www.teknoblog.com/disney-plus-turkiye-zam-2024/",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 249.9,
+          "status": "verified",
+          "note": "Disney+ Türkiye'nin en ucuz aylık planı, yeni üyeler için (Şubat 2025'e kadar tek plan, sonra \"Reklamlı\" plan). 30 Eylül 2025'ten itibaren, Reklamlı plan; Ekim 2026'ya kadar yeni zam haberi bulunamadı. İkinci kaynak: donanimhaber.com https://www.donanimhaber.com/disney-plus-turkiye-abonelik-ucretlerine-zam-geldi--196753.",
+          "source": {
+            "title": "Dünya: Disney+ fiyatlarına yüzde 50'nin üzerinde zam",
+            "url": "https://www.dunya.com/sektorler/bilim-ve-teknoloji/disney-fiyatlarina-yuzde-50nin-uzerinde-zam-haberi-796576",
+            "accessed": "2026-10-26",
             "kind": "news"
           }
         }

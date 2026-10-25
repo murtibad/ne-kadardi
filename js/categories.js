@@ -4,7 +4,7 @@ export const CATEGORIES = [
   { id: 'para', label: 'Para ve altın', products: ['dolar', 'euro', 'sterlin', 'gram-altin', 'ceyrek-altin', 'gram-gumus'] },
   { id: 'ulasim', label: 'Ulaşım ve yakıt', products: ['benzin', 'motorin', 'otogaz', 'kopru', 'osmangazi-koprusu', 'avrasya-tuneli', 'anadolu-otoyolu', 'taksi-acilis', 'istanbul-ulasim', 'okul-servisi', 'fiat-egea-easy', 'togg-t10x'] },
   { id: 'gunluk', label: 'Gıda ve gündelik', products: ['ekmek', 'firin-ekmegi', 'cay', 'big-mac', 'sigara-marlboro', 'plastik-poset', 'simit', 'mektup-pulu', 'iski-su', 'tmo-bugday', 'findik-alim'] },
-  { id: 'teknoloji', label: 'Teknoloji ve eğlence', products: ['iphone', 'playstation', 'ea-fc-oyun', 'airpods', 'spotify', 'amazon-prime', 'netflix', 'youtube-premium', 'milli-piyango-ceyrek', 'sinema-ortalama-bilet'] },
+  { id: 'teknoloji', label: 'Teknoloji ve eğlence', products: ['iphone', 'playstation', 'ea-fc-oyun', 'airpods', 'spotify', 'amazon-prime', 'disney-plus', 'netflix', 'youtube-premium', 'milli-piyango-ceyrek', 'sinema-ortalama-bilet'] },
   { id: 'maas', label: 'Maaş ve yardımlar', products: ['asgari-ucret', 'emekli-en-dusuk-aylik', 'emekli-bayram-ikramiyesi', 'dogum-yardimi', 'kyk-burs', 'aclik-siniri', 'kidem-tavani'] },
   { id: 'harc', label: 'Harç, ceza ve bedeller', products: ['trafik-cezasi', 'alkol-cezasi', 'mtv', 'kyk-yurt-ucreti', 'pasaport-harci', 'yurtdisi-cikis-harci', 'basvurma-harci', 'ehliyet-harci', 'ehliyet-esinav', 'schengen-vize', 'imei-kayit-harci', 'arac-muayene-ucreti', 'bedelli-askerlik', 'yks', 'kpss-lisans', 'ales', 'fitre', 'kurban-vekalet-bedeli', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti', 'noter-asgari-ucret'] },
 ];

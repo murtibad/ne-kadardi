@@ -122,6 +122,7 @@ export const COUNT_UNITS = {
   spotify: 'aylık Spotify aboneliği',
   'youtube-premium': 'aylık YouTube Premium üyeliği',
   'amazon-prime': 'aylık Amazon Prime üyeliği',
+  'disney-plus': 'aylık Disney+ üyeliği',
   netflix: 'aylık Netflix aboneliği',
   'imei-kayit-harci': 'yurt dışı telefon kaydı',
   'istanbul-ulasim': 'otobüs/metro binişi',
@@ -159,7 +160,7 @@ const PAID = new Set([
   'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'alkol-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
-  'spotify', 'netflix', 'youtube-premium', 'amazon-prime', 'iski-su', 'okul-servisi', 'mtv', 'ehliyet-esinav', 'anadolu-otoyolu', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
+  'spotify', 'netflix', 'youtube-premium', 'amazon-prime', 'disney-plus', 'iski-su', 'okul-servisi', 'mtv', 'ehliyet-esinav', 'anadolu-otoyolu', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
 ]);
 
 // Money people receive (pensions, grants) or a cost-of-living line cannot be "bought" with a wage:
