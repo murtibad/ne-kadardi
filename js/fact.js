@@ -31,6 +31,6 @@ export function pickFact(timelines, { random = Math.random, skipId = null } = {}
     thenPrice: formatPrice(first.price),
     nowLabel: current.currentLabel || formatPeriod(current.date),
     nowPrice: formatPrice(current.price),
-    ratio: `${formatRatio(ratio)} kat`,
+    ratio: `${formatRatio(ratio)} katına`,
   };
 }

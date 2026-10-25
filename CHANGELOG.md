@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.95.2] - 2026-10-25
+### Changed
+- Plain-Turkish pass (Gemini Flash read the new texts as a 1971-born reader): big changes say "20,4 katına çıktı" instead of "20,4 kat arttı" (which strictly means one more), on the receipt, home card, archive and share image; the shared question reads "Sence Temmuz 2020'de Big Mac kaç liraydı?" (`inPeriod` in `js/format.js` picks 'de/'da/'te/'ta from how the year is read); a shared link says "Bir arkadaşın bu soruyu seninle paylaştı."; fines drop "1 ceza" ("ilk yakalanmada (otomobil, 0,50 promil üstü)", "ilk ihlalde (otomobil sürücüsü)"), Amazon Prime "1 aylık üyelik ücreti"; three amount lines reworded ("para da büyüdü", "fazla cömert").
+
 ## [0.95.1] - 2026-10-25
 ### Fixed
 - Chart: the dashed "Tahminin ₺..." label moves under its line when the price line runs through the text above it (`refLabelBelow` in `js/price-chart.js`).

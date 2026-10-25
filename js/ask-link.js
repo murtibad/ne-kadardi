@@ -1,4 +1,5 @@
 // Shareable link for a specific question without revealing the answer.
+import { inPeriod } from './format.js';
 const PARAM_RE = /^([a-z0-9-]+)\.(\d{4}(?:-\d{2}(?:-\d{2})?)?)$/;
 
 export function questionParam(q) {
@@ -16,6 +17,5 @@ export function askUrl(q, base) {
 }
 
 export function askText(periodText, title) {
-  // Same words as the question card; no case suffix after the year, which would need Turkish vowel harmony.
-  return `Soru: ${periodText} · ${title}. Sence kaç liraydı? Tahmin et, gerçeğini gör:`;
+  return `Sence ${inPeriod(periodText)} ${title} kaç liraydı? Tahmin et, gerçeğini gör:`;
 }

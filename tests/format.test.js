@@ -57,8 +57,8 @@ test('readAmount returns empty string for null, NaN, and non-positive values', (
 });
 
 test('formatIncrease uses percent below 2x', () => {
-  assert.equal(formatIncrease(12.43), '12,4 kat arttı');
-  assert.equal(formatIncrease(2), '2 kat arttı');
+  assert.equal(formatIncrease(12.43), '12,4 katına çıktı');
+  assert.equal(formatIncrease(2), '2 katına çıktı');
   assert.equal(formatIncrease(1.04), '%4 arttı');
   assert.equal(formatIncrease(1.999), '%100 arttı');
   assert.equal(formatIncrease(0.8), '%20 düştü');
@@ -69,4 +69,17 @@ test('formatIncrease uses percent below 2x', () => {
 test('readAmount gives up on absurdly large numbers instead of reading them', () => {
   assert.equal(readAmount(1e20), 'çok büyük bir sayı');
   assert.notEqual(readAmount(999999999999), 'çok büyük bir sayı');
+});
+
+test('inPeriod adds the locative that matches how the year is read', async () => {
+  const { inPeriod } = await import('../js/format.js');
+  assert.equal(inPeriod('Temmuz 2020'), "Temmuz 2020'de");
+  assert.equal(inPeriod('2016'), "2016'da");
+  assert.equal(inPeriod('Ocak 2023'), "Ocak 2023'te");
+  assert.equal(inPeriod('2010'), "2010'da");
+  assert.equal(inPeriod('2019'), "2019'da");
+  assert.equal(inPeriod('2014'), "2014'te");
+  assert.equal(inPeriod('2011'), "2011'de");
+  assert.equal(inPeriod('2000'), "2000'de");
+  assert.equal(inPeriod('Eylül 2040'), "Eylül 2040'ta");
 });

@@ -5169,7 +5169,7 @@
     {
       "id": "trafik-cezasi",
       "name": "Kırmızı ışıkta geçme cezası",
-      "unit": "1 ceza (otomobil sürücüsü, ilk kez)",
+      "unit": "ilk ihlalde (otomobil sürücüsü)",
       "region": null,
       "source_hint": "2918 sayılı Karayolları Trafik Kanunu madde 47/1-b; 2026 Şubat'a kadar ceza her Ocak yeniden değerleme oranıyla arttı, 27.02.2026'dan beri 7574 sayılı Kanunla sabit tutar (ilk ihlal). Haber kaynaklı.",
       "image": {
@@ -5327,7 +5327,7 @@
     {
       "id": "alkol-cezasi",
       "name": "Alkollü araç kullanma cezası",
-      "unit": "1 ceza (otomobil, 0,50 promil üstü, ilk kez)",
+      "unit": "ilk yakalanmada (otomobil, 0,50 promil üstü)",
       "region": null,
       "source_hint": "2918 sayılı Karayolları Trafik Kanunu madde 48; 2026 Şubat'a kadar her Ocak yeniden değerleme oranıyla arttı, 27.02.2026'dan beri 7574 sayılı Kanunla sabit tutar. Haber kaynaklı; 2019 ve 2021 (1.339/1.340 çelişkisi) eklenmedi.",
       "image": {
@@ -11367,7 +11367,7 @@
     {
       "id": "amazon-prime",
       "name": "Amazon Prime üyeliği",
-      "unit": "1 ay, aylık üyelik",
+      "unit": "1 aylık üyelik ücreti",
       "region": null,
       "source_hint": "Amazon Prime Türkiye aylık üyelik ücreti (ücretsiz kargo ve Prime Video dahil), zam haberlerinden; her değer iki farklı haber sitesiyle doğrulandı.",
       "image": {

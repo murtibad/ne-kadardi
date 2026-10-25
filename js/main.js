@@ -1135,7 +1135,7 @@ function renderFact() {
       <p class="fact-arrow" aria-hidden="true">→</p>
       <p class="fact-now"><span>${escapeHTML(f.nowLabel)}</span><strong>${escapeHTML(f.nowPrice)}</strong></p>
     </div>
-    <p class="fact-ratio"><strong>${escapeHTML(f.ratio)}</strong> arttı · <a href="#arsiv" data-product="${escapeHTML(f.productId)}">fiyat geçmişi</a></p>
+    <p class="fact-ratio"><strong>${escapeHTML(f.ratio)}</strong> çıktı · <a href="#arsiv" data-product="${escapeHTML(f.productId)}">fiyat geçmişi</a></p>
     <button type="button" class="fact-play">Bunu tahmin et →</button>`;
   $('fact-body').querySelector('.fact-play').onclick = () => {
     // pushState keeps Back working without firing hashchange, which would show the old question.
@@ -1369,7 +1369,7 @@ async function init() {
     // Drop ?soru so a reload does not repeat the shared question, and open it right away.
     history.replaceState(null, '', location.pathname + '#tahmin');
     nextQuestion(parsedSoru.productId, parsedSoru.date);
-    $('q-anchor').textContent = 'Bir arkadaşın bu soruyu sana sordu.';
+    $('q-anchor').textContent = 'Bir arkadaşın bu soruyu seninle paylaştı.';
     $('q-anchor').hidden = false;
     return;
   }

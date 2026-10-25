@@ -61,7 +61,7 @@ test('buildShareImageModel handles question with current price and image and con
   assert.equal(model.hasCurrent, true);
   assert.equal(model.currentLabel, 'Güncel (Ekim 2026)');
   assert.equal(model.current, formatPrice(10));
-  assert.equal(model.increase, '10 kat arttı');
+  assert.equal(model.increase, '10 katına çıktı');
   assert.equal(model.iconSrc, 'img/ekmek.svg');
   assert.equal(model.contextText, 'Context text.');
 });
