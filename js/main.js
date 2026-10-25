@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, escapeHTML } from './format.js';
-import { actualLabel, buildQuestions, isAmount, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { timelineTableHtml } from './archive-table.js';
@@ -112,7 +112,6 @@ function showMessage(text) {
 }
 
 let downloadOriginalLabel = '';
-let askOriginalLabel = '';
 let askTimeoutId = null;
 
 function resetShareBtn() {
@@ -132,8 +131,9 @@ function resetShareBtn() {
     $('download-btn').innerHTML = downloadOriginalLabel;
     $('download-btn').removeAttribute('aria-busy');
   }
-  if (askOriginalLabel && $('ask-btn')) {
-    $('ask-btn').textContent = askOriginalLabel;
+  for (const id of ['ask-btn', 'ask-q-btn']) {
+    const b = $(id);
+    if (b?.dataset.label) b.textContent = b.dataset.label;
   }
 }
 
@@ -172,7 +172,10 @@ function nextQuestion(productId = null, date = null) {
   // Avoid repeating the last question, unless it is the product's only one.
   const fresh = ofProduct.filter((x) => x.id !== state.question?.id);
   const pool = fresh.length ? fresh : ofProduct;
-  const q = exact ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id));
+  // Someone who has never played starts with the openers (game.js OPENER_IDS), skips included.
+  let opener = null;
+  while (!productId && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
+  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id));
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;
@@ -840,7 +843,9 @@ async function share() {
   }
 }
 
-async function askFriend() {
+// Both the receipt link and the question card's button ask; feedback shows on the one pressed.
+async function askFriend(e) {
+  const btn = e?.currentTarget ?? $('ask-btn');
   const q = state.question;
   if (!q) return;
   const base = location.origin + location.pathname;
@@ -857,10 +862,10 @@ async function askFriend() {
   const setAskStatus = (msg) => {
     if (askTimeoutId !== null) clearTimeout(askTimeoutId);
     announce(msg);
-    $('ask-btn').textContent = msg;
+    btn.textContent = msg;
     askTimeoutId = setTimeout(() => {
       askTimeoutId = null;
-      if (askOriginalLabel && $('ask-btn')) $('ask-btn').textContent = askOriginalLabel;
+      btn.textContent = btn.dataset.label;
     }, 2000);
   };
   try {
@@ -1330,6 +1335,9 @@ async function init() {
   const versionEl = $('app-version');
   if (versionEl) versionEl.textContent = VERSION;
   loadSession();
+  // Decided once at load: a returning player never gets the opener list again.
+  state.firstVisit = state.played === 0;
+  state.openerIndex = 0;
   renderThemeToggle();
   $('theme-toggle').addEventListener('click', toggleTheme);
   $('fact-next').addEventListener('click', () => { sound.play('beep'); renderFact(); });
@@ -1375,7 +1383,7 @@ async function init() {
   }
   shareOriginalLabel = $('share-btn').textContent;
   downloadOriginalLabel = $('download-btn').innerHTML;
-  askOriginalLabel = $('ask-btn').textContent;
+  for (const id of ['ask-btn', 'ask-q-btn']) $(id).dataset.label = $(id).textContent;
   // The search input lives outside the rebuilt chip rows, so it keeps focus while typing.
   $('product-search').addEventListener('input', (e) => {
     state.timelineQuery = e.target.value;
@@ -1430,6 +1438,7 @@ async function init() {
   $('share-btn').addEventListener('click', share);
   $('download-btn').addEventListener('click', downloadImage);
   $('ask-btn').addEventListener('click', askFriend);
+  $('ask-q-btn').addEventListener('click', askFriend);
   initSharePreview();
   initIntro();
   initMotionToggle();

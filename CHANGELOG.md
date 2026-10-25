@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.100.0] - 2026-10-26
+### Added
+- First-time players (no saved stats) start with the most talked-about prices, oldest year each: Halk Ekmek (Haziran 2019), benzin (Ocak 2016), Big Mac (Ocak 2010), iPhone 5s (Kasım 2013), dolar (Ocak 2010), Netflix (Eylül 2016); then the usual random mix. Skips count. `OPENER_IDS` / `openerFor` in `js/game.js` (Murti's idea).
+- Question card: "Bilemedin mi? Arkadaşına sor →" shares the question without the answer, like the receipt link (Murti said yes).
+
 ## [0.99.0] - 2026-10-26
 ### Added
 - `bitcoin` (Murti said yes): 1 BTC in TL = Bitstamp's public BTC/USD daily close × TCMB USD selling rate on the dollar entries' days (first business day of January and July) from 2013, 28 values (Ocak 2013 ₺23,29 → ₺4.025.771 on 23.10.2026). Built by a script, method in `docs/DATA.md`. New icon `img/bitcoin.svg` (a coin with a B, no logo).

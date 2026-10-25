@@ -1492,3 +1492,7 @@ html:not([data-motion="reduce"]).theme-anim, html:not([data-motion="reduce"]).th
 
 /* Keeps a short phrase ("Hata görürsen bildir") from leaving its last word alone on a line. */
 .nowrap { white-space: nowrap; }
+
+/* Question card: a quiet way to pass the question to a friend. */
+.ask-q { margin: 4px 0 0; text-align: center; font-size: 0.875rem; color: var(--muted-on-paper); }
+.ask-q .link-btn { font-size: 0.875rem; color: var(--text); }
