@@ -84,6 +84,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | mektup-pulu | PTT domestic letter up to 20 g, basic fee incl. KDV | BTK board decisions (2022, 2024) and PTT tariff PDFs (2025-2026, effective date in the file name), 2019 from two news sites | high |
 | ceyrek-altin | 1 coin, 1.75 g, 22 carat | derived from gram-altin x 1.604 g pure gold | high (market value) |
 | gram-gumus | 1 g, pure silver | World Bank silver price x TCMB rate (same method as gram-altin) | high (market value) |
+| bitcoin | 1 BTC, exchange price | Bitstamp public API daily BTC/USD close (`/api/v2/ohlc/btcusd/?step=86400&limit=1&start=<unix day>`, UTC day) x TCMB USD selling rate of the same day; the dollar entries' days (first business day of January and July, 2013+) and today's dollar date; whole lira from 100 TL. Exchange commission not included. Script-built and reproducible. | high (market value) |
 | otogaz | 1 L autogas, İstanbul (Avrupa) | EPDK LPG bayi satış fiyatı bulletin (from 2016) | high (date it) |
 | asgari-ucret | net, AGİ dahil (2022 öncesi) | ÇSGB, Resmî Gazete (bekâr işçi ele geçen tutar) | very high |
 | big-mac | 1 sandwich | The Economist big-mac-data (GitHub) | high |

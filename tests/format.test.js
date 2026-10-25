@@ -83,3 +83,9 @@ test('inPeriod adds the locative that matches how the year is read', async () =>
   assert.equal(inPeriod('2000'), "2000'de");
   assert.equal(inPeriod('Eylül 2040'), "Eylül 2040'ta");
 });
+
+test('formatRatio drops the decimal from 100 up', async () => {
+  const { formatRatio } = await import('../js/format.js');
+  assert.equal(formatRatio(12.43), '12,4');
+  assert.equal(formatRatio(172854.1), '172.854');
+});

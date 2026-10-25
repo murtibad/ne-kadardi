@@ -4851,6 +4851,368 @@
       ]
     },
     {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "unit": "1 Bitcoin (borsa fiyatı)",
+      "region": null,
+      "source_hint": "Türetilmiş: Bitstamp borsasının BTC/USD günlük kapanışı × TCMB döviz satış kuru, dolar kayıtlarıyla aynı günler (Ocak ve Temmuz'un ilk iş günü). Ayrıntı: docs/DATA.md.",
+      "image": {
+        "src": "img/bitcoin.svg",
+        "alt": "Bitcoin parası çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-10-23",
+        "price": 4025771,
+        "status": "verified",
+        "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 23.10.2026 günlük kapanışı 81.076,46 $ (UTC gün sonu) × TCMB döviz satış kuru 49,654 TL (23.10.2026) = 4.025.770,54 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202610/23102026.xml",
+        "source": {
+          "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 23.10.2026",
+          "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1792713600",
+          "accessed": "2026-10-26",
+          "kind": "derived"
+        }
+      },
+      "prices": [
+        {
+          "date": "2013-01-02",
+          "price": 23.29,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2013 günlük kapanışı 13,09 $ (UTC gün sonu) × TCMB döviz satış kuru 1,7793 TL (02.01.2013) = 23,29 TL, kuruşa yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201301/02012013.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2013",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1357084800",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2013-07-01",
+          "price": 163,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2013 günlük kapanışı 84,50 $ (UTC gün sonu) × TCMB döviz satış kuru 1,9269 TL (01.07.2013) = 162,82 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201307/01072013.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2013",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1372636800",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2014-01-02",
+          "price": 1706,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2014 günlük kapanışı 784,19 $ (UTC gün sonu) × TCMB döviz satış kuru 2,1757 TL (02.01.2014) = 1.706,16 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201401/02012014.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2014",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1388620800",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2014-07-01",
+          "price": 1355,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2014 günlük kapanışı 638,25 $ (UTC gün sonu) × TCMB döviz satış kuru 2,1232 TL (01.07.2014) = 1.355,13 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201407/01072014.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2014",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1404172800",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-01-02",
+          "price": 741,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2015 günlük kapanışı 315,42 $ (UTC gün sonu) × TCMB döviz satış kuru 2,3491 TL (02.01.2015) = 740,95 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201501/02012015.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2015",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1420156800",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2015-07-01",
+          "price": 690,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2015 günlük kapanışı 257,62 $ (UTC gün sonu) × TCMB döviz satış kuru 2,6801 TL (01.07.2015) = 690,45 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201507/01072015.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2015",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1435708800",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2016-01-04",
+          "price": 1280,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 04.01.2016 günlük kapanışı 434,17 $ (UTC gün sonu) × TCMB döviz satış kuru 2,9475 TL (04.01.2016) = 1.279,72 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201601/04012016.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 04.01.2016",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1451865600",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2016-07-01",
+          "price": 1950,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2016 günlük kapanışı 674,86 $ (UTC gün sonu) × TCMB döviz satış kuru 2,8898 TL (01.07.2016) = 1.950,21 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201607/01072016.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2016",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1467331200",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-01-02",
+          "price": 3585,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2017 günlük kapanışı 1.012,54 $ (UTC gün sonu) × TCMB döviz satış kuru 3,5402 TL (02.01.2017) = 3.584,59 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201701/02012017.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2017",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1483315200",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2017-07-03",
+          "price": 9021,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 03.07.2017 günlük kapanışı 2.550,47 $ (UTC gün sonu) × TCMB döviz satış kuru 3,5369 TL (03.07.2017) = 9.020,76 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201707/03072017.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 03.07.2017",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1499040000",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2018-01-02",
+          "price": 55367,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2018 günlük kapanışı 14.678,94 $ (UTC gün sonu) × TCMB döviz satış kuru 3,7719 TL (02.01.2018) = 55.367,49 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201801/02012018.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2018",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1514851200",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2018-07-02",
+          "price": 30623,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.07.2018 günlük kapanışı 6.612,98 $ (UTC gün sonu) × TCMB döviz satış kuru 4,6308 TL (02.07.2018) = 30.623,39 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201807/02072018.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.07.2018",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1530489600",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-01-02",
+          "price": 20755,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2019 günlük kapanışı 3.885,87 $ (UTC gün sonu) × TCMB döviz satış kuru 5,3412 TL (02.01.2019) = 20.755,21 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201901/02012019.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2019",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1546387200",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2019-07-01",
+          "price": 60180,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2019 günlük kapanışı 10.577,43 $ (UTC gün sonu) × TCMB döviz satış kuru 5,6895 TL (01.07.2019) = 60.180,29 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/201907/01072019.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2019",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1561939200",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2020-01-02",
+          "price": 41415,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2020 günlük kapanışı 6.950,56 $ (UTC gün sonu) × TCMB döviz satış kuru 5,9585 TL (02.01.2020) = 41.414,91 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202001/02012020.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2020",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1577923200",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2020-07-01",
+          "price": 63299,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2020 günlük kapanışı 9.233,38 $ (UTC gün sonu) × TCMB döviz satış kuru 6,8555 TL (01.07.2020) = 63.299,44 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202007/01072020.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2020",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1593561600",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-01-04",
+          "price": 235992,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 04.01.2021 günlük kapanışı 32.005,88 $ (UTC gün sonu) × TCMB döviz satış kuru 7,3734 TL (04.01.2021) = 235.992,16 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202101/04012021.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 04.01.2021",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1609718400",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2021-07-01",
+          "price": 291754,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2021 günlük kapanışı 33.564,21 $ (UTC gün sonu) × TCMB döviz satış kuru 8,6924 TL (01.07.2021) = 291.753,54 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202107/01072021.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2021",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1625097600",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2022-01-03",
+          "price": 624445,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 03.01.2022 günlük kapanışı 46.439,89 $ (UTC gün sonu) × TCMB döviz satış kuru 13,4463 TL (03.01.2022) = 624.444,69 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202201/03012022.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 03.01.2022",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1641168000",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2022-07-01",
+          "price": 322176,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2022 günlük kapanışı 19.239,47 $ (UTC gün sonu) × TCMB döviz satış kuru 16,7456 TL (01.07.2022) = 322.176,47 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202207/01072022.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2022",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1656633600",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-01-02",
+          "price": 312395,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2023 günlük kapanışı 16.673,00 $ (UTC gün sonu) × TCMB döviz satış kuru 18,7366 TL (02.01.2023) = 312.395,33 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202301/02012023.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2023",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1672617600",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2023-07-03",
+          "price": 812541,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 03.07.2023 günlük kapanışı 31.158,00 $ (UTC gün sonu) × TCMB döviz satış kuru 26,0781 TL (03.07.2023) = 812.541,44 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202307/03072023.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 03.07.2023",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1688342400",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2024-01-02",
+          "price": 1336549,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2024 günlük kapanışı 44.970,00 $ (UTC gün sonu) × TCMB döviz satış kuru 29,7209 TL (02.01.2024) = 1.336.548,87 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202401/02012024.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2024",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1704153600",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2024-07-01",
+          "price": 2053220,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2024 günlük kapanışı 62.829,00 $ (UTC gün sonu) × TCMB döviz satış kuru 32,6795 TL (01.07.2024) = 2.053.220,31 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202407/01072024.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2024",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1719792000",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2025-01-02",
+          "price": 3422368,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2025 günlük kapanışı 96.907,00 $ (UTC gün sonu) × TCMB döviz satış kuru 35,316 TL (02.01.2025) = 3.422.367,61 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202501/02012025.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2025",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1735776000",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2025-07-01",
+          "price": 4211975,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2025 günlük kapanışı 105.709,00 $ (UTC gün sonu) × TCMB döviz satış kuru 39,845 TL (01.07.2025) = 4.211.975,10 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202507/01072025.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2025",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1751328000",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-01-02",
+          "price": 3864176,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 02.01.2026 günlük kapanışı 89.952,00 $ (UTC gün sonu) × TCMB döviz satış kuru 42,9582 TL (02.01.2026) = 3.864.176,01 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 02.01.2026",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1767312000",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        },
+        {
+          "date": "2026-07-01",
+          "price": 2798531,
+          "status": "verified",
+          "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 01.07.2026 günlük kapanışı 59.963,46 $ (UTC gün sonu) × TCMB döviz satış kuru 46,6706 TL (01.07.2026) = 2.798.530,66 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202607/01072026.xml",
+          "source": {
+            "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 01.07.2026",
+            "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1782864000",
+            "accessed": "2026-10-26",
+            "kind": "derived"
+          }
+        }
+      ]
+    },
+    {
       "id": "yks",
       "name": "YKS sınav ücreti",
       "unit": "1 oturum (TYT, AYT veya YDT her biri)",

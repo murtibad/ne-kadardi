@@ -52,7 +52,8 @@ export function formatPrice(value) {
 
 /** Format a ratio with one decimal, e.g. 2.66 -> "2,7". */
 export function formatRatio(value) {
-  return new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 1 }).format(value);
+  // "172.854,1 kat" reads as noise: past 100 the decimal adds nothing.
+  return new Intl.NumberFormat('tr-TR', { maximumFractionDigits: value >= 100 ? 0 : 1 }).format(value);
 }
 
 /**
