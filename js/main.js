@@ -19,7 +19,7 @@ import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './pr
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
 import { introRows, playIntro } from './intro.js';
-import { MOTION_KEY, motionLabel, reducedMotion } from './motion.js';
+import { gentleMotion } from './motion.js';
 import { buildReportCard, isCardRound, reportCardText } from './report-card.js';
 
 const DATA_URL = 'data/prices.json';
@@ -27,7 +27,7 @@ const $ = (id) => document.getElementById(id);
 const sound = createSoundPlayer();
 // Vibration follows the sound switch and the reduced-motion preference.
 const hapticIfAllowed = (ms) => {
-  if (!sound.isEnabled() || reducedMotion()) return;
+  if (!sound.isEnabled()) return;
   haptic(ms);
 };
 
@@ -343,7 +343,7 @@ function handOver() {
 
 function printReceipt(extraSound) {
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
-  const reduced = reducedMotion();
+  const reduced = false; // the receipt always prints; gentle mode turns the slide into a fade in CSS
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
   $('result-screen').classList.remove('handed');
@@ -627,7 +627,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     // Scroll only when the row is off screen, so the tapped chart does not jump away.
     const rect = match?.getBoundingClientRect();
     if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
-      const reduced = reducedMotion();
+      const reduced = gentleMotion();
       match.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
     }
   } : undefined);
@@ -980,7 +980,7 @@ function openIntro() {
   if (!dlg || typeof dlg.showModal !== 'function') return;
   finishIntro?.({ moveFocus: false });
   if (!dlg.open) dlg.showModal();
-  finishIntro = playIntro(dlg, introRows(state.timelines), { reduced: reducedMotion(), sound });
+  finishIntro = playIntro(dlg, introRows(state.timelines), { reduced: false, sound });
 }
 
 function closeIntro() {
@@ -1019,25 +1019,6 @@ async function shareReportCard(e) {
   btn.textContent = msg;
   announce(msg);
   setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
-}
-
-// Footer switch: the phone's reduce-motion setting is only the default (set in index.html's head).
-function initMotionToggle() {
-  const btn = $('motion-toggle');
-  if (!btn) return;
-  const sync = () => {
-    const mode = reducedMotion() ? 'reduce' : 'full';
-    btn.textContent = motionLabel(mode);
-    btn.setAttribute('aria-pressed', String(mode === 'full'));
-  };
-  btn.addEventListener('click', () => {
-    const next = reducedMotion() ? 'full' : 'reduce';
-    document.documentElement.dataset.motion = next;
-    try { localStorage.setItem(MOTION_KEY, next); } catch { /* storage unavailable */ }
-    sync();
-    announce(motionLabel(next));
-  });
-  sync();
 }
 
 function initIntro() {
@@ -1164,7 +1145,7 @@ function renderProductChips(visible, selectedId, focusProductId) {
   const row = picker.getBoundingClientRect();
   const chip = chosen.getBoundingClientRect();
   picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
-    behavior: reducedMotion() ? 'auto' : 'smooth' });
+    behavior: gentleMotion() ? 'auto' : 'smooth' });
 }
 
 function renderTimelineHeader(product) {
@@ -1207,7 +1188,7 @@ function linkRowsToChart() {
     const fig = $('t-chart');
     fig._activateDate?.(btn.dataset.date);
     if (!fig.hidden) {
-      const reduced = reducedMotion();
+      const reduced = gentleMotion();
       fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
     }
   });
@@ -1486,7 +1467,6 @@ async function init() {
   $('r-card-share').addEventListener('click', shareReportCard);
   initSharePreview();
   initIntro();
-  initMotionToggle();
 
   const rawSoru = new URLSearchParams(location.search).get('soru');
   const parsedSoru = parseQuestionParam(rawSoru);

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.103.0] - 2026-10-26
+### Changed
+- Animations are always on (Murti's call). Like Apple, Google and Duolingo, the phone's reduce-motion switch no longer turns them off; it makes them gentle: the intro, the rolling year, counting prices, the chart and the confetti all play, while slides, slams, shakes, floating and spinning become fades or stop (`[data-motion="gentle"]` block at the end of `css/style.css`). The footer switch from 0.98.0 is gone.
+
 ## [0.102.0] - 2026-10-26
 ### Added
 - Report card (Murti left the call to Claude): after every 5th answer of a visit the receipt shows "5 SORULUK KARNE": one line per question (date · product · score), the average and the best guess, with "Karneni paylaş →" (text with scores, no prices, so friends can still play). `js/report-card.js`.

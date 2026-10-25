@@ -1,22 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveMotion, reducedMotion, motionLabel } from '../js/motion.js';
+import { resolveMotion, gentleMotion } from '../js/motion.js';
 
-test('a saved choice wins over the system reduce-motion setting', () => {
-  assert.equal(resolveMotion('full', true), 'full');
-  assert.equal(resolveMotion('reduce', false), 'reduce');
-  assert.equal(resolveMotion(null, true), 'reduce');
-  assert.equal(resolveMotion(null, false), 'full');
-  assert.equal(resolveMotion('junk', true), 'reduce');
+test('reduce-motion turns animations gentle, never off', () => {
+  assert.equal(resolveMotion(true), 'gentle');
+  assert.equal(resolveMotion(false), 'full');
 });
 
-test('reducedMotion reads the root data-motion attribute', () => {
-  assert.equal(reducedMotion({ dataset: { motion: 'reduce' } }), true);
-  assert.equal(reducedMotion({ dataset: { motion: 'full' } }), false);
-  assert.equal(reducedMotion(undefined), false);
-});
-
-test('the footer switch says what is on now', () => {
-  assert.equal(motionLabel('full'), 'Animasyonlar: açık');
-  assert.equal(motionLabel('reduce'), 'Animasyonlar: kapalı');
+test('gentleMotion reads the root data-motion attribute', () => {
+  assert.equal(gentleMotion({ dataset: { motion: 'gentle' } }), true);
+  assert.equal(gentleMotion({ dataset: { motion: 'full' } }), false);
+  assert.equal(gentleMotion(undefined), false);
 });

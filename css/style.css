@@ -296,7 +296,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   background: var(--fill, var(--accent));
   transition: width 0.4s ease-out;
 }
-:root[data-motion="reduce"] .meter > span { transition: none; }
+
 
 .score-box {
   text-align: center;
@@ -560,12 +560,7 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   clip: rect(0 0 0 0); white-space: nowrap;
 }
 
-:root[data-motion="reduce"] * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+
 
 
 /* Timeline Screen */
@@ -1672,3 +1667,24 @@ html:not([data-motion="reduce"]).theme-anim, html:not([data-motion="reduce"]).th
 .report-card-lines li { display: flex; justify-content: space-between; gap: 12px; }
 .report-card-avg { margin: 10px 0 4px; font-size: 0.875rem; font-weight: 700; }
 .report-card .link-btn { font-family: var(--font-mono); }
+
+/* Gentle motion: the phone asks for less motion. Everything still plays, but movements that can
+   make people dizzy (slides, slams, shakes, floating, spinning) become plain fades or stop. */
+@keyframes gentle-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes gentle-stamp { from { opacity: 0; } to { opacity: 0.9; } }
+:root[data-motion="gentle"] #result-screen .receipt-wrapper.printing .result-receipt,
+:root[data-motion="gentle"] .intro-stage.is-printed .intro-receipt,
+:root[data-motion="gentle"] .screen-enter,
+:root[data-motion="gentle"] .share-preview[open] { animation-name: gentle-fade; }
+:root[data-motion="gentle"] .receipt-stamp { transform: rotate(-4deg); }
+:root[data-motion="gentle"] .receipt-stamp.stamped { animation-name: gentle-stamp; }
+:root[data-motion="gentle"] .intro-stage.is-stamped .intro-stamp { animation-name: gentle-fade; transform: rotate(-6deg); }
+:root[data-motion="gentle"] #result-screen .receipt-wrapper.torn .result-receipt,
+:root[data-motion="gentle"] #result-screen.handed .receipt-wrapper.torn .result-receipt,
+:root[data-motion="gentle"] #result-screen .printer:has(+ .receipt-wrapper.torn),
+:root[data-motion="gentle"] .result-image.bounce,
+:root[data-motion="gentle"] .result-image.shake,
+:root[data-motion="gentle"] .btn.next-btn.nudge,
+:root[data-motion="gentle"] .guess-field.invalid,
+:root[data-motion="gentle"] .theme-toggle.spin,
+:root[data-motion="gentle"] .intro-stage.shake .intro-receipt { animation: none; }
