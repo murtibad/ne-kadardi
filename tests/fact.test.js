@@ -17,7 +17,7 @@ test('pickFact pairs the oldest price with the current one', () => {
   assert.equal(f.productId, 'gold');
   assert.equal(f.thenLabel, 'Ocak 2010');
   assert.equal(f.nowLabel, 'Eylül 2026');
-  assert.equal(f.ratio, '100 kat');
+  assert.equal(f.ratio, '100 katına');
 });
 
 test('pickFact skips small rises and products without a current price', () => {

@@ -22,15 +22,15 @@ export const UNDER_COMMENTS = [
 // jokes read wrong there.
 export const AMOUNT_OVER_COMMENTS = [
   'Keşke o kadar olsaydı, ama değildi.',
-  'Bu rakam o yıllar için fazla cömert.',
+  'O yıllar için bu rakam fazla yüksek.',
   'Bugünün rakamını geçmişe taşımışsın.',
   'O tutara gelmemize daha birkaç yıl vardı.',
 ];
 
 export const AMOUNT_UNDER_COMMENTS = [
-  'Rakamlar o kadar küçük değildi, para da büyüdü.',
+  'O yıllarda bile rakamlar bu kadar düşük değildi.',
   'O yıllar için bile bu rakam az kalırdı.',
-  'Eski paraları biraz fazla küçük hatırlıyorsun.',
+  'Eski rakamları biraz fazla düşük hatırlıyorsun.',
   'Bu kadar az değildi, rakamlar çoktan büyümüştü.',
 ];
 

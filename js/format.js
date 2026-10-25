@@ -56,15 +56,29 @@ export function formatRatio(value) {
 }
 
 /**
- * Describe a price change from an old price to today's: "12,4 kat arttı" for big jumps,
+ * Describe a price change from an old price to today's: "12,4 katına çıktı" for big jumps,
  * but "%4 arttı" below 2x, where "1 kat arttı" would read as "it doubled".
  */
 export function formatIncrease(ratio) {
   if (!Number.isFinite(ratio) || ratio <= 0) return '';
-  if (ratio >= 2) return `${formatRatio(ratio)} kat arttı`;
+  // "kat arttı" would strictly mean one more than the ratio; "katına çıktı" says what happened.
+  if (ratio >= 2) return `${formatRatio(ratio)} katına çıktı`;
   const pct = Math.round((ratio - 1) * 100);
   if (pct === 0) return 'değişmedi';
   return pct > 0 ? `%${pct} arttı` : `%${-pct} düştü`;
+}
+
+// Locative after a number follows how its last word is read aloud: 2020'de (yirmi), 2026'da (altı),
+// 2023'te (üç), 2010'da (on), 2040'ta (kırk). Years only, so 0 means "bin".
+const LOC_ONES = ['', 'de', 'de', 'te', 'te', 'te', 'da', 'de', 'de', 'da'];
+const LOC_TENS = ['', 'da', 'de', 'da', 'ta', 'de', 'ta', 'te', 'de', 'da'];
+
+/** "Temmuz 2020" -> "Temmuz 2020'de", "2016" -> "2016'da". */
+export function inPeriod(periodText) {
+  const n = Number(periodText.match(/(\d+)\s*$/)?.[1]);
+  if (!Number.isFinite(n)) return periodText;
+  const suffix = n % 10 ? LOC_ONES[n % 10] : n % 100 ? LOC_TENS[(n % 100) / 10] : 'de';
+  return `${periodText}'${suffix}`;
 }
 
 /** Format a data date: "2012" -> "2012", "2012-01" or "2012-01-15" -> "Ocak 2012". */
