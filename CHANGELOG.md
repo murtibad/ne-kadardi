@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.92.10] - 2026-10-25
+### Fixed
+- The price chart's red label for the question's own price no longer sits on the line: in the middle of the chart it leans to the side where the line is lower (`labelSide` in `js/price-chart.js`).
+
 ## [0.92.9] - 2026-10-22
 ### Added
 - `anadolu-otoyolu` 2019-02 25 (KGM table archived 14.02.2019). The 30 TL "2019" table is only archived from 2021, so its month is unknown and it stays out.

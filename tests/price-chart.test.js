@@ -282,3 +282,12 @@ test('a wild guess pins to the chart edge instead of flattening the data', () =>
   const near = buildPriceChart(rows, { refPrice: 15 });
   assert.equal(near.ref.off, null);
 });
+
+test('labelSide leans a middle label away from the higher neighbour', async () => {
+  const { labelSide } = await import('../js/price-chart.js');
+  const at = (ys) => ys.map((y, i) => ({ x: i * 10, y }));
+  assert.equal(labelSide(at([90, 80, 20]), 1), 'left'); // steep rise right after the point
+  assert.equal(labelSide(at([20, 80, 90]), 1), 'right'); // falls into the point from a high left
+  assert.equal(labelSide(at([90, 80]), 1), 'middle'); // end points keep their own anchor
+  assert.equal(labelSide(at([90, 80]), 0), 'middle');
+});

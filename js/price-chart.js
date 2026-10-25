@@ -158,6 +158,17 @@ export function buildPriceChart(rows, options = {}) {
   };
 }
 
+// Which side of a middle point its price label should sit on: the side where the line is lower,
+// so a steep rise right after the point does not run through the text.
+export function labelSide(points, index) {
+  const p = points[index];
+  const prev = points[index - 1];
+  const next = points[index + 1];
+  if (!p || !prev || !next) return 'middle';
+  // SVG y grows downwards: the lower neighbour has the larger y.
+  return next.y < prev.y ? 'left' : 'right';
+}
+
 // True when the guess label fits better at the left end: compares how close the data points
 // under a label-wide strip at each end come to the guess line.
 export function refLabelAtStart(chart, labelWidth) {
