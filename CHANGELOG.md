@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.93.1] - 2026-10-25
+### Changed
+﻿- Today's dollar, euro and pound prices moved from 02.10.2026 to the TCMB rates of 23.10.2026 (49,6540 / 55,5997 / 66,5325).
+
 ## [0.93.0] - 2026-10-25
 ### Changed
 - Amounts people get (minimum wage, pension, holiday bonus, grants, severance ceiling, hunger line) no longer talk like prices: the chart says "Yıllar içinde tutarı", the archive link "Yıllar içindeki tutarları →", far-off guesses get their own lines ("Keşke o kadar olsaydı, ama değildi.") and the cashier skips shop-talk lines (fiyat, kasa, etiket, pazar). `isAmount` in `js/game.js` decides.
