@@ -19,7 +19,6 @@ import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './pr
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
 import { introRows, playIntro } from './intro.js';
-import { gentleMotion } from './motion.js';
 import { buildReportCard, isCardRound, reportCardText } from './report-card.js';
 
 const DATA_URL = 'data/prices.json';
@@ -627,7 +626,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     // Scroll only when the row is off screen, so the tapped chart does not jump away.
     const rect = match?.getBoundingClientRect();
     if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
-      const reduced = gentleMotion();
+      const reduced = false;
       match.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
     }
   } : undefined);
@@ -1145,7 +1144,7 @@ function renderProductChips(visible, selectedId, focusProductId) {
   const row = picker.getBoundingClientRect();
   const chip = chosen.getBoundingClientRect();
   picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
-    behavior: gentleMotion() ? 'auto' : 'smooth' });
+    behavior: 'smooth' });
 }
 
 function renderTimelineHeader(product) {
@@ -1188,7 +1187,7 @@ function linkRowsToChart() {
     const fig = $('t-chart');
     fig._activateDate?.(btn.dataset.date);
     if (!fig.hidden) {
-      const reduced = gentleMotion();
+      const reduced = false;
       fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
     }
   });

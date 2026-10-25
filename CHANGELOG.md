@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.104.0] - 2026-10-26
+### Changed
+- Everyone sees the same animations (Murti's call): the phone's reduce-motion setting is ignored. It is a WCAG AAA item (2.3.3), not required at AA and not a legal duty for this site, and the game has no large or vestibular-heavy motion. Removed the gentle mode, `js/motion.js` and every `prefers-reduced-motion` / `data-motion` rule.
+
 ## [0.103.0] - 2026-10-26
 ### Changed
 - Animations are always on (Murti's call). Like Apple, Google and Duolingo, the phone's reduce-motion switch no longer turns them off; it makes them gentle: the intro, the rolling year, counting prices, the chart and the confetti all play, while slides, slams, shakes, floating and spinning become fades or stop (`[data-motion="gentle"]` block at the end of `css/style.css`). The footer switch from 0.98.0 is gone.
