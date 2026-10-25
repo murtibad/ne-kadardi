@@ -103,6 +103,7 @@ export const COUNT_UNITS = {
   kopru: 'köprü geçişi',
   'ceyrek-altin': 'çeyrek altın',
   'gram-gumus': 'gram gümüş',
+  bitcoin: 'Bitcoin',
   yks: 'YKS sınav ücreti',
   'trafik-cezasi': 'kırmızı ışık cezası',
   'alkol-cezasi': 'alkollü araç cezası',

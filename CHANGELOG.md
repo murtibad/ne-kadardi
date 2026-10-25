@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.99.0] - 2026-10-26
+### Added
+- `bitcoin` (Murti said yes): 1 BTC in TL = Bitstamp's public BTC/USD daily close × TCMB USD selling rate on the dollar entries' days (first business day of January and July) from 2013, 28 values (Ocak 2013 ₺23,29 → ₺4.025.771 on 23.10.2026). Built by a script, method in `docs/DATA.md`. New icon `img/bitcoin.svg` (a coin with a B, no logo).
+- Ratios from 100 up are whole numbers ("172.854 katına çıktı").
+
 ## [0.98.0] - 2026-10-26
 ### Added
 - Animation setting (Murti: his iPhone has "Reduce Motion" on and he saw no animation): the phone's setting is now only the default. A footer switch "Animasyonlar: açık / kapalı" overrides it and is remembered (`ne-kadardi-motion`). A tiny script in `<head>` sets `<html data-motion>` before first paint; CSS uses `:root[data-motion="reduce"]` instead of the media query and JS reads `reducedMotion()` (`js/motion.js`).
