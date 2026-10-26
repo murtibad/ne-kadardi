@@ -93,3 +93,11 @@ test('dailyShareText maps score tiers to squares, omits streak below 2, and leak
   );
   assert.deepEqual(withStreak.match(/\d+/g), ['5', '300', '500', '4']);
 });
+
+test('nextReceiptIn counts down to local midnight', async () => {
+  const { nextReceiptIn } = await import('../js/daily.js');
+  assert.equal(nextReceiptIn(new Date(2026, 9, 26, 16, 40)), 'Yeni fiş 7 saat sonra');
+  assert.equal(nextReceiptIn(new Date(2026, 9, 26, 23, 15)), 'Yeni fiş 45 dakika sonra');
+  assert.equal(nextReceiptIn(new Date(2026, 9, 26, 23, 59, 50)), 'Yeni fiş 1 dakika sonra');
+  assert.equal(nextReceiptIn(new Date(2026, 9, 26, 0, 0)), 'Yeni fiş 24 saat sonra');
+});
