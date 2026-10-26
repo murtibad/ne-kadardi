@@ -6953,6 +6953,140 @@
       ]
     },
     {
+      "id": "kpss-onlisans",
+      "name": "KPSS önlisans sınav ücreti",
+      "unit": "1 sınav (KPSS önlisans oturumu)",
+      "region": null,
+      "source_hint": "ÖSYM KPSS (orta öğretim/önlisans, 2018'den beri önlisans) başvuru kılavuzları. Tarih başvuru ayıdır. DHBT ve geç başvuru ücreti dahil değil.",
+      "image": {
+        "src": "img/sinav.svg",
+        "alt": "Sınav kâğıdı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 800,
+        "status": "verified",
+        "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 29 Temmuz-10 Ağustos 2026, sınav 4 Ekim 2026. Kılavuzda: \"KPSS SINAV ÜCRETİ : 800 TL\".",
+        "source": {
+          "title": "ÖSYM, 2026-KPSS Önlisans Başvuru Kılavuzu",
+          "url": "https://dokuman.osym.gov.tr/web/2026/8/basvuru-kilavuzu-fqs59p-13083438.pdf",
+          "accessed": "2026-10-26",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-05",
+          "price": 35,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 31 Mayıs-2 Temmuz 2010, sınav 26 Eylül 2010 (ortaöğretim ve önlisans ortak kılavuz). Kılavuzda: \"SINAV ÜCRETİ : 35,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2010-KPSS Ortaöğretim/Önlisans Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/arsiv/2010/2010KPSS2/2010KpssOrtOnl_KLVZ.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-06",
+          "price": 35,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 18 Haziran-11 Temmuz 2012, sınav 23 Eylül 2012. Kılavuzda: \"SINAV ÜCRETİ : 35,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2012-KPSS Ortaöğretim/Önlisans Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/web/eskidosyalar/1659.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2014-07",
+          "price": 40,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 8-24 Temmuz 2014. Kılavuzda: \"KPSS SINAV ÜCRETİ : 40,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2014-KPSS Ortaöğretim/Önlisans Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2014/KPSS/ort-onlisans/2014-KPSSORTAOGRETiM-ONLiSANSKILAVUZU11072014.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-08",
+          "price": 55,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 9-24 Ağustos 2016. Kılavuzdaki KPSS ücret satırı: \": 55,00 TL\" (DHBT ücreti ayrıca 55,00 TL).",
+          "source": {
+            "title": "ÖSYM, 2016-KPSS Ortaöğretim/Önlisans Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2016/KPSSORTON/ORTAOGRETIMONLISANSKILAVUZU07112016.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-08",
+          "price": 60,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 28 Ağustos-12 Eylül 2018. Kılavuzda: \"KPSS SINAV ÜCRETİ : 60,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2018-KPSS Önlisans Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2018/KPSS/ONL/KILAVUZ28082018.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-08",
+          "price": 80,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 21 Ağustos-2 Eylül 2020. Kılavuzda: \"KPSS SINAV ÜCRETİ : 80,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2020-KPSS Önlisans Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2020/KPSS/ONL/kilavuz02022021.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-08",
+          "price": 130,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 3-15 Ağustos 2022. Kılavuzda: \"KPSS SINAV ÜCRETİ : 130,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2022-KPSS Önlisans Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2022/KPSS/ONL/kilavuz_10082022.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-06",
+          "price": 350,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 13 Haziran-2 Temmuz 2024. Kılavuzda: \"KPSS SINAV ÜCRETİ : 350,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2024-KPSS Önlisans Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2024/KPSS/ONL/kilavuz_old13062024.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-07",
+          "price": 800,
+          "status": "verified",
+          "note": "ÖSYM KPSS Önlisans oturumu sınav ücreti (iki yılda bir yapılır). Başvuru hizmet ücreti, geç başvuru ücreti ve ayrı ödenen DHBT ücreti dahil değil. Başvuru 29 Temmuz-10 Ağustos 2026, sınav 4 Ekim 2026. Kılavuzda: \"KPSS SINAV ÜCRETİ : 800 TL\".",
+          "source": {
+            "title": "ÖSYM, 2026-KPSS Önlisans Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/web/2026/8/basvuru-kilavuzu-fqs59p-13083438.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
       "id": "kyk-burs",
       "name": "KYK bursu (aylık, üniversite)",
       "unit": "1 ay, üniversite öğrencisi (burs ya da kredi)",
@@ -11360,6 +11494,18 @@
       },
       "prices": [
         {
+          "date": "2013-02",
+          "price": 50,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). İlkbahar dönemi (7 Nisan 2013, YDS'nin ilk yılı), başvuru 18-27 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 50,00 TL\"; 3,00 TL başvuru hizmet ücreti dahil değil.",
+          "source": {
+            "title": "ÖSYM, 2013 YDS İlkbahar Dönemi Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/web/eskidosyalar/2439.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
           "date": "2015-02",
           "price": 70,
           "status": "verified",
@@ -11597,6 +11743,128 @@
           "source": {
             "title": "ÖSYM, 2026-DGS Başvuru Kılavuzu",
             "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/DGS/kilavuz_dgsd15052026.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "msu",
+      "name": "MSÜ sınav ücreti",
+      "unit": "1 sınav (askerî öğrenci aday belirleme sınavı)",
+      "region": null,
+      "source_hint": "ÖSYM MSÜ başvuru kılavuzları (2019'dan beri). Tarih başvuru ayıdır. Geç başvuru ücreti dahil değil.",
+      "image": {
+        "src": "img/sinav.svg",
+        "alt": "Sınav kâğıdı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 700,
+        "status": "verified",
+        "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 5-29 Ocak 2026. Kılavuzda: \"SINAV ÜCRETİ : 700,00 TL\".",
+        "source": {
+          "title": "ÖSYM, 2026-MSÜ Kılavuzu",
+          "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/MSU/kilavuz_msd06012026.pdf",
+          "accessed": "2026-10-26",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-01",
+          "price": 96,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 16 Ocak-27 Şubat 2019. Kılavuzda: \"SINAV ÜCRETİ : 96,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2019-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2019/MSU/kilavuz_16012019.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 100,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 7 Ocak-10 Şubat 2020 (sınav 14 Haziran 2020'ye ertelendi). Kılavuzda: \"SINAV ÜCRETİ : 100,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2020-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2020/MSU/kilavuz15052020.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 110,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 27 Ocak-23 Şubat 2021. Kılavuzda: \"SINAV ÜCRETİ : 110,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2021-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2021/MSU/kilavuz27012021.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 130,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 13 Ocak-9 Şubat 2022. Kılavuzda: \"SINAV ÜCRETİ : 130,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2022-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2022/MSU/kilavuz_21022022.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 130,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 13 Ocak-9 Şubat 2023. Kılavuzda: \"SINAV ÜCRETİ : 130,00 TL\" (2022 ile aynı).",
+          "source": {
+            "title": "ÖSYM, 2023-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2023/MSU/kilavuz03032023.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 295,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 3-30 Ocak 2024. Kılavuzda: \"SINAV ÜCRETİ : 295,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2024-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2024/MSU/kilavuz_md03012024.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 450,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 2-27 Ocak 2025. Kılavuzda: \"SINAV ÜCRETİ : 450,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2025-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2025/MSU/kilavuz_md02012025.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 700,
+          "status": "verified",
+          "note": "ÖSYM Millî Savunma Üniversitesi Askerî Öğrenci Aday Belirleme Sınavı (MSÜ) sınav ücreti. Başvuru merkezi hizmet ücreti ve geç başvuru ücreti dahil değil. Başvuru 5-29 Ocak 2026. Kılavuzda: \"SINAV ÜCRETİ : 700,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2026-MSÜ Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/MSU/kilavuz_msd06012026.pdf",
             "accessed": "2026-10-26",
             "kind": "official"
           }

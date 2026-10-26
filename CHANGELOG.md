@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.109.0] - 2026-10-26
+### Added
+- New product `kpss-onlisans`: KPSS önlisans exam fee from ÖSYM guides, every session 2010-2026 (35 · 35 · 40 · 55 · 60 · 80 · 130 · 350 · 800).
+- New product `msu`: MSÜ military student selection exam fee from ÖSYM guides, 2019-2026 (96 · 100 · 110 · 130 · 130 · 295 · 450 · 700). 77 products.
+- `yds`: 2013-02 50 TL (first YDS year) from the 2013 spring guide.
+All guides were opened with WebFetch and read with pdftotext ("SINAV ÜCRETİ" line), `kind: official`.
+
 ## [0.108.2] - 2026-10-26
 ### Changed
 - Purchasing-power line reads as what the money lets you do for exams and the car park: "13 kez YDS'ye girilebiliyordu, bugün 23 kez girilebiliyor" (YKS, ALES, KPSS, YDS, DGS) and "303 saat park edilebiliyordu" (İSPARK), instead of "13 YDS sınav ücreti ödenebiliyordu". Train tickets are bought ("alınabiliyordu"), not paid. Suggested by a Sonnet QA run of the live site, which otherwise found no problems.
