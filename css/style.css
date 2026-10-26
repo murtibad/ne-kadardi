@@ -1654,3 +1654,6 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .report-card-lines li { display: flex; justify-content: space-between; gap: 12px; }
 .report-card-avg { margin: 10px 0 4px; font-size: 0.875rem; font-weight: 700; }
 .report-card .link-btn { font-family: var(--font-mono); }
+
+/* Günün Fişi sits under the main game: an outlined button so the menu has one red call to action. */
+.mode-card.mode-daily .mode-go { color: var(--accent-on-paper); background: transparent; box-shadow: inset 0 0 0 2px var(--accent-on-paper); }
