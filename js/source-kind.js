@@ -4,7 +4,7 @@ const LABELS = {
   official: 'resmî kayıt',
   dataset: 'yayımlanmış veri',
   news: 'haberlerden',
-  derived: 'hesaplandı',
+  derived: 'kurla hesaplandı', // every derived price is a world price or fee times the TCMB rate
 };
 
 /** Unknown or missing kinds return "" so the UI can simply hide the label. */
