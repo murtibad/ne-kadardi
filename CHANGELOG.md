@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.118.4] - 2026-10-26
+### Changed
+- Cashier, product and hint lines no longer repeat within a visit (the last 12 shown lines are skipped while others remain).
+- Five praise lines that could read as a dig when you guessed well now clearly praise (e.g. "Senin hesabına bakkal veresiye yazar, gözü kapalı").
+- The 5-question report card names each question as it was asked ("iPhone 5s", not "Yeni iPhone").
+
 ## [0.118.3] - 2026-10-26
 ### Changed
 - A first visit opens with Benzin (Ocak 2016), a nationwide price; Halk Ekmek (0,75 TL, an Istanbul subsidy) made the very first answer a likely 0 and now comes fourth.
