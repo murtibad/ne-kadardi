@@ -3,9 +3,7 @@ import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatI
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
-import { timelineTableHtml } from './archive-table.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
-import { filterByQuery } from './search.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
@@ -18,8 +16,6 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
-import { introRows, playIntro } from './intro.js';
-import { buildReportCard, isCardRound, reportCardText } from './report-card.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -965,16 +961,27 @@ function saveIntroSeen() {
 }
 
 let finishIntro = null;
+let introSeq = 0;
 
-function openIntro() {
+async function openIntro() {
   const dlg = $('intro');
   if (!dlg || typeof dlg.showModal !== 'function') return;
+  const seq = ++introSeq;
   finishIntro?.({ moveFocus: false });
-  if (!dlg.open) dlg.showModal();
-  finishIntro = playIntro(dlg, introRows(state.timelines), { sound });
+  try {
+    const { introRows, playIntro } = await import('./intro.js');
+    // Ignore a superseded call so two imports in flight never start two animations.
+    if (seq !== introSeq) return;
+    finishIntro?.({ moveFocus: false });
+    if (!dlg.open) dlg.showModal();
+    finishIntro = playIntro(dlg, introRows(state.timelines), { sound });
+  } catch (err) {
+    console.warn('Tanıtım yüklenemedi', err);
+  }
 }
 
 function closeIntro() {
+  introSeq += 1;
   finishIntro?.({ moveFocus: false });
   finishIntro = null;
   saveIntroSeen();
@@ -983,23 +990,36 @@ function closeIntro() {
 }
 
 // Every fifth answer of the visit the receipt sums up the round (js/report-card.js).
-function renderReportCard() {
+// The module is kept once loaded: sharing must not await an import, or iOS drops the tap's
+// user activation and refuses navigator.share / clipboard.
+let reportCardModule = null;
+async function renderReportCard() {
   const answers = state.visitAnswers ?? [];
-  const show = isCardRound(answers.length);
-  $('r-card').hidden = !show;
-  if (!show) return;
-  const card = buildReportCard(answers);
-  state.reportCard = card;
-  $('r-card-title').textContent = card.title;
-  $('r-card-lines').innerHTML = card.lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
-  $('r-card-avg').textContent = `Ortalama ${card.average}/100 · En iyisi: ${card.best.period} ${card.best.title}`;
+  $('r-card').hidden = true;
+  // Skip the dynamic import until a fifth answer actually needs the card.
+  if (answers.length === 0 || answers.length % 5 !== 0) return;
+  try {
+    reportCardModule = await import('./report-card.js');
+    const { isCardRound, buildReportCard } = reportCardModule;
+    const current = state.visitAnswers ?? [];
+    if (!isCardRound(current.length)) return;
+    const card = buildReportCard(current);
+    state.reportCard = card;
+    $('r-card-title').textContent = card.title;
+    $('r-card-lines').innerHTML = card.lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
+    $('r-card-avg').textContent = `Ortalama ${card.average}/100 · En iyisi: ${card.best.period} ${card.best.title}`;
+    $('r-card').hidden = false;
+  } catch (err) {
+    console.warn('Karne hazırlanamadı', err);
+  }
 }
 
 async function shareReportCard(e) {
   const btn = e.currentTarget;
   const card = state.reportCard;
   if (!card) return;
-  const text = reportCardText(card, location.origin + location.pathname);
+  if (!reportCardModule) return; // the card is only visible once the module has loaded
+  const text = reportCardModule.reportCardText(card, location.origin + location.pathname);
   if (navigator.share) {
     try { await navigator.share({ text }); } catch (err) { if (err.name !== 'AbortError') console.warn(err); }
     return;
@@ -1024,6 +1044,7 @@ function initIntro() {
   $('intro-open')?.addEventListener('click', openIntro);
   // Pressing Escape dismisses the modal via cancel; mark seen and stop any running intro timers/sounds.
   dlg.addEventListener('cancel', () => {
+    introSeq += 1;
     finishIntro?.({ moveFocus: false });
     finishIntro = null;
     saveIntroSeen();
@@ -1038,9 +1059,33 @@ function saveArchiveNewestFirst(newest) {
   try { localStorage.setItem(ARCHIVE_ORDER_KEY, newest ? 'newest' : 'oldest'); } catch { /* storage unavailable */ }
 }
 
-function renderTimelineScreen(focusProductId = null) {
+// Cache the archive module promises once so opening or filtering the archive never re-imports them,
+// and fetch linkify.js in parallel with archive-table.js instead of waiting for a second hop.
+let archiveModulesPromise = null;
+function loadArchiveModules() {
+  archiveModulesPromise ??= Promise.all([
+    import('./archive-table.js'),
+    import('./search.js'),
+    import('./linkify.js'),
+  ]).catch((err) => {
+    archiveModulesPromise = null;
+    throw err;
+  });
+  return archiveModulesPromise;
+}
+
+async function renderTimelineScreen(focusProductId = null) {
   show('timeline-screen');
   if (state.timelines.length === 0) return;
+
+  let timelineTableHtml;
+  let filterByQuery;
+  try {
+    [{ timelineTableHtml }, { filterByQuery }] = await loadArchiveModules();
+  } catch (err) {
+    console.warn('Arşiv yüklenemedi', err);
+    return;
+  }
 
   renderCategoryChips();
   const inCategory = filterTimelines(state.timelines, state.timelineCategory);
@@ -1052,7 +1097,7 @@ function renderTimelineScreen(focusProductId = null) {
   }
   const product = pool.find(t => t.id === state.selectedTimelineProduct);
 
-  renderSearchState(visible.length);
+  renderSearchState(visible.length, filterByQuery);
   renderProductChips(visible, product.id, focusProductId);
   renderTimelineHeader(product);
   renderArchiveOrder();
@@ -1072,17 +1117,17 @@ function renderCategoryChips() {
     btn.setAttribute('aria-pressed', c.id === state.timelineCategory ? 'true' : 'false');
     btn.dataset.cat = c.id;
     btn.textContent = c.label;
-    btn.onclick = () => {
+    btn.onclick = async () => {
       state.timelineCategory = c.id;
       state.selectedTimelineProduct = null; // pick the first product of the new category
-      renderTimelineScreen();
+      await renderTimelineScreen();
       catPicker.querySelector(`[data-cat="${c.id}"]`)?.focus({ preventScroll: true }); // the chips were rebuilt
     };
     catPicker.appendChild(btn);
   }
 }
 
-function renderSearchState(hits) {
+function renderSearchState(hits, filterByQuery) {
   const search = $('product-search');
   if (search.value !== state.timelineQuery) search.value = state.timelineQuery;
   $('product-count').textContent = `${hits} ürün`;
@@ -1096,10 +1141,10 @@ function renderSearchState(hits) {
     ? filterByQuery(state.timelines, state.timelineQuery).length : 0;
   allBtn.hidden = elsewhere === 0;
   allBtn.textContent = `Tüm kategorilerde ara (${elsewhere} ürün)`;
-  allBtn.onclick = () => {
+  allBtn.onclick = async () => {
     state.timelineCategory = 'all';
     state.selectedTimelineProduct = null;
-    renderTimelineScreen();
+    await renderTimelineScreen();
     $('product-search').focus({ preventScroll: true });
   };
 }
