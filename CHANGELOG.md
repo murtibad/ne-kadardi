@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.112.0] - 2026-10-26
+### Added
+- "Bu soruyu arkadaşına sor" on the result now carries your score (`&p=86`, never the price): the friend sees "Bir arkadaşın bu sorudan 86 puan aldı. Sen kaç alırsın?" and, after guessing, "Arkadaşın: 86 puan · Sen: 92 puan — geçtin!". The question-card link stays score-free.
+- The line under the receipt counts down to the next report card (" · karneye 3 soru"); the best score moved off this line (it is on the home menu) so it fits one line on phones.
+
 ## [0.111.1] - 2026-10-26
 ### Fixed
 - The score sits right under the verdict, so the sticky Paylaş/İndir/Sonraki soru bar no longer covers it on phones; the 5-question report card follows it instead of hiding at the bottom of the receipt.

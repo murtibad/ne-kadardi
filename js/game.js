@@ -397,3 +397,10 @@ export function openerFor(questions, index) {
   const own = questions.filter((q) => q.productId === id).sort((a, b) => a.date.localeCompare(b.date));
   return own[0] ?? null;
 }
+
+/** Questions left until the next 5-question report card (0 when the card shows on this turn). */
+export function questionsUntilCard(answered, every = 5) {
+  if (!(answered > 0)) return every;
+  const rem = answered % every;
+  return rem === 0 ? 0 : every - rem;
+}

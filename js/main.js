@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, questionsUntilCard, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
@@ -15,7 +15,7 @@ import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
-import { parseQuestionParam, askUrl, askText } from './ask-link.js';
+import { parseQuestionParam, askUrl, askText, friendIntroText, compareFriendScore } from './ask-link.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -28,7 +28,7 @@ const hapticIfAllowed = (ms) => {
 
 const state = {
   recentProducts: [], seen: new Set(),
-  hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
+  hinted: false, friendScore: null, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, recentScores: [], 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false 
@@ -174,6 +174,7 @@ function setBtnStatus(btnId, text) {
 function nextQuestion(productId = null, date = null) {
   stopPrinting();
   state.archiveFromResult = false;
+  state.friendScore = null;
   resetShareBtn();
   if ($('r-tax-details')) {
     $('r-tax-details').hidden = true;
@@ -507,6 +508,12 @@ function renderResult(q, r) {
   $('r-stamp').textContent = stamp || '';
   $('r-stamp').hidden = !stamp;
   $('r-stamp').dataset.tier = tier;
+  const friendLine = compareFriendScore(state.friendScore, r.score);
+  state.friendScore = null;
+  if ($('r-friend')) {
+    $('r-friend').textContent = friendLine || '';
+    $('r-friend').hidden = !friendLine;
+  }
   // Hold the meter at 0% while the receipt is still inside the printer; printReceipt fills it on tear-off.
   $('r-meter').style.setProperty('--score', '0%');
 
@@ -539,8 +546,11 @@ function renderResult(q, r) {
   $('r-source-kind').textContent = kindLabel ? ` · ${kindLabel}` : '';
   $('r-source-kind').hidden = !kindLabel;
   const avg = Math.round(state.total / state.played);
+  const leftForCard = questionsUntilCard((state.visitAnswers ?? []).length);
+  // One line on a 360 px phone: the best score already sits on the home menu.
+  const cardHint = leftForCard > 0 ? ` · karneye ${leftForCard} soru` : '';
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
-  $('r-session').innerHTML = `<span>${state.played} soru · ortalama puan ${avg}${state.best > 0 ? ` · en yüksek ${state.best}` : ''}</span>`
+  $('r-session').innerHTML = `<span>${state.played} soru · ortalama ${avg}${cardHint}</span>`
     + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
@@ -859,9 +869,10 @@ async function askFriend(e) {
   const btn = e?.currentTarget ?? $('ask-btn');
   const q = state.question;
   if (!q) return;
+  const score = btn.id === 'ask-btn' && state.result ? state.result.score : null;
   const base = location.origin + location.pathname;
-  const text = askText(formatPeriod(q.date), questionTitle(q));
-  const url = askUrl(q, base);
+  const text = askText(formatPeriod(q.date), questionTitle(q), score);
+  const url = askUrl(q, base, score);
   if (navigator.share) {
     try {
       await navigator.share({ text, url });
@@ -1016,7 +1027,7 @@ async function renderReportCard() {
   const answers = state.visitAnswers ?? [];
   $('r-card').hidden = true;
   // Skip the dynamic import until a fifth answer actually needs the card.
-  if (answers.length === 0 || answers.length % 5 !== 0) return;
+  if (questionsUntilCard(answers.length) !== 0) return;
   try {
     reportCardModule = await import('./report-card.js');
     const { isCardRound, buildReportCard } = reportCardModule;
@@ -1528,21 +1539,24 @@ async function init() {
   initSharePreview();
   initIntro();
 
-  const rawSoru = new URLSearchParams(location.search).get('soru');
-  const parsedSoru = parseQuestionParam(rawSoru);
+  const searchParams = new URLSearchParams(location.search);
+  const rawSoru = searchParams.get('soru');
+  const rawP = searchParams.get('p');
+  const parsedSoru = parseQuestionParam(rawSoru, rawP);
   const askedQuestion = parsedSoru && state.all.find((x) => x.productId === parsedSoru.productId && x.date === parsedSoru.date);
   if (askedQuestion) {
-    // Drop ?soru so a reload does not repeat the shared question, and open it right away.
+    // Drop ?soru and &p so a reload does not repeat the shared question, and open it right away.
     history.replaceState(null, '', location.pathname + '#tahmin');
     nextQuestion(parsedSoru.productId, parsedSoru.date);
-    $('q-anchor').textContent = 'Bir arkadaşın bu soruyu seninle paylaştı.';
+    state.friendScore = parsedSoru.score ?? null;
+    $('q-anchor').textContent = friendIntroText(state.friendScore);
     $('q-anchor').hidden = false;
     return;
   }
-  if (rawSoru !== null) {
-    const params = new URLSearchParams(location.search);
-    params.delete('soru');
-    const rest = params.toString();
+  if (rawSoru !== null || rawP !== null) {
+    searchParams.delete('soru');
+    searchParams.delete('p');
+    const rest = searchParams.toString();
     history.replaceState(null, '', location.pathname + (rest ? `?${rest}` : '') + location.hash);
   }
 
