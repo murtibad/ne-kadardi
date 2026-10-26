@@ -9,12 +9,12 @@ function rowHtml(r) {
   const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
   const kind = kindLabel ? `<span class="source-kind">${escapeHTML(kindLabel)}</span>` : '';
   const source = r.source
-    ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}">Kaynak</a>${kind}`
+    ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}" aria-label="${escapeHTML(period)} kaynağı: ${escapeHTML(r.source.title)}">Kaynak</a>${kind}`
     : '';
   const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${linkifyNote(r.note)}</p></details>` : '';
   const date = escapeHTML(r.date);
   return `<tr role="row" data-date="${date}"${r.isCurrent ? ' class="is-current"' : ''}>
-      <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${date}">${escapeHTML(period)}</button></th>
+      <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${date}" aria-label="${escapeHTML(period)}: grafikte göster">${escapeHTML(period)}</button></th>
       <td role="cell" class="timeline-price-cell"><span class="timeline-price">${formatPrice(r.price)}</span></td>
       <td role="cell" class="timeline-detail-cell">
         <div class="timeline-meta">${ratio}${source}${note}</div>

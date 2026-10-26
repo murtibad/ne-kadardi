@@ -1444,8 +1444,10 @@ async function init() {
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' || e.repeat || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
     if ($('result-screen').hidden) return;
-    // A quick second Enter right after submitting would skip the receipt before it prints.
-    if (document.querySelector('#result-screen .receipt-wrapper').classList.contains('printing')) return;
+    // A quick second Enter right after submitting must not skip the receipt; like a tap,
+    // it only finishes the printing so keyboard users can hurry it too.
+    const wrap = document.querySelector('#result-screen .receipt-wrapper');
+    if (wrap.classList.contains('printing')) { e.preventDefault(); wrap.click(); return; }
     // The chart is focusable for arrow-key inspection; Enter there must not drop the receipt.
     if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable], .price-chart')) return;
     e.preventDefault();

@@ -758,7 +758,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .theme-toggle { width: 44px; height: 44px; }
 .hint-btn { min-height: 44px; padding: 8px 12px; }
 .picker-chip { min-height: 44px; }
-.site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+.site-footer a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
 .tax-details summary, .timeline-note summary { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; min-width: 44px; list-style: none; }
 .tax-details summary { display: flex; justify-content: center; }
 .tax-details summary::-webkit-details-marker, .timeline-note summary::-webkit-details-marker { display: none; }
@@ -1320,7 +1320,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .pc-label, .pc-tick, .pc-ref-label, .pc-tip text { font-size: 11px; }
 
 .link-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; font: inherit; font-weight: 700; color: inherit; text-decoration: underline; cursor: pointer; }
-.link-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.link-btn:focus-visible, .logo:focus-visible, .install-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 /* Intro dialog: full-viewport dark stage in both themes, light receipt paper in the middle */
 .intro {
