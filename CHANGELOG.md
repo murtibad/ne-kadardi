@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.118.0] - 2026-10-26
+### Added
+- Fiyat Arşivi: "Bu türden bir soru çöz →" under the product header starts a question from another product of the same category (this product's prices are on screen); it ends a Günün Fişi run so the detour does not count on the receipt.
+- Archive rows you have already answered in the game carry a small "✓ tahmin ettin".
+
 ## [0.117.3] - 2026-10-26
 ### Changed
 - The Günün Fişi card has an outlined "Başla" button, so the menu has a single red call to action (Fiyat Tahmini).
