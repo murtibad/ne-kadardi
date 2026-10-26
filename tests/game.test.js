@@ -301,3 +301,11 @@ test('exam fees and car parks read as what they let you do', () => {
   const train = { productId: 'yht-bilet', name: 'YHT', unit: '1 bilet', date: '2010-03', price: 100, current: { price: 1000 } };
   assert.match(buildContextLine(train, wages), /hızlı tren bileti alınabiliyordu/);
 });
+
+test('questionsUntilCard counts questions left until the next report card', async () => {
+  const { questionsUntilCard } = await import('../js/game.js');
+  assert.equal(questionsUntilCard(1), 4);
+  assert.equal(questionsUntilCard(4), 1);
+  assert.equal(questionsUntilCard(5), 0);
+  assert.equal(questionsUntilCard(6), 4);
+});
