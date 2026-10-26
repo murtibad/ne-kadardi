@@ -34,6 +34,12 @@ Also:
 - Light/dark theme toggle, keyboard friendly
 - Every price is sourced and labelled by source type (official, dataset, news, derived);
   unverified data never reaches the game
+- "Günün Fişi" daily receipt: the same 5 everyday questions for everyone each day, with a spoiler-free share of coloured squares
+- Daily streak ("🔥 3 gün üst üste") on the menu and receipt for answering at least one question every day
+- Unanswered questions first: prefers product years you haven't seen yet before repeating
+- Friend challenge score in "Arkadaşına sor" links to compare results with a friend without spoiling the price
+- Same-year follow-up hook on the receipt jumping straight to another everyday product from that year
+- Typo-tolerant archive search that forgives a single typo when no exact match is found
 
 ## Tech
 
@@ -53,6 +59,7 @@ js/timeline.js      price archive rows (pure, tested)
 js/archive-table.js archive price table HTML (pure, tested)
 js/ask-link.js      ?soru= links that open one question without its answer (pure, tested)
 js/report-card.js   5-question report card ("Karne") round summary (pure, tested)
+js/daily.js         "Günün Fişi" daily question set and share text (pure, tested)
 js/price-chart.js   price chart geometry for the receipt, archive and share image (pure, tested)
 js/categories.js    product categories for the archive filter (pure, tested)
 js/search.js        accent-insensitive archive search (pure, tested)

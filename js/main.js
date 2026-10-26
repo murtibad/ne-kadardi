@@ -410,6 +410,18 @@ function turnIntoMachine() {
     };
 }
 
+// On a card turn the card starts just under the score, below the fold on most phones:
+// scroll just enough to show it above the sticky action bar, never past the card's top.
+function revealReportCard() {
+  const card = $('r-card');
+  if (card.hidden || $('result-screen').hidden) return;
+  const bar = document.querySelector('#result-screen .session-actions');
+  const limit = bar ? bar.getBoundingClientRect().top : window.innerHeight;
+  const box = card.getBoundingClientRect();
+  const delta = Math.min(box.bottom + 12 - limit, box.top - 72);
+  if (delta > 0) window.scrollBy({ top: delta, behavior: 'smooth' });
+}
+
 function handOver() {
   handTimer = null;
   const qs = $('question-screen');
@@ -460,6 +472,8 @@ function printReceipt(extraSound) {
     if (state.result?.factor === 1) burstConfetti();
     // Let the tear finish (0.3 s) before the till leaves.
     handTimer = setTimeout(handOver, 320);
+    // The till takes 0.38 s to leave; then the report card would still sit behind the sticky bar.
+    setTimeout(revealReportCard, 760);
   };
   cancelPrint = () => {
     stopCountUp();
