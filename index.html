@@ -175,7 +175,6 @@
             <div id="r-tax-body"></div>
           </details>
           <p class="source"><a id="r-archive" href="#arsiv" class="archive-link">Bu ürünün fiyat geçmişi →</a></p>
-          <p class="source"><button type="button" id="ask-btn" class="link-btn">Bu soruyu arkadaşına sor →</button></p>
           <p class="source">Kaynak: <a id="r-source" target="_blank" rel="noopener"></a><span id="r-source-kind" class="source-kind" hidden></span></p>
           <!-- Rarely needed: kept at the very bottom so the curious find it and nobody else trips over it. -->
           <details class="score-help">
@@ -188,8 +187,7 @@
       <div class="session-actions">
         <p id="r-session" class="session"></p>
         <div class="actions">
-          <button id="share-btn" type="button" class="btn">Paylaş</button>
-          <button id="download-btn" type="button" class="btn" aria-label="Görseli indir"><span class="wide-only">Görseli </span><span class="wide-only">i</span><span class="narrow-only">İ</span>ndir</button>
+          <button id="share-btn" type="button" class="btn" aria-haspopup="dialog">Arkadaşına gönder</button>
           <button id="next-btn" type="button" class="btn primary next-btn">Sonraki soru →</button>
         </div>
       </div>
@@ -233,6 +231,16 @@
       </div>
     </section>
   </main>
+
+  <dialog id="send-sheet" class="share-preview send-sheet" aria-labelledby="send-sheet-title">
+    <h2 id="send-sheet-title" class="share-preview-title">Ne göndermek istersin?</h2>
+    <div class="send-sheet-actions">
+      <button id="send-result" type="button" class="btn send-opt"><strong>Sonucumu gönder</strong><span>Puanın ve fişin resmi</span></button>
+      <button id="send-ask" type="button" class="btn send-opt"><strong>Bu soruyu sor</strong><span>Cevabı görmeden tahmin etsin</span></button>
+      <button id="send-save" type="button" class="btn send-opt"><strong>Resmi telefona kaydet</strong><span>Fişin resmi telefonuna insin</span></button>
+      <button id="send-close" type="button" class="btn">Vazgeç</button>
+    </div>
+  </dialog>
 
   <dialog id="share-preview" class="share-preview" aria-labelledby="share-preview-title">
     <h2 id="share-preview-title" class="share-preview-title">Paylaşılacak görsel</h2>

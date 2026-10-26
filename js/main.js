@@ -197,7 +197,11 @@ function showMessage(text) {
   show('message-screen');
 }
 
-let downloadOriginalLabel = '';
+// True on the turn that shows the daily receipt: the bar button then shares it directly.
+let dailyEndTurn = false;
+function shareBtnLabel() {
+  return dailyEndTurn ? 'Fişini paylaş' : shareOriginalLabel;
+}
 let askTimeoutId = null;
 
 function resetShareBtn() {
@@ -209,18 +213,14 @@ function resetShareBtn() {
     clearTimeout(askTimeoutId);
     askTimeoutId = null;
   }
+  const bar = $('share-btn');
+  clearTimeout(bar.restoreTimer);
   if (shareOriginalLabel) {
-    $('share-btn').textContent = shareOriginalLabel;
-    $('share-btn').removeAttribute('aria-busy');
+    bar.textContent = shareBtnLabel();
+    bar.removeAttribute('aria-busy');
   }
-  if (downloadOriginalLabel) {
-    $('download-btn').innerHTML = downloadOriginalLabel;
-    $('download-btn').removeAttribute('aria-busy');
-  }
-  for (const id of ['ask-btn', 'ask-q-btn']) {
-    const b = $(id);
-    if (b?.dataset.label) b.textContent = b.dataset.label;
-  }
+  const askQ = $('ask-q-btn');
+  if (askQ.dataset.label) askQ.textContent = askQ.dataset.label;
 }
 
 // Button labels change silently for screen readers, so mirror transient feedback here.
@@ -247,6 +247,8 @@ function setBtnStatus(btnId, text) {
 // adding `date` pins the exact question from a shared `?soru=` link.
 function nextQuestion(productId = null, date = null) {
   $('next-btn').textContent = 'Sonraki soru →';
+  dailyEndTurn = false;
+  $('r-card-share').hidden = false;
   stopPrinting();
   state.archiveFromResult = false;
   state.friendScore = null;
@@ -956,12 +958,12 @@ async function share() {
   }
 }
 
-// Both the receipt link and the question card's button ask; feedback shows on the one pressed.
-async function askFriend(e) {
-  const btn = e?.currentTarget ?? $('ask-btn');
+// The question card's button asks as-is; the send sheet adds the score (`withScore`).
+// Feedback shows on the button the player pressed (the sheet is closed, so its opener).
+async function askFriend({ btn, withScore = false }) {
   const q = state.question;
   if (!q) return;
-  const score = btn.id === 'ask-btn' && state.result ? state.result.score : null;
+  const score = withScore && state.result ? state.result.score : null;
   const base = location.origin + location.pathname;
   const text = askText(formatPeriod(q.date), questionTitle(q), score);
   const url = askUrl(q, base, score);
@@ -979,7 +981,8 @@ async function askFriend(e) {
     btn.textContent = msg;
     askTimeoutId = setTimeout(() => {
       askTimeoutId = null;
-      btn.textContent = btn.dataset.label;
+      if (btn.dataset.label) btn.textContent = btn.dataset.label;
+      else resetShareBtn();
     }, 2000);
   };
   try {
@@ -1026,14 +1029,14 @@ async function sharePreviewFile() {
   }
 }
 
-// "İndir" first shows what will be saved, so players know the image before it leaves the page.
+// "Resmi telefona kaydet" first shows what will be saved, so players know the image before it leaves the page.
 async function downloadImage() {
-  const btn = $('download-btn');
+  const btn = $('share-btn');
   if (btn.hasAttribute('aria-busy')) return;
 
-  const blob = await prepareShareImage('download-btn');
+  const blob = await prepareShareImage('share-btn');
   if (!blob) {
-    setBtnStatus('download-btn', 'Görsel hazırlanamadı.');
+    setBtnStatus('share-btn', 'Görsel hazırlanamadı.');
     return;
   }
   resetShareBtn();
@@ -1057,6 +1060,38 @@ async function downloadImage() {
   announce('Görsel hazır.'); // replaces "Hazırlanıyor…" for screen readers
 }
 
+// One bar button, three jobs: the sheet lets the player choose what to send.
+function initSendSheet() {
+  const dlg = $('send-sheet');
+  const opener = $('share-btn');
+  const choose = (fn) => () => {
+    if (dlg.open) dlg.close();
+    // Called in the same click task, so navigator.share still has the tap's user activation.
+    fn();
+  };
+  $('send-result').addEventListener('click', choose(share));
+  $('send-ask').addEventListener('click', choose(() => askFriend({ btn: opener, withScore: true })));
+  $('send-save').addEventListener('click', choose(downloadImage));
+  $('send-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', (e) => {
+    if (e.target !== dlg) return;
+    const r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
+  dlg.addEventListener('close', () => { if (!$('result-screen').hidden) opener.focus(); });
+  opener.addEventListener('click', (e) => {
+    if (dailyEndTurn) {
+      opener.dataset.label = shareBtnLabel(); // shareTextWithStatus restores this after its message
+      shareReportCard(e);
+      return;
+    }
+    if (opener.hasAttribute('aria-busy')) return;
+    if (typeof dlg.showModal !== 'function') { share(); return; }
+    dlg.showModal();
+    $('send-result').focus();
+  });
+}
+
 function initSharePreview() {
   const dlg = $('share-preview');
   $('share-preview-save').addEventListener('click', saveFromPreview);
@@ -1070,7 +1105,7 @@ function initSharePreview() {
   });
   dlg.addEventListener('close', () => {
     cleanupPreview();
-    if (!$('result-screen').hidden) $('download-btn').focus();
+    if (!$('result-screen').hidden) $('share-btn').focus();
   });
 }
 
@@ -1134,12 +1169,18 @@ async function renderReportCard() {
     $('r-card-title').textContent = dailyTitle(key);
     $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
     $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
-    $('r-card-share').textContent = 'Fişini paylaş →';
+    // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
+    dailyEndTurn = true;
+    $('r-card-share').hidden = true;
+    resetShareBtn();
     // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
     $('next-btn').textContent = 'Serbest oyuna geç →';
     $('r-card').hidden = false;
     return;
   }
+  dailyEndTurn = false;
+  $('r-card-share').hidden = false;
+  resetShareBtn();
   $('r-card-share').textContent = 'Karneni paylaş →';
   const answers = state.visitAnswers ?? [];
   // Skip the dynamic import until a fifth answer actually needs the card.
@@ -1666,8 +1707,7 @@ async function init() {
     return;
   }
   shareOriginalLabel = $('share-btn').textContent;
-  downloadOriginalLabel = $('download-btn').innerHTML;
-  for (const id of ['ask-btn', 'ask-q-btn']) $(id).dataset.label = $(id).textContent;
+  $('ask-q-btn').dataset.label = $('ask-q-btn').textContent;
   // The search input lives outside the rebuilt chip rows, so it keeps focus while typing.
   $('product-search').addEventListener('input', (e) => {
     state.timelineQuery = e.target.value;
@@ -1744,11 +1784,9 @@ async function init() {
     e.preventDefault();
     $('next-btn').click();
   });
-  $('share-btn').addEventListener('click', share);
-  $('download-btn').addEventListener('click', downloadImage);
-  $('ask-btn').addEventListener('click', askFriend);
-  $('ask-q-btn').addEventListener('click', askFriend);
+  $('ask-q-btn').addEventListener('click', (e) => askFriend({ btn: e.currentTarget }));
   $('r-card-share').addEventListener('click', shareReportCard);
+  initSendSheet();
   initSharePreview();
   initIntro();
 
