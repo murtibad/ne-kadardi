@@ -1282,14 +1282,15 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 #result-screen.handed .receipt-wrapper { clip-path: none; }
 #result-screen.handed .result-receipt::before { display: block; } /* the torn top edge, now free */
 #result-screen.handed { --receipt-shadow: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.18)); }
-#result-screen.handed .receipt-wrapper.torn .result-receipt { animation: receipt-hand 0.45s ease-out, receipt-float 7s ease-in-out 0.45s infinite; }
+/* v0.123.1: no idle float any more (it made the receipt hard to read); the handed receipt sits
+   still and only lifts a little while a mouse is over it. */
+#result-screen.handed .receipt-wrapper.torn .result-receipt { animation: receipt-hand 0.45s ease-out; transition: transform 0.25s ease; }
+@media (hover: hover) and (pointer: fine) {
+  #result-screen.handed .receipt-wrapper.torn:hover .result-receipt { transform: translateY(-3px); }
+}
 @keyframes receipt-hand {
   from { transform: translateY(6px) rotate(-1.2deg) scale(0.985); }
   to { transform: none; }
-}
-@keyframes receipt-float {
-  0%, 100% { transform: none; }
-  50% { transform: translateY(-4px) rotate(0.3deg); }
 }
 /* The receipt takes focus after "Tahmin et" only so screen readers start there; no frame needed. */
 #r-receipt:focus { outline: none; }

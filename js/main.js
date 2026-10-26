@@ -338,7 +338,7 @@ function stopPrinting() {
 
 // One flow instead of two screens: on "Tahmin et" the question card stays on screen, folds its
 // form away and becomes the till; the receipt prints out of the slot under it. After the tear the
-// till slides up and away and the receipt is left floating on its own, "handed" to the player.
+// till slides up and away and the receipt is left on its own, "handed" to the player.
 function turnIntoMachine() {
   const qs = $('question-screen');
   const form = $('guess-form');

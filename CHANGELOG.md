@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.123.1] - 2026-10-27
+### Changed
+- The handed-over receipt no longer floats up and down while idle (player feedback: it made reading harder). It stays still; with a mouse it lifts slightly on hover.
+
 ## [0.123.0] - 2026-10-26
 ### Changed
 - More variety in free play (third player review, 30 questions): a product does not come back within 15 questions, no category more than 3 times in 10, and the question-card year note (2016, 2020, 2023) shows at most once per 10 questions.
