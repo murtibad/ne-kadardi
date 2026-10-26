@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.108.0] - 2026-10-26
+### Added
+- New product `yht-bilet`: high-speed train (YHT) Ankara-İstanbul, one-way full economy fare. 9 values 2022-06 → 2026-08 (195 · 215 · 248 · 323 · 430 · 540 · 780 · 930 · 990), each on two news sites and checked on the page by script. Earlier years (line opened 2014) could not be sourced. Icon `img/hizli-tren.svg` (Gemini Flash).
+- New product `dgs`: ÖSYM Dikey Geçiş Sınavı fee from ÖSYM's own guides (`kind: official`): 2019 120 · 2021 150 · 2023 270 · 2024 590 · 2025 950 · 2026 1.400. 75 products.
+
 ## [0.107.1] - 2026-10-26
 ### Fixed
 - The guess field's "Fiyatı yaz" placeholder used the browser's grey, 3.6:1 on the dark theme's paper; it now uses the paper's muted ink (AA in both themes). Found by a Gemini Flash dark-theme audit and confirmed by a contrast scan of every text on the paper cards in headless Chrome (no other text below 4.5:1).
