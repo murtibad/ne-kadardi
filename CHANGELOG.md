@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.110.2] - 2026-10-26
+### Fixed
+- Submitting the guess form before a question is shown no longer throws (`onGuess` returns early).
+
+### Added
+- Test: every product with prices must have four short, digit-free receipt lines in `PRODUCT_POOLS`, so a new product cannot ship without them.
+
 ## [0.110.1] - 2026-10-26
 ### Changed
 - The generic cashier lines (60, by score), the far-off guess lines (over/under, for prices and for wages) and the hint lines were rewritten in the same everyday Turkish tone as the product lines (Antigravity Claude Opus, checked by Claude): score lines still never assume a direction and most avoid shop words so they also fit wage questions.

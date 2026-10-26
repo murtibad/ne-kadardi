@@ -233,6 +233,7 @@ function nextQuestion(productId = null, date = null) {
 
 function onGuess(event) {
   event.preventDefault();
+  if (!state.question) return; // a stray submit before a question is shown has nothing to score
   const guess = parseGuess($('guess-input').value);
   // The dearest answer is a car (about 1,5 million); a longer number only breaks the receipt layout.
   const tooBig = guess !== null && guess >= 1e10;

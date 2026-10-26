@@ -229,3 +229,15 @@ test('far-off guesses on amounts use amount lines, not price lines', async () =>
   assert.ok(AMOUNT_OVER_COMMENTS.includes(contextComment({ direction: 'over', factor: 9, amount: true }, () => 0)));
   assert.ok(AMOUNT_UNDER_COMMENTS.includes(contextComment({ direction: 'under', factor: 9, amount: true }, () => 0)));
 });
+
+test('every product with prices has its own four receipt lines', async () => {
+  const { readFileSync } = await import('node:fs');
+  const data = JSON.parse(readFileSync(new URL('../data/prices.json', import.meta.url), 'utf8'));
+  for (const p of data.products) {
+    if (!p.prices.some((e) => e.price != null)) continue;
+    const pool = PRODUCT_POOLS[p.id];
+    assert.ok(pool, `add PRODUCT_POOLS['${p.id}'] in js/banter.js`);
+    assert.equal(pool.length, 4, `${p.id} should have four lines`);
+    for (const line of pool) assert.ok(line.length <= 66 && !/\d/.test(line), `${p.id}: short, no digits: ${line}`);
+  }
+});
