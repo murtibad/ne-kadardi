@@ -434,3 +434,35 @@ export function pickFollowUp(q, questions, recentProducts = [], rng = Math.rando
   const chosenPool = otherCat.length > 0 ? otherCat : pool;
   return chosenPool[Math.floor(rng() * chosenPool.length)];
 }
+
+const DAY_MS = 86_400_000;
+
+function parseUtcDay(key) {
+  if (typeof key !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(key)) return NaN;
+  const [y, m, d] = key.split('-').map(Number);
+  return Date.UTC(y, m - 1, d);
+}
+
+function dayDiff(fromKey, toKey) {
+  return Math.round((parseUtcDay(toKey) - parseUtcDay(fromKey)) / DAY_MS);
+}
+
+/** True when the player answered a question today or yesterday. */
+export function streakAlive(prev, todayKey) {
+  if (!prev?.last) return false;
+  if (prev.count !== undefined && !(prev.count > 0)) return false;
+  const diff = dayDiff(prev.last, todayKey);
+  return diff === 0 || diff === 1;
+}
+
+/** Advance or reset the daily streak on an answered question for `todayKey` ('YYYY-MM-DD'). */
+export function updateStreak(prev, todayKey) {
+  const prevCount = Number.isFinite(prev?.count) && prev.count > 0 ? prev.count : 0;
+  const prevBest = Number.isFinite(prev?.best) && prev.best > 0 ? prev.best : 0;
+  const diff = prev?.last ? dayDiff(prev.last, todayKey) : NaN;
+  if (diff === 0 && prevCount > 0) {
+    return { last: todayKey, count: prevCount, best: Math.max(prevBest, prevCount) };
+  }
+  const count = diff === 1 ? prevCount + 1 : 1;
+  return { last: todayKey, count, best: Math.max(prevBest, count) };
+}

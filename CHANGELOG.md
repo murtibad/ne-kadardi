@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.116.0] - 2026-10-26
+### Added
+- Daily streak ("günlük seri"): days in a row with at least one answer, kept on the device (`ne-kadardi-streak`). The menu card shows "🔥 3 gün üst üste", the menu nudges "Serin bozulmasın: bugün bir soru çöz." while today is still open, and the first answer of the day adds "🔥 3 gün" under the receipt.
+
 ## [0.115.1] - 2026-10-26
 ### Changed
 - The source label for gold, silver, Bitcoin and the Schengen fee reads "kurla hesaplandı" instead of a bare "hesaplandı", so it says how the price was worked out.

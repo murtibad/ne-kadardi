@@ -348,3 +348,44 @@ test('pickFollowUp picks another product from the same year, avoiding recent pro
   assert.equal(pickFollowUp(q, [q, { id: 'benzin@2020-07', productId: 'benzin', date: '2020-07' }, { id: 'ekmek@2019-01', productId: 'ekmek', date: '2019-01' }], [], zero), null);
   assert.equal(pickFollowUp(null, qs, [], zero), null);
 });
+
+test('updateStreak and streakAlive track consecutive calendar days across month, year and leap boundaries', async () => {
+  const { updateStreak, streakAlive } = await import('../js/game.js');
+
+  // Null or empty prev starts at 1.
+  assert.equal(streakAlive(null, '2026-01-10'), false);
+  assert.equal(streakAlive({ last: null, count: 0, best: 0 }, '2026-01-10'), false);
+  const s1 = updateStreak(null, '2026-01-10');
+  assert.deepEqual(s1, { last: '2026-01-10', count: 1, best: 1 });
+  assert.deepEqual(updateStreak({ last: null, count: 0, best: 0 }, '2026-01-10'), { last: '2026-01-10', count: 1, best: 1 });
+
+  // Same day is unchanged.
+  assert.equal(streakAlive(s1, '2026-01-10'), true);
+  assert.deepEqual(updateStreak(s1, '2026-01-10'), { last: '2026-01-10', count: 1, best: 1 });
+
+  // Next day increments count and best.
+  assert.equal(streakAlive(s1, '2026-01-11'), true);
+  const s2 = updateStreak(s1, '2026-01-11');
+  assert.deepEqual(s2, { last: '2026-01-11', count: 2, best: 2 });
+  assert.deepEqual(updateStreak(s2, '2026-01-11'), { last: '2026-01-11', count: 2, best: 2 });
+
+  // Gap of 2 days resets count to 1 and keeps best.
+  assert.equal(streakAlive(s2, '2026-01-13'), false);
+  const afterGap = updateStreak(s2, '2026-01-13');
+  assert.deepEqual(afterGap, { last: '2026-01-13', count: 1, best: 2 });
+
+  // Month end: 2026-01-31 to 2026-02-01.
+  const janEnd = { last: '2026-01-31', count: 3, best: 3 };
+  assert.equal(streakAlive(janEnd, '2026-02-01'), true);
+  assert.deepEqual(updateStreak(janEnd, '2026-02-01'), { last: '2026-02-01', count: 4, best: 4 });
+
+  // Year end: 2025-12-31 to 2026-01-01.
+  const decEnd = { last: '2025-12-31', count: 5, best: 5 };
+  assert.equal(streakAlive(decEnd, '2026-01-01'), true);
+  assert.deepEqual(updateStreak(decEnd, '2026-01-01'), { last: '2026-01-01', count: 6, best: 6 });
+
+  // Leap day: 2028-02-29 to 2028-03-01.
+  const leapDay = { last: '2028-02-29', count: 2, best: 4 };
+  assert.equal(streakAlive(leapDay, '2028-03-01'), true);
+  assert.deepEqual(updateStreak(leapDay, '2028-03-01'), { last: '2028-03-01', count: 3, best: 4 });
+});

@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, questionsUntilCard, scoreGuess, scoreTier, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
@@ -30,6 +30,7 @@ const state = {
   recentProducts: [], seen: new Set(),
   hinted: false, friendScore: null, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, recentScores: [], 
+  streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false 
 };
@@ -40,6 +41,33 @@ let shareTimeoutId = null;
 const RECENT_MAX = 8;
 const SEEN_KEY = 'ne-kadardi-seen';
 const SEEN_MAX = 2000;
+const STREAK_KEY = 'ne-kadardi-streak';
+
+function todayKey(d = new Date()) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function loadStreak() {
+  try {
+    const data = JSON.parse(localStorage.getItem(STREAK_KEY));
+    if (data && typeof data === 'object') {
+      state.streak = {
+        last: typeof data.last === 'string' ? data.last : null,
+        count: Number.isFinite(data.count) ? data.count : 0,
+        best: Number.isFinite(data.best) ? data.best : 0,
+      };
+    }
+  } catch(e) {}
+}
+
+function saveStreak() {
+  try {
+    localStorage.setItem(STREAK_KEY, JSON.stringify(state.streak));
+  } catch(e) {}
+}
 
 function loadSeen() {
   try {
@@ -266,7 +294,17 @@ function onGuess(event) {
   }
   const q = state.question;
   const scored = scoreGuess(guess, q.price);
-  state.result = { guess, ...scored, score: applyHintPenalty(scored.score, state.hinted), hinted: state.hinted };
+  const today = todayKey();
+  const firstToday = state.streak?.last !== today;
+  state.streak = updateStreak(state.streak, today);
+  saveStreak();
+  state.result = {
+    guess,
+    ...scored,
+    score: applyHintPenalty(scored.score, state.hinted),
+    hinted: state.hinted,
+    streakBump: firstToday && state.streak.count >= 2 ? state.streak.count : 0,
+  };
   state.played += 1;
   state.total += state.result.score;
   state.best = Math.max(state.best, state.result.score);
@@ -563,8 +601,9 @@ function renderResult(q, r) {
   const leftForCard = questionsUntilCard((state.visitAnswers ?? []).length);
   // One line on a 360 px phone: the best score already sits on the home menu.
   const cardHint = leftForCard > 0 ? ` · karneye ${leftForCard} soru` : '';
+  const streakHint = r.streakBump >= 2 ? ` · 🔥 ${r.streakBump} gün` : '';
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
-  $('r-session').innerHTML = `<span>${state.played} soru · ortalama ${avg}${cardHint}</span>`
+  $('r-session').innerHTML = `<span>${state.played} soru · ortalama ${avg}${cardHint}${streakHint}</span>`
     + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
@@ -1276,12 +1315,18 @@ function linkRowsToChart() {
 
 function renderHome() {
   state.archiveFromResult = false;
+  const today = todayKey();
+  const alive = streakAlive(state.streak, today) && state.streak.count >= 2;
+  const streakMeta = alive ? ` · 🔥 ${state.streak.count} gün üst üste` : '';
   $('m-tahmin').textContent = state.played > 0
-    ? `${state.played} soru · ortalama puan ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '')
-    : '';
+    ? `${state.played} soru · ortalama puan ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '') + streakMeta
+    : alive ? `🔥 ${state.streak.count} gün üst üste` : '';
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
+  const needsToday = alive && state.streak.last !== today;
+  $('home-streak').textContent = needsToday ? 'Serin bozulmasın: bugün bir soru çöz.' : '';
+  $('home-streak').hidden = !needsToday;
   if (!$('fact-body').hasChildNodes()) renderFact();
   renderHomeSpark();
   // Coming back to the menu does not reset the game, so say so instead of "Başla".
@@ -1441,6 +1486,7 @@ async function init() {
   if (versionEl) versionEl.textContent = VERSION;
   loadSession();
   loadSeen();
+  loadStreak();
   // Decided once at load: a returning player never gets the opener list again.
   state.firstVisit = state.played === 0;
   state.openerIndex = 0;
