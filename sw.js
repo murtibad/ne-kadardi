@@ -30,6 +30,7 @@ const PRECACHE = [
   'js/intro.js',
   'js/linkify.js',
   'js/archive-table.js',
+  'js/archive-ui.js',
   'js/main.js',
   'js/price-chart.js',
   'js/share-image.js',
