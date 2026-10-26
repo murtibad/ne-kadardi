@@ -10,7 +10,7 @@ import { verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './banter.js';
-import { buildHint, applyHintPenalty } from './hint.js';
+import { buildHint, buildEverydayHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
@@ -31,7 +31,7 @@ const hapticIfAllowed = (ms) => {
 
 const state = {
   recentProducts: [], seen: new Set(),
-  hinted: false, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
+  hintsUsed: 0, hintProductId: null, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
@@ -208,19 +208,34 @@ function nextQuestion(productId = null, date = null) {
   $('guess-input').value = '';
   $('guess-readout').textContent = '';
   document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
-  state.hinted = false;
-  const hint = buildHint(q, state.all);
-  $('hint-btn').hidden = !hint;
-  $('hint-text').hidden = true;
-  $('hint-btn').onclick = () => {
+  state.hintsUsed = 0;
+  state.hintProductId = null;
+  const everyday = buildEverydayHint(q, state.all);
+  const rates = buildHint(q, state.all);
+  const hintBtn = $('hint-btn');
+  const slip = $('hint-text');
+  const row = (l) => `<div class="hint-row"><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.value)}</strong></div>`;
+  const rateRows = () => rates.map(row).join('');
+  hintBtn.hidden = !(everyday || rates);
+  hintBtn.textContent = 'İpucu al (puanın %20 düşer)';
+  slip.hidden = true;
+  hintBtn.onclick = () => {
     sound.play('beep');
-    state.hinted = true;
-    $('hint-text').dataset.line = hintComment(Math.random, state.recentLines);
-    state.recentLines = rememberLine(state.recentLines, $('hint-text').dataset.line);
-    $('hint-text').innerHTML = `<p class="hint-cashier">“${escapeHTML($('hint-text').dataset.line)}”</p><p class="hint-slip-title">İpucu · ${escapeHTML(hint[0].period)}</p>`
-      + hint.map((l) => `<div class="hint-row"><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.value)}</strong></div>`).join('');
-    $('hint-text').hidden = false;
-    $('hint-btn').hidden = true;
+    state.hintsUsed += 1;
+    if (state.hintsUsed === 1) {
+      slip.dataset.line = hintComment(Math.random, state.recentLines);
+      state.recentLines = rememberLine(state.recentLines, slip.dataset.line);
+      const period = everyday ? everyday.period : rates[0].period;
+      state.hintProductId = everyday ? everyday.id : null;
+      slip.innerHTML = `<p class="hint-cashier">“${escapeHTML(slip.dataset.line)}”</p><p class="hint-slip-title">İpucu · ${escapeHTML(period)}</p>`
+        + (everyday ? row(everyday) : rateRows());
+      slip.hidden = false;
+      if (everyday && rates) hintBtn.textContent = 'Bir ipucu daha (dolar ve asgari ücret)';
+      else hintBtn.hidden = true;
+    } else {
+      slip.insertAdjacentHTML('beforeend', rateRows());
+      hintBtn.hidden = true;
+    }
     $('guess-input').focus();
   };
   $('guess-error').textContent = '';
@@ -255,8 +270,10 @@ function onGuess(event) {
   state.result = {
     guess,
     ...scored,
-    score: applyHintPenalty(scored.score, state.hinted),
-    hinted: state.hinted,
+    score: applyHintPenalty(scored.score, state.hintsUsed),
+    hinted: state.hintsUsed > 0,
+    hintsUsed: state.hintsUsed,
+    hintProductId: state.hintProductId,
     streakBump: firstToday && state.streak.count >= 2 ? state.streak.count : 0,
   };
   // Günün Fişi keeps its own total out of 500; the free-play counters ("N soru · ortalama")
@@ -464,7 +481,7 @@ function renderResult(q, r) {
   if (r.hinted && r.score > 0) { // "%20 düştü" means nothing on a zero
     const hint = document.createElement('span');
     hint.className = 'score-hint';
-    hint.textContent = ' (ipucu aldığın için %20 düştü)';
+    hint.textContent = r.hintsUsed >= 2 ? ' (2 ipucu aldığın için %40 düştü)' : ' (ipucu aldığın için %20 düştü)';
     scoreEl.append(hint);
   }
   const tier = scoreTier(r.score);
@@ -472,8 +489,10 @@ function renderResult(q, r) {
     ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId), recent: state.recentLines });
   state.recentLines = rememberLine(state.recentLines, line);
   $('r-cashier').textContent = `“${line}”`;
-  // The hint slip already showed that year's dollar rate and minimum wage.
-  const followPool = r.hinted ? state.all.filter((x) => x.productId !== 'dolar' && x.productId !== 'asgari-ucret') : state.all;
+  // The slip already showed its everyday product; dollar and wage only if hint 2 (or the rates-only hint) was used.
+  const ratesSeen = r.hintsUsed >= 2 || (r.hinted && !r.hintProductId);
+  const hintSeen = new Set([r.hintProductId, ...(ratesSeen ? ['dolar', 'asgari-ucret'] : [])]);
+  const followPool = r.hinted ? state.all.filter((x) => !hintSeen.has(x.productId)) : state.all;
   const followUp = state.daily && state.daily.scores.length < state.daily.ids.length
     ? null
     : pickFollowUp(q, followPool, state.recentProducts);
