@@ -1661,3 +1661,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 
 /* Günün Fişi sits under the main game: an outlined button so the menu has one red call to action. */
 .mode-card.mode-daily .mode-go { color: var(--accent-on-paper); background: transparent; box-shadow: inset 0 0 0 2px var(--accent-on-paper); }
+
+/* Second player review (55+ readers): secondary actions and source lines no smaller than 15-16 px. */
+.hint-btn, .skip-btn, .ask-q .link-btn { font-size: 1rem; }
+.source { font-size: 0.9375rem; }

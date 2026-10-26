@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.118.3] - 2026-10-26
+### Changed
+- A first visit opens with Benzin (Ocak 2016), a nationwide price; Halk Ekmek (0,75 TL, an Istanbul subsidy) made the very first answer a likely 0 and now comes fourth.
+- After the fifth Günün Fişi answer the button reads "Serbest oyuna geç →" instead of a plain "Sonraki soru".
+- Hint, skip and "Arkadaşına sor" links are 16 px and source lines 15 px, easier for older readers.
+
 ## [0.118.2] - 2026-10-26
 ### Changed
 - A finished Günün Fişi card counts down to the next one: "Bugün 300/500 · Yeni fiş 7 saat sonra" (minutes in the last hour).
