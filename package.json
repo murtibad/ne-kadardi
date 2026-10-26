@@ -1,6 +1,6 @@
 {
   "name": "ne-kadardi",
-  "version": "0.117.0",
+  "version": "0.117.1",
   "private": true,
   "description": "A static browser game: guess past prices in Turkey, compare with today.",
   "type": "module",

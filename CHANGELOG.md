@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.117.1] - 2026-10-26
+### Fixed
+- Reloading the page in the middle of Günün Fişi continues the run at the same question (the address stays `#gunun-fisi` until the fifth answer).
+
 ## [0.117.0] - 2026-10-26
 ### Added
 - "Günün Fişi" on the menu: the same 5 everyday questions for everyone each day (seeded by the local date, different categories, `js/daily.js`). Progress is kept on the device (`ne-kadardi-daily`), leaving to the menu can be resumed, a skipped daily question counts 0. After the fifth answer the receipt shows "GÜNÜN FİŞİ · 26 EKİM" with the total out of 500 and a share text without prices or product names (coloured squares, total, streak).

@@ -1122,6 +1122,8 @@ async function renderReportCard() {
     const { key, ids, scores } = state.daily;
     state.daily = null;
     syncSkipBtn();
+    // The run is over: a reload now should not reopen #gunun-fisi (that would share again).
+    if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
     const lines = ids.map((id, i) => {
       const dq = state.all.find((x) => x.id === id);
       const label = dq ? `${formatPeriod(dq.date)} · ${questionTitle(dq)}` : id;
@@ -1485,7 +1487,7 @@ function onHashChange() {
       const scores = saved ? [...saved.scores] : [];
       state.daily = { key, ids, index: scores.length, scores };
       const [productId, date] = (ids[state.daily.index] ?? '').split('@');
-      history.replaceState(null, '', '#tahmin');
+      // The address stays #gunun-fisi during the run, so a reload picks the run up from storage.
       nextQuestion(productId, date);
     }
   } else if (hash === '#tahmin') {
