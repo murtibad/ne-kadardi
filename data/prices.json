@@ -6125,6 +6125,116 @@
       ]
     },
     {
+      "id": "ispark-otopark",
+      "name": "İSPARK otopark",
+      "unit": "Otomobil, ilk 1 saat (merkez ilçeler, açık ve kapalı otopark)",
+      "region": "İstanbul",
+      "source_hint": "İBB Meclisi'nin İSPARK tarife kararları, haber arşivi (AA, NTV). Beşiktaş, Kadıköy gibi merkez ilçeler; yol kenarı hariç. Tarih yeni tarifenin başladığı aydır.",
+      "image": {
+        "src": "img/otopark.svg",
+        "alt": "Otopark tabelası",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 140,
+        "status": "verified",
+        "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. 1 Ocak 2026'dan itibaren (\"100 liradan 140 liraya\"). İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/turkiye/istanbulda-ispark-ucretlerine-yuzde-625-zam-1702815.",
+        "source": {
+          "title": "AA: İstanbul'da İSPARK otopark ücretlerine yüzde 62,5'e varan oranlarda zam yapıldı",
+          "url": "https://www.aa.com.tr/tr/gundem/istanbulda-ispark-otopark-ucretlerine-yuzde-62-5e-varan-oranlarda-zam-yapildi/3768764",
+          "accessed": "2026-10-26",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2022-12",
+          "price": 17.5,
+          "status": "verified",
+          "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. 1 Ocak 2023 zammından önce geçerli olan ücret (\"1 saate kadar olan ücret 17,50 liradan 28 liraya\"). İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/ntvpara/ispark-ucretlerine-zam-ispark-kac-lira,jeuKVhue_0WsJC9J1SEr4Q.",
+          "source": {
+            "title": "AA: İstanbul'da İSPARK otopark ücretlerine yüzde 60 zam yapıldı",
+            "url": "https://www.aa.com.tr/tr/gundem/istanbulda-ispark-otopark-ucretlerine-yuzde-60-zam-yapildi/2765440",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 28,
+          "status": "verified",
+          "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. 1 Ocak 2023'ten itibaren. İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/ntvpara/ispark-ucretlerine-zam-ispark-kac-lira,jeuKVhue_0WsJC9J1SEr4Q.",
+          "source": {
+            "title": "AA: İstanbul'da İSPARK otopark ücretlerine yüzde 60 zam yapıldı",
+            "url": "https://www.aa.com.tr/tr/gundem/istanbulda-ispark-otopark-ucretlerine-yuzde-60-zam-yapildi/2765440",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-08",
+          "price": 33,
+          "status": "verified",
+          "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. 1 Ağustos 2023'ten itibaren (\"28 liradan 33 liraya\"). İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/ntvpara/ispark-otopark-ucretlerine-zam-geldi,yEqgULGMWEizf5W6A9-8TA.",
+          "source": {
+            "title": "CNN Türk: İSPARK otopark ücretlerine zam geldi",
+            "url": "https://www.cnnturk.com/ekonomi/ispark-otopark-ucretlerine-zam-geldi-2024726",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-10",
+          "price": 52,
+          "status": "verified",
+          "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. İBB Meclisi 11 Ekim 2023'te kabul etti (\"0-1 saat arası 33'ten 52 liraya\"). İkinci kaynak: capital.com.tr https://www.capital.com.tr/haberler/tum-haberler/ispark-ucretlerine-yuzde-57-zam-yapildi.",
+          "source": {
+            "title": "AA: İSPARK ücretlerine yüzde 57'ye varan zam yapıldı",
+            "url": "https://www.aa.com.tr/tr/gundem/ispark-ucretlerine-yuzde-57ye-varan-zam-yapildi/3016013",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-06",
+          "price": 70,
+          "status": "verified",
+          "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. İBB Meclisi 12 Haziran 2024'te kabul etti (\"0-1 saat aralığında 52 liradan 70 liraya\"). İkinci kaynak: trthaber.com https://www.trthaber.com/haber/turkiye/ispark-ucretlerine-zam-bir-saatlik-otopark-ucreti-70-tl-oldu-863296.html.",
+          "source": {
+            "title": "NTV: İSPARK'a yüzde 35'e varan zam yapıldı",
+            "url": "https://www.ntv.com.tr/ntvpara/isparka-yuzde-35e-varan-zam-yapildi,0A6HFDLEDkK79v-1KVhnxw",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 100,
+          "status": "verified",
+          "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. 1 Ocak 2025'ten itibaren (\"70 liradan 100 liraya\"). İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/turkiye/ispark-ucretlerine-zam-iste-2025-ispark-ucret-tarifesi,BYBoYsnWnUifXYkK_AA9LA.",
+          "source": {
+            "title": "AA: İstanbul'da İSPARK otopark ücretlerine yüzde 115'e varan zam yapıldı",
+            "url": "https://www.aa.com.tr/tr/gundem/istanbulda-ispark-otopark-ucretlerine-yuzde-115e-varan-zam-yapildi/3423020",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 140,
+          "status": "verified",
+          "note": "İSPARK kapalı katlı ve açık otoparkta otomobil için ilk 1 saatin ücreti; Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar'ın bulunduğu en pahalı bölge (yol kenarı otoparkları ve 2025'te ayrılan Tarihi Yarımada/Kadıköy Rıhtım bölgesi hariç). Tarih, İBB Meclisi kararıyla yeni tarifenin başladığı ay. 1 Ocak 2026'dan itibaren (\"100 liradan 140 liraya\"). İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/turkiye/istanbulda-ispark-ucretlerine-yuzde-625-zam-1702815.",
+          "source": {
+            "title": "AA: İstanbul'da İSPARK otopark ücretlerine yüzde 62,5'e varan oranlarda zam yapıldı",
+            "url": "https://www.aa.com.tr/tr/gundem/istanbulda-ispark-otopark-ucretlerine-yuzde-62-5e-varan-oranlarda-zam-yapildi/3768764",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
       "id": "playstation",
       "name": "PlayStation konsolu",
       "unit": "1 konsol, yeni çıkan model, Türkiye'de ilk satış fiyatı",

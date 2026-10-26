@@ -7,12 +7,12 @@ export const CASHIER_COMMENTS = {
     'Eski fişleri saklıyorsun galiba',
     'Kasiyer bile bu kadarını hatırlayamazdı',
     'Zaman yolculuğundan yeni dönmüş gibisin',
-    'Kasa kayıtlarından daha sağlam bir hafıza',
+    'Kasa kayıtlarından bile sağlam bir hafızan var',
     'Bu rakamı ezbere biliyorsun belli',
     'Bravo, kuruşu kuruşuna bildin',
     'Bu hafızayla pazarda kimse seni kandıramaz',
     'Alışveriş listesini sana emanet ederiz',
-    'Annemin pazar defteri kadar sağlam',
+    'Hafızan annemin pazar defteri kadar sağlam',
     'Etiketi sen mi yapıştırmıştın?',
   ],
   good: [
@@ -23,7 +23,7 @@ export const CASHIER_COMMENTS = {
     'Fiyat artışları seni pek şaşırtmamış',
     'Küçük bir sapmayla hedefe çok yakınsın',
     'Az kalsın tam tutturuyordun',
-    'Yakın geçti, bir dahakine tamam',
+    'Yakın geçti, bir dahakine tam isabet',
     'Pazarda pazarlığı iyi biliyorsun belli',
     'Hafıza yerinde, ufak bir kayma var sadece',
     'Çok az farkla kaçtı',
@@ -32,7 +32,7 @@ export const CASHIER_COMMENTS = {
   mid: [
     'Enflasyon algın biraz bozulmuş',
     'Ne çok iyi ne çok kötü, piyasa seni biraz yormuş',
-    'Biraz uzaklaştın ama yönün doğru',
+    'Biraz uzaklaştın ama hâlâ oyundasın',
     'Eski fiyatlar hafiften silinmeye başlamış',
     'Kafandaki etiket ile gerçek etiket pek uyuşmadı',
     'Zaman her şeyi unutturur, fiyatları da',
@@ -44,12 +44,12 @@ export const CASHIER_COMMENTS = {
     'Etiket biraz silinmiş, olur öyle',
   ],
   poor: [
-    'O devirde yaşasaydın bütçen epey zorlanırdı',
+    'O devrin rakamları kolay akılda kalmıyor',
     'Tarihleri biraz karıştırmış olabilir misin?',
-    'Fiyatlar o kadar da uçuk değildi sanki',
+    'O dönemin hesabını tutturmak kolay değil tabii',
     'Hesapta ufak bir kayma var',
-    'Bir sıfır fazla ya da eksik gibi, bilemedik',
-    'Eski günleri biraz fazla pembe hatırlıyorsun',
+    'Bir sıfır fazla ya da eksik gibi geldi bana',
+    'O günlerin rakamları biraz bulanıklaşmış',
     'Biraz uzak kaldın ama pes etmek yok',
     'O zamanki cüzdanı hatırlamak zor tabii',
     'Fiyatlar senin aklındakinden epey farklıymış',
@@ -58,27 +58,28 @@ export const CASHIER_COMMENTS = {
     'Bu fiyatı duyunca sen de şaşırdın değil mi?',
   ],
   bad: [
-    'Maliye Bakanı gibisin, her şey ucuz sanıyorsun',
+    'Eski rakamların izi tamamen silinmiş sanki',
     'Piyasa gerçeklerinden tamamen kopuk bir tahmin',
     'Bu fiyat hangi dönemden kaldı acaba?',
-    'Bu tahminle o dönem kasada mahsur kalırdın',
+    'Bu tahminle o dönem kasada epey şaşırırdık',
     'Fiyat hissin bambaşka bir galaksiden geliyor',
     'Geçmişle bağların epey zayıflamış görünüyor',
-    'Bu fiyatla kasadan geçemezdik',
+    'Hesap makinesi bile şaşırdı bu tahmine',
     'Hiç tutmadı ama gülümse, bir soru daha var',
     'O günleri başka biriyle karıştırmış olmayasın?',
-    'Bu tahmini görünce kasiyer güldü',
+    'Bu tahmini görünce ben bile güldüm',
     'Uzaktan yakından alakası yok, bir daha dene',
     'Fiş bile şaşırdı bu tahmine',
   ],
 };
 
-const SHOP_WORDS = /fiyat|kasa|kasiyer|etiket|pazar|alışveriş|cüzdan|ucuz|pahalı/i;
+const SHOP_WORDS = /fiyat|kasa|kasiyer|etiket|pazar|alışveriş|cüzdan|ucuz|pahalı|fiş/i;
 
 /**
  * Return one short, witty cashier comment for a result receipt.
  * Unknown tier falls back to mid.
  */
+// Lines here do not know whether the guess was too high or too low, so they must fit both.
 export function cashierComment(tier, rng = Math.random, { amount = false } = {}) {
   const all = CASHIER_COMMENTS[tier] ?? CASHIER_COMMENTS.mid;
   // A wage or pension is not on a shelf: skip the shop-talk lines for amounts.
