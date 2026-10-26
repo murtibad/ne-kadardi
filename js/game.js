@@ -76,14 +76,19 @@ export function scoreTier(score) {
 // Every question should feel like a new category: pick a product that was not shown recently
 // (all products take turns), then a random year of that product. Products with many entries
 // (e.g. 17 yearly values) therefore do not dominate. `recent` holds the latest product ids.
-export function pickByCategory(questions, recent = [], previousId = null, rng = Math.random) {
+export function pickByCategory(questions, recent = [], previousId = null, rng = Math.random, seen = new Set()) {
   const products = [...new Set(questions.map((q) => q.productId))];
-  if (products.length < 2) return pickRandom(questions, previousId, rng);
-  const keep = Math.min(products.length - 1, 8);
-  const blocked = new Set(recent.slice(-keep));
-  const fresh = products.filter((id) => !blocked.has(id));
-  const productId = fresh[Math.floor(rng() * fresh.length)];
-  return pickRandom(questions.filter((q) => q.productId === productId), previousId, rng);
+  let own = questions;
+  if (products.length >= 2) {
+    const keep = Math.min(products.length - 1, 8);
+    const blocked = new Set(recent.slice(-keep));
+    const fresh = products.filter((id) => !blocked.has(id));
+    const productId = fresh[Math.floor(rng() * fresh.length)];
+    own = questions.filter((q) => q.productId === productId);
+  }
+  // Prefer years the player has not answered yet; once all are seen, cycle through them again.
+  const unseen = own.filter((q) => !seen.has(q.id) && q.id !== previousId);
+  return pickRandom(unseen.length > 0 ? unseen : own, previousId, rng);
 }
 
 // "1 asgari ücretle 17 adet" leaves the reader asking "17 of what?", so every product is
