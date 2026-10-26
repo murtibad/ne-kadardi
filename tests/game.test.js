@@ -389,3 +389,29 @@ test('updateStreak and streakAlive track consecutive calendar days across month,
   assert.equal(streakAlive(leapDay, '2028-03-01'), true);
   assert.deepEqual(updateStreak(leapDay, '2028-03-01'), { last: '2028-03-01', count: 3, best: 4 });
 });
+
+test('pickFromCategory picks another product from the same category and returns null when none fits', async () => {
+  const { pickFromCategory } = await import('../js/game.js');
+  const { categoryOf } = await import('../js/categories.js');
+  const qs = [
+    { id: 'benzin@2020-01', productId: 'benzin', date: '2020-01' },
+    { id: 'motorin@2021-01', productId: 'motorin', date: '2021-01' },
+    { id: 'otogaz@2022-01', productId: 'otogaz', date: '2022-01' },
+    { id: 'ekmek@2020-01', productId: 'ekmek', date: '2020-01' },
+  ];
+  const zero = () => 0;
+  const last = () => 0.99;
+
+  // Picks from 'ulasim' while excluding 'benzin'.
+  const p1 = pickFromCategory(qs, 'ulasim', 'benzin', categoryOf, zero);
+  assert.equal(p1.id, 'motorin@2021-01');
+  const p2 = pickFromCategory(qs, 'ulasim', 'benzin', categoryOf, last);
+  assert.equal(p2.id, 'otogaz@2022-01');
+
+  // Returns null when the excluded product is the only one in that category.
+  assert.equal(pickFromCategory(qs, 'gunluk', 'ekmek', categoryOf, zero), null);
+  // Returns null when no question belongs to the category or inputs are empty.
+  assert.equal(pickFromCategory(qs, 'teknoloji', 'benzin', categoryOf, zero), null);
+  assert.equal(pickFromCategory(qs, null, 'benzin', categoryOf, zero), null);
+  assert.equal(pickFromCategory([], 'ulasim', 'benzin', categoryOf, zero), null);
+});

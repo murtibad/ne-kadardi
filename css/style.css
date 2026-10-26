@@ -416,13 +416,15 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin: 0;
 }
 .source a { color: inherit; text-decoration: underline; }
-/* Source type label; wraps with the text so it never changes the layout width. */
-.source-kind {
+/* Source type label and seen mark; wrap with the text so they never change the layout width. */
+.source-kind,
+.timeline-seen {
   font-family: var(--font-ui);
   font-size: 0.75rem;
   color: var(--muted-on-paper);
   overflow-wrap: anywhere;
 }
+.timeline-seen { white-space: nowrap; }
 
 /* Actions & Session */
 .session-actions {
@@ -1101,6 +1103,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .timeline-receipt .result-image { display: block; margin: 0 auto 8px; }
 .timeline-receipt .result-image[hidden] { display: none; }
 .timeline-summary { margin: 12px 0 0; text-align: center; font: 700 0.9375rem var(--font-mono); color: var(--accent-on-paper); }
+.timeline-play { display: flex; width: fit-content; margin: 4px auto 0; font-family: var(--font-ui); font-size: 0.875rem; color: var(--ink); }
 
 /* Rubber stamp and post-tear meter fill on the result receipt */
 .receipt-stamp[hidden] { display: none; }
@@ -1313,6 +1316,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
    13 px; chart labels go from 10 to 11 px in the 320-unit viewBox. Uppercase decorative labels stay. */
 .source { font-size: 0.875rem; }
 .source-kind,
+.timeline-seen,
 .timeline-ratio,
 .timeline-legend,
 .site-footer { font-size: 0.8125rem; }
