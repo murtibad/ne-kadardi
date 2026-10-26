@@ -63,3 +63,16 @@ test('everyday hint prefers another category, falls back to the same one', () =>
   assert.equal(buildEverydayHint({ productId: 'ekmek', year: 2020 }, data, () => 0.99).id, 'spotify');
   assert.equal(buildEverydayHint({ productId: 'ekmek', year: 2020 }, data.slice(0, 2), () => 0.99).id, 'big-mac');
 });
+
+test('hints use the price in force on the question date, not the year\'s first', async () => {
+  const { buildHint } = await import('../js/hint.js');
+  const all = [
+    { productId: 'dolar', year: 2018, date: '2018-01-02', price: 3.77 },
+    { productId: 'dolar', year: 2018, date: '2018-07-02', price: 4.6 },
+    { productId: 'asgari-ucret', year: 2018, date: '2018-01', price: 1603.12 },
+  ];
+  const july = buildHint({ productId: 'benzin', year: 2018, date: '2018-07' }, all);
+  assert.equal(july[0].period, 'Temmuz 2018');
+  const march = buildHint({ productId: 'benzin', year: 2018, date: '2018-03' }, all);
+  assert.equal(march[0].period, 'Ocak 2018');
+});

@@ -19,14 +19,24 @@ const HINT_PRODUCTS = [
 ];
 
 /** Returns [{label, value, period}] for the question's year, or null when no hint is available. */
+// The price in force on the question's date: the latest one of that year at or before it,
+// else the year's first (a "Temmuz 2018" question should not get a "Eylül 2018" price).
+function priceInForce(entries, date) {
+  const sorted = [...entries].sort((a, b) => a.date.localeCompare(b.date));
+  // Compare by month: a daily rate dated 2018-07-02 is in force for a "Temmuz 2018" question.
+  if (!date) return sorted[0];
+  const month = String(date).slice(0, 7);
+  const before = sorted.filter((x) => x.date.slice(0, 7) <= month);
+  return before.length > 0 ? before[before.length - 1] : sorted[0];
+}
+
 export function buildHint(question, allQuestions) {
   if (NO_HINT.has(question.productId)) return null;
   const lines = [];
   for (const { id, label } of HINT_PRODUCTS) {
     const inYear = allQuestions
-      .filter((x) => x.productId === id && x.year === question.year)
-      .sort((a, b) => a.date.localeCompare(b.date));
-    const hit = inYear[0];
+      .filter((x) => x.productId === id && x.year === question.year);
+    const hit = inYear.length > 0 ? priceInForce(inYear, question.date) : null;
     if (hit) lines.push({ label, value: formatPrice(hit.price), period: formatPeriod(hit.date) });
   }
   return lines.length > 0 ? lines : null;
@@ -57,9 +67,8 @@ export function buildEverydayHint(question, allQuestions, rng = Math.random) {
   const cands = [];
   for (const id of EVERYDAY_HINT_IDS) {
     if (id === question.productId) continue;
-    const hit = allQuestions
-      .filter((x) => x.productId === id && x.year === question.year)
-      .sort((a, b) => a.date.localeCompare(b.date))[0];
+    const inYear = allQuestions.filter((x) => x.productId === id && x.year === question.year);
+    const hit = inYear.length > 0 ? priceInForce(inYear, question.date) : null;
     if (hit) cands.push({ id, hit });
   }
   if (cands.length === 0) return null;
