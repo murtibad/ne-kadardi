@@ -9,7 +9,6 @@ const row = (date, price, isCurrent = false) => ({
   date,
   price,
   ratioToCurrent: isCurrent ? null : 10,
-  barPercent: isCurrent ? 100 : 8,
   note: null,
   source: { title: 't', url: 'https://x', kind: 'official' },
   isCurrent,

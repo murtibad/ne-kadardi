@@ -58,14 +58,14 @@ export function priceInYear(row, year) {
  * Populate or update the intro dialog stage and run the ~4 s sequence.
  * Returns a `finish({ moveFocus })` function that jumps straight to the final resting state.
  */
-export function playIntro(dialogEl, rows, { reduced = false, sound = null } = {}) {
+export function playIntro(dialogEl, rows, { sound = null } = {}) {
   if (!dialogEl) return () => {};
   const list = Array.isArray(rows) ? rows : [];
   const fromYear = list.length ? Math.min(...list.map((r) => r.fromYear)) : 2010;
   const toYear = list.length ? Math.max(...list.map((r) => r.toYear)) : 2026;
   const years = yearSteps(fromYear, toYear);
 
-  ensureStage(dialogEl, list, fromYear, toYear, reduced);
+  ensureStage(dialogEl, list, fromYear, toYear);
 
   const stage = dialogEl.querySelector('.intro-stage');
   const skipBtn = dialogEl.querySelector('#intro-skip');
@@ -134,7 +134,7 @@ export function playIntro(dialogEl, rows, { reduced = false, sound = null } = {}
     if (moveFocus) playBtn?.focus?.({ preventScroll: true });
   }
 
-  if (reduced || typeof requestAnimationFrame !== 'function') {
+  if (typeof requestAnimationFrame !== 'function') {
     finish({ moveFocus: true });
     return finish;
   }
@@ -229,7 +229,7 @@ export function playIntro(dialogEl, rows, { reduced = false, sound = null } = {}
   return finish;
 }
 
-function ensureStage(dialogEl, list, fromYear, toYear, reduced) {
+function ensureStage(dialogEl, list, fromYear, toYear) {
   let stage = dialogEl.querySelector('.intro-stage');
   if (!stage) {
     // Keep the existing #intro-play and #intro-close buttons so listeners wired in initIntro() stay attached.
@@ -270,9 +270,9 @@ function ensureStage(dialogEl, list, fromYear, toYear, reduced) {
           <span class="intro-row-name">${escapeHTML(r.name)}</span>
           <span class="intro-row-years">${escapeHTML(`${r.fromYear} → ${r.toYear}`)}</span>
         </div>
-        <span class="intro-row-price">${escapeHTML(formatPrice(reduced ? r.to : r.from))}</span>
+        <span class="intro-row-price">${escapeHTML(formatPrice(r.from))}</span>
       </li>`).join('');
   }
   const yearValue = dialogEl.querySelector('.intro-year-value');
-  if (yearValue) yearValue.textContent = String(reduced ? toYear : fromYear);
+  if (yearValue) yearValue.textContent = String(fromYear);
 }

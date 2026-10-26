@@ -682,20 +682,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   font-weight: 700;
 }
 
-.timeline-bar-track {
-  width: 100%;
-  height: 6px;
-  background: var(--line);
-  border-radius: 3px;
-  margin: 4px 0 0;
-  overflow: hidden;
-}
-.timeline-bar-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 3px;
-}
-
 .timeline-meta {
   display: flex;
   flex-wrap: wrap;
@@ -1113,8 +1099,6 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .timeline-receipt .result-image { display: block; margin: 0 auto 8px; }
 .timeline-receipt .result-image[hidden] { display: none; }
 .timeline-summary { margin: 12px 0 0; text-align: center; font: 700 0.9375rem var(--font-mono); color: var(--accent-on-paper); }
-/* The chart above already shows the trend, so the per-row bars only made the list longer. */
-.timeline-receipt .price-chart:not([hidden]) ~ #t-rows-container .timeline-bar-track { display: none; }
 
 /* Rubber stamp and post-tear meter fill on the result receipt */
 .receipt-stamp[hidden] { display: none; }

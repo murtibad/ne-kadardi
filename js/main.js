@@ -268,7 +268,7 @@ function onGuess(event) {
 
 // The receipt slides out of the printer slot while the printer sound plays, then gets torn off.
 // Kept short (about a second) so it never stands between the player and the next question;
-// a tap on the receipt finishes it at once, and reduced motion skips the slide.
+// a tap on the receipt finishes it at once.
 const PRINT_MS = 1100;
 let printTimer = null;
 let handTimer = null;
@@ -342,7 +342,6 @@ function handOver() {
 
 function printReceipt(extraSound) {
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
-  const reduced = false; // the receipt always prints; gentle mode turns the slide into a fade in CSS
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
   $('result-screen').classList.remove('handed');
@@ -370,9 +369,8 @@ function printReceipt(extraSound) {
     }
     $('r-stamp').classList.add('stamped');
     if (state.result?.factor === 1) burstConfetti();
-    // Let the tear finish (0.3 s) before the till leaves; reduced motion hands over at once.
-    if (reduced) handOver();
-    else handTimer = setTimeout(handOver, 320);
+    // Let the tear finish (0.3 s) before the till leaves.
+    handTimer = setTimeout(handOver, 320);
   };
   cancelPrint = () => {
     stopCountUp();
@@ -384,11 +382,6 @@ function printReceipt(extraSound) {
     $('r-stamp').classList.add('stamped');
     $('result-screen').classList.add('handed');
   };
-  if (reduced) {
-    wrap.classList.add('printing');
-    finish();
-    return;
-  }
   turnIntoMachine();
   sound.play('print');
   const frames = countUpFrames(state.question.price, { frames: 60 });
@@ -466,7 +459,7 @@ function renderResult(q, r) {
   stopCountUp();
   $('r-stamp').classList.remove('stamped');
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
-  renderResultImage(q, r);
+  renderResultImage(q);
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('r-guess').textContent = formatPrice(r.guess);
   $('r-actual-label').textContent = actualLabel(q.productId);
@@ -486,7 +479,7 @@ function renderResult(q, r) {
     scoreEl.append(hint);
   }
   const tier = scoreTier(r.score);
-  const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId), amount: isAmount(q.productId) })
+  const line = contextComment({ direction: r.direction, factor: r.factor, productId: q.productId, amount: isAmount(q.productId) })
     ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId) });
   $('r-cashier').textContent = `“${line}”`;
   renderReportCard();
@@ -626,8 +619,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     // Scroll only when the row is off screen, so the tapped chart does not jump away.
     const rect = match?.getBoundingClientRect();
     if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
-      const reduced = false;
-      match.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+      match.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   } : undefined);
 }
@@ -979,7 +971,7 @@ function openIntro() {
   if (!dlg || typeof dlg.showModal !== 'function') return;
   finishIntro?.({ moveFocus: false });
   if (!dlg.open) dlg.showModal();
-  finishIntro = playIntro(dlg, introRows(state.timelines), { reduced: false, sound });
+  finishIntro = playIntro(dlg, introRows(state.timelines), { sound });
 }
 
 function closeIntro() {
@@ -1188,8 +1180,7 @@ function linkRowsToChart() {
     const fig = $('t-chart');
     fig._activateDate?.(btn.dataset.date);
     if (!fig.hidden) {
-      const reduced = false;
-      fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+      fig.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   });
 }

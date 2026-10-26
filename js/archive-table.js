@@ -17,7 +17,6 @@ function rowHtml(r) {
       <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${date}">${escapeHTML(period)}</button></th>
       <td role="cell" class="timeline-price-cell"><span class="timeline-price">${formatPrice(r.price)}</span></td>
       <td role="cell" class="timeline-detail-cell">
-        <div class="timeline-bar-track" aria-hidden="true"><div class="timeline-bar-fill" style="width: ${r.barPercent}%"></div></div>
         <div class="timeline-meta">${ratio}${source}${note}</div>
       </td>
     </tr>`;
