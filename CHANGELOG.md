@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.120.0] - 2026-10-26
+### Changed
+- One share button on the result: the sticky bar is "Arkadaşına gönder" | "Sonraki soru →" on a single line; the first opens a small sheet "Ne göndermek istersin?" with "Sonucumu gönder" (image), "Bu soruyu sor" (no answer, with your score) and "Resmi telefona kaydet". The separate İndir button and the receipt link "Bu soruyu arkadaşına sor →" are gone (owner approved).
+- At the end of Günün Fişi the bar button reads "Fişini paylaş" and shares the receipt directly.
+
 ## [0.119.1] - 2026-10-26
 ### Changed
 - Shorter result receipt: the "O gün / Bugün" bar box under the purchasing-power sentence is gone; it repeated the same two numbers (player review; owner approved shortening the page). `buildContextModel` stays as the sentence's model.
