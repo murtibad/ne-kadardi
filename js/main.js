@@ -487,7 +487,7 @@ function renderResult(q, r) {
   max.className = 'score-max';
   max.textContent = '/100';
   scoreEl.append(max);
-  if (r.hinted) {
+  if (r.hinted && r.score > 0) { // "%20 düştü" means nothing on a zero
     const hint = document.createElement('span');
     hint.className = 'score-hint';
     hint.textContent = ' (ipucu aldığın için %20 düştü)';
@@ -1495,6 +1495,8 @@ async function init() {
   $('guess-input').addEventListener('input', (e) => {
     guessField?.classList.remove('invalid'); // also clears when reduced motion skips animationend
     const v = parseGuess(e.target.value);
+    // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
+    if (v !== null) $('guess-error').textContent = '';
     $('guess-readout').textContent = v !== null && v >= 1000 ? readAmount(v) : '';
   });
   // Skipping is free: no score, no round counted, so players can drop a product they do not know.

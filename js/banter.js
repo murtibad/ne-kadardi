@@ -504,8 +504,10 @@ export const HINT_LINES = [
 ]
 
 const YEAR_ANCHORS = {
-  2016: 'Bütün yaz sokaklarda herkesin harıl harıl Pokémon peşinde koştuğu o meşhur dönem.',
-  2020: 'Evlerde ekmek yapıp bidonlarla kolonya stokladığımız karantina günleri.',
+  // Shown for every month of the year, so no sentence may pin a season (Pokémon Go came in July,
+  // the lockdown in March).
+  2016: "Pokémon Go'nun çıktığı, herkesin telefonla sokakta yaratık kovaladığı yıl.",
+  2020: 'Evde ekmek yapıp bidonlarla kolonya stokladığımız karantina yılı.',
   2023: 'Cumhuriyetimizin yüzüncü yaşını gururla kutladığımız tarihi yıl.',
 };
 

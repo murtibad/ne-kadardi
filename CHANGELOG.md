@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.111.1] - 2026-10-26
+### Fixed
+- The score sits right under the verdict, so the sticky Paylaş/İndir/Sonraki soru bar no longer covers it on phones; the 5-question report card follows it instead of hiding at the bottom of the receipt.
+- Typing a valid number clears an old "Geçerli bir fiyat yaz" error.
+- "(ipucu aldığın için %20 düştü)" is no longer shown on a zero score.
+- The 2016 and 2020 year notes no longer pin a season (they appear for every month of the year).
+
 ## [0.111.0] - 2026-10-26
 ### Added
 - Questions you have not answered yet come first: after a product is picked, an unanswered year of it is preferred (answered ids kept on the device under `ne-kadardi-seen`, last 2000). Once every year of a product is answered, they repeat as before.
