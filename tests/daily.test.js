@@ -127,3 +127,21 @@ test('dailyTotalLine compares with yesterday', () => {
   assert.equal(dailyTotalLine(300, 300), 'Toplam: 300/500 · dünle aynı');
   assert.equal(dailyTotalLine(300, null), 'Toplam: 300/500');
 });
+
+test('dailyQuestions skips the 12 months before the day key but keeps products with nothing older', () => {
+  const qs = [
+    { id: 'dolar@2020-01', productId: 'dolar', date: '2020-01' },
+    { id: 'dolar@2026-07', productId: 'dolar', date: '2026-07' },
+    { id: 'euro@2026-07', productId: 'euro', date: '2026-07' },
+  ];
+  for (const key of ['2026-10-26', '2026-10-27', '2026-11-02', '2026-12-01']) {
+    const ids = dailyQuestions(qs, key, categoryOf).map((q) => q.id);
+    assert.ok(!ids.includes('dolar@2026-07'), key);
+    assert.ok(ids.includes('euro@2026-07'), key);
+  }
+  // the cutoff follows the key: a year later the 2026-07 question is old enough
+  const later = new Set();
+  for (let d = 1; d < 28; d += 1) for (const q of dailyQuestions(qs, `2027-09-${String(d).padStart(2, '0')}`, categoryOf)) later.add(q.id);
+  assert.ok(later.has('dolar@2026-07') || later.has('dolar@2020-01'));
+  assert.deepEqual(dailyQuestions(qs, '2026-10-26', categoryOf), dailyQuestions([...qs].reverse(), '2026-10-26', categoryOf));
+});

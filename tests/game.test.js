@@ -408,3 +408,51 @@ test('pickFromCategory picks another product from the same category and returns 
   assert.equal(pickFromCategory(qs, null, 'benzin', categoryOf, zero), null);
   assert.equal(pickFromCategory([], 'ulasim', 'benzin', categoryOf, zero), null);
 });
+
+test('pickByCategory keeps a product away for 15 questions and caps a category at 3 of the last 10', async () => {
+  const { cutoffKey } = await import('../js/game.js');
+  const { CATEGORIES } = await import('../js/categories.js');
+  const qs = [];
+  for (const c of CATEGORIES) for (const id of c.products.slice(0, 8)) qs.push({ id: `${id}@2015-01`, productId: id, date: '2015-01' });
+  let s = 12345;
+  const rng = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+  const recent = [];
+  for (let i = 0; i < 200; i += 1) {
+    const q = pickByCategory(qs, recent, null, rng, new Set(), new Date(2026, 9, 26));
+    assert.ok(!recent.slice(-15).includes(q.productId), `repeat within 15 at ${i}`);
+    const last10 = [...recent.slice(-10), q.productId].slice(-10);
+    const n = last10.filter((id) => CATEGORIES.find((c) => c.products.includes(id)).id === CATEGORIES.find((c) => c.products.includes(q.productId)).id).length;
+    assert.ok(n <= 3 || i < 3, `category over cap at ${i}`);
+    recent.push(q.productId);
+  }
+  assert.equal(cutoffKey(new Date(2026, 9, 26)), '2025-10-26');
+  assert.equal(cutoffKey('2026-02-05'), '2025-02-05');
+});
+
+test('pickByCategory skips the last 12 months when the product has older questions', () => {
+  const qs = [
+    { id: 'dolar@2020-01', productId: 'dolar', date: '2020-01' },
+    { id: 'dolar@2026-07', productId: 'dolar', date: '2026-07' },
+    { id: 'euro@2026-07', productId: 'euro', date: '2026-07' },
+  ];
+  const today = new Date(2026, 9, 26);
+  for (let i = 0; i < 20; i += 1) {
+    assert.equal(pickByCategory(qs.slice(0, 2), [], null, () => i / 20, new Set(), today).id, 'dolar@2020-01');
+  }
+  // euro has only a recent question: it is kept
+  assert.equal(pickByCategory([qs[2], qs[0]], ['dolar'], null, () => 0, new Set(), today).id, 'euro@2026-07');
+});
+
+test('pickFollowUp avoids recent products in the everyday pool, rotates them and never repeats the last offer', async () => {
+  const { pickFollowUp } = await import('../js/game.js');
+  const ids = ['ekmek', 'simit', 'cay', 'big-mac', 'dolar'];
+  const q = { id: 'benzin@2020-01', productId: 'benzin', date: '2020-01' };
+  const qs = [q, ...ids.map((id) => ({ id: `${id}@2020-03`, productId: id, date: '2020-03' }))];
+  const zero = () => 0;
+  assert.equal(pickFollowUp(q, qs, ['ekmek', 'simit'], zero).productId, 'cay');
+  assert.notEqual(pickFollowUp(q, qs, [], zero, 'ekmek').productId, 'ekmek');
+  // all recent: the one answered longest ago
+  assert.equal(pickFollowUp(q, qs, ['cay', 'ekmek', 'dolar', 'simit', 'big-mac'], zero).productId, 'cay');
+  // only candidate is the last offer: still offered
+  assert.equal(pickFollowUp(q, [q, qs[1]], [], zero, 'ekmek').productId, 'ekmek');
+});

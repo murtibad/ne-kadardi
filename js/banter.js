@@ -561,6 +561,17 @@ export function yearAnchor(year) {
 }
 
 /**
+ * Year anchor gated by memory: `shown` maps year -> question counter when it was last shown.
+ * A year's anchor returns at most once per `gap` questions. Returns { text, shown } (new memory).
+ */
+export function gatedYearAnchor(year, shown = {}, counter = 0, gap = 10) {
+  const text = yearAnchor(year);
+  const last = shown[Number(year)];
+  if (!text || (last !== undefined && counter - last < gap)) return { text: null, shown };
+  return { text, shown: { ...shown, [Number(year)]: counter } };
+}
+
+/**
  * For 2005-2008 only: return old-lira (pre-redenomination) equivalent text, or null.
  */
 export function ytlNote(year, price) {

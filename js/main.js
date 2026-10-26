@@ -9,7 +9,7 @@ import { burstConfetti } from './confetti.js';
 import { verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment, rememberLine } from './cashier.js';
-import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './banter.js';
+import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
 import { buildHint, buildEverydayHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
@@ -30,7 +30,7 @@ const hapticIfAllowed = (ms) => {
 };
 
 const state = {
-  recentProducts: [], seen: new Set(),
+  recentProducts: [], seen: new Set(), anchorShown: {}, questionCounter: 0, lastFollow: null,
   hintsUsed: 0, hintProductId: null, questionsShown: 0, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
@@ -166,7 +166,7 @@ function nextQuestion(productId = null, date = null) {
   // Someone who has never played starts with the openers (game.js OPENER_IDS), skips included.
   let opener = null;
   while (!productId && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
-  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id, Math.random, state.seen));
+  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id, Math.random, state.seen, new Date()));
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;
@@ -175,7 +175,7 @@ function nextQuestion(productId = null, date = null) {
   if (state.question) sound.play('beep');
   state.question = q;
   state.recentProducts.push(q.productId);
-  if (state.recentProducts.length > 12) state.recentProducts.shift();
+  if (state.recentProducts.length > 20) state.recentProducts.shift();
   const cat = CATEGORIES.find((c) => c.id === categoryOf(q.productId));
   // Skipped questions do not count, so the number matches "N soru" under the receipt.
   state.round = state.played + 1;
@@ -184,7 +184,10 @@ function nextQuestion(productId = null, date = null) {
     : cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
   syncSkipBtn();
   $('q-period').textContent = formatPeriod(q.date);
-  const anchor = yearAnchor(yearOf(q.date));
+  state.questionCounter += 1;
+  const gated = gatedYearAnchor(yearOf(q.date), state.anchorShown, state.questionCounter);
+  state.anchorShown = gated.shown;
+  const anchor = gated.text;
   $('q-anchor').textContent = anchor || '';
   $('q-anchor').hidden = !anchor;
   
@@ -498,12 +501,13 @@ function renderResult(q, r) {
   const followPool = r.hinted ? state.all.filter((x) => !hintSeen.has(x.productId)) : state.all;
   const followUp = state.daily && state.daily.scores.length < state.daily.ids.length
     ? null
-    : pickFollowUp(q, followPool, state.recentProducts);
+    : (state.lastFollow?.qid === q.id && state.lastFollow.pick) || pickFollowUp(q, followPool, state.recentProducts, Math.random, state.lastFollow?.pick?.productId ?? null);
+  if (followUp && state.lastFollow?.qid !== q.id) state.lastFollow = { qid: q.id, pick: followUp };
   const followBtn = $('followup-btn');
   if (followBtn) {
     followBtn.hidden = !followUp;
     if (followUp) {
-      followBtn.textContent = `Peki ${inPeriod(formatPeriod(followUp.date))} ${questionTitle(followUp)} kaç liraydı? →`;
+      followBtn.textContent = `Peki ${inPeriod(formatPeriod(followUp.date))} ${questionTitle(followUp).replace(/\s*\(.*\)$/, '')} kaç liraydı? →`;
       followBtn.onclick = () => nextQuestion(followUp.productId, followUp.date);
     } else {
       followBtn.textContent = '';
