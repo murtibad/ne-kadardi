@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, questionsUntilCard, scoreGuess, scoreTier, yearOf } from './game.js';
+import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod } from './format.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, questionsUntilCard, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
@@ -498,6 +498,20 @@ function renderResult(q, r) {
   const line = contextComment({ direction: r.direction, factor: r.factor, productId: q.productId, amount: isAmount(q.productId) })
     ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId) });
   $('r-cashier').textContent = `“${line}”`;
+  // The hint slip already showed that year's dollar rate and minimum wage.
+  const followPool = r.hinted ? state.all.filter((x) => x.productId !== 'dolar' && x.productId !== 'asgari-ucret') : state.all;
+  const followUp = pickFollowUp(q, followPool, state.recentProducts);
+  const followBtn = $('followup-btn');
+  if (followBtn) {
+    followBtn.hidden = !followUp;
+    if (followUp) {
+      followBtn.textContent = `Peki ${inPeriod(formatPeriod(followUp.date))} ${questionTitle(followUp)} kaç liraydı? →`;
+      followBtn.onclick = () => nextQuestion(followUp.productId, followUp.date);
+    } else {
+      followBtn.textContent = '';
+      followBtn.onclick = null;
+    }
+  }
   renderReportCard();
   const ytl = ytlNote(yearOf(q.date), q.price);
   $('r-ytl').textContent = ytl || '';

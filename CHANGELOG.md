@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.115.0] - 2026-10-26
+### Added
+- A curiosity hook under the cashier line: "Peki Temmuz 2016'da Big Mac kaç liraydı? →" jumps straight to an everyday product (`FOLLOW_UP_IDS`) from the same year, never the same product (its chart was just shown) and never the hint's dollar or minimum wage after a hint.
+
 ## [0.114.0] - 2026-10-26
 ### Added
 - Archive search forgives one typo when nothing matches exactly ("altn" finds gram and çeyrek altın, "bnzin" benzin, "netflx" Netflix); words under 4 letters still match exactly, and exact hits always win.

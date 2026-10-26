@@ -1,5 +1,6 @@
 // Game logic: question selection and scoring. Pure functions, no DOM access.
 import { formatRatio, formatNumber } from './format.js';
+import { categoryOf } from './categories.js';
 
 const PERFECT_FACTOR = 1.1; // within 10% counts as a perfect guess
 const ZERO_FACTOR = 5; // 5x off (either way) scores zero
@@ -404,4 +405,32 @@ export function questionsUntilCard(answered, every = 5) {
   if (!(answered > 0)) return every;
   const rem = answered % every;
   return rem === 0 ? 0 : every - rem;
+}
+
+/** Everyday products for the result hook ("Peki 2016'da ... kaç liraydı?"). */
+export const FOLLOW_UP_IDS = [
+  'ekmek', 'simit', 'cay', 'big-mac', 'benzin', 'dolar', 'gram-altin', 'ceyrek-altin', 'iphone',
+  'netflix', 'spotify', 'sigara-marlboro', 'taksi-acilis', 'istanbul-ulasim', 'kopru', 'asgari-ucret',
+  'sinema-ortalama-bilet', 'playstation', 'mektup-pulu', 'pasaport-harci', 'fiat-egea-easy',
+];
+
+/**
+ * Follow-up question from the same year as `q` for a different product, preferring
+ * products not in `recentProducts` (last 8) and a different category when possible.
+ */
+export function pickFollowUp(q, questions, recentProducts = [], rng = Math.random) {
+  if (!q || !Array.isArray(questions)) return null;
+  const year = yearOf(q.date);
+  const anyKnown = questions.filter((x) => x.productId !== q.productId && yearOf(x.date) === year);
+  // A hook only tempts with something everyone has bought; obscure caps and fees fall back last.
+  const known = anyKnown.filter((x) => FOLLOW_UP_IDS.includes(x.productId));
+  const sameYear = known.length > 0 ? known : anyKnown;
+  if (sameYear.length === 0) return null;
+  const blocked = new Set(recentProducts.slice(-8));
+  const fresh = sameYear.filter((x) => !blocked.has(x.productId));
+  const pool = fresh.length > 0 ? fresh : sameYear;
+  const qCat = categoryOf(q.productId);
+  const otherCat = qCat ? pool.filter((x) => categoryOf(x.productId) !== qCat) : [];
+  const chosenPool = otherCat.length > 0 ? otherCat : pool;
+  return chosenPool[Math.floor(rng() * chosenPool.length)];
 }
