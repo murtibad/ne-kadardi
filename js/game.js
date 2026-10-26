@@ -109,6 +109,7 @@ export const COUNT_UNITS = {
   'alkol-cezasi': 'alkollü araç cezası',
   fitre: 'kişilik fitre',
   'taksi-acilis': 'taksi açılışı',
+  'ispark-otopark': 'saat otopark ücreti',
   iphone: 'iPhone',
   playstation: 'PlayStation',
   airpods: 'AirPods',
@@ -158,7 +159,7 @@ export const COUNT_UNITS = {
 
 // Fees, fines and tolls are paid, not bought: "3 ehliyet harcı ödenebiliyordu".
 const PAID = new Set([
-  'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'alkol-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
+  'yks', 'ales', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'alkol-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'ispark-otopark', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
   'spotify', 'netflix', 'youtube-premium', 'amazon-prime', 'disney-plus', 'iski-su', 'okul-servisi', 'mtv', 'ehliyet-esinav', 'anadolu-otoyolu', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',

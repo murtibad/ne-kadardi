@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.106.0] - 2026-10-26
+### Added
+- New product `ispark-otopark`: İSPARK car park, first hour, central districts (Beşiktaş, Beyoğlu, Fatih, Kadıköy, Şişli, Üsküdar), open and multi-storey car parks, roadside and the 2025 Tarihi Yarımada/Rıhtım zone excluded. 7 values, each from two news sites (AA, NTV, CNN Türk, Capital, TRT Haber): 2022-12 17,50 · 2023-01 28 · 2023-08 33 · 2023-10 52 · 2024-06 70 · 2025-01 100 · 2026-01 140. Icon `img/otopark.svg` (drawn by Gemini Flash). 72 products.
+
 ## [0.105.0] - 2026-10-26
 ### Changed
 - Faster first load: the intro, the report card and the archive's table, search and note-link modules load on demand with `import()` (only when the intro opens, a fifth answer shows the card, or the archive opens), so the first screen fetches five fewer modules. The report card module is kept once loaded so "Karneni paylaş" never awaits an import (iOS would drop the tap's user activation).
