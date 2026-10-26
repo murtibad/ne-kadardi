@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.115.1] - 2026-10-26
+### Changed
+- The source label for gold, silver, Bitcoin and the Schengen fee reads "kurla hesaplandı" instead of a bare "hesaplandı", so it says how the price was worked out.
+
 ## [0.115.0] - 2026-10-26
 ### Added
 - A curiosity hook under the cashier line: "Peki Temmuz 2016'da Big Mac kaç liraydı? →" jumps straight to an everyday product (`FOLLOW_UP_IDS`) from the same year, never the same product (its chart was just shown) and never the hint's dollar or minimum wage after a hint.
