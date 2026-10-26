@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.117.2] - 2026-10-26
+### Fixed
+- On a report card turn (every fifth answer and the end of Günün Fişi) the page scrolls just enough after the tear-off to show the card above the sticky buttons. README lists the daily receipt, streak and the other new features.
+
 ## [0.117.1] - 2026-10-26
 ### Fixed
 - Reloading the page in the middle of Günün Fişi continues the run at the same question (the address stays `#gunun-fisi` until the fifth answer).
