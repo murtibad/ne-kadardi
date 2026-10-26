@@ -435,6 +435,14 @@ export function pickFollowUp(q, questions, recentProducts = [], rng = Math.rando
   return chosenPool[Math.floor(rng() * chosenPool.length)];
 }
 
+/** Pick a question in `categoryId` from another product (the archive already shows `excludeProductId`). */
+export function pickFromCategory(questions, categoryId, excludeProductId, catOf = categoryOf, rng = Math.random) {
+  if (!Array.isArray(questions) || !categoryId || typeof catOf !== 'function') return null;
+  const pool = questions.filter((q) => q.productId !== excludeProductId && catOf(q.productId) === categoryId);
+  if (pool.length === 0) return null;
+  return pool[Math.floor(rng() * pool.length)];
+}
+
 const DAY_MS = 86_400_000;
 
 function parseUtcDay(key) {

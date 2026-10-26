@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFromCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
@@ -1270,7 +1270,10 @@ async function renderTimelineScreen(focusProductId = null) {
   renderProductChips(visible, product.id, focusProductId);
   renderTimelineHeader(product);
   renderArchiveOrder();
-  $('t-rows-container').innerHTML = timelineTableHtml(product.rows, { newestFirst: state.archiveNewestFirst });
+  const seenDates = new Set(
+    product.rows.filter((r) => state.seen.has(`${product.id}@${r.date}`)).map((r) => r.date),
+  );
+  $('t-rows-container').innerHTML = timelineTableHtml(product.rows, { newestFirst: state.archiveNewestFirst, seenDates });
   renderPriceChart('t-chart', product.id);
   linkRowsToChart();
 }
@@ -1368,6 +1371,18 @@ function renderTimelineHeader(product) {
     : '';
   $('t-summary').textContent = summary;
   $('t-summary').hidden = !summary;
+  const playBtn = $('t-play');
+  if (playBtn) {
+    // Ask another product from the same category: this product's prices are right on screen.
+    const q = pickFromCategory(state.all, categoryOf(product.id), product.id, categoryOf);
+    playBtn.hidden = !q;
+    playBtn.onclick = q ? () => {
+      // A detour out of Günün Fişi: this question must not land on the daily receipt.
+      if (state.daily) { state.daily = null; syncSkipBtn(); }
+      history.pushState(null, '', '#tahmin');
+      nextQuestion(q.productId, q.date);
+    } : null;
+  }
   // Coming from a result, the way back is the game, not the menu.
   const back = $('timeline-back');
   const toResult = state.archiveFromResult && state.lastGameScreen === 'result-screen';

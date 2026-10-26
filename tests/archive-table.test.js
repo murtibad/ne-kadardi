@@ -22,4 +22,13 @@ test('the archive table escapes sources and marks the current row', () => {
   assert.match(html, /class="is-current"/);
   assert.match(html, /Güncel \(Ocak 2026\)/);
   assert.match(html, /<summary>Ayrıntı<\/summary>/);
+  assert.doesNotMatch(html, /tahmin ettin/);
+});
+
+test('the archive table marks only rows whose dates are in seenDates', () => {
+  const html = timelineTableHtml(rows, { seenDates: new Set(['2010-01']) });
+  const body = html.slice(html.indexOf('<tbody'));
+  const [firstRow, secondRow] = body.split('<tr role="row"').slice(1);
+  assert.match(firstRow, /✓ tahmin ettin/);
+  assert.doesNotMatch(secondRow, /tahmin ettin/);
 });

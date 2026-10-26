@@ -3,7 +3,7 @@ import { formatPrice, formatPeriod, formatIncrease, escapeHTML } from './format.
 import { sourceKindLabel } from './source-kind.js';
 import { linkifyNote } from './linkify.js';
 
-function rowHtml(r) {
+function rowHtml(r, seen) {
   const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
   const ratio = r.ratioToCurrent ? `<span class="timeline-ratio">${formatIncrease(r.ratioToCurrent)}</span>` : '';
   const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
@@ -11,19 +11,21 @@ function rowHtml(r) {
   const source = r.source
     ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}" aria-label="${escapeHTML(period)} kaynağı: ${escapeHTML(r.source.title)}">Kaynak</a>${kind}`
     : '';
+  const seenMark = seen ? '<span class="timeline-seen">✓ tahmin ettin</span>' : '';
   const note = r.note ? `<details class="timeline-note"><summary>Ayrıntı</summary><p>${linkifyNote(r.note)}</p></details>` : '';
   const date = escapeHTML(r.date);
   return `<tr role="row" data-date="${date}"${r.isCurrent ? ' class="is-current"' : ''}>
       <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${date}" aria-label="${escapeHTML(period)}: grafikte göster">${escapeHTML(period)}</button></th>
       <td role="cell" class="timeline-price-cell"><span class="timeline-price">${formatPrice(r.price)}</span></td>
       <td role="cell" class="timeline-detail-cell">
-        <div class="timeline-meta">${ratio}${source}${note}</div>
+        <div class="timeline-meta">${ratio}${source}${seenMark}${note}</div>
       </td>
     </tr>`;
 }
 
 /** The whole table for a product's rows, oldest first unless newestFirst. */
-export function timelineTableHtml(rows, { newestFirst = false } = {}) {
+/** `seenDates` (optional Set of dates) marks rows the player has already answered in the game. */
+export function timelineTableHtml(rows, { newestFirst = false, seenDates = null } = {}) {
   const ordered = newestFirst ? [...rows].reverse() : rows;
   return `<table class="timeline-table" role="table">
     <caption class="visually-hidden">Fiyat geçmişi</caption>
@@ -34,5 +36,5 @@ export function timelineTableHtml(rows, { newestFirst = false } = {}) {
         <th scope="col" role="columnheader" class="visually-hidden">Değişim ve kaynak</th>
       </tr>
     </thead>
-    <tbody role="rowgroup">${ordered.map(rowHtml).join('')}</tbody></table>`;
+    <tbody role="rowgroup">${ordered.map((r) => rowHtml(r, Boolean(seenDates?.has(r.date)))).join('')}</tbody></table>`;
 }
