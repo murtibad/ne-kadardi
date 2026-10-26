@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.107.1] - 2026-10-26
+### Fixed
+- The guess field's "Fiyatı yaz" placeholder used the browser's grey, 3.6:1 on the dark theme's paper; it now uses the paper's muted ink (AA in both themes). Found by a Gemini Flash dark-theme audit and confirmed by a contrast scan of every text on the paper cards in headless Chrome (no other text below 4.5:1).
+
 ## [0.107.0] - 2026-10-26
 ### Added
 - New product `yds`: ÖSYM YDS exam fee, first paper session of the year (e-YDS and late-application fee excluded). 12 values 2015-2026, each read from ÖSYM's own exam guide PDF (`kind: official`): 70 · 80 · 90 · 100 · 120 · 130 · 145 · 185 · 185 · 490 (2024-09, YDS/2 guide) · 750 · 1.200. 2013 and 2014 guides could not be fetched. 73 products.
