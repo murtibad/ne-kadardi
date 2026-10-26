@@ -180,6 +180,23 @@ test('pickByCategory works with a single product', () => {
   assert.equal(pickByCategory([], [], null), null);
 });
 
+test('pickByCategory prefers unseen questions and falls back when all of the product are seen', () => {
+  const qs = [
+    { id: 'a@1', productId: 'a' }, { id: 'a@2', productId: 'a' }, { id: 'a@3', productId: 'a' },
+    { id: 'b@1', productId: 'b' },
+  ];
+  const zero = () => 0; // picks the first fresh product ('a') and the first item in the pool
+  // Without `seen`, rng()=0 would pick 'a@1'; marking 'a@1' and 'a@2' seen picks 'a@3'.
+  assert.equal(pickByCategory(qs, [], null, zero).id, 'a@1');
+  assert.equal(pickByCategory(qs, [], null, zero, new Set(['a@1', 'a@2'])).id, 'a@3');
+  // When every question of the chosen product is seen, fall back and still avoid previousId.
+  const allA = new Set(['a@1', 'a@2', 'a@3']);
+  assert.equal(pickByCategory(qs, [], null, zero, allA).id, 'a@1');
+  assert.equal(pickByCategory(qs, [], 'a@1', zero, allA).id, 'a@2');
+  // Unseen filtering also avoids previousId: if the only unseen is previousId, fall back to the others.
+  assert.equal(pickByCategory(qs, [], 'a@3', zero, new Set(['a@1', 'a@2'])).id, 'a@1');
+});
+
 test('buildContextModel mirrors buildContextLine numbers and nulls', () => {
   const cheap = { productId: 'x', name: 'Ekmek', unit: '1 adet', date: '2010-03', price: 1, current: { price: 10 } };
   assert.deepEqual(buildContextModel(cheap, wages), { kind: 'count', today: false, unit: 'adet', nowUnit: 'adet', then: 500, now: 2000 });

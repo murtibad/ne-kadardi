@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.111.0] - 2026-10-26
+### Added
+- Questions you have not answered yet come first: after a product is picked, an unanswered year of it is preferred (answered ids kept on the device under `ne-kadardi-seen`, last 2000). Once every year of a product is answered, they repeat as before.
+
 ## [0.110.2] - 2026-10-26
 ### Fixed
 - Submitting the guess form before a question is shown no longer throws (`onGuess` returns early).

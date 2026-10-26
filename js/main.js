@@ -27,7 +27,7 @@ const hapticIfAllowed = (ms) => {
 };
 
 const state = {
-  recentProducts: [], 
+  recentProducts: [], seen: new Set(),
   hinted: false, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, recentScores: [], 
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
@@ -38,6 +38,21 @@ let shareTimeoutId = null;
 
 // The result screen shows the last few scores as coloured ticks, like a till roll tally.
 const RECENT_MAX = 8;
+const SEEN_KEY = 'ne-kadardi-seen';
+const SEEN_MAX = 2000;
+
+function loadSeen() {
+  try {
+    const ids = JSON.parse(localStorage.getItem(SEEN_KEY));
+    if (Array.isArray(ids)) state.seen = new Set(ids.filter((x) => typeof x === 'string').slice(-SEEN_MAX));
+  } catch(e) {}
+}
+
+function saveSeen() {
+  try {
+    localStorage.setItem(SEEN_KEY, JSON.stringify([...state.seen].slice(-SEEN_MAX)));
+  } catch(e) {}
+}
 
 function loadSession() {
   try {
@@ -172,7 +187,7 @@ function nextQuestion(productId = null, date = null) {
   // Someone who has never played starts with the openers (game.js OPENER_IDS), skips included.
   let opener = null;
   while (!productId && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
-  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id));
+  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id, Math.random, state.seen));
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;
@@ -255,6 +270,9 @@ function onGuess(event) {
   state.total += state.result.score;
   state.best = Math.max(state.best, state.result.score);
   state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
+  state.seen.delete(q.id);
+  state.seen.add(q.id);
+  saveSeen();
   // This visit's answers feed the every-fifth-question report card (not saved).
   (state.visitAnswers ??= []).push({ title: q.name.replace(/\s*\(.*\)$/, ''), period: formatPeriod(q.date), score: state.result.score });
   saveSession();
@@ -1397,6 +1415,7 @@ async function init() {
   const versionEl = $('app-version');
   if (versionEl) versionEl.textContent = VERSION;
   loadSession();
+  loadSeen();
   // Decided once at load: a returning player never gets the opener list again.
   state.firstVisit = state.played === 0;
   state.openerIndex = 0;
