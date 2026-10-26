@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.122.2] - 2026-10-26
+### Fixed
+- Hints show the price in force on the question's date (the latest of that year up to its month) instead of the year's first: a "Temmuz 2018" question now gets July's dollar rate, and no hint shows a month later than the question.
+
 ## [0.122.1] - 2026-10-26
 ### Changed
 - Faster first visit on slow phones (Sonnet audit at Slow 4G, 4x CPU): the offline cache is set up only after the page has loaded and gone quiet, so its ~300 KB precache (about 200 KB of it files the page had just loaded) no longer competes with the menu, the intro and the fonts.
