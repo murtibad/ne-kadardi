@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.119.0] - 2026-10-26
+### Added
+- Günün Fişi remembers your finished receipts on the device (`ne-kadardi-daily-log`, last 60 days): the menu card says "Dünkü fişin 331/500 · en iyin 412" before today's run and the receipt total adds "dünden +40".
+- Streak wording: "Serini koru: bugün bir soru çöz."; a broken streak says "Serin bozuldu (en uzun: 6 gün). Bugün yeniden başla."
+
 ## [0.118.4] - 2026-10-26
 ### Changed
 - Cashier, product and hint lines no longer repeat within a visit (the last 12 shown lines are skipped while others remain).
