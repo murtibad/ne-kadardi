@@ -205,6 +205,8 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   color: var(--ink);
 }
 .guess-field input:focus { outline: none; }
+/* The browser default grey is 3.6:1 on the dark theme's paper; the paper's muted ink passes AA in both themes. */
+.guess-field input::placeholder { color: var(--muted-on-paper); opacity: 1; }
 .guess-field:focus-within { outline: 3px solid var(--accent); outline-offset: 2px; }
 .currency { 
   padding-right: 20px; 
