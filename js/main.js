@@ -1,9 +1,9 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod, shortTitle } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFromCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
-import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
+import { CATEGORIES, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { verdictText, questionTitle } from './share-model.js';
@@ -950,198 +950,30 @@ function initIntro() {
   });
 }
 
-const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
-function loadArchiveNewestFirst() {
-  try { return localStorage.getItem(ARCHIVE_ORDER_KEY) === 'newest'; } catch { return false; }
-}
-function saveArchiveNewestFirst(newest) {
-  try { localStorage.setItem(ARCHIVE_ORDER_KEY, newest ? 'newest' : 'oldest'); } catch { /* storage unavailable */ }
-}
-
-// Cache the archive module promises once so opening or filtering the archive never re-imports them,
-// and fetch linkify.js in parallel with archive-table.js instead of waiting for a second hop.
-let archiveModulesPromise = null;
-function loadArchiveModules() {
-  archiveModulesPromise ??= Promise.all([
-    import('./archive-table.js'),
-    import('./search.js'),
-    import('./linkify.js'),
-  ]).catch((err) => {
-    archiveModulesPromise = null;
+// The archive screen loads on first visit; it is not needed to play.
+let archiveUiPromise = null;
+function loadArchiveUi() {
+  archiveUiPromise ??= import('./archive-ui.js').then((mod) => {
+    mod.initArchiveUi({ getState: () => state, renderPriceChart, nextQuestion, show, syncSkipBtn });
+    return mod;
+  }).catch((err) => {
+    archiveUiPromise = null;
     throw err;
   });
-  return archiveModulesPromise;
+  return archiveUiPromise;
 }
 
 async function renderTimelineScreen(focusProductId = null) {
   show('timeline-screen');
   if (state.timelines.length === 0) return;
-
-  let timelineTableHtml;
-  let filterByQuery;
+  let mod;
   try {
-    [{ timelineTableHtml }, { filterByQuery }] = await loadArchiveModules();
+    mod = await loadArchiveUi();
   } catch (err) {
     console.warn('Arşiv yüklenemedi', err);
     return;
   }
-
-  renderCategoryChips();
-  const inCategory = filterTimelines(state.timelines, state.timelineCategory);
-  const visible = filterByQuery(inCategory, state.timelineQuery);
-  // With no search hit the chips are empty but the table keeps showing a product of the category.
-  const pool = visible.length > 0 ? visible : inCategory;
-  if (!pool.some(t => t.id === state.selectedTimelineProduct)) {
-    state.selectedTimelineProduct = pool[0].id;
-  }
-  const product = pool.find(t => t.id === state.selectedTimelineProduct);
-
-  renderSearchState(visible.length, filterByQuery);
-  renderProductChips(visible, product.id, focusProductId);
-  renderTimelineHeader(product);
-  renderArchiveOrder();
-  const seenDates = new Set(
-    product.rows.filter((r) => state.seen.has(`${product.id}@${r.date}`)).map((r) => r.date),
-  );
-  $('t-rows-container').innerHTML = timelineTableHtml(product.rows, { newestFirst: state.archiveNewestFirst, seenDates });
-  renderPriceChart('t-chart', product.id);
-  linkRowsToChart();
-}
-
-function renderCategoryChips() {
-  const catPicker = $('category-picker');
-  catPicker.textContent = '';
-  for (const c of [{ id: 'all', label: 'Tümü' }, ...CATEGORIES]) {
-    if (c.id !== 'all' && filterTimelines(state.timelines, c.id).length === 0) continue;
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'picker-chip';
-    btn.setAttribute('aria-pressed', c.id === state.timelineCategory ? 'true' : 'false');
-    btn.dataset.cat = c.id;
-    btn.textContent = c.label;
-    btn.onclick = async () => {
-      state.timelineCategory = c.id;
-      state.selectedTimelineProduct = null; // pick the first product of the new category
-      await renderTimelineScreen();
-      catPicker.querySelector(`[data-cat="${c.id}"]`)?.focus({ preventScroll: true }); // the chips were rebuilt
-    };
-    catPicker.appendChild(btn);
-  }
-}
-
-function renderSearchState(hits, filterByQuery) {
-  const search = $('product-search');
-  if (search.value !== state.timelineQuery) search.value = state.timelineQuery;
-  $('product-count').textContent = `${hits} ürün`;
-  $('product-empty').hidden = hits > 0;
-  // With no hit, a receipt of some other product below would read like a search result.
-  document.querySelector('#timeline-screen .receipt-wrapper').hidden = hits === 0;
-  $('product-search-clear').hidden = state.timelineQuery === '';
-  // Offer the same query across all categories when only the selected category has no hit.
-  const allBtn = $('search-all-cats');
-  const elsewhere = hits === 0 && state.timelineCategory !== 'all' && state.timelineQuery.trim() !== ''
-    ? filterByQuery(state.timelines, state.timelineQuery).length : 0;
-  allBtn.hidden = elsewhere === 0;
-  allBtn.textContent = `Tüm kategorilerde ara (${elsewhere} ürün)`;
-  allBtn.onclick = async () => {
-    state.timelineCategory = 'all';
-    state.selectedTimelineProduct = null;
-    await renderTimelineScreen();
-    $('product-search').focus({ preventScroll: true });
-  };
-}
-
-function renderProductChips(visible, selectedId, focusProductId) {
-  const picker = $('timeline-picker');
-  picker.textContent = '';
-  for (const t of visible) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'picker-chip';
-    btn.setAttribute('aria-pressed', t.id === selectedId ? 'true' : 'false');
-    btn.dataset.id = t.id;
-    btn.title = t.name; // the label is truncated with an ellipsis
-    if (t.image) {
-      const img = document.createElement('img');
-      img.src = t.image.src;
-      img.alt = '';
-      btn.appendChild(img);
-    }
-    const nameSpan = document.createElement('span');
-    nameSpan.textContent = t.name;
-    btn.appendChild(nameSpan);
-    btn.onclick = () => {
-      state.selectedTimelineProduct = t.id;
-      renderTimelineScreen(t.id); // the picker is rebuilt, so put keyboard focus back on the chosen chip
-    };
-    picker.appendChild(btn);
-  }
-
-  const chosen = picker.querySelector('[aria-pressed="true"]');
-  if (!chosen) return;
-  if (focusProductId) chosen.focus({ preventScroll: true });
-  // Centre the chosen chip inside its own row (the right edge fades out) without moving the page.
-  const row = picker.getBoundingClientRect();
-  const chip = chosen.getBoundingClientRect();
-  picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
-    behavior: 'smooth' });
-}
-
-function renderTimelineHeader(product) {
-  $('t-title').textContent = product.name;
-  $('t-unit').textContent = product.region ? `${product.unit} · ${product.region}` : product.unit;
-  const tImg = $('t-image');
-  tImg.hidden = !product.image;
-  if (product.image) { tImg.src = product.image.src; tImg.onerror = () => { tImg.hidden = true; }; }
-  // One-line takeaway above the chart: oldest sourced price against the current one.
-  const firstRow = product.rows[0];
-  const nowRow = product.rows.find((r) => r.isCurrent);
-  const summary = nowRow && nowRow !== firstRow
-    ? `${formatPeriod(firstRow.date)} → ${formatPeriod(nowRow.date)}: ${formatIncrease(nowRow.price / firstRow.price)}`
-    : '';
-  $('t-summary').textContent = summary;
-  $('t-summary').hidden = !summary;
-  const playBtn = $('t-play');
-  if (playBtn) {
-    // Ask another product from the same category: this product's prices are right on screen.
-    const q = pickFromCategory(state.all, categoryOf(product.id), product.id, categoryOf);
-    playBtn.hidden = !q;
-    playBtn.onclick = q ? () => {
-      // A detour out of Günün Fişi: this question must not land on the daily receipt.
-      if (state.daily) { state.daily = null; syncSkipBtn(); }
-      history.pushState(null, '', '#tahmin');
-      nextQuestion(q.productId, q.date);
-    } : null;
-  }
-  // Coming from a result, the way back is the game, not the menu.
-  const back = $('timeline-back');
-  const toResult = state.archiveFromResult && state.lastGameScreen === 'result-screen';
-  back.href = toResult ? '#tahmin' : '#';
-  back.textContent = toResult ? '← Sonuca dön' : '← Ana menü';
-}
-
-function renderArchiveOrder() {
-  const newestFirst = state.archiveNewestFirst;
-  const orderBtn = $('archive-order');
-  orderBtn.textContent = newestFirst ? 'Sıra: yeniden eskiye ↑' : 'Sıra: eskiden yeniye ↓';
-  orderBtn.setAttribute('aria-pressed', newestFirst ? 'true' : 'false');
-  orderBtn.title = newestFirst ? 'Sıra: yeniden eskiye. Değiştirmek için dokun.' : 'Sıra: eskiden yeniye. Değiştirmek için dokun.';
-}
-
-// Delegated once on the permanent container because renderTimelineScreen rebuilds the table often.
-function linkRowsToChart() {
-  const rowsContainer = $('t-rows-container');
-  if (rowsContainer.dataset.chartLinked) return;
-  rowsContainer.dataset.chartLinked = 'true';
-  rowsContainer.addEventListener('click', (e) => {
-    const btn = e.target instanceof Element ? e.target.closest('.row-to-chart') : null;
-    if (!btn) return;
-    const fig = $('t-chart');
-    fig._activateDate?.(btn.dataset.date);
-    if (!fig.hidden) {
-      fig.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    }
-  });
+  return mod.renderTimelineScreen(focusProductId);
 }
 
 function renderHome() {
@@ -1409,28 +1241,6 @@ async function init() {
   }
   initShareUi({ getState: () => state, isDailyEndTurn: () => dailyEndTurn, getReportCardModule: () => reportCardModule });
   $('ask-q-btn').dataset.label = $('ask-q-btn').textContent;
-  // The search input lives outside the rebuilt chip rows, so it keeps focus while typing.
-  $('product-search').addEventListener('input', (e) => {
-    state.timelineQuery = e.target.value;
-    renderTimelineScreen();
-  });
-  const clearSearch = () => {
-    state.timelineQuery = '';
-    state.selectedTimelineProduct = null;
-    renderTimelineScreen();
-    $('product-search').focus({ preventScroll: true });
-  };
-  $('product-search-clear').addEventListener('click', clearSearch);
-  $('product-search').addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && e.target.value !== '') { e.preventDefault(); clearSearch(); }
-  });
-  state.archiveNewestFirst = loadArchiveNewestFirst();
-  $('archive-order').addEventListener('click', () => {
-    state.archiveNewestFirst = !state.archiveNewestFirst;
-    saveArchiveNewestFirst(state.archiveNewestFirst);
-    renderTimelineScreen();
-    $('archive-order').focus({ preventScroll: true });
-  });
   $('guess-form').addEventListener('submit', onGuess);
   const guessField = document.querySelector('#question-screen .guess-field');
   guessField?.addEventListener('animationend', () => {
