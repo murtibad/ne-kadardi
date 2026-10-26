@@ -11202,6 +11202,176 @@
       ]
     },
     {
+      "id": "yds",
+      "name": "YDS sınav ücreti",
+      "unit": "1 sınav (YDS, yılın ilk kâğıt oturumu)",
+      "region": null,
+      "source_hint": "ÖSYM YDS kılavuzları (dokuman.osym.gov.tr). Tarih o oturumun başvuru ayıdır. e-YDS ve geç başvuru ücreti dahil değil.",
+      "image": {
+        "src": "img/sinav.svg",
+        "alt": "Sınav kâğıdı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-02",
+        "price": 1200,
+        "status": "verified",
+        "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/1 (5 Nisan 2026), başvuru 18-26 Şubat; aynı ücret YDS/2 için de geçerli. Kılavuzda: \"SINAV ÜCRETİ : 1.200 TL\".",
+        "source": {
+          "title": "ÖSYM, 2026-YDS/1 Kılavuzu",
+          "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/YDS-1/kilavuz_yd1d18022026.pdf",
+          "accessed": "2026-10-26",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2015-02",
+          "price": 70,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). İlkbahar dönemi (5 Nisan 2015), başvuru 12-25 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 70,00 TL (Bu ücrete %18 KDV dâhildir.)\"; ayrıca 3,00 TL başvuru hizmet ücreti alınıyordu, dahil değil.",
+          "source": {
+            "title": "ÖSYM, 2015 YDS İlkbahar Dönemi Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2015/YDSILKBAHAR/2015-YDS-ilkbahar17022015yn1.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2016-02",
+          "price": 80,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). İlkbahar dönemi (27 Mart 2016), başvuru 3-15 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 80,00 TL\"; 3,00 TL başvuru hizmet ücreti dahil değil.",
+          "source": {
+            "title": "ÖSYM, 2016 YDS İlkbahar Dönemi Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2016/YDSILKBAHAR/2016YDSilkbhrklvz02022016.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2017-02",
+          "price": 90,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). İlkbahar dönemi (2 Nisan 2017), başvuru 8-16 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 90,00 TL\"; 5,00 TL başvuru hizmet ücreti dahil değil.",
+          "source": {
+            "title": "ÖSYM, 2017 YDS İlkbahar Dönemi Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2017/YDSILKBAHAR/KILAVUZ09022017.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2018-02",
+          "price": 100,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). İlkbahar dönemi (1 Nisan 2018), başvuru 7-15 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 100,00 TL\"; 5,00 TL başvuru hizmet ücreti ve geç başvuru ücreti (150 TL) dahil değil.",
+          "source": {
+            "title": "ÖSYM, 2018 YDS İlkbahar Dönemi Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2018/YDSILKBAHAR/BasvuruKilavuz23032018.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2019-01",
+          "price": 120,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/1 (24 Mart 2019), başvuru 30 Ocak-6 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 120,00 TL\"; geç başvuru ücreti (180 TL) dahil değil.",
+          "source": {
+            "title": "ÖSYM, 2019-YDS/1 Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2019/YDS-1/kilavuz30012019.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2020-02",
+          "price": 130,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). 2020 YDS, başvuru 19-26 Şubat (sınav salgın nedeniyle 27 Eylül 2020'ye ertelendi). Kılavuzda: \"SINAV ÜCRETİ : 130,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2020-YDS Kılavuzu (18.08.2020 güncellemesi)",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2020/YDS-1/kilavuz18082020.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-02",
+          "price": 145,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/1 (18 Nisan 2021), başvuru 25 Şubat-8 Mart. Kılavuzda: \"SINAV ÜCRETİ : 145,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2021-YDS/1 Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2021/YDS-1/kilavuz18052021.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-02",
+          "price": 185,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/1 (10 Nisan 2022), başvuru 17-28 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 185,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2022-YDS/1 Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2022/YDS-1/kilavuz17022022.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-02",
+          "price": 185,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/1 (9 Nisan 2023), başvuru 15-27 Şubat. Kılavuzda: \"SINAV ÜCRETİ : 185,00 TL\" (2022 ile aynı).",
+          "source": {
+            "title": "ÖSYM, 2023-YDS/1 Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2023/YDS-1/bkilavuz08032023.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-09",
+          "price": 490,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/2 kılavuzu (17 Eylül 2024). Kılavuzda: \"SINAV ÜCRETİ : 490,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2024-YDS/2 Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2024/YDS-2/kilavuz17092024.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 750,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/1 (9 Mart 2025), başvuru 22-29 Ocak. Kılavuzda: \"SINAV ÜCRETİ : 750,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2025-YDS/1 Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2025/YDS-1/kilavuz_yd1d22012025.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 1200,
+          "status": "verified",
+          "note": "ÖSYM Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) sınav ücreti, kâğıt sınav (e-YDS değil). YDS/1 (5 Nisan 2026), başvuru 18-26 Şubat; aynı ücret YDS/2 için de geçerli. Kılavuzda: \"SINAV ÜCRETİ : 1.200 TL\".",
+          "source": {
+            "title": "ÖSYM, 2026-YDS/1 Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/YDS-1/kilavuz_yd1d18022026.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
       "id": "osmangazi-koprusu",
       "name": "Osmangazi Köprüsü geçişi",
       "unit": "1 geçiş, otomobil",
