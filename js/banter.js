@@ -168,6 +168,30 @@ export const PRODUCT_POOLS = {
     'Seyahat planı yapmadan önce bütçeyi eriten başvuru.',
     'Randevu bulabilenler kendini şanslı sayıyordu.',
   ],
+  'ispark-otopark': [
+    'Park yeri bulunca piyango vurmuş gibi sevinirsin.',
+    'Otopark görevlisini görünce hemen saate bakarız.',
+    'Süresi dolmadan arabaya yetişme telaşı başkadır.',
+    'Arabayı bıraktın mı zaman sanki daha hızlı akar.',
+  ],
+  'yht-bilet': [
+    'Ankara ile İstanbul artık komşu kapısına döndü.',
+    'Bayram öncesi bilet bulmak ayrı bir maharet.',
+    'Pencereden bozkırı seyre dalıp çayını yudumlamak.',
+    'Otobüs virajlarından kurtaran en huzurlu yolculuk.',
+  ],
+  'dgs': [
+    'Önlisanstan lisansa uzanan o meşakkatli yolculuk.',
+    'Lisans diploması hayaliyle ödenen başvuru ücreti.',
+    'Sınav başvurusu için harçlığını ayıran gençler.',
+    'Masa başında dirsek çürütenlerin umut kapısı.',
+  ],
+  'yds': [
+    'Yabancı dil bilmek ayrı, sınavını vermek apayrı.',
+    'Uzun paragraflar arasında ter dökenlerin sınavı.',
+    'Kelime ezberlemekten uykusuz kalanların telaşı.',
+    'Sınav ücretini yatırıp kalın sözlüklere sarılmak.',
+  ],
 };
 
 export const HINT_LINES = [

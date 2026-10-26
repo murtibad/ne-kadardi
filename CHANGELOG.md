@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.108.1] - 2026-10-26
+### Added
+- Product-specific receipt lines for the four new products (İSPARK, YHT, DGS, YDS), four each, written by Gemini Flash and edited by Claude (no prices, no direction assumed).
+
 ## [0.108.0] - 2026-10-26
 ### Added
 - New product `yht-bilet`: high-speed train (YHT) Ankara-İstanbul, one-way full economy fare. 9 values 2022-06 → 2026-08 (195 · 215 · 248 · 323 · 430 · 540 · 780 · 930 · 990), each on two news sites and checked on the page by script. Earlier years (line opened 2014) could not be sourced. Icon `img/hizli-tren.svg` (Gemini Flash).
