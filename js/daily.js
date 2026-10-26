@@ -93,3 +93,46 @@ export function dailyShareText({ key, scores, url, streak = 0 }) {
   lines.push(`Sen kaç alırsın? ${url}`);
   return lines.join('\n');
 }
+
+/** Keep only the newest `max` days of the receipt log so storage stays tiny. Ignores bad entries. */
+export function trimLog(log, max = 60) {
+  const keys = Object.keys(log ?? {})
+    .filter((k) => /^\d{4}-\d{2}-\d{2}$/.test(k) && Number.isFinite(log[k]))
+    .sort()
+    .slice(-max);
+  return Object.fromEntries(keys.map((k) => [k, log[k]]));
+}
+
+/** Previous local calendar day of a 'YYYY-MM-DD' key (noon avoids DST edge cases). */
+function prevDayKey(key) {
+  const [y, m, d] = String(key).split('-').map(Number);
+  return dayKey(new Date(y, m - 1, d - 1, 12));
+}
+
+/** Menu/result numbers from the finished-receipt log: yesterday's total, best total, days played. */
+export function dailyStats(log, todayKey) {
+  const clean = trimLog(log, Infinity);
+  const totals = Object.values(clean);
+  const yesterday = clean[prevDayKey(todayKey)];
+  return {
+    yesterday: yesterday ?? null,
+    best: totals.length ? Math.max(...totals) : null,
+    played: totals.length,
+  };
+}
+
+/** Menu line while today's receipt is not started, e.g. 'Dünkü fişin 331/500 · en iyin 412'. */
+export function dailyMenuMeta(stats) {
+  if (stats.yesterday === null) return '';
+  const best = stats.best !== null && stats.best > stats.yesterday ? ` · en iyin ${stats.best}` : '';
+  return `Dünkü fişin ${stats.yesterday}/500${best}`;
+}
+
+/** Result total line, with the change against yesterday when there is one. */
+export function dailyTotalLine(total, yesterday) {
+  const base = `Toplam: ${total}/500`;
+  if (yesterday === null || yesterday === undefined) return base;
+  const diff = total - yesterday;
+  if (diff === 0) return `${base} · dünle aynı`;
+  return `${base} · dünden ${diff > 0 ? '+' : '−'}${Math.abs(diff)}`;
+}

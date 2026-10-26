@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, seededRng, dailyQuestions, dailyTitle, dailyShareText } from '../js/daily.js';
+import { dayKey, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from '../js/daily.js';
 import { categoryOf } from '../js/categories.js';
 
 const sampleQuestions = [
@@ -100,4 +100,30 @@ test('nextReceiptIn counts down to local midnight', async () => {
   assert.equal(nextReceiptIn(new Date(2026, 9, 26, 23, 15)), 'Yeni fiş 45 dakika sonra');
   assert.equal(nextReceiptIn(new Date(2026, 9, 26, 23, 59, 50)), 'Yeni fiş 1 dakika sonra');
   assert.equal(nextReceiptIn(new Date(2026, 9, 26, 0, 0)), 'Yeni fiş 24 saat sonra');
+});
+
+test('trimLog keeps the newest days and drops bad entries', () => {
+  const log = { '2026-01-01': 100, '2026-01-02': 200, '2026-01-03': 300, bad: 5, '2026-01-04': 'x' };
+  assert.deepEqual(trimLog(log, 2), { '2026-01-02': 200, '2026-01-03': 300 });
+  assert.deepEqual(trimLog(null), {});
+});
+
+test('dailyStats finds yesterday (also across a month border), best and count', () => {
+  const log = { '2026-09-30': 331, '2026-09-20': 412, '2026-10-01': 100 };
+  assert.deepEqual(dailyStats(log, '2026-10-01'), { yesterday: 331, best: 412, played: 3 });
+  assert.deepEqual(dailyStats({}, '2026-10-01'), { yesterday: null, best: null, played: 0 });
+  assert.equal(dailyStats({ '2026-09-28': 5 }, '2026-10-01').yesterday, null);
+});
+
+test('dailyMenuMeta omits best when it equals yesterday', () => {
+  assert.equal(dailyMenuMeta({ yesterday: 331, best: 412, played: 2 }), 'Dünkü fişin 331/500 · en iyin 412');
+  assert.equal(dailyMenuMeta({ yesterday: 331, best: 331, played: 1 }), 'Dünkü fişin 331/500');
+  assert.equal(dailyMenuMeta({ yesterday: null, best: 331, played: 1 }), '');
+});
+
+test('dailyTotalLine compares with yesterday', () => {
+  assert.equal(dailyTotalLine(300, 260), 'Toplam: 300/500 · dünden +40');
+  assert.equal(dailyTotalLine(300, 340), 'Toplam: 300/500 · dünden −40');
+  assert.equal(dailyTotalLine(300, 300), 'Toplam: 300/500 · dünle aynı');
+  assert.equal(dailyTotalLine(300, null), 'Toplam: 300/500');
 });
