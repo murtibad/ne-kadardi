@@ -31,7 +31,7 @@ const hapticIfAllowed = (ms) => {
 
 const state = {
   recentProducts: [], seen: new Set(),
-  hintsUsed: 0, hintProductId: null, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
+  hintsUsed: 0, hintProductId: null, questionsShown: 0, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
@@ -214,7 +214,8 @@ function nextQuestion(productId = null, date = null) {
   const rates = buildHint(q, state.all);
   const hintBtn = $('hint-btn');
   const slip = $('hint-text');
-  const row = (l) => `<div class="hint-row"><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.value)}</strong></div>`;
+  // Each row carries its own date: hint prices may come from a different month or the year before.
+  const row = (l) => `<div class="hint-row"><span>${escapeHTML(l.label)} <small>(${escapeHTML(l.period)})</small></span><strong>${escapeHTML(l.value)}</strong></div>`;
   const rateRows = () => rates.map(row).join('');
   hintBtn.hidden = !(everyday || rates);
   hintBtn.textContent = 'İpucu al (puanın %20 düşer)';
@@ -225,12 +226,12 @@ function nextQuestion(productId = null, date = null) {
     if (state.hintsUsed === 1) {
       slip.dataset.line = hintComment(Math.random, state.recentLines);
       state.recentLines = rememberLine(state.recentLines, slip.dataset.line);
-      const period = everyday ? everyday.period : rates[0].period;
       state.hintProductId = everyday ? everyday.id : null;
-      slip.innerHTML = `<p class="hint-cashier">“${escapeHTML(slip.dataset.line)}”</p><p class="hint-slip-title">İpucu · ${escapeHTML(period)}</p>`
+      slip.innerHTML = `<p class="hint-cashier">“${escapeHTML(slip.dataset.line)}”</p><p class="hint-slip-title">İpucu</p>`
         + (everyday ? row(everyday) : rateRows());
       slip.hidden = false;
-      if (everyday && rates) hintBtn.textContent = 'Bir ipucu daha (dolar ve asgari ücret)';
+      // Say the price of the second hint too, or it looks free after the first one's "%20".
+      if (everyday && rates) hintBtn.textContent = 'Bir ipucu daha: dolar ve asgari ücret (toplam %40 düşer)';
       else hintBtn.hidden = true;
     } else {
       slip.insertAdjacentHTML('beforeend', rateRows());
@@ -241,7 +242,9 @@ function nextQuestion(productId = null, date = null) {
   $('guess-error').textContent = '';
   showGameScreen('question-screen');
   window.scrollTo(0, 0); // "Sonraki soru" sits at the bottom of a long receipt
-  $('guess-input').focus();
+  // Not on the visit's first question: a phone keyboard would pop up over the product before
+  // the player has even read it. Afterwards the player is typing anyway.
+  if (state.questionsShown++ > 0) $('guess-input').focus();
 }
 
 function onGuess(event) {
@@ -899,7 +902,7 @@ function renderHome() {
   const alive = streakAlive(state.streak, today) && state.streak.count >= 2;
   const streakMeta = alive ? ` · 🔥 ${state.streak.count} gün üst üste` : '';
   $('m-tahmin').textContent = state.played > 0
-    ? `${state.played} soru · ortalama puan ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '') + streakMeta
+    ? `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '') + streakMeta
     : alive ? `🔥 ${state.streak.count} gün üst üste` : '';
   renderDailyMenu();
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);

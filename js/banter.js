@@ -580,7 +580,8 @@ export function stampTitle(averageScore) {
   }
   const clamped = Math.max(0, Math.min(100, averageScore));
   // Plain words a grandparent reads at a glance; the old jokes ("TÜİK BAŞKANI…") repeated and confused.
-  if (clamped >= 90) return 'TAM İSABET';
+  // "TAM İSABET" only for a real bull's-eye: at 90 the verdict still says "biraz az".
+  if (clamped >= 98) return 'TAM İSABET';
   if (clamped >= 75) return 'ÇOK YAKIN';
   if (clamped >= 50) return 'FENA DEĞİL';
   if (clamped >= 20) return 'BİRAZ UZAK';

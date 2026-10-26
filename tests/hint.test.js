@@ -17,7 +17,9 @@ test('hint lists the dollar rate and minimum wage of the question year', () => {
 });
 
 test('hint skips missing products and the hint products themselves', () => {
-  assert.equal(buildHint({ productId: 'benzin', year: 2013 }, all).length, 1);
+  // 2013 has no minimum wage entry here, so the previous year's (still in force) is used.
+  const y2013 = buildHint({ productId: 'benzin', year: 2013, date: '2013-03' }, all);
+  assert.deepEqual(y2013.map((l) => l.period), ['Ocak 2013', 'Ocak 2012']);
   assert.equal(buildHint({ productId: 'benzin', year: 2030 }, all), null);
   for (const id of ['dolar', 'euro', 'gram-altin', 'ceyrek-altin', 'schengen-vize', 'asgari-ucret', 'kyk-burs']) {
     assert.equal(buildHint({ productId: id, year: 2012 }, all), null, id);
@@ -75,4 +77,16 @@ test('hints use the price in force on the question date, not the year\'s first',
   assert.equal(july[0].period, 'Temmuz 2018');
   const march = buildHint({ productId: 'benzin', year: 2018, date: '2018-03' }, all);
   assert.equal(march[0].period, 'Ocak 2018');
+});
+
+test('the everyday hint never shows a price dated after the question', () => {
+  const data = [
+    { productId: 'big-mac', year: 2016, date: '2016-07', price: 10.75 },
+    { productId: 'big-mac', year: 2015, date: '2015-07', price: 9.25 },
+    { productId: 'netflix', year: 2016, date: '2016-09', price: 27.99 },
+  ];
+  const h = buildEverydayHint({ productId: 'benzin', year: 2016, date: '2016-01' }, data, () => 0);
+  assert.equal(h.id, 'big-mac');
+  assert.equal(h.period, 'Temmuz 2015');
+  assert.equal(buildEverydayHint({ productId: 'benzin', year: 2016, date: '2016-01' }, data.slice(2), () => 0), null);
 });

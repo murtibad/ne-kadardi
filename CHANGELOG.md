@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.122.3] - 2026-10-26
+### Changed
+- Hints never show a price dated after the question: they use the latest price up to the question's month from that year or the year before (a "Ocak 2016" question gets Big Mac's Temmuz 2015 price, not Temmuz 2016). Every hint row shows its own date, e.g. "Dolar kuru (Ocak 2016)".
+- The second hint button says what it costs: "Bir ipucu daha: dolar ve asgari ücret (toplam %40 düşer)".
+- "TAM İSABET" stamp only from 98 points; 75-97 is "ÇOK YAKIN" (at 90 the verdict still said "biraz az").
+- The visit's first question no longer pops up the phone keyboard; the focused price box gets a calm dark ring instead of a thick red one.
+- Plainer words: "Normal oyuna geç →" after Günün Fişi, "Bilemedin mi? Soruyu arkadaşına gönder →", menu line "30 soru · ortalama 62 · en yüksek 100".
+
 ## [0.122.2] - 2026-10-26
 ### Fixed
 - Hints show the price in force on the question's date (the latest of that year up to its month) instead of the year's first: a "Temmuz 2018" question now gets July's dollar rate, and no hint shows a month later than the question.
