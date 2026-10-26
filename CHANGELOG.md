@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.123.0] - 2026-10-26
+### Changed
+- More variety in free play (third player review, 30 questions): a product does not come back within 15 questions, no category more than 3 times in 10, and the question-card year note (2016, 2020, 2023) shows at most once per 10 questions.
+- Questions from the last 12 months are skipped while a product has older ones, in free play and in Günün Fişi (whose cutoff comes from the day, so it stays the same for everyone): today's prices are no guessing game.
+- "Peki … kaç liraydı?" spreads over more products, never repeats the previous offer, avoids the last 8 products and uses the short name ("Sıfır Fiat Egea Sedan").
+
 ## [0.122.3] - 2026-10-26
 ### Changed
 - Hints never show a price dated after the question: they use the latest price up to the question's month from that year or the year before (a "Ocak 2016" question gets Big Mac's Temmuz 2015 price, not Temmuz 2016). Every hint row shows its own date, e.g. "Dolar kuru (Ocak 2016)".
