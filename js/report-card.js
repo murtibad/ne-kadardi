@@ -30,6 +30,6 @@ export function reportCardText(card, url) {
     `Ne Kadardı? 🧾 ${card.title}`,
     ...card.lines.map((l) => `${l.label}: ${l.score}/100`),
     `Ortalama: ${card.average}/100`,
-    `Sen kaç alırsın? ${url}`,
+    `Sen kaç puan alırsın? ${url}`,
   ].join('\n');
 }

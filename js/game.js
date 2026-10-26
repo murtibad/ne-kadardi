@@ -186,7 +186,7 @@ export function isAmount(productId) {
 }
 
 export function actualLabel(productId) {
-  return isAmount(productId) ? 'Gerçek Tutar' : 'Gerçek Fiyat';
+  return isAmount(productId) ? 'Gerçek tutar' : 'Gerçek fiyat';
 }
 
 /** Count word for the purchasing-power line: the product's plain name, else the short unit. */
