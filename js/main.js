@@ -16,7 +16,7 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText, friendIntroText, compareFriendScore } from './ask-link.js';
-import { dayKey, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn } from './daily.js';
+import { dayKey, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from './daily.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -85,6 +85,25 @@ function saveDaily(daily) {
       ids: daily.ids,
       scores: daily.scores,
     }));
+  } catch(e) {}
+  // Both finish paths (5th answer, last skip) save here, so the history is written once per run.
+  if (daily.ids.length > 0 && daily.scores.length >= daily.ids.length) recordDailyTotal(daily.key, daily.scores);
+}
+
+const DAILY_LOG_KEY = 'ne-kadardi-daily-log';
+
+function loadDailyLog() {
+  try {
+    return trimLog(JSON.parse(localStorage.getItem(DAILY_LOG_KEY)));
+  } catch(e) {}
+  return {};
+}
+
+function recordDailyTotal(key, scores) {
+  try {
+    const log = loadDailyLog();
+    log[key] = scores.reduce((s, n) => s + n, 0);
+    localStorage.setItem(DAILY_LOG_KEY, JSON.stringify(trimLog(log)));
   } catch(e) {}
 }
 
@@ -1151,7 +1170,7 @@ async function renderReportCard() {
     state.reportCard = { daily: true, key, scores };
     $('r-card-title').textContent = dailyTitle(key);
     $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
-    $('r-card-avg').textContent = `Toplam: ${total}/500`;
+    $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
     $('r-card-share').textContent = 'Fişini paylaş →';
     // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
     $('next-btn').textContent = 'Serbest oyuna geç →';
@@ -1439,7 +1458,8 @@ function renderHome() {
   const dailyInProgress = daily && daily.scores.length > 0 && daily.scores.length < daily.ids.length;
   $('m-daily').textContent = dailyDone
     ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn()}`
-    : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru` : '';
+    : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru`
+      : dailyMenuMeta(dailyStats(loadDailyLog(), dayKey()));
   const dailyGo = dailyDone ? 'Paylaş →' : dailyInProgress ? 'Devam et →' : 'Başla →';
   $('m-daily-go').textContent = dailyGo;
   $('m-daily-go').dataset.label = dailyGo;
@@ -1447,8 +1467,11 @@ function renderHome() {
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   const needsToday = alive && state.streak.last !== today;
-  $('home-streak').textContent = needsToday ? 'Serin bozulmasın: bugün bir soru çöz.' : '';
-  $('home-streak').hidden = !needsToday;
+  // A streak of 2+ that is no longer alive was broken: say so once, with the record to beat.
+  const broken = !streakAlive(state.streak, today) && state.streak.count >= 2;
+  $('home-streak').textContent = needsToday ? 'Serini koru: bugün bir soru çöz.'
+    : broken ? `Serin bozuldu (en uzun: ${state.streak.best || state.streak.count} gün). Bugün yeniden başla.` : '';
+  $('home-streak').hidden = !needsToday && !broken;
   if (!$('fact-body').hasChildNodes()) renderFact();
   renderHomeSpark();
   // Coming back to the menu does not reset the game, so say so instead of "Başla".
