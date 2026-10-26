@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.120.2] - 2026-10-26
+### Changed
+- Code: the sharing UI (send sheet, image preview, ask and report-card sharing) moved from js/main.js into js/share-ui.js (main.js 1840 → 1539 lines); no behaviour change, share payloads compared against the live 0.120.0 site.
+
 ## [0.120.1] - 2026-10-26
 ### Changed
 - The intro's last frame tells new players about the daily receipt: "✓ Her gün herkese aynı 5 soru: Günün Fişi".
