@@ -16,7 +16,7 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText, friendIntroText, compareFriendScore } from './ask-link.js';
-import { dayKey, dailyQuestions, dailyTitle, dailyShareText } from './daily.js';
+import { dayKey, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn } from './daily.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -1433,7 +1433,7 @@ function renderHome() {
   const dailyDone = daily && daily.ids.length > 0 && daily.scores.length >= daily.ids.length;
   const dailyInProgress = daily && daily.scores.length > 0 && daily.scores.length < daily.ids.length;
   $('m-daily').textContent = dailyDone
-    ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · Yarın yeni fiş`
+    ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn()}`
     : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru` : '';
   const dailyGo = dailyDone ? 'Paylaş →' : dailyInProgress ? 'Devam et →' : 'Başla →';
   $('m-daily-go').textContent = dailyGo;

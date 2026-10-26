@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.118.2] - 2026-10-26
+### Changed
+- A finished Günün Fişi card counts down to the next one: "Bugün 300/500 · Yeni fiş 7 saat sonra" (minutes in the last hour).
+
 ## [0.118.1] - 2026-10-26
 ### Changed
 - Long source headlines on the result receipt are cut on a word boundary (about 48 letters) and keep their date, e.g. "Bianet, Ankara'dan sonra İzmir ve İstanbul'da da… (08.08.2022)"; the full title stays in the link's tooltip and the archive.

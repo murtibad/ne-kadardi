@@ -73,6 +73,13 @@ export function dailyTitle(key) {
   return `Günün fişi · ${formatDay(key)}`.toLocaleUpperCase('tr');
 }
 
+/** "Yeni fiş 7 saat sonra" until local midnight; under an hour it counts minutes. */
+export function nextReceiptIn(now = new Date()) {
+  const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  const minutes = Math.max(1, Math.ceil((midnight - now) / 60000));
+  return minutes >= 60 ? `Yeni fiş ${Math.floor(minutes / 60)} saat sonra` : `Yeni fiş ${minutes} dakika sonra`;
+}
+
 /** Spoiler-free share text: coloured squares and total score, no product names or prices. */
 export function dailyShareText({ key, scores, url, streak = 0 }) {
   const list = scores ?? [];
