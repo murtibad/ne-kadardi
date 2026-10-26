@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.104.1] - 2026-10-26
+### Changed
+- Data notes: Fiat Egea Easy's series ends at the October 2025 list price because the 1.4 Fire sedan left the price list in January 2026 and Egea Sedan production ended on 30 June 2026; iPhone stays at iPhone 17 because September 2026 brought only Pro, Pro Max and Duo models, no base model. Two sources each, no price changed.
+
 ## [0.104.0] - 2026-10-26
 ### Changed
 - Everyone sees the same animations (Murti's call): the phone's reduce-motion setting is ignored. It is a WCAG AAA item (2.3.3), not required at AA and not a legal duty for this site, and the game has no large or vestibular-heavy motion. Removed the gentle mode, `js/motion.js` and every `prefers-reduced-motion` / `data-motion` rule.
