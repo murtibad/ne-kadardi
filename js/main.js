@@ -664,7 +664,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     // Scroll only when the row is off screen, so the tapped chart does not jump away.
     const rect = match?.getBoundingClientRect();
     if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
-      match.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      match.scrollIntoView({ block: 'nearest' });
     }
   } : undefined);
 }

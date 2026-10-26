@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 ## [0.123.1] - 2026-10-27
 ### Changed
 - The handed-over receipt no longer floats up and down while idle (player feedback: it made reading harder). It stays still; with a mouse it lifts slightly on hover.
+- The loading skeleton no longer blinks forever (it stayed blinking next to the error text on a failed load).
+- Archive product chips, archive chart and search results jump into view instead of smooth-scrolling the page under the reader.
+- The "son N" label next to the recent-score ticks is 13 px like other readable text; the real price on the receipt uses fixed-width digits so it does not wobble while it counts up.
 
 ## [0.123.0] - 2026-10-26
 ### Changed

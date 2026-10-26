@@ -142,7 +142,7 @@ function renderProductChips(visible, selectedId, focusProductId) {
   const row = picker.getBoundingClientRect();
   const chip = chosen.getBoundingClientRect();
   picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
-    behavior: 'smooth' });
+    behavior: 'auto' });
 }
 
 function renderTimelineHeader(product) {
@@ -197,7 +197,7 @@ function linkRowsToChart() {
     const fig = $('t-chart');
     fig._activateDate?.(btn.dataset.date);
     if (!fig.hidden) {
-      fig.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      fig.scrollIntoView({ block: 'nearest' });
     }
   });
 }
