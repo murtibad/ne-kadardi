@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.110.1] - 2026-10-26
+### Changed
+- The generic cashier lines (60, by score), the far-off guess lines (over/under, for prices and for wages) and the hint lines were rewritten in the same everyday Turkish tone as the product lines (Antigravity Claude Opus, checked by Claude): score lines still never assume a direction and most avoid shop words so they also fit wage questions.
+
 ## [0.110.0] - 2026-10-26
 ### Changed
 - Every product now has its own four receipt lines (76 products; 50 were missing). First drafts by Gemini 4 Argon, Claude Opus in Antigravity, Gemini Flash and Claude; then Murti asked for less "AI-sounding" lines and more everyday Turkish humour, so Claude Opus rewrote all 304 in a coffeehouse tone (dayı, komşu teyze, çay ocağı, bayram), with "abi/bilader/gardaş" in only about one line in ten. No prices, numbers or direction assumptions; respectful on fitre and kurban; checked by script (≤ 65 characters, four per product).

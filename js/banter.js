@@ -2,38 +2,38 @@
 import { formatNumber } from './format.js';
 
 export const OVER_COMMENTS = [
-  'Gelecekten mi geliyorsun, o fiyata henüz gelmedik!',
-  'Dur bakalım, fiyatlar henüz o kadar yükselmedi.',
-  'Zamlar aklını biraz karıştırmış sanki.',
-  'Dur yahu, o seviyelere gelmemize biraz daha zaman var.',
-  'Gelecek günlerin zamlarını şimdiden yüklemişsin.',
-  'Hangi yılın faturası bu, birkaç sene ilerdesin.',
-];
+  'O parayla o zaman bakkalı komple alırdın!',
+  'Bu paraya o zaman yanında çırak da verirlerdi.',
+  'Bakkal bu parayı görse defteri kapatırdı!',
+  'Abi, o parayla bütün mahalleye ısmarlardın!',
+  'Annen bu kadar verdiğini duysa geri yollardı!',
+  'Pazarcı bile bu kadar isteyemezdi, utanırdı.',
+]
 
 export const UNDER_COMMENTS = [
-  'O paraya bugün sadece boş kutusunu verirler.',
-  'En son ne zaman alışverişe çıktın, her şey çok değişti.',
-  'Eski güzel günlerin hayaline fazla dalmışsın.',
-  'Bu parayı uzatsan kasiyer ne diyeceğini bilemezdi.',
-  'O fiyata ancak vitrindeki fotoğrafına bakabilirsin.',
-  'Rüya gibi bir fiyat ama gerçekler maalesef çok başka.',
-];
+  'O paraya ancak poşetini verirlerdi.',
+  'Bakkal bu parayı görse \'sonra getirirsin\' derdi.',
+  'Bu parayla pazarcı yüzüne bile bakmazdı!',
+  'O kadar ucuz olsa annem stok yapardı!',
+  'Yeğenim, bu paraya ancak kokusunu alırsın.',
+  'Dayım bile bu kadar pazarlık edemezdi!',
+]
 
 // Wages, pensions, grants and limits are amounts people get, not prices: "fiyat" and "kasiyer"
 // jokes read wrong there.
 export const AMOUNT_OVER_COMMENTS = [
-  'Keşke o kadar olsaydı, ama değildi.',
-  'O yıllar için bu rakam fazla yüksek.',
-  'Bugünün rakamını geçmişe taşımışsın.',
-  'O tutara gelmemize daha birkaç yıl vardı.',
-];
+  'Keşke o kadar verselerdi, düğünü erken yapardık!',
+  'O kadar alan, bakkal borcunu bir haftada kapatırdı.',
+  'Valla o kadar olsa herkes erkenden emekli olurdu.',
+  'Bu kadar alan, bayramda bütün sülaleye harçlık dağıtırdı!',
+]
 
 export const AMOUNT_UNDER_COMMENTS = [
-  'O yıllarda bile rakamlar bu kadar düşük değildi.',
-  'O yıllar için bile bu rakam az kalırdı.',
-  'Eski rakamları biraz fazla düşük hatırlıyorsun.',
-  'Bu kadar az değildi, rakamlar çoktan büyümüştü.',
-];
+  'O kadarla ay sonu değil, hafta sonu gelmezdi.',
+  'Bu kadar az olsa annem bizi dayıya yollardı.',
+  'O parayla ev geçinmez, bakkal defteri taşardı.',
+  'Az demişsin, o kadar da kötü değildi durum!',
+]
 
 export const PRODUCT_POOLS = {
   'plastik-poset': [
@@ -495,13 +495,13 @@ export const PRODUCT_POOLS = {
 };
 
 export const HINT_LINES = [
-  'Bir dakika, barkodu okutayım hemen…',
-  'Reyonda etiketi düşmüş, depoya sorup geliyorum…',
-  'Müdüre sesleniyorum, eski listeyi çıkarsın…',
-  'Sistem biraz yavaş, eski fiyatı bulmaya çalışıyorum…',
-  'Kasada sıra oluştu ama senin için arşive bakıyorum…',
-  'Katalog biraz tozlanmış, sayfaları çeviriyorum…',
-];
+  'Dur, barkodu bir okutayım…',
+  'Rulo bitmiş, yenisini takıyorum…',
+  'Yazıcı ısınıyor, sen bir çay koy…',
+  'Abi bir saniye, defterden bakıyorum…',
+  'Müdüre sesleniyorum, eski listeyi getirsin…',
+  'Kâğıt sıkıştı, dur bir çekeyim…',
+]
 
 const YEAR_ANCHORS = {
   2016: 'Bütün yaz sokaklarda herkesin harıl harıl Pokémon peşinde koştuğu o meşhur dönem.',
