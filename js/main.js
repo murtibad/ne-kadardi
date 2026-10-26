@@ -6,7 +6,7 @@ import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
-import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
+import { verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './banter.js';
@@ -15,7 +15,8 @@ import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
-import { parseQuestionParam, askUrl, askText, friendIntroText, compareFriendScore } from './ask-link.js';
+import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
+import { initShareUi, resetShareBtn, closePreview, askFriend, shareReportCard, shareTextWithStatus } from './share-ui.js';
 import { dayKey, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from './daily.js';
 
 const DATA_URL = 'data/prices.json';
@@ -35,8 +36,6 @@ const state = {
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false 
 };
-let shareOriginalLabel = '';
-let shareTimeoutId = null;
 
 // The result screen shows the last few scores as coloured ticks, like a till roll tally.
 const RECENT_MAX = 8;
@@ -199,49 +198,6 @@ function showMessage(text) {
 
 // True on the turn that shows the daily receipt: the bar button then shares it directly.
 let dailyEndTurn = false;
-function shareBtnLabel() {
-  return dailyEndTurn ? 'Fişini paylaş' : shareOriginalLabel;
-}
-let askTimeoutId = null;
-
-function resetShareBtn() {
-  if (shareTimeoutId !== null) {
-    clearTimeout(shareTimeoutId);
-    shareTimeoutId = null;
-  }
-  if (askTimeoutId !== null) {
-    clearTimeout(askTimeoutId);
-    askTimeoutId = null;
-  }
-  const bar = $('share-btn');
-  clearTimeout(bar.restoreTimer);
-  if (shareOriginalLabel) {
-    bar.textContent = shareBtnLabel();
-    bar.removeAttribute('aria-busy');
-  }
-  const askQ = $('ask-q-btn');
-  if (askQ.dataset.label) askQ.textContent = askQ.dataset.label;
-}
-
-// Button labels change silently for screen readers, so mirror transient feedback here.
-// Clearing first makes an identical repeated message announce again.
-let announceTimeoutId = null;
-function announce(text) {
-  const el = $('sr-status');
-  el.textContent = '';
-  clearTimeout(announceTimeoutId);
-  announceTimeoutId = setTimeout(() => { el.textContent = text; }, 60);
-}
-
-function setBtnStatus(btnId, text) {
-  if (shareTimeoutId !== null) clearTimeout(shareTimeoutId);
-  announce(text);
-  $(btnId).textContent = text;
-  $(btnId).removeAttribute('aria-busy');
-  shareTimeoutId = setTimeout(() => {
-    resetShareBtn();
-  }, 2000);
-}
 
 // `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
 // adding `date` pins the exact question from a shared `?soru=` link.
@@ -884,231 +840,6 @@ function renderTaxDetails(q) {
   details.open = false;
 }
 
-async function prepareShareImage(btnId) {
-  const btn = $(btnId);
-  if (btn.hasAttribute('aria-busy')) return null;
-  
-  btn.setAttribute('aria-busy', 'true');
-  btn.textContent = 'Hazırlanıyor…';
-  announce('Hazırlanıyor…');
-
-  // Everything after the busy mark sits in the try, so a failure never leaves the button stuck on "Hazırlanıyor…".
-  try {
-    const q = state.question;
-    const r = state.result;
-    const contextText = buildContextLine(q, state.all);
-    const model = buildShareImageModel(q, r, { contextLine: contextText });
-    const t = state.timelines.find((t) => t.id === q.productId);
-    model.chart = t
-      ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, refPrice: r.guess, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
-      : null;
-    // After a few rounds the stamp rates the whole session instead of this one guess.
-    if (state.played >= 3) model.stamp = stampTitle(state.total / state.played) ?? model.stamp;
-    const { renderShareImage } = await import('./share-image.js');
-    return await renderShareImage(model);
-  } catch (err) {
-    console.warn('Görsel hazırlanamadı', err);
-    return null;
-  }
-}
-
-function canShareImageFiles() {
-  try {
-    return Boolean(navigator.canShare?.({ files: [new File([''], 'x.png', { type: 'image/png' })] }));
-  } catch {
-    return false;
-  }
-}
-
-async function share() {
-  const q = state.question;
-  const r = state.result;
-  const text = buildShareText(q, r, location.href);
-  if ($('share-btn').hasAttribute('aria-busy')) return;
-
-  // Only draw the image when the browser can actually share files (mostly phones).
-  const filesSupported = canShareImageFiles();
-  const blob = filesSupported ? await prepareShareImage('share-btn') : null;
-
-  if (blob) {
-    const file = new File([blob], buildShareFileName(q), { type: 'image/png' });
-    if (navigator.canShare({ files: [file] })) {
-      resetShareBtn();
-      try {
-        await navigator.share({ files: [file], text });
-      } catch (err) {
-        if (err.name !== 'AbortError') console.warn(err);
-      }
-      return;
-    }
-  }
-
-  // Text fallback: share sheet without files, or copy to the clipboard.
-  try {
-    if (navigator.share) {
-      resetShareBtn();
-      await navigator.share({ text });
-    } else {
-      await navigator.clipboard.writeText(text);
-      setBtnStatus('share-btn', filesSupported ? 'Görsel hazırlanamadı, metin kopyalandı.' : 'Kopyalandı!');
-    }
-  } catch (err) {
-    if (err.name !== 'AbortError') console.warn(err);
-    resetShareBtn();
-  }
-}
-
-// The question card's button asks as-is; the send sheet adds the score (`withScore`).
-// Feedback shows on the button the player pressed (the sheet is closed, so its opener).
-async function askFriend({ btn, withScore = false }) {
-  const q = state.question;
-  if (!q) return;
-  const score = withScore && state.result ? state.result.score : null;
-  const base = location.origin + location.pathname;
-  const text = askText(formatPeriod(q.date), questionTitle(q), score);
-  const url = askUrl(q, base, score);
-  if (navigator.share) {
-    try {
-      await navigator.share({ text, url });
-    } catch (err) {
-      if (err.name !== 'AbortError') console.warn(err);
-    }
-    return;
-  }
-  const setAskStatus = (msg) => {
-    if (askTimeoutId !== null) clearTimeout(askTimeoutId);
-    announce(msg);
-    btn.textContent = msg;
-    askTimeoutId = setTimeout(() => {
-      askTimeoutId = null;
-      if (btn.dataset.label) btn.textContent = btn.dataset.label;
-      else resetShareBtn();
-    }, 2000);
-  };
-  try {
-    await navigator.clipboard.writeText(`${text} ${url}`);
-    setAskStatus('Bağlantı kopyalandı ✓');
-  } catch {
-    setAskStatus('Kopyalanamadı');
-  }
-}
-
-let previewUrl = null;
-let previewFile = null;
-
-function closePreview() {
-  const dlg = $('share-preview');
-  if (dlg.open) dlg.close();
-}
-
-function cleanupPreview() {
-  if (previewUrl) URL.revokeObjectURL(previewUrl);
-  previewUrl = null;
-  previewFile = null;
-  $('share-preview-img').removeAttribute('src');
-}
-
-function saveFromPreview() {
-  if (!previewUrl) return;
-  const a = document.createElement('a');
-  a.href = previewUrl;
-  a.download = previewFile.name;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  announce('İndiriliyor…');
-}
-
-async function sharePreviewFile() {
-  if (!previewFile) return;
-  const text = buildShareText(state.question, state.result, location.href);
-  try {
-    if (navigator.canShare({ files: [previewFile] })) await navigator.share({ files: [previewFile], text });
-  } catch (err) {
-    if (err.name !== 'AbortError') console.warn(err);
-  }
-}
-
-// "Resmi telefona kaydet" first shows what will be saved, so players know the image before it leaves the page.
-async function downloadImage() {
-  const btn = $('share-btn');
-  if (btn.hasAttribute('aria-busy')) return;
-
-  const blob = await prepareShareImage('share-btn');
-  if (!blob) {
-    setBtnStatus('share-btn', 'Görsel hazırlanamadı.');
-    return;
-  }
-  resetShareBtn();
-  // The player may have left the result while the image was drawn.
-  if ($('result-screen').hidden) return;
-
-  cleanupPreview();
-  previewFile = new File([blob], buildShareFileName(state.question), { type: 'image/png' });
-  previewUrl = URL.createObjectURL(blob);
-  const dlg = $('share-preview');
-  if (typeof dlg.showModal !== 'function') {
-    // Very old browsers have no <dialog>: download straight away as before.
-    saveFromPreview();
-    cleanupPreview();
-    return;
-  }
-  $('share-preview-img').src = previewUrl;
-  $('share-preview-share').hidden = !canShareImageFiles();
-  dlg.showModal();
-  $('share-preview-save').focus();
-  announce('Görsel hazır.'); // replaces "Hazırlanıyor…" for screen readers
-}
-
-// One bar button, three jobs: the sheet lets the player choose what to send.
-function initSendSheet() {
-  const dlg = $('send-sheet');
-  const opener = $('share-btn');
-  const choose = (fn) => () => {
-    if (dlg.open) dlg.close();
-    // Called in the same click task, so navigator.share still has the tap's user activation.
-    fn();
-  };
-  $('send-result').addEventListener('click', choose(share));
-  $('send-ask').addEventListener('click', choose(() => askFriend({ btn: opener, withScore: true })));
-  $('send-save').addEventListener('click', choose(downloadImage));
-  $('send-close').addEventListener('click', () => dlg.close());
-  dlg.addEventListener('click', (e) => {
-    if (e.target !== dlg) return;
-    const r = dlg.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
-  });
-  dlg.addEventListener('close', () => { if (!$('result-screen').hidden) opener.focus(); });
-  opener.addEventListener('click', (e) => {
-    if (dailyEndTurn) {
-      opener.dataset.label = shareBtnLabel(); // shareTextWithStatus restores this after its message
-      shareReportCard(e);
-      return;
-    }
-    if (opener.hasAttribute('aria-busy')) return;
-    if (typeof dlg.showModal !== 'function') { share(); return; }
-    dlg.showModal();
-    $('send-result').focus();
-  });
-}
-
-function initSharePreview() {
-  const dlg = $('share-preview');
-  $('share-preview-save').addEventListener('click', saveFromPreview);
-  $('share-preview-share').addEventListener('click', sharePreviewFile);
-  $('share-preview-close').addEventListener('click', closePreview);
-  // Backdrop clicks target the dialog itself, but so do clicks on its padding: check the box.
-  dlg.addEventListener('click', (e) => {
-    if (e.target !== dlg) return;
-    const r = dlg.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closePreview();
-  });
-  dlg.addEventListener('close', () => {
-    cleanupPreview();
-    if (!$('result-screen').hidden) $('share-btn').focus();
-  });
-}
-
 const INTRO_KEY = 'ne-kadardi-intro-seen';
 function loadIntroSeen() {
   try { return localStorage.getItem(INTRO_KEY) === '1'; } catch { return false; }
@@ -1199,36 +930,6 @@ async function renderReportCard() {
   } catch (err) {
     console.warn('Karne hazırlanamadı', err);
   }
-}
-
-async function shareTextWithStatus(text, btn) {
-  if (navigator.share) {
-    try { await navigator.share({ text }); } catch (err) { if (err.name !== 'AbortError') console.warn(err); }
-    return;
-  }
-  let msg = 'Karne kopyalandı ✓';
-  try { await navigator.clipboard.writeText(text); } catch { msg = 'Kopyalanamadı'; }
-  if (!btn) return;
-  btn.dataset.label ??= btn.textContent;
-  btn.textContent = msg;
-  announce(msg);
-  clearTimeout(btn.restoreTimer); // a second tap must not let the first timer cut its message short
-  btn.restoreTimer = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
-}
-
-async function shareReportCard(e) {
-  const btn = e.currentTarget;
-  const card = state.reportCard;
-  if (!card) return;
-  const url = location.origin + location.pathname;
-  if (card.daily) {
-    const text = dailyShareText({ key: card.key, scores: card.scores, url, streak: state.streak?.count ?? 0 });
-    await shareTextWithStatus(text, btn);
-    return;
-  }
-  if (!reportCardModule) return; // the card is only visible once the module has loaded
-  const text = reportCardModule.reportCardText(card, url);
-  await shareTextWithStatus(text, btn);
 }
 
 function initIntro() {
@@ -1706,7 +1407,7 @@ async function init() {
     showMessage('Henüz doğrulanmış fiyat yok. Kaynaklı veri eklendiğinde sorular burada görünecek.');
     return;
   }
-  shareOriginalLabel = $('share-btn').textContent;
+  initShareUi({ getState: () => state, isDailyEndTurn: () => dailyEndTurn, getReportCardModule: () => reportCardModule });
   $('ask-q-btn').dataset.label = $('ask-q-btn').textContent;
   // The search input lives outside the rebuilt chip rows, so it keeps focus while typing.
   $('product-search').addEventListener('input', (e) => {
@@ -1786,8 +1487,6 @@ async function init() {
   });
   $('ask-q-btn').addEventListener('click', (e) => askFriend({ btn: e.currentTarget }));
   $('r-card-share').addEventListener('click', shareReportCard);
-  initSendSheet();
-  initSharePreview();
   initIntro();
 
   const searchParams = new URLSearchParams(location.search);
