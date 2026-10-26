@@ -198,7 +198,8 @@ test('ytlNote exact string for known input and null outside range', () => {
 test('stampTitle boundaries (49/50/74/75/89/90), clamping, and non-finite values', () => {
   // Exact boundaries
   assert.equal(stampTitle(100), 'TAM İSABET');
-  assert.equal(stampTitle(90), 'TAM İSABET');
+  assert.equal(stampTitle(98), 'TAM İSABET');
+  assert.equal(stampTitle(90), 'ÇOK YAKIN');
 
   assert.equal(stampTitle(89), 'ÇOK YAKIN');
   assert.equal(stampTitle(75), 'ÇOK YAKIN');

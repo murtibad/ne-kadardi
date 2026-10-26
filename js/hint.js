@@ -19,24 +19,26 @@ const HINT_PRODUCTS = [
 ];
 
 /** Returns [{label, value, period}] for the question's year, or null when no hint is available. */
-// The price in force on the question's date: the latest one of that year at or before it,
-// else the year's first (a "Temmuz 2018" question should not get a "Eylül 2018" price).
-function priceInForce(entries, date) {
+// The price in force on the question's date: the latest one up to its month, from that year
+// or the year before (a "Ocak 2016" question gets a 2015 price rather than one from later in
+// 2016). `strict` returns null when nothing is that old; otherwise the earliest is used.
+function priceInForce(entries, date, strict = false) {
   const sorted = [...entries].sort((a, b) => a.date.localeCompare(b.date));
+  if (!date) return sorted[0] ?? null;
   // Compare by month: a daily rate dated 2018-07-02 is in force for a "Temmuz 2018" question.
-  if (!date) return sorted[0];
   const month = String(date).slice(0, 7);
   const before = sorted.filter((x) => x.date.slice(0, 7) <= month);
-  return before.length > 0 ? before[before.length - 1] : sorted[0];
+  if (before.length > 0) return before[before.length - 1];
+  return strict ? null : sorted[0] ?? null;
 }
+const nearYears = (x, q) => x.year === q.year || x.year === q.year - 1;
 
 export function buildHint(question, allQuestions) {
   if (NO_HINT.has(question.productId)) return null;
   const lines = [];
   for (const { id, label } of HINT_PRODUCTS) {
-    const inYear = allQuestions
-      .filter((x) => x.productId === id && x.year === question.year);
-    const hit = inYear.length > 0 ? priceInForce(inYear, question.date) : null;
+    const near = allQuestions.filter((x) => x.productId === id && nearYears(x, question));
+    const hit = priceInForce(near, question.date);
     if (hit) lines.push({ label, value: formatPrice(hit.price), period: formatPeriod(hit.date) });
   }
   return lines.length > 0 ? lines : null;
@@ -67,8 +69,9 @@ export function buildEverydayHint(question, allQuestions, rng = Math.random) {
   const cands = [];
   for (const id of EVERYDAY_HINT_IDS) {
     if (id === question.productId) continue;
-    const inYear = allQuestions.filter((x) => x.productId === id && x.year === question.year);
-    const hit = inYear.length > 0 ? priceInForce(inYear, question.date) : null;
+    const near = allQuestions.filter((x) => x.productId === id && nearYears(x, question));
+    // Strict: an everyday price dated after the question reads like a hint from the future.
+    const hit = priceInForce(near, question.date, true);
     if (hit) cands.push({ id, hit });
   }
   if (cands.length === 0) return null;

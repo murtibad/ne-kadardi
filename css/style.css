@@ -1647,3 +1647,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* Second player review (55+ readers): secondary actions and source lines no smaller than 15-16 px. */
 .hint-btn, .skip-btn, .ask-q .link-btn { font-size: 1rem; }
 .source { font-size: 0.9375rem; }
+
+/* Third player review: a thick red ring on the empty price box read like an error. Focus is
+   a calm dark ring; red stays for the invalid state only. */
+.guess-field:focus-within { outline: 2px solid var(--ink); outline-offset: 2px; }
+.hint-row small { font-weight: 400; color: var(--muted-on-paper); }
