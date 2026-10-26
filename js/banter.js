@@ -1,5 +1,6 @@
 // Banter, easter eggs and receipt comments. Pure module, no DOM access.
 import { formatNumber } from './format.js';
+import { pickFresh } from './cashier.js';
 
 export const OVER_COMMENTS = [
   'O parayla o zaman bakkalı komple alırdın!',
@@ -517,29 +518,28 @@ const YEAR_ANCHORS = {
   2023: 'Cumhuriyetimizin yüzüncü yaşını gururla kutladığımız tarihi yıl.',
 };
 
-function pick(pool, rng = Math.random) {
-  const index = Math.floor(rng() * pool.length);
-  return pool[Math.max(0, Math.min(index, pool.length - 1))];
+function pick(pool, rng = Math.random, recent = []) {
+  return pickFresh(pool, recent, rng);
 }
 
 /**
  * Return one contextual comment for the receipt result screen or null.
  * Prioritizes product easter eggs (when available, 45% chance), then extreme over/under guesses.
  */
-export function contextComment(params, rng = Math.random) {
+export function contextComment(params, rng = Math.random, recent = []) {
   const { direction, factor, productId, amount = false } = params ?? {};
   if (productId && PRODUCT_POOLS[productId]) {
     if (rng() < 0.45) {
-      return pick(PRODUCT_POOLS[productId], rng);
+      return pick(PRODUCT_POOLS[productId], rng, recent);
     }
   }
 
   if (direction === 'over' && factor >= 2.5) {
-    return pick(amount ? AMOUNT_OVER_COMMENTS : OVER_COMMENTS, rng);
+    return pick(amount ? AMOUNT_OVER_COMMENTS : OVER_COMMENTS, rng, recent);
   }
 
   if (direction === 'under' && factor >= 2.5) {
-    return pick(amount ? AMOUNT_UNDER_COMMENTS : UNDER_COMMENTS, rng);
+    return pick(amount ? AMOUNT_UNDER_COMMENTS : UNDER_COMMENTS, rng, recent);
   }
 
   return null;
@@ -548,8 +548,8 @@ export function contextComment(params, rng = Math.random) {
 /**
  * Return a random cashier comment when the player requests a hint.
  */
-export function hintComment(rng = Math.random) {
-  return pick(HINT_LINES, rng);
+export function hintComment(rng = Math.random, recent = []) {
+  return pick(HINT_LINES, rng, recent);
 }
 
 /**
