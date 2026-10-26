@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.117.0] - 2026-10-26
+### Added
+- "Günün Fişi" on the menu: the same 5 everyday questions for everyone each day (seeded by the local date, different categories, `js/daily.js`). Progress is kept on the device (`ne-kadardi-daily`), leaving to the menu can be resumed, a skipped daily question counts 0. After the fifth answer the receipt shows "GÜNÜN FİŞİ · 26 EKİM" with the total out of 500 and a share text without prices or product names (coloured squares, total, streak).
+- The menu card reads "Bugün 2/5 soru · Devam et" during the run and "Bugün 412/500 · Yarın yeni fiş" with "Paylaş" once done.
+
 ## [0.116.0] - 2026-10-26
 ### Added
 - Daily streak ("günlük seri"): days in a row with at least one answer, kept on the device (`ne-kadardi-streak`). The menu card shows "🔥 3 gün üst üste", the menu nudges "Serin bozulmasın: bugün bir soru çöz." while today is still open, and the first answer of the day adds "🔥 3 gün" under the receipt.

@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
@@ -637,7 +637,6 @@ function renderResult(q, r) {
   const avg = Math.round(state.total / state.played);
   const leftForCard = questionsUntilCard((state.visitAnswers ?? []).length);
   // One line on a 360 px phone: the best score already sits on the home menu.
-  const cardHint = leftForCard > 0 ? ` · karneye ${leftForCard} soru` : '';
   const streakHint = r.streakBump >= 2 ? ` · 🔥 ${r.streakBump} gün` : '';
   // During the daily receipt the countdown is the receipt itself, not the every-5 card.
   const cardHint = state.daily ? ` · günün fişi ${state.daily.scores.length}/${state.daily.ids.length}`
@@ -1133,9 +1132,11 @@ async function renderReportCard() {
     $('r-card-title').textContent = dailyTitle(key);
     $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
     $('r-card-avg').textContent = `Toplam: ${total}/500`;
+    $('r-card-share').textContent = 'Fişini paylaş →';
     $('r-card').hidden = false;
     return;
   }
+  $('r-card-share').textContent = 'Karneni paylaş →';
   const answers = state.visitAnswers ?? [];
   // Skip the dynamic import until a fifth answer actually needs the card.
   if (questionsUntilCard(answers.length) !== 0) return;
@@ -1479,7 +1480,8 @@ function onHashChange() {
     } else {
       const ids = saved?.ids.length
         ? saved.ids
-        : dailyQuestions(state.all, key, categoryOf).map((q) => q.id);
+        // Everyone compares the same receipt, so it is built from everyday products only.
+        : dailyQuestions(state.all.filter((q) => FOLLOW_UP_IDS.includes(q.productId)), key, categoryOf).map((q) => q.id);
       const scores = saved ? [...saved.scores] : [];
       state.daily = { key, ids, index: scores.length, scores };
       const [productId, date] = (ids[state.daily.index] ?? '').split('@');
@@ -1690,6 +1692,7 @@ async function init() {
       }
       // Skipping the last one has no result screen for the card, so the menu offers the share.
       state.daily = null;
+      state.question = null; // otherwise "Fiyat Tahmini" would reopen the skipped daily question
       syncSkipBtn();
       location.hash = '#';
       return;
