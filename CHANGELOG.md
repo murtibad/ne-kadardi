@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.122.0] - 2026-10-26
+### Added
+- Two-step hint (owner's decision): the first hint shows a random everyday price from the same year (Halk Ekmek, simit, benzin, Big Mac, sigara, mektup pulu, sinema bileti …, never the asked product, another category when possible); "Bir ipucu daha (dolar ve asgari ücret)" adds the dollar rate and the minimum wage. One hint costs 20%, two cost 40%.
+
 ## [0.121.0] - 2026-10-26
 ### Changed
 - The every-fifth-answer "5 SORULUK KARNE" is gone (owner: it felt pointless; Günün Fişi already sums up five questions). js/report-card.js and the "karneye N soru" countdown are removed.
