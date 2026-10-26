@@ -253,6 +253,7 @@ function ensureStage(dialogEl, list, fromYear, toYear) {
         <div class="intro-final">
           <h2 id="intro-title" class="intro-tagline">Geçmişin fiyatlarını tahmin et.</h2>
           <p class="intro-trust-line"><span class="intro-check" aria-hidden="true">✓</span> Her fiyatın kaynağı var</p>
+          <p class="intro-trust-line"><span class="intro-check" aria-hidden="true">✓</span> Her gün herkese aynı 5 soru: Günün Fişi</p>
           <div class="intro-actions"></div>
         </div>
       </div>`;

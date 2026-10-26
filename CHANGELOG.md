@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.120.1] - 2026-10-26
+### Changed
+- The intro's last frame tells new players about the daily receipt: "✓ Her gün herkese aynı 5 soru: Günün Fişi".
+
 ## [0.120.0] - 2026-10-26
 ### Changed
 - One share button on the result: the sticky bar is "Arkadaşına gönder" | "Sonraki soru →" on a single line; the first opens a small sheet "Ne göndermek istersin?" with "Sonucumu gönder" (image), "Bu soruyu sor" (no answer, with your score) and "Resmi telefona kaydet". The separate İndir button and the receipt link "Bu soruyu arkadaşına sor →" are gone (owner approved).
