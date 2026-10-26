@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.119.1] - 2026-10-26
+### Changed
+- Shorter result receipt: the "O gün / Bugün" bar box under the purchasing-power sentence is gone; it repeated the same two numbers (player review; owner approved shortening the page). `buildContextModel` stays as the sentence's model.
+
 ## [0.119.0] - 2026-10-26
 ### Added
 - Günün Fişi remembers your finished receipts on the device (`ne-kadardi-daily-log`, last 60 days): the menu card says "Dünkü fişin 331/500 · en iyin 412" before today's run and the receipt total adds "dünden +40".
