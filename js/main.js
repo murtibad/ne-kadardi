@@ -16,8 +16,9 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
-import { initShareUi, resetShareBtn, closePreview, askFriend, shareReportCard, shareTextWithStatus } from './share-ui.js';
-import { dayKey, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from './daily.js';
+import { initShareUi, resetShareBtn, closePreview, askFriend, shareReportCard } from './share-ui.js';
+import { dayKey } from './daily.js';
+import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu } from './daily-ui.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -61,59 +62,6 @@ function saveStreak() {
     localStorage.setItem(STREAK_KEY, JSON.stringify(state.streak));
   } catch(e) {}
 }
-const DAILY_KEY = 'ne-kadardi-daily';
-
-function loadDaily() {
-  try {
-    const data = JSON.parse(localStorage.getItem(DAILY_KEY));
-    if (data && data.key === dayKey() && Array.isArray(data.ids) && Array.isArray(data.scores)) {
-      return {
-        key: data.key,
-        ids: data.ids.filter((x) => typeof x === 'string'),
-        scores: data.scores.filter(Number.isFinite),
-      };
-    }
-  } catch(e) {}
-  return null;
-}
-
-function saveDaily(daily) {
-  try {
-    localStorage.setItem(DAILY_KEY, JSON.stringify({
-      key: daily.key,
-      ids: daily.ids,
-      scores: daily.scores,
-    }));
-  } catch(e) {}
-  // Both finish paths (5th answer, last skip) save here, so the history is written once per run.
-  if (daily.ids.length > 0 && daily.scores.length >= daily.ids.length) recordDailyTotal(daily.key, daily.scores);
-}
-
-const DAILY_LOG_KEY = 'ne-kadardi-daily-log';
-
-function loadDailyLog() {
-  try {
-    return trimLog(JSON.parse(localStorage.getItem(DAILY_LOG_KEY)));
-  } catch(e) {}
-  return {};
-}
-
-function recordDailyTotal(key, scores) {
-  try {
-    const log = loadDailyLog();
-    log[key] = scores.reduce((s, n) => s + n, 0);
-    localStorage.setItem(DAILY_LOG_KEY, JSON.stringify(trimLog(log)));
-  } catch(e) {}
-}
-
-function syncSkipBtn() {
-  const btn = $('skip-btn');
-  if (!btn) return;
-  btn.innerHTML = state.daily
-    ? 'Bu soruyu geç <span class="skip-note">(0 puan sayılır)</span>'
-    : 'Bu soruyu geç <span class="skip-note">(puanın düşmez)</span>';
-}
-
 function loadSeen() {
   try {
     const ids = JSON.parse(localStorage.getItem(SEEN_KEY));
@@ -196,14 +144,11 @@ function showMessage(text) {
   show('message-screen');
 }
 
-// True on the turn that shows the daily receipt: the bar button then shares it directly.
-let dailyEndTurn = false;
-
 // `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
 // adding `date` pins the exact question from a shared `?soru=` link.
 function nextQuestion(productId = null, date = null) {
   $('next-btn').textContent = 'Sonraki soru →';
-  dailyEndTurn = false;
+  setDailyEndTurn(false);
   $('r-card-share').hidden = false;
   stopPrinting();
   state.archiveFromResult = false;
@@ -323,11 +268,7 @@ function onGuess(event) {
   saveSeen();
   // This visit's answers feed the every-fifth-question report card (not saved).
   (state.visitAnswers ??= []).push({ title: questionTitle(q), period: formatPeriod(q.date), score: state.result.score });
-  if (state.daily) {
-    state.daily.scores.push(state.result.score);
-    state.daily.index = state.daily.scores.length;
-    saveDaily(state.daily);
-  }
+  recordDailyAnswer(state.result.score);
   saveSession();
   hapticIfAllowed(10);
   renderResult(q, state.result);
@@ -883,33 +824,8 @@ function closeIntro() {
 let reportCardModule = null;
 async function renderReportCard() {
   $('r-card').hidden = true;
-  if (state.daily) {
-    if (state.daily.scores.length < state.daily.ids.length) return;
-    const { key, ids, scores } = state.daily;
-    state.daily = null;
-    syncSkipBtn();
-    // The run is over: a reload now should not reopen #gunun-fisi (that would share again).
-    if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
-    const lines = ids.map((id, i) => {
-      const dq = state.all.find((x) => x.id === id);
-      const label = dq ? `${formatPeriod(dq.date)} · ${questionTitle(dq)}` : id;
-      return { label, score: scores[i] ?? 0 };
-    });
-    const total = scores.reduce((s, n) => s + n, 0);
-    state.reportCard = { daily: true, key, scores };
-    $('r-card-title').textContent = dailyTitle(key);
-    $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
-    $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
-    // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
-    dailyEndTurn = true;
-    $('r-card-share').hidden = true;
-    resetShareBtn();
-    // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
-    $('next-btn').textContent = 'Serbest oyuna geç →';
-    $('r-card').hidden = false;
-    return;
-  }
-  dailyEndTurn = false;
+  if (renderDailyCard()) return;
+  setDailyEndTurn(false);
   $('r-card-share').hidden = false;
   resetShareBtn();
   $('r-card-share').textContent = 'Karneni paylaş →';
@@ -984,22 +900,7 @@ function renderHome() {
   $('m-tahmin').textContent = state.played > 0
     ? `${state.played} soru · ortalama puan ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '') + streakMeta
     : alive ? `🔥 ${state.streak.count} gün üst üste` : '';
-  // Leaving a daily run for the menu ends it; the daily card picks it up from storage.
-  if (state.daily) {
-    state.daily = null;
-    state.question = null;
-    syncSkipBtn();
-  }
-  const daily = loadDaily();
-  const dailyDone = daily && daily.ids.length > 0 && daily.scores.length >= daily.ids.length;
-  const dailyInProgress = daily && daily.scores.length > 0 && daily.scores.length < daily.ids.length;
-  $('m-daily').textContent = dailyDone
-    ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn()}`
-    : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru`
-      : dailyMenuMeta(dailyStats(loadDailyLog(), dayKey()));
-  const dailyGo = dailyDone ? 'Paylaş →' : dailyInProgress ? 'Devam et →' : 'Başla →';
-  $('m-daily-go').textContent = dailyGo;
-  $('m-daily-go').dataset.label = dailyGo;
+  renderDailyMenu();
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
@@ -1062,29 +963,7 @@ function onHashChange() {
   if (hash === '#arsiv') {
     renderTimelineScreen();
   } else if (hash === '#gunun-fisi') {
-    const key = dayKey();
-    const saved = loadDaily();
-    if (saved && saved.ids.length > 0 && saved.scores.length >= saved.ids.length) {
-      history.replaceState(null, '', '#');
-      renderHome();
-      const text = dailyShareText({
-        key: saved.key,
-        scores: saved.scores,
-        url: location.origin + location.pathname,
-        streak: state.streak?.count ?? 0,
-      });
-      shareTextWithStatus(text, $('m-daily-go'));
-    } else {
-      const ids = saved?.ids.length
-        ? saved.ids
-        // Everyone compares the same receipt, so it is built from everyday products only.
-        : dailyQuestions(state.all.filter((q) => FOLLOW_UP_IDS.includes(q.productId)), key, categoryOf).map((q) => q.id);
-      const scores = saved ? [...saved.scores] : [];
-      state.daily = { key, ids, index: scores.length, scores };
-      const [productId, date] = (ids[state.daily.index] ?? '').split('@');
-      // The address stays #gunun-fisi during the run, so a reload picks the run up from storage.
-      nextQuestion(productId, date);
-    }
+    startOrShareDaily();
   } else if (hash === '#tahmin') {
     if (!state.question) nextQuestion();
     else {
@@ -1239,7 +1118,8 @@ async function init() {
     showMessage('Henüz doğrulanmış fiyat yok. Kaynaklı veri eklendiğinde sorular burada görünecek.');
     return;
   }
-  initShareUi({ getState: () => state, isDailyEndTurn: () => dailyEndTurn, getReportCardModule: () => reportCardModule });
+  initDailyUi({ getState: () => state, nextQuestion, renderHome });
+  initShareUi({ getState: () => state, isDailyEndTurn, getReportCardModule: () => reportCardModule });
   $('ask-q-btn').dataset.label = $('ask-q-btn').textContent;
   $('guess-form').addEventListener('submit', onGuess);
   const guessField = document.querySelector('#question-screen .guess-field');
@@ -1255,28 +1135,14 @@ async function init() {
   });
   // Skipping is free: no score, no round counted, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
-    if (state.daily) {
-      state.daily.scores.push(0);
-      state.daily.index = state.daily.scores.length;
-      saveDaily(state.daily);
-      if (state.daily.index < state.daily.ids.length) {
-        const [productId, date] = state.daily.ids[state.daily.index].split('@');
-        nextQuestion(productId, date);
-        return;
-      }
-      // Skipping the last one has no result screen for the card, so the menu offers the share.
-      state.daily = null;
-      state.question = null; // otherwise "Fiyat Tahmini" would reopen the skipped daily question
-      syncSkipBtn();
-      location.hash = '#';
-      return;
-    }
+    if (skipDaily()) return;
     nextQuestion(); // its barcode beep doubles as the skip sound
   });
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
-    if (state.daily && state.daily.index < state.daily.ids.length) {
-      const [productId, date] = state.daily.ids[state.daily.index].split('@');
+    const dailyId = dailyNextId();
+    if (dailyId) {
+      const [productId, date] = dailyId.split('@');
       nextQuestion(productId, date);
       return;
     }

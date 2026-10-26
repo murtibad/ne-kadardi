@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.120.5] - 2026-10-26
+### Changed
+- Code: the Günün Fişi wiring (storage, menu card, run, end card) moved from js/main.js into js/daily-ui.js (main.js 1349 → 1215 lines); no behaviour change, compared with the live 0.120.4 site.
+
 ## [0.120.4] - 2026-10-26
 ### Changed
 - Today's dollar, euro and pound: TCMB indicative selling rates of 26.10.2026 (49,7627 · 55,7542 · 66,5656).
