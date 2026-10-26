@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.110.0] - 2026-10-26
+### Changed
+- Every product now has its own four receipt lines (76 products; 50 were missing). First drafts by Gemini 4 Argon, Claude Opus in Antigravity, Gemini Flash and Claude; then Murti asked for less "AI-sounding" lines and more everyday Turkish humour, so Claude Opus rewrote all 304 in a coffeehouse tone (dayı, komşu teyze, çay ocağı, bayram), with "abi/bilader/gardaş" in only about one line in ten. No prices, numbers or direction assumptions; respectful on fitre and kurban; checked by script (≤ 65 characters, four per product).
+
 ## [0.109.0] - 2026-10-26
 ### Added
 - New product `kpss-onlisans`: KPSS önlisans exam fee from ÖSYM guides, every session 2010-2026 (35 · 35 · 40 · 55 · 60 · 80 · 130 · 350 · 800).
