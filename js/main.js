@@ -1205,11 +1205,17 @@ function registerServiceWorker() {
       .catch(() => {});
     return;
   }
-  // Wait for 'load' so precaching does not compete with the first screen for bandwidth.
+  // Precaching re-downloads every file once (cache: 'reload'), about 300 KB on a first visit.
+  // Wait for 'load' and then a quiet moment, so it does not compete with the menu, the intro
+  // and the fonts on a slow phone; offline support only matters from the second visit on.
   const register = () => navigator.serviceWorker.register('sw.js')
     .catch(err => console.warn('Service worker:', err));
-  if (document.readyState === 'complete') register();
-  else window.addEventListener('load', register, { once: true });
+  const later = () => {
+    if ('requestIdleCallback' in window) requestIdleCallback(register, { timeout: 8000 });
+    else setTimeout(register, 4000);
+  };
+  if (document.readyState === 'complete') later();
+  else window.addEventListener('load', later, { once: true });
 }
 
 registerServiceWorker();
