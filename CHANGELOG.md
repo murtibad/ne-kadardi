@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.122.1] - 2026-10-26
+### Changed
+- Faster first visit on slow phones (Sonnet audit at Slow 4G, 4x CPU): the offline cache is set up only after the page has loaded and gone quiet, so its ~300 KB precache (about 200 KB of it files the page had just loaded) no longer competes with the menu, the intro and the fonts.
+- Google Fonts request drops the unused optical-size axis and Space Mono italics (DM Sans as one variable file): about 40 KB less on a first visit.
+
 ## [0.122.0] - 2026-10-26
 ### Added
 - Two-step hint (owner's decision): the first hint shows a random everyday price from the same year (Halk Ekmek, simit, benzin, Big Mac, sigara, mektup pulu, sinema bileti …, never the asked product, another category when possible); "Bir ipucu daha (dolar ve asgari ücret)" adds the dollar rate and the minimum wage. One hint costs 20%, two cost 40%.
