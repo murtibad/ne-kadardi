@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod, shortTitle } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFromCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFromCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
@@ -543,42 +543,6 @@ function renderResultImage(q) {
 }
 
 // Decorative before/after bars under the context sentence (the sentence stays the accessible text).
-function renderContextBars(model) {
-  const box = $('r-context-bars');
-  const hasBars = Boolean(model && model.then != null && model.now != null);
-  box.hidden = !hasBars;
-  box.replaceChildren();
-  $('r-context').classList.toggle('has-bars', hasBars);
-  if (!hasBars) return;
-  const max = Math.max(model.then, model.now) || 1;
-  // More items per wage is better; more wages per item is worse; a share says which way itself.
-  const higherIsBetter = model.kind === 'count' || (model.kind === 'share' && model.better === 'higher');
-  const better = higherIsBetter ? model.now >= model.then : model.now <= model.then;
-  const fmt = (v, unit) => {
-    if (model.kind === 'count') return `${formatNumber(v)} ${unit}`;
-    if (model.kind === 'share') return `%${formatNumber(Math.round(v * 100))}`;
-    return `${formatRatio(v)} asgari ücret`;
-  };
-  [['O gün', model.then, '', model.unit], ['Bugün', model.now, model.now === model.then ? '' : better ? 'up' : 'down', model.nowUnit]].forEach(([label, value, tone, unit]) => {
-    const row = document.createElement('div');
-    row.className = 'ctx-row';
-    const name = document.createElement('span');
-    name.className = 'ctx-label';
-    name.textContent = label;
-    const track = document.createElement('span');
-    track.className = 'ctx-track';
-    const bar = document.createElement('span');
-    bar.className = `ctx-bar ${tone}`.trim();
-    bar.style.width = `${Math.max(4, (value / max) * 100)}%`;
-    track.append(bar);
-    const num = document.createElement('span');
-    num.className = 'ctx-value';
-    num.textContent = fmt(value, unit);
-    row.append(name, track, num);
-    box.append(row);
-  });
-}
-
 function renderResult(q, r) {
   stopCountUp();
   $('r-stamp').classList.remove('stamped');
@@ -656,7 +620,6 @@ function renderResult(q, r) {
   const contextText = buildContextLine(q, state.all);
   $('r-context').textContent = contextText || '';
   $('r-context').hidden = !contextText;
-  renderContextBars(buildContextModel(q, state.all));
 
   const taxText = buildTaxLine(q);
   $('r-tax').textContent = taxText || '';
