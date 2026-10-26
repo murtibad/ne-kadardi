@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildHint, applyHintPenalty, HINT_FACTOR } from '../js/hint.js';
+import { buildHint, buildEverydayHint, EVERYDAY_HINT_IDS, applyHintPenalty, HINT_FACTOR } from '../js/hint.js';
 
 const all = [
   { productId: 'dolar', year: 2012, date: '2012-01-02', price: 1.8 },
@@ -27,4 +27,39 @@ test('hint skips missing products and the hint products themselves', () => {
 test('penalty only applies when a hint was used', () => {
   assert.equal(applyHintPenalty(100, false), 100);
   assert.equal(applyHintPenalty(100, true), Math.round(100 * HINT_FACTOR));
+});
+
+test('two hints cost 40% and true stays backward compatible', () => {
+  assert.equal(applyHintPenalty(100, 1), 80);
+  assert.equal(applyHintPenalty(100, 2), 60);
+  assert.equal(applyHintPenalty(100, true), 80);
+  assert.equal(applyHintPenalty(100, 0), 100);
+});
+
+const everyday = [
+  { productId: 'simit', year: 2020, date: '2020-06', price: 4 },
+  { productId: 'simit', year: 2020, date: '2020-01', price: 3 },
+  { productId: 'benzin', year: 2020, date: '2020-01', price: 6 },
+  { productId: 'iphone', year: 2020, date: '2020-01', price: 9000 },
+];
+
+test('everyday hint picks a same-year everyday product, never the question itself', () => {
+  const h = buildEverydayHint({ productId: 'benzin', year: 2020 }, everyday, () => 0);
+  assert.equal(h.id, 'simit');
+  assert.equal(h.label, 'Simit');
+  assert.match(h.value, /3/); // earliest date of the year
+  assert.equal(h.period, 'Ocak 2020');
+  assert.equal(buildEverydayHint({ productId: 'iphone', year: 2019 }, everyday), null);
+  assert.equal(buildEverydayHint({ productId: 'dolar', year: 2020 }, everyday), null);
+  assert.ok(EVERYDAY_HINT_IDS.includes('big-mac'));
+});
+
+test('everyday hint prefers another category, falls back to the same one', () => {
+  const data = [
+    { productId: 'simit', year: 2020, date: '2020-01', price: 3 },
+    { productId: 'big-mac', year: 2020, date: '2020-01', price: 20 },
+    { productId: 'spotify', year: 2020, date: '2020-01', price: 15 },
+  ];
+  assert.equal(buildEverydayHint({ productId: 'ekmek', year: 2020 }, data, () => 0.99).id, 'spotify');
+  assert.equal(buildEverydayHint({ productId: 'ekmek', year: 2020 }, data.slice(0, 2), () => 0.99).id, 'big-mac');
 });
