@@ -1,5 +1,5 @@
 // Game logic: question selection and scoring. Pure functions, no DOM access.
-import { formatRatio } from './format.js';
+import { formatRatio, formatNumber } from './format.js';
 
 const PERFECT_FACTOR = 1.1; // within 10% counts as a perfect guess
 const ZERO_FACTOR = 5; // 5x off (either way) scores zero
@@ -200,11 +200,11 @@ function modelName(entry) {
 }
 
 function count(n) {
-  return n.toLocaleString('tr-TR');
+  return formatNumber(n);
 }
 
 function percent(share) {
-  return `%${Math.round(share * 100).toLocaleString('tr-TR')}`;
+  return `%${formatNumber(Math.round(share * 100))}`;
 }
 
 // Turkish possessive after a number follows how its last word is read aloud: %49'u (dokuz),

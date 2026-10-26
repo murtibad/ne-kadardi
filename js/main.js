@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, escapeHTML } from './format.js';
+import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML } from './format.js';
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -427,8 +427,8 @@ function renderContextBars(model) {
   const higherIsBetter = model.kind === 'count' || (model.kind === 'share' && model.better === 'higher');
   const better = higherIsBetter ? model.now >= model.then : model.now <= model.then;
   const fmt = (v, unit) => {
-    if (model.kind === 'count') return `${v.toLocaleString('tr-TR')} ${unit}`;
-    if (model.kind === 'share') return `%${Math.round(v * 100).toLocaleString('tr-TR')}`;
+    if (model.kind === 'count') return `${formatNumber(v)} ${unit}`;
+    if (model.kind === 'share') return `%${formatNumber(Math.round(v * 100))}`;
     return `${formatRatio(v)} asgari ücret`;
   };
   [['O gün', model.then, '', model.unit], ['Bugün', model.now, model.now === model.then ? '' : better ? 'up' : 'down', model.nowUnit]].forEach(([label, value, tone, unit]) => {
