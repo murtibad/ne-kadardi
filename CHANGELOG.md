@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.117.3] - 2026-10-26
+### Changed
+- The Günün Fişi card has an outlined "Başla" button, so the menu has a single red call to action (Fiyat Tahmini).
+- Footer: "Nasıl çalışıyoruz? · Hata görürsen bildir" sits on its own line, so a lone "·" no longer ends a line on phones.
+
 ## [0.117.2] - 2026-10-26
 ### Fixed
 - On a report card turn (every fifth answer and the end of Günün Fişi) the page scrolls just enough after the tear-off to show the card above the sticky buttons. README lists the daily receipt, streak and the other new features.
