@@ -158,6 +158,7 @@ export const COUNT_UNITS = {
   'kidem-tavani': 'kıdem tazminatı tavanı',
   'tmo-bugday': 'kilo buğday (devletin alım fiyatıyla)',
   'findik-alim': 'kilo kabuklu fındık (devletin alım fiyatıyla)',
+  'cig-sut': 'litre çiğ süt (çiftçinin satış fiyatıyla)',
   'anadolu-otoyolu': 'tek yön İstanbul-Ankara otoyol geçişi',
   'iski-su': 'ton musluk suyu',
   'yurtdisi-cikis-harci': 'yurt dışı çıkış harcı',

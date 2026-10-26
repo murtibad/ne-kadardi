@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.113.0] - 2026-10-26
+### Added
+- New product `cig-sut`: raw cow's milk recommended price of the National Dairy Council (USK), per litre, support premium excluded: 2021-01 2,80 · 2021-12 4,70 · 2022-04 5,70 · 2022-10 8,50 · 2024-01 13,50 · 2025-01 17,15 · 2025-10 19,60 · 2026-01 22,22 · 2026-05 24,30 (each two news domains; three checked on the page). Milk can icon, four receipt lines. 78 products.
+
 ## [0.112.0] - 2026-10-26
 ### Added
 - "Bu soruyu arkadaşına sor" on the result now carries your score (`&p=86`, never the price): the friend sees "Bir arkadaşın bu sorudan 86 puan aldı. Sen kaç alırsın?" and, after guessing, "Arkadaşın: 86 puan · Sen: 92 puan — geçtin!". The question-card link stays score-free.

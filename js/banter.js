@@ -420,6 +420,12 @@ export const PRODUCT_POOLS = {
     'Patoz sesi gelince bütün köy harman yerine toplanır.',
     'Dik yamaçta çuval taşımayan, fındığın kıymetini bilmez.',
   ],
+  'cig-sut': [
+    'Sağım bitmeden süt kamyonu köy meydanında korna çalar.',
+    'Konseyin kararı açıklanınca kahvede okey masası dağılır.',
+    'Evin hanımının ayırdığı süt yoğurt olup komşuya gider.',
+    'Yem parası konuşulurken inekler ahırdan kulak kabartır.',
+  ],
   'emekli-en-dusuk-aylik': [
     'Maaş yatar yatmaz torun harçlığı ilk kalem olur.',
     'Ay başında bankamatik önü emeklilerin buluşma yeri.',
