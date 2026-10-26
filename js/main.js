@@ -227,6 +227,7 @@ function setBtnStatus(btnId, text) {
 // `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
 // adding `date` pins the exact question from a shared `?soru=` link.
 function nextQuestion(productId = null, date = null) {
+  $('next-btn').textContent = 'Sonraki soru →';
   stopPrinting();
   state.archiveFromResult = false;
   state.friendScore = null;
@@ -1150,6 +1151,8 @@ async function renderReportCard() {
     $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
     $('r-card-avg').textContent = `Toplam: ${total}/500`;
     $('r-card-share').textContent = 'Fişini paylaş →';
+    // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
+    $('next-btn').textContent = 'Serbest oyuna geç →';
     $('r-card').hidden = false;
     return;
   }

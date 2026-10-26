@@ -287,9 +287,10 @@ test('openerFor serves the oldest question of each opener product, then stops', 
     { id: 'e2', productId: 'ekmek', date: '2020-01' }, { id: 'e1', productId: 'ekmek', date: '2019-06' },
     { id: 'b1', productId: 'benzin', date: '2016-01' },
   ];
-  assert.equal(openerFor(qs, 0).id, 'e1');
-  assert.equal(openerFor(qs, 1).id, 'b1');
-  assert.equal(openerFor(qs, 2), null); // big-mac missing here
+  assert.equal(OPENER_IDS[0], 'benzin'); // a nationwide price, not the Istanbul-subsidised 0,75 TL bread
+  assert.equal(openerFor(qs, 0).id, 'b1');
+  assert.equal(openerFor(qs, 1), null); // big-mac missing here
+  assert.equal(openerFor(qs, OPENER_IDS.indexOf('ekmek')).id, 'e1');
   assert.equal(openerFor(qs, OPENER_IDS.length), null);
 });
 

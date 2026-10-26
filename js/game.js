@@ -390,7 +390,9 @@ export function buildContextModel(q, allQuestions) {
 
 // A first-time player meets the most talked-about prices first, oldest year each, so the first
 // few receipts land the "it was HOW much?" moment: bread, fuel, Big Mac, iPhone, dollar, Netflix.
-export const OPENER_IDS = ['ekmek', 'benzin', 'big-mac', 'iphone', 'dolar', 'netflix'];
+// Benzin opens: a nationwide price most people land within 2x. Halk Ekmek (0,75 TL, an Istanbul
+// subsidy) made the very first answer a likely 0 and moved to the middle.
+export const OPENER_IDS = ['benzin', 'big-mac', 'dolar', 'ekmek', 'iphone', 'netflix'];
 
 /** The opener for position `index` (oldest question of that product), or null when past the list or missing. */
 export function openerFor(questions, index) {
