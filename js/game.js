@@ -162,7 +162,7 @@ export const COUNT_UNITS = {
 
 // Fees, fines and tolls are paid, not bought: "3 ehliyet harcı ödenebiliyordu".
 const PAID = new Set([
-  'yks', 'ales', 'yds', 'dgs', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'alkol-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'ispark-otopark', 'yht-bilet', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
+  'yks', 'ales', 'yds', 'dgs', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'alkol-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'ispark-otopark', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',
   'spotify', 'netflix', 'youtube-premium', 'amazon-prime', 'disney-plus', 'iski-su', 'okul-servisi', 'mtv', 'ehliyet-esinav', 'anadolu-otoyolu', 'aile-cuzdani', 'surucu-belgesi-bedeli', 'arac-tescil-belgesi', 'kimlik-karti',
@@ -194,6 +194,27 @@ export function actualLabel(productId) {
 }
 
 /** Count word for the purchasing-power line: the product's plain name, else the short unit. */
+// Some fees read better as what they let you do: "13 kez YDS'ye girilebiliyordu",
+// "303 saat park edilebiliyordu". `stem` takes -ebiliyordu / -ebiliyor / -emiyor.
+const ACTIONS = {
+  yks: { unit: 'kez', object: "YKS'ye", stem: 'giril' },
+  ales: { unit: 'kez', object: "ALES'e", stem: 'giril' },
+  'kpss-lisans': { unit: 'kez', object: "KPSS'ye", stem: 'giril' },
+  yds: { unit: 'kez', object: "YDS'ye", stem: 'giril' },
+  dgs: { unit: 'kez', object: "DGS'ye", stem: 'giril' },
+  'ispark-otopark': { unit: 'saat', object: '', stem: 'park edil' },
+};
+
+function actionLine(a, m, today) {
+  const obj = a.object ? `${a.object} ` : '';
+  if (today) return `Bugün 1 asgari ücretle ${count(m.then)} ${a.unit} ${obj}${a.stem}ebiliyor.`;
+  const past = `O tarihte 1 asgari ücretle ${count(m.then)} ${a.unit} ${obj}${a.stem}ebiliyordu`;
+  if (m.now == null) return `${past}.`;
+  return m.now >= 1
+    ? `${past}, bugün ${count(m.now)} ${a.unit} ${a.stem}ebiliyor.`
+    : `${past}; bugün 1 asgari ücretle bir ${a.unit} bile ${a.stem}emiyor.`;
+}
+
 export function getCountUnit(q) {
   return COUNT_UNITS[q.productId] || getShortUnit(q.unit);
 }
@@ -255,6 +276,9 @@ function wageInForce(date, wages) {
 export function buildContextLine(q, allQuestions) {
   const m = buildContextModel(q, allQuestions);
   if (!m) return null;
+
+  const action = m.kind === 'count' ? ACTIONS[q.productId] : null;
+  if (action) return actionLine(action, m, m.today);
 
   if (m.today) {
     if (m.kind === 'share') return `${m.name} bugün asgari ücretin ${percentOf(m.then)} kadar.`;

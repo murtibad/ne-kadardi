@@ -275,3 +275,12 @@ test('openerFor serves the oldest question of each opener product, then stops', 
   assert.equal(openerFor(qs, 2), null); // big-mac missing here
   assert.equal(openerFor(qs, OPENER_IDS.length), null);
 });
+
+test('exam fees and car parks read as what they let you do', () => {
+  const yds = { productId: 'yds', name: 'YDS', unit: '1 sınav', date: '2010-03', price: 50, current: { price: 1000 } };
+  assert.equal(buildContextLine(yds, wages), "O tarihte 1 asgari ücretle 10 kez YDS'ye girilebiliyordu, bugün 20 kez girilebiliyor.");
+  const park = { productId: 'ispark-otopark', name: 'İSPARK', unit: '1 saat', date: '2010-03', price: 100, current: { price: 30000 } };
+  assert.equal(buildContextLine(park, wages), 'O tarihte 1 asgari ücretle 5 saat park edilebiliyordu; bugün 1 asgari ücretle bir saat bile park edilemiyor.');
+  const train = { productId: 'yht-bilet', name: 'YHT', unit: '1 bilet', date: '2010-03', price: 100, current: { price: 1000 } };
+  assert.match(buildContextLine(train, wages), /hızlı tren bileti alınabiliyordu/);
+});

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.108.2] - 2026-10-26
+### Changed
+- Purchasing-power line reads as what the money lets you do for exams and the car park: "13 kez YDS'ye girilebiliyordu, bugün 23 kez girilebiliyor" (YKS, ALES, KPSS, YDS, DGS) and "303 saat park edilebiliyordu" (İSPARK), instead of "13 YDS sınav ücreti ödenebiliyordu". Train tickets are bought ("alınabiliyordu"), not paid. Suggested by a Sonnet QA run of the live site, which otherwise found no problems.
+
 ## [0.108.1] - 2026-10-26
 ### Added
 - Product-specific receipt lines for the four new products (İSPARK, YHT, DGS, YDS), four each, written by Gemini Flash and edited by Claude (no prices, no direction assumed).
