@@ -123,3 +123,13 @@ test('cached formatters produce identical results on repeated calls and match fr
   assert.equal(formatNumber(1250000), '1.250.000');
   assert.equal(formatNumber(1250000), '1.250.000');
 });
+
+test('shortTitle keeps short titles and cuts long ones on a word boundary', async () => {
+  const { shortTitle } = await import('../js/format.js');
+  assert.equal(shortTitle('TCMB Gösterge Niteliğindeki Döviz Kurları'), 'TCMB Gösterge Niteliğindeki Döviz Kurları');
+  const long = "Bianet, Ankara'dan sonra İzmir ve İstanbul'da da Halk Ekmek'e zam (08.08.2022)";
+  assert.equal(shortTitle(long, 40), "Bianet, Ankara'dan sonra İzmir ve… (08.08.2022)");
+  assert.equal(shortTitle('a'.repeat(70), 60), `${'a'.repeat(60)}…`);
+  assert.equal(shortTitle('Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-01'), 'Dünya Bankası Pink Sheet (altın, aylık ortalama)…, 2010-01');
+  assert.equal(shortTitle('Şişli, Ümraniye ve Çağlayan öğrencileri için ücretler değişti', 30), 'Şişli, Ümraniye ve Çağlayan…');
+});

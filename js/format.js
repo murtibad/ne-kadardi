@@ -160,3 +160,18 @@ export function readAmount(value) {
 
   return `${parts.join(' ')} ₺`;
 }
+
+/**
+ * Long news headlines take four lines on a phone receipt: cut on a word boundary and keep a
+ * trailing date ("(08.08.2022)", ", 2010-01"), which tells the reader when the price was reported.
+ */
+export function shortTitle(text, max = 48) {
+  const s = String(text ?? '');
+  // A trailing ", 2010-01" or a bracketed part with digits ("(08.08.2022)", "(9 Şubat 2024)") is the date.
+  const m = s.match(/^(.*?)(,\s*[\d.-]+|\s*\([^()]*\d[^()]*\))$/);
+  const [head, date] = m ? [m[1], m[2]] : [s, ''];
+  if (head.length <= max) return s;
+  const cut = head.lastIndexOf(' ', max);
+  const kept = (cut > 0 ? head.slice(0, cut) : head.slice(0, max)).replace(/[\s,.;:–-]+$/, '');
+  return `${kept}…${date}`;
+}

@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod } from './format.js';
+import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod, shortTitle } from './format.js';
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFromCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -644,7 +644,8 @@ function renderResult(q, r) {
   $('r-archive').textContent = isAmount(q.productId) ? 'Yıllar içindeki tutarları →' : 'Bu ürünün fiyat geçmişi →';
   $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; state.archiveFromResult = true; };
   $('r-source').href = q.source.url;
-  $('r-source').textContent = q.source.title;
+  $('r-source').textContent = shortTitle(q.source.title);
+  $('r-source').title = q.source.title;
   const kindLabel = sourceKindLabel(q.source.kind);
   $('r-source-kind').textContent = kindLabel ? ` · ${kindLabel}` : '';
   $('r-source-kind').hidden = !kindLabel;
