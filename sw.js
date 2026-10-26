@@ -22,6 +22,7 @@ const PRECACHE = [
   'js/categories.js',
   'js/confetti.js',
   'js/count-up.js',
+  'js/daily.js',
   'js/fact.js',
   'js/format.js',
   'js/game.js',
