@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
@@ -16,6 +16,7 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText, friendIntroText, compareFriendScore } from './ask-link.js';
+import { dayKey, dailyQuestions, dailyTitle, dailyShareText } from './daily.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -28,7 +29,7 @@ const hapticIfAllowed = (ms) => {
 
 const state = {
   recentProducts: [], seen: new Set(),
-  hinted: false, friendScore: null, raw: null, all: [], timelines: [], question: null, result: null, 
+  hinted: false, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, total: 0, best: 0, round: 0, recentScores: [], 
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
@@ -42,13 +43,6 @@ const RECENT_MAX = 8;
 const SEEN_KEY = 'ne-kadardi-seen';
 const SEEN_MAX = 2000;
 const STREAK_KEY = 'ne-kadardi-streak';
-
-function todayKey(d = new Date()) {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${day}`;
-}
 
 function loadStreak() {
   try {
@@ -67,6 +61,39 @@ function saveStreak() {
   try {
     localStorage.setItem(STREAK_KEY, JSON.stringify(state.streak));
   } catch(e) {}
+}
+const DAILY_KEY = 'ne-kadardi-daily';
+
+function loadDaily() {
+  try {
+    const data = JSON.parse(localStorage.getItem(DAILY_KEY));
+    if (data && data.key === dayKey() && Array.isArray(data.ids) && Array.isArray(data.scores)) {
+      return {
+        key: data.key,
+        ids: data.ids.filter((x) => typeof x === 'string'),
+        scores: data.scores.filter(Number.isFinite),
+      };
+    }
+  } catch(e) {}
+  return null;
+}
+
+function saveDaily(daily) {
+  try {
+    localStorage.setItem(DAILY_KEY, JSON.stringify({
+      key: daily.key,
+      ids: daily.ids,
+      scores: daily.scores,
+    }));
+  } catch(e) {}
+}
+
+function syncSkipBtn() {
+  const btn = $('skip-btn');
+  if (!btn) return;
+  btn.innerHTML = state.daily
+    ? 'Bu soruyu geç <span class="skip-note">(0 puan sayılır)</span>'
+    : 'Bu soruyu geç <span class="skip-note">(puanın düşmez)</span>';
 }
 
 function loadSeen() {
@@ -229,7 +256,10 @@ function nextQuestion(productId = null, date = null) {
   const cat = CATEGORIES.find((c) => c.id === categoryOf(q.productId));
   // Skipped questions do not count, so the number matches "N soru" under the receipt.
   state.round = state.played + 1;
-  $('q-round').textContent = cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
+  $('q-round').textContent = state.daily
+    ? `Günün fişi · ${state.daily.index + 1}/${state.daily.ids.length}`
+    : cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
+  syncSkipBtn();
   $('q-period').textContent = formatPeriod(q.date);
   const anchor = yearAnchor(yearOf(q.date));
   $('q-anchor').textContent = anchor || '';
@@ -294,7 +324,7 @@ function onGuess(event) {
   }
   const q = state.question;
   const scored = scoreGuess(guess, q.price);
-  const today = todayKey();
+  const today = dayKey();
   const firstToday = state.streak?.last !== today;
   state.streak = updateStreak(state.streak, today);
   saveStreak();
@@ -314,6 +344,11 @@ function onGuess(event) {
   saveSeen();
   // This visit's answers feed the every-fifth-question report card (not saved).
   (state.visitAnswers ??= []).push({ title: q.name.replace(/\s*\(.*\)$/, ''), period: formatPeriod(q.date), score: state.result.score });
+  if (state.daily) {
+    state.daily.scores.push(state.result.score);
+    state.daily.index = state.daily.scores.length;
+    saveDaily(state.daily);
+  }
   saveSession();
   hapticIfAllowed(10);
   renderResult(q, state.result);
@@ -538,7 +573,9 @@ function renderResult(q, r) {
   $('r-cashier').textContent = `“${line}”`;
   // The hint slip already showed that year's dollar rate and minimum wage.
   const followPool = r.hinted ? state.all.filter((x) => x.productId !== 'dolar' && x.productId !== 'asgari-ucret') : state.all;
-  const followUp = pickFollowUp(q, followPool, state.recentProducts);
+  const followUp = state.daily && state.daily.scores.length < state.daily.ids.length
+    ? null
+    : pickFollowUp(q, followPool, state.recentProducts);
   const followBtn = $('followup-btn');
   if (followBtn) {
     followBtn.hidden = !followUp;
@@ -600,8 +637,10 @@ function renderResult(q, r) {
   const avg = Math.round(state.total / state.played);
   const leftForCard = questionsUntilCard((state.visitAnswers ?? []).length);
   // One line on a 360 px phone: the best score already sits on the home menu.
-  const cardHint = leftForCard > 0 ? ` · karneye ${leftForCard} soru` : '';
   const streakHint = r.streakBump >= 2 ? ` · 🔥 ${r.streakBump} gün` : '';
+  // During the daily receipt the countdown is the receipt itself, not the every-5 card.
+  const cardHint = state.daily ? ` · günün fişi ${state.daily.scores.length}/${state.daily.ids.length}`
+    : leftForCard > 0 ? ` · karneye ${leftForCard} soru` : '';
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
   $('r-session').innerHTML = `<span>${state.played} soru · ortalama ${avg}${cardHint}${streakHint}</span>`
     + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
@@ -1077,8 +1116,28 @@ function closeIntro() {
 // user activation and refuses navigator.share / clipboard.
 let reportCardModule = null;
 async function renderReportCard() {
-  const answers = state.visitAnswers ?? [];
   $('r-card').hidden = true;
+  if (state.daily) {
+    if (state.daily.scores.length < state.daily.ids.length) return;
+    const { key, ids, scores } = state.daily;
+    state.daily = null;
+    syncSkipBtn();
+    const lines = ids.map((id, i) => {
+      const dq = state.all.find((x) => x.id === id);
+      const label = dq ? `${formatPeriod(dq.date)} · ${questionTitle(dq)}` : id;
+      return { label, score: scores[i] ?? 0 };
+    });
+    const total = scores.reduce((s, n) => s + n, 0);
+    state.reportCard = { daily: true, key, scores };
+    $('r-card-title').textContent = dailyTitle(key);
+    $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
+    $('r-card-avg').textContent = `Toplam: ${total}/500`;
+    $('r-card-share').textContent = 'Fişini paylaş →';
+    $('r-card').hidden = false;
+    return;
+  }
+  $('r-card-share').textContent = 'Karneni paylaş →';
+  const answers = state.visitAnswers ?? [];
   // Skip the dynamic import until a fifth answer actually needs the card.
   if (questionsUntilCard(answers.length) !== 0) return;
   try {
@@ -1097,23 +1156,34 @@ async function renderReportCard() {
   }
 }
 
-async function shareReportCard(e) {
-  const btn = e.currentTarget;
-  const card = state.reportCard;
-  if (!card) return;
-  if (!reportCardModule) return; // the card is only visible once the module has loaded
-  const text = reportCardModule.reportCardText(card, location.origin + location.pathname);
+async function shareTextWithStatus(text, btn) {
   if (navigator.share) {
     try { await navigator.share({ text }); } catch (err) { if (err.name !== 'AbortError') console.warn(err); }
     return;
   }
   let msg = 'Karne kopyalandı ✓';
   try { await navigator.clipboard.writeText(text); } catch { msg = 'Kopyalanamadı'; }
+  if (!btn) return;
   btn.dataset.label ??= btn.textContent;
   btn.textContent = msg;
   announce(msg);
   clearTimeout(btn.restoreTimer); // a second tap must not let the first timer cut its message short
   btn.restoreTimer = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
+}
+
+async function shareReportCard(e) {
+  const btn = e.currentTarget;
+  const card = state.reportCard;
+  if (!card) return;
+  const url = location.origin + location.pathname;
+  if (card.daily) {
+    const text = dailyShareText({ key: card.key, scores: card.scores, url, streak: state.streak?.count ?? 0 });
+    await shareTextWithStatus(text, btn);
+    return;
+  }
+  if (!reportCardModule) return; // the card is only visible once the module has loaded
+  const text = reportCardModule.reportCardText(card, url);
+  await shareTextWithStatus(text, btn);
 }
 
 function initIntro() {
@@ -1315,12 +1385,27 @@ function linkRowsToChart() {
 
 function renderHome() {
   state.archiveFromResult = false;
-  const today = todayKey();
+  const today = dayKey();
   const alive = streakAlive(state.streak, today) && state.streak.count >= 2;
   const streakMeta = alive ? ` · 🔥 ${state.streak.count} gün üst üste` : '';
   $('m-tahmin').textContent = state.played > 0
     ? `${state.played} soru · ortalama puan ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '') + streakMeta
     : alive ? `🔥 ${state.streak.count} gün üst üste` : '';
+  // Leaving a daily run for the menu ends it; the daily card picks it up from storage.
+  if (state.daily) {
+    state.daily = null;
+    state.question = null;
+    syncSkipBtn();
+  }
+  const daily = loadDaily();
+  const dailyDone = daily && daily.ids.length > 0 && daily.scores.length >= daily.ids.length;
+  const dailyInProgress = daily && daily.scores.length > 0 && daily.scores.length < daily.ids.length;
+  $('m-daily').textContent = dailyDone
+    ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · Yarın yeni fiş`
+    : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru` : '';
+  const dailyGo = dailyDone ? 'Paylaş →' : dailyInProgress ? 'Devam et →' : 'Başla →';
+  $('m-daily-go').textContent = dailyGo;
+  $('m-daily-go').dataset.label = dailyGo;
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
@@ -1379,6 +1464,30 @@ function onHashChange() {
   }
   if (hash === '#arsiv') {
     renderTimelineScreen();
+  } else if (hash === '#gunun-fisi') {
+    const key = dayKey();
+    const saved = loadDaily();
+    if (saved && saved.ids.length > 0 && saved.scores.length >= saved.ids.length) {
+      history.replaceState(null, '', '#');
+      renderHome();
+      const text = dailyShareText({
+        key: saved.key,
+        scores: saved.scores,
+        url: location.origin + location.pathname,
+        streak: state.streak?.count ?? 0,
+      });
+      shareTextWithStatus(text, $('m-daily-go'));
+    } else {
+      const ids = saved?.ids.length
+        ? saved.ids
+        // Everyone compares the same receipt, so it is built from everyday products only.
+        : dailyQuestions(state.all.filter((q) => FOLLOW_UP_IDS.includes(q.productId)), key, categoryOf).map((q) => q.id);
+      const scores = saved ? [...saved.scores] : [];
+      state.daily = { key, ids, index: scores.length, scores };
+      const [productId, date] = (ids[state.daily.index] ?? '').split('@');
+      history.replaceState(null, '', '#tahmin');
+      nextQuestion(productId, date);
+    }
   } else if (hash === '#tahmin') {
     if (!state.question) nextQuestion();
     else {
@@ -1572,10 +1681,31 @@ async function init() {
   });
   // Skipping is free: no score, no round counted, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
+    if (state.daily) {
+      state.daily.scores.push(0);
+      state.daily.index = state.daily.scores.length;
+      saveDaily(state.daily);
+      if (state.daily.index < state.daily.ids.length) {
+        const [productId, date] = state.daily.ids[state.daily.index].split('@');
+        nextQuestion(productId, date);
+        return;
+      }
+      // Skipping the last one has no result screen for the card, so the menu offers the share.
+      state.daily = null;
+      state.question = null; // otherwise "Fiyat Tahmini" would reopen the skipped daily question
+      syncSkipBtn();
+      location.hash = '#';
+      return;
+    }
     nextQuestion(); // its barcode beep doubles as the skip sound
   });
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
+    if (state.daily && state.daily.index < state.daily.ids.length) {
+      const [productId, date] = state.daily.ids[state.daily.index].split('@');
+      nextQuestion(productId, date);
+      return;
+    }
     nextQuestion();
   });
   // After submitting a guess, focus sits on the non-interactive receipt so Enter can advance without tabbing to the bottom button.
