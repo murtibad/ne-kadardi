@@ -1,5 +1,5 @@
 // "Günün fişi": the same 5 questions for every player on a given day. Pure, no DOM.
-import { scoreTier } from './game.js';
+import { scoreTier, cutoffKey, preferOlder } from './game.js';
 
 const MONTHS_TR = [
   'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
@@ -57,7 +57,9 @@ export function dailyQuestions(questions, key, categoryOf, count = 5) {
     const productId = pool[Math.floor(rng() * pool.length)];
     remaining.splice(remaining.indexOf(productId), 1);
     if (categoryOf) usedCategories.add(categoryOf(productId));
-    const own = sorted.filter((q) => q.productId === productId);
+    // Questions from the last 12 months before the day `key` are dull (today's price); the cutoff
+    // comes from the key, never the clock, so every player gets the same receipt.
+    const own = preferOlder(sorted.filter((q) => q.productId === productId), cutoffKey(key));
     chosen.push(own[Math.floor(rng() * own.length)]);
   }
   return chosen;

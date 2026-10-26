@@ -74,19 +74,52 @@ export function scoreTier(score) {
   return 'bad';
 }
 
+// Free play: a product is not shown again within RECENT_WINDOW questions, and no category fills
+// more than CATEGORY_CAP of the last CATEGORY_WINDOW questions (when another category exists).
+export const RECENT_WINDOW = 15;
+export const CATEGORY_WINDOW = 10;
+export const CATEGORY_CAP = 3;
+export const RECENT_MONTHS = 12;
+
+/** 'YYYY-MM-DD' of `months` months before the day `from` ('YYYY-MM-DD' or a Date). */
+export function cutoffKey(from = new Date(), months = RECENT_MONTHS) {
+  let y; let m; let d;
+  if (typeof from === 'string') [y, m, d] = from.split('-').map(Number);
+  else { y = from.getFullYear(); m = from.getMonth() + 1; d = from.getDate(); }
+  const total = y * 12 + (m - 1) - months;
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${Math.floor(total / 12)}-${pad((total % 12) + 1)}-${pad(d || 1)}`;
+}
+
+/** Drop questions dated after `cutoff` ('YYYY-MM-DD') when older ones exist; otherwise keep all. */
+export function preferOlder(own, cutoff) {
+  const older = own.filter((q) => q.date < cutoff);
+  return older.length > 0 ? older : own;
+}
+
 // Every question should feel like a new category: pick a product that was not shown recently
 // (all products take turns), then a random year of that product. Products with many entries
 // (e.g. 17 yearly values) therefore do not dominate. `recent` holds the latest product ids.
-export function pickByCategory(questions, recent = [], previousId = null, rng = Math.random, seen = new Set()) {
+export function pickByCategory(questions, recent = [], previousId = null, rng = Math.random, seen = new Set(), today = new Date()) {
   const products = [...new Set(questions.map((q) => q.productId))];
+  const cutoff = cutoffKey(today);
   let own = questions;
   if (products.length >= 2) {
-    const keep = Math.min(products.length - 1, 8);
+    const keep = Math.min(products.length - 1, RECENT_WINDOW);
     const blocked = new Set(recent.slice(-keep));
-    const fresh = products.filter((id) => !blocked.has(id));
-    const productId = fresh[Math.floor(rng() * fresh.length)];
+    let pool = products.filter((id) => !blocked.has(id));
+    // Soft category cap over the latest questions.
+    const counts = {};
+    for (const id of recent.slice(-CATEGORY_WINDOW)) {
+      const c = categoryOf(id);
+      if (c) counts[c] = (counts[c] ?? 0) + 1;
+    }
+    const capped = pool.filter((id) => (counts[categoryOf(id)] ?? 0) < CATEGORY_CAP);
+    if (capped.length > 0) pool = capped;
+    const productId = pool[Math.floor(rng() * pool.length)];
     own = questions.filter((q) => q.productId === productId);
   }
+  own = preferOlder(own, cutoff);
   // Prefer years the player has not answered yet; once all are seen, cycle through them again.
   const unseen = own.filter((q) => !seen.has(q.id) && q.id !== previousId);
   return pickRandom(unseen.length > 0 ? unseen : own, previousId, rng);
@@ -410,24 +443,37 @@ export const FOLLOW_UP_IDS = [
 ];
 
 /**
- * Follow-up question from the same year as `q` for a different product, preferring
- * products not in `recentProducts` (last 8) and a different category when possible.
+ * Follow-up question from the same year as `q` for a different product. Prefers everyday
+ * products (FOLLOW_UP_IDS) not among the last 8 of `recentProducts`, then a different category;
+ * never the product offered last time (`lastFollowId`). When every candidate is recent, the one
+ * answered longest ago wins.
  */
-export function pickFollowUp(q, questions, recentProducts = [], rng = Math.random) {
+export function pickFollowUp(q, questions, recentProducts = [], rng = Math.random, lastFollowId = null) {
   if (!q || !Array.isArray(questions)) return null;
   const year = yearOf(q.date);
-  const anyKnown = questions.filter((x) => x.productId !== q.productId && yearOf(x.date) === year);
+  let anyKnown = questions.filter((x) => x.productId !== q.productId && yearOf(x.date) === year);
+  if (anyKnown.some((x) => x.productId !== lastFollowId)) anyKnown = anyKnown.filter((x) => x.productId !== lastFollowId);
+  if (anyKnown.length === 0) return null;
   // A hook only tempts with something everyone has bought; obscure caps and fees fall back last.
   const known = anyKnown.filter((x) => FOLLOW_UP_IDS.includes(x.productId));
   const sameYear = known.length > 0 ? known : anyKnown;
-  if (sameYear.length === 0) return null;
   const blocked = new Set(recentProducts.slice(-8));
   const fresh = sameYear.filter((x) => !blocked.has(x.productId));
-  const pool = fresh.length > 0 ? fresh : sameYear;
+  let pool = fresh.length > 0 ? fresh : sameYear;
   const qCat = categoryOf(q.productId);
   const otherCat = qCat ? pool.filter((x) => categoryOf(x.productId) !== qCat) : [];
-  const chosenPool = otherCat.length > 0 ? otherCat : pool;
-  return chosenPool[Math.floor(rng() * chosenPool.length)];
+  if (otherCat.length > 0) pool = otherCat;
+  if (fresh.length === 0) {
+    // All recent: keep only the products answered longest ago.
+    const age = (x) => recentProducts.lastIndexOf(x.productId);
+    const oldest = Math.min(...pool.map(age));
+    pool = pool.filter((x) => age(x) === oldest);
+  }
+  // Choose the product first so a product with several entries that year is not favoured.
+  const ids = [...new Set(pool.map((x) => x.productId))];
+  const id = ids[Math.floor(rng() * ids.length)];
+  const own = pool.filter((x) => x.productId === id);
+  return own[Math.floor(rng() * own.length)];
 }
 
 /** Pick a question in `categoryId` from another product (the archive already shows `excludeProductId`). */

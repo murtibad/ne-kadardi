@@ -242,3 +242,16 @@ test('every product with prices has its own four receipt lines', async () => {
     for (const line of pool) assert.ok(line.length <= 66 && !/\d/.test(line), `${p.id}: short, no digits: ${line}`);
   }
 });
+
+test('gatedYearAnchor shows a year anchor at most once per 10 questions', async () => {
+  const { gatedYearAnchor } = await import('../js/banter.js');
+  let shown = {};
+  let r = gatedYearAnchor(2016, shown, 1);
+  assert.ok(r.text);
+  shown = r.shown;
+  assert.equal(gatedYearAnchor(2016, shown, 6).text, null);
+  assert.equal(gatedYearAnchor(2016, shown, 10).text, null);
+  assert.ok(gatedYearAnchor(2016, shown, 11).text);
+  assert.ok(gatedYearAnchor(2020, shown, 2).text); // other years are independent
+  assert.equal(gatedYearAnchor(2017, shown, 3).text, null); // no anchor for the year
+});
