@@ -14036,6 +14036,140 @@
       ]
     },
     {
+      "id": "cig-sut",
+      "name": "Çiğ süt (çiftçinin satış fiyatı)",
+      "unit": "1 litre çiğ inek sütü (Ulusal Süt Konseyi tavsiye fiyatı)",
+      "region": null,
+      "source_hint": "Ulusal Süt Konseyi tavsiye fiyatı duyuruları (haberler, iki site).",
+      "image": {
+        "src": "img/sut.svg",
+        "alt": "Süt güğümü çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-05",
+        "price": 24.3,
+        "status": "verified",
+        "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 24,30 TL/litre. Haber: \"1 Mayıs 2026 tarihinden itibaren geçerli olmak üzere ... 24,30 TL (önceki 22,22 TL)\". Doğrulama: haberturk.com https://www.haberturk.com/usk-cig-sut-satis-fiyatini-acikladi-3881511-ekonomi (\"24,30 TL olarak belirlendi ... 1 Mayıs 2026 tarihinden itibaren geçerli; 22,22 TL'den\").",
+        "source": {
+          "title": "bloomberght.com",
+          "url": "https://www.bloomberght.com/usk-cig-sut-tavsiye-satis-fiyatini-2-08-tl-artirdi-3776367",
+          "accessed": "2026-10-26",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2021-01",
+          "price": 2.8,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 2,80 TL/litre. Haber: \"1 Ocak 2021-30 Nisan 2021 tarihlerini kapsamak üzere litre başına 2,8 lira olarak belirlendiği\". Doğrulama: ntv.com.tr https://www.ntv.com.tr/ekonomi/bakan-pakdemirli-cig-sut-tavsiye-fiyatina-litre-basina-30-kurus-destek-verilecek,1nHvLAQCCkqtDgP4fdsEYA (\"Ulusal Süt Konseyi 2021 Ocak - Nisan ayları için geçerli çiğ süt tavsiye satış fiyatını 2,80 lira/litre olarak açıklamıştır.\").",
+          "source": {
+            "title": "ekonomist.com.tr",
+            "url": "https://www.ekonomist.com.tr/gida/ulusal-sut-konseyi-cig-sut-tavsiye-fiyatini-belirledi.html",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-12",
+          "price": 4.7,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 4,70 TL/litre. Haber: \"8 Aralık 2021 tarihinden geçerli olmak üzere ... 4,70 lira olarak belirlenmiştir\". Doğrulama: ntv.com.tr https://www.ntv.com.tr/ekonomi/cig-sut-tavsiye-satis-litre-fiyati-4-lira-70-kurus-oldu,mPYxgmzFtUq0CTLHsdC2rg (\"8 Aralık 2021 tarihinden geçerli olmak üzere; soğutulmuş çiğ süt tavsiye satış litre fiyatı (çiğ süt destek primi hariç) 4,70 lira olarak belirlenmiştir.\").",
+          "source": {
+            "title": "haberturk.com",
+            "url": "https://www.haberturk.com/ulusal-sut-konseyi-cig-sut-fiyatlari-belli-oldu-iste-cig-sut-fiyati-2021-3268995-ekonomi",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-04",
+          "price": 5.7,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 5,70 TL/litre. Haber: \"soğutulmuş çiğ süt tavsiye satış fiyatı (çiğ süt destek primi hariç) 5,70 TL/Litre (1 Nisan 2022 tarihinden itibaren)\". Doğrulama: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/ekonomi/cig-sute-yuzde-21-zam-geldi-1917208 (\"1 Nisan 2022 tarihinden itibaren ... 5,70 TL/Litre olarak oy çokluğu ile belirlenmiştir\").",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/usk-cig-sut-tavsiye-fiyatini-acikladi-2301982",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-10",
+          "price": 8.5,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 8,50 TL/litre. Haber: \"14 Ekim 2022 tarihinden geçerli olmak üzere ... üreticinin eline litre başına net 8,5 lira geçecek şekilde belirlenmesine\". Doğrulama: cnnturk.com https://www.cnnturk.com/ekonomi/cig-sut-fiyati-2022-son-dakika-cig-sut-fiyatlari-ne-kadar-kac-para-oldu (\"14 Ekim 2022 tarihinden itibaren geçerli olmak üzere ... üreticinin eline net 8,50 TL geçecek şekilde belirlemiştir.\").",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/cig-sute-zam-2316927",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 13.5,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 13,50 TL/litre. Haber: \"22 Ocak 2024'ten itibaren geçerli olmak üzere ... üreticinin eline litre başına net geçecek şekilde (çiğ süt desteği hariç) 13,5 lira olarak belirlenmiştir.\". Doğrulama: politikam.com https://www.politikam.com/cig-sut-tavsiye-fiyatini-belirlendi (\"22 Ocak 2024'ten itibaren geçerli olmak üzere ... (çiğ süt desteği hariç) 13,5 lira\").",
+          "source": {
+            "title": "benguturk.com",
+            "url": "https://www.benguturk.com/ekonomi/usk-cig-sut-tavsiye-fiyatini-ureticinin-eline-135-lira-gececek-sekilde-belirledi-140951h",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 17.15,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 17,15 TL/litre. Haber: \"1 Ocak 2025'ten itibaren geçerli olmak üzere üreticinin eline litre başına net 17,15 lira geçecek şekilde\". Doğrulama: bloomberght.com https://www.bloomberght.com/cig-sut-fiyati-yuzde-17-artirildi-3737228 (\"Çiğ sütte tavsiye fiyat yüzde 17,1 artırılarak 14,65 liradan 17,15 liraya çıkarıldı. Yeni fiyat 1 Ocak 2025 tarihinden itibaren geçerli olacak.\").",
+          "source": {
+            "title": "aa.com.tr",
+            "url": "https://www.aa.com.tr/tr/ekonomi/usk-cig-sut-tavsiye-fiyatini-ureticinin-eline-17-15-lira-gececek-sekilde-belirledi/3427066",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-10",
+          "price": 19.6,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 19,60 TL/litre. Haber: \"1 Ekim 2025 tarihinden itibaren geçerli olmak üzere ... 19,60 TL olarak oy birliği ile belirlenmiştir.\". Doğrulama: karar.com https://www.karar.com/ekonomi-haberleri/cig-sut-fiyatlarina-zam-geldi-1-ekimden-itibaren-gecerli-olacak-1992420 (\"1 Ekim 2025 tarihinden itibaren geçerli olmak üzere ... 19,60 TL olarak oy birliği ile belirlenmiştir.\").",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/usk-cig-sut-tavsiye-satis-fiyatini-1-25-tl-artirdi-3757320",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 22.22,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 22,22 TL/litre. Haber: \"üreticinin eline litre başına net 22,22 lira geçecek şekilde belirlendi ... 22 Ocak'tan itibaren geçerli\". Doğrulama: ekonomim.com https://www.ekonomim.com/ekonomi/cig-sutun-yeni-fiyati-belli-oldu-yuzde-1336-zam-yapildi-haberi-867255 (\"22 Ocak 2026 tarihinden itibaren geçerli olmak üzere, ... 22,22 TL olarak belirlendi.\").",
+          "source": {
+            "title": "cnbce.com",
+            "url": "https://www.cnbce.com/haberler/usk-cig-sut-satis-fiyatini-acikladi-h22639",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-05",
+          "price": 24.3,
+          "status": "verified",
+          "note": "Ulusal Süt Konseyi (USK) soğutulmuş çiğ inek sütü tavsiye satış fiyatı, litre başına, %3,6 yağ ve %3,2 protein; çiğ süt destek primi hariç (2022 sonundan beri \"üreticinin eline net\" diye açıklanıyor), soğutma ve nakliye ayrı. Tarih fiyatın geçerli olduğu ay. 24,30 TL/litre. Haber: \"1 Mayıs 2026 tarihinden itibaren geçerli olmak üzere ... 24,30 TL (önceki 22,22 TL)\". Doğrulama: haberturk.com https://www.haberturk.com/usk-cig-sut-satis-fiyatini-acikladi-3881511-ekonomi (\"24,30 TL olarak belirlendi ... 1 Mayıs 2026 tarihinden itibaren geçerli; 22,22 TL'den\").",
+          "source": {
+            "title": "bloomberght.com",
+            "url": "https://www.bloomberght.com/usk-cig-sut-tavsiye-satis-fiyatini-2-08-tl-artirdi-3776367",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
       "id": "anadolu-otoyolu",
       "name": "İstanbul-Ankara otoyolu",
       "unit": "1 geçiş, otomobil, Çamlıca-Akıncı (tek yön)",
