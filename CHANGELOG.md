@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.120.3] - 2026-10-26
+### Changed
+- Code: the Fiyat Arşivi screen moved from js/main.js into js/archive-ui.js, loaded on the first visit to the archive (main.js 1539 → 1349 lines; the first page load fetches less script). No behaviour change; compared with the live 0.120.2 site.
+
 ## [0.120.2] - 2026-10-26
 ### Changed
 - Code: the sharing UI (send sheet, image preview, ask and report-card sharing) moved from js/main.js into js/share-ui.js (main.js 1840 → 1539 lines); no behaviour change, share payloads compared against the live 0.120.0 site.
