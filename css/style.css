@@ -479,6 +479,14 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 @keyframes share-preview-in { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
 @keyframes share-preview-fade { from { opacity: 0; } }
 
+/* "Arkadaşına gönder" sheet: reuses the preview dialog look, pinned to the bottom edge */
+.send-sheet { margin: auto auto 0; width: min(100vw, 480px); max-width: 100vw; border-radius: 12px 12px 0 0; border-bottom: 0; padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+.send-sheet-actions { display: flex; flex-direction: column; gap: 10px; }
+.send-sheet .btn { flex: none; width: 100%; }
+.send-sheet .send-opt { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 56px; }
+.send-sheet .send-opt span { font: 400 0.875rem var(--font-ui); }
+#r-card-share[hidden] { display: none; }
+
 /* Phones: keep "Sonraki" and sharing in reach at the bottom of the screen */
 @media (max-width: 719px) {
   .session-actions {
@@ -1054,11 +1062,11 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* Link tap targets */
 .result-receipt .source a, .result-receipt .archive-link { display: inline-flex; align-items: center; min-height: 44px; }
 
-/* Actions on phones: Paylaş | İndir, then full-width next */
+/* Actions on phones: "Arkadaşına gönder" | "Sonraki soru" on one line */
 @media (max-width: 719px) {
   .session-actions .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .session-actions .btn { min-height: 48px; }
-  .session-actions .btn.primary, .session-actions .btn.next-btn { grid-column: 1 / -1; min-height: 52px; font-size: 1.0625rem; }
+  .session-actions .btn { min-height: 52px; font-size: 1rem; white-space: nowrap; }
+  .session-actions .btn.primary, .session-actions .btn.next-btn { grid-column: auto; font-size: 1rem; }
 }
 /* end v0.74 result */
 
