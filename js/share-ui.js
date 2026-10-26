@@ -308,14 +308,10 @@ async function shareReportCard(e) {
   if (card.daily) {
     const text = dailyShareText({ key: card.key, scores: card.scores, url, streak: getState().streak?.count ?? 0 });
     await shareTextWithStatus(text, btn);
-    return;
   }
-  if (!deps.getReportCardModule()) return; // the card is only visible once the module has loaded
-  const text = deps.getReportCardModule().reportCardText(card, url);
-  await shareTextWithStatus(text, btn);
 }
 
-// `deps`: { getState, isDailyEndTurn, getReportCardModule } so main.js keeps ownership of its state.
+// `deps`: { getState, isDailyEndTurn } so main.js keeps ownership of its state.
 export function initShareUi(d) {
   deps = d;
   shareOriginalLabel = $('share-btn').textContent;

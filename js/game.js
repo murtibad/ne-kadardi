@@ -402,13 +402,6 @@ export function openerFor(questions, index) {
   return own[0] ?? null;
 }
 
-/** Questions left until the next 5-question report card (0 when the card shows on this turn). */
-export function questionsUntilCard(answered, every = 5) {
-  if (!(answered > 0)) return every;
-  const rem = answered % every;
-  return rem === 0 ? 0 : every - rem;
-}
-
 /** Everyday products for the result hook ("Peki 2016'da ... kaç liraydı?"). */
 export const FOLLOW_UP_IDS = [
   'ekmek', 'simit', 'cay', 'big-mac', 'benzin', 'dolar', 'gram-altin', 'ceyrek-altin', 'iphone',

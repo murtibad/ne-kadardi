@@ -303,14 +303,6 @@ test('exam fees and car parks read as what they let you do', () => {
   assert.match(buildContextLine(train, wages), /hızlı tren bileti alınabiliyordu/);
 });
 
-test('questionsUntilCard counts questions left until the next report card', async () => {
-  const { questionsUntilCard } = await import('../js/game.js');
-  assert.equal(questionsUntilCard(1), 4);
-  assert.equal(questionsUntilCard(4), 1);
-  assert.equal(questionsUntilCard(5), 0);
-  assert.equal(questionsUntilCard(6), 4);
-});
-
 test('pickFollowUp picks another product from the same year, avoiding recent products and same category when possible', async () => {
   const { pickFollowUp, yearOf } = await import('../js/game.js');
   const zero = () => 0;
