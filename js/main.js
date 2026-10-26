@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod, shortTitle } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, FOLLOW_UP_IDS, questionsUntilCard, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, FOLLOW_UP_IDS, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
@@ -259,15 +259,17 @@ function onGuess(event) {
     hinted: state.hinted,
     streakBump: firstToday && state.streak.count >= 2 ? state.streak.count : 0,
   };
-  state.played += 1;
-  state.total += state.result.score;
-  state.best = Math.max(state.best, state.result.score);
-  state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
+  // Günün Fişi keeps its own total out of 500; the free-play counters ("N soru · ortalama")
+  // only count free questions, so the two never mix.
+  if (!state.daily) {
+    state.played += 1;
+    state.total += state.result.score;
+    state.best = Math.max(state.best, state.result.score);
+    state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
+  }
   state.seen.delete(q.id);
   state.seen.add(q.id);
   saveSeen();
-  // This visit's answers feed the every-fifth-question report card (not saved).
-  (state.visitAnswers ??= []).push({ title: questionTitle(q), period: formatPeriod(q.date), score: state.result.score });
   recordDailyAnswer(state.result.score);
   saveSession();
   hapticIfAllowed(10);
@@ -486,6 +488,8 @@ function renderResult(q, r) {
       followBtn.onclick = null;
     }
   }
+  // renderReportCard ends a finished daily run, so read the run first for the line under the receipt.
+  const dailyRun = state.daily ? { done: state.daily.scores.length, of: state.daily.ids.length, total: state.daily.scores.reduce((s, n) => s + n, 0) } : null;
   renderReportCard();
   const ytl = ytlNote(yearOf(q.date), q.price);
   $('r-ytl').textContent = ytl || '';
@@ -533,16 +537,15 @@ function renderResult(q, r) {
   const kindLabel = sourceKindLabel(q.source.kind);
   $('r-source-kind').textContent = kindLabel ? ` · ${kindLabel}` : '';
   $('r-source-kind').hidden = !kindLabel;
-  const avg = Math.round(state.total / state.played);
-  const leftForCard = questionsUntilCard((state.visitAnswers ?? []).length);
   // One line on a 360 px phone: the best score already sits on the home menu.
   const streakHint = r.streakBump >= 2 ? ` · 🔥 ${r.streakBump} gün` : '';
-  // During the daily receipt the countdown is the receipt itself, not the every-5 card.
-  const cardHint = state.daily ? ` · günün fişi ${state.daily.scores.length}/${state.daily.ids.length}`
-    : leftForCard > 0 ? ` · karneye ${leftForCard} soru` : '';
+  // During Günün Fişi the line follows the receipt (its own total), not the free-play counters.
+  const sessionText = dailyRun
+    ? `Günün fişi ${dailyRun.done}/${dailyRun.of} · toplam ${dailyRun.total}`
+    : `${state.played} soru · ortalama ${Math.round(state.total / Math.max(1, state.played))}`;
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
-  $('r-session').innerHTML = `<span>${state.played} soru · ortalama ${avg}${cardHint}${streakHint}</span>`
-    + (state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
+  $('r-session').innerHTML = `<span>${sessionText}${streakHint}</span>`
+    + (!dailyRun && state.recentScores.length > 1 ? `<span class="tally" role="img" aria-label="Son ${state.recentScores.length} puan: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length}</span>${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
   $('r-receipt').focus({ preventScroll: true }); // the submit button just disappeared; read the receipt next
@@ -818,34 +821,13 @@ function closeIntro() {
   if (dlg?.open) dlg.close();
 }
 
-// Every fifth answer of the visit the receipt sums up the round (js/report-card.js).
-// The module is kept once loaded: sharing must not await an import, or iOS drops the tap's
-// user activation and refuses navigator.share / clipboard.
-let reportCardModule = null;
-async function renderReportCard() {
+// The receipt card now only sums up Günün Fişi (the every-fifth-answer card was dropped,
+// owner's call 2026-10-26: the daily receipt does the same job better).
+function renderReportCard() {
   $('r-card').hidden = true;
   if (renderDailyCard()) return;
   setDailyEndTurn(false);
-  $('r-card-share').hidden = false;
   resetShareBtn();
-  $('r-card-share').textContent = 'Karneni paylaş →';
-  const answers = state.visitAnswers ?? [];
-  // Skip the dynamic import until a fifth answer actually needs the card.
-  if (questionsUntilCard(answers.length) !== 0) return;
-  try {
-    reportCardModule = await import('./report-card.js');
-    const { isCardRound, buildReportCard } = reportCardModule;
-    const current = state.visitAnswers ?? [];
-    if (!isCardRound(current.length)) return;
-    const card = buildReportCard(current);
-    state.reportCard = card;
-    $('r-card-title').textContent = card.title;
-    $('r-card-lines').innerHTML = card.lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
-    $('r-card-avg').textContent = `Ortalama ${card.average}/100 · En iyisi: ${card.best.period} ${card.best.title}`;
-    $('r-card').hidden = false;
-  } catch (err) {
-    console.warn('Karne hazırlanamadı', err);
-  }
 }
 
 function initIntro() {
@@ -1119,7 +1101,7 @@ async function init() {
     return;
   }
   initDailyUi({ getState: () => state, nextQuestion, renderHome });
-  initShareUi({ getState: () => state, isDailyEndTurn, getReportCardModule: () => reportCardModule });
+  initShareUi({ getState: () => state, isDailyEndTurn });
   $('ask-q-btn').dataset.label = $('ask-q-btn').textContent;
   $('guess-form').addEventListener('submit', onGuess);
   const guessField = document.querySelector('#question-screen .guess-field');

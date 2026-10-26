@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.121.0] - 2026-10-26
+### Changed
+- The every-fifth-answer "5 SORULUK KARNE" is gone (owner: it felt pointless; Günün Fişi already sums up five questions). js/report-card.js and the "karneye N soru" countdown are removed.
+- Günün Fişi answers no longer count in the free-play numbers ("N soru · ortalama", best score, the last-scores dots); during the run the line under the receipt reads "Günün fişi 3/5 · toplam 155".
+
 ## [0.120.5] - 2026-10-26
 ### Changed
 - Code: the Günün Fişi wiring (storage, menu card, run, end card) moved from js/main.js into js/daily-ui.js (main.js 1349 → 1215 lines); no behaviour change, compared with the live 0.120.4 site.

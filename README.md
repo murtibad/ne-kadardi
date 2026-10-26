@@ -21,7 +21,6 @@ Also:
 
 - First-visit cinematic intro (year counter with real sourced prices of that year)
 - First-visit opener questions with well-known benchmark prices before the random pool
-- 5-question report card ("5 SORULUK KARNE") every five rounds with a shareable score summary
 - "Bilemedin mi? Arkadaşına sor" share links (`?soru=`) that open one question without its answer
 - Product-specific cashier jokes on the receipt in everyday Turkish tone
 - Turkish number input (`4,5`, `1.250,75`)
@@ -58,7 +57,6 @@ js/format.js        Turkish number parsing, formatting and HTML escaping (pure, 
 js/timeline.js      price archive rows (pure, tested)
 js/archive-table.js archive price table HTML (pure, tested)
 js/ask-link.js      ?soru= links that open one question without its answer (pure, tested)
-js/report-card.js   5-question report card ("Karne") round summary (pure, tested)
 js/daily.js         "Günün Fişi" daily question set and share text (pure, tested)
 js/price-chart.js   price chart geometry for the receipt, archive and share image (pure, tested)
 js/categories.js    product categories for the archive filter (pure, tested)
