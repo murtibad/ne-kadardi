@@ -14,7 +14,7 @@ instantly recognizable in a screenshot, which makes it worth sharing.
   a clean sans-serif for UI (e.g. Inter). Turkish characters must render correctly.
 - Dark mode: dark background, the receipt stays light like real paper.
 - Small touches allowed: torn/zig-zag receipt edge, dashed separators, subtle paper texture.
-  Motion only if subtle (receipt "printing" in), and disabled under `prefers-reduced-motion`.
+  Motion only if subtle (receipt "printing" in) (same for everyone; owner's decision 2026-10-26).
 
 ## Screens
 

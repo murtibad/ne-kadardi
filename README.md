@@ -19,6 +19,11 @@ The game is one mode, plus a price archive:
 
 Also:
 
+- First-visit cinematic intro (year counter with real sourced prices of that year)
+- First-visit opener questions with well-known benchmark prices before the random pool
+- 5-question report card ("5 SORULUK KARNE") every five rounds with a shareable score summary
+- "Bilemedin mi? Arkadaşına sor" share links (`?soru=`) that open one question without its answer
+- Product-specific cashier jokes on the receipt in everyday Turkish tone
 - Turkish number input (`4,5`, `1.250,75`)
 - Fair, ratio-based scoring on a log scale: being 2× too high costs the same as 2× too low
 - Shareable result image (Canvas 2D) with a score stamp, to download or post directly
@@ -26,7 +31,7 @@ Also:
   next visit (stale-while-revalidate, cache versioned with the release)
 - Recorded sound effects with a mute button: an old receipt printer, the receipt being torn off, a checkout beep and a counter bell for an exact guess (CC0 recordings by Joseph Sardin, [BigSoundBank](https://bigsoundbank.com/), trimmed to ~30 KB in total in `sounds/`); light vibration on phones
 - The result icon bounces or shakes with your score
-- Light/dark theme toggle, keyboard friendly, respects reduced motion
+- Light/dark theme toggle, keyboard friendly
 - Every price is sourced and labelled by source type (official, dataset, news, derived);
   unverified data never reaches the game
 
@@ -47,12 +52,14 @@ js/format.js        Turkish number parsing, formatting and HTML escaping (pure, 
 js/timeline.js      price archive rows (pure, tested)
 js/archive-table.js archive price table HTML (pure, tested)
 js/ask-link.js      ?soru= links that open one question without its answer (pure, tested)
+js/report-card.js   5-question report card ("Karne") round summary (pure, tested)
 js/price-chart.js   price chart geometry for the receipt, archive and share image (pure, tested)
 js/categories.js    product categories for the archive filter (pure, tested)
 js/search.js        accent-insensitive archive search (pure, tested)
 js/source-kind.js   source labels ("resmî kayıt", "haberlerden", "hesaplandı")
 js/linkify.js       turns URLs in notes into link buttons (pure, tested)
 js/fact.js          the home page "Biliyor muydun?" card (pure, tested)
+js/intro.js         animated first-visit intro (pure data helpers and stage runner)
 js/hint.js          hint values and exclusions
 js/count-up.js      price count-up frames on the receipt
 js/confetti.js      confetti on an exact guess

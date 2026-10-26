@@ -51,8 +51,8 @@ result: guess, real price, how many times off ("2,7 kat az"), today's price and 
 ### 4. Quality bar
 - Mobile first: design and test at 360–390 px width first, then desktop (max content ~480 px).
 - Accessible: semantic HTML, labels for inputs, visible focus, `aria-live` for results,
-  contrast ≥ 4.5:1, works with keyboard only. Respect `prefers-color-scheme` and
-  `prefers-reduced-motion`.
+  contrast ≥ 4.5:1, works with keyboard only. Respect `prefers-color-scheme`; animations
+  are the same for everyone, do not add `prefers-reduced-motion` checks (owner's decision, 2026-10-26).
 - `npm test` must pass before every commit.
 - Check the page in a browser via a local server (`npm start` → http://localhost:8000).
   Opening `index.html` directly (`file://`) does not work because `fetch` is blocked.
