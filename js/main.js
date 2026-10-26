@@ -8,7 +8,7 @@ import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
-import { cashierComment } from './cashier.js';
+import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, yearAnchor, ytlNote, stampTitle } from './banter.js';
 import { buildHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
@@ -30,7 +30,7 @@ const hapticIfAllowed = (ms) => {
 const state = {
   recentProducts: [], seen: new Set(),
   hinted: false, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
-  played: 0, total: 0, best: 0, round: 0, recentScores: [], 
+  played: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false 
@@ -293,7 +293,8 @@ function nextQuestion(productId = null, date = null) {
   $('hint-btn').onclick = () => {
     sound.play('beep');
     state.hinted = true;
-    $('hint-text').dataset.line = hintComment();
+    $('hint-text').dataset.line = hintComment(Math.random, state.recentLines);
+    state.recentLines = rememberLine(state.recentLines, $('hint-text').dataset.line);
     $('hint-text').innerHTML = `<p class="hint-cashier">“${escapeHTML($('hint-text').dataset.line)}”</p><p class="hint-slip-title">İpucu · ${escapeHTML(hint[0].period)}</p>`
       + hint.map((l) => `<div class="hint-row"><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.value)}</strong></div>`).join('');
     $('hint-text').hidden = false;
@@ -344,7 +345,7 @@ function onGuess(event) {
   state.seen.add(q.id);
   saveSeen();
   // This visit's answers feed the every-fifth-question report card (not saved).
-  (state.visitAnswers ??= []).push({ title: q.name.replace(/\s*\(.*\)$/, ''), period: formatPeriod(q.date), score: state.result.score });
+  (state.visitAnswers ??= []).push({ title: questionTitle(q), period: formatPeriod(q.date), score: state.result.score });
   if (state.daily) {
     state.daily.scores.push(state.result.score);
     state.daily.index = state.daily.scores.length;
@@ -583,8 +584,9 @@ function renderResult(q, r) {
     scoreEl.append(hint);
   }
   const tier = scoreTier(r.score);
-  const line = contextComment({ direction: r.direction, factor: r.factor, productId: q.productId, amount: isAmount(q.productId) })
-    ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId) });
+  const line = contextComment({ direction: r.direction, factor: r.factor, productId: q.productId, amount: isAmount(q.productId) }, Math.random, state.recentLines)
+    ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId), recent: state.recentLines });
+  state.recentLines = rememberLine(state.recentLines, line);
   $('r-cashier').textContent = `“${line}”`;
   // The hint slip already showed that year's dollar rate and minimum wage.
   const followPool = r.hinted ? state.all.filter((x) => x.productId !== 'dolar' && x.productId !== 'asgari-ucret') : state.all;

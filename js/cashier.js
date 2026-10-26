@@ -3,17 +3,17 @@
 export const CASHIER_COMMENTS = {
   great: [
     'Valla helal, bakkal defteri gibi hafızan var',
-    'Annen seni boşuna markete yollamamış',
-    'Bu kafayla sana bakkal veresiye yazmaz, korkar',
+    'Annen seni markete boşuna yollamamış, helal olsun',
+    'Senin hesabına bakkal veresiye yazar, gözü kapalı',
     'Tam isabet, çay benden',
     'Dayın duysa sırtını sıvazlardı',
     'Abi, sen bu işin hocasısın',
-    'Pazarcı seni görünce tezgâhı toplar',
+    'Pazarcı seni görünce fiyatı dürüst söyler',
     'Kuruşu kuruşuna, alnının akıyla',
     'Komşu teyze bunu duysa bütün mahalleye anlatır',
     'Hacı, sen bunu ezberden biliyorsun',
     'Çay ocağında sana kimse laf yetiştiremez',
-    'Etiketi sen mi yapıştırmıştın?',
+    'Etiketi sen mi yapıştırdın, bu ne isabet',
   ],
   good: [
     'Az kaldı, çay demlenmeden tutturacaktın',
@@ -25,7 +25,7 @@ export const CASHIER_COMMENTS = {
     'Bayram harçlığını hak ettin',
     'Hedefin kenarına değdi, fena değil',
     'Yeğenim, az daha gayret, tam oturacak',
-    'Pazarlıkta seni kimse kazıklayamaz belli',
+    'Pazarlıkta seni kimse kazıklayamaz, aferin',
     'Komşu teyze bile bu kadar hatırlamaz',
     'Valla iyisin, biraz daha dikkat yeter',
   ],
@@ -73,6 +73,24 @@ export const CASHIER_COMMENTS = {
   ],
 };
 
+/**
+ * Pick one line from pool, skipping lines in `recent` when possible.
+ * Why: players saw the same joke twice in one session. If every line is recent
+ * (small pool), fall back to the whole pool rather than returning nothing.
+ */
+export function pickFresh(pool, recent = [], rng = Math.random) {
+  const fresh = pool.filter((line) => !recent.includes(line));
+  const from = fresh.length ? fresh : pool;
+  const index = Math.floor(rng() * from.length);
+  return from[Math.max(0, Math.min(index, from.length - 1))];
+}
+
+/** Push a line onto an in-memory recent list, keeping only the newest `max`. */
+export function rememberLine(recent, line, max = 12) {
+  if (!line) return recent;
+  return [...recent.filter((l) => l !== line), line].slice(-max);
+}
+
 const SHOP_WORDS = /fiyat|kasa|kasiyer|etiket|pazar|alışveriş|cüzdan|ucuz|pahalı|fiş/i;
 
 /**
@@ -80,11 +98,10 @@ const SHOP_WORDS = /fiyat|kasa|kasiyer|etiket|pazar|alışveriş|cüzdan|ucuz|pa
  * Unknown tier falls back to mid.
  */
 // Lines here do not know whether the guess was too high or too low, so they must fit both.
-export function cashierComment(tier, rng = Math.random, { amount = false } = {}) {
+export function cashierComment(tier, rng = Math.random, { amount = false, recent = [] } = {}) {
   const all = CASHIER_COMMENTS[tier] ?? CASHIER_COMMENTS.mid;
   // A wage or pension is not on a shelf: skip the shop-talk lines for amounts.
   const plain = amount ? all.filter((line) => !SHOP_WORDS.test(line)) : all;
   const pool = plain.length ? plain : all;
-  const index = Math.floor(rng() * pool.length);
-  return pool[Math.max(0, Math.min(index, pool.length - 1))];
+  return pickFresh(pool, recent, rng);
 }
