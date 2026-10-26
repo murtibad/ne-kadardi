@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.114.0] - 2026-10-26
+### Added
+- Archive search forgives one typo when nothing matches exactly ("altn" finds gram and çeyrek altın, "bnzin" benzin, "netflx" Netflix); words under 4 letters still match exactly, and exact hits always win.
+- The archive order button says what it shows: "Sıra: eskiden yeniye ↓".
+
 ## [0.113.0] - 2026-10-26
 ### Added
 - New product `cig-sut`: raw cow's milk recommended price of the National Dairy Council (USK), per litre, support premium excluded: 2021-01 2,80 · 2021-12 4,70 · 2022-04 5,70 · 2022-10 8,50 · 2024-01 13,50 · 2025-01 17,15 · 2025-10 19,60 · 2026-01 22,22 · 2026-05 24,30 (each two news domains; three checked on the page). Milk can icon, four receipt lines. 78 products.

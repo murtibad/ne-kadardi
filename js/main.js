@@ -1239,7 +1239,7 @@ function renderTimelineHeader(product) {
 function renderArchiveOrder() {
   const newestFirst = state.archiveNewestFirst;
   const orderBtn = $('archive-order');
-  orderBtn.textContent = newestFirst ? 'Yeniden eskiye ↑' : 'Eskiden yeniye ↓';
+  orderBtn.textContent = newestFirst ? 'Sıra: yeniden eskiye ↑' : 'Sıra: eskiden yeniye ↓';
   orderBtn.setAttribute('aria-pressed', newestFirst ? 'true' : 'false');
   orderBtn.title = newestFirst ? 'Sıra: yeniden eskiye. Değiştirmek için dokun.' : 'Sıra: eskiden yeniye. Değiştirmek için dokun.';
 }
