@@ -6235,6 +6235,140 @@
       ]
     },
     {
+      "id": "yht-bilet",
+      "name": "Hızlı tren bileti (YHT)",
+      "unit": "Ankara-İstanbul, tek yön tam bilet (ekonomi)",
+      "region": null,
+      "source_hint": "TCDD zam haberleri (Sözcü, Medyascope, Habertürk, NTV vb.), her değer iki haber sitesinden. Tarih zammın ayıdır.",
+      "image": {
+        "src": "img/hizli-tren.svg",
+        "alt": "Hızlı tren çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-08",
+        "price": 990,
+        "status": "verified",
+        "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. 17 Ağustos 2026 zammı (\"Ankara-İstanbul tek yön ve ekonomi sınıfı bileti 930 liradan 990 liraya\"). İkinci kaynak: bloomberght.com https://www.bloomberght.com/yht-bilet-fiyatlarina-zam-yapildi-3785720 (\"standart bilet fiyatı 990 TL\").",
+        "source": {
+          "title": "Medyascope: YHT biletlerine zam geldi, Ankara-İstanbul bileti 990 lira oldu",
+          "url": "https://medyascope.tv/2026/08/17/yht-biletlerine-zam-geldi-ankara-istanbul-bileti-990-lira-oldu/",
+          "accessed": "2026-10-26",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2022-06",
+          "price": 195,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. \"Ankara-İstanbul (Söğütlüçeşme) için YHT bilet fiyatı 195 TL'dir.\" İkinci kaynak: sozcu.com.tr https://www.sozcu.com.tr/tcddden-yht-biletlerine-9-ayda-5inci-zam-wp7370083 (\"195 TL'den 215 TL'ye\").",
+          "source": {
+            "title": "Ekonomim: YHT bilet fiyatları ne kadar oldu?",
+            "url": "https://www.ekonomim.com/gundem/yht-bilet-fiyatlari-ne-kadar-oldu-ankara-istanbul-ankara-konya-ankara-eskisehir-bilet-fiyati-haberi-660733",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-09",
+          "price": 215,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. 17 Eylül 2022 zammı (\"195 TL'den 215 TL'ye yükseldi\"). İkinci kaynak: haber.sol.org.tr https://haber.sol.org.tr/haber/yht-biletlerine-ikinci-zam-361137 (\"215 TL'den 248 TL'ye\").",
+          "source": {
+            "title": "Sözcü: TCDD'den YHT biletlerine 9 ayda 5'inci zam",
+            "url": "https://www.sozcu.com.tr/tcddden-yht-biletlerine-9-ayda-5inci-zam-wp7370083",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 248,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. Ocak 2023 başı zammı (\"215 TL'den 248 TL'ye çıktı\", 04.01.2023). İkinci kaynak: medyascope.tv https://medyascope.tv/2023/09/18/yuksek-hizli-tren-biletlerine-zam-geldi-ankara-istanbul-bilet-fiyatlari-yilin-ilk-9-ayinda-yuzde-100-artti/ (\"yılbaşında 215'den 248 TL'ye\").",
+          "source": {
+            "title": "soL Haber: YHT biletlerine ikinci zam",
+            "url": "https://haber.sol.org.tr/haber/yht-biletlerine-ikinci-zam-361137",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 323,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. Temmuz 2023 zammı (\"248 liradan 323 liraya çıktı\"). İkinci kaynak: medyascope.tv https://medyascope.tv/2023/09/18/yuksek-hizli-tren-biletlerine-zam-geldi-ankara-istanbul-bilet-fiyatlari-yilin-ilk-9-ayinda-yuzde-100-artti/ (\"Temmuzda 248 TL'den 323 TL\").",
+          "source": {
+            "title": "Paratic: Köprü ve otoyol zammından önce hızlı tren biletleri arttı",
+            "url": "https://paratic.com/kopru-ve-otoyol-zammindan-once-hizli-tren-biletleri-artti/",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-09",
+          "price": 430,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. Eylül 2023 zammı (\"323 TL'den 430 TL'ye\"). İkinci kaynak: tgrthaber.com https://www.tgrthaber.com/ekonomi/ulasima-bir-zam-daha-tcdd-hizli-tren-bileti-fiyatlarinda-artisa-gitti-2906351 (\"Ankara- İstanbul bilet fiyatı 430 TL'ye\").",
+          "source": {
+            "title": "Medyascope: Yüksek hızlı tren biletlerine zam geldi",
+            "url": "https://medyascope.tv/2023/09/18/yuksek-hizli-tren-biletlerine-zam-geldi-ankara-istanbul-bilet-fiyatlari-yilin-ilk-9-ayinda-yuzde-100-artti/",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-07",
+          "price": 540,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. 13 Temmuz 2024 zammı (\"430 TL'den 540 TL'ye\"). İkinci kaynak: haberturk.com https://www.haberturk.com/yht-biletlerine-zam-yeni-ucretler-aciklandi-3755548-ekonomi (\"540 TL'den 780 TL'ye\").",
+          "source": {
+            "title": "Medyascope: TCDD'den bütün hatlardaki YHT biletlerine yüzde 25,6 zam",
+            "url": "https://medyascope.tv/2024/07/13/tcddden-butun-hatlardaki-yht-biletlerine-yuzde-256-zam/",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 780,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. 13 Ocak 2025 zammı (\"540 TL'den 780 TL'ye\"). İkinci kaynak: ntv.com.tr https://www.ntv.com.tr/turkiye/galeri-istanbul-ankara-yht-bileti-ne-kadar-hizli-tren-fiyatlarina-zam,GvBYwz-wokWEypWj8RNe5w (\"540 liradan 780 liraya\").",
+          "source": {
+            "title": "Habertürk: YHT biletlerine zam, yeni ücretler açıklandı",
+            "url": "https://www.haberturk.com/yht-biletlerine-zam-yeni-ucretler-aciklandi-3755548-ekonomi",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-01",
+          "price": 930,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. Ocak 2026 zammı, gece yarısı yürürlükte (\"780 TL'den 930 TL'ye\"). İkinci kaynak: medyascope.tv https://medyascope.tv/2026/08/17/yht-biletlerine-zam-geldi-ankara-istanbul-bileti-990-lira-oldu/ (\"930 liradan 990 liraya\").",
+          "source": {
+            "title": "CNBC-e: YHT'ye gece yarısı zammı",
+            "url": "https://www.cnbce.com/haberler/yhtye-gece-yarisi-zammi-bilet-fiyatlari-yuzde-19-artti-hizli-tren-bilet-fiyatlari-hizli-tren-biletleri-yht-bilet-fiyati-h23089",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-08",
+          "price": 990,
+          "status": "verified",
+          "note": "TCDD Yüksek Hızlı Tren (YHT) Ankara-İstanbul tek yön tam bilet (standart/ekonomi sınıfı, indirimsiz). Tarih, yeni fiyatın haberlerde geçtiği/yürürlüğe girdiği ay. 17 Ağustos 2026 zammı (\"Ankara-İstanbul tek yön ve ekonomi sınıfı bileti 930 liradan 990 liraya\"). İkinci kaynak: bloomberght.com https://www.bloomberght.com/yht-bilet-fiyatlarina-zam-yapildi-3785720 (\"standart bilet fiyatı 990 TL\").",
+          "source": {
+            "title": "Medyascope: YHT biletlerine zam geldi, Ankara-İstanbul bileti 990 lira oldu",
+            "url": "https://medyascope.tv/2026/08/17/yht-biletlerine-zam-geldi-ankara-istanbul-bileti-990-lira-oldu/",
+            "accessed": "2026-10-26",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
       "id": "playstation",
       "name": "PlayStation konsolu",
       "unit": "1 konsol, yeni çıkan model, Türkiye'de ilk satış fiyatı",
@@ -11365,6 +11499,104 @@
           "source": {
             "title": "ÖSYM, 2026-YDS/1 Kılavuzu",
             "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/YDS-1/kilavuz_yd1d18022026.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dgs",
+      "name": "DGS sınav ücreti",
+      "unit": "1 sınav (Dikey Geçiş Sınavı)",
+      "region": null,
+      "source_hint": "ÖSYM DGS başvuru kılavuzları (dokuman.osym.gov.tr). Tarih başvuru ayıdır. Geç başvuru ücreti dahil değil.",
+      "image": {
+        "src": "img/sinav.svg",
+        "alt": "Sınav kâğıdı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-05",
+        "price": 1400,
+        "status": "verified",
+        "note": "ÖSYM Dikey Geçiş Sınavı (DGS) sınav ücreti (önlisanstan lisansa geçiş sınavı). Geç başvuru ücreti ve başvuru merkezi hizmet ücreti dahil değil. Başvuru 15 Mayıs-2 Haziran 2026. Kılavuzda: \"SINAV ÜCRETİ : 1.400,00 TL\".",
+        "source": {
+          "title": "ÖSYM, 2026-DGS Başvuru Kılavuzu",
+          "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/DGS/kilavuz_dgsd15052026.pdf",
+          "accessed": "2026-10-26",
+          "kind": "official"
+        }
+      },
+      "prices": [
+        {
+          "date": "2019-04",
+          "price": 120,
+          "status": "verified",
+          "note": "ÖSYM Dikey Geçiş Sınavı (DGS) sınav ücreti (önlisanstan lisansa geçiş sınavı). Geç başvuru ücreti ve başvuru merkezi hizmet ücreti dahil değil. Başvuru 26 Nisan-8 Mayıs 2019, sınav 30 Haziran 2019. Kılavuzda: \"SINAV ÜCRETİ : 120,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2019-DGS Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2019/DGS/kilavuz26042019.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2021-05",
+          "price": 150,
+          "status": "verified",
+          "note": "ÖSYM Dikey Geçiş Sınavı (DGS) sınav ücreti (önlisanstan lisansa geçiş sınavı). Geç başvuru ücreti ve başvuru merkezi hizmet ücreti dahil değil. Başvuru 21-31 Mayıs 2021, sınav 11 Temmuz 2021. Kılavuzda: \"SINAV ÜCRETİ : 150,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2021-DGS Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2021/DGS/kilavuz21052021.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2023-05",
+          "price": 270,
+          "status": "verified",
+          "note": "ÖSYM Dikey Geçiş Sınavı (DGS) sınav ücreti (önlisanstan lisansa geçiş sınavı). Geç başvuru ücreti ve başvuru merkezi hizmet ücreti dahil değil. Başvuru 29 Mayıs-5 Haziran 2023, sınav 16 Temmuz 2023. Kılavuzda: \"SINAV ÜCRETİ : 270,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2023-DGS Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2023/DGS/kilavuz_29052023.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-05",
+          "price": 590,
+          "status": "verified",
+          "note": "ÖSYM Dikey Geçiş Sınavı (DGS) sınav ücreti (önlisanstan lisansa geçiş sınavı). Geç başvuru ücreti ve başvuru merkezi hizmet ücreti dahil değil. Başvuru 10-20 Mayıs 2024, sınav 30 Haziran 2024. Kılavuzda: \"SINAV ÜCRETİ : 590,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2024-DGS Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2024/DGS/kilavuz_10052024.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2025-05",
+          "price": 950,
+          "status": "verified",
+          "note": "ÖSYM Dikey Geçiş Sınavı (DGS) sınav ücreti (önlisanstan lisansa geçiş sınavı). Geç başvuru ücreti ve başvuru merkezi hizmet ücreti dahil değil. Başvuru 21 Mayıs-2 Haziran 2025, sınav 20 Temmuz 2025. Kılavuzda: \"SINAV ÜCRETİ : 950,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2025-DGS Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2025/DGS/kilavuz-dgd21052025.pdf",
+            "accessed": "2026-10-26",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2026-05",
+          "price": 1400,
+          "status": "verified",
+          "note": "ÖSYM Dikey Geçiş Sınavı (DGS) sınav ücreti (önlisanstan lisansa geçiş sınavı). Geç başvuru ücreti ve başvuru merkezi hizmet ücreti dahil değil. Başvuru 15 Mayıs-2 Haziran 2026. Kılavuzda: \"SINAV ÜCRETİ : 1.400,00 TL\".",
+          "source": {
+            "title": "ÖSYM, 2026-DGS Başvuru Kılavuzu",
+            "url": "https://dokuman.osym.gov.tr/pdfdokuman/2026/DGS/kilavuz_dgsd15052026.pdf",
             "accessed": "2026-10-26",
             "kind": "official"
           }
