@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease } from '../js/format.js';
+import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease, formatPrice, formatNumber, getNumberFormatter } from '../js/format.js';
 
 test('parseGuess accepts Turkish decimal comma', () => {
   assert.equal(parseGuess('4,5'), 4.5);
@@ -88,4 +88,38 @@ test('formatRatio drops the decimal from 100 up', async () => {
   const { formatRatio } = await import('../js/format.js');
   assert.equal(formatRatio(12.43), '12,4');
   assert.equal(formatRatio(172854.1), '172.854');
+});
+
+test('getNumberFormatter returns the same instance for equal options and different instances for different options', () => {
+  const f1 = getNumberFormatter({ maximumFractionDigits: 1 });
+  const f2 = getNumberFormatter({ maximumFractionDigits: 1 });
+  const f0 = getNumberFormatter({ maximumFractionDigits: 0 });
+  assert.equal(f1, f2);
+  assert.notEqual(f1, f0);
+  assert.equal(f1.format(2.66), '2,7');
+  assert.equal(f0.format(2.66), '3');
+});
+
+test('cached formatters produce identical results on repeated calls and match fresh instances', () => {
+  const rawCurrency0 = new Intl.NumberFormat('tr-TR', {
+    style: 'currency',
+    currency: 'TRY',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(1250);
+  const rawCurrency2 = new Intl.NumberFormat('tr-TR', {
+    style: 'currency',
+    currency: 'TRY',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(4.5);
+
+  assert.equal(formatPrice(1250), rawCurrency0);
+  assert.equal(formatPrice(1250), rawCurrency0);
+  assert.equal(formatPrice(4.5), rawCurrency2);
+  assert.equal(formatPrice(4.5), rawCurrency2);
+  assert.equal(formatRatio(2.66), '2,7');
+  assert.equal(formatRatio(2.66), '2,7');
+  assert.equal(formatNumber(1250000), '1.250.000');
+  assert.equal(formatNumber(1250000), '1.250.000');
 });

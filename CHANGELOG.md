@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.105.0] - 2026-10-26
+### Changed
+- Faster first load: the intro, the report card and the archive's table, search and note-link modules load on demand with `import()` (only when the intro opens, a fifth answer shows the card, or the archive opens), so the first screen fetches five fewer modules. The report card module is kept once loaded so "Karneni paylaş" never awaits an import (iOS would drop the tap's user activation).
+- `Intl.NumberFormat` instances are cached (`getNumberFormatter`/`formatNumber` in `js/format.js`) instead of being rebuilt on every frame of the counting price.
+- Plainer wording: score help, "Sen kaç puan alırsın?", "Gerçek fiyat/tutar", "Her fiyatın kaynağı var", intro's "Ana menüye geç".
+
+### Fixed
+- Accessibility: Enter while the receipt prints finishes printing (like a tap) without skipping to the next question; archive "Kaynak" links and date buttons say which date they belong to; "no matching product" is announced; focus rings on the logo and install button; the footer link is at least 44 px wide.
+
+### Removed
+- Dead code: always-false `reduced` branches and `playIntro`'s `reduced` option, unused arguments, and the archive's always-hidden price bars (`barPercent`).
+
 ## [0.104.2] - 2026-10-26
 ### Fixed
 - Dark mode: the question card's "Arkadaşına sor →" button was invisible (paper-coloured text on the paper card) since 0.100.0. It now uses the card's ink colour.

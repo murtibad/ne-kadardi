@@ -36,9 +36,6 @@
   <link rel="modulepreload" href="js/game.js">
   <link rel="modulepreload" href="js/timeline.js">
   <link rel="modulepreload" href="js/categories.js">
-  <link rel="modulepreload" href="js/search.js">
-  <link rel="modulepreload" href="js/linkify.js">
-  <link rel="modulepreload" href="js/archive-table.js">
   <link rel="modulepreload" href="js/source-kind.js">
   <link rel="modulepreload" href="js/confetti.js">
   <link rel="modulepreload" href="js/share-model.js">
@@ -52,8 +49,6 @@
   <link rel="modulepreload" href="js/price-chart.js">
   <link rel="modulepreload" href="js/count-up.js">
   <link rel="modulepreload" href="js/ask-link.js">
-  <link rel="modulepreload" href="js/intro.js">
-  <link rel="modulepreload" href="js/report-card.js">
 </head>
 <body>
   <header class="site-header">
@@ -139,7 +134,7 @@
           <hr>
           <dl>
             <div class="row"><dt>Tahminin</dt><dd id="r-guess"></dd></div>
-            <div class="row"><dt id="r-actual-label">Gerçek Fiyat</dt><dd id="r-actual" class="highlight-price"></dd></div>
+            <div class="row"><dt id="r-actual-label">Gerçek fiyat</dt><dd id="r-actual" class="highlight-price"></dd></div>
           </dl>
           <div class="verdict-box">
             <p id="r-verdict" class="verdict"></p>
@@ -176,7 +171,7 @@
           <!-- Rarely needed: kept at the very bottom so the curious find it and nobody else trips over it. -->
           <details class="score-help">
             <summary>Puan nasıl hesaplanır?</summary>
-            <p>Tahminin gerçek fiyata ne kadar yakınsa puan o kadar yüksek. Gerçek fiyatın yüzde 10 altında ya da üstündeysen 100 puan alırsın. Gerçek fiyatın 5 katını ya da beşte birini söylersen 0 puan. İpucu alırsan puanın %20 düşer.</p>
+            <p>Gerçek fiyata ne kadar yakınsan o kadar çok puan alırsın. Yüzde 10'a kadar şaşarsan 100 puan, 5 kat şaşarsan (çok fazla ya da çok az) 0 puan. İpucu alırsan puanın yüzde 20 düşer.</p>
           </details>
         </article>
       </div>
@@ -212,7 +207,7 @@
       <div class="timeline-picker timeline-scroll" role="group" aria-label="Kategori seç" id="category-picker"></div>
 
       <div class="timeline-picker timeline-scroll" role="group" aria-label="Ürün seç" id="timeline-picker"></div>
-      <p id="product-empty" class="timeline-empty" hidden><span id="product-empty-text">Eşleşen ürün yok.</span> <button type="button" id="search-all-cats" class="timeline-empty-link" hidden></button></p>
+      <p id="product-empty" class="timeline-empty" role="status" hidden><span id="product-empty-text">Eşleşen ürün yok.</span> <button type="button" id="search-all-cats" class="timeline-empty-link" hidden></button></p>
       
       <div class="receipt-wrapper">
         <article class="receipt-card result-receipt timeline-receipt">
@@ -259,10 +254,10 @@
       </div>
       <div class="intro-final">
         <h2 id="intro-title" class="intro-tagline">Geçmişin fiyatlarını tahmin et.</h2>
-        <p class="intro-trust-line"><span class="intro-check" aria-hidden="true">✓</span> Her fiyat kaynaklı</p>
+        <p class="intro-trust-line"><span class="intro-check" aria-hidden="true">✓</span> Her fiyatın kaynağı var</p>
         <div class="intro-actions">
           <button type="button" id="intro-play" class="btn primary next-btn">Hemen oyna →</button>
-          <button type="button" id="intro-close" class="link-btn">Ana sayfaya geç</button>
+          <button type="button" id="intro-close" class="link-btn">Ana menüye geç</button>
         </div>
       </div>
     </div>

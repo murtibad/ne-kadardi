@@ -1,4 +1,5 @@
 // Banter, easter eggs and receipt comments. Pure module, no DOM access.
+import { formatNumber } from './format.js';
 
 export const OVER_COMMENTS = [
   'Gelecekten mi geliyorsun, o fiyata henüz gelmedik!',
@@ -235,7 +236,7 @@ export function ytlNote(year, price) {
   if (!Number.isInteger(y) || y < 2005 || y > 2008) return null;
   if (typeof price !== 'number' || !Number.isFinite(price) || price <= 0) return null;
   const oldLira = Math.round(price * 1_000_000);
-  return `Yeni Türk Lirası dönemi: eski parayla ${oldLira.toLocaleString('tr-TR')} lira`;
+  return `Yeni Türk Lirası dönemi: eski parayla ${formatNumber(oldLira)} lira`;
 }
 
 /**

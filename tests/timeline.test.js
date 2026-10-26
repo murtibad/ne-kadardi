@@ -35,19 +35,14 @@ test('buildTimelines calculates correctly', () => {
   
   assert.equal(rows[2].isCurrent, true);
   assert.equal(rows[2].ratioToCurrent, null);
-  assert.equal(rows[2].barPercent, 100);
   
   assert.equal(rows[0].ratioToCurrent, 10);
-  assert.equal(rows[0].barPercent, 8); // min
-  
-  assert.ok(rows[1].barPercent > 8 && rows[1].barPercent < 100);
 });
 
 test('buildTimelines handles equal prices', () => {
   const f = { products: [{ id: 'p', current: { date: '2026', price: 5, status: 'verified' }, prices: [{ date: '2010', price: 5, status: 'verified' }]}] };
   const ts = buildTimelines(f);
-  assert.equal(ts[0].rows[0].barPercent, 100);
-  assert.equal(ts[0].rows[1].barPercent, 100);
+  assert.equal(ts[0].rows.length, 2);
 });
 
 test('buildTimelines works with real data', () => {
@@ -61,7 +56,6 @@ test('buildTimelines works with real data', () => {
     for (let i = 0; i < t.rows.length; i++) {
       const r = t.rows[i];
       assert.ok(Number.isFinite(r.price) && r.price > 0, 'price must be positive finite');
-      assert.ok(r.barPercent >= 8 && r.barPercent <= 100, 'barPercent out of range');
       if (!r.isCurrent) {
          assert.ok(r.source && r.source.url.startsWith('https://'), 'must have https source');
          assert.ok(typeof r.ratioToCurrent === 'number' && r.ratioToCurrent > 0, 'must have positive ratioToCurrent');
@@ -91,23 +85,6 @@ test('buildTimelines does not mutate its input', () => {
   const before = JSON.stringify(f);
   buildTimelines(f);
   assert.equal(JSON.stringify(f), before);
-});
-
-test('buildTimelines bar width grows with price on a log scale', () => {
-  const f = {
-    products: [{
-      id: 'p', name: 'P', unit: 'U',
-      current: { date: '2026', price: 100, status: 'verified' },
-      prices: [
-        { date: '2000', price: 1, status: 'verified' },
-        { date: '2010', price: 10, status: 'verified' },
-      ],
-    }],
-  };
-  const [a, b, c] = buildTimelines(f)[0].rows.map((r) => r.barPercent);
-  assert.equal(a, 8);
-  assert.equal(c, 100);
-  assert.ok(Math.abs(b - 54) < 1e-9, 'a price between 1 and 100 sits halfway on a log scale');
 });
 
 test('buildTimelines passes source.kind through to the rows', () => {

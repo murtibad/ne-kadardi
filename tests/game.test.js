@@ -251,10 +251,10 @@ test('the newest value is not compared with itself: it is told once, as today', 
 });
 
 test('pensions and wages are labelled as an amount, prices as a price', () => {
-  assert.equal(actualLabel('emekli-en-dusuk-aylik'), 'Gerçek Tutar');
-  assert.equal(actualLabel('asgari-ucret'), 'Gerçek Tutar');
-  assert.equal(actualLabel('kidem-tavani'), 'Gerçek Tutar');
-  assert.equal(actualLabel('simit'), 'Gerçek Fiyat');
+  assert.equal(actualLabel('emekli-en-dusuk-aylik'), 'Gerçek tutar');
+  assert.equal(actualLabel('asgari-ucret'), 'Gerçek tutar');
+  assert.equal(actualLabel('kidem-tavani'), 'Gerçek tutar');
+  assert.equal(actualLabel('simit'), 'Gerçek fiyat');
 });
 
 test('isAmount marks money people get, not things they buy', async () => {

@@ -9,6 +9,38 @@ const MONTHS_TR = [
 /** Escapes text for safe use inside HTML text and double-quoted attributes. */
 export const escapeHTML = (str) => (str ? String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : '');
 
+// Reusable Intl.NumberFormat instances to avoid recreating them on every animation frame.
+const FORMATTER_CACHE = new Map();
+
+function formatterKey(options, locale) {
+  if (!options) return locale;
+  const entries = Object.keys(options)
+    .filter((k) => options[k] !== undefined)
+    .sort()
+    .map((k) => `${k}=${options[k]}`);
+  return `${locale}:${entries.join(';')}`;
+}
+
+/**
+ * Return a cached Intl.NumberFormat instance for the given options and locale.
+ * Options are serialized deterministically so combinations like maximumFractionDigits 0 vs 1
+ * receive distinct cached instances.
+ */
+export function getNumberFormatter(options = {}, locale = 'tr-TR') {
+  const key = formatterKey(options, locale);
+  let formatter = FORMATTER_CACHE.get(key);
+  if (!formatter) {
+    formatter = new Intl.NumberFormat(locale, options);
+    FORMATTER_CACHE.set(key, formatter);
+  }
+  return formatter;
+}
+
+/** Format a number using a cached Intl.NumberFormat instance. */
+export function formatNumber(value, options = {}, locale = 'tr-TR') {
+  return getNumberFormatter(options, locale).format(value);
+}
+
 /**
  * Parse a price typed by the user. Returns a positive number or null.
  *
@@ -42,7 +74,7 @@ export function parseGuess(input) {
 /** Format a TRY amount, e.g. 1250.5 -> "1.250,50 ₺". */
 export function formatPrice(value) {
   const digits = value < 100 ? 2 : 0;
-  return new Intl.NumberFormat('tr-TR', {
+  return getNumberFormatter({
     style: 'currency',
     currency: 'TRY',
     minimumFractionDigits: digits,
@@ -53,7 +85,7 @@ export function formatPrice(value) {
 /** Format a ratio with one decimal, e.g. 2.66 -> "2,7". */
 export function formatRatio(value) {
   // "172.854,1 kat" reads as noise: past 100 the decimal adds nothing.
-  return new Intl.NumberFormat('tr-TR', { maximumFractionDigits: value >= 100 ? 0 : 1 }).format(value);
+  return getNumberFormatter({ maximumFractionDigits: value >= 100 ? 0 : 1 }).format(value);
 }
 
 /**

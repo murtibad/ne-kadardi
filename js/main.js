@@ -1,11 +1,9 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, escapeHTML } from './format.js';
+import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML } from './format.js';
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, buildContextModel, pickByCategory, scoreGuess, scoreTier, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
-import { timelineTableHtml } from './archive-table.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
-import { filterByQuery } from './search.js';
 import { sourceKindLabel } from './source-kind.js';
 import { burstConfetti } from './confetti.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, verdictText, questionTitle } from './share-model.js';
@@ -18,8 +16,6 @@ import { pickFact } from './fact.js';
 import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, askUrl, askText } from './ask-link.js';
-import { introRows, playIntro } from './intro.js';
-import { buildReportCard, isCardRound, reportCardText } from './report-card.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -268,7 +264,7 @@ function onGuess(event) {
 
 // The receipt slides out of the printer slot while the printer sound plays, then gets torn off.
 // Kept short (about a second) so it never stands between the player and the next question;
-// a tap on the receipt finishes it at once, and reduced motion skips the slide.
+// a tap on the receipt finishes it at once.
 const PRINT_MS = 1100;
 let printTimer = null;
 let handTimer = null;
@@ -342,7 +338,6 @@ function handOver() {
 
 function printReceipt(extraSound) {
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
-  const reduced = false; // the receipt always prints; gentle mode turns the slide into a fade in CSS
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
   $('result-screen').classList.remove('handed');
@@ -370,9 +365,8 @@ function printReceipt(extraSound) {
     }
     $('r-stamp').classList.add('stamped');
     if (state.result?.factor === 1) burstConfetti();
-    // Let the tear finish (0.3 s) before the till leaves; reduced motion hands over at once.
-    if (reduced) handOver();
-    else handTimer = setTimeout(handOver, 320);
+    // Let the tear finish (0.3 s) before the till leaves.
+    handTimer = setTimeout(handOver, 320);
   };
   cancelPrint = () => {
     stopCountUp();
@@ -384,11 +378,6 @@ function printReceipt(extraSound) {
     $('r-stamp').classList.add('stamped');
     $('result-screen').classList.add('handed');
   };
-  if (reduced) {
-    wrap.classList.add('printing');
-    finish();
-    return;
-  }
   turnIntoMachine();
   sound.play('print');
   const frames = countUpFrames(state.question.price, { frames: 60 });
@@ -438,8 +427,8 @@ function renderContextBars(model) {
   const higherIsBetter = model.kind === 'count' || (model.kind === 'share' && model.better === 'higher');
   const better = higherIsBetter ? model.now >= model.then : model.now <= model.then;
   const fmt = (v, unit) => {
-    if (model.kind === 'count') return `${v.toLocaleString('tr-TR')} ${unit}`;
-    if (model.kind === 'share') return `%${Math.round(v * 100).toLocaleString('tr-TR')}`;
+    if (model.kind === 'count') return `${formatNumber(v)} ${unit}`;
+    if (model.kind === 'share') return `%${formatNumber(Math.round(v * 100))}`;
     return `${formatRatio(v)} asgari ücret`;
   };
   [['O gün', model.then, '', model.unit], ['Bugün', model.now, model.now === model.then ? '' : better ? 'up' : 'down', model.nowUnit]].forEach(([label, value, tone, unit]) => {
@@ -466,7 +455,7 @@ function renderResult(q, r) {
   stopCountUp();
   $('r-stamp').classList.remove('stamped');
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
-  renderResultImage(q, r);
+  renderResultImage(q);
   $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
   $('r-guess').textContent = formatPrice(r.guess);
   $('r-actual-label').textContent = actualLabel(q.productId);
@@ -486,7 +475,7 @@ function renderResult(q, r) {
     scoreEl.append(hint);
   }
   const tier = scoreTier(r.score);
-  const line = contextComment({ tier, direction: r.direction, factor: r.factor, productId: q.productId, category: categoryOf(q.productId), amount: isAmount(q.productId) })
+  const line = contextComment({ direction: r.direction, factor: r.factor, productId: q.productId, amount: isAmount(q.productId) })
     ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId) });
   $('r-cashier').textContent = `“${line}”`;
   renderReportCard();
@@ -626,8 +615,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     // Scroll only when the row is off screen, so the tapped chart does not jump away.
     const rect = match?.getBoundingClientRect();
     if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
-      const reduced = false;
-      match.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+      match.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   } : undefined);
 }
@@ -973,16 +961,27 @@ function saveIntroSeen() {
 }
 
 let finishIntro = null;
+let introSeq = 0;
 
-function openIntro() {
+async function openIntro() {
   const dlg = $('intro');
   if (!dlg || typeof dlg.showModal !== 'function') return;
+  const seq = ++introSeq;
   finishIntro?.({ moveFocus: false });
-  if (!dlg.open) dlg.showModal();
-  finishIntro = playIntro(dlg, introRows(state.timelines), { reduced: false, sound });
+  try {
+    const { introRows, playIntro } = await import('./intro.js');
+    // Ignore a superseded call so two imports in flight never start two animations.
+    if (seq !== introSeq) return;
+    finishIntro?.({ moveFocus: false });
+    if (!dlg.open) dlg.showModal();
+    finishIntro = playIntro(dlg, introRows(state.timelines), { sound });
+  } catch (err) {
+    console.warn('Tanıtım yüklenemedi', err);
+  }
 }
 
 function closeIntro() {
+  introSeq += 1;
   finishIntro?.({ moveFocus: false });
   finishIntro = null;
   saveIntroSeen();
@@ -991,23 +990,36 @@ function closeIntro() {
 }
 
 // Every fifth answer of the visit the receipt sums up the round (js/report-card.js).
-function renderReportCard() {
+// The module is kept once loaded: sharing must not await an import, or iOS drops the tap's
+// user activation and refuses navigator.share / clipboard.
+let reportCardModule = null;
+async function renderReportCard() {
   const answers = state.visitAnswers ?? [];
-  const show = isCardRound(answers.length);
-  $('r-card').hidden = !show;
-  if (!show) return;
-  const card = buildReportCard(answers);
-  state.reportCard = card;
-  $('r-card-title').textContent = card.title;
-  $('r-card-lines').innerHTML = card.lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
-  $('r-card-avg').textContent = `Ortalama ${card.average}/100 · En iyisi: ${card.best.period} ${card.best.title}`;
+  $('r-card').hidden = true;
+  // Skip the dynamic import until a fifth answer actually needs the card.
+  if (answers.length === 0 || answers.length % 5 !== 0) return;
+  try {
+    reportCardModule = await import('./report-card.js');
+    const { isCardRound, buildReportCard } = reportCardModule;
+    const current = state.visitAnswers ?? [];
+    if (!isCardRound(current.length)) return;
+    const card = buildReportCard(current);
+    state.reportCard = card;
+    $('r-card-title').textContent = card.title;
+    $('r-card-lines').innerHTML = card.lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
+    $('r-card-avg').textContent = `Ortalama ${card.average}/100 · En iyisi: ${card.best.period} ${card.best.title}`;
+    $('r-card').hidden = false;
+  } catch (err) {
+    console.warn('Karne hazırlanamadı', err);
+  }
 }
 
 async function shareReportCard(e) {
   const btn = e.currentTarget;
   const card = state.reportCard;
   if (!card) return;
-  const text = reportCardText(card, location.origin + location.pathname);
+  if (!reportCardModule) return; // the card is only visible once the module has loaded
+  const text = reportCardModule.reportCardText(card, location.origin + location.pathname);
   if (navigator.share) {
     try { await navigator.share({ text }); } catch (err) { if (err.name !== 'AbortError') console.warn(err); }
     return;
@@ -1032,6 +1044,7 @@ function initIntro() {
   $('intro-open')?.addEventListener('click', openIntro);
   // Pressing Escape dismisses the modal via cancel; mark seen and stop any running intro timers/sounds.
   dlg.addEventListener('cancel', () => {
+    introSeq += 1;
     finishIntro?.({ moveFocus: false });
     finishIntro = null;
     saveIntroSeen();
@@ -1046,9 +1059,33 @@ function saveArchiveNewestFirst(newest) {
   try { localStorage.setItem(ARCHIVE_ORDER_KEY, newest ? 'newest' : 'oldest'); } catch { /* storage unavailable */ }
 }
 
-function renderTimelineScreen(focusProductId = null) {
+// Cache the archive module promises once so opening or filtering the archive never re-imports them,
+// and fetch linkify.js in parallel with archive-table.js instead of waiting for a second hop.
+let archiveModulesPromise = null;
+function loadArchiveModules() {
+  archiveModulesPromise ??= Promise.all([
+    import('./archive-table.js'),
+    import('./search.js'),
+    import('./linkify.js'),
+  ]).catch((err) => {
+    archiveModulesPromise = null;
+    throw err;
+  });
+  return archiveModulesPromise;
+}
+
+async function renderTimelineScreen(focusProductId = null) {
   show('timeline-screen');
   if (state.timelines.length === 0) return;
+
+  let timelineTableHtml;
+  let filterByQuery;
+  try {
+    [{ timelineTableHtml }, { filterByQuery }] = await loadArchiveModules();
+  } catch (err) {
+    console.warn('Arşiv yüklenemedi', err);
+    return;
+  }
 
   renderCategoryChips();
   const inCategory = filterTimelines(state.timelines, state.timelineCategory);
@@ -1060,7 +1097,7 @@ function renderTimelineScreen(focusProductId = null) {
   }
   const product = pool.find(t => t.id === state.selectedTimelineProduct);
 
-  renderSearchState(visible.length);
+  renderSearchState(visible.length, filterByQuery);
   renderProductChips(visible, product.id, focusProductId);
   renderTimelineHeader(product);
   renderArchiveOrder();
@@ -1080,17 +1117,17 @@ function renderCategoryChips() {
     btn.setAttribute('aria-pressed', c.id === state.timelineCategory ? 'true' : 'false');
     btn.dataset.cat = c.id;
     btn.textContent = c.label;
-    btn.onclick = () => {
+    btn.onclick = async () => {
       state.timelineCategory = c.id;
       state.selectedTimelineProduct = null; // pick the first product of the new category
-      renderTimelineScreen();
+      await renderTimelineScreen();
       catPicker.querySelector(`[data-cat="${c.id}"]`)?.focus({ preventScroll: true }); // the chips were rebuilt
     };
     catPicker.appendChild(btn);
   }
 }
 
-function renderSearchState(hits) {
+function renderSearchState(hits, filterByQuery) {
   const search = $('product-search');
   if (search.value !== state.timelineQuery) search.value = state.timelineQuery;
   $('product-count').textContent = `${hits} ürün`;
@@ -1104,10 +1141,10 @@ function renderSearchState(hits) {
     ? filterByQuery(state.timelines, state.timelineQuery).length : 0;
   allBtn.hidden = elsewhere === 0;
   allBtn.textContent = `Tüm kategorilerde ara (${elsewhere} ürün)`;
-  allBtn.onclick = () => {
+  allBtn.onclick = async () => {
     state.timelineCategory = 'all';
     state.selectedTimelineProduct = null;
-    renderTimelineScreen();
+    await renderTimelineScreen();
     $('product-search').focus({ preventScroll: true });
   };
 }
@@ -1188,8 +1225,7 @@ function linkRowsToChart() {
     const fig = $('t-chart');
     fig._activateDate?.(btn.dataset.date);
     if (!fig.hidden) {
-      const reduced = false;
-      fig.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+      fig.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   });
 }
@@ -1453,8 +1489,10 @@ async function init() {
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' || e.repeat || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
     if ($('result-screen').hidden) return;
-    // A quick second Enter right after submitting would skip the receipt before it prints.
-    if (document.querySelector('#result-screen .receipt-wrapper').classList.contains('printing')) return;
+    // A quick second Enter right after submitting must not skip the receipt; like a tap,
+    // it only finishes the printing so keyboard users can hurry it too.
+    const wrap = document.querySelector('#result-screen .receipt-wrapper');
+    if (wrap.classList.contains('printing')) { e.preventDefault(); wrap.click(); return; }
     // The chart is focusable for arrow-key inspection; Enter there must not drop the receipt.
     if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, summary, [contenteditable], .price-chart')) return;
     e.preventDefault();
