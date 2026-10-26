@@ -309,3 +309,42 @@ test('questionsUntilCard counts questions left until the next report card', asyn
   assert.equal(questionsUntilCard(5), 0);
   assert.equal(questionsUntilCard(6), 4);
 });
+
+test('pickFollowUp picks another product from the same year, avoiding recent products and same category when possible', async () => {
+  const { pickFollowUp, yearOf } = await import('../js/game.js');
+  const zero = () => 0;
+  const q = { id: 'benzin@2020-01', productId: 'benzin', date: '2020-01' };
+  const qs = [
+    q,
+    { id: 'benzin@2020-07', productId: 'benzin', date: '2020-07' },
+    { id: 'motorin@2020-01', productId: 'motorin', date: '2020-01' }, // same category (ulasim)
+    { id: 'ekmek@2020-03', productId: 'ekmek', date: '2020-03' }, // different category (gunluk)
+    { id: 'dolar@2020-06', productId: 'dolar', date: '2020-06' }, // different category (para)
+    { id: 'ekmek@2019-01', productId: 'ekmek', date: '2019-01' }, // different year
+  ];
+
+  // Picks same year, different product, and prefers a different category over motorin.
+  const f1 = pickFollowUp(q, qs, [], zero);
+  assert.equal(yearOf(f1.date), 2020);
+  assert.notEqual(f1.productId, 'benzin');
+  assert.equal(f1.id, 'ekmek@2020-03');
+
+  // Avoids recentProducts (last 8) when an alternative exists.
+  const f2 = pickFollowUp(q, qs, ['ekmek'], zero);
+  assert.equal(f2.id, 'dolar@2020-06');
+
+  // Everyday products (FOLLOW_UP_IDS) win over a fresh but obscure one (motorin is not listed).
+  const f3 = pickFollowUp(q, qs, ['ekmek', 'dolar'], zero);
+  assert.equal(f3.id, 'ekmek@2020-03');
+  // Without any everyday product that year, an obscure one is still offered.
+  const f3b = pickFollowUp(q, qs.filter((x) => x.productId !== 'ekmek' && x.productId !== 'dolar'), [], zero);
+  assert.equal(f3b.id, 'motorin@2020-01');
+
+  // Falls back to recent products (still preferring another category) when all same-year products are recent.
+  const f4 = pickFollowUp(q, qs, ['motorin', 'ekmek', 'dolar'], zero);
+  assert.equal(f4.id, 'ekmek@2020-03');
+
+  // Never returns the same product and returns null when no other product exists in that year.
+  assert.equal(pickFollowUp(q, [q, { id: 'benzin@2020-07', productId: 'benzin', date: '2020-07' }, { id: 'ekmek@2019-01', productId: 'ekmek', date: '2019-01' }], [], zero), null);
+  assert.equal(pickFollowUp(null, qs, [], zero), null);
+});
