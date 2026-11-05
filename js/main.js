@@ -1031,8 +1031,7 @@ function renderSoundToggle() {
   const btn = $('sound-toggle');
   btn.innerHTML = on ? ICONS.soundOn : ICONS.soundOff;
   btn.setAttribute('aria-pressed', String(on));
-  btn.title = on ? 'Sesi kapat' : 'Sesi aç';
-  btn.setAttribute('aria-label', on ? 'Sesi kapat' : 'Sesi aç');
+  btn.title = on ? 'Sesi kapat' : 'Sesi aç'; // the label stays fixed: aria-pressed carries the state
 }
 
 function toggleSound() {
@@ -1145,7 +1144,7 @@ async function init() {
     if (v !== null) $('guess-error').textContent = '';
     $('guess-readout').textContent = v !== null && v >= 1000 ? readAmount(v) : '';
   });
-  // Skipping is free: no score, no round counted, so players can drop a product they do not know.
+  // Skipping is free: no score and no stats, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
     if (skipDaily()) return;
     state.skips += 1;
