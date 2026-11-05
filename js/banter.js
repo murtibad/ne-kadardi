@@ -361,6 +361,12 @@ export const PRODUCT_POOLS = {
     'Şoför "arkaya doğru ilerleyelim" dedi, arkada yer yoktu.',
     'Kartı okutunca jetonlu günleri özleyen dayılar var.',
   ],
+  'ankara-ulasim': [
+    'Kızılay\'a kadar bakiye yeter mi diye hesap yapan bir ben miyim?',
+    'Ankaray\'da ayakta giden herkes durağı aynı telaşla sayar.',
+    '"Aktarma süresi doldu" uyarısı hep tam inerken gelir.',
+    'Öğrenciyken bilet ucuzdu, şimdi tam bilet yüzüme bakıyor.',
+  ],
   'osmangazi-koprusu': [
     'Körfezi dolaşmaya gerek kalmadı, ama hesap ayrı tabii.',
     'Manzaraya doyamadan kendini öbür yakada buldun.',

@@ -127,6 +127,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | anadolu-otoyolu | Anadolu Otoyolu (İstanbul-Ankara) Çamlıca-Akıncı one-way car toll, 2010-2026 (2010-2018 dated by the archived copy: the tariff in force that month) | KGM tariff PDFs (official, archived copies) and two news domains for 2024-08 | high |
 | imei-kayit-harci | IMEI registration fee for a phone brought from abroad | Harçlar Kanunu via news (2012+, incl. mid-year rises) | high |
 | aclik-siniri | Türk-İş hunger line, monthly food spending of a family of four, January | union survey via news (2019+); not official data, title says Türk-İş | medium-high |
+| ankara-ulasim | Ankara EGO bus/metro/Ankaray full fare, one ride (Ankarakart single ride from 2019), month of the UKOME rise, 2014-2026 | news, two domains each; 2010-2013 and 2016 left out (no two independent sources found) | high |
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).
 The start year of the game is whatever the verified data supports; target 2010, 2005 where possible.
