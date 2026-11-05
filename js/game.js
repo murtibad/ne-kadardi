@@ -502,7 +502,8 @@ export function streakAlive(prev, todayKey) {
   if (!prev?.last) return false;
   if (prev.count !== undefined && !(prev.count > 0)) return false;
   const diff = dayDiff(prev.last, todayKey);
-  return diff === 0 || diff === 1;
+  // Negative: the clock moved back (travel west); the streak is not broken by that.
+  return diff <= 1;
 }
 
 /** Advance or reset the daily streak on an answered question for `todayKey` ('YYYY-MM-DD'). */
@@ -510,8 +511,9 @@ export function updateStreak(prev, todayKey) {
   const prevCount = Number.isFinite(prev?.count) && prev.count > 0 ? prev.count : 0;
   const prevBest = Number.isFinite(prev?.best) && prev.best > 0 ? prev.best : 0;
   const diff = prev?.last ? dayDiff(prev.last, todayKey) : NaN;
-  if (diff === 0 && prevCount > 0) {
-    return { last: todayKey, count: prevCount, best: Math.max(prevBest, prevCount) };
+  if (diff <= 0 && prevCount > 0) {
+    // Same day, or the clock moved back: keep the count and the later date so tomorrow still extends it.
+    return { last: diff < 0 ? prev.last : todayKey, count: prevCount, best: Math.max(prevBest, prevCount) };
   }
   const count = diff === 1 ? prevCount + 1 : 1;
   return { last: todayKey, count, best: Math.max(prevBest, count) };
