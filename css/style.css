@@ -1061,6 +1061,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 
 /* Link tap targets */
 .result-receipt .source a, .result-receipt .archive-link { display: inline-flex; align-items: center; min-height: 44px; }
+/* Short publisher name never breaks; only the kind label may wrap. */
+.result-receipt .source a { white-space: nowrap; }
 
 /* Actions on phones: "Arkadaşına gönder" | "Sonraki soru" on one line */
 @media (max-width: 719px) {
