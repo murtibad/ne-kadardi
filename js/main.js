@@ -5,6 +5,7 @@ import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
+import { sourceLinkText } from './source-name.js';
 import { burstConfetti } from './confetti.js';
 import { verdictText, questionTitle } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
@@ -561,8 +562,10 @@ function renderResult(q, r) {
   $('r-archive').textContent = isAmount(q.productId) ? 'Yıllar içindeki tutarları →' : 'Bu ürünün fiyat geçmişi →';
   $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; state.archiveFromResult = true; };
   $('r-source').href = q.source.url;
-  $('r-source').textContent = shortTitle(q.source.title);
+  // Publisher + year keeps "Kaynak: …" on one row; the full headline stays in title/aria-label.
+  $('r-source').textContent = sourceLinkText(q.source, q.date) || shortTitle(q.source.title);
   $('r-source').title = q.source.title;
+  $('r-source').setAttribute('aria-label', `${$('r-source').textContent} kaynağı: ${q.source.title}`);
   const kindLabel = sourceKindLabel(q.source.kind);
   $('r-source-kind').textContent = kindLabel ? ` · ${kindLabel}` : '';
   $('r-source-kind').hidden = !kindLabel;

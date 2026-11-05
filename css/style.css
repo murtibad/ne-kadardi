@@ -1061,6 +1061,13 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 
 /* Link tap targets */
 .result-receipt .source a, .result-receipt .archive-link { display: inline-flex; align-items: center; min-height: 44px; }
+/* Short publisher name never breaks; only the kind label may wrap. */
+.result-receipt .source a { white-space: nowrap; }
+/* Narrow phones: tighter label/name/kind so "Kaynak: Bloomberg HT (2021) · haberlerden" stays on one row. */
+@media (max-width: 400px) {
+  .result-receipt .source { white-space: nowrap; font-size: 0.75rem; letter-spacing: 0; }
+  .result-receipt .source .source-kind { font-size: 0.75rem; }
+}
 
 /* Actions on phones: "Arkadaşına gönder" | "Sonraki soru" on one line */
 @media (max-width: 719px) {
