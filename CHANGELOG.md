@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.125.1] - 2026-11-05
+﻿### Changed
+- The source line on the receipt names the publisher and year ("Kaynak: Bianet (2022) · haberlerden") instead of a cut-off headline; the full title stays on the link.
+
 ## [0.125.0] - 2026-11-05
 ﻿### Added
 - New product: Ankara toplu taşıma bileti (EGO bus, metro, Ankaray full fare, one ride), 9 values 2014-2026, each confirmed by two separate news sites.
