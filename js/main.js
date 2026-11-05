@@ -208,6 +208,8 @@ function nextQuestion(productId = null, date = null) {
 
   $('q-name').textContent = questionTitle(q);
   $('q-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
+  $('q-explain').textContent = q.explain ?? '';
+  $('q-explain').hidden = !q.explain;
   $('guess-input').value = '';
   $('guess-readout').textContent = '';
   document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
