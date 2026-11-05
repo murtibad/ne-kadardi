@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from '../js/daily.js';
 import { categoryOf } from '../js/categories.js';
 
 const sampleQuestions = [
@@ -144,4 +144,26 @@ test('dailyQuestions skips the 12 months before the day key but keeps products w
   for (let d = 1; d < 28; d += 1) for (const q of dailyQuestions(qs, `2027-09-${String(d).padStart(2, '0')}`, categoryOf)) later.add(q.id);
   assert.ok(later.has('dolar@2026-07') || later.has('dolar@2020-01'));
   assert.deepEqual(dailyQuestions(qs, '2026-10-26', categoryOf), dailyQuestions([...qs].reverse(), '2026-10-26', categoryOf));
+});
+
+test('prevDayKey crosses month and year boundaries', () => {
+  assert.equal(prevDayKey('2026-03-01'), '2026-02-28');
+  assert.equal(prevDayKey('2026-01-01'), '2025-12-31');
+});
+
+test('resolveSavedDaily keeps finished runs for today only and unfinished ones for yesterday too', () => {
+  const run = (key, scores) => ({ key, ids: ['a@2020-01', 'b@2020-01'], scores });
+  assert.deepEqual(resolveSavedDaily(run('2026-11-05', [1, 2]), '2026-11-05'), run('2026-11-05', [1, 2]));
+  assert.equal(resolveSavedDaily(run('2026-11-04', [1, 2]), '2026-11-05'), null);
+  assert.deepEqual(resolveSavedDaily(run('2026-11-04', [1]), '2026-11-05'), run('2026-11-04', [1]));
+  assert.equal(resolveSavedDaily(run('2026-11-04', []), '2026-11-05'), null);
+  assert.equal(resolveSavedDaily(run('2026-11-03', [1]), '2026-11-05'), null);
+  assert.equal(resolveSavedDaily(null, '2026-11-05'), null);
+  assert.equal(resolveSavedDaily({ key: '2026-11-05', ids: 'x', scores: [] }, '2026-11-05'), null);
+});
+
+test('resolveSavedDaily empties a run whose ids no longer exist in the data', () => {
+  const data = { key: '2026-11-04', ids: ['a@2020-01', 'gone@2020-01'], scores: [100] };
+  assert.deepEqual(resolveSavedDaily(data, '2026-11-05', new Set(['a@2020-01'])), { key: '2026-11-04', ids: [], scores: [] });
+  assert.deepEqual(resolveSavedDaily(data, '2026-11-05', new Set(['a@2020-01', 'gone@2020-01'])), data);
 });

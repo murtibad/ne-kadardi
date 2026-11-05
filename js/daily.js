@@ -22,6 +22,23 @@ export function dayKey(date = new Date()) {
   return `${y}-${m}-${d}`;
 }
 
+/**
+ * Validates a saved daily run. Finished runs count only for `todayKey`; an unfinished run with
+ * answers stays resumable for today and yesterday (a run that crossed midnight). If any saved id is
+ * missing from `validIds` (data changed), ids and scores are emptied so the receipt is rebuilt
+ * for the run's own key. Returns null when the run must be ignored.
+ */
+export function resolveSavedDaily(data, todayKey, validIds = null) {
+  if (!data || typeof data.key !== 'string' || !Array.isArray(data.ids) || !Array.isArray(data.scores)) return null;
+  let ids = data.ids.filter((x) => typeof x === 'string');
+  const scores = data.scores.filter(Number.isFinite);
+  const finished = ids.length > 0 && scores.length >= ids.length;
+  const resumable = !finished && scores.length > 0 && data.key === prevDayKey(todayKey);
+  if (data.key !== todayKey && !resumable) return null;
+  if (validIds && ids.some((id) => !validIds.has(id))) return { key: data.key, ids: [], scores: [] };
+  return { key: data.key, ids, scores };
+}
+
 /** Deterministic PRNG seeded from a string key (FNV-1a hash feeding mulberry32). */
 export function seededRng(key) {
   let h = 2166136261 >>> 0;
@@ -106,7 +123,7 @@ export function trimLog(log, max = 60) {
 }
 
 /** Previous local calendar day of a 'YYYY-MM-DD' key (noon avoids DST edge cases). */
-function prevDayKey(key) {
+export function prevDayKey(key) {
   const [y, m, d] = String(key).split('-').map(Number);
   return dayKey(new Date(y, m - 1, d - 1, 12));
 }
