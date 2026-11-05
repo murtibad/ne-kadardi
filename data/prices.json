@@ -14386,6 +14386,140 @@
           }
         }
       ]
+    },
+    {
+      "id": "ankara-ulasim",
+      "name": "Ankara toplu taşıma bileti",
+      "unit": "1 biniş, tam bilet (EGO otobüs, metro, Ankaray)",
+      "region": "Ankara",
+      "source_hint": "Ankara UKOME kararıyla belirlenen tam biniş ücreti (2019'dan beri Ankarakart ile tek biniş); haber kaynaklı, her değer için iki ayrı haber sitesi. Tarih zammın ayıdır. 2010-2013 ve 2015-2016 değerleri için iki bağımsız kaynak bulunamadı.",
+      "image": {
+        "src": "img/otobus.svg",
+        "alt": "Şehir otobüsü çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-08",
+        "price": 40,
+        "status": "verified",
+        "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"tam bilet 35 liradan 40 liraya\"; \"Artış, 23 Ağustos'tan itibaren uygulanacaktır.\" (2026). Doğrulama: gzt.com https://www.gzt.com/gundem/ankara-toplu-tasima-ucretleri-zamlandi-ankara-ego-bilet-fiyatlari-2026-ankara-ogrenci-ego-kac-tl-ankara-otobus-ucretleri-ne-kadar-oldu-tam-ve-ogrenci-tarifesi-4251323 (\"Tam bilet: 35 TL → 40 TL\").",
+        "source": {
+          "title": "Dünya, Ankara'da toplu taşıma ücretlerine zam (14.08.2026)",
+          "url": "https://www.dunya.com/gundem/ankarada-toplu-tasima-ucretlerine-zam-haberi-836251",
+          "accessed": "2026-11-05",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2014-06",
+          "price": 2,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"1,75 TL olan tam biniş 2 TL’ye\"; yeni tarife 15 Haziran 2014 Pazar gününden itibaren. Doğrulama: bigpara.hurriyet.com.tr https://bigpara.hurriyet.com.tr/haberler/genel-haberler/ankarada-ulasima-zam_ID939990/ (\"EGO otobüsleri, Metro ve Ankara'da 1,75 TL olan tam biniş 2 TL'ye\").",
+          "source": {
+            "title": "Timeturk, Ankara'da zam yaptı (13.06.2014)",
+            "url": "https://www.timeturk.com/tr/2014/06/13/ankara-da-zam-yapti.html",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2017-01",
+          "price": 2.5,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"EGO-Metro ve Ankaray'da, tam bilet 2 lira 35 kuruştan 2,5 liraya\"; 15 Ocak 2017 Pazar gününden itibaren. Doğrulama: gazetevatan.com https://www.gazetevatan.com/gundem/baskentte-toplu-tasima-ucretlerine-yuzde-6-3-zam-1025852 (\"EGO-Metro-Ankaray tam 2,35 TL'den 2,50 TL'ye\").",
+          "source": {
+            "title": "A Haber, Ankara'da toplu taşıma ücretlerine zam (06.01.2017)",
+            "url": "https://www.ahaber.com.tr/Ekonomi/2017/01/06/ankarada-toplu-tasima-ucretlerine-zam",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2019-09",
+          "price": 3.25,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"2,5 lira olan Ankarakart ile bir biniş ücretinin 3 lira 25 kuruşa yükseltildiği bildirildi.\"; 2 Eylül 2019 Pazartesi 06.00'dan itibaren. Doğrulama: ntv.com.tr https://www.ntv.com.tr/turkiye/baskentte-toplu-tasimaya-zam,dTCjfp1bqkabAKsru_bwuQ (\"bir binişlik Ankarakart ücreti 2,5 liradan 3,25 liraya\").",
+          "source": {
+            "title": "Yeni Akit, Başkent'te toplu taşımaya zam (31.08.2019)",
+            "url": "https://www.yeniakit.com.tr/haber/baskentte-toplu-tasimaya-zam--909210.html",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 4.5,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"3,25 lira olan Ankarakart tam biniş ücreti 4,5 lira\"; 5 Ocak 2022'den itibaren. Doğrulama: iscihaber.net https://www.iscihaber.net/gundem/baskentte-toplu-tasimaya-zam/23927 (\"3,25 lira olan Ankarakart tam biniş ücreti 4,5 lira\").",
+          "source": {
+            "title": "Yeni Akit, Ankara'da tam biniş ücreti 4,5 lira oldu (31.12.2021)",
+            "url": "https://www.yeniakit.com.tr/haber/ankarada-toplu-tasima-ucretleri-ne-kadar-oldu-ankarakart-tam-binis-ucreti-ne-kadar-1612670.html",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-03",
+          "price": 6.5,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"tam bilet ücreti 4,5 liradan 6,5, öğrenci biniş ücreti de 2,5 liradan 3,5 liraya yükseldi\"; 15 Mart 2022'den itibaren. Doğrulama: trthaber.com https://www.trthaber.com/haber/turkiye/ankarada-toplu-tasima-ucretleri-artti-662936.html (\"tam biniş ücreti 4,5 liradan 6,5\").",
+          "source": {
+            "title": "NTV, Başkentte toplu taşıma ücretine zam (11.03.2022)",
+            "url": "https://www.ntv.com.tr/turkiye/baskentte-toplu-tasima-ucretine-zam-ankara-ego-fiyatlari-2022,ybHhjO1kfEmXyz8uHWjokg",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-07",
+          "price": 15,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"tam bilet fiyatı 9.5 TL’den 15 TL’ye\"; 24 Temmuz 2023 Pazartesi tarihi itibariyle. Doğrulama: diken.com.tr https://www.diken.com.tr/?p=1345182 (\"tam bilet 9,5’dan 15 liraya\").",
+          "source": {
+            "title": "NTV, Ankara'da toplu taşımaya zam (18.07.2023)",
+            "url": "https://www.ntv.com.tr/turkiye/ankarada-toplu-tasimaya-zam,FlzP-SZMgki0lSQuPuw9Pg",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-08",
+          "price": 21,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"tam biniş ücreti 15 liradan 21 liraya\"; 1 Ağustos 2024'ten itibaren. Doğrulama: ekonomim.com https://www.ekonomim.com/ekonomi/ankarada-toplu-ulasima-yuzde-40-zam-haberi-756606 (\"tam biniş ücreti 15 liradan 21 liraya\").",
+          "source": {
+            "title": "Dünya, Ankara'da toplu ulaşıma zam (24.07.2024)",
+            "url": "https://www.dunya.com/ekonomi/son-dakika-ankarada-toplu-ulasima-zam-yeni-tarife-belli-oldu-haberi-738103",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-02",
+          "price": 26,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"Tam bilet 26 lira, öğrenci bileti 13 lira oldu.\"; \"16 Şubat’tan itibaren\". Doğrulama: posta.com.tr https://www.posta.com.tr/ekonomi/ankarada-toplu-ulasim-zam-2827382 (\"16 Şubat 2025’ten itibaren tam bilet 26 TL, öğrenci bileti 13 TL\").",
+          "source": {
+            "title": "Diken, Ankara'da ulaşıma zam (13.02.2025)",
+            "url": "https://www.diken.com.tr/?p=1536345",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-08",
+          "price": 40,
+          "status": "verified",
+          "note": "Ankara EGO otobüs, metro ve Ankaray tam biniş ücreti. \"tam bilet 35 liradan 40 liraya\"; \"Artış, 23 Ağustos'tan itibaren uygulanacaktır.\" (2026). Doğrulama: gzt.com https://www.gzt.com/gundem/ankara-toplu-tasima-ucretleri-zamlandi-ankara-ego-bilet-fiyatlari-2026-ankara-ogrenci-ego-kac-tl-ankara-otobus-ucretleri-ne-kadar-oldu-tam-ve-ogrenci-tarifesi-4251323 (\"Tam bilet: 35 TL → 40 TL\").",
+          "source": {
+            "title": "Dünya, Ankara'da toplu taşıma ücretlerine zam (14.08.2026)",
+            "url": "https://www.dunya.com/gundem/ankarada-toplu-tasima-ucretlerine-zam-haberi-836251",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
