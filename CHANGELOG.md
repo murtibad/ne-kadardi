@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.123.2] - 2026-11-05
+﻿### Fixed
+- Archive tables with "kurla hesaplandı" rows explain once below the table that the price was converted with that day's exchange rate.
+- The recent-score ticks read "son N puanın" and carry a matching label.
+- Footer: the "·" separators are drawn by CSS; on phones the items stack, so no lone "·" is left at a line edge.
+
 ## [0.123.1] - 2026-10-27
 ### Changed
 - The handed-over receipt no longer floats up and down while idle (player feedback: it made reading harder). It stays still; with a mouse it lifts slightly on hover.

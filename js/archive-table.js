@@ -3,11 +3,15 @@ import { formatPrice, formatPeriod, formatIncrease, escapeHTML } from './format.
 import { sourceKindLabel } from './source-kind.js';
 import { linkifyNote } from './linkify.js';
 
+// Shown once under the table: "hesaplandı" rows would otherwise be unexplained.
+const DERIVED_HELP = 'Hesaplandı: bu fiyat o günkü kurla çevrildi (yöntem kaynakta).';
+
 function rowHtml(r, seen) {
   const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
   const ratio = r.ratioToCurrent ? `<span class="timeline-ratio">${formatIncrease(r.ratioToCurrent)}</span>` : '';
   const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
-  const kind = kindLabel ? `<span class="source-kind">${escapeHTML(kindLabel)}</span>` : '';
+  const kindTitle = r.source?.kind === 'derived' ? ` title="${escapeHTML(DERIVED_HELP)}"` : '';
+  const kind = kindLabel ? `<span class="source-kind"${kindTitle}>${escapeHTML(kindLabel)}</span>` : '';
   const source = r.source
     ? `<a href="${escapeHTML(r.source.url)}" target="_blank" rel="noopener" class="timeline-source" title="${escapeHTML(r.source.title)}" aria-label="${escapeHTML(period)} kaynağı: ${escapeHTML(r.source.title)}">Kaynak</a>${kind}`
     : '';
@@ -36,5 +40,6 @@ export function timelineTableHtml(rows, { newestFirst = false, seenDates = null 
         <th scope="col" role="columnheader" class="visually-hidden">Değişim ve kaynak</th>
       </tr>
     </thead>
-    <tbody role="rowgroup">${ordered.map((r) => rowHtml(r, Boolean(seenDates?.has(r.date)))).join('')}</tbody></table>`;
+    <tbody role="rowgroup">${ordered.map((r) => rowHtml(r, Boolean(seenDates?.has(r.date)))).join('')}</tbody></table>`
+    + (rows.some((r) => r.source?.kind === 'derived') ? `<p class="derived-note">${DERIVED_HELP}</p>` : '');
 }
