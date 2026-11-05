@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.123.3] - 2026-11-05
+﻿### Changed
+- Today's prices refreshed: dollar, euro, pound and Bitcoin to TCMB 04.11.2026 (Bitcoin with the Bitstamp close of the same day), gram gold, quarter gold and silver to the October 2026 World Bank monthly price, Schengen visa fee to the 04.11.2026 euro rate.
+
 ## [0.123.2] - 2026-11-05
 ﻿### Fixed
 - Archive tables with "kurla hesaplandı" rows explain once below the table that the price was converted with that day's exchange rate.
