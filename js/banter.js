@@ -367,6 +367,12 @@ export const PRODUCT_POOLS = {
     '"Aktarma süresi doldu" uyarısı hep tam inerken gelir.',
     'Öğrenciyken bilet ucuzdu, şimdi tam bilet yüzüme bakıyor.',
   ],
+  'izmir-ulasim': [
+    'Konak\'tan Bornova\'ya kart bakiyesi yeter mi diye hesap yapıyorum.',
+    'İzban\'a koşarken kartı okutmayı unutan bir ben değilim herhalde.',
+    'Boyoz parası, vapur parası derken ay sonu yine zor geliyor.',
+    'Aktarma süresi var ama ben hep son dakikada inen oluyorum.',
+  ],
   'osmangazi-koprusu': [
     'Körfezi dolaşmaya gerek kalmadı, ama hesap ayrı tabii.',
     'Manzaraya doyamadan kendini öbür yakada buldun.',

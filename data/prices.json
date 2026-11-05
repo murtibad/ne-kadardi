@@ -14520,6 +14520,116 @@
           }
         }
       ]
+    },
+    {
+      "id": "izmir-ulasim",
+      "name": "İzmir toplu taşıma bileti",
+      "unit": "1 biniş, tam bilet (İzmirim Kart; ESHOT otobüs, metro, tramvay)",
+      "region": "İzmir",
+      "source_hint": "İzmir Büyükşehir UKOME/meclis kararıyla belirlenen tam biniş (ilk biniş) ücreti; 90/120 dakika aktarma indirimleri ve İZBAN dahil değildir. Haber kaynaklı, her değer için iki ayrı haber sitesi. Tarih zammın ayıdır. 2022-2023 arasında ÜFE'ye bağlı aylık küçük artışlar uygulandığı için yalnızca belirgin basamaklar alındı; 2014-2021 ve 2024-10 (20 TL) değerleri için iki bağımsız kaynak bulunamadı.",
+      "image": {
+        "src": "img/otobus.svg",
+        "alt": "Şehir otobüsü çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-04",
+        "price": 35,
+        "status": "verified",
+        "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"tam biniş ücreti 30 TL’den 35 TL’ye\"; 1 Nisan 2026'dan itibaren. Doğrulama: memurlar.net https://www.memurlar.net/haber/1162026/izmir-de-ulasima-zam-yeni-tarifeler-1-nisan-da-basliyor.html (tam bilet 30 TL'den 35 TL'ye ... yükseldi). Hâlâ geçerli: evrensel.net https://www.evrensel.net/haber/6007486/izmir-de-ulasim-pahali-erisim-sorunlu-ulasimda-zam-halka-milyonlar-sirketlere (01.11.2026, \"ESHOT, metro ve tramvayda tam biniş ücreti 30 TL’den 35 TL’ye yükseldi\"). İZBAN ayrı raylı tarifedir (40 TL), kapsam dışı.",
+        "source": {
+          "title": "Karar, İzmir'de toplu ulaşıma zam (14.03.2026)",
+          "url": "https://www.karar.com/sehir-haberleri/izmirde-toplu-ulasima-zam-3-2035863",
+          "accessed": "2026-11-05",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2022-01",
+          "price": 4.7,
+          "status": "verified",
+          "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"3,46 TL olan tam biniş ücreti, 4,70 TL’ye çıkarıldı\"; 1 Ocak 2022 Cumartesi gününden itibaren. Doğrulama: memurlar.net https://www.memurlar.net/haber/1008288/izmir-de-ulasima-zam-iste-yeni-tarifeler.html (3,46 TL olan tam biniş ücreti 4,70 TL'ye çıkarıldı).",
+          "source": {
+            "title": "Sözcü, İzmir'de 2022'de uygulanacak toplu ulaşım zammı açıklandı (30.12.2021)",
+            "url": "https://www.sozcu.com.tr/izmirde-2022de-uygulanacak-toplu-ulasim-zammi-aciklandi-wp6858329",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-03",
+          "price": 6.5,
+          "status": "verified",
+          "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"4,7 lira olan tam biniş ücreti, yüzde 38 artışla 6,5 liraya çıkarıldı\"; 20 Mart 2022 Pazar gününden itibaren. Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/ekonomi/izmirde-ulasima-zam-677356h (4.70 TL olan toplu ulaşım araçlarına birinci biniş fiyatı, 20 Mart'tan itibaren 6.5 TL olacak).",
+          "source": {
+            "title": "Bloomberg HT, İzmir'de toplu ulaşıma zam (17.03.2022)",
+            "url": "https://www.bloomberght.com/izmir-de-toplu-ulasima-zam-2301861",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-08",
+          "price": 13,
+          "status": "verified",
+          "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"8,78 lira olan tam ilk biniş, 13 liraya yükseldi\"; yeni tarife 1 Ağustos 2023'ten itibaren. Doğrulama: turkgun.com https://www.turkgun.com/ekonomi/izmirde-toplu-ulasima-zam/215490 (8,78 TL olan tam ilk biniş ücreti 13 TL'ye yükseldi. ... Yeni tarife 1 Ağustos'tan itibaren geçerli olacak).",
+          "source": {
+            "title": "İstiklal, İzmir'de toplu taşımaya yüzde 48 zam geldi (31.07.2023)",
+            "url": "https://www.istiklal.com.tr/gundem/izmirde-toplu-tasimaya-yuzde-48-zam-geldi-779356h",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2024-06",
+          "price": 17.5,
+          "status": "verified",
+          "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"tam biniş ücreti bugün itibariyle 17,5 TL’ye çıkarken\"; 24 Haziran 2024 Pazartesi gününden itibaren. Doğrulama: istiklal.com.tr https://www.istiklal.com.tr/gundem/o-buyuksehirde-toplu-ulasim-ucretlerine-zam-839902h (24 Haziran Pazartesi gününden itibaren geçerli olacak tarifeye göre tam biniş ücreti 17,5 TL oldu).",
+          "source": {
+            "title": "Milli Gazete, İzmir'de toplu ulaşıma zam geldi (24.06.2024)",
+            "url": "https://www.milligazete.com.tr/izmirde-toplu-ulasima-zam-geldi-yeni-ucret-tarifesi-belli-oldu/amp",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-04",
+          "price": 25,
+          "status": "verified",
+          "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"İzmirim Kart ile tam biniş ücreti 25 TL’ye çıkarken\"; 12 Nisan 2025 Cumartesi gününden itibaren. Doğrulama: habergazetesi.com.tr https://www.habergazetesi.com.tr/toplu-ulasim-ucretlerine-zam-geldi/amp (İzmirim Kart ile tam biniş ücreti 25 liraya yükselirken).",
+          "source": {
+            "title": "Ekonomim, İzmir'de toplu ulaşıma zam: Tam biniş ücreti 25 TL oldu (Nisan 2025)",
+            "url": "https://www.ekonomim.com/ekonomi/izmirde-toplu-ulasima-zam-tam-binis-ucreti-25-tl-oldu-haberi-811638",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 30,
+          "status": "verified",
+          "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"tam biniş ücreti 25 liradan 30 liraya yükseldi\"; \"1 Eylül’den itibaren\" (meclis kararı Ağustos 2025). Doğrulama: iscihaber.net https://www.iscihaber.net/izmir/izmirde-toplu-ulasima-zam-yeni-ucretler-ne-kadar-olacak/175575 (şehir içi ulaşımda tam biniş ücreti 25 TL’den 30 TL’ye çıkarıldı).",
+          "source": {
+            "title": "Karar, İzmir’de toplu ulaşıma zam (Ağustos 2025)",
+            "url": "https://www.karar.com/guncel-haberler/izmirde-toplu-ulasima-zam-2-1983954",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-04",
+          "price": 35,
+          "status": "verified",
+          "note": "İzmirim Kart ile ESHOT otobüs, metro ve tramvay tam biniş (ilk biniş) ücreti. \"tam biniş ücreti 30 TL’den 35 TL’ye\"; 1 Nisan 2026'dan itibaren. Doğrulama: memurlar.net https://www.memurlar.net/haber/1162026/izmir-de-ulasima-zam-yeni-tarifeler-1-nisan-da-basliyor.html (tam bilet 30 TL'den 35 TL'ye ... yükseldi). Hâlâ geçerli: evrensel.net https://www.evrensel.net/haber/6007486/izmir-de-ulasim-pahali-erisim-sorunlu-ulasimda-zam-halka-milyonlar-sirketlere (01.11.2026, \"ESHOT, metro ve tramvayda tam biniş ücreti 30 TL’den 35 TL’ye yükseldi\"). İZBAN ayrı raylı tarifedir (40 TL), kapsam dışı.",
+          "source": {
+            "title": "Karar, İzmir'de toplu ulaşıma zam (14.03.2026)",
+            "url": "https://www.karar.com/sehir-haberleri/izmirde-toplu-ulasima-zam-3-2035863",
+            "accessed": "2026-11-05",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }
