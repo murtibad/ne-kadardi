@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.124.2] - 2026-11-05
+﻿### Changed
+- Today's fuel prices refreshed to the EPDK bulletin of 05.11.2026 (İstanbul Avrupa Yakası average): benzin 80,54 TL, motorin 100,52 TL, otogaz 51,68 TL per litre.
+
 ## [0.124.1] - 2026-11-05
 ﻿### Fixed
 - The question number keeps counting after a skip, so "Soru 5" no longer shows twice.
