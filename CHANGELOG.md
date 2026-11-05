@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.124.1] - 2026-11-05
+﻿### Fixed
+- The question number keeps counting after a skip, so "Soru 5" no longer shows twice.
+- The muted sound button shows a crossed-out speaker.
+- Long unit lines on the question card wrap evenly instead of leaving one word alone.
+
 ## [0.124.0] - 2026-11-05
 ﻿### Added
 - Short plain-Turkish explanations under jargon product names (MTV, KPSS, DGS, ALES, YDS, MSÜ, Schengen, IMEI, kıdem tazminatı tavanı, açlık sınırı, başvurma harcı) on the question card and in the archive.

@@ -1238,6 +1238,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   font-family: var(--font-mono);
   font-size: 0.9375rem;
   color: var(--muted-on-paper);
+  text-wrap: balance; /* progressive: avoids an orphan last word */
 }
 /* One-line plain-Turkish gloss for jargon products (MTV, DGS ...). */
 .explain {

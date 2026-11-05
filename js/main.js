@@ -32,7 +32,7 @@ const hapticIfAllowed = (ms) => {
 const state = {
   recentProducts: [], seen: new Set(), anchorShown: {}, questionCounter: 0, lastFollow: null,
   hintsUsed: 0, hintProductId: null, questionsShown: 0, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
-  played: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
+  played: 0, skips: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false 
@@ -177,8 +177,9 @@ function nextQuestion(productId = null, date = null) {
   state.recentProducts.push(q.productId);
   if (state.recentProducts.length > 20) state.recentProducts.shift();
   const cat = CATEGORIES.find((c) => c.id === categoryOf(q.productId));
-  // Skipped questions do not count, so the number matches "N soru" under the receipt.
-  state.round = state.played + 1;
+  // Counts questions shown (answered + skipped this visit) so a skip never repeats the number;
+  // stats still use state.played only.
+  state.round = state.played + state.skips + 1;
   $('q-round').textContent = state.daily
     ? `Günün fişi · ${state.daily.index + 1}/${state.daily.ids.length}`
     : cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
@@ -1015,7 +1016,7 @@ const ICONS = {
   sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
   moon: svg('<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>'),
   soundOn: svg('<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>'),
-  soundOff: svg('<path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/>'),
+  soundOff: svg('<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M3 3l18 18"/>'),
 };
 
 function renderThemeToggle() {
@@ -1143,9 +1144,10 @@ async function init() {
     if (v !== null) $('guess-error').textContent = '';
     $('guess-readout').textContent = v !== null && v >= 1000 ? readAmount(v) : '';
   });
-  // Skipping is free: no score, no round counted, so players can drop a product they do not know.
+  // Skipping is free: no score and no stats, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
     if (skipDaily()) return;
+    state.skips += 1;
     nextQuestion(); // its barcode beep doubles as the skip sound
   });
   $('next-btn').addEventListener('click', () => {
