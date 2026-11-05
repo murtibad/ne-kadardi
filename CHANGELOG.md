@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.125.0] - 2026-11-05
+﻿### Added
+- New product: Ankara toplu taşıma bileti (EGO bus, metro, Ankaray full fare, one ride), 9 values 2014-2026, each confirmed by two separate news sites.
+
 ## [0.124.3] - 2026-11-05
 ﻿### Fixed
 - After an update the page reloads itself once, while the tab is in the background, so an old page never loads new parts with a changed interface.
