@@ -31,6 +31,25 @@ function loadArchiveModules() {
   return archiveModulesPromise;
 }
 
+// Shown when a lazy module cannot load (offline on first visit); the retry re-runs the render.
+function showArchiveError(focusProductId) {
+  let box = $('archive-error');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'archive-error';
+    box.setAttribute('role', 'alert');
+    const msg = document.createElement('p');
+    msg.textContent = 'Arşiv yüklenemedi. İnternet bağlantını kontrol edip yeniden dene.';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'picker-chip';
+    btn.textContent = 'Yeniden dene';
+    btn.addEventListener('click', () => renderTimelineScreen(focusProductId));
+    box.append(msg, btn);
+    $('timeline-screen').querySelector('.timeline-header').after(box);
+  }
+}
+
 export async function renderTimelineScreen(focusProductId = null) {
   deps.show('timeline-screen');
   if (getState().timelines.length === 0) return;
@@ -41,9 +60,11 @@ export async function renderTimelineScreen(focusProductId = null) {
     [{ timelineTableHtml }, { filterByQuery }] = await loadArchiveModules();
   } catch (err) {
     console.warn('Arşiv yüklenemedi', err);
+    showArchiveError(focusProductId);
     return;
   }
 
+  $('archive-error')?.remove();
   renderCategoryChips();
   const inCategory = filterTimelines(getState().timelines, getState().timelineCategory);
   const visible = filterByQuery(inCategory, getState().timelineQuery);

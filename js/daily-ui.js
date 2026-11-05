@@ -5,7 +5,7 @@ import { FOLLOW_UP_IDS } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
-import { dayKey, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -26,14 +26,9 @@ const DAILY_KEY = 'ne-kadardi-daily';
 
 function loadDaily() {
   try {
-    const data = JSON.parse(localStorage.getItem(DAILY_KEY));
-    if (data && data.key === dayKey() && Array.isArray(data.ids) && Array.isArray(data.scores)) {
-      return {
-        key: data.key,
-        ids: data.ids.filter((x) => typeof x === 'string'),
-        scores: data.scores.filter(Number.isFinite),
-      };
-    }
+    const all = getState().all;
+    const valid = all?.length ? new Set(all.map((q) => q.id)) : null;
+    return resolveSavedDaily(JSON.parse(localStorage.getItem(DAILY_KEY)), dayKey(), valid);
   } catch(e) {}
   return null;
 }
@@ -114,8 +109,9 @@ export function skipDaily() {
 // The #gunun-fisi route: shares a finished receipt, otherwise starts or resumes the run.
 export function startOrShareDaily() {
   const state = getState();
-  const key = dayKey();
   const saved = loadDaily();
+  // An unfinished run from before midnight keeps its own key, so its receipt is logged under that day.
+  const key = saved?.key ?? dayKey();
   if (saved && saved.ids.length > 0 && saved.scores.length >= saved.ids.length) {
     history.replaceState(null, '', '#');
     deps.renderHome();
@@ -151,7 +147,7 @@ export function renderDailyCard() {
   if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
   const lines = ids.map((id, i) => {
     const dq = state.all.find((x) => x.id === id);
-    const label = dq ? `${formatPeriod(dq.date)} · ${questionTitle(dq)}` : id;
+    const label = dq ? `${formatPeriod(dq.date)} · ${questionTitle(dq)}` : 'Soru';
     return { label, score: scores[i] ?? 0 };
   });
   const total = scores.reduce((s, n) => s + n, 0);
@@ -169,6 +165,18 @@ export function renderDailyCard() {
   return true;
 }
 
+// The countdown text goes stale on a long-open menu; refresh it while the menu is visible.
+let menuTimer = null;
+function watchDailyMenu() {
+  if (menuTimer) return;
+  const menu = () => document.getElementById('home-screen');
+  const refresh = () => {
+    if (document.visibilityState === 'visible' && menu() && !menu().hidden) renderDailyMenu();
+  };
+  document.addEventListener('visibilitychange', refresh);
+  menuTimer = setInterval(refresh, 60000);
+}
+
 // Menu card: leaving a daily run for the menu ends it; the card picks the run up from storage.
 export function renderDailyMenu() {
   const state = getState();
@@ -177,6 +185,7 @@ export function renderDailyMenu() {
     state.question = null;
     syncSkipBtn();
   }
+  watchDailyMenu();
   const daily = loadDaily();
   const dailyDone = daily && daily.ids.length > 0 && daily.scores.length >= daily.ids.length;
   const dailyInProgress = daily && daily.scores.length > 0 && daily.scores.length < daily.ids.length;

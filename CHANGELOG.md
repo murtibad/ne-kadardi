@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.124.3] - 2026-11-05
+﻿### Fixed
+- After an update the page reloads itself once, while the tab is in the background, so an old page never loads new parts with a changed interface.
+- Enter no longer jumps to the next question while a dialog (send sheet, image preview, intro) is open.
+- The daily streak survives the device clock going back a day (travel, clock change).
+- A Günün Fişi started before midnight can be finished after it, and it is logged under its own day; a saved receipt whose questions no longer exist is rebuilt.
+- The archive shows an error with a "Yeniden dene" button when it cannot load, instead of a blank screen.
+- The "Yeni fiş N saat sonra" line on the menu refreshes on its own.
+
 ## [0.124.2] - 2026-11-05
 ﻿### Changed
 - Today's fuel prices refreshed to the EPDK bulletin of 05.11.2026 (İstanbul Avrupa Yakası average): benzin 80,54 TL, motorin 100,52 TL, otogaz 51,68 TL per litre.

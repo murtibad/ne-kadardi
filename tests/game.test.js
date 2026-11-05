@@ -466,3 +466,13 @@ test('pickFollowUp avoids recent products in the everyday pool, rotates them and
   // only candidate is the last offer: still offered
   assert.equal(pickFollowUp(q, [q, qs[1]], [], zero, 'ekmek').productId, 'ekmek');
 });
+
+test('updateStreak and streakAlive survive the clock moving back', async () => {
+  const { updateStreak, streakAlive } = await import('../js/game.js');
+  const prev = { last: '2026-01-10', count: 3, best: 5 };
+  assert.equal(streakAlive(prev, '2026-01-09'), true);
+  assert.equal(streakAlive(prev, '2026-01-07'), true);
+  assert.deepEqual(updateStreak(prev, '2026-01-09'), { last: '2026-01-10', count: 3, best: 5 });
+  // the kept later date still lets the next real day extend the streak
+  assert.equal(updateStreak(updateStreak(prev, '2026-01-09'), '2026-01-11').count, 4);
+});

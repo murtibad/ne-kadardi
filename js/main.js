@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatRatio, formatPeriod, readAmount, formatIncrease, formatNumber, escapeHTML, inPeriod, shortTitle } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, FOLLOW_UP_IDS, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { parseGuess, formatPrice, formatPeriod, readAmount, formatIncrease, escapeHTML, inPeriod, shortTitle } from './format.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
@@ -23,7 +23,7 @@ import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyA
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
 const sound = createSoundPlayer();
-// Vibration follows the sound switch and the reduced-motion preference.
+// Vibration follows the sound switch.
 const hapticIfAllowed = (ms) => {
   if (!sound.isEnabled()) return;
   haptic(ms);
@@ -1138,7 +1138,7 @@ async function init() {
     guessField.classList.remove('invalid');
   });
   $('guess-input').addEventListener('input', (e) => {
-    guessField?.classList.remove('invalid'); // also clears when reduced motion skips animationend
+    guessField?.classList.remove('invalid'); // also clears a stale error without waiting for animationend
     const v = parseGuess(e.target.value);
     // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
     if (v !== null) $('guess-error').textContent = '';
@@ -1164,6 +1164,8 @@ async function init() {
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' || e.repeat || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
     if ($('result-screen').hidden) return;
+    // Enter inside an open dialog (share preview, intro) must not advance the game behind it.
+    if (document.querySelector('dialog[open]')) return;
     // A quick second Enter right after submitting must not skip the receipt; like a tap,
     // it only finishes the printing so keyboard users can hurry it too.
     const wrap = document.querySelector('#result-screen .receipt-wrapper');
@@ -1219,6 +1221,24 @@ function registerServiceWorker() {
   // Precaching re-downloads every file once (cache: 'reload'), about 300 KB on a first visit.
   // Wait for 'load' and then a quiet moment, so it does not compete with the menu, the intro
   // and the fonts on a slow phone; offline support only matters from the second visit on.
+  // sw.js claims open pages right away, so an old page could lazy-load new modules with a changed API.
+  // When a new worker takes over a page that already had one, reload once, but only while the tab
+  // is hidden: the takeover lands a few seconds after opening, often mid-guess, and a visible reload
+  // would wipe what the player is typing. A first install has no controller yet, so nothing reloads.
+  const hadController = !!navigator.serviceWorker.controller;
+  let updated = false;
+  let reloaded = false;
+  const reloadIfHidden = () => {
+    if (!updated || reloaded || document.visibilityState !== 'hidden') return;
+    reloaded = true;
+    location.reload();
+  };
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController) return;
+    updated = true;
+    reloadIfHidden();
+  });
+  document.addEventListener('visibilitychange', reloadIfHidden);
   const register = () => navigator.serviceWorker.register('sw.js')
     .catch(err => console.warn('Service worker:', err));
   const later = () => {
