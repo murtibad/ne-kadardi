@@ -8355,7 +8355,7 @@
     {
       "id": "aclik-siniri",
       "name": "Açlık sınırı (Türk-İş)",
-      "explain": "Türk-İş'in hesapladığı, bir ailenin yalnızca yeterli gıdaya harcaması gereken tutar",
+      "explain": "Türk-İş hesabı: 4 kişilik ailenin sağlıklı beslenmesi için gereken aylık mutfak parası",
       "unit": "4 kişilik bir ailenin bir aylık mutfak masrafı (Ocak)",
       "region": null,
       "source_hint": "Türk-İş Konfederasyonu her ay açıklar; sendika araştırmasıdır, devlet verisi değildir. Ocak değeri, haberler üzerinden.",
@@ -13395,7 +13395,7 @@
     {
       "id": "kidem-tavani",
       "name": "Kıdem tazminatı tavanı",
-      "explain": "İşçiye çalışılan her yıl için ödenen tazminatın devletçe belirlenen üst sınırı",
+      "explain": "İşten ayrılan işçiye her çalışma yılı için ödenen tazminatın yasal üst sınırı",
       "unit": "1 çalışma yılı için en fazla ödenen tutar (brüt)",
       "region": null,
       "source_hint": "ÇSGB kıdem tazminatı tavanı tablosu; her yarıyıl.",

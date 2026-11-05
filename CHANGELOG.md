@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.124.0] - 2026-11-05
+﻿### Added
+- Short plain-Turkish explanations under jargon product names (MTV, KPSS, DGS, ALES, YDS, MSÜ, Schengen, IMEI, kıdem tazminatı tavanı, açlık sınırı, başvurma harcı) on the question card and in the archive.
+
 ## [0.123.3] - 2026-11-05
 ﻿### Changed
 - Today's prices refreshed: dollar, euro, pound and Bitcoin to TCMB 04.11.2026 (Bitcoin with the Bitstamp close of the same day), gram gold, quarter gold and silver to the October 2026 World Bank monthly price, Schengen visa fee to the 04.11.2026 euro rate.
