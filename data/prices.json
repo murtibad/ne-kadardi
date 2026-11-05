@@ -8355,7 +8355,7 @@
     {
       "id": "aclik-siniri",
       "name": "Açlık sınırı (Türk-İş)",
-      "explain": "Türk-İş hesabı: 4 kişilik ailenin sağlıklı beslenmesi için gereken aylık mutfak parası",
+      "explain": "Türk-İş sendikasının her ay açıkladığı hesap; bu tutarın altında aile yeterince beslenemez",
       "unit": "4 kişilik bir ailenin bir aylık mutfak masrafı (Ocak)",
       "region": null,
       "source_hint": "Türk-İş Konfederasyonu her ay açıklar; sendika araştırmasıdır, devlet verisi değildir. Ocak değeri, haberler üzerinden.",
