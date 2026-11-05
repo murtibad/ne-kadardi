@@ -18,14 +18,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-09",
-        "price": 6754.17,
+        "date": "2026-10",
+        "price": 6522.77,
         "status": "verified",
-        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-09 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 4319 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 48.6405 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-10 ayı altın fiyatı (günlük kurların ortalaması; Haziran 2025'ten önce Londra öğleden sonra fiksingi %99,5, sonrası spot) 4105 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 49.4229 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
         "source": {
-          "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-09",
+          "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-10",
           "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-          "accessed": "2026-10-04",
+          "accessed": "2026-11-05",
           "kind": "derived"
         }
       },
@@ -451,14 +451,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-10-26",
-        "price": 49.7627,
+        "date": "2026-11-04",
+        "price": 50.026,
         "status": "verified",
         "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
-          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 26.10.2026",
-          "url": "https://www.tcmb.gov.tr/kurlar/202610/26102026.xml",
-          "accessed": "2026-10-26",
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.11.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
+          "accessed": "2026-11-05",
           "kind": "official"
         }
       },
@@ -3126,14 +3126,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-10-26",
-        "price": 55.7542,
+        "date": "2026-11-04",
+        "price": 56.2588,
         "status": "verified",
         "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
-          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 26.10.2026",
-          "url": "https://www.tcmb.gov.tr/kurlar/202610/26102026.xml",
-          "accessed": "2026-10-26",
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.11.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
+          "accessed": "2026-11-05",
           "kind": "official"
         }
       },
@@ -3560,14 +3560,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-10-26",
-        "price": 66.5656,
+        "date": "2026-11-04",
+        "price": 67.5454,
         "status": "verified",
         "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
-          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 26.10.2026",
-          "url": "https://www.tcmb.gov.tr/kurlar/202610/26102026.xml",
-          "accessed": "2026-10-26",
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.11.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
+          "accessed": "2026-11-05",
           "kind": "official"
         }
       },
@@ -3994,14 +3994,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-09",
-        "price": 10834.81,
+        "date": "2026-10",
+        "price": 10463.83,
         "status": "verified",
-        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 6754.17 TL × 1.6042 g has altın (1,75 g × 22/24) = 10834.81 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
+        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): gram altının (24 ayar) piyasa değeri 6522.77 TL × 1.6042 g has altın (1,75 g × 22/24) = 10463.83 TL. Kaynak: gram altın girdisindeki Dünya Bankası ve TCMB verisi. Çeyrek altın 1,75 gram, 22 ayardır: NTV https://www.ntv.com.tr/ntvpara/altin/ceyrek-altin-fiyatlari-bugun-ne-kadar-oldu25-temmuz2022-guncel-altin-kuru-fiyatlari,cymgcMiBMEeSyFeDOCn19A · CNN Türk https://finans.cnnturk.com/altin/ceyrek-altin-fiyati/tumu (Darphane çeyreği, has altın yaklaşık 1,605 g).",
         "source": {
-          "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-09",
+          "title": "Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-10",
           "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-          "accessed": "2026-10-04",
+          "accessed": "2026-11-05",
           "kind": "derived"
         }
       },
@@ -4428,14 +4428,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-09",
-        "price": 101.02,
+        "date": "2026-10",
+        "price": 90.57,
         "status": "verified",
-        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-09 ayı gümüş fiyatı (aylık ortalama) 64,6 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 48.6405 TL (22 iş günü). Sonuç iki ondalığa yuvarlandı.",
+        "note": "Türetilmiş değer (piyasa değeri, kuyumcu satış fiyatı değildir): Dünya Bankası Pink Sheet'te 2026-10 ayı gümüş fiyatı (aylık ortalama) 57,0 $/troy ons, ÷ 31,1034768 (gram/ons) × TCMB döviz satış kurunun o ayki ortalaması 49.4229 TL (20 iş günü). Sonuç iki ondalığa yuvarlandı.",
         "source": {
-          "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-09",
+          "title": "Dünya Bankası Pink Sheet (gümüş, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2026-10",
           "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
-          "accessed": "2026-10-22",
+          "accessed": "2026-11-05",
           "kind": "derived"
         }
       },
@@ -4862,14 +4862,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-10-23",
-        "price": 4025771,
+        "date": "2026-11-04",
+        "price": 4023798,
         "status": "verified",
-        "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 23.10.2026 günlük kapanışı 81.076,46 $ (UTC gün sonu) × TCMB döviz satış kuru 49,654 TL (23.10.2026) = 4.025.770,54 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202610/23102026.xml",
+        "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 04.11.2026 günlük kapanışı 80.434,13 $ (UTC gün sonu) × TCMB döviz satış kuru 50,0260 TL (04.11.2026) = 4023797.79 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
         "source": {
-          "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 23.10.2026",
-          "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1792713600",
-          "accessed": "2026-10-26",
+          "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 04.11.2026",
+          "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1793750400",
+          "accessed": "2026-11-05",
           "kind": "derived"
         }
       },
@@ -7608,14 +7608,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-01",
-        "price": 4534.55,
+        "date": "2026-11-04",
+        "price": 5063.29,
         "status": "verified",
-        "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 90 euro × TCMB euro satış kuru 50.3839 (2026-01-02) = 4534.55 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 90 euro: 11 Haziran 2024'ten itibaren, Vize Merkezi https://www.vizemerkezi.com/duyuru/schengen-vize-ucreti-degisiyor · CNN Türk https://www.cnnturk.com/dunya/schengen-vize-ucretlerine-zam-geldi-2116356.",
+        "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 90 euro × TCMB euro satış kuru 56.2588 (2026-11-04) = 5063.29 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 90 euro: 11 Haziran 2024'ten itibaren, Vize Merkezi https://www.vizemerkezi.com/duyuru/schengen-vize-ucreti-degisiyor · CNN Türk https://www.cnnturk.com/dunya/schengen-vize-ucretlerine-zam-geldi-2116356.",
         "source": {
-          "title": "TCMB euro kuru (2026-01-02) ve AB Vize Kodu ücreti",
-          "url": "https://www.tcmb.gov.tr/kurlar/202601/02012026.xml",
-          "accessed": "2026-10-08",
+          "title": "TCMB euro kuru (2026-11-04) ve AB Vize Kodu ücreti",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
+          "accessed": "2026-11-05",
           "kind": "derived"
         }
       },
