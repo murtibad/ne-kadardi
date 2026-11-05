@@ -25,6 +25,16 @@ test('buildQuestions keeps only verified entries', () => {
   assert.equal(qs[0].year, 2010);
 });
 
+test('buildQuestions carries product explain, null when absent', () => {
+  const e = { date: '2020-01', price: 1, status: 'verified', source: { title: 't', url: 'https://x.test' } };
+  const qs = buildQuestions({ products: [
+    { id: 'a', name: 'A', unit: 'u', explain: 'Açıklama', prices: [e] },
+    { id: 'b', name: 'B', unit: 'u', prices: [e] },
+  ] });
+  assert.equal(qs[0].explain, 'Açıklama');
+  assert.equal(qs[1].explain, null);
+});
+
 test('buildQuestions carries product image', () => {
   const f = { products: [{ id: 'p1', name: 'A', unit: 'U', image: { src: 'img/test.svg', alt: 'Test', credit: 'C' }, prices: [{ date: '2010-01', price: 1, status: 'verified', source: {} }] }] };
   const qs = buildQuestions(f);

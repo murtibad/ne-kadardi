@@ -1239,6 +1239,14 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   font-size: 0.9375rem;
   color: var(--muted-on-paper);
 }
+/* One-line plain-Turkish gloss for jargon products (MTV, DGS ...). */
+.explain {
+  margin: 4px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--muted-on-paper);
+}
+#t-explain { margin: -10px 0 16px; }
 #guess-form {
   border-top: 1px dashed var(--line);
   padding-top: 20px;

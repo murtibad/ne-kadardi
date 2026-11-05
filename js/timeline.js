@@ -43,6 +43,7 @@ export function buildTimelines(data) {
       name: product.name,
       unit: product.unit,
       region: product.region || null,
+      explain: product.explain || null,
       image: product.image || null,
       rows,
     });

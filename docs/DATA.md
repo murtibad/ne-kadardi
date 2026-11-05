@@ -12,6 +12,7 @@
     "name": "Benzin (kurşunsuz 95)",   // shown in the UI (Turkish)
     "unit": "1 litre",                 // default unit, shown in the UI
     "region": "İstanbul (Avrupa)",     // null if national
+    "explain": "...",                  // optional: one-line plain-Turkish gloss for jargon names (max 90 chars, no prices)
     "source_hint": "...",              // where to look; not shown in the UI
     "image": { "src": "img/benzin.svg", "alt": "Benzin pompası", "credit": "Original illustration, CC0" }, // optional
     "current": { /* entry: today's price */ },

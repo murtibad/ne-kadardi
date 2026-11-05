@@ -31,6 +31,10 @@ test('prices.json follows the data policy', () => {
     assert.ok(p.id && !ids.has(p.id), `duplicate or missing product id: ${p.id}`);
     ids.add(p.id);
     assert.ok(p.name && p.unit, `${p.id}: name and unit are required`);
+    if (p.explain !== undefined) {
+      assert.ok(typeof p.explain === 'string' && p.explain.length > 0 && p.explain.length <= 90, `${p.id}: explain must be 1-90 chars`);
+      assert.ok(!/\d{2,}/.test(p.explain), `${p.id}: explain must not contain prices`);
+    }
     
     for (const e of p.prices ?? []) {
       if (!e.image) continue;

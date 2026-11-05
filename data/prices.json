@@ -6785,6 +6785,7 @@
     {
       "id": "kpss-lisans",
       "name": "KPSS lisans sınav ücreti",
+      "explain": "Kamu Personeli Seçme Sınavı: devlet memurluğuna girişte istenen sınav",
       "unit": "1 oturum (Genel Yetenek-Genel Kültür)",
       "region": null,
       "source_hint": "ÖSYM KPSS Lisans kılavuzu ve haberleri; GY-GK oturumu için her bir oturum ücreti (2014'ten itibaren oturum başına).",
@@ -6955,6 +6956,7 @@
     {
       "id": "kpss-onlisans",
       "name": "KPSS önlisans sınav ücreti",
+      "explain": "Kamu Personeli Seçme Sınavı: devlet memurluğuna girişte istenen sınav",
       "unit": "1 sınav (KPSS önlisans oturumu)",
       "region": null,
       "source_hint": "ÖSYM KPSS (orta öğretim/önlisans, 2018'den beri önlisans) başvuru kılavuzları. Tarih başvuru ayıdır. DHBT ve geç başvuru ücreti dahil değil.",
@@ -7599,6 +7601,7 @@
     {
       "id": "schengen-vize",
       "name": "Schengen vize ücreti",
+      "explain": "Schengen vizesi: tek vizeyle çoğu Avrupa ülkesine girmeye izin veren vize",
       "unit": "1 yetişkin başvurusu, lira karşılığı (vize şirketinin hizmet ücreti hariç)",
       "region": null,
       "source_hint": "Türetilmiş: AB Vize Kodu'ndaki euro cinsi ücret (2020 Şubat öncesi 60, sonra 80, 11 Haziran 2024'ten beri 90 euro) × o yılın ilk iş günü TCMB euro satış kuru.",
@@ -8121,6 +8124,7 @@
     {
       "id": "imei-kayit-harci",
       "name": "Yurt dışından getirilen telefonun kayıt harcı",
+      "explain": "IMEI: telefonun kimlik numarası; yurt dışından gelen telefon bununla kayda alınır",
       "unit": "Yurt dışından getirilen 1 telefon",
       "region": null,
       "source_hint": "492 sayılı Harçlar Kanunu cep telefonu kayıt harcı; her Ocak yeniden değerleme oranıyla artar, bazı yıllarda yıl içinde Cumhurbaşkanı Kararıyla ayrıca artırıldı. Haber kaynaklı.",
@@ -8351,6 +8355,7 @@
     {
       "id": "aclik-siniri",
       "name": "Açlık sınırı (Türk-İş)",
+      "explain": "Türk-İş'in hesapladığı, bir ailenin yalnızca yeterli gıdaya harcaması gereken tutar",
       "unit": "4 kişilik bir ailenin bir aylık mutfak masrafı (Ocak)",
       "region": null,
       "source_hint": "Türk-İş Konfederasyonu her ay açıklar; sendika araştırmasıdır, devlet verisi değildir. Ocak değeri, haberler üzerinden.",
@@ -10721,6 +10726,7 @@
     {
       "id": "basvurma-harci",
       "name": "Dava açma harcı (asliye mahkemesi)",
+      "explain": "Mahkemeye dava açarken devlete ödenen sabit harç",
       "unit": "1 dava açılışı (sabit harç)",
       "region": null,
       "source_hint": "492 sayılı Harçlar Kanunu (1) sayılı tarife I-2 (asliye mahkemelerinde başvurma harcı); tutar her yıl sonu Resmî Gazete'de yayımlanan Harçlar Kanunu Genel Tebliği ile belirlenir. Resmî kaynaklı.",
@@ -11314,6 +11320,7 @@
     {
       "id": "ales",
       "name": "ALES sınav ücreti",
+      "explain": "Akademik Personel ve Lisansüstü Eğitimi Giriş Sınavı: yüksek lisans ve doktora için",
       "unit": "1 sınav (ALES, yılın ilk oturumu)",
       "region": null,
       "source_hint": "ÖSYM ALES/1 kılavuzu ve başvuru duyuruları; yıl içindeki ilk ALES.",
@@ -11472,6 +11479,7 @@
     {
       "id": "yds",
       "name": "YDS sınav ücreti",
+      "explain": "Yabancı Dil Bilgisi Seviye Tespit Sınavı: yabancı dil düzeyini ölçen sınav",
       "unit": "1 sınav (YDS, yılın ilk kâğıt oturumu)",
       "region": null,
       "source_hint": "ÖSYM YDS kılavuzları (dokuman.osym.gov.tr). Tarih o oturumun başvuru ayıdır. e-YDS ve geç başvuru ücreti dahil değil.",
@@ -11654,6 +11662,7 @@
     {
       "id": "dgs",
       "name": "DGS sınav ücreti",
+      "explain": "Dikey Geçiş Sınavı: ön lisans mezunlarının lisans programlarına geçiş sınavı",
       "unit": "1 sınav (Dikey Geçiş Sınavı)",
       "region": null,
       "source_hint": "ÖSYM DGS başvuru kılavuzları (dokuman.osym.gov.tr). Tarih başvuru ayıdır. Geç başvuru ücreti dahil değil.",
@@ -11752,6 +11761,7 @@
     {
       "id": "msu",
       "name": "MSÜ sınav ücreti",
+      "explain": "Milli Savunma Üniversitesi: askerî okullara öğrenci alan üniversite",
       "unit": "1 sınav (askerî öğrenci aday belirleme sınavı)",
       "region": null,
       "source_hint": "ÖSYM MSÜ başvuru kılavuzları (2019'dan beri). Tarih başvuru ayıdır. Geç başvuru ücreti dahil değil.",
@@ -13008,6 +13018,7 @@
     {
       "id": "mtv",
       "name": "Araba vergisi (MTV)",
+      "explain": "Motorlu Taşıtlar Vergisi: araç sahiplerinin yılda iki taksitte ödediği vergi",
       "unit": "1 yıl, 1.3-1.6 litre motorlu, 7-11 yaşında otomobil (2017 sonuna kadar trafiğe çıkmış)",
       "region": null,
       "source_hint": "MTV genel tebliğleri (Resmî Gazete metni); yılın Ocak tutarı.",
@@ -13384,6 +13395,7 @@
     {
       "id": "kidem-tavani",
       "name": "Kıdem tazminatı tavanı",
+      "explain": "İşçiye çalışılan her yıl için ödenen tazminatın devletçe belirlenen üst sınırı",
       "unit": "1 çalışma yılı için en fazla ödenen tutar (brüt)",
       "region": null,
       "source_hint": "ÇSGB kıdem tazminatı tavanı tablosu; her yarıyıl.",

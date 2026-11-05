@@ -147,6 +147,8 @@ function renderProductChips(visible, selectedId, focusProductId) {
 
 function renderTimelineHeader(product) {
   $('t-title').textContent = product.name;
+  $('t-explain').textContent = product.explain ?? '';
+  $('t-explain').hidden = !product.explain;
   $('t-unit').textContent = product.region ? `${product.unit} · ${product.region}` : product.unit;
   const tImg = $('t-image');
   tImg.hidden = !product.image;
