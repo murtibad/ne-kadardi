@@ -1,4 +1,4 @@
-// Small CSS confetti burst for an exact guess. No library; skipped when the user prefers reduced motion.
+// Small CSS confetti burst for an exact guess. No library.
 const COLORS = ['#d32f2f', '#f5b301', '#1f9d55', '#1e4fa3', '#f97316', '#84cc16'];
 
 export function burstConfetti(count = 70) {
