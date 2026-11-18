@@ -1,4 +1,4 @@
-import { formatPeriod, formatPrice, formatRatio, formatIncrease } from './format.js';
+import { formatPeriod, formatPrice, formatRatio, formatIncrease, unitLine } from './format.js';
 import { actualLabel, scoreTier } from './game.js';
 import { taxBreakdown } from './tax.js';
 import { stampTitle } from './banter.js';
@@ -59,7 +59,7 @@ export function buildShareImageModel(q, r, { contextLine = null, taxLine = null 
 
   return {
     title: `${formatPeriod(q.date)} · ${questionTitle(q)}`,
-    unit: q.region ? `${q.unit} · ${q.region}` : q.unit,
+    unit: unitLine(q.unit, q.region),
     guess: formatPrice(r.guess),
     actualLabel: actualLabel(q.productId),
     actual: formatPrice(q.price),

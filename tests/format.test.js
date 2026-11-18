@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease, formatPrice, formatNumber, getNumberFormatter } from '../js/format.js';
+import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease, formatPrice, formatNumber, getNumberFormatter, unitLine } from '../js/format.js';
 
 test('parseGuess accepts Turkish decimal comma', () => {
   assert.equal(parseGuess('4,5'), 4.5);
@@ -132,4 +132,9 @@ test('shortTitle keeps short titles and cuts long ones on a word boundary', asyn
   assert.equal(shortTitle('a'.repeat(70), 60), `${'a'.repeat(60)}…`);
   assert.equal(shortTitle('Dünya Bankası Pink Sheet (altın, aylık ortalama) ve TCMB Gösterge Niteliğindeki Döviz Kurları, 2010-01'), 'Dünya Bankası Pink Sheet (altın, aylık ortalama)…, 2010-01');
   assert.equal(shortTitle('Şişli, Ümraniye ve Çağlayan öğrencileri için ücretler değişti', 30), 'Şişli, Ümraniye ve Çağlayan…');
+});
+
+test('unitLine keeps the separator with the region so it never ends a line', () => {
+  assert.equal(unitLine('1 litre', 'İstanbul'), '1 litre ·\u00A0İstanbul');
+  assert.equal(unitLine('1 adet', null), '1 adet');
 });

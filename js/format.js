@@ -175,3 +175,9 @@ export function shortTitle(text, max = 48) {
   const kept = (cut > 0 ? head.slice(0, cut) : head.slice(0, max)).replace(/[\s,.;:–-]+$/, '');
   return `${kept}…${date}`;
 }
+
+// The no-break space keeps "·" on the same line as the region, so a narrow
+// screen never ends a line with a lone separator.
+export function unitLine(unit, region) {
+  return region ? `${unit} ·\u00A0${region}` : unit;
+}
