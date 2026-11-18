@@ -1051,7 +1051,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 
 /* Price history chart on the result receipt and in the archive */
 .price-chart { margin: 16px 0 12px; }
-.price-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+/* pan-y keeps vertical page scrolling on phones while horizontal finger movement scrubs across years. */
+.price-chart svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; cursor: pointer; user-select: none; }
 .price-chart figcaption { margin-top: 2px; text-align: center; font: 400 0.6875rem var(--font-mono); color: var(--muted-on-paper); letter-spacing: 0.04em; }
 
 /* v0.74 design A: result receipt (Stitch "Sonuç A") */
@@ -1193,7 +1194,6 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .pc-active { r: 5; }
 .pc-mark.pc-active { r: 6.5; } /* the marked dot is already 5.5: grow it, never shrink it */
 .price-chart svg:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
-.pc-hit { fill: transparent; cursor: pointer; pointer-events: all; }
 
 /* Mini price line next to "Fiyat Arşivi" on the home card */
 .mode-spark { display: inline-block; vertical-align: -2px; margin-left: 4px; }

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPriceChart } from '../js/price-chart.js';
+import { buildPriceChart, nearestPointIndex } from '../js/price-chart.js';
 
 test('buildPriceChart returns null for non-array input or fewer than 2 valid rows', () => {
   assert.equal(buildPriceChart(null), null);
@@ -308,4 +308,22 @@ test('placeRefLabel avoids price labels first, then the data line', async () => 
   assert.equal(spot.atStart || spot.below, true);
   assert.notDeepEqual(pick(spot), { atStart: false, below: false });
   assert.equal(placeRefLabel(flat, [], opts).y, 65); // above: baseline 5 units over the line
+});
+
+test('nearestPointIndex finds the closest point by x and returns -1 for invalid inputs', () => {
+  const points = [{ x: 14 }, { x: 110 }, { x: 210 }, { x: 306 }];
+  assert.equal(nearestPointIndex(points, -20), 0);
+  assert.equal(nearestPointIndex(points, 14), 0);
+  assert.equal(nearestPointIndex(points, 60), 0);
+  assert.equal(nearestPointIndex(points, 62), 0); // exact midpoint keeps the earlier point
+  assert.equal(nearestPointIndex(points, 63), 1);
+  assert.equal(nearestPointIndex(points, 159), 1);
+  assert.equal(nearestPointIndex(points, 161), 2);
+  assert.equal(nearestPointIndex(points, 306), 3);
+  assert.equal(nearestPointIndex(points, 400), 3);
+
+  assert.equal(nearestPointIndex([], 50), -1);
+  assert.equal(nearestPointIndex(null, 50), -1);
+  assert.equal(nearestPointIndex(points, NaN), -1);
+  assert.equal(nearestPointIndex(points, Infinity), -1);
 });

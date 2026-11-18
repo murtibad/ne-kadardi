@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.131.0] - 2026-11-18
+### Changed
+- The price chart follows a finger: slide sideways across the chart to read each year's price (vertical page scrolling still works), tap the same point or outside the chart to close the label. Before, each point was a small 25 px target and the label could stay stuck on phones.
+- In the archive, the linked table row scrolls into view when the finger lifts, so the chart never jumps away while sliding.
+
 ## [0.130.0] - 2026-11-18
 ### Added
 - A finished Günün Fişi can be opened again from the menu: "Fişini gör →" shows the five questions with their real price and score, the total, the streak and when the next receipt comes, with "Fişini paylaş" inside (the shared text still has no prices).

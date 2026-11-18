@@ -213,3 +213,18 @@ export function refLabelAtStart(chart, labelWidth) {
   const gap = (x0, x1) => Math.min(Infinity, ...chart.points.filter((p) => p.x >= x0 && p.x <= x1).map((p) => Math.abs(p.y - chart.ref.y)));
   return gap(0, labelWidth) >= gap(chart.width - labelWidth, chart.width);
 }
+
+// Index of the point whose x is closest to the pointer's x in chart units, or -1 when empty.
+export function nearestPointIndex(points, x) {
+  if (!Array.isArray(points) || points.length === 0 || !Number.isFinite(x)) return -1;
+  let best = 0;
+  let bestDist = Math.abs(points[0].x - x);
+  for (let i = 1; i < points.length; i++) {
+    const dist = Math.abs(points[i].x - x);
+    if (dist < bestDist) {
+      best = i;
+      bestDist = dist;
+    }
+  }
+  return best;
+}
