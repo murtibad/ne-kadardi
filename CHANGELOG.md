@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.135.0] - 2026-11-18
+### Added
+- The price box groups thousands as you type ("1250000" -> "1.250.000"), keeping the cursor in place; decimals typed with a comma or a single dot ("4,5", "4.5", "0.75") stay as typed, and deleting a digit from a grouped number keeps it a whole number ("1.250" -> "150").
+
 ## [0.134.4] - 2026-11-18
 ### Fixed
 - Skipping the last Günün Fişi question now shows the finished receipt on the menu, like answering it.

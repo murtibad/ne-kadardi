@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease, formatPrice, formatNumber, getNumberFormatter, unitLine, readoutText } from '../js/format.js';
+import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease, formatPrice, formatNumber, getNumberFormatter, unitLine, readoutText, formatInputThousands } from '../js/format.js';
 
 test('parseGuess accepts Turkish decimal comma', () => {
   assert.equal(parseGuess('4,5'), 4.5);
@@ -179,4 +179,27 @@ test('readoutText formats lira and kuruş, rounding to whole kuruş', () => {
   assert.equal(readoutText(12.05), '12 lira 5 kuruş');
   assert.equal(readoutText(4.999), '5 lira');
   assert.equal(readoutText(12.001), '12 lira');
+});
+
+test('formatInputThousands groups digits and keeps the parsed value', () => {
+  const cases = {
+    '1250': '1.250', '1250000': '1.250.000', '999': '999', '12': '12',
+    '1250000,5': '1.250.000,5', '1250,': '1.250,', '1250,75': '1.250,75',
+    '1.250': '1.250', '1.250,75': '1.250,75', '12.000.000': '12.000.000',
+    '4,5': '4,5', '4.5': '4.5', '0.75': '0.75', '12.50': '12.50', '0.250': '0.250',
+    '1250.5': '1250.5', '0,5': '0,5', '': '', 'abc': 'abc', '12 ₺': '12 ₺', '1,2,3': '1,2,3',
+  };
+  for (const [raw, want] of Object.entries(cases)) {
+    const got = formatInputThousands(raw);
+    assert.equal(got, want, `format "${raw}"`);
+    assert.equal(parseGuess(got), parseGuess(raw), `parse "${raw}"`);
+  }
+  assert.equal(parseGuess(formatInputThousands('0.250')), 0.25);
+});
+
+test('formatInputThousands regroups after typing or deleting inside a grouped number', () => {
+  assert.equal(formatInputThousands('1.2500'), '12.500');
+  assert.equal(formatInputThousands('1.250.0000'), '12.500.000');
+  assert.equal(formatInputThousands('1.50.000'), '150.000');
+  assert.equal(formatInputThousands('1.2500,5'), '12.500,5');
 });

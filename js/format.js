@@ -72,6 +72,33 @@ export function parseGuess(input) {
   return Number.isFinite(value) && value > 0 ? value : null;
 }
 
+const groupThousands = (digits) => digits.replace(/\B(?=(\d{3})+$)/g, '.');
+
+/**
+ * Re-format a price while it is typed: "1250000" -> "1.250.000", "1250,5" -> "1.250,5".
+ * Anything parseGuess reads as a decimal ("4.5", "0.250", "12.50") or cannot read is left alone,
+ * so the formatted text always parses to the number the player meant.
+ */
+export function formatInputThousands(raw) {
+  if (typeof raw !== 'string' || !/^[\d.,]+$/.test(raw) || raw.endsWith('.')) return raw;
+  const parts = raw.split(',');
+  if (parts.length > 2) return raw;
+  const [intText, dec] = parts;
+  if (intText === '' || (dec !== undefined && !/^\d*$/.test(dec))) return raw;
+  const tail = dec === undefined ? '' : `,${dec}`;
+
+  if (!intText.includes('.')) {
+    return /^[1-9]\d{3,}$/.test(intText) ? groupThousands(intText) + tail : raw;
+  }
+  if (!/^\d+(\.\d+)+$/.test(intText) || intText.startsWith('0')) return raw;
+  const groups = intText.split('.');
+  // A lone dot with 1-2 trailing digits is a decimal point; with a comma present dots are always thousands.
+  const last = groups[groups.length - 1];
+  const isDecimal = dec === undefined && groups.length === 2 && (last.length < 3 || groups[0].length > 3);
+  if (isDecimal) return raw;
+  return groupThousands(groups.join('')) + tail;
+}
+
 /** Format a TRY amount, e.g. 1250.5 -> "1.250,50 ₺". */
 export function formatPrice(value) {
   const digits = value < 100 ? 2 : 0;
