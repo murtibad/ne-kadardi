@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.135.2] - 2026-11-18
+### Changed
+- The price archive top is tighter on phones: the whole chart and the start of the table fit the first screen (first row 910 -> 696 px at 360x740); the header keeps its three round buttons on one row from 360 px.
+
 ## [0.135.1] - 2026-11-18
 ### Fixed
 - The real price rolls for the same time on every phone (on 120 Hz screens it finished in half the time and showed "Güncel" early), and screen readers no longer hear the final price twice.
