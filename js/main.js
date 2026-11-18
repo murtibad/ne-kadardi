@@ -762,14 +762,18 @@ function bindPriceChart(fig, chart, onActive) {
         return;
       }
       dismissedIdx = -1;
-      showTip(idx);
+      // A touch may become a scrub: scroll the linked row only on lift (pointerup), not on first contact.
+      showTip(idx, false, e.pointerType === 'mouse' ? 'pointer' : 'hover');
     } else if (e.type === 'pointermove') {
       const idx = pointAt(e.clientX);
       if (idx < 0 || idx === dismissedIdx) return;
       dismissedIdx = -1;
-      if (tip.hidden || idx !== activeIdx) showTip(idx);
+      // 'hover' while the finger moves: the archive must not scroll its table away from under the finger.
+      if (tip.hidden || idx !== activeIdx) showTip(idx, false, 'hover');
     } else if (e.type === 'pointerup' || e.type === 'pointercancel') {
       dismissedIdx = -1;
+      // Finger lifted on a point: now the linked table row may scroll into view.
+      if (e.type === 'pointerup' && e.pointerType !== 'mouse' && !tip.hidden) onActive?.(points[activeIdx], 'pointer');
     } else if (e.type === 'pointerleave') {
       dismissedIdx = -1;
       if (e.pointerType !== 'touch' && e.target === svgEl) hideTip();
