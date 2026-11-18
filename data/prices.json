@@ -451,14 +451,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-11-04",
-        "price": 50.026,
+        "date": "2026-11-17",
+        "price": 50.4199,
         "status": "verified",
         "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
-          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.11.2026",
-          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
-          "accessed": "2026-11-05",
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 17.11.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/17112026.xml",
+          "accessed": "2026-11-18",
           "kind": "official"
         }
       },
@@ -886,13 +886,13 @@
       },
       "current": {
         "date": "2026-11",
-        "price": 80.54,
+        "price": 71.1875,
         "status": "verified",
-        "note": "EPDK günlük bülten, 05.11.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+        "note": "EPDK günlük bülten, 18.11.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
         "source": {
-          "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 05.11.2026",
+          "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 18.11.2026",
           "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-          "accessed": "2026-11-05",
+          "accessed": "2026-11-18",
           "kind": "official"
         }
       },
@@ -1176,13 +1176,13 @@
       },
       "current": {
         "date": "2026-11",
-        "price": 100.5175,
+        "price": 95.24625,
         "status": "verified",
-        "note": "EPDK günlük bülten, 05.11.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+        "note": "EPDK günlük bülten, 18.11.2026: standart satır (\"(Diğer)\" satırı değil). İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
         "source": {
-          "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 05.11.2026",
+          "title": "EPDK Petrol Piyasası Bayi Satış Fiyatı Bülteni, 18.11.2026",
           "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/petrol/yonetim/bultenSorgula.xhtml",
-          "accessed": "2026-11-05",
+          "accessed": "2026-11-18",
           "kind": "official"
         }
       },
@@ -1468,11 +1468,11 @@
         "date": "2026-11",
         "price": 51.68375,
         "status": "verified",
-        "note": "EPDK LPG günlük bülten, 05.11.2026: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
+        "note": "EPDK LPG günlük bülten, 17.11.2026: 'Otogaz' satırı. İstanbul Avrupa Yakası bayileri için dağıtıcıların beyan ettiği fiyatların ortalaması, vergiler dahil. Fiyat o güne aittir, aylık ortalama değildir.",
         "source": {
-          "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 05.11.2026",
+          "title": "EPDK LPG Piyasası Bayi Satış Fiyatı Bülteni, 17.11.2026",
           "url": "https://bildirim.epdk.gov.tr/bildirim-portal/faces/pages/tarife/lpg/yonetim/bultenSorgula.xhtml",
-          "accessed": "2026-11-05",
+          "accessed": "2026-11-18",
           "kind": "official"
         }
       },
@@ -3126,14 +3126,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-11-04",
-        "price": 56.2588,
+        "date": "2026-11-17",
+        "price": 55.4446,
         "status": "verified",
         "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
-          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.11.2026",
-          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
-          "accessed": "2026-11-05",
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 17.11.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/17112026.xml",
+          "accessed": "2026-11-18",
           "kind": "official"
         }
       },
@@ -3560,14 +3560,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-11-04",
-        "price": 67.5454,
+        "date": "2026-11-17",
+        "price": 66.6214,
         "status": "verified",
         "note": "TCMB döviz satış, o günkü gösterge kuru",
         "source": {
-          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 04.11.2026",
-          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
-          "accessed": "2026-11-05",
+          "title": "TCMB Gösterge Niteliğindeki Döviz Kurları, 17.11.2026",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/17112026.xml",
+          "accessed": "2026-11-18",
           "kind": "official"
         }
       },
@@ -4862,14 +4862,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-11-04",
-        "price": 4023798,
+        "date": "2026-11-17",
+        "price": 3271104,
         "status": "verified",
-        "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 04.11.2026 günlük kapanışı 80.434,13 $ (UTC gün sonu) × TCMB döviz satış kuru 50,0260 TL (04.11.2026) = 4023797.79 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
+        "note": "Türetilmiş değer (borsa fiyatı, alım-satım komisyonu hariç): Bitstamp borsasında 1 BTC'nin 17.11.2026 günlük kapanışı 64.877,24 $ (UTC gün sonu) × TCMB döviz satış kuru 50,4199 TL (17.11.2026) = 3271103.95 TL, tam liraya yuvarlandı. Kur kaynağı: https://www.tcmb.gov.tr/kurlar/202611/17112026.xml",
         "source": {
-          "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 04.11.2026",
-          "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1793750400",
-          "accessed": "2026-11-05",
+          "title": "Bitstamp BTC/USD günlük kapanış ve TCMB dolar kuru, 17.11.2026",
+          "url": "https://www.bitstamp.net/api/v2/ohlc/btcusd/?step=86400&limit=1&start=1794873600",
+          "accessed": "2026-11-18",
           "kind": "derived"
         }
       },
@@ -7611,14 +7611,14 @@
         "credit": "Original illustration, CC0"
       },
       "current": {
-        "date": "2026-11-04",
-        "price": 5063.29,
+        "date": "2026-11-17",
+        "price": 4990.01,
         "status": "verified",
-        "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 90 euro × TCMB euro satış kuru 56.2588 (2026-11-04) = 5063.29 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 90 euro: 11 Haziran 2024'ten itibaren, Vize Merkezi https://www.vizemerkezi.com/duyuru/schengen-vize-ucreti-degisiyor · CNN Türk https://www.cnnturk.com/dunya/schengen-vize-ucretlerine-zam-geldi-2116356.",
+        "note": "Türetilmiş değer: yetişkin Schengen vize ücreti 90 euro × TCMB euro satış kuru 55.4446 (2026-11-17) = 4990.01 TL. Aracı kurum hizmet bedeli hariç. Ücret kaynağı: 90 euro: 11 Haziran 2024'ten itibaren, Vize Merkezi https://www.vizemerkezi.com/duyuru/schengen-vize-ucreti-degisiyor · CNN Türk https://www.cnnturk.com/dunya/schengen-vize-ucretlerine-zam-geldi-2116356.",
         "source": {
-          "title": "TCMB euro kuru (2026-11-04) ve AB Vize Kodu ücreti",
-          "url": "https://www.tcmb.gov.tr/kurlar/202611/04112026.xml",
-          "accessed": "2026-11-05",
+          "title": "TCMB euro kuru (2026-11-17) ve AB Vize Kodu ücreti",
+          "url": "https://www.tcmb.gov.tr/kurlar/202611/17112026.xml",
+          "accessed": "2026-11-18",
           "kind": "derived"
         }
       },
