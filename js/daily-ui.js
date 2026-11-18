@@ -240,7 +240,7 @@ export function renderDailyCard() {
   $('r-card-share').hidden = true;
   resetShareBtn();
   // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
-  $('next-btn').textContent = 'Tahmin etmeye devam et →';
+  $('next-btn').textContent = 'Sonraki soru →';
   $('r-card').hidden = false;
   return true;
 }
