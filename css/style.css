@@ -1709,3 +1709,11 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   .intro-final { margin-top: 8px; }
   .intro-stage { padding-top: 8px; }
 }
+
+/* House button: same round look as the sound and theme toggles, but a link. */
+.home-btn { text-decoration: none; }
+/* 320 px phones: three round buttons and the logo must still share one header row. */
+@media (max-width: 359px) {
+  .header-tools { gap: 4px; }
+  .site-header .logo { font-size: 1.125rem; }
+}

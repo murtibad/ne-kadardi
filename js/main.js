@@ -131,7 +131,9 @@ function show(screenId) {
 
 // The footer's "Ana menü" link is pointless on the menu itself.
 function syncFooter(screenId) {
-  document.querySelector('.site-footer .footer-link').parentElement.hidden = screenId === 'home-screen';
+  const home = screenId === 'home-screen' || screenId === 'message-screen';
+  document.querySelector('.site-footer .footer-link').parentElement.hidden = home;
+  $('header-home').hidden = home;
 }
 
 function showGameScreen(screenId) {
