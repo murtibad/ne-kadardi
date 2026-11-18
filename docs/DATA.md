@@ -129,6 +129,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | aclik-siniri | Türk-İş hunger line, monthly food spending of a family of four, January | union survey via news (2019+); not official data, title says Türk-İş | medium-high |
 | ankara-ulasim | Ankara EGO bus/metro/Ankaray full fare, one ride (Ankarakart single ride from 2019), month of the UKOME rise, 2014-2026 | news, two domains each; 2010-2013 and 2016 left out (no two independent sources found) | high |
 | izmir-ulasim | Izmir full boarding fare with Izmirim Kart (ESHOT bus, metro, tram; not IZBAN), month of the rise, 2022-2026 | news, two domains each; small monthly PPI steps in 2022-2023 skipped, 2014-2021 and 2024-10 left out (no two independent sources found) | high |
+| yemek-karti | Daily meal-allowance tax exemption (what an employer may give for meals without tax), per day, VAT excluded (GVK 23/8, set yearly by a Gelir Vergisi Genel Tebliği); 2010, 2011, 2012, 2014, 2016, 2018, 2020-2021, 2022-01 and 2022-07 (mid-year rise), 2023-2026. The game uses the VAT-excluded 240 (2025) and 300 (2026), not the 264/330 TL with VAT seen on meal cards | Genel Tebliğ texts via lexpera / alomaliye (official) and, for the other years, muhasebenews table plus multinet / news, two domains each | high |
 
 Dropped on purpose: simit and "computer" (vary too much by place/model to source reliably).
 The start year of the game is whatever the verified data supports; target 2010, 2005 where possible.

@@ -193,6 +193,7 @@ export const COUNT_UNITS = {
   mtv: 'yıllık araba vergisi',
   'ehliyet-esinav': 'ehliyet yazılı sınavı ücreti',
   'kidem-tavani': 'kıdem tazminatı tavanı',
+  'yemek-karti': 'günlük yemek bedeli',
   'tmo-bugday': 'kilo buğday (devletin alım fiyatıyla)',
   'findik-alim': 'kilo kabuklu fındık (devletin alım fiyatıyla)',
   'cig-sut': 'litre çiğ süt (çiftçinin satış fiyatıyla)',
@@ -223,6 +224,7 @@ export const WAGE_SHARE = {
   'kyk-burs': { better: 'higher', name: 'KYK bursu' },
   'dogum-yardimi': { better: 'higher', name: 'Doğum yardımı' },
   'aclik-siniri': { better: 'lower', name: 'Açlık sınırı' },
+  'yemek-karti': { better: 'higher', name: 'Günlük vergisiz yemek bedeli' },
 };
 
 /** Receipt label for the answer: a pension or a wage is an amount, not a price. */

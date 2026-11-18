@@ -14630,6 +14630,189 @@
           }
         }
       ]
+    },
+    {
+      "id": "yemek-karti",
+      "name": "Yemek kartı (günlük vergisiz tutar)",
+      "explain": "İşverenin yemek için vergi kesmeden verebileceği günlük en yüksek tutar",
+      "unit": "1 günlük yemek için, KDV hariç",
+      "region": null,
+      "source_hint": "Gelir Vergisi Genel Tebliği (GVK 23/8); her yıl yeniden belirlenir. KDV hariç tutar.",
+      "image": {
+        "src": "img/yemek-karti.svg",
+        "alt": "Yemek kartı çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-01",
+        "price": 300,
+        "status": "verified",
+        "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"vergiden müstesna yemek bedeli 300 TL olarak Gelir Vergisi 332 Seri Nolu Genel Tebliinde\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"330 TL (300 TL + %10 KDV)\").",
+        "source": {
+          "title": "muhasebetr.com",
+          "url": "https://www.muhasebetr.com/vergiden-mustesna-yemek-bedeli/",
+          "accessed": "2026-11-18",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2010-01",
+          "price": 10,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2010 takvim yılında uygulanmak üzere 10 TL olarak tespit edilmiştir\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"2010 Yemek İstisnası Tutarı 10,00 TL\").",
+          "source": {
+            "title": "lexpera.com.tr",
+            "url": "https://www.lexpera.com.tr/resmi-gazete/metin/gelir-vergisi-genel-tebligi-27447-seri-no-273",
+            "accessed": "2026-11-18",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2011-01",
+          "price": 10.7,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2011 takvim yılında uygulanmak üzere 10,70 TL olarak tespit edilmiştir\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"2011 Yemek İstisnası Tutarı 10,70 TL\").",
+          "source": {
+            "title": "alomaliye.com",
+            "url": "https://www.alomaliye.com/2010/12/29/gelir-vergisi-genel-tebligi-seri-no278/",
+            "accessed": "2026-11-18",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2012-01",
+          "price": 11.7,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2012 11,70 TL 280 Seri No.lu Genel Tebliği\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"2012 Yemek İstisnası Tutarı 11,70 TL\").",
+          "source": {
+            "title": "muhasebenews.com",
+            "url": "https://www.muhasebenews.com/?p=148862",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2014-01",
+          "price": 12.0,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2014 12,00 TL 285 Seri No.lu Genel Tebliği\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"2014 Yemek İstisnası Tutarı 12,00 TL\").",
+          "source": {
+            "title": "muhasebenews.com",
+            "url": "https://www.muhasebenews.com/?p=148862",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2016-01",
+          "price": 13.7,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2016 13,70 TL 290 Seri No.lu Genel Tebliği\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"2016 Yemek İstisnası Tutarı 13,70 TL\").",
+          "source": {
+            "title": "muhasebenews.com",
+            "url": "https://www.muhasebenews.com/?p=148862",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2018-01",
+          "price": 16.0,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2018 16,00 TL 302 Seri No.lu Genel Tebliği\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"2018 Yemek İstisnası Tutarı 16,00 TL\").",
+          "source": {
+            "title": "muhasebenews.com",
+            "url": "https://www.muhasebenews.com/?p=148862",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-01",
+          "price": 23.0,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2020 23,00 TL 310 Seri No.lu Genel Tebliği\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"2020 Yemek İstisnası Tutarı 23,00 TL\").",
+          "source": {
+            "title": "muhasebenews.com",
+            "url": "https://www.muhasebenews.com/?p=148862",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2021-01",
+          "price": 25,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"yemek verilmek suretiyle sağlanan menfaatlere ilişkin istisna tutarı 25 TL\". İkinci kaynak: https://www.yeniakit.com.tr/haber/2021-yili-gunluk-yemek-bedeli-istisnasi-aciklandi-1493374.html (\"günlük yemek bedeli KDV hariç 25 lira\").",
+          "source": {
+            "title": "alomaliye.com",
+            "url": "https://alomaliye.com/2020/12/29/gelir-vergisi-genel-tebligi-seri-no-313/",
+            "accessed": "2026-11-18",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-01",
+          "price": 34,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"yemek verilmek suretiyle sağlanan menfaatlere ilişkin istisna tutarı 34 TL\". İkinci kaynak: https://www.ntv.com.tr/ekonomi/calisanlarin-yemek-ve-yol-ucreti-artirildi,GKe0ySx060quZG_tabvCRQ (\"1 Ocak’tan itibaren geçerli olan 34 TL lik istisna tutarını\").",
+          "source": {
+            "title": "alomaliye.com",
+            "url": "https://www.alomaliye.com/2021/12/21/gelir-vergisi-genel-tebligi-seri-no-317/",
+            "accessed": "2026-11-18",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2022-07",
+          "price": 51,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"34 liradan 51 liraya yükseltildi\". İkinci kaynak: https://www.ekonomist.com.tr/haberler/yemek-ve-ulasim-bedeli-istisna-tutarlari-artirildi-2022-33325 (\"34 lira yemek istisnası tutarı yüzde 50 artırılarak 51 liraya çıkarıldı\").",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/ekonomi/calisanlarin-yemek-ve-yol-ucreti-artirildi,GKe0ySx060quZG_tabvCRQ",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 110,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"yemek bedeline ilişkin istisna tutarı 110 TL\". İkinci kaynak: https://www.cnnturk.com/ekonomi/vergi-istisnasi-degisti-calisanlarin-yemek-parasi-guncellenecek-mi (\"Ocak 2023 itibariyle 110 TL + KDV\").",
+          "source": {
+            "title": "alomaliye.com",
+            "url": "https://www.alomaliye.com/2022/12/31/gelir-vergisi-genel-tebligi-seri-no-323/",
+            "accessed": "2026-11-18",
+            "kind": "official"
+          }
+        },
+        {
+          "date": "2024-01",
+          "price": 170,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2024 170,00 TL 324 Seri No.lu Genel Tebliği\". İkinci kaynak: https://www.cnnturk.com/ekonomi/calisanin-yemeginin-170-tlsi-devletten-kalem-kalem-vergi-ve-harclar-2078052 (\"Çalışanın yemeğinin 170 tl'si devletten\").",
+          "source": {
+            "title": "muhasebenews.com",
+            "url": "https://www.muhasebenews.com/?p=148862",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-01",
+          "price": 240,
+          "status": "verified",
+          "note": "Vergi kesilmeden işverenin çalışana yemek için verebileceği günlük en yüksek tutar, KDV hariç (Gelir Vergisi Kanunu 23/8). Oyunda KDV hariç tutar kullanılır; yemek kartı fişlerinde dolaşan KDV dahil tutar (2025: 264, 2026: 330 TL) değildir. Kaynaktan alıntı: \"2025 yılında günlük yemek ücreti 240 TL\". İkinci kaynak: https://multinet.com.tr/gunluk-yemek-bedeli-istisnasi (\"264 TL (240 TL + %10 KDV)\").",
+          "source": {
+            "title": "dunya.com",
+            "url": "https://www.dunya.com/ekonomi/resmi-gazetede-yayimlandi-2025-yili-icin-gunluk-yemek-ve-ulasim-bedeli-aciklandi-haberi-758793",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        }
+      ]
     }
   ]
 }

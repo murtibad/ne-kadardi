@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.127.0] - 2026-11-18
+### Added
+- New product: Yemek kartı (günlük vergisiz tutar), the daily meal amount an employer can give tax-free (KDV hariç), 14 values 2010-2026 from the tax communiqués and two separate sources each. The receipt compares it as a share of the minimum wage.
+
 ## [0.126.4] - 2026-11-18
 ### Fixed
 - Typing "0.250" now means 0,25 TL, not 250 TL (a leading zero is never a thousands group).
