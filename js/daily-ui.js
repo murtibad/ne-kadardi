@@ -5,7 +5,7 @@ import { FOLLOW_UP_IDS } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -13,6 +13,7 @@ const getState = () => deps.getState();
 
 export function initDailyUi(d) {
   deps = d;
+  initDailyReview();
 }
 
 // True on the turn that shows the daily receipt: the bar button then shares it directly.
@@ -106,7 +107,7 @@ export function skipDaily() {
   return true;
 }
 
-// The #gunun-fisi route: shares a finished receipt, otherwise starts or resumes the run.
+// The #gunun-fisi route: shows a finished receipt, otherwise starts or resumes the run.
 export function startOrShareDaily() {
   const state = getState();
   const saved = loadDaily();
@@ -115,13 +116,7 @@ export function startOrShareDaily() {
   if (saved && saved.ids.length > 0 && saved.scores.length >= saved.ids.length) {
     history.replaceState(null, '', '#');
     deps.renderHome();
-    const text = dailyShareText({
-      key: saved.key,
-      scores: saved.scores,
-      url: location.origin + location.pathname,
-      streak: state.streak?.count ?? 0,
-    });
-    shareTextWithStatus(text, $('m-daily-go'));
+    openDailyReview(saved);
   } else {
     const ids = saved?.ids.length
       ? saved.ids
@@ -135,6 +130,57 @@ export function startOrShareDaily() {
   }
 }
 
+// Rows with date, product, real price and score; shared by the end-of-run card and the review dialog.
+function dailyLines(all, ids, scores) {
+  return ids.map((id, i) => {
+    const dq = all.find((x) => x.id === id);
+    if (!dq) return { label: 'Soru', detail: `${scores[i] ?? 0} puan` };
+    return dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score: scores[i] ?? 0 });
+  });
+}
+
+// Finished receipt from the menu: show the five rows again; sharing stays one tap away inside.
+let reviewOpener = null;
+function openDailyReview(saved) {
+  const state = getState();
+  const dlg = $('daily-review');
+  const total = saved.scores.reduce((s, n) => s + n, 0);
+  $('daily-review-title').textContent = dailyTitle(saved.key);
+  $('daily-review-lines').innerHTML = dailyLines(state.all, saved.ids, saved.scores)
+    .map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`).join('');
+  const streak = state.streak?.count ?? 0;
+  $('daily-review-total').textContent = `Toplam: ${total}/500${streak >= 2 ? ` · 🔥 ${streak} gün üst üste` : ''}`;
+  $('daily-review-next').textContent = nextReceiptIn();
+  if (typeof dlg.showModal !== 'function') return;
+  reviewOpener = document.activeElement;
+  dlg.showModal();
+  $('daily-review-share').focus();
+}
+
+export function initDailyReview() {
+  const dlg = $('daily-review');
+  $('daily-review-close').addEventListener('click', () => dlg.close());
+  $('daily-review-share').addEventListener('click', () => {
+    const saved = loadDaily();
+    if (!saved || saved.ids.length === 0) return;
+    shareTextWithStatus(dailyShareText({
+      key: saved.key,
+      scores: saved.scores,
+      url: location.origin + location.pathname,
+      streak: getState().streak?.count ?? 0,
+    }), $('daily-review-share'));
+  });
+  dlg.addEventListener('click', (e) => {
+    if (e.target !== dlg) return;
+    const r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
+  dlg.addEventListener('close', () => {
+    if (reviewOpener && reviewOpener.isConnected) reviewOpener.focus();
+    reviewOpener = null;
+  });
+}
+
 // Report card branch for a daily run. Returns true when it handled the turn.
 export function renderDailyCard() {
   const state = getState();
@@ -145,15 +191,11 @@ export function renderDailyCard() {
   syncSkipBtn();
   // The run is over: a reload now should not reopen #gunun-fisi (that would share again).
   if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
-  const lines = ids.map((id, i) => {
-    const dq = state.all.find((x) => x.id === id);
-    const label = dq ? `${formatPeriod(dq.date)} · ${questionTitle(dq)}` : 'Soru';
-    return { label, score: scores[i] ?? 0 };
-  });
+  const lines = dailyLines(state.all, ids, scores);
   const total = scores.reduce((s, n) => s + n, 0);
   state.reportCard = { daily: true, key, scores };
   $('r-card-title').textContent = dailyTitle(key);
-  $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
+  $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`).join('');
   $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
   // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
   dailyEndTurn = true;
@@ -193,7 +235,7 @@ export function renderDailyMenu() {
     ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn()}`
     : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru`
       : dailyMenuMeta(dailyStats(loadDailyLog(), dayKey()));
-  const dailyGo = dailyDone ? 'Paylaş →' : dailyInProgress ? 'Devam et →' : 'Başla →';
+  const dailyGo = dailyDone ? 'Fişini gör →' : dailyInProgress ? 'Devam et →' : 'Başla →';
   $('m-daily-go').textContent = dailyGo;
   $('m-daily-go').dataset.label = dailyGo;
 }
