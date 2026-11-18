@@ -11,6 +11,16 @@ let tableMod = null; // archive-table.js, set once the lazy modules are loaded
 let expandedFor = null; // product id whose long table is fully open
 const getState = () => deps.getState();
 
+// Announces polite status updates (e.g. random product selection) for screen readers.
+let announceTimeoutId = null;
+function announce(text) {
+  const el = $('sr-status');
+  if (!el) return;
+  el.textContent = '';
+  clearTimeout(announceTimeoutId);
+  announceTimeoutId = setTimeout(() => { el.textContent = text; }, 60);
+}
+
 const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
 function loadArchiveNewestFirst() {
   try { return localStorage.getItem(ARCHIVE_ORDER_KEY) === 'newest'; } catch { return false; }
@@ -147,8 +157,10 @@ function renderProductChips(visible, selectedId, focusProductId) {
     dice.onclick = () => {
       const id = tableMod.pickRandomId(visible.map((t) => t.id), selectedId);
       if (!id) return;
+      const target = visible.find((t) => t.id === id);
       getState().selectedTimelineProduct = id;
       renderTimelineScreen(id);
+      if (target?.name) announce(`${target.name} açıldı`);
     };
     picker.appendChild(dice);
   }

@@ -21,7 +21,7 @@ test('the archive table escapes sources and marks the current row', () => {
   assert.match(html, /<span class="source-kind">haberlerden<\/span>/);
   assert.match(html, /class="is-current"/);
   assert.match(html, /Güncel \(Ocak 2026\)/);
-  assert.match(html, /<summary>Kaynak ve not<\/summary>/);
+  assert.match(html, /<summary aria-label="Ocak 2010 kaynak ve not">Kaynak ve not<\/summary>/);
   assert.doesNotMatch(html, /tahmin ettin/);
 });
 

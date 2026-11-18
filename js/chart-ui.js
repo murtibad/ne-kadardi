@@ -220,6 +220,14 @@ export function bindPriceChart(fig, chart, onActive) {
         const step = e.key === 'ArrowRight' ? 1 : -1;
         const next = Math.max(0, Math.min(points.length - 1, activeIdx + step));
         showTip(next, true, 'keyboard');
+      } else if (e.key === 'Home') {
+        // Home jumps to the first point of the price series.
+        e.preventDefault();
+        showTip(0, true, 'keyboard');
+      } else if (e.key === 'End') {
+        // End jumps to the last point of the price series.
+        e.preventDefault();
+        showTip(points.length - 1, true, 'keyboard');
       } else if (e.key === 'Escape') {
         hideTip();
       }
