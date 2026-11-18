@@ -1263,17 +1263,19 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   padding-top: 20px;
   margin-top: 20px;
 }
+/* Always one line tall, so "Tahmin et" does not jump when the read-out appears at the 4th digit. */
 #guess-readout {
-  margin: 6px 0 8px;
+  margin: 4px 0 6px;
+  line-height: 1.3;
 }
 #hint-btn,
 #hint-text {
   margin-bottom: 16px;
 }
+#hint-btn { margin-top: 12px; }
 #guess-error {
   margin: 0 0 16px;
 }
-#guess-readout:empty,
 #guess-error:empty {
   min-height: 0;
   margin: 0;
