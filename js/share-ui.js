@@ -38,8 +38,6 @@ function resetShareBtn() {
   }
   // A stale label ("Fişini paylaş" from a daily end turn) would be restored by later feedback timers.
   delete bar.dataset.label;
-  const askQ = $('ask-q-btn');
-  if (askQ.dataset.label) askQ.textContent = askQ.dataset.label;
 }
 
 // Button labels change silently for screen readers, so mirror transient feedback here.
@@ -136,12 +134,12 @@ async function share() {
   }
 }
 
-// The question card's button asks as-is; the send sheet adds the score (`withScore`).
+// The send sheet asks with the player's score.
 // Feedback shows on the button the player pressed (the sheet is closed, so its opener).
-async function askFriend({ btn, withScore = false }) {
+async function askFriend({ btn }) {
   const q = getState().question;
   if (!q) return;
-  const score = withScore && getState().result ? getState().result.score : null;
+  const score = getState().result ? getState().result.score : null;
   const base = location.origin + location.pathname;
   const text = askText(formatPeriod(q.date), questionTitle(q), score);
   const url = askUrl(q, base, score);
@@ -248,7 +246,7 @@ function initSendSheet() {
     fn();
   };
   $('send-result').addEventListener('click', choose(share));
-  $('send-ask').addEventListener('click', choose(() => askFriend({ btn: opener, withScore: true })));
+  $('send-ask').addEventListener('click', choose(() => askFriend({ btn: opener })));
   $('send-save').addEventListener('click', choose(downloadImage));
   $('send-close').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', (e) => {
@@ -321,4 +319,4 @@ export function initShareUi(d) {
   initSharePreview();
 }
 
-export { resetShareBtn, closePreview, askFriend, shareReportCard, shareTextWithStatus };
+export { resetShareBtn, closePreview, shareReportCard, shareTextWithStatus };
