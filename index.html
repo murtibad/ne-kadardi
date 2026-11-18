@@ -224,15 +224,19 @@
       
       <div class="receipt-wrapper">
         <article class="receipt-card result-receipt timeline-receipt">
-          <img id="t-image" class="product-image result-image" width="56" height="56" alt="" decoding="async" hidden>
-          <p id="t-title" class="receipt-title"></p>
-          <p id="t-unit" class="receipt-unit"></p>
+          <div class="timeline-id">
+            <img id="t-image" class="product-image result-image" width="40" height="40" alt="" decoding="async" hidden>
+            <div class="timeline-id-text">
+              <p id="t-title" class="receipt-title"></p>
+              <p id="t-unit" class="receipt-unit"></p>
+            </div>
+          </div>
           <p id="t-explain" class="explain" hidden></p>
           <hr>
           <p id="t-summary" class="timeline-summary" hidden></p>
           <button type="button" id="t-play" class="link-btn timeline-play" hidden>Bu türden bir soru çöz →</button>
           <figure id="t-chart" class="price-chart" hidden></figure>
-          <div class="timeline-order"><p class="timeline-legend"><span class="timeline-legend-mark">Kırmızı yazı</span>: o tarihten bugüne ne kadar arttı</p><button type="button" id="archive-order" class="timeline-order-btn" aria-pressed="false"></button></div>
+          <div class="timeline-order"><p class="timeline-legend"><span class="timeline-legend-mark">Kırmızı</span>: bugüne kadar artış</p><button type="button" id="archive-order" class="timeline-order-btn" aria-pressed="false"></button></div>
           <div id="t-rows-container"></div>
         </article>
       </div>

@@ -1751,3 +1751,34 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* "Peki ... kaç liraydı?" is an action, not a source line: framed like the menu's .fact-play. */
 .source .followup-btn { display: flex; justify-content: center; width: 100%; margin-top: 10px; padding: 10px 14px; border: 2px solid var(--ink); border-radius: 6px; font-size: 0.9375rem; color: var(--ink); text-decoration: none; text-align: center; }
 .source .followup-btn[hidden] { display: none; }
+
+/* Archive top: pack icon, name, takeaway and chart so the chart and first table rows fit one phone screen. */
+#timeline-screen .timeline-header { margin-bottom: 0; }
+#timeline-screen .timeline-search { margin-bottom: 4px; }
+#timeline-screen .timeline-picker { margin-bottom: 4px; }
+#timeline-screen .receipt-wrapper { margin: 8px 0 24px; }
+.timeline-receipt.result-receipt { padding: 20px 16px 24px; }
+.timeline-id { display: flex; align-items: center; gap: 12px; text-align: left; }
+.timeline-id-text { min-width: 0; }
+.timeline-receipt .timeline-id .result-image { width: 40px; height: 40px; margin: 0; flex: none; }
+.timeline-receipt .receipt-title { margin: 0; }
+.timeline-receipt .receipt-unit { margin: 2px 0 0; }
+.timeline-receipt hr { margin: 8px 0; }
+.timeline-summary { margin: 4px 0 0; font-size: 0.875rem; }
+.timeline-play { margin: 0 auto; }
+.timeline-receipt .price-chart { margin: 4px 0 4px; }
+.timeline-order { margin: 0; }
+.timeline-receipt .rows-toggle { margin-top: 4px; }
+/* 360-389 px phones: same one-row header as 320 px, otherwise the three buttons wrap under the logo. */
+@media (max-width: 389px) {
+  .header-tools { gap: 4px; }
+  .site-header .logo { font-size: 1.125rem; }
+}
+#timeline-screen .timeline-header { margin-top: -4px; }
+@media (max-width: 389px) {
+  .site-header { padding-top: 8px; padding-bottom: 4px; }
+  .timeline-receipt.result-receipt { padding-top: 12px; }
+  .timeline-summary { font-size: 0.8125rem; letter-spacing: -0.02em; }
+}
+.timeline-receipt hr { margin: 6px 0 4px; }
+.timeline-play { justify-content: center; }
