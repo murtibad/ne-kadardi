@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.129.0] - 2026-11-18
+### Changed
+- The price archive is much shorter on phones: long histories show the newest 8 rows with a "Tüm yılları göster" button on the side of the hidden years (gram altın page 5664 -> 1960 px at 390); jumping to a hidden year from the chart opens the table.
+- Each row's source and note sit in one "Kaynak ve not" disclosure instead of repeating on every row.
+- "← Ana menü" and the "Fiyat Arşivi" title share one row.
+- Added
+- A "🎲 Rastgele" chip opens a random product in the archive.
+
 ## [0.128.0] - 2026-11-18
 ### Changed
 - The result receipt shows today's price and how much it grew on the first screen: Tahminin, Gerçek fiyat, Güncel and Değişim are one list, followed by the verdict and a compact score row with the stamp beside the score.

@@ -6,6 +6,8 @@ import { pickFromCategory } from './game.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
+let tableMod = null; // archive-table.js, set once the lazy modules are loaded
+let expandedFor = null; // product id whose long table is fully open
 const getState = () => deps.getState();
 
 const ARCHIVE_ORDER_KEY = 'ne-kadardi-archive-order';
@@ -54,10 +56,9 @@ export async function renderTimelineScreen(focusProductId = null) {
   deps.show('timeline-screen');
   if (getState().timelines.length === 0) return;
 
-  let timelineTableHtml;
   let filterByQuery;
   try {
-    [{ timelineTableHtml }, { filterByQuery }] = await loadArchiveModules();
+    [tableMod, { filterByQuery }] = await loadArchiveModules();
   } catch (err) {
     console.warn('Arşiv yüklenemedi', err);
     showArchiveError(focusProductId);
@@ -82,7 +83,9 @@ export async function renderTimelineScreen(focusProductId = null) {
   const seenDates = new Set(
     product.rows.filter((r) => getState().seen.has(`${product.id}@${r.date}`)).map((r) => r.date),
   );
-  $('t-rows-container').innerHTML = timelineTableHtml(product.rows, { newestFirst: getState().archiveNewestFirst, seenDates });
+  $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
+    newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id,
+  });
   deps.renderPriceChart('t-chart', product.id);
   linkRowsToChart();
 }
@@ -133,6 +136,21 @@ function renderSearchState(hits, filterByQuery) {
 function renderProductChips(visible, selectedId, focusProductId) {
   const picker = $('timeline-picker');
   picker.textContent = '';
+  if (visible.length > 1) {
+    const dice = document.createElement('button');
+    dice.type = 'button';
+    dice.className = 'picker-chip';
+    dice.dataset.random = 'true';
+    dice.setAttribute('aria-label', 'Rastgele bir ürün aç');
+    dice.innerHTML = '<span aria-hidden="true">🎲 </span><span>Rastgele</span>';
+    dice.onclick = () => {
+      const id = tableMod.pickRandomId(visible.map((t) => t.id), selectedId);
+      if (!id) return;
+      getState().selectedTimelineProduct = id;
+      renderTimelineScreen(id);
+    };
+    picker.appendChild(dice);
+  }
   for (const t of visible) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -214,7 +232,30 @@ function linkRowsToChart() {
   const rowsContainer = $('t-rows-container');
   if (rowsContainer.dataset.chartLinked) return;
   rowsContainer.dataset.chartLinked = 'true';
+  // Opens or closes the extra rows in place, so the scroll position and a chart-linked row survive.
+  const setExpanded = (expanded) => {
+    expandedFor = expanded ? getState().selectedTimelineProduct : null;
+    const rows = rowsContainer.querySelectorAll('tr[data-extra]');
+    rows.forEach((r) => { r.hidden = !expanded; });
+    const toggle = rowsContainer.querySelector('.rows-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.textContent = tableMod.rowsToggleLabel(rows.length + tableMod.COLLAPSED_ROWS, expanded);
+    }
+  };
+  // A chart point can point at a hidden row; the chart code only toggles a class, so watch for it and open the table.
+  new MutationObserver(() => {
+    const linked = rowsContainer.querySelector('tr.is-linked[hidden]');
+    if (!linked) return;
+    setExpanded(true);
+    linked.scrollIntoView({ block: 'nearest' });
+  }).observe(rowsContainer, { subtree: true, attributes: true, attributeFilter: ['class'] });
   rowsContainer.addEventListener('click', (e) => {
+    if (e.target instanceof Element && e.target.closest('.rows-toggle')) {
+      const toggle = e.target.closest('.rows-toggle');
+      setExpanded(toggle.getAttribute('aria-expanded') !== 'true');
+      return;
+    }
     const btn = e.target instanceof Element ? e.target.closest('.row-to-chart') : null;
     if (!btn) return;
     const fig = $('t-chart');
