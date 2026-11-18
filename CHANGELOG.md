@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.134.4] - 2026-11-18
+### Fixed
+- Skipping the last Günün Fişi question now shows the finished receipt on the menu, like answering it.
+- "🎯 Yeni rekor!" needs at least 50 puan, and a longer run of close guesses says how many ("Üst üste 4 yakın tahmin!").
+- Moving through a price chart with the keyboard no longer scrolls the chart away when the year is in the folded part of the archive table.
+- In "Nasıl oynanır?", "Ana menüye geç" really goes to the menu, and "Hemen oyna" starts a new question when opened on a result.
+- Changed
+- Removed the unused "Karneni paylaş" button and duplicate style rules.
+
 ## [0.134.3] - 2026-11-18
 ### Fixed
 - Keyboard and screen readers: closing the first-visit intro puts focus on the screen's heading instead of the page body; Enter on the intro buttons works during the animation; Home and End jump to the first and last point of a price chart; each archive row's "Kaynak ve not" is named with its date; the random product chip announces the product it opened; the result's source link has the same strong focus ring as other links.
