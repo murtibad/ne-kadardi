@@ -126,10 +126,11 @@
             <span class="currency">₺</span>
           </div>
           <p id="guess-readout" class="guess-readout" aria-hidden="true"></p>
+          <p id="guess-error" class="error" role="alert"></p>
+          <!-- Submit sits right under the box: an opened hint below it can no longer push it under the phone keyboard. -->
+          <button type="submit" class="btn primary">Tahmin et</button>
           <button type="button" id="hint-btn" class="hint-btn" hidden>İpucu al (puanın %20 düşer)</button>
           <div id="hint-text" class="hint-slip" role="status" aria-live="polite" hidden></div>
-          <p id="guess-error" class="error" role="alert"></p>
-          <button type="submit" class="btn primary">Tahmin et</button>
           <button type="button" id="skip-btn" class="skip-btn">Bu soruyu geç <span class="skip-note">(puanın düşmez)</span></button>
           <p class="ask-q">Bilemedin mi? <button type="button" id="ask-q-btn" class="link-btn">Soruyu arkadaşına gönder →</button></p>
         </form>

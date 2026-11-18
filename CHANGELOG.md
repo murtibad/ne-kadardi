@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.127.1] - 2026-11-18
+### Changed
+- "Tahmin et" sits right under the price box; the hint button and hint slip come after it, so an opened hint no longer pushes the button under the phone keyboard.
+- The amount read-out under the box ("1 bin 250 ₺") always keeps its line, so the button does not jump at the 4th digit.
+
 ## [0.127.0] - 2026-11-18
 ### Added
 - New product: Yemek kartı (günlük vergisiz tutar), the daily meal amount an employer can give tax-free (KDV hariç), 14 values 2010-2026 from the tax communiqués and two separate sources each. The receipt compares it as a share of the minimum wage.
