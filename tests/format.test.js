@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease, formatPrice, formatNumber, getNumberFormatter, unitLine } from '../js/format.js';
+import { parseGuess, formatPeriod, formatRatio, readAmount, formatIncrease, formatPrice, formatNumber, getNumberFormatter, unitLine, readoutText } from '../js/format.js';
 
 test('parseGuess accepts Turkish decimal comma', () => {
   assert.equal(parseGuess('4,5'), 4.5);
@@ -147,4 +147,36 @@ test('parseGuess reads a leading-zero dotted number as a decimal, not thousands'
   assert.equal(parseGuess('4,5'), 4.5);
   assert.equal(parseGuess('1.250,75'), 1250.75);
   assert.equal(parseGuess('12.345.678'), 12345678);
+});
+
+test('readoutText returns empty string for non-positive or non-finite values', () => {
+  for (const bad of [null, undefined, NaN, Infinity, 0, -5, '1000', '4,5']) {
+    assert.equal(readoutText(bad), '', `expected '' for ${String(bad)}`);
+  }
+});
+
+test('readoutText delegates to readAmount for values from 1000 up', () => {
+  assert.equal(readoutText(1000), '1 bin ₺');
+  assert.equal(readoutText(1250), '1 bin 250 ₺');
+  assert.equal(readoutText(1250.75), '1 bin 250,75 ₺');
+  assert.equal(readoutText(1000000), '1 milyon ₺');
+});
+
+test('readoutText returns empty string for integers below 1000', () => {
+  for (const intVal of [1, 5, 45, 999]) {
+    assert.equal(readoutText(intVal), '', `expected '' for ${intVal}`);
+  }
+});
+
+test('readoutText formats kuruş for values below 1', () => {
+  assert.equal(readoutText(0.75), '75 kuruş');
+  assert.equal(readoutText(0.05), '5 kuruş');
+  assert.equal(readoutText(0.5), '50 kuruş');
+});
+
+test('readoutText formats lira and kuruş, rounding to whole kuruş', () => {
+  assert.equal(readoutText(4.5), '4 lira 50 kuruş');
+  assert.equal(readoutText(12.05), '12 lira 5 kuruş');
+  assert.equal(readoutText(4.999), '5 lira');
+  assert.equal(readoutText(12.001), '12 lira');
 });

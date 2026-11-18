@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.132.0] - 2026-11-18
+### Added
+- Typing a price with kuruş shows it back in words under the box ("4,5" -> "4 lira 50 kuruş", "0,75" -> "75 kuruş"), so players see that the comma or dot was read the way they meant.
+
 ## [0.131.2] - 2026-11-18
 ### Fixed
 - On 320 px phones the bottom bar no longer runs 6 px past the screen edge; the two buttons shrink and wrap.

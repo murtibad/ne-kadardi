@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatPeriod, readAmount, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio } from './format.js';
+import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText } from './format.js';
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -1207,7 +1207,7 @@ async function init() {
     const v = parseGuess(e.target.value);
     // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
     if (v !== null) $('guess-error').textContent = '';
-    $('guess-readout').textContent = v !== null && v >= 1000 ? readAmount(v) : '';
+    $('guess-readout').textContent = readoutText(v);
   });
   // Skipping is free: no score and no stats, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
