@@ -190,6 +190,8 @@ function refreshDailyReview() {
 export function initDailyReview() {
   const dlg = $('daily-review');
   $('daily-review-close').addEventListener('click', () => dlg.close());
+  // Back on a phone should close the dialog first; a same-hash history step fires popstate but no hashchange.
+  window.addEventListener('popstate', () => { if (dlg.open) dlg.close(); });
   $('daily-review-share').addEventListener('click', () => {
     const saved = reviewSaved;
     if (!saved || saved.ids.length === 0) return;
