@@ -92,6 +92,7 @@ The `image` field in a product is optional. When present, it shows an icon on th
 | benzin / motorin | 1 L, İstanbul | EPDK bulletins, distributor price archives | high (date it) |
 | iphone | launch price, base storage | Apple TR, news archives | medium-high |
 | istanbul-ulasim | 1 full fare ride | İBB UKOME decisions, news | medium-high |
+| istanbul-ogrenci-bileti | İstanbul student fare (İstanbulkart, discounted tariff), one ride, month of the UKOME rise, 2016-2026 | news, two domains each; 2011, 2014, 2022-01 (2,66 vs 2,67), 2023-08, 2024-01, 2024-07 (12 TL claim) and 2025-01 left out (single source or conflicting reports) | medium-high |
 | ekmek | Halk Ekmek (İBB) 250 gr, İstanbul | İBB Halk Ekmek price-rise news (AA, Dünya, Sözcü ...) | high from 2019 |
 | kopru | Bosphorus bridge car toll | KGM announcements via news | high; direction rule changed 2022 |
 | cay | Çaykur Rize Turist 1 kg | Çaykur announcements, news | medium |

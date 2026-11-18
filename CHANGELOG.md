@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.134.0] - 2026-11-18
+### Added
+- New product: İstanbul öğrenci bileti (İstanbulkart student fare, one ride), 7 values 2016-2026 on the same dates as the full fare, each confirmed by two separate news sites.
+
 ## [0.133.2] - 2026-11-18
 ### Changed
 - When a finger slides across a price chart, the year and price label sits in the top band of the chart, so the finger never covers it; on the result receipt the label uses the same larger text as the rest of the chart.
