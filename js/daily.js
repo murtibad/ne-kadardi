@@ -168,3 +168,8 @@ export function dailyRowText({ date, title, price, score }) {
   const priced = Number.isFinite(price) ? `${formatPrice(price)} · ` : '';
   return { label, detail: `${priced}${score} puan` };
 }
+
+/** Review dialog total line; the streak is appended only when it is 2+ days and still alive. */
+export function dailyReviewTotalLine(total, streak) {
+  return `Toplam: ${total}/500${streak >= 2 ? ` · 🔥 ${streak} gün üst üste` : ''}`;
+}

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine } from '../js/daily.js';
 import { categoryOf } from '../js/categories.js';
 
 const sampleQuestions = [
@@ -185,4 +185,10 @@ test('dailyRowText shows date, product, real price and score; a zero reads "0 pu
 test('share text never contains prices', () => {
   const t = dailyShareText({ key: '2026-11-18', scores: [86, 0, 40, 70, 90], url: 'https://x.y/' });
   assert.ok(!/₺|puan/.test(t));
+});
+
+test('dailyReviewTotalLine adds the streak only from 2 days up', () => {
+  assert.equal(dailyReviewTotalLine(156, 0), 'Toplam: 156/500');
+  assert.equal(dailyReviewTotalLine(156, 1), 'Toplam: 156/500');
+  assert.equal(dailyReviewTotalLine(156, 3), 'Toplam: 156/500 · 🔥 3 gün üst üste');
 });

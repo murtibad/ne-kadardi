@@ -1,11 +1,11 @@
 // Günün Fişi UI: storage, the menu card, the #gunun-fisi route and the end-of-run receipt card.
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPeriod, escapeHTML } from './format.js';
-import { FOLLOW_UP_IDS } from './game.js';
+import { FOLLOW_UP_IDS, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -141,33 +141,63 @@ function dailyLines(all, ids, scores) {
 
 // Finished receipt from the menu: show the five rows again; sharing stays one tap away inside.
 let reviewOpener = null;
+// Kept for the share button: after midnight loadDaily() returns null and the tap would do nothing.
+let reviewSaved = null;
+
+// A lapsed streak (every receipt skipped) must not be advertised as a live one.
+function reviewStreak() {
+  const streak = getState().streak;
+  return streakAlive(streak, dayKey()) ? streak.count ?? 0 : 0;
+}
+
 function openDailyReview(saved) {
   const state = getState();
   const dlg = $('daily-review');
+  reviewSaved = saved;
   const total = saved.scores.reduce((s, n) => s + n, 0);
   $('daily-review-title').textContent = dailyTitle(saved.key);
   $('daily-review-lines').innerHTML = dailyLines(state.all, saved.ids, saved.scores)
     .map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`).join('');
-  const streak = state.streak?.count ?? 0;
-  $('daily-review-total').textContent = `Toplam: ${total}/500${streak >= 2 ? ` · 🔥 ${streak} gün üst üste` : ''}`;
+  $('daily-review-total').textContent = dailyReviewTotalLine(total, reviewStreak());
   $('daily-review-next').textContent = nextReceiptIn();
+  // A fresh open must not inherit "kopyalandı" from a share made just before closing.
+  const shareBtn = $('daily-review-share');
+  clearTimeout(shareBtn.restoreTimer);
+  shareBtn.textContent = 'Fişini paylaş';
+  shareBtn.dataset.label = 'Fişini paylaş';
   if (typeof dlg.showModal !== 'function') return;
-  reviewOpener = document.activeElement;
-  dlg.showModal();
-  $('daily-review-share').focus();
+  if (!dlg.open) {
+    reviewOpener = document.activeElement;
+    dlg.showModal();
+  }
+  shareBtn.focus();
+}
+
+// Called on every hash change: Back or a new route must not leave the modal over another screen.
+export function closeDailyReview() {
+  const dlg = document.getElementById('daily-review');
+  if (dlg?.open) dlg.close();
+}
+
+// Minute tick while the dialog is open: refresh the countdown, close once the receipt is not today's.
+function refreshDailyReview() {
+  const dlg = document.getElementById('daily-review');
+  if (!dlg?.open) return;
+  if (reviewSaved?.key !== dayKey()) { dlg.close(); return; }
+  $('daily-review-next').textContent = nextReceiptIn();
 }
 
 export function initDailyReview() {
   const dlg = $('daily-review');
   $('daily-review-close').addEventListener('click', () => dlg.close());
   $('daily-review-share').addEventListener('click', () => {
-    const saved = loadDaily();
+    const saved = reviewSaved;
     if (!saved || saved.ids.length === 0) return;
     shareTextWithStatus(dailyShareText({
       key: saved.key,
       scores: saved.scores,
       url: location.origin + location.pathname,
-      streak: getState().streak?.count ?? 0,
+      streak: reviewStreak(),
     }), $('daily-review-share'));
   });
   dlg.addEventListener('click', (e) => {
@@ -176,8 +206,14 @@ export function initDailyReview() {
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
   });
   dlg.addEventListener('close', () => {
-    if (reviewOpener && reviewOpener.isConnected) reviewOpener.focus();
+    // The event is async: a close-then-reopen in one task (same-hash route) must not wipe the new state.
+    if (dlg.open) return;
+    const opener = reviewOpener;
     reviewOpener = null;
+    reviewSaved = null;
+    // Touch or URL opens leave no useful opener; fall back to the menu's daily card.
+    if (opener && opener !== document.body && opener.isConnected && opener.offsetParent !== null) opener.focus();
+    else document.querySelector('a.mode-daily')?.focus();
   });
 }
 
@@ -213,6 +249,7 @@ function watchDailyMenu() {
   if (menuTimer) return;
   const menu = () => document.getElementById('home-screen');
   const refresh = () => {
+    refreshDailyReview();
     if (document.visibilityState === 'visible' && menu() && !menu().hidden) renderDailyMenu();
   };
   document.addEventListener('visibilitychange', refresh);
