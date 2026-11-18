@@ -131,7 +131,7 @@ export const PRODUCT_POOLS = {
     'Reklam girmesin diye ödedik, kafa rahat şarkı dinliyoruz.',
     'Çalma listesinde arabesk de var, Tarkan da var.',
     'Düğünde DJ\'den önce kuzen telefondan şarkı açar.',
-    'Şarkıyı atlayabilmek için cebimiz biraz incindi.',
+    'Şarkıyı atlayabilmek için cebimiz biraz yandı.',
   ],
   netflix: [
     'Şifre bizde, kuzende, teyzenin oğlunda; hesap kimin belli değil.',

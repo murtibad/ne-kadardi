@@ -46,6 +46,10 @@
     --accent-on-paper: #b3261e; /* --accent is only 3.9:1 on the dark-mode paper */
     --accent-on-bg: #ef5350; /* --accent is 3.5:1 on the dark page */
     --line: #b5b1a8; /* Darker dashes on the light receipt */
+    /* The dimmer paper drops the mid/poor/good verdict colors to ~4.5:1; one step darker keeps them clearly above. */
+    --tier-good: #285c1a;
+    --tier-mid: #774700;
+    --tier-poor: #923909;
     --receipt-shadow: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
   }
 }
@@ -61,6 +65,10 @@
     --accent-on-paper: #b3261e; /* --accent is only 3.9:1 on the dark-mode paper */
     --accent-on-bg: #ef5350; /* --accent is 3.5:1 on the dark page */
     --line: #b5b1a8; /* Darker dashes on the light receipt */
+    /* The dimmer paper drops the mid/poor/good verdict colors to ~4.5:1; one step darker keeps them clearly above. */
+    --tier-good: #285c1a;
+    --tier-mid: #774700;
+    --tier-poor: #923909;
     --receipt-shadow: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
 }
 
@@ -1671,4 +1679,19 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 @media (max-width: 430px) {
   .footer-line { flex-direction: column; align-items: center; }
   .footer-line > * + *::before { content: none; }
+}
+
+/* Keep "· haberlerden" in one piece so a narrow line never ends with a lone separator. */
+.source-kind { white-space: nowrap; }
+
+/* Short phones (320x640): the intro must show its buttons without scrolling. */
+@media (max-height: 680px) {
+  .intro-year { margin: 8px 0 6px; }
+  .intro-year-value { font-size: 3.5rem; }
+  .intro-receipt { padding: 12px 16px 14px; }
+  .intro-receipt .receipt-head { margin-bottom: 6px; }
+  .intro-row { padding: 6px 0; }
+  .intro-stamp { margin-top: 8px; }
+  .intro-final { margin-top: 8px; }
+  .intro-stage { padding-top: 8px; }
 }
