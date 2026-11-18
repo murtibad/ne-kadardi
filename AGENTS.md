@@ -110,6 +110,7 @@ Done (details in `CHANGELOG.md`):
 - [x] v0.73 Purchasing power bars, chart/table link in the archive, "Devam et" on the menu, skip note.
 - [x] v0.74-v0.78 Stitch A redesign, new products, plain-language pass (Murti's rule: readable for his parents,
       born 1971), sound latency fix, one flow from guess to a torn, floating receipt.
+- [x] v0.126-v0.135 Chart finger scrubbing, price box thousands grouping and kuruş readout, compact archive (newest 8 rows) with random chip, Günün Fişi review ("Fişini gör"), skipped answer reveal, header house button; new products (yemek kartı, İstanbul öğrenci bileti; 82 products total).
 
 Open:
 

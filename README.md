@@ -11,11 +11,12 @@ the real price, how many times off you were, and what it costs today.
 The game is one mode, plus a price archive:
 
 - **Fiyat Tahmini:** guess a past price, get a receipt with the real price, how far off you
-  were, today's price and the source. Optional hint (that year's dollar rate and minimum
-  wage) for a 20% score cut, a cashier comment on each result (product jokes, a remark when you ask for a hint).
+  were, today's price and the source. Optional two-step hint (an everyday price from that year, then the dollar
+  rate and minimum wage) for a 20% / 40% score cut, a cashier comment on each result (product jokes, a remark when you ask for a hint).
   The receipt prints out of a receipt printer and is torn off.
-- **Fiyat Arşivi:** browse the verified price history of each product with its sources, filtered by category; the
-  result screen links straight to the product's history.
+- **Fiyat Arşivi:** browse the verified price history of 82 products with their sources, filtered by category; long
+  histories show the newest 8 rows with "Tüm yılları göster", a "🎲 Rastgele" chip opens a random product, and the
+  result screen links straight to each product's history.
 
 Also:
 
@@ -23,7 +24,10 @@ Also:
 - First-visit opener questions with well-known benchmark prices before the random pool
 - "Bilemedin mi? Arkadaşına sor" share links (`?soru=`) that open one question without its answer
 - Product-specific cashier jokes on the receipt in everyday Turkish tone
-- Turkish number input (`4,5`, `1.250,75`)
+- Turkish number input (`4,5`, `1.250,75`) with automatic thousands grouping as you type and words readout under the box (`4 lira 50 kuruş`)
+- Interactive price charts on the receipt and archive with finger scrubbing (slide sideways to inspect any year's price) and keyboard navigation
+- Skipping a question reveals its answer on the next card (`Geçtiğin soru: ...`)
+- House button in the header for a direct return to the main menu
 - Fair, ratio-based scoring on a log scale: being 2× too high costs the same as 2× too low
 - Shareable result image (Canvas 2D) with a score stamp, to download or post directly
 - Installable app (PWA) that works offline after the first visit; new prices arrive on the
@@ -33,7 +37,7 @@ Also:
 - Light/dark theme toggle, keyboard friendly
 - Every price is sourced and labelled by source type (official, dataset, news, derived);
   unverified data never reaches the game
-- "Günün Fişi" daily receipt: the same 5 everyday questions for everyone each day, with a spoiler-free share of coloured squares
+- "Günün Fişi" daily receipt: the same 5 everyday questions for everyone each day, reviewable from the menu via "Fişini gör" once completed, with a spoiler-free share of coloured squares
 - Daily streak ("🔥 3 gün üst üste") on the menu and receipt for answering at least one question every day
 - Unanswered questions first: prefers product years you haven't seen yet before repeating
 - Friend challenge score in "Arkadaşına sor" links to compare results with a friend without spoiling the price
@@ -56,12 +60,16 @@ js/cashier.js       cashier comments (pure, tested)
 js/format.js        Turkish number parsing, formatting and HTML escaping (pure, tested)
 js/timeline.js      price archive rows (pure, tested)
 js/archive-table.js archive price table HTML (pure, tested)
+js/archive-ui.js    price archive screen UI (search, filters, lazy-loaded)
 js/ask-link.js      ?soru= links that open one question without its answer (pure, tested)
 js/daily.js         "Günün Fişi" daily question set and share text (pure, tested)
+js/daily-ui.js      "Günün Fişi" UI, storage and review card
 js/price-chart.js   price chart geometry for the receipt, archive and share image (pure, tested)
+js/chart-ui.js      price chart rendering, finger scrubbing and keyboard navigation
 js/categories.js    product categories for the archive filter (pure, tested)
 js/search.js        accent-insensitive archive search (pure, tested)
 js/source-kind.js   source labels ("resmî kayıt", "haberlerden", "döviz kuruyla hesaplandı")
+js/source-name.js   short publisher names derived from source URLs (pure, tested)
 js/linkify.js       turns URLs in notes into link buttons (pure, tested)
 js/fact.js          the home page "Biliyor muydun?" card (pure, tested)
 js/intro.js         animated first-visit intro (pure data helpers and stage runner)
@@ -69,6 +77,7 @@ js/hint.js          hint values and exclusions
 js/count-up.js      price count-up frames on the receipt
 js/confetti.js      confetti on an exact guess
 js/share-model.js   share text and image model (pure, tested)
+js/share-ui.js      share sheet and preview dialog UI
 js/share-image.js   share image drawing (canvas, loaded on demand)
 js/tax.js           estimated tax share (iPhone)
 js/version.js       version shown in the footer
