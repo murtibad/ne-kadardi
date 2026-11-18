@@ -90,3 +90,13 @@ test('the everyday hint never shows a price dated after the question', () => {
   assert.equal(h.period, 'Temmuz 2015');
   assert.equal(buildEverydayHint({ productId: 'benzin', year: 2016, date: '2016-01' }, data.slice(2), () => 0), null);
 });
+
+test('a year-only question date gets its own year price, not the previous year', () => {
+  const rows = [
+    { productId: 'dolar', year: 2017, date: '2017-12-01', price: 3.8 },
+    { productId: 'dolar', year: 2018, date: '2018-03-01', price: 3.9 },
+    { productId: 'dolar', year: 2018, date: '2018-11-01', price: 5.3 },
+  ];
+  const lines = buildHint({ productId: 'kurban-vekalet-bedeli', year: 2018, date: '2018' }, rows);
+  assert.equal(lines[0].period, 'Kasım 2018');
+});

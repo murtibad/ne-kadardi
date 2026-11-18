@@ -57,9 +57,10 @@ export function parseGuess(input) {
 
   let normalized;
   if (s.includes(',')) {
-    if (!/^\d{1,3}(\.\d{3})*(,\d+)?$|^\d+(,\d+)?$/.test(s)) return null;
+    if (!/^[1-9]\d{0,2}(\.\d{3})*(,\d+)?$|^\d+(,\d+)?$/.test(s)) return null;
     normalized = s.replace(/\./g, '').replace(',', '.');
-  } else if (/^\d{1,3}(\.\d{3})+$/.test(s)) {
+  // The first group may not start with 0: "0.250" is 0,25 (a decimal point), not a thousands group.
+  } else if (/^[1-9]\d{0,2}(\.\d{3})+$/.test(s)) {
     normalized = s.replace(/\./g, '');
   } else if (/^\d+(\.\d+)?$/.test(s)) {
     normalized = s;

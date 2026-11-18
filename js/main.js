@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatPeriod, readAmount, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
@@ -274,7 +274,7 @@ function onGuess(event) {
   const q = state.question;
   const scored = scoreGuess(guess, q.price);
   const today = dayKey();
-  const firstToday = state.streak?.last !== today;
+  const firstToday = isFirstAnswerOfDay(state.streak, today);
   state.streak = updateStreak(state.streak, today);
   saveStreak();
   state.result = {
@@ -346,8 +346,9 @@ function stopPrinting() {
 function turnIntoMachine() {
   const qs = $('question-screen');
   const form = $('guess-form');
-  const h = form.offsetHeight;
+  // Unhide first: a hidden form has no layout, so offsetHeight would be 0 and the fold would never animate.
   qs.hidden = false;
+  const h = form.offsetHeight;
   qs.classList.add('as-machine');
   if (!(h > 0 && form.animate)) { qs.classList.add('folded'); return; }
   form.style.overflow = 'hidden';
@@ -911,6 +912,11 @@ async function renderTimelineScreen(focusProductId = null) {
 
 function renderHome() {
   state.archiveFromResult = false;
+  // After the daily receipt the question is spent; keeping it would offer "Sonuca dön" into a finished fiş.
+  if (isDailyEndTurn()) {
+    state.question = null;
+    setDailyEndTurn(false);
+  }
   const today = dayKey();
   const alive = streakAlive(state.streak, today) && state.streak.count >= 2;
   const streakMeta = alive ? ` · 🔥 ${state.streak.count} gün üst üste` : '';
@@ -974,14 +980,17 @@ function onHashChange() {
   closePreview(); // Back while the preview is open must not leave the modal over another screen
   const hash = location.hash;
   if (state.all.length === 0) return;
-  if (hash !== '#tahmin' || !state.question || state.lastGameScreen !== 'result-screen') {
+  // Back from the archive during a daily run lands on #gunun-fisi, which must resume the screen
+  // the player left instead of advancing to the next question.
+  const resumeDaily = hash === '#gunun-fisi' && state.daily && state.question;
+  if ((hash !== '#tahmin' && !resumeDaily) || !state.question || state.lastGameScreen !== 'result-screen') {
     stopPrinting();
   }
   if (hash === '#arsiv') {
     renderTimelineScreen();
-  } else if (hash === '#gunun-fisi') {
+  } else if (hash === '#gunun-fisi' && !resumeDaily) {
     startOrShareDaily();
-  } else if (hash === '#tahmin') {
+  } else if (hash === '#tahmin' || resumeDaily) {
     if (!state.question) nextQuestion();
     else {
       show(state.lastGameScreen);

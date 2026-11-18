@@ -138,3 +138,13 @@ test('unitLine keeps the separator with the region so it never ends a line', () 
   assert.equal(unitLine('1 litre', 'İstanbul'), '1 litre ·\u00A0İstanbul');
   assert.equal(unitLine('1 adet', null), '1 adet');
 });
+
+test('parseGuess reads a leading-zero dotted number as a decimal, not thousands', async () => {
+  const { parseGuess } = await import('../js/format.js');
+  assert.equal(parseGuess('0.250'), 0.25);
+  assert.equal(parseGuess('0.250,5'), null);
+  assert.equal(parseGuess('1.250'), 1250);
+  assert.equal(parseGuess('4,5'), 4.5);
+  assert.equal(parseGuess('1.250,75'), 1250.75);
+  assert.equal(parseGuess('12.345.678'), 12345678);
+});

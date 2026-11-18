@@ -476,3 +476,11 @@ test('updateStreak and streakAlive survive the clock moving back', async () => {
   // the kept later date still lets the next real day extend the streak
   assert.equal(updateStreak(updateStreak(prev, '2026-01-09'), '2026-01-11').count, 4);
 });
+
+test('isFirstAnswerOfDay is false when the clock moved back', async () => {
+  const { isFirstAnswerOfDay } = await import('../js/game.js');
+  assert.equal(isFirstAnswerOfDay(null, '2026-11-05'), true);
+  assert.equal(isFirstAnswerOfDay({ last: '2026-11-04', count: 3 }, '2026-11-05'), true);
+  assert.equal(isFirstAnswerOfDay({ last: '2026-11-05', count: 3 }, '2026-11-05'), false);
+  assert.equal(isFirstAnswerOfDay({ last: '2026-11-07', count: 3 }, '2026-11-05'), false);
+});
