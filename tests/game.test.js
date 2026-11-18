@@ -261,7 +261,8 @@ test('model-changing products name the model on both sides of the count', () => 
 test('percentOf adds the Turkish possessive the way the number is read aloud', () => {
   const cases = { 0: "%0'ı", 0.49: "%49'u", 0.84: "%84'ü", 0.32: "%32'si", 1.05: "%105'i", 1.11: "%111'i",
     0.14: "%14'ü", 0.62: "%62'si", 0.6: "%60'ı", 1: "%100'ü", 0.1: "%10'u", 0.4: "%40'ı", 0.5: "%50'si",
-    0.7: "%70'i", 0.8: "%80'i", 0.9: "%90'ı", 0.2: "%20'si", 0.3: "%30'u", 0.03: "%3'ü", 0.06: "%6'sı", 10: "%1.000'i" };
+    0.7: "%70'i", 0.8: "%80'i", 0.9: "%90'ı", 0.2: "%20'si", 0.3: "%30'u", 0.03: "%3'ü", 0.06: "%6'sı", 10: "%1.000'i",
+    0.0102: "%1'i", 0.0107: "%1,1'i", 0.014: "%1,4'ü", 0.056: "%5,6'sı", 0.099: "%9,9'u" };
   for (const [share, text] of Object.entries(cases)) assert.equal(percentOf(Number(share)), text);
 });
 

@@ -1725,3 +1725,9 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   .header-tools { gap: 4px; }
   .site-header .logo { font-size: 1.125rem; }
 }
+
+/* 320 px: two nowrap 1rem labels ran 6 px past the screen edge (grid 1fr = min-content); shrink and let them wrap. */
+@media (max-width: 359px) {
+  .session-actions .actions { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .session-actions .btn, .session-actions .btn.primary, .session-actions .btn.next-btn { white-space: normal; line-height: 1.2; padding: 8px 6px; font-size: 0.875rem; }
+}
