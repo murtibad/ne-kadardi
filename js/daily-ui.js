@@ -276,7 +276,7 @@ export function renderDailyMenu() {
     ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn()}`
     : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru`
       : dailyMenuMeta(dailyStats(loadDailyLog(), dayKey()));
-  const dailyGo = dailyDone ? 'Fişini gör →' : dailyInProgress ? 'Devam et →' : 'Başla →';
+  const dailyGo = dailyDone ? 'Fişini gör →' : dailyInProgress ? 'Devam et →' : '5 soruya başla →'; // tells it apart from the endless "Fiyat Tahmini"
   $('m-daily-go').textContent = dailyGo;
   $('m-daily-go').dataset.label = dailyGo;
 }
