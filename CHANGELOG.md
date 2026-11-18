@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.131.2] - 2026-11-18
+### Fixed
+- On 320 px phones the bottom bar no longer runs 6 px past the screen edge; the two buttons shrink and wrap.
+- Shares of the minimum wage below 10% show one decimal ("%1,1'i"), so small amounts no longer read as unchanged by rounding.
+
 ## [0.131.1] - 2026-11-18
 ### Fixed
 - On phones, opening a hint no longer raises the keyboard over it.

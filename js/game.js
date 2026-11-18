@@ -277,8 +277,13 @@ function count(n) {
   return formatNumber(n);
 }
 
+// Below 10% whole numbers hide real changes ("%1'i kadardı; bugün %1'i"), so keep one decimal there.
+function percentValue(share) {
+  return share < 0.1 ? Math.round(share * 1000) / 10 : Math.round(share * 100);
+}
+
 function percent(share) {
-  return `%${formatNumber(Math.round(share * 100))}`;
+  return `%${formatNumber(percentValue(share), { maximumFractionDigits: 1 })}`;
 }
 
 // Turkish possessive after a number follows how its last word is read aloud: %49'u (dokuz),
@@ -286,7 +291,9 @@ function percent(share) {
 const ONES = ['', 'i', 'si', 'ü', 'ü', 'i', 'sı', 'si', 'i', 'u'];
 const TENS = ['', 'u', 'si', 'u', 'ı', 'si', 'ı', 'i', 'i', 'ı'];
 export function percentOf(share) {
-  const n = Math.round(share * 100);
+  const v = percentValue(share);
+  // "%1,4" is read "bir virgül dört": the decimal digit decides the ending.
+  const n = Number.isInteger(v) ? v : Math.round(v * 10) % 10;
   let suffix;
   if (n === 0) suffix = 'ı';
   else if (n % 10) suffix = ONES[n % 10];
