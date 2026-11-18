@@ -163,6 +163,27 @@ export function readAmount(value) {
 }
 
 /**
+ * Convert a typed price into a plain-language readout so players can confirm
+ * decimal kuruş or large thousands before submitting.
+ */
+export function readoutText(value) {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) return '';
+  if (value >= 1000) return readAmount(value);
+  if (Number.isInteger(value)) return '';
+
+  const totalKurus = Math.round(value * 100);
+  if (totalKurus <= 0) return '';
+
+  const lira = Math.floor(totalKurus / 100);
+  const kurus = totalKurus % 100;
+
+  if (lira === 0) return `${kurus} kuruş`;
+  // When kuruş rounds to 0 (e.g. 4.999), show whole liras without a trailing zero kuruş.
+  if (kurus === 0) return `${lira} lira`;
+  return `${lira} lira ${kurus} kuruş`;
+}
+
+/**
  * Long news headlines take four lines on a phone receipt: cut on a word boundary and keep a
  * trailing date ("(08.08.2022)", ", 2010-01"), which tells the reader when the price was reported.
  */
