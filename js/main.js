@@ -14,7 +14,7 @@ import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } fro
 import { buildHint, buildEverydayHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
-import { buildPriceChart, labelSide, placeRefLabel, refLabelAtStart } from './price-chart.js';
+import { buildPriceChart, labelSide, nearestPointIndex, placeRefLabel, refLabelAtStart } from './price-chart.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
 import { initShareUi, resetShareBtn, closePreview, askFriend, shareReportCard } from './share-ui.js';
@@ -593,11 +593,12 @@ function renderResult(q, r) {
 // point is the question's date; the figcaption carries the same story for screen readers.
 function renderPriceChart(figId, productId, highlightDate = null, guess = null) {
   const fig = $(figId);
+  fig._cleanupChart?.();
   const t = state.timelines.find((x) => x.id === productId);
   const pad = { top: 22, right: 14, bottom: 22, left: 14 };
   const chart = t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, refPrice: guess, pad });
   fig.hidden = !chart;
-  if (!chart) { fig.innerHTML = ''; delete fig._activateDate; return; }
+  if (!chart) { fig.innerHTML = ''; delete fig._activateDate; delete fig._cleanupChart; return; }
   const first = chart.points[0];
   const last = chart.points[chart.points.length - 1];
   const marked = chart.points.find((p) => p.highlight);
@@ -612,7 +613,6 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     && (!marked || p === marked || Math.abs(p.x - marked.x) > room(p)));
 
   const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
-  const hits = chart.points.map((p, i) => `<circle class="pc-hit" cx="${p.x}" cy="${p.y}" r="12" data-i="${i}"/>`).join('');
   const labelX = (p) => (p !== marked || markSide === 'middle' ? p.x : markSide === 'left' ? p.x - 6 : p.x + 6);
   const labelAnchor = (p) => (p !== marked || markSide === 'middle' ? anchor(p) : markSide === 'left' ? 'end' : 'start');
   // Labels are monospace, 14px on the receipt chart and 11px in the archive (css/style.css):
@@ -660,7 +660,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
   fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" tabindex="0" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
-      ${refLine}${dots}${priceLabels}${ticks}${hits}
+      ${refLine}${dots}${priceLabels}${ticks}
       <g class="pc-tip" hidden><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
     <span class="visually-hidden" aria-live="polite"></span>
@@ -693,6 +693,18 @@ function bindPriceChart(fig, chart, onActive) {
   const live = fig.querySelector('[aria-live]');
   const markedIdx = points.findIndex((p) => p.highlight);
   let activeIdx = markedIdx >= 0 ? markedIdx : points.length - 1;
+  // Remembers a point dismissed on pointerdown so tiny finger jitter before pointerup does not reopen it.
+  let dismissedIdx = -1;
+
+  // Tapping outside the chart dismisses a sticky touch tooltip.
+  const onOutsideDown = (e) => {
+    if (!svgEl.isConnected) {
+      document.removeEventListener('pointerdown', onOutsideDown);
+      return;
+    }
+    if (!(e.target instanceof Node && svgEl.contains(e.target))) hideTip();
+  };
+  fig._cleanupChart = () => document.removeEventListener('pointerdown', onOutsideDown);
 
   const showTip = (idx, viaKeyboard = false, source = viaKeyboard ? 'keyboard' : 'pointer') => {
     const p = points[idx];
@@ -715,11 +727,13 @@ function bindPriceChart(fig, chart, onActive) {
     priceTspan.textContent = price;
     tip.hidden = false;
     tip.removeAttribute('hidden');
+    document.addEventListener('pointerdown', onOutsideDown);
     if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
     onActive?.(p, source);
   };
 
   const hideTip = () => {
+    document.removeEventListener('pointerdown', onOutsideDown);
     dotEls.forEach((d) => d.classList.remove('pc-active'));
     tip.hidden = true;
     tip.setAttribute('hidden', '');
@@ -732,11 +746,32 @@ function bindPriceChart(fig, chart, onActive) {
     if (idx >= 0) showTip(idx, true, 'keyboard');
   };
 
+  // Maps clientX into the SVG viewBox width so horizontal scrubbing picks the closest year.
+  const pointAt = (clientX) => {
+    const box = svgEl.getBoundingClientRect();
+    return box.width > 0 ? nearestPointIndex(points, ((clientX - box.left) / box.width) * width) : -1;
+  };
+
   const handle = (e) => {
-    if (e.type === 'pointerenter' || e.type === 'pointerdown') {
-      const hit = e.target instanceof Element ? e.target.closest('.pc-hit') : null;
-      if (hit) showTip(Number(hit.dataset.i), false, e.type === 'pointerdown' ? 'pointer' : 'hover');
+    if (e.type === 'pointerdown') {
+      const idx = pointAt(e.clientX);
+      if (idx < 0) return;
+      if (e.pointerType !== 'mouse' && !tip.hidden && idx === activeIdx) {
+        dismissedIdx = idx;
+        hideTip();
+        return;
+      }
+      dismissedIdx = -1;
+      showTip(idx);
+    } else if (e.type === 'pointermove') {
+      const idx = pointAt(e.clientX);
+      if (idx < 0 || idx === dismissedIdx) return;
+      dismissedIdx = -1;
+      if (tip.hidden || idx !== activeIdx) showTip(idx);
+    } else if (e.type === 'pointerup' || e.type === 'pointercancel') {
+      dismissedIdx = -1;
     } else if (e.type === 'pointerleave') {
+      dismissedIdx = -1;
       if (e.pointerType !== 'touch' && e.target === svgEl) hideTip();
     } else if (e.type === 'blur') {
       hideTip();
@@ -752,8 +787,10 @@ function bindPriceChart(fig, chart, onActive) {
     }
   };
 
-  svgEl.addEventListener('pointerenter', handle, true);
   svgEl.addEventListener('pointerdown', handle);
+  svgEl.addEventListener('pointermove', handle);
+  svgEl.addEventListener('pointerup', handle);
+  svgEl.addEventListener('pointercancel', handle);
   svgEl.addEventListener('pointerleave', handle);
   svgEl.addEventListener('blur', handle);
   svgEl.addEventListener('keydown', handle);
