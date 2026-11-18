@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.135.5] - 2026-11-18
+### Changed
+- Question screen: removed the "Bilemedin mi? Soruyu arkadaşına gönder" row; the result screen's send sheet does the same job with the score (owner decision).
+- Question input: the "Fiyatı yaz" placeholder is 1.5rem so it no longer runs into the ₺ sign on 320-360 px phones.
+
 ## [0.135.4] - 2026-11-18
 ### Changed
 - First minute for a new player: the intro's last line says what the game is ("Yılı ve ürünü gör, o günkü fiyatı tahmin et") instead of promising Günün Fişi before "Hemen oyna" opens free play; the menu tells the two cards apart ("İstediğin kadar soru çöz…" and "5 soruya başla →"); after one question the result and the menu say "İlk soru tamam" / "1 soru · puanın 96" instead of repeating the score as an average and a best.

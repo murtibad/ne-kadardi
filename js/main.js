@@ -18,7 +18,7 @@ import { buildPriceChart } from './price-chart.js';
 import { initChartUi, renderPriceChart } from './chart-ui.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
-import { initShareUi, resetShareBtn, closePreview, askFriend } from './share-ui.js';
+import { initShareUi, resetShareBtn, closePreview } from './share-ui.js';
 import { dayKey } from './daily.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview } from './daily-ui.js';
 
@@ -1043,7 +1043,6 @@ async function init() {
   initChartUi({ getState: () => state });
   initDailyUi({ getState: () => state, nextQuestion, renderHome });
   initShareUi({ getState: () => state, isDailyEndTurn });
-  $('ask-q-btn').dataset.label = $('ask-q-btn').textContent;
   $('guess-form').addEventListener('submit', onGuess);
   const guessField = document.querySelector('#question-screen .guess-field');
   guessField?.addEventListener('animationend', () => {
@@ -1118,7 +1117,6 @@ async function init() {
     e.preventDefault();
     $('next-btn').click();
   });
-  $('ask-q-btn').addEventListener('click', (e) => askFriend({ btn: e.currentTarget }));
   initIntro();
   scheduleSoundPrefetch();
 
