@@ -1,11 +1,11 @@
 // Günün Fişi UI: storage, the menu card, the #gunun-fisi route and the end-of-run receipt card.
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPeriod, escapeHTML } from './format.js';
-import { FOLLOW_UP_IDS } from './game.js';
+import { FOLLOW_UP_IDS, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -13,6 +13,7 @@ const getState = () => deps.getState();
 
 export function initDailyUi(d) {
   deps = d;
+  initDailyReview();
 }
 
 // True on the turn that shows the daily receipt: the bar button then shares it directly.
@@ -106,7 +107,7 @@ export function skipDaily() {
   return true;
 }
 
-// The #gunun-fisi route: shares a finished receipt, otherwise starts or resumes the run.
+// The #gunun-fisi route: shows a finished receipt, otherwise starts or resumes the run.
 export function startOrShareDaily() {
   const state = getState();
   const saved = loadDaily();
@@ -115,13 +116,7 @@ export function startOrShareDaily() {
   if (saved && saved.ids.length > 0 && saved.scores.length >= saved.ids.length) {
     history.replaceState(null, '', '#');
     deps.renderHome();
-    const text = dailyShareText({
-      key: saved.key,
-      scores: saved.scores,
-      url: location.origin + location.pathname,
-      streak: state.streak?.count ?? 0,
-    });
-    shareTextWithStatus(text, $('m-daily-go'));
+    openDailyReview(saved);
   } else {
     const ids = saved?.ids.length
       ? saved.ids
@@ -135,6 +130,95 @@ export function startOrShareDaily() {
   }
 }
 
+// Rows with date, product, real price and score; shared by the end-of-run card and the review dialog.
+function dailyLines(all, ids, scores) {
+  return ids.map((id, i) => {
+    const dq = all.find((x) => x.id === id);
+    if (!dq) return { label: 'Soru', detail: `${scores[i] ?? 0} puan` };
+    return dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score: scores[i] ?? 0 });
+  });
+}
+
+// Finished receipt from the menu: show the five rows again; sharing stays one tap away inside.
+let reviewOpener = null;
+// Kept for the share button: after midnight loadDaily() returns null and the tap would do nothing.
+let reviewSaved = null;
+
+// A lapsed streak (every receipt skipped) must not be advertised as a live one.
+function reviewStreak() {
+  const streak = getState().streak;
+  return streakAlive(streak, dayKey()) ? streak.count ?? 0 : 0;
+}
+
+function openDailyReview(saved) {
+  const state = getState();
+  const dlg = $('daily-review');
+  reviewSaved = saved;
+  const total = saved.scores.reduce((s, n) => s + n, 0);
+  $('daily-review-title').textContent = dailyTitle(saved.key);
+  $('daily-review-lines').innerHTML = dailyLines(state.all, saved.ids, saved.scores)
+    .map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`).join('');
+  $('daily-review-total').textContent = dailyReviewTotalLine(total, reviewStreak());
+  $('daily-review-next').textContent = nextReceiptIn();
+  // A fresh open must not inherit "kopyalandı" from a share made just before closing.
+  const shareBtn = $('daily-review-share');
+  clearTimeout(shareBtn.restoreTimer);
+  shareBtn.textContent = 'Fişini paylaş';
+  shareBtn.dataset.label = 'Fişini paylaş';
+  if (typeof dlg.showModal !== 'function') return;
+  if (!dlg.open) {
+    reviewOpener = document.activeElement;
+    dlg.showModal();
+  }
+  shareBtn.focus();
+}
+
+// Called on every hash change: Back or a new route must not leave the modal over another screen.
+export function closeDailyReview() {
+  const dlg = document.getElementById('daily-review');
+  if (dlg?.open) dlg.close();
+}
+
+// Minute tick while the dialog is open: refresh the countdown, close once the receipt is not today's.
+function refreshDailyReview() {
+  const dlg = document.getElementById('daily-review');
+  if (!dlg?.open) return;
+  if (reviewSaved?.key !== dayKey()) { dlg.close(); return; }
+  $('daily-review-next').textContent = nextReceiptIn();
+}
+
+export function initDailyReview() {
+  const dlg = $('daily-review');
+  $('daily-review-close').addEventListener('click', () => dlg.close());
+  // Back on a phone should close the dialog first; a same-hash history step fires popstate but no hashchange.
+  window.addEventListener('popstate', () => { if (dlg.open) dlg.close(); });
+  $('daily-review-share').addEventListener('click', () => {
+    const saved = reviewSaved;
+    if (!saved || saved.ids.length === 0) return;
+    shareTextWithStatus(dailyShareText({
+      key: saved.key,
+      scores: saved.scores,
+      url: location.origin + location.pathname,
+      streak: reviewStreak(),
+    }), $('daily-review-share'));
+  });
+  dlg.addEventListener('click', (e) => {
+    if (e.target !== dlg) return;
+    const r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
+  dlg.addEventListener('close', () => {
+    // The event is async: a close-then-reopen in one task (same-hash route) must not wipe the new state.
+    if (dlg.open) return;
+    const opener = reviewOpener;
+    reviewOpener = null;
+    reviewSaved = null;
+    // Touch or URL opens leave no useful opener; fall back to the menu's daily card.
+    if (opener && opener !== document.body && opener.isConnected && opener.offsetParent !== null) opener.focus();
+    else document.querySelector('a.mode-daily')?.focus();
+  });
+}
+
 // Report card branch for a daily run. Returns true when it handled the turn.
 export function renderDailyCard() {
   const state = getState();
@@ -145,15 +229,11 @@ export function renderDailyCard() {
   syncSkipBtn();
   // The run is over: a reload now should not reopen #gunun-fisi (that would share again).
   if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
-  const lines = ids.map((id, i) => {
-    const dq = state.all.find((x) => x.id === id);
-    const label = dq ? `${formatPeriod(dq.date)} · ${questionTitle(dq)}` : 'Soru';
-    return { label, score: scores[i] ?? 0 };
-  });
+  const lines = dailyLines(state.all, ids, scores);
   const total = scores.reduce((s, n) => s + n, 0);
   state.reportCard = { daily: true, key, scores };
   $('r-card-title').textContent = dailyTitle(key);
-  $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${l.score}</strong></li>`).join('');
+  $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`).join('');
   $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
   // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
   dailyEndTurn = true;
@@ -171,6 +251,7 @@ function watchDailyMenu() {
   if (menuTimer) return;
   const menu = () => document.getElementById('home-screen');
   const refresh = () => {
+    refreshDailyReview();
     if (document.visibilityState === 'visible' && menu() && !menu().hidden) renderDailyMenu();
   };
   document.addEventListener('visibilitychange', refresh);
@@ -193,7 +274,7 @@ export function renderDailyMenu() {
     ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn()}`
     : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru`
       : dailyMenuMeta(dailyStats(loadDailyLog(), dayKey()));
-  const dailyGo = dailyDone ? 'Paylaş →' : dailyInProgress ? 'Devam et →' : 'Başla →';
+  const dailyGo = dailyDone ? 'Fişini gör →' : dailyInProgress ? 'Devam et →' : 'Başla →';
   $('m-daily-go').textContent = dailyGo;
   $('m-daily-go').dataset.label = dailyGo;
 }

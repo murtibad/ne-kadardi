@@ -1,5 +1,6 @@
 // "Günün fişi": the same 5 questions for every player on a given day. Pure, no DOM.
 import { scoreTier, cutoffKey, preferOlder } from './game.js';
+import { formatPeriod, formatPrice } from './format.js';
 
 const MONTHS_TR = [
   'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
@@ -155,4 +156,20 @@ export function dailyTotalLine(total, yesterday) {
   const diff = total - yesterday;
   if (diff === 0) return `${base} · dünle aynı`;
   return `${base} · dünden ${diff > 0 ? '+' : '−'}${Math.abs(diff)}`;
+}
+
+/**
+ * One receipt line for the daily review: label "Ocak 2016 · Benzin", detail "4,28 ₺ · 86 puan".
+ * Skips are stored as 0, same as a wildly-off guess, so a 0 reads "0 puan" rather than claiming a skip.
+ * Prices live only here, never in the share text (a friend solves the same questions).
+ */
+export function dailyRowText({ date, title, price, score }) {
+  const label = `${formatPeriod(date)} · ${title}`;
+  const priced = Number.isFinite(price) ? `${formatPrice(price)} · ` : '';
+  return { label, detail: `${priced}${score} puan` };
+}
+
+/** Review dialog total line; the streak is appended only when it is 2+ days and still alive. */
+export function dailyReviewTotalLine(total, streak) {
+  return `Toplam: ${total}/500${streak >= 2 ? ` · 🔥 ${streak} gün üst üste` : ''}`;
 }

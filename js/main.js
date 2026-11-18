@@ -19,7 +19,7 @@ import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
 import { initShareUi, resetShareBtn, closePreview, askFriend, shareReportCard } from './share-ui.js';
 import { dayKey } from './daily.js';
-import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu } from './daily-ui.js';
+import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview } from './daily-ui.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -979,6 +979,7 @@ function renderFact() {
 }
 
 function onHashChange() {
+  closeDailyReview();
   closePreview(); // Back while the preview is open must not leave the modal over another screen
   const hash = location.hash;
   if (state.all.length === 0) return;

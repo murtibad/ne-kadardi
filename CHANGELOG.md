@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.130.0] - 2026-11-18
+### Added
+- A finished Günün Fişi can be opened again from the menu: "Fişini gör →" shows the five questions with their real price and score, the total, the streak and when the next receipt comes, with "Fişini paylaş" inside (the shared text still has no prices).
+- The report card at the end of Günün Fişi shows each question's real price; rows wrap in two lines so long names stay readable at 360 px.
+
 ## [0.129.1] - 2026-11-18
 ### Added
 - A house button in the header on every screen except the menu, next to the sound and theme buttons, so players who do not read the logo as a link can always get back; it fits one header row down to 320 px.
