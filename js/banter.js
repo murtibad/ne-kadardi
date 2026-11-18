@@ -481,6 +481,12 @@ export const PRODUCT_POOLS = {
     'Hesap makinesini en çok işten ayrılırken kullanırız.',
     'Babam "tazminatı almadan çıkma oğlum" diye tembihler.',
   ],
+  'yemek-karti': [
+    'Öğle arası kartı okutunca bakiye bir tuhaf eriyor.',
+    'Kantinde sıra bekleyen herkes bakiyesini aklından hesaplar.',
+    'Yemek kartı biter, ay sonunda ekmek arası peynir yenir.',
+    'İşyerinde öğle molasının en sadık arkadaşı bu kart.',
+  ],
   yks: [
     'Sınav sabahı annenin hazırladığı kahvaltı boğazdan geçmez.',
     'Kurşun kalem yedekli, silgi yedekli, kalp çarpıyor.',

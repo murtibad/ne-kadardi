@@ -193,6 +193,7 @@ export const COUNT_UNITS = {
   mtv: 'yıllık araba vergisi',
   'ehliyet-esinav': 'ehliyet yazılı sınavı ücreti',
   'kidem-tavani': 'kıdem tazminatı tavanı',
+  'yemek-karti': 'günlük yemek bedeli',
   'tmo-bugday': 'kilo buğday (devletin alım fiyatıyla)',
   'findik-alim': 'kilo kabuklu fındık (devletin alım fiyatıyla)',
   'cig-sut': 'litre çiğ süt (çiftçinin satış fiyatıyla)',
@@ -227,7 +228,7 @@ export const WAGE_SHARE = {
 
 /** Receipt label for the answer: a pension or a wage is an amount, not a price. */
 // Money people receive or a legal limit, not something bought: the receipt says "Tutar".
-const AMOUNTS = new Set(['asgari-ucret', 'kidem-tavani']);
+const AMOUNTS = new Set(['asgari-ucret', 'kidem-tavani', 'yemek-karti']);
 
 // True for money people get or a limit (wage, pension, grant), not something they buy.
 export function isAmount(productId) {

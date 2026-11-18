@@ -77,6 +77,7 @@ const PRECACHE = [
   'img/iphone-island.svg',
   'img/iphone-notch.svg',
   'img/kimlik-karti.svg',
+  'img/yemek-karti.svg',
   'img/kopru.svg',
   'img/tunel.svg',
   'img/video.svg',
