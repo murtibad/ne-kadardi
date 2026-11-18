@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.134.2] - 2026-11-18
+### Changed
+- Code: the price chart drawing and touch handling moved from js/main.js into js/chart-ui.js (main.js 1361 -> 1140 lines); no visible change.
+
 ## [0.134.1] - 2026-11-18
 ### Changed
 - The sounds download after the menu is on screen (or at the first tap) instead of sharing a slow connection with the price data during the first load.

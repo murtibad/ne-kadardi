@@ -3,6 +3,7 @@
 import { formatPeriod, formatIncrease, unitLine } from './format.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
 import { pickFromCategory } from './game.js';
+import { renderPriceChart } from './chart-ui.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -86,7 +87,7 @@ export async function renderTimelineScreen(focusProductId = null) {
   $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
     newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id,
   });
-  deps.renderPriceChart('t-chart', product.id);
+  renderPriceChart('t-chart', product.id);
   linkRowsToChart();
 }
 
