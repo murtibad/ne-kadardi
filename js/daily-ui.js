@@ -99,11 +99,14 @@ export function skipDaily() {
     deps.nextQuestion(productId, date);
     return true;
   }
-  // Skipping the last one has no result screen for the card, so the menu offers the share.
+  // Skipping the last one has no result screen for the card, so show the finished receipt on the menu.
+  const finished = { key: state.daily.key, ids: [...state.daily.ids], scores: [...state.daily.scores] };
   state.daily = null;
   state.question = null; // otherwise "Fiyat Tahmini" would reopen the skipped daily question
   syncSkipBtn();
-  location.hash = '#';
+  history.replaceState(null, '', '#');
+  deps.renderHome();
+  openDailyReview(finished);
   return true;
 }
 
@@ -237,7 +240,6 @@ export function renderDailyCard() {
   $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
   // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
   dailyEndTurn = true;
-  $('r-card-share').hidden = true;
   resetShareBtn();
   // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
   $('next-btn').textContent = 'Sonraki soru →';

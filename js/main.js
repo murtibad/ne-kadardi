@@ -18,7 +18,7 @@ import { buildPriceChart } from './price-chart.js';
 import { initChartUi, renderPriceChart } from './chart-ui.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
-import { initShareUi, resetShareBtn, closePreview, askFriend, shareReportCard } from './share-ui.js';
+import { initShareUi, resetShareBtn, closePreview, askFriend } from './share-ui.js';
 import { dayKey } from './daily.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview } from './daily-ui.js';
 
@@ -154,7 +154,6 @@ function showMessage(text) {
 function nextQuestion(productId = null, date = null) {
   $('next-btn').textContent = 'Sonraki soru →';
   setDailyEndTurn(false);
-  $('r-card-share').hidden = false;
   stopPrinting();
   state.archiveFromResult = false;
   state.friendScore = null;
@@ -723,9 +722,15 @@ function initIntro() {
   if (!dlg) return;
   $('intro-play')?.addEventListener('click', () => {
     closeIntro();
-    location.hash = '#tahmin';
+    // Opened from the footer on a result, #tahmin is already the hash: start a fresh question instead.
+    if (location.hash === '#tahmin' && state.lastGameScreen === 'result-screen' && !$('result-screen').hidden) nextQuestion();
+    else location.hash = '#tahmin';
   });
-  $('intro-close')?.addEventListener('click', closeIntro);
+  // The button says "Ana menüye geç": from a game or archive screen it really goes to the menu.
+  $('intro-close')?.addEventListener('click', () => {
+    closeIntro();
+    if (location.hash && location.hash !== '#') location.hash = '#';
+  });
   $('intro-open')?.addEventListener('click', openIntro);
   // Pressing Escape dismisses the modal via cancel; mark seen and stop any running intro timers/sounds.
   dlg.addEventListener('cancel', () => {
@@ -874,7 +879,9 @@ function rescueFocus({ includeBody = false, within = null } = {}) {
     || Boolean(within?.contains(document.activeElement))
     || Boolean(document.activeElement.closest('[hidden]'));
   if (!lost) return;
-  const heading = document.querySelector('main > section:not([hidden]) h2');
+  // The result screen has no heading; its receipt is the natural place to continue.
+  const heading = document.querySelector('main > section:not([hidden]) h2')
+    ?? (!$('result-screen').hidden ? $('r-receipt') : null);
   if (!heading) return;
   if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
   heading.focus({ preventScroll: true });
@@ -1003,10 +1010,7 @@ async function init() {
   }
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') sound.wake(); });
   // Sounds are small, but fetching them at load shared the slow link with prices.json and delayed the
-  // menu. They are fetched once the menu is up (see scheduleSoundPrefetch) or on the first touch.
-  for (const type of ['touchend', 'click', 'keydown']) {
-    window.addEventListener(type, () => sound.prefetch(), { once: true, capture: true });
-  }
+  // menu. They are fetched once the menu is up (see scheduleSoundPrefetch); the first gesture's unlock() fetches them too.
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -1073,7 +1077,6 @@ async function init() {
     $('next-btn').click();
   });
   $('ask-q-btn').addEventListener('click', (e) => askFriend({ btn: e.currentTarget }));
-  $('r-card-share').addEventListener('click', shareReportCard);
   initIntro();
   scheduleSoundPrefetch();
 

@@ -88,13 +88,16 @@ export function skipRevealText(q) {
 }
 
 const CLOSE_SCORE = 75;
+const RECORD_MIN = 50;
 const CLOSE_STREAK = 3;
 
 // Suffix for the result screen's session line. `prevBest` is the best before this answer,
 // `recent` already includes it. A new record wins over the 3-close-guesses note.
 export function sessionBadge({ prevBest, score, playedAfter, recent }) {
-  if (playedAfter >= 2 && score > prevBest) return ' · 🎯 Yeni rekor!';
-  const last = recent.slice(-CLOSE_STREAK);
-  if (last.length === CLOSE_STREAK && last.every((s) => s >= CLOSE_SCORE)) return ' · Üst üste 3 yakın tahmin!';
+  // "Yeni rekor" for 5 puan reads like mockery: only a genuinely good score counts as a record.
+  if (playedAfter >= 2 && score > prevBest && score >= RECORD_MIN) return ' · 🎯 Yeni rekor!';
+  let run = 0;
+  for (let i = recent.length - 1; i >= 0 && recent[i] >= CLOSE_SCORE; i -= 1) run += 1;
+  if (run >= CLOSE_STREAK) return ` · Üst üste ${run} yakın tahmin!`;
   return '';
 }

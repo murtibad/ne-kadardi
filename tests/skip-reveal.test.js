@@ -25,3 +25,8 @@ test('sessionBadge: three close guesses, record takes precedence', () => {
   assert.equal(sessionBadge({ prevBest: 99, score: 80, playedAfter: 5, recent: [74, 80, 80] }), '');
   assert.equal(sessionBadge({ prevBest: 70, score: 80, playedAfter: 5, recent: [80, 80, 80] }), ' · 🎯 Yeni rekor!');
 });
+
+test('sessionBadge: a low score is never a record; the close run is counted in full', () => {
+  assert.equal(sessionBadge({ prevBest: 0, score: 5, playedAfter: 2, recent: [0, 5] }), '');
+  assert.equal(sessionBadge({ prevBest: 99, score: 90, playedAfter: 6, recent: [10, 80, 85, 90, 90] }), ' · Üst üste 4 yakın tahmin!');
+});

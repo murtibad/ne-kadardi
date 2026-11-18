@@ -511,7 +511,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .send-sheet .btn { flex: none; width: 100%; }
 .send-sheet .send-opt { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 56px; }
 .send-sheet .send-opt span { font: 400 0.875rem var(--font-ui); }
-#r-card-share[hidden] { display: none; }
 
 /* Phones: keep "Sonraki" and sharing in reach at the bottom of the screen */
 @media (max-width: 719px) {
@@ -1677,11 +1676,10 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* --ink, not --text: the card stays paper-coloured in dark mode, where --text is the paper colour. */
 .ask-q .link-btn { font-size: 0.875rem; color: var(--ink); }
 
-/* Report card every fifth answer: a dashed box inside the receipt. */
+/* Günün Fişi report card (end of the run and the "Fişini gör" dialog): a dashed box. */
 .report-card { margin: 16px 0 4px; padding: 12px 14px; border: 2px dashed var(--muted-on-paper); border-radius: 6px; font-family: var(--font-mono); }
 .report-card-title { margin: 0 0 8px; text-align: center; font-weight: 700; letter-spacing: 1px; }
 .report-card-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.875rem; }
-.report-card-lines li { display: flex; justify-content: space-between; gap: 12px; }
 .report-card-avg { margin: 10px 0 4px; font-size: 0.875rem; font-weight: 700; }
 /* Two lines per row: on a 360 px phone a side-by-side price squeezed product names into three lines. */
 .report-card-lines li { display: block; padding-bottom: 6px; border-bottom: 1px dashed var(--line); }
