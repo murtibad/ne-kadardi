@@ -1199,6 +1199,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* Interactive tooltip and keyboard focus on the price history chart */
 .pc-tip[hidden] { display: none; }
 .pc-tip { pointer-events: none; }
+/* Hide static price and guess labels while the tooltip is open so the top-band box never half-covers them. */
+.price-chart svg.has-tip :is(.pc-label, .pc-ref-label) { visibility: hidden; }
 .pc-tip rect { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
 .pc-tip text { font: 700 10px var(--font-mono); fill: var(--ink); }
 .pc-tip .pc-tip-period { font-weight: 400; fill: var(--muted-on-paper); }

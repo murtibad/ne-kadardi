@@ -319,6 +319,7 @@ function onGuess(event) {
 // Kept short (about a second) so it never stands between the player and the next question;
 // a tap on the receipt finishes it at once.
 const PRINT_MS = 1100;
+const ROLL_MS = 950;
 let printTimer = null;
 let handTimer = null;
 let cancelPrint = null;
@@ -331,8 +332,14 @@ function stopCountUp() {
     countUpRaf = null;
   }
   const el = $('r-actual');
-  el?.removeAttribute('aria-hidden');
-  if (el && state.question) el.textContent = formatPrice(state.question.price);
+  if (el) {
+    const rollEl = el.querySelector('[aria-hidden="true"]');
+    const srEl = el.querySelector('.visually-hidden');
+    const finalPrice = state.question ? formatPrice(state.question.price) : srEl?.textContent;
+    // Update the aria-hidden span in place so the live region does not re-announce the final price.
+    if (rollEl && srEl && finalPrice) rollEl.textContent = finalPrice;
+    else if (finalPrice) el.textContent = finalPrice;
+  }
   $('r-current-row')?.classList.remove('awaiting-roll');
   $('r-increase-row')?.classList.remove('awaiting-roll');
 }
@@ -464,11 +471,14 @@ function printReceipt(extraSound) {
     srEl.className = 'visually-hidden';
     srEl.textContent = formatPrice(state.question.price);
     actualEl.replaceChildren(rollEl, srEl);
-    let i = 0;
+    // Elapsed time picks the frame so 120 Hz screens do not finish the roll in half a second.
+    const startMs = typeof performance !== 'undefined' ? performance.now() : Date.now();
+    const nowFn = () => (typeof performance !== 'undefined' ? performance.now() : Date.now());
     const tick = () => {
-      rollEl.textContent = formatPrice(frames[i]);
-      i += 1;
-      if (i < frames.length) {
+      const elapsed = nowFn() - startMs;
+      if (elapsed < ROLL_MS) {
+        const idx = Math.min(frames.length - 1, Math.max(0, Math.floor((elapsed / ROLL_MS) * frames.length)));
+        rollEl.textContent = formatPrice(frames[idx]);
         countUpRaf = requestAnimationFrame(tick);
       } else {
         stopCountUp();

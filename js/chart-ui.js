@@ -141,6 +141,7 @@ export function bindPriceChart(fig, chart, onActive) {
     priceTspan.textContent = price;
     tip.hidden = false;
     tip.removeAttribute('hidden');
+    svgEl.classList.add('has-tip');
     // Measure after unhiding so the rect fits both the 11px archive text and the 14px receipt text.
     const renderedW = Math.max(periodTspan.getComputedTextLength?.() || 0, priceTspan.getComputedTextLength?.() || 0);
     const fontPx = fig.id === 'r-chart' ? 14 : 11;
@@ -168,6 +169,7 @@ export function bindPriceChart(fig, chart, onActive) {
     dotEls.forEach((d) => d.classList.remove('pc-active'));
     tip.hidden = true;
     tip.setAttribute('hidden', '');
+    svgEl.classList.remove('has-tip');
     onActive?.(null, null);
   };
 

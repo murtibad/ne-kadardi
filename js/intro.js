@@ -128,7 +128,6 @@ export function playIntro(dialogEl, rows, { sound = null } = {}) {
       if (!el) return;
       el.textContent = formatPrice(r.to);
       el.classList.add('landed');
-      el.removeAttribute('aria-hidden');
     });
     stage?.classList.remove('is-running', 'shake');
     stage?.classList.add('is-printed', 'is-stamped', 'is-done');
@@ -152,7 +151,6 @@ export function playIntro(dialogEl, rows, { sound = null } = {}) {
     const el = priceEls[i];
     if (!el) return null;
     el.classList.remove('landed');
-    el.removeAttribute('aria-hidden');
     const roll = document.createElement('span');
     roll.setAttribute('aria-hidden', 'true');
     roll.textContent = formatPrice(r.from);
