@@ -1093,7 +1093,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* Chart: framed, caption as header row; SVG text is 14 user units = ~12px rendered at 390px */
 #r-chart.price-chart:not([hidden]) { display: flex; flex-direction: column; padding: 12px; border: 1px solid var(--line); border-radius: 4px; }
 #r-chart figcaption { order: -1; margin: 0 0 6px; text-align: left; font-size: 0.75rem; }
-#r-chart .pc-label, #r-chart .pc-tick, #r-chart .pc-ref-label { font-size: 14px; }
+#r-chart .pc-label, #r-chart .pc-tick, #r-chart .pc-ref-label, #r-chart .pc-tip text { font-size: 14px; }
 
 /* Link tap targets */
 .result-receipt .source a, .result-receipt .archive-link { display: inline-flex; align-items: center; min-height: 44px; }

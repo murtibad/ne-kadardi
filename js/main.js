@@ -726,27 +726,34 @@ function bindPriceChart(fig, chart, onActive) {
   };
   fig._cleanupChart = () => document.removeEventListener('pointerdown', onOutsideDown);
 
-  const showTip = (idx, viaKeyboard = false, source = viaKeyboard ? 'keyboard' : 'pointer') => {
+  const showTip = (idx, viaKeyboard = false, source = viaKeyboard ? 'keyboard' : 'pointer', pointerType = '') => {
     const p = points[idx];
     if (!p) return;
     dotEls.forEach((d, i) => d.classList.toggle('pc-active', i === idx));
     activeIdx = idx;
     const period = formatPeriod(p.date) + (p.isCurrent ? ' · güncel' : '');
     const price = formatPrice(p.price);
-    const boxW = Math.ceil(Math.max(period.length, price.length) * 6.2 + 12);
-    const boxX = Math.max(0, Math.min(width - boxW, Math.round(p.x - boxW / 2)));
-    const boxY = p.y < 40 ? p.y + 8 : p.y - 38;
-    rect.setAttribute('x', boxX);
-    rect.setAttribute('y', boxY);
-    rect.setAttribute('width', boxW);
-    periodTspan.setAttribute('x', boxX + 6);
-    periodTspan.setAttribute('y', boxY + 12);
     periodTspan.textContent = period;
-    priceTspan.setAttribute('x', boxX + 6);
-    priceTspan.setAttribute('y', boxY + 24);
     priceTspan.textContent = price;
     tip.hidden = false;
     tip.removeAttribute('hidden');
+    // Measure after unhiding so the rect fits both the 11px archive text and the 14px receipt text.
+    const renderedW = Math.max(periodTspan.getComputedTextLength?.() || 0, priceTspan.getComputedTextLength?.() || 0);
+    const fontPx = fig.id === 'r-chart' ? 14 : 11;
+    const charW = fontPx * 0.62;
+    const boxW = Math.ceil((renderedW || Math.max(period.length, price.length) * charW) + 12);
+    const boxX = Math.max(0, Math.min(width - boxW, Math.round(p.x - boxW / 2)));
+    // Touch and pen keep the tooltip in the top band so a scrubbing finger never covers it.
+    const boxY = pointerType === 'touch' || pointerType === 'pen' ? 2 : p.y < 40 ? p.y + 8 : p.y - 38;
+    rect.setAttribute('x', boxX);
+    rect.setAttribute('y', boxY);
+    rect.setAttribute('width', boxW);
+    // Two lines of fontPx text need a taller box on the 14px receipt chart than in the archive.
+    rect.setAttribute('height', fontPx * 2 + 8);
+    periodTspan.setAttribute('x', boxX + 6);
+    periodTspan.setAttribute('y', boxY + fontPx + 1);
+    priceTspan.setAttribute('x', boxX + 6);
+    priceTspan.setAttribute('y', boxY + fontPx * 2 + 3);
     document.addEventListener('pointerdown', onOutsideDown);
     if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
     onActive?.(p, source);
@@ -783,13 +790,13 @@ function bindPriceChart(fig, chart, onActive) {
       }
       dismissedIdx = -1;
       // A touch may become a scrub: scroll the linked row only on lift (pointerup), not on first contact.
-      showTip(idx, false, e.pointerType === 'mouse' ? 'pointer' : 'hover');
+      showTip(idx, false, e.pointerType === 'mouse' ? 'pointer' : 'hover', e.pointerType);
     } else if (e.type === 'pointermove') {
       const idx = pointAt(e.clientX);
       if (idx < 0 || idx === dismissedIdx) return;
       dismissedIdx = -1;
       // 'hover' while the finger moves: the archive must not scroll its table away from under the finger.
-      if (tip.hidden || idx !== activeIdx) showTip(idx, false, 'hover');
+      if (tip.hidden || idx !== activeIdx) showTip(idx, false, 'hover', e.pointerType);
     } else if (e.type === 'pointercancel') {
       // The browser took the touch for a vertical page scroll: do not leave the label stuck on the chart.
       dismissedIdx = -1;
