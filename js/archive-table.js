@@ -42,8 +42,9 @@ function rowHtml(r, seen, extra, hidden) {
     : '';
   const seenMark = seen ? '<span class="timeline-seen">✓ tahmin ettin</span>' : '';
   const noteHtml = r.note ? `<p>${linkifyNote(r.note)}</p>` : '';
+  // Distinct accessible label so screen reader disclosure lists differentiate each row's note.
   const more = sourceLink || noteHtml
-    ? `<details class="timeline-note"><summary>Kaynak ve not</summary><div class="timeline-note-body">${sourceLink}${noteHtml}</div></details>`
+    ? `<details class="timeline-note"><summary aria-label="${escapeHTML(period)} kaynak ve not">Kaynak ve not</summary><div class="timeline-note-body">${sourceLink}${noteHtml}</div></details>`
     : '';
   const date = escapeHTML(r.date);
   return `<tr role="row" data-date="${date}"${r.isCurrent ? ' class="is-current"' : ''}${extra ? ' data-extra' : ''}${hidden ? ' hidden' : ''}>

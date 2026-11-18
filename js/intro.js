@@ -98,6 +98,8 @@ export function playIntro(dialogEl, rows, { sound = null } = {}) {
     if (finished) return;
     if (e.key === 'Escape' || e.ctrlKey || e.metaKey || e.altKey) return;
     if (e.key === 'Tab') return;
+    // Let Enter or Space activate the action buttons once reached, instead of skipping.
+    if ((e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') && e.target?.closest?.('#intro-play, #intro-close')) return;
     e.preventDefault();
     finish({ moveFocus: true });
   };

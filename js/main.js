@@ -734,6 +734,13 @@ function initIntro() {
     finishIntro = null;
     saveIntroSeen();
   });
+  // When the intro closes (Esc, #intro-close, #intro-play), move focus to the visible screen's heading
+  // if focus landed on body. If opened via the footer button, focus returns there natively.
+  // At 'close' focus is still on a button inside the now hidden dialog (it drops to <body> on the next
+  // render), so treat focus inside the dialog as lost too.
+  dlg.addEventListener('close', () => {
+    rescueFocus({ includeBody: true, within: dlg });
+  });
 }
 
 // The archive screen loads on first visit; it is not needed to play.
@@ -861,8 +868,12 @@ function onHashChange() {
 // After in-app navigation the focused link ("Ana menüye dön", a menu card) is inside a now
 // hidden screen, so keyboard and screen reader users would restart from the top of the page.
 // The first load is left alone: focus on <body> is the browser's normal starting point.
-function rescueFocus() {
-  if (!document.activeElement?.closest('[hidden]')) return;
+function rescueFocus({ includeBody = false, within = null } = {}) {
+  const lost = !document.activeElement
+    || (includeBody && document.activeElement === document.body)
+    || Boolean(within?.contains(document.activeElement))
+    || Boolean(document.activeElement.closest('[hidden]'));
+  if (!lost) return;
   const heading = document.querySelector('main > section:not([hidden]) h2');
   if (!heading) return;
   if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');

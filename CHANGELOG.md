@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.134.3] - 2026-11-18
+### Fixed
+- Keyboard and screen readers: closing the first-visit intro puts focus on the screen's heading instead of the page body; Enter on the intro buttons works during the animation; Home and End jump to the first and last point of a price chart; each archive row's "Kaynak ve not" is named with its date; the random product chip announces the product it opened; the result's source link has the same strong focus ring as other links.
+
 ## [0.134.2] - 2026-11-18
 ### Changed
 - Code: the price chart drawing and touch handling moved from js/main.js into js/chart-ui.js (main.js 1361 -> 1140 lines); no visible change.
