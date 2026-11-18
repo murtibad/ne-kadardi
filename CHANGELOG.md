@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.129.1] - 2026-11-18
+### Added
+- A house button in the header on every screen except the menu, next to the sound and theme buttons, so players who do not read the logo as a link can always get back; it fits one header row down to 320 px.
+
 ## [0.129.0] - 2026-11-18
 ### Changed
 - The price archive is much shorter on phones: long histories show the newest 8 rows with a "Tüm yılları göster" button on the side of the hidden years (gram altın page 5664 -> 1960 px at 390); jumping to a hidden year from the chart opens the table.
