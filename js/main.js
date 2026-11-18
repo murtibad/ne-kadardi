@@ -481,6 +481,18 @@ function renderResult(q, r) {
   $('r-guess').textContent = formatPrice(r.guess);
   $('r-actual-label').textContent = actualLabel(q.productId);
   $('r-actual').textContent = formatPrice(q.price);
+  // The newest launch is both a question and the "current" price: no comparison with itself.
+  const hasCurrent = q.current !== null && !(q.current.date === q.date && q.current.price === q.price);
+  $('r-current-row').hidden = !hasCurrent;
+  $('r-increase-row').hidden = !hasCurrent;
+  if (hasCurrent) {
+    $('r-current-label').textContent = `${q.current.label || 'Güncel'} (${formatPeriod(q.current.date)})`;
+    $('r-current').textContent = formatPrice(q.current.price);
+    // A newer model ("En yeni iPhone 17") is a different item, so "Değişim" would read as if this one got pricier.
+    const ratio = q.current.price / q.price;
+    $('r-increase-label').textContent = q.current.label ? 'Aradaki fark' : 'Değişim';
+    $('r-increase').textContent = q.current.label && ratio >= 2 ? `${formatRatio(ratio)} kat pahalı` : formatIncrease(ratio);
+  }
   $('r-verdict').textContent = verdictText(r);
   // Number, "/100" and the hint note are separate spans so CSS can size them; the text reads the same.
   const scoreEl = $('r-score');
@@ -540,23 +552,11 @@ function renderResult(q, r) {
   // Hold the meter at 0% while the receipt is still inside the printer; printReceipt fills it on tear-off.
   $('r-meter').style.setProperty('--score', '0%');
 
-  // The newest launch is both a question and the "current" price: no comparison with itself.
-  const hasCurrent = q.current !== null && !(q.current.date === q.date && q.current.price === q.price);
-  $('r-current-row').hidden = !hasCurrent;
-  if (hasCurrent) {
-    $('r-current-label').textContent = `${q.current.label || 'Güncel'} (${formatPeriod(q.current.date)})`;
-    $('r-current').textContent = formatPrice(q.current.price);
-    // A newer model ("En yeni iPhone 17") is a different item, so "Değişim" would read as if this one got pricier.
-    const ratio = q.current.price / q.price;
-    $('r-increase-label').textContent = q.current.label ? 'Aradaki fark' : 'Değişim';
-    $('r-increase').textContent = q.current.label && ratio >= 2 ? `${formatRatio(ratio)} kat pahalı` : formatIncrease(ratio);
-  }
-
-  renderPriceChart('r-chart', q.productId, q.date, r.guess);
-
   const contextText = buildContextLine(q, state.all);
   $('r-context').textContent = contextText || '';
   $('r-context').hidden = !contextText;
+
+  renderPriceChart('r-chart', q.productId, q.date, r.guess);
 
   const taxText = buildTaxLine(q);
   $('r-tax').textContent = taxText || '';
