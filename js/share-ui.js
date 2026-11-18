@@ -1,12 +1,12 @@
 // Sharing UI: the send sheet, image preview and the share/ask/report-card actions.
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPeriod } from './format.js';
-import { buildContextLine } from './game.js';
+import { buildContextLine, streakAlive } from './game.js';
 import { buildShareText, buildShareImageModel, buildShareFileName, questionTitle } from './share-model.js';
 import { stampTitle } from './banter.js';
 import { buildPriceChart } from './price-chart.js';
 import { askUrl, askText } from './ask-link.js';
-import { dailyShareText } from './daily.js';
+import { dailyShareText, dayKey } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -292,7 +292,7 @@ async function shareTextWithStatus(text, btn) {
     try { await navigator.share({ text }); } catch (err) { if (err.name !== 'AbortError') console.warn(err); }
     return;
   }
-  let msg = 'Karne kopyalandı ✓';
+  let msg = 'Fiş kopyalandı ✓';
   try { await navigator.clipboard.writeText(text); } catch { msg = 'Kopyalanamadı'; }
   if (!btn) return;
   btn.dataset.label ??= btn.textContent;
@@ -308,7 +308,7 @@ async function shareReportCard(e) {
   if (!card) return;
   const url = location.origin + location.pathname;
   if (card.daily) {
-    const text = dailyShareText({ key: card.key, scores: card.scores, url, streak: getState().streak?.count ?? 0 });
+    const text = dailyShareText({ key: card.key, scores: card.scores, url, streak: streakAlive(getState().streak, dayKey()) ? (getState().streak?.count ?? 0) : 0 });
     await shareTextWithStatus(text, btn);
   }
 }

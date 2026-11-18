@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.131.1] - 2026-11-18
+### Fixed
+- On phones, opening a hint no longer raises the keyboard over it.
+- Sliding across the archive chart over hidden years opens the table without scrolling the page; starting a vertical scroll on the chart closes its label.
+- "← Sonuca dön" in the archive returns to Günün Fişi during a daily run.
+- Sharing the Günün Fişi card never shows an expired streak, and the copy note says "Fiş kopyalandı".
+
 ## [0.131.0] - 2026-11-18
 ### Changed
 - The price chart follows a finger: slide sideways across the chart to read each year's price (vertical page scrolling still works), tap the same point or outside the chart to close the label. Before, each point was a small 25 px target and the label could stay stuck on phones.

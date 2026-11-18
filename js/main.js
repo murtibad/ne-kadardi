@@ -246,7 +246,8 @@ function nextQuestion(productId = null, date = null) {
       slip.insertAdjacentHTML('beforeend', rateRows());
       hintBtn.hidden = true;
     }
-    $('guess-input').focus();
+    // On a phone the keyboard would rise over the hint the player just paid for; refocus only with a mouse.
+    if (!matchMedia('(pointer: coarse)').matches) $('guess-input').focus();
   };
   $('guess-error').textContent = '';
   showGameScreen('question-screen');
@@ -666,6 +667,7 @@ function renderPriceChart(figId, productId, highlightDate = null, guess = null) 
     <span class="visually-hidden" aria-live="polite"></span>
     <figcaption>Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}</figcaption>`;
   bindPriceChart(fig, chart, figId === 't-chart' ? (point, source) => {
+    fig.dataset.source = source; // the archive reads it: no scrolling while a finger slides
     const rows = $('t-rows-container').querySelectorAll('tr[data-date]');
     let match = null;
     for (const r of rows) {
@@ -770,10 +772,14 @@ function bindPriceChart(fig, chart, onActive) {
       dismissedIdx = -1;
       // 'hover' while the finger moves: the archive must not scroll its table away from under the finger.
       if (tip.hidden || idx !== activeIdx) showTip(idx, false, 'hover');
-    } else if (e.type === 'pointerup' || e.type === 'pointercancel') {
+    } else if (e.type === 'pointercancel') {
+      // The browser took the touch for a vertical page scroll: do not leave the label stuck on the chart.
+      dismissedIdx = -1;
+      if (e.pointerType !== 'mouse') hideTip();
+    } else if (e.type === 'pointerup') {
       dismissedIdx = -1;
       // Finger lifted on a point: now the linked table row may scroll into view.
-      if (e.type === 'pointerup' && e.pointerType !== 'mouse' && !tip.hidden) onActive?.(points[activeIdx], 'pointer');
+      if (e.pointerType !== 'mouse' && !tip.hidden) onActive?.(points[activeIdx], 'pointer');
     } else if (e.type === 'pointerleave') {
       dismissedIdx = -1;
       if (e.pointerType !== 'touch' && e.target === svgEl) hideTip();
