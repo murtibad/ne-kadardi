@@ -65,7 +65,8 @@ export function timelineTableHtml(rows, { newestFirst = false, seenDates = null,
   if (newestFirst) flagged.reverse();
   const toggle = collapsible
     ? `<button type="button" class="rows-toggle" aria-expanded="${expanded}">${rowsToggleLabel(rows.length, expanded)}</button>` : '';
-  return `<table class="timeline-table" role="table">
+  // The toggle sits on the side where the hidden (older) rows are: above when oldest first.
+  return `${newestFirst ? '' : toggle}<table class="timeline-table" role="table">
     <caption class="visually-hidden">Fiyat geçmişi</caption>
     <thead role="rowgroup">
       <tr role="row">
@@ -74,6 +75,6 @@ export function timelineTableHtml(rows, { newestFirst = false, seenDates = null,
         <th scope="col" role="columnheader" class="visually-hidden">Değişim ve kaynak</th>
       </tr>
     </thead>
-    <tbody role="rowgroup">${flagged.join('')}</tbody></table>${toggle}`
+    <tbody role="rowgroup">${flagged.join('')}</tbody></table>${newestFirst ? toggle : ''}`
     + (rows.some((r) => r.source?.kind === 'derived') ? `<p class="derived-note">${DERIVED_HELP}</p>` : '');
 }
