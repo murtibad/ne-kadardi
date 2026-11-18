@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.133.2] - 2026-11-18
+### Changed
+- When a finger slides across a price chart, the year and price label sits in the top band of the chart, so the finger never covers it; on the result receipt the label uses the same larger text as the rest of the chart.
+
 ## [0.133.1] - 2026-11-18
 ### Changed
 - On the result receipt, "Güncel" and the change appear right after the real price finishes rolling, so the multiplier no longer gives the answer away during the roll.
