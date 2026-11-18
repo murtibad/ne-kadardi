@@ -1037,6 +1037,9 @@ async function init() {
     guessField.classList.remove('invalid');
   });
   let guessPrev = '';
+  // True while the dots in the box are ones we inserted: then they are always thousands, so deleting a
+  // digit from "1.250" gives "150", not "1.50" (which would read as 1,5 TL).
+  let autoGrouped = false;
   $('guess-input').addEventListener('input', (e) => {
     guessField?.classList.remove('invalid'); // also clears a stale error without waiting for animationend
     if (!e.isComposing) {
@@ -1048,10 +1051,14 @@ async function init() {
         before = before.slice(0, caret - 1) + before.slice(caret);
         caret -= 1;
       }
-      const after = formatInputThousands(before);
+      // Digits before the caret, counted before any dot is dropped below.
+      const digits = before.slice(0, caret).replace(/\D/g, '').length;
+      if (!before.includes('.')) autoGrouped = false;
+      const source = autoGrouped && !before.includes(',') ? before.replace(/\./g, '') : before;
+      const after = formatInputThousands(source);
+      if (after !== before) autoGrouped = after.includes('.');
       if (after !== before || before !== el.value) {
         // Keep the caret after the same number of digits so editing mid-number does not jump to the end.
-        const digits = before.slice(0, caret).replace(/\D/g, '').length;
         el.value = after;
         let pos = 0;
         for (let seen = 0; pos < after.length && seen < digits; pos++) if (/\d/.test(after[pos])) seen++;
