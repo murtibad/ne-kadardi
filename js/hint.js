@@ -58,6 +58,7 @@ const EVERYDAY_LABELS = {
   'mektup-pulu': 'Mektup pulu',
   'taksi-acilis': 'Taksi açılış ücreti',
   'istanbul-ulasim': 'Toplu taşıma bileti',
+  'istanbul-ogrenci-bileti': 'Öğrenci bileti',
   'sinema-ortalama-bilet': 'Sinema bileti',
   'kopru': 'Köprü geçişi',
   'netflix': 'Netflix (aylık)',

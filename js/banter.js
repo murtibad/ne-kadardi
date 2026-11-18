@@ -361,6 +361,12 @@ export const PRODUCT_POOLS = {
     'Şoför "arkaya doğru ilerleyelim" dedi, arkada yer yoktu.',
     'Kartı okutunca jetonlu günleri özleyen dayılar var.',
   ],
+  'istanbul-ogrenci-bileti': [
+    'Öğrenci kartı cüzdanda hazır, ders notları nerede kimse bilmiyor.',
+    'Şoför "kartı bir daha okut" deyince bütün otobüs gözetmen oldu.',
+    'Kantinde tost, otobüste kart: öğrenci bütçesi ay sonuna yetmiyor.',
+    'Mezun olup tam bilete geçince herkes birden büyüdüğünü anlıyor.',
+  ],
   'ankara-ulasim': [
     'Kızılay\'a kadar bakiye yeter mi diye hesap yapan bir ben miyim?',
     'Ankaray\'da ayakta giden herkes durağı aynı telaşla sayar.',

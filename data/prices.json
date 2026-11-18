@@ -8706,6 +8706,105 @@
       ]
     },
     {
+      "id": "istanbul-ogrenci-bileti",
+      "name": "İstanbul öğrenci bileti",
+      "explain": "İstanbulkart'la öğrenci tarifesinden bir kez binmenin ücreti",
+      "unit": "1 biniş, öğrenci bileti (kartla)",
+      "region": "İstanbul",
+      "source_hint": "İBB UKOME kararıyla belirlenen öğrenci (indirimli) elektronik bilet ilk biniş ücreti, tam biletin yaklaşık yarısı; haber kaynaklı, her değer için iki ayrı haber sitesi. Tarih kararın/zammın ayıdır.",
+      "image": {
+        "src": "img/otobus.svg",
+        "alt": "Şehir otobüsü çizimi",
+        "credit": "Original illustration, CC0"
+      },
+      "current": {
+        "date": "2026-07",
+        "price": 22.55,
+        "status": "verified",
+        "note": "İstanbul toplu taşıma öğrenci elektronik bileti (indirimli tarife) ilk biniş ücreti. \"Öğrenci bileti: 20,50 TL'den 22,55 TL'ye\" (gzt.com); \"öğrenci biletinin 20,50 liradan 22,55 liraya\" (bursahakimiyet.com.tr). Doğrulama: bursahakimiyet.com.tr https://www.bursahakimiyet.com.tr/amp/gundem/istanbul-da-toplu-ulasima-yuzde-10-zam-yapildi-1671389.",
+        "source": {
+          "title": "gzt.com",
+          "url": "https://www.gzt.com/ekonomi/istanbul-toplu-tasima-zammi-2026-son-dakika-marmaray-metro-otobus-ve-metrobus-ucreti-ne-kadar-oldu-iett-yeni-ucret-tarifesi-istanbul-ulasim-zammi-ne-zaman-uygulanacak-4242283",
+          "accessed": "2026-11-18",
+          "kind": "news"
+        }
+      },
+      "prices": [
+        {
+          "date": "2016-01",
+          "price": 1.15,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma öğrenci elektronik bileti (indirimli tarife) ilk biniş ücreti. \"öğrenci 1,15 TL\" (posta.com.tr); \"öğrenci 1,15 TL\" (serbestiyet.com). Doğrulama: serbestiyet.com https://serbestiyet.com/haberler/yasam/stanbulda-toplu-ulasim-zam-30718.",
+          "source": {
+            "title": "posta.com.tr",
+            "url": "https://www.posta.com.tr/ekonomi/istanbulda-zamli-ulasim-basladi-324717",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2020-02",
+          "price": 1.75,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma öğrenci elektronik bileti (indirimli tarife) ilk biniş ücreti. \"öğrenci bileti 1,75 lira\" (cnnturk.com); \"öğrenci bileti 1.75 lira\" (cumhuriyet.com.tr). Doğrulama: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/haber/ibbden-toplu-tasima-zammina-onay-1719247.",
+          "source": {
+            "title": "cnnturk.com",
+            "url": "https://www.cnnturk.com/turkiye/iett-zam-2020-istanbulkart-metro-otobus-ve-aktarma-ucretlerine-zam-1485647",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2022-04",
+          "price": 3.74,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma öğrenci elektronik bileti (indirimli tarife) ilk biniş ücreti. \"öğrenci indirimli 2,67 liradan 3,74 liraya\" (ntv.com.tr); \"öğrenci elektronik bilet ücreti 3,74 TL'den 4,83 TL\" (cumhuriyet.com.tr). Doğrulama: cumhuriyet.com.tr https://www.cumhuriyet.com.tr/turkiye/iett-zammi-ne-zaman-gecerli-olacak-istanbulda-otobus-metrobus-marmaray-vapur-kac-tl-oldu-2016183.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/ekonomi/son-dakika-istanbulda-toplu-ulasima-yuzde-40-zam,TNeDMXG_EEaYCzmsOITJEw",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2023-01",
+          "price": 4.83,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma öğrenci elektronik bileti (indirimli tarife) ilk biniş ücreti. \"öğrenci elektronik bilet ücreti 3,74 TL'den 4,83 TL\" (cumhuriyet.com.tr); \"öğrenci elektronik bilet ücreti 3,74 liradan 4,83 liraya\" (ntv.com.tr). Doğrulama: ntv.com.tr https://www.ntv.com.tr/ntvpara/istanbulda-toplu-ulasim-ve-servislere-zam,420Clakj9EGwyTWfp4_3uQ.",
+          "source": {
+            "title": "cumhuriyet.com.tr",
+            "url": "https://www.cumhuriyet.com.tr/turkiye/iett-zammi-ne-zaman-gecerli-olacak-istanbulda-otobus-metrobus-marmaray-vapur-kac-tl-oldu-2016183",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2025-09",
+          "price": 17.08,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma öğrenci elektronik bileti (indirimli tarife) ilk biniş ücreti. \"öğrenci ise 17,08 lira oldu\" (ntv.com.tr); \"Öğrenci İstanbulkart ile tek geçiş ücreti 17,08 lira\" (gazetebirlik.com). Doğrulama: gazetebirlik.com https://www.gazetebirlik.com/gundem/istanbul-toplu-tasima-ucretleri-2026-ne-kadar-oldu-istanbulkart-ucretleri-tam-bilet-fiyatlari-ogrenci-kart-ucretleri/928436.",
+          "source": {
+            "title": "ntv.com.tr",
+            "url": "https://www.ntv.com.tr/ekonomi/galeri-istanbulda-yeni-toplu-tasima-zammi-ucretleri-2025-otobus-metro-metrobus-tramvay-marmaray-ne-kadar-zamlandi,B7zcInHxKUW5rZONB5vDkg",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        },
+        {
+          "date": "2026-02",
+          "price": 20.5,
+          "status": "verified",
+          "note": "İstanbul toplu taşıma öğrenci elektronik bileti (indirimli tarife) ilk biniş ücreti. \"Zam sonrası tam bilet 42 TL, öğrenci 20,50 TL\" (gzt.com); \"Öğrenci bileti 20,50 lira\" (dha.com.tr). Doğrulama: dha.com.tr https://www.dha.com.tr/gundem/istanbulda-toplu-tasimaya-yuzde-20-zam-teklifi-ibb-meclisinde-kabul-edildi-2817725.",
+          "source": {
+            "title": "gzt.com",
+            "url": "https://www.gzt.com/gundem/istanbul-ulasim-ne-kadar-oldu-2026-zam-sonrasi-tam-bilet-42-tl-ogrenci-2050-tl-aylik-abonman-3298-tl-4019478",
+            "accessed": "2026-11-18",
+            "kind": "news"
+          }
+        }
+      ]
+    },
+    {
       "id": "kurban-vekalet-bedeli",
       "name": "Kurban vekâlet bedeli (Diyanet / TDV)",
       "unit": "1 kurban, yurt içinde vekâletle kestirme bedeli",
