@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.134.1] - 2026-11-18
+### Changed
+- The sounds download after the menu is on screen (or at the first tap) instead of sharing a slow connection with the price data during the first load.
+- Plainer texts: the end of Günün Fişi says "Sonraki soru →", and the meal amount line names "Yemek kartının günlük vergisiz tutarı".
+
 ## [0.134.0] - 2026-11-18
 ### Added
 - New product: İstanbul öğrenci bileti (İstanbulkart student fare, one ride), 7 values 2016-2026 on the same dates as the full fare, each confirmed by two separate news sites.

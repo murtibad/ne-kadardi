@@ -1167,6 +1167,19 @@ function toggleTheme() {
   renderThemeToggle();
 }
 
+// Starts the sound downloads after the menu had its first frame and the page has loaded, so they never
+// compete with the critical path. play() still fetches on demand if a sound is needed earlier.
+function scheduleSoundPrefetch() {
+  const run = () => {
+    const later = () => sound.prefetch();
+    if (typeof requestIdleCallback === 'function') requestIdleCallback(later, { timeout: 3000 });
+    else setTimeout(later, 500);
+  };
+  const afterFrame = () => requestAnimationFrame(() => setTimeout(run, 0));
+  if (document.readyState === 'complete') afterFrame();
+  else window.addEventListener('load', afterFrame, { once: true });
+}
+
 async function init() {
   const versionEl = $('app-version');
   if (versionEl) versionEl.textContent = VERSION;
@@ -1200,9 +1213,11 @@ async function init() {
     window.addEventListener(type, () => sound.wake(), { capture: true, passive: true });
   }
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') sound.wake(); });
-  // Sounds are small and precached; fetch them once the page has loaded so the first one is ready.
-  if (document.readyState === 'complete') sound.prefetch();
-  else window.addEventListener('load', () => sound.prefetch(), { once: true });
+  // Sounds are small, but fetching them at load shared the slow link with prices.json and delayed the
+  // menu. They are fetched once the menu is up (see scheduleSoundPrefetch) or on the first touch.
+  for (const type of ['touchend', 'click', 'keydown']) {
+    window.addEventListener(type, () => sound.prefetch(), { once: true, capture: true });
+  }
   try {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -1270,6 +1285,7 @@ async function init() {
   $('ask-q-btn').addEventListener('click', (e) => askFriend({ btn: e.currentTarget }));
   $('r-card-share').addEventListener('click', shareReportCard);
   initIntro();
+  scheduleSoundPrefetch();
 
   const searchParams = new URLSearchParams(location.search);
   const rawSoru = searchParams.get('soru');

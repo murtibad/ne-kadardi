@@ -225,7 +225,7 @@ export const WAGE_SHARE = {
   'kyk-burs': { better: 'higher', name: 'KYK bursu' },
   'dogum-yardimi': { better: 'higher', name: 'Doğum yardımı' },
   'aclik-siniri': { better: 'lower', name: 'Açlık sınırı' },
-  'yemek-karti': { better: 'higher', name: 'Günlük vergisiz yemek bedeli' },
+  'yemek-karti': { better: 'higher', name: 'Yemek kartının günlük vergisiz tutarı' },
 };
 
 /** Receipt label for the answer: a pension or a wage is an amount, not a price. */
