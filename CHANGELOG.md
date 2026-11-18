@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.126.2] - 2026-11-18
+### Changed
+- Today's prices refreshed: dollar 50,42 TL, euro 55,44 TL, sterling 66,62 TL (TCMB 17.11.2026), Schengen visa 4.990,01 TL, Bitcoin 3.271.104 TL (Bitstamp close 17.11.2026 × TCMB dollar), benzin 71,19 TL and motorin 95,25 TL (EPDK 18.11.2026), otogaz 51,68 TL (EPDK LPG 17.11.2026, unchanged).
+
 ## [0.126.1] - 2026-11-18
 ### Fixed
 - On narrow phones the unit line no longer ends with a lone "·"; the separator now stays with the region (question card, result, archive, fact card, share image).
