@@ -263,7 +263,8 @@ function linkRowsToChart() {
     if (!linked) return;
     setExpanded(true);
     // While a finger slides across the chart ('hover') the page must stay put; it scrolls on lift.
-    if ($('t-chart').dataset.source !== 'hover') linked.scrollIntoView({ block: 'nearest' });
+    // Keyboard users are still on the chart, so only a pointer lift scrolls the row into view.
+    if ($('t-chart').dataset.source === 'pointer') linked.scrollIntoView({ block: 'nearest' });
   }).observe(rowsContainer, { subtree: true, attributes: true, attributeFilter: ['class'] });
   rowsContainer.addEventListener('click', (e) => {
     if (e.target instanceof Element && e.target.closest('.rows-toggle')) {

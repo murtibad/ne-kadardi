@@ -155,7 +155,7 @@ export function createSoundPlayer(options = {}) {
     }
   }
 
-  // Downloading needs no AudioContext, so it can start at page load, before the first tap;
+  // Downloading needs no AudioContext, so it can start before the first tap (main.js schedules it after the menu);
   // only decoding waits for the context. This keeps the very first sound from being skipped.
   function fetchRaw(name) {
     if (rawPromises.has(name)) return rawPromises.get(name);
