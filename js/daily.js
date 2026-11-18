@@ -30,8 +30,9 @@ export function dayKey(date = new Date()) {
  */
 export function resolveSavedDaily(data, todayKey, validIds = null) {
   if (!data || typeof data.key !== 'string' || !Array.isArray(data.ids) || !Array.isArray(data.scores)) return null;
-  let ids = data.ids.filter((x) => typeof x === 'string');
-  const scores = data.scores.filter(Number.isFinite);
+  const ids = data.ids.filter((x) => typeof x === 'string');
+  // Scores without ids, or more scores than ids, are corrupt storage ("6/5", 580/500): drop the surplus.
+  const scores = ids.length === 0 ? [] : data.scores.filter(Number.isFinite).slice(0, ids.length);
   const finished = ids.length > 0 && scores.length >= ids.length;
   const resumable = !finished && scores.length > 0 && data.key === prevDayKey(todayKey);
   if (data.key !== todayKey && !resumable) return null;

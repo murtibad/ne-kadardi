@@ -36,6 +36,8 @@ function resetShareBtn() {
     bar.textContent = shareBtnLabel();
     bar.removeAttribute('aria-busy');
   }
+  // A stale label ("Fişini paylaş" from a daily end turn) would be restored by later feedback timers.
+  delete bar.dataset.label;
   const askQ = $('ask-q-btn');
   if (askQ.dataset.label) askQ.textContent = askQ.dataset.label;
 }

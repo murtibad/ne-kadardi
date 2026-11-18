@@ -27,7 +27,10 @@ function priceInForce(entries, date, strict = false) {
   if (!date) return sorted[0] ?? null;
   // Compare by month: a daily rate dated 2018-07-02 is in force for a "Temmuz 2018" question.
   const month = String(date).slice(0, 7);
-  const before = sorted.filter((x) => x.date.slice(0, 7) <= month);
+  // A year-only question date ("2018") would sort before every "2018-01" entry; pad it to the
+  // year's last month so the year's own prices count as in force.
+  const limit = month.length < 7 ? `${month}-12` : month;
+  const before = sorted.filter((x) => x.date.slice(0, 7) <= limit);
   if (before.length > 0) return before[before.length - 1];
   return strict ? null : sorted[0] ?? null;
 }

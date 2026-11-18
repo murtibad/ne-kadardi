@@ -167,3 +167,10 @@ test('resolveSavedDaily empties a run whose ids no longer exist in the data', ()
   assert.deepEqual(resolveSavedDaily(data, '2026-11-05', new Set(['a@2020-01'])), { key: '2026-11-04', ids: [], scores: [] });
   assert.deepEqual(resolveSavedDaily(data, '2026-11-05', new Set(['a@2020-01', 'gone@2020-01'])), data);
 });
+
+test('resolveSavedDaily drops scores that have no matching ids (corrupt storage)', () => {
+  const noIds = resolveSavedDaily({ key: '2026-11-05', ids: [], scores: [90, 80, 70, 60, 50, 40] }, '2026-11-05');
+  assert.deepEqual(noIds, { key: '2026-11-05', ids: [], scores: [] });
+  const extra = resolveSavedDaily({ key: '2026-11-05', ids: ['a', 'b'], scores: [1, 2, 3] }, '2026-11-05');
+  assert.deepEqual(extra.scores, [1, 2]);
+});

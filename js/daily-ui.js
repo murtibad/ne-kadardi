@@ -99,10 +99,17 @@ export function skipDaily() {
     return true;
   }
   // Skipping the last one has no result screen for the card, so the menu offers the share.
+  const { key, scores } = state.daily;
   state.daily = null;
   state.question = null; // otherwise "Fiyat Tahmini" would reopen the skipped daily question
   syncSkipBtn();
   location.hash = '#';
+  // A run that crossed midnight is no longer "today's" receipt, so the menu cannot offer its share.
+  if (key !== dayKey()) {
+    const text = dailyShareText({ key, scores, url: location.origin + location.pathname, streak: state.streak?.count ?? 0 });
+    // After the hashchange has rendered the menu, so the status lands on the freshly set button.
+    setTimeout(() => shareTextWithStatus(text, $('m-daily-go')), 0);
+  }
   return true;
 }
 

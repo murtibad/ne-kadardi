@@ -508,6 +508,11 @@ export function streakAlive(prev, todayKey) {
   return diff <= 1;
 }
 
+/** True when `todayKey` is a new day for the streak; a clock moved back is not a first answer. */
+export function isFirstAnswerOfDay(prev, todayKey) {
+  return !prev?.last || prev.last < todayKey;
+}
+
 /** Advance or reset the daily streak on an answered question for `todayKey` ('YYYY-MM-DD'). */
 export function updateStreak(prev, todayKey) {
   const prevCount = Number.isFinite(prev?.count) && prev.count > 0 ? prev.count : 0;
