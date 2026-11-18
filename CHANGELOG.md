@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.135.4] - 2026-11-18
+### Changed
+- First minute for a new player: the intro's last line says what the game is ("Yılı ve ürünü gör, o günkü fiyatı tahmin et") instead of promising Günün Fişi before "Hemen oyna" opens free play; the menu tells the two cards apart ("İstediğin kadar soru çöz…" and "5 soruya başla →"); after one question the result and the menu say "İlk soru tamam" / "1 soru · puanın 96" instead of repeating the score as an average and a best.
+
 ## [0.135.3] - 2026-11-18
 ### Changed
 - README and the roadmap describe the current game (two-step hint, thousands grouping and kuruş read-out, chart scrubbing, shorter archive, Günün Fişi review, 82 products).

@@ -609,6 +609,8 @@ function renderResult(q, r) {
   // During Günün Fişi the line follows the receipt (its own total), not the free-play counters.
   const sessionText = dailyRun
     ? `Günün fişi ${dailyRun.done}/${dailyRun.of} · toplam ${dailyRun.total}`
+    // After one question an "ortalama" is just the score above it again.
+    : state.played === 1 ? 'İlk soru tamam'
     : `${state.played} soru · ortalama ${Math.round(state.total / Math.max(1, state.played))}`;
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
   $('r-session').innerHTML = `<span>${sessionText}${streakHint}${dailyRun ? '' : r.badge || ''}</span>`
@@ -795,7 +797,8 @@ function renderHome() {
   const alive = streakAlive(state.streak, today) && state.streak.count >= 2;
   const streakMeta = alive ? ` · 🔥 ${state.streak.count} gün üst üste` : '';
   $('m-tahmin').textContent = state.played > 0
-    ? `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '') + streakMeta
+    // One question: average and best are the same number, so say it once.
+    ? (state.played === 1 ? `1 soru · puanın ${state.total}` : `${state.played} soru · ortalama ${Math.round(state.total / state.played)}` + (state.best > 0 ? ` · en yüksek ${state.best}` : '')) + streakMeta
     : alive ? `🔥 ${state.streak.count} gün üst üste` : '';
   renderDailyMenu();
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
