@@ -104,6 +104,7 @@ function show(screenId) {
   syncFooter(screenId);
   clearTimeout(handTimer);
   handTimer = null; // a stale id would make the next stopPrinting() hand over a receipt that was never torn
+  if (screenId !== 'result-screen') stopPrinting();
   $('question-screen').classList.remove('as-machine', 'folded');
   // Cancelled animations never reach onfinish, so undo their inline clipping here too.
   $('question-screen').getAnimations?.({ subtree: true })?.forEach((a) => a.cancel());
@@ -323,7 +324,7 @@ let handTimer = null;
 let cancelPrint = null;
 let countUpRaf = null;
 
-// Stops the price count-up and leaves the real price on the receipt.
+// Stops the price count-up, leaves the real price on the receipt, and reveals the current/change rows.
 function stopCountUp() {
   if (countUpRaf !== null) {
     cancelAnimationFrame(countUpRaf);
@@ -332,6 +333,8 @@ function stopCountUp() {
   const el = $('r-actual');
   el?.removeAttribute('aria-hidden');
   if (el && state.question) el.textContent = formatPrice(state.question.price);
+  $('r-current-row')?.classList.remove('awaiting-roll');
+  $('r-increase-row')?.classList.remove('awaiting-roll');
 }
 
 // Cancel any in-flight print timer, click listener, and printer audio when leaving the result screen early.
@@ -450,17 +453,25 @@ function printReceipt(extraSound) {
   const frames = countUpFrames(state.question.price, { frames: 60 });
   if (frames.length > 0 && typeof requestAnimationFrame === 'function') {
     const actualEl = $('r-actual');
-    // renderResult already wrote the real price for the aria-live announcement; hide intermediate ticks.
-    actualEl.setAttribute('aria-hidden', 'true');
+    // Hold today's price and the multiplier until the real price lands so they do not spoil the roll.
+    $('r-current-row')?.classList.add('awaiting-roll');
+    $('r-increase-row')?.classList.add('awaiting-roll');
+    // Keep the final price in the accessibility tree while an aria-hidden span rolls the visible digits.
+    const rollEl = document.createElement('span');
+    rollEl.setAttribute('aria-hidden', 'true');
+    rollEl.textContent = formatPrice(frames[0]);
+    const srEl = document.createElement('span');
+    srEl.className = 'visually-hidden';
+    srEl.textContent = formatPrice(state.question.price);
+    actualEl.replaceChildren(rollEl, srEl);
     let i = 0;
     const tick = () => {
-      actualEl.textContent = formatPrice(frames[i]);
+      rollEl.textContent = formatPrice(frames[i]);
       i += 1;
       if (i < frames.length) {
         countUpRaf = requestAnimationFrame(tick);
       } else {
-        countUpRaf = null;
-        actualEl.removeAttribute('aria-hidden');
+        stopCountUp();
       }
     };
     countUpRaf = requestAnimationFrame(tick);

@@ -145,13 +145,20 @@ export function playIntro(dialogEl, rows, { sound = null } = {}) {
     skipBtn.focus?.({ preventScroll: true });
   }
   if (yearValue) yearValue.textContent = String(fromYear);
-  list.forEach((r, i) => {
+  // Keep the final price in the accessibility tree while an aria-hidden span rolls through the years.
+  const rollEls = list.map((r, i) => {
     const el = priceEls[i];
-    if (!el) return;
-    el.textContent = formatPrice(r.from);
+    if (!el) return null;
     el.classList.remove('landed');
-    // Hide rapidly changing intermediate digits from screen readers until the final price lands.
-    el.setAttribute('aria-hidden', 'true');
+    el.removeAttribute('aria-hidden');
+    const roll = document.createElement('span');
+    roll.setAttribute('aria-hidden', 'true');
+    roll.textContent = formatPrice(r.from);
+    const sr = document.createElement('span');
+    sr.className = 'visually-hidden';
+    sr.textContent = formatPrice(r.to);
+    el.replaceChildren(roll, sr);
+    return roll;
   });
 
   stage?.classList.remove('is-printed', 'is-stamped', 'is-done', 'shake');
@@ -197,10 +204,13 @@ export function playIntro(dialogEl, rows, { sound = null } = {}) {
       const el = priceEls[i];
       if (!el) return;
       const yearDone = lastYearShown >= r.toYear;
-      el.textContent = formatPrice(yearDone ? r.to : priceInYear(r, lastYearShown));
-      if (yearDone && elapsed > 2400 && !el.classList.contains('landed')) {
-        el.classList.add('landed');
-        el.removeAttribute('aria-hidden');
+      if (yearDone && elapsed > 2400) {
+        if (!el.classList.contains('landed')) {
+          el.textContent = formatPrice(r.to);
+          el.classList.add('landed');
+        }
+      } else if (rollEls[i]) {
+        rollEls[i].textContent = formatPrice(yearDone ? r.to : priceInYear(r, lastYearShown));
       }
     });
 

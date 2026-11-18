@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.133.1] - 2026-11-18
+### Changed
+- On the result receipt, "Güncel" and the change appear right after the real price finishes rolling, so the multiplier no longer gives the answer away during the roll.
+- Screen readers always hear the final real price (and the intro prices) while the digits roll; a long label such as "En yeni iPhone 17 (Eylül 2025)" no longer squeezes the price.
+
 ## [0.133.0] - 2026-11-18
 ### Added
 - After "Bu soruyu geç", the next card shows the skipped answer for one question ("Geçtiğin soru: Ocak 2016 · Benzin — ₺4,28"), in free play and in Günün Fişi.

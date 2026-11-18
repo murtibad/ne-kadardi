@@ -263,13 +263,24 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .row { 
   display: flex; 
   justify-content: space-between;
-  align-items: baseline; /* the real price is set larger than its label */
+  /* Bottom-aligns with the last line when <dt> wraps ("En yeni iPhone 17 (Eylül 2025)"),
+     while still matching baselines on one-line rows where #r-actual is set larger. */
+  align-items: flex-end;
+  align-items: last baseline;
   gap: 8px;
   padding: 3px 0; 
   font-size: 1rem;
   line-height: 1.3;
+  transition: opacity 0.22s ease-out, transform 0.22s ease-out;
 }
-.row dd { margin: 0; font-weight: 700; white-space: nowrap; text-align: right; }
+.row.awaiting-roll {
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: none;
+}
+.row dt { min-width: 0; }
+.row dd { margin: 0; flex-shrink: 0; font-weight: 700; white-space: nowrap; text-align: right; }
 
 .verdict-box {
   border: 2px solid var(--accent);
