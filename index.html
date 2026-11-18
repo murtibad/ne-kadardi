@@ -149,14 +149,16 @@
           <dl>
             <div class="row"><dt>Tahminin</dt><dd id="r-guess"></dd></div>
             <div class="row"><dt id="r-actual-label">Gerçek fiyat</dt><dd id="r-actual" class="highlight-price"></dd></div>
+            <div id="r-current-row" class="row"><dt id="r-current-label">Güncel</dt><dd id="r-current"></dd></div>
+            <div id="r-increase-row" class="row"><dt id="r-increase-label">Değişim</dt><dd id="r-increase"></dd></div>
           </dl>
           <div class="verdict-box">
             <p id="r-verdict" class="verdict"></p>
           </div>
           <div class="score-box">
             <p class="score">PUAN <span id="r-score"></span></p>
-            <div class="meter" aria-hidden="true"><span id="r-meter"></span></div>
             <p id="r-stamp" class="receipt-stamp" hidden></p>
+            <div class="meter" aria-hidden="true"><span id="r-meter"></span></div>
           </div>
           <p id="r-friend" class="ytl-note" hidden></p>
           <section id="r-card" class="report-card" aria-labelledby="r-card-title" hidden>
@@ -166,13 +168,9 @@
             <button type="button" id="r-card-share" class="link-btn">Karneni paylaş →</button>
           </section>
           <hr>
-          <dl id="r-current-row">
-            <div class="row"><dt id="r-current-label">Güncel</dt><dd id="r-current"></dd></div>
-            <div class="row"><dt id="r-increase-label">Değişim</dt><dd id="r-increase"></dd></div>
-          </dl>
-          <figure id="r-chart" class="price-chart" hidden></figure>
-          <p id="r-context" class="context-line"></p>
           <p id="r-cashier" class="cashier-line"></p>
+          <p id="r-context" class="context-line"></p>
+          <figure id="r-chart" class="price-chart" hidden></figure>
           <p class="source"><button type="button" id="followup-btn" class="link-btn" hidden></button></p>
           <p id="r-ytl" class="ytl-note" hidden></p>
           <p id="r-tax" class="tax-line" hidden></p>

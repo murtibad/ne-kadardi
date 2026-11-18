@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.128.0] - 2026-11-18
+### Changed
+- The result receipt shows today's price and how much it grew on the first screen: Tahminin, Gerçek fiyat, Güncel and Değişim are one list, followed by the verdict and a compact score row with the stamp beside the score.
+- The cashier's line comes before the purchasing-power line and the chart, and the page is about 200 px shorter on phones.
+
 ## [0.127.1] - 2026-11-18
 ### Changed
 - "Tahmin et" sits right under the price box; the hint button and hint slip come after it, so an opened hint no longer pushes the button under the phone keyboard.
