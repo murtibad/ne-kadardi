@@ -23,7 +23,7 @@ const NAMES = {
   'haberturk.com': 'Habertürk',
   'alomaliye.com': 'Alomaliye',
   'bitstamp.net': 'Bitstamp',
-  'github.com': 'GitHub',
+  'github.com': 'The Economist', // only the Big Mac index repo is linked from GitHub
   'ntv.com.tr': 'NTV',
   'milliyet.com.tr': 'Milliyet',
   'sozcu.com.tr': 'Sözcü',

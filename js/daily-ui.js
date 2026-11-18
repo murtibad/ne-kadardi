@@ -160,7 +160,7 @@ export function renderDailyCard() {
   $('r-card-share').hidden = true;
   resetShareBtn();
   // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
-  $('next-btn').textContent = 'Normal oyuna geç →';
+  $('next-btn').textContent = 'Tahmin etmeye devam et →';
   $('r-card').hidden = false;
   return true;
 }

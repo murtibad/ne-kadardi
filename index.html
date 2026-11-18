@@ -121,7 +121,7 @@
         <form id="guess-form" novalidate>
           <label for="guess-input" class="guess-label">Sence kaç liraydı?</label>
           <div class="guess-field">
-            <input id="guess-input" type="text" inputmode="decimal" autocomplete="off"
+            <input id="guess-input" type="text" inputmode="decimal" enterkeyhint="go" autocomplete="off"
                    placeholder="Fiyatı yaz" aria-describedby="q-period q-name q-unit hint-text guess-error">
             <span class="currency">₺</span>
           </div>
@@ -167,7 +167,7 @@
           <hr>
           <dl id="r-current-row">
             <div class="row"><dt id="r-current-label">Güncel</dt><dd id="r-current"></dd></div>
-            <div class="row"><dt>Değişim</dt><dd id="r-increase"></dd></div>
+            <div class="row"><dt id="r-increase-label">Değişim</dt><dd id="r-increase"></dd></div>
           </dl>
           <figure id="r-chart" class="price-chart" hidden></figure>
           <p id="r-context" class="context-line"></p>
@@ -176,7 +176,7 @@
           <p id="r-ytl" class="ytl-note" hidden></p>
           <p id="r-tax" class="tax-line" hidden></p>
           <details id="r-tax-details" class="tax-details" hidden>
-            <summary>Verginin dökümü</summary>
+            <summary>Vergi dökümü</summary>
             <div id="r-tax-body"></div>
           </details>
           <p class="source"><a id="r-archive" href="#arsiv" class="archive-link">Bu ürünün fiyat geçmişi →</a></p>
@@ -291,7 +291,7 @@
   <footer class="site-footer">
     <p>Her fiyat, açıklayan kurumun belgesinden ya da en az iki ayrı haberden.</p>
     <!-- Own line: wrapping inside the sentence left a lone "·" at the end of a line on phones. -->
-    <p class="footer-line"><button type="button" id="intro-open" class="link-btn footer-link-btn">Nasıl çalışıyoruz?</button><span class="nowrap">Hata görürsen <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a></span></p>
+    <p class="footer-line"><button type="button" id="intro-open" class="link-btn footer-link-btn">Nasıl oynanır?</button><span class="nowrap">Hata görürsen <a href="https://github.com/murtibad/ne-kadardi/issues" target="_blank" rel="noopener">bildir</a></span></p>
     <p><a href="#" class="footer-link">Ana menü</a></p>
     <p class="credit footer-line"><span class="nowrap">Sürüm <span id="app-version"></span></span><span class="nowrap">Yapan: <a href="https://github.com/murtibad" target="_blank" rel="noopener">Murat Tokaç</a></span></p>
   </footer>

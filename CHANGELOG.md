@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.126.3] - 2026-11-18
+### Changed
+- Source line in plain words: the Big Mac source is named "The Economist" instead of "GitHub", labels read "yayımlanan tablodan" and "döviz kuruyla hesaplandı", and "· haberlerden" never splits from its label at the end of a line.
+- Results for a newer model ("En yeni iPhone 17") say "Aradaki fark: 36,3 kat pahalı" instead of "Değişim: katına çıktı", which read as if the old phone itself had got pricier.
+- Darker verdict colors on the dimmer dark-mode receipt (all at least 5.2:1 contrast).
+- On short phones (320x640) the intro fits the screen with its buttons visible.
+- The price box shows a "go" key on phone keyboards.
+- Plainer texts: "Nasıl oynanır?", "Vergi dökümü", "Tahmin etmeye devam et →" after Günün Fişi, the tax note without "perakende marjı", and a load error that tells the player to check the connection.
+
 ## [0.126.2] - 2026-11-18
 ### Changed
 - Today's prices refreshed: dollar 50,42 TL, euro 55,44 TL, sterling 66,62 TL (TCMB 17.11.2026), Schengen visa 4.990,01 TL, Bitcoin 3.271.104 TL (Bitstamp close 17.11.2026 × TCMB dollar), benzin 71,19 TL and motorin 95,25 TL (EPDK 18.11.2026), otogaz 51,68 TL (EPDK LPG 17.11.2026, unchanged).

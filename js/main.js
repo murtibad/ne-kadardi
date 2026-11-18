@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatPeriod, readAmount, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine } from './format.js';
+import { parseGuess, formatPrice, formatPeriod, readAmount, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio } from './format.js';
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -545,7 +545,10 @@ function renderResult(q, r) {
   if (hasCurrent) {
     $('r-current-label').textContent = `${q.current.label || 'Güncel'} (${formatPeriod(q.current.date)})`;
     $('r-current').textContent = formatPrice(q.current.price);
-    $('r-increase').textContent = formatIncrease(q.current.price / q.price);
+    // A newer model ("En yeni iPhone 17") is a different item, so "Değişim" would read as if this one got pricier.
+    const ratio = q.current.price / q.price;
+    $('r-increase-label').textContent = q.current.label ? 'Aradaki fark' : 'Değişim';
+    $('r-increase').textContent = q.current.label && ratio >= 2 ? `${formatRatio(ratio)} kat pahalı` : formatIncrease(ratio);
   }
 
   renderPriceChart('r-chart', q.productId, q.date, r.guess);
@@ -801,7 +804,7 @@ function renderTaxDetails(q) {
   tableHtml += `<tr class="tax-total-row"><th scope="row">Toplam vergi</th><td>${formatPrice(Math.round(tb.total))}</td></tr>`;
   tableHtml += `</tbody></table>`;
 
-  const caveatHtml = `<p class="tax-caveat">Vergi payı tahminidir; perakende marjı ayrı hesaplanmadı.</p>`;
+  const caveatHtml = `<p class="tax-caveat">Vergi payı tahminidir; mağazanın kârı ayrıca hesaplanmadı.</p>`;
 
   let sourcesHtml = '';
   if (Array.isArray(tb.period.sources) && tb.period.sources.length > 0) {
@@ -1125,7 +1128,7 @@ async function init() {
     state.timelines = buildTimelines(rawData);
   } catch (err) {
     console.error(err);
-    showMessage('Veri yüklenemedi. Sayfayı yerel bir sunucuyla açtığından emin ol.');
+    showMessage('Fiyatlar yüklenemedi. İnternet bağlantını kontrol edip sayfayı yenile.');
     return;
   }
   if (state.all.length === 0) {

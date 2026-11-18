@@ -61,7 +61,7 @@ js/daily.js         "Günün Fişi" daily question set and share text (pure, tes
 js/price-chart.js   price chart geometry for the receipt, archive and share image (pure, tested)
 js/categories.js    product categories for the archive filter (pure, tested)
 js/search.js        accent-insensitive archive search (pure, tested)
-js/source-kind.js   source labels ("resmî kayıt", "haberlerden", "kurla hesaplandı")
+js/source-kind.js   source labels ("resmî kayıt", "haberlerden", "döviz kuruyla hesaplandı")
 js/linkify.js       turns URLs in notes into link buttons (pure, tested)
 js/fact.js          the home page "Biliyor muydun?" card (pure, tested)
 js/intro.js         animated first-visit intro (pure data helpers and stage runner)
