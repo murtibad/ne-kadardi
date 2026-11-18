@@ -224,11 +224,12 @@ export const WAGE_SHARE = {
   'kyk-burs': { better: 'higher', name: 'KYK bursu' },
   'dogum-yardimi': { better: 'higher', name: 'Doğum yardımı' },
   'aclik-siniri': { better: 'lower', name: 'Açlık sınırı' },
+  'yemek-karti': { better: 'higher', name: 'Günlük vergisiz yemek bedeli' },
 };
 
 /** Receipt label for the answer: a pension or a wage is an amount, not a price. */
 // Money people receive or a legal limit, not something bought: the receipt says "Tutar".
-const AMOUNTS = new Set(['asgari-ucret', 'kidem-tavani', 'yemek-karti']);
+const AMOUNTS = new Set(['asgari-ucret', 'kidem-tavani']);
 
 // True for money people get or a limit (wage, pension, grant), not something they buy.
 export function isAmount(productId) {

@@ -483,9 +483,9 @@ export const PRODUCT_POOLS = {
   ],
   'yemek-karti': [
     'Öğle arası kartı okutunca bakiye bir tuhaf eriyor.',
-    'Kantinde sıra bekleyen herkes bakiyesini aklından hesaplar.',
+    'Kartta üç kuruş kaldı; simit mi alsam, su mu?',
     'Yemek kartı biter, ay sonunda ekmek arası peynir yenir.',
-    'İşyerinde öğle molasının en sadık arkadaşı bu kart.',
+    'Lahmacun ayran derken kart "yetersiz bakiye" dedi, bilader.',
   ],
   yks: [
     'Sınav sabahı annenin hazırladığı kahvaltı boğazdan geçmez.',
