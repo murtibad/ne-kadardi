@@ -116,12 +116,8 @@ function show(screenId) {
     el.hidden = id !== screenId;
     // Animate only newly revealed screens; result-screen has its own printer animation and message-screen is a static notice.
     if (id === screenId && wasHidden && id !== 'result-screen' && id !== 'message-screen') {
-      // Forcing a reflow only restarts a running animation; on a first reveal there is nothing to
-      // restart, and the forced layout of the whole screen cost ~160 ms on a slow phone.
-      if (el.classList.contains('screen-enter')) {
-        el.classList.remove('screen-enter');
-        void el.offsetWidth;
-      }
+      el.classList.remove('screen-enter');
+      void el.offsetWidth;
       el.classList.add('screen-enter');
       // Children run their own animations (fact card, chart line) that bubble up; wait for ours.
       const done = (e) => {
@@ -1221,11 +1217,6 @@ async function init() {
   // menu. They are fetched once the menu is up (see scheduleSoundPrefetch) or on the first touch.
   for (const type of ['touchend', 'click', 'keydown']) {
     window.addEventListener(type, () => sound.prefetch(), { once: true, capture: true });
-  }
-  // A first visit opens the intro as soon as the data is in; warming its module now hides that import
-  // behind the prices.json download. Returning players never pay for it.
-  if (!loadIntroSeen() && (location.hash === '' || location.hash === '#')) {
-    import('./intro.js').catch(() => {});
   }
   try {
     const res = await fetch(DATA_URL);
