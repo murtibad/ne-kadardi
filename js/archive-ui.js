@@ -1,6 +1,6 @@
 // Fiyat Arşivi screen: category/product chips, search, order toggle and the rows-to-chart link.
 // main.js owns `state`; it is read through getters so there is never a second copy.
-import { formatPeriod, formatIncrease } from './format.js';
+import { formatPeriod, formatIncrease, unitLine } from './format.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
 import { pickFromCategory } from './game.js';
 
@@ -170,7 +170,7 @@ function renderTimelineHeader(product) {
   $('t-title').textContent = product.name;
   $('t-explain').textContent = product.explain ?? '';
   $('t-explain').hidden = !product.explain;
-  $('t-unit').textContent = product.region ? `${product.unit} · ${product.region}` : product.unit;
+  $('t-unit').textContent = unitLine(product.unit, product.region);
   const tImg = $('t-image');
   tImg.hidden = !product.image;
   if (product.image) { tImg.src = product.image.src; tImg.onerror = () => { tImg.hidden = true; }; }

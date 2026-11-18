@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.126.1] - 2026-11-18
+### Fixed
+- On narrow phones the unit line no longer ends with a lone "·"; the separator now stays with the region (question card, result, archive, fact card, share image).
+
 ## [0.126.0] - 2026-11-05
 ﻿### Added
 - New product: İzmir toplu taşıma bileti (İzmirim Kart full first boarding on ESHOT bus, metro and tram), 7 values 2022-2026, each confirmed by two separate news sites.

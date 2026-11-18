@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatPeriod, readAmount, formatIncrease, escapeHTML, inPeriod, shortTitle } from './format.js';
+import { parseGuess, formatPrice, formatPeriod, readAmount, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine } from './format.js';
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -209,7 +209,7 @@ function nextQuestion(productId = null, date = null) {
   }
 
   $('q-name').textContent = questionTitle(q);
-  $('q-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
+  $('q-unit').textContent = unitLine(q.unit, q.region);
   $('q-explain').textContent = q.explain ?? '';
   $('q-explain').hidden = !q.explain;
   $('guess-input').value = '';
@@ -476,7 +476,7 @@ function renderResult(q, r) {
   $('r-stamp').classList.remove('stamped');
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   renderResultImage(q);
-  $('r-unit').textContent = q.region ? `${q.unit} · ${q.region}` : q.unit;
+  $('r-unit').textContent = unitLine(q.unit, q.region);
   $('r-guess').textContent = formatPrice(r.guess);
   $('r-actual-label').textContent = actualLabel(q.productId);
   $('r-actual').textContent = formatPrice(q.price);

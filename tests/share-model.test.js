@@ -37,7 +37,7 @@ test('buildShareImageModel handles question without current price and image', ()
   const model = buildShareImageModel(q, r);
   
   assert.equal(model.title, 'Ocak 2015 · Ekmek');
-  assert.equal(model.unit, '250 gram · İstanbul');
+  assert.equal(model.unit, '250 gram · İstanbul');
   assert.equal(model.guess, formatPrice(2));
   assert.equal(model.actual, formatPrice(1));
   assert.equal(model.verdict, '2 kat fazla tahmin ettin');

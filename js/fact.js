@@ -1,5 +1,5 @@
 // "Biliyor muydun?" card on the home screen: one sourced then-and-now pair. No DOM access here.
-import { formatPeriod, formatPrice, formatRatio } from './format.js';
+import { formatPeriod, formatPrice, formatRatio, unitLine } from './format.js';
 
 // Below this the "then vs now" jump is too small to surprise anyone.
 const MIN_RATIO = 2;
@@ -25,7 +25,7 @@ export function pickFact(timelines, { random = Math.random, skipId = null } = {}
   return {
     productId: t.id,
     name: t.name,
-    unit: t.region ? `${t.unit} · ${t.region}` : t.unit,
+    unit: unitLine(t.unit, t.region),
     image: t.image,
     thenLabel: formatPeriod(first.date),
     thenPrice: formatPrice(first.price),
