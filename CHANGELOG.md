@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.126.4] - 2026-11-18
+### Fixed
+- Typing "0.250" now means 0,25 TL, not 250 TL (a leading zero is never a thousands group).
+- After Günün Fişi, the "Fiyat Tahmini" card starts a new question instead of reopening the finished receipt.
+- Back from the price archive during Günün Fişi returns to the result instead of jumping to the next question.
+- The share button no longer keeps the "Fişini paylaş" label in free play after a daily run.
+- Hints for year-only questions use that year's price instead of the year before.
+- The question form folds away when the receipt prints, as designed (its height was read while hidden).
+- A corrupt saved daily run can no longer show "6/5"; "🔥 N gün" shows once a day even if the device clock went back.
+
 ## [0.126.3] - 2026-11-18
 ### Changed
 - Source line in plain words: the Big Mac source is named "The Economist" instead of "GitHub", labels read "yayımlanan tablodan" and "döviz kuruyla hesaplandı", and "· haberlerden" never splits from its label at the end of a line.
