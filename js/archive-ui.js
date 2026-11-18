@@ -215,7 +215,8 @@ function renderTimelineHeader(product) {
   // Coming from a result, the way back is the game, not the menu.
   const back = $('timeline-back');
   const toResult = getState().archiveFromResult && getState().lastGameScreen === 'result-screen';
-  back.href = toResult ? '#tahmin' : '#';
+  // During Günün Fişi the run lives on #gunun-fisi; #tahmin would drop the player out of it.
+  back.href = toResult ? (getState().daily ? '#gunun-fisi' : '#tahmin') : '#';
   back.textContent = toResult ? '← Sonuca dön' : '← Ana menü';
 }
 
@@ -248,7 +249,8 @@ function linkRowsToChart() {
     const linked = rowsContainer.querySelector('tr.is-linked[hidden]');
     if (!linked) return;
     setExpanded(true);
-    linked.scrollIntoView({ block: 'nearest' });
+    // While a finger slides across the chart ('hover') the page must stay put; it scrolls on lift.
+    if ($('t-chart').dataset.source !== 'hover') linked.scrollIntoView({ block: 'nearest' });
   }).observe(rowsContainer, { subtree: true, attributes: true, attributeFilter: ['class'] });
   rowsContainer.addEventListener('click', (e) => {
     if (e.target instanceof Element && e.target.closest('.rows-toggle')) {
