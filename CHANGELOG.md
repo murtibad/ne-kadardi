@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.135.1] - 2026-11-18
+### Fixed
+- The real price rolls for the same time on every phone (on 120 Hz screens it finished in half the time and showed "Güncel" early), and screen readers no longer hear the final price twice.
+- While a finger shows a chart label in the top band, the chart's own price labels underneath are hidden instead of peeking out half-covered.
+
 ## [0.135.0] - 2026-11-18
 ### Added
 - The price box groups thousands as you type ("1250000" -> "1.250.000"), keeping the cursor in place; decimals typed with a comma or a single dot ("4,5", "4.5", "0.75") stay as typed, and deleting a digit from a grouped number keeps it a whole number ("1.250" -> "150").
