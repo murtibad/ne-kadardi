@@ -7,7 +7,7 @@ import { CATEGORIES, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { sourceLinkText } from './source-name.js';
 import { burstConfetti } from './confetti.js';
-import { verdictText, questionTitle } from './share-model.js';
+import { verdictText, questionTitle, skipRevealText, sessionBadge } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
@@ -187,6 +187,11 @@ function nextQuestion(productId = null, date = null) {
     ? `Günün fişi · ${state.daily.index + 1}/${state.daily.ids.length}`
     : cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
   syncSkipBtn();
+  // Shown for exactly one card: a normal next question clears it.
+  const skippedLine = skipRevealText(state.pendingSkip);
+  state.pendingSkip = null;
+  $('q-skipped').textContent = skippedLine;
+  $('q-skipped').hidden = !skippedLine;
   $('q-period').textContent = formatPeriod(q.date);
   state.questionCounter += 1;
   const gated = gatedYearAnchor(yearOf(q.date), state.anchorShown, state.questionCounter);
@@ -292,10 +297,12 @@ function onGuess(event) {
   // Günün Fişi keeps its own total out of 500; the free-play counters ("N soru · ortalama")
   // only count free questions, so the two never mix.
   if (!state.daily) {
+    const prevBest = state.best;
     state.played += 1;
     state.total += state.result.score;
     state.best = Math.max(state.best, state.result.score);
     state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
+    state.result.badge = sessionBadge({ prevBest, score: state.result.score, playedAfter: state.played, recent: state.recentScores });
   }
   state.seen.delete(q.id);
   state.seen.add(q.id);
@@ -583,7 +590,7 @@ function renderResult(q, r) {
     ? `Günün fişi ${dailyRun.done}/${dailyRun.of} · toplam ${dailyRun.total}`
     : `${state.played} soru · ortalama ${Math.round(state.total / Math.max(1, state.played))}`;
   const ticks = state.recentScores.map((s, i, a) => `<span class="tally-dot${i === a.length - 1 ? ' tally-last' : ''}" data-tier="${scoreTier(s)}" title="${s} puan"></span>`).join('');
-  $('r-session').innerHTML = `<span>${sessionText}${streakHint}</span>`
+  $('r-session').innerHTML = `<span>${sessionText}${streakHint}${dailyRun ? '' : r.badge || ''}</span>`
     + (!dailyRun && state.recentScores.length > 1 ? `<span class="tally" role="img" title="Son ${state.recentScores.length} puanın" aria-label="Son ${state.recentScores.length} puanın: ${state.recentScores.join(', ')}"><span class="tally-label" aria-hidden="true">son ${state.recentScores.length} puanın</span>${ticks}</span>` : '');
   showGameScreen('result-screen');
   window.scrollTo(0, 0);
@@ -1211,7 +1218,9 @@ async function init() {
   });
   // Skipping is free: no score and no stats, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
-    if (skipDaily()) return;
+    state.pendingSkip = state.question;
+    const handled = skipDaily();
+    if (handled) { state.pendingSkip = null; return; }
     state.skips += 1;
     nextQuestion(); // its barcode beep doubles as the skip sound
   });

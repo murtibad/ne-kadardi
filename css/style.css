@@ -1731,3 +1731,11 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   .session-actions .actions { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .session-actions .btn, .session-actions .btn.primary, .session-actions .btn.next-btn { white-space: normal; line-height: 1.2; padding: 8px 6px; font-size: 0.875rem; }
 }
+
+/* One-card reveal of the skipped question's price: calm, readable, never floating. */
+.skipped-line { margin: 0 0 10px; padding: 6px 10px; border-left: 3px solid var(--line); font-size: 0.875rem; line-height: 1.35; color: var(--muted-on-paper); text-align: left; }
+.skipped-line[hidden] { display: none; }
+
+/* "Peki ... kaç liraydı?" is an action, not a source line: framed like the menu's .fact-play. */
+.source .followup-btn { display: flex; justify-content: center; width: 100%; margin-top: 10px; padding: 10px 14px; border: 2px solid var(--ink); border-radius: 6px; font-size: 0.9375rem; color: var(--ink); text-decoration: none; text-align: center; }
+.source .followup-btn[hidden] { display: none; }

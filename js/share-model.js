@@ -80,3 +80,21 @@ export function buildShareImageModel(q, r, { contextLine = null, taxLine = null 
     siteAddress: 'murtibad.github.io/ne-kadardi'
   };
 }
+
+// Skipping used to hide the price for good, which kills curiosity: the next card shows it once.
+export function skipRevealText(q) {
+  if (!q || !Number.isFinite(q.price)) return '';
+  return `Geçtiğin soru: ${formatPeriod(q.date)} · ${questionTitle(q).replace(/\s*\(.*\)$/, '')} — ${formatPrice(q.price)}`;
+}
+
+const CLOSE_SCORE = 75;
+const CLOSE_STREAK = 3;
+
+// Suffix for the result screen's session line. `prevBest` is the best before this answer,
+// `recent` already includes it. A new record wins over the 3-close-guesses note.
+export function sessionBadge({ prevBest, score, playedAfter, recent }) {
+  if (playedAfter >= 2 && score > prevBest) return ' · 🎯 Yeni rekor!';
+  const last = recent.slice(-CLOSE_STREAK);
+  if (last.length === CLOSE_STREAK && last.every((s) => s >= CLOSE_SCORE)) return ' · Üst üste 3 yakın tahmin!';
+  return '';
+}

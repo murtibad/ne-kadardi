@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.133.0] - 2026-11-18
+### Added
+- After "Bu soruyu geç", the next card shows the skipped answer for one question ("Geçtiğin soru: Ocak 2016 · Benzin — ₺4,28"), in free play and in Günün Fişi.
+- The session line celebrates a new best score ("🎯 Yeni rekor!") or three close guesses in a row (free play only).
+- Changed
+- The "Peki … kaç liraydı? →" link is a framed button, so it no longer looks like a source line.
+
 ## [0.132.0] - 2026-11-18
 ### Added
 - Typing a price with kuruş shows it back in words under the box ("4,5" -> "4 lira 50 kuruş", "0,75" -> "75 kuruş"), so players see that the comma or dot was read the way they meant.
