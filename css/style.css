@@ -1289,7 +1289,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 }
 #home-screen.screen-enter .home-intro,
 #home-screen.screen-enter .mode-list > .mode-card,
-#home-screen.screen-enter #fact-card {
+#home-screen.screen-enter #fact-card,
+#home-screen.screen-enter #install-btn {
   animation: home-rise 0.32s cubic-bezier(.2, .8, .2, 1) backwards; /* backwards: covers the delay only, so :hover/:active transforms work at once */
 }
 #home-screen.screen-enter .home-intro { animation-delay: 0ms; }
@@ -1297,6 +1298,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 #home-screen.screen-enter .mode-list > :nth-child(2) { animation-delay: 100ms; }
 #home-screen.screen-enter .mode-list > :nth-child(3) { animation-delay: 150ms; }
 #home-screen.screen-enter #fact-card { animation-delay: 200ms; }
+#home-screen.screen-enter #install-btn { animation-delay: 250ms; }
 @keyframes home-rise {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
@@ -1318,7 +1320,22 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .tally-label { font: 700 0.8125rem var(--font-mono); color: var(--muted); margin-right: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
 
 /* Offline badge in the header and the product icon popping onto each new question card */
-.offline-badge { display: inline-flex; align-items: center; min-height: 28px; padding: 2px 10px; border: 1.5px dashed var(--muted); border-radius: 999px; font: 700 0.75rem var(--font-mono); color: var(--muted); }
+/* Pops in when going offline so the status change catches the eye */
+.offline-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 2px 10px;
+  border: 1.5px dashed var(--muted);
+  border-radius: 999px;
+  font: 700 0.75rem var(--font-mono);
+  color: var(--muted);
+  animation: offline-pop 0.24s cubic-bezier(.2, 1.4, .4, 1);
+}
+@keyframes offline-pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 .product-image.pop { animation: icon-pop 0.35s cubic-bezier(.2, 1.4, .4, 1) both; }
 @keyframes icon-pop { from { transform: scale(0.6) rotate(-8deg); opacity: 0; } to { transform: none; opacity: 1; } }
 .header-tools { margin-left: auto; } /* stays on the right when the badge makes the header wrap */
@@ -1915,6 +1932,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 @media (max-width: 389px) {
   .header-tools { gap: 4px; }
   .site-header .logo { font-size: 1.125rem; }
+  .offline-badge { padding: 2px 7px; font-size: 0.6875rem; }
 }
 #timeline-screen .timeline-header { margin-top: -4px; }
 @media (max-width: 389px) {
