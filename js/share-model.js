@@ -115,3 +115,16 @@ export function sessionBadge({ prevBest, score, playedAfter, recent }) {
   if (run >= CLOSE_STREAK) return ` · Üst üste ${run} yakın tahmin!`;
   return '';
 }
+
+const WRAP_MIN = 3;
+
+// One kind line for the menu after a run of free questions. Empty below WRAP_MIN answers.
+export function sessionWrapText(count, avg) {
+  if (!Number.isFinite(count) || count < WRAP_MIN || !Number.isFinite(avg)) return '';
+  const a = Math.round(avg);
+  const close = a < 30 ? 'Fiyatlar zor, ama her soruda biraz daha alışıyorsun.'
+    : a < 60 ? 'Fena değil, bir dahakine daha da yaklaşırsın.'
+    : a < 80 ? 'İyi gidiyorsun!'
+    : 'Çok iyi, fiyatları ezberlemişsin!';
+  return `Bu sefer ${count} soru çözdün, ortalaman ${a}. ${close}`;
+}
