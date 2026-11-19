@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.11] - 2026-11-19
+### Changed
+- A wildly off guess (100 times or more) no longer shows a meaningless "350.661 kat fazla": the verdict simply says "Çok fazla yazdın, çok daha azdı" (or "Çok az yazdın, çok daha fazlaydı").
+
 ## [0.140.10] - 2026-11-19
 ### Fixed
 - A quick double tap on "Tahmin et" no longer scores the same question twice (it inflated the question count and average).

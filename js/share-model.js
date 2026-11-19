@@ -14,11 +14,19 @@ export function buildShareText(q, r, url) {
   ].join('\n');
 }
 
+// From this ratio up the number itself is noise ("350.661 kat"): say it in words.
+export const HUGE_RATIO = 100;
+
 export function verdictText(r) {
   if (r.factor === 1) return 'Tam isabet! 🎯';
   if (r.direction === 'exact') return 'Neredeyse tam isabet!';
   // "1,2 kat az" reads like a puzzle; a near miss says so in words.
   if (r.factor < 1.5) return `Biraz ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
+  if (r.factor >= HUGE_RATIO) {
+    return r.direction === 'over'
+      ? 'Çok fazla yazdın, çok daha azdı'
+      : 'Çok az yazdın, çok daha fazlaydı';
+  }
   return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
 }
 
