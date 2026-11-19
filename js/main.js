@@ -896,6 +896,48 @@ function renderHomeSpark() {
 }
 
 let lastFactId = null;
+let factSwapping = false;
+
+// Spin the arrow once and slide the old fact out before rendering the new one;
+// ignore double-clicks during the 120ms exit to prevent card height flickering.
+function swapFact() {
+  if (factSwapping) return;
+  const icon = $('fact-next')?.querySelector('.fact-spin');
+  if (icon?.animate) {
+    icon.animate(
+      [
+        { transform: 'rotate(0deg)' },
+        { transform: 'rotate(360deg)' },
+      ],
+      { duration: 450, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' }
+    );
+  }
+  const body = $('fact-body');
+  if (!body || !body.hasChildNodes() || !body.animate) {
+    sound.play('beep');
+    renderFact();
+    return;
+  }
+  factSwapping = true;
+  sound.play('beep');
+  const anim = body.animate(
+    [
+      { opacity: 1, transform: 'translateX(0)' },
+      { opacity: 0, transform: 'translateX(-8px)' },
+    ],
+    // forwards: the old text must not flash back for a frame before the new one is in.
+    { duration: 120, easing: 'ease-out', fill: 'forwards' }
+  );
+  anim.onfinish = () => {
+    factSwapping = false;
+    renderFact();
+    anim.cancel();
+  };
+  anim.oncancel = () => {
+    factSwapping = false;
+  };
+}
+
 function renderFact() {
   const f = pickFact(state.timelines, { skipId: lastFactId });
   $('fact-card').hidden = !f;
@@ -1090,7 +1132,7 @@ async function init() {
   state.openerIndex = 0;
   renderThemeToggle();
   $('theme-toggle').addEventListener('click', toggleTheme);
-  $('fact-next').addEventListener('click', () => { sound.play('beep'); renderFact(); });
+  $('fact-next').addEventListener('click', swapFact);
   setupInstallButton();
   // Chip rows fade at the right edge; once scrolled, the left edge fades too.
   for (const row of document.querySelectorAll('.timeline-scroll')) {
