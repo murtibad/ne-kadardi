@@ -467,6 +467,19 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   margin: 0;
 }
 
+/* The session line waits for the receipt handover so it does not distract from
+   the price count-up; buttons stay interactive and the bar height never shifts. */
+#result-screen:not(.handed) #r-session {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: none;
+}
+#result-screen.handed #r-session {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
 .actions { 
   display: flex; 
   gap: 12px; 

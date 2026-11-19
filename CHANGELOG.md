@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.8] - 2026-11-19
+### Changed
+- The bottom bar's session line ("İlk soru tamam", average, record) appears when the receipt is handed over, so the price count-up has the stage; the buttons stay tappable throughout.
+
 ## [0.138.7] - 2026-11-19
 ### Fixed
 - First visit: all sounds are decoded ahead of time even after the intro already made a sound.
