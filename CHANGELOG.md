@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.14] - 2026-11-19
+### Changed
+- "Puan nasıl hesaplanır?" now has a worked example (real price 100, you wrote 200 or 50 → 61 points) and mentions that two hints cost 40 %.
+- Two cashier lines no longer claim an exact hit under a near-miss verdict ("Az kalsın kuruşu kuruşuna, çay benden").
+
 ## [0.141.13] - 2026-11-19
 ### Fixed
 - Result source line: the source type ("haberlerden", "resmî kayıt") sits as a small caption under the source link instead of wrapping alone with a dangling "·" on phones.
