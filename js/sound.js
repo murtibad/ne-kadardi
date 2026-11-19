@@ -222,11 +222,15 @@ export function createSoundPlayer(options = {}) {
   // (it just starts suspended), so this runs in idle time; the first tap's unlock() then only resumes it.
   // Decoding works on a suspended context, so the samples are ready too.
   function prime() {
-    if (!enabled || ctx || !AudioContextCtor || typeof fetchFn !== 'function') return false;
-    try {
-      ctx = new AudioContextCtor();
-    } catch {
-      return false;
+    if (!enabled || !AudioContextCtor || typeof fetchFn !== 'function') return false;
+    // Reuse an existing context (e.g. when the first-visit intro plays 'print' before idle prime runs)
+    // so the remaining samples still get decoded ahead of time.
+    if (!ctx) {
+      try {
+        ctx = new AudioContextCtor();
+      } catch {
+        return false;
+      }
     }
     for (const name of Object.keys(SOUND_FILES)) {
       load(ctx, name);
