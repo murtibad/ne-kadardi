@@ -115,6 +115,8 @@ function show(screenId) {
     const el = $(id);
     const wasHidden = el.hidden;
     el.hidden = id !== screenId;
+    // A result we walk away from is finished: when it is shown again, its one-shot animations must not replay.
+    if (id === 'result-screen' && !wasHidden && id !== screenId) el.classList.add('revisit');
     // Animate only newly revealed screens; result-screen has its own printer animation and message-screen is a static notice.
     if (id === screenId && wasHidden && id !== 'result-screen' && id !== 'message-screen') {
       el.classList.remove('screen-enter');
@@ -200,6 +202,7 @@ function nextQuestion(productId = null, date = null) {
   const anchor = gated.text;
   $('q-anchor').textContent = anchor || '';
   $('q-anchor').hidden = !anchor;
+  $('q-anchor').classList.remove('friend-line');
   
   const img = $('q-image');
   img.classList.remove('pop');
@@ -567,6 +570,7 @@ function renderResultImage(q) {
 
 // Decorative before/after bars under the context sentence (the sentence stays the accessible text).
 function renderResult(q, r) {
+  $('result-screen').classList.remove('revisit');
   stopCountUp();
   stopScoreRoll();
   $('r-stamp').classList.remove('stamped');
@@ -1274,6 +1278,7 @@ async function init() {
     state.friendScore = parsedSoru.score ?? null;
     $('q-anchor').textContent = friendIntroText(state.friendScore);
     $('q-anchor').hidden = false;
+    $('q-anchor').classList.add('friend-line'); // kept even on very short screens, unlike the year anecdote
     return;
   }
   if (rawSoru !== null || rawP !== null) {

@@ -161,13 +161,15 @@ export function bindPriceChart(fig, chart, onActive) {
     priceTspan.setAttribute('x', boxX + 6);
     priceTspan.setAttribute('y', boxY + fontPx * 2 + 3);
     // A thin guide from the label down through the point ties the label to its year while a finger scrubs.
+    // Drawn only in the gap between label and dot: never through the hollow dot, never when the label sits on it.
     if (cursor) {
       const boxBottom = boxY + fontPx * 2 + 8;
-      const below = boxBottom <= p.y;
+      const gapEnd = p.y - 7;
+      cursor.toggleAttribute('hidden', gapEnd - boxBottom < 4);
       cursor.setAttribute('x1', p.x);
       cursor.setAttribute('x2', p.x);
-      cursor.setAttribute('y1', below ? boxBottom : p.y);
-      cursor.setAttribute('y2', chart.height - 22);
+      cursor.setAttribute('y1', boxBottom);
+      cursor.setAttribute('y2', gapEnd);
     }
     document.addEventListener('pointerdown', onOutsideDown);
     if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
