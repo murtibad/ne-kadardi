@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.16] - 2026-11-19
+### Changed
+- Dark mode: keyboard focus rings on the page itself (header buttons, menu cards, footer links) use the brighter page red (5.0:1 instead of 3.5:1).
+
 ## [0.140.15] - 2026-11-19
 ### Changed
 - On phones, tapping the price box also brings the "Tahmin et" button into view when the keyboard or a landscape screen would hide it (only scrolls as much as needed; the box itself stays visible).
