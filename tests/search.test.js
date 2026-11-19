@@ -102,3 +102,30 @@ test('exact hits win and do not add fuzzy extras', () => {
     ['Altn']
   );
 });
+
+test('everyday words find the product they mean', () => {
+  const items = [
+    { id: 'motorin', name: 'Motorin' },
+    { id: 'benzin', name: 'Benzin (kurşunsuz 95)' },
+    { id: 'istanbul-ulasim', name: 'Toplu taşıma bileti' },
+    { id: 'dolar', name: 'Amerikan doları' },
+    { id: 'netflix', name: 'Netflix aboneliği' },
+    { id: 'kurban-vekalet-bedeli', name: 'Kurban vekâlet bedeli (Diyanet / TDV)' },
+  ];
+  const ids = (q) => filterByQuery(items, q).map((i) => i.id);
+  assert.deepEqual(ids('mazot'), ['motorin']);
+  assert.deepEqual(ids('akbil'), ['istanbul-ulasim']);
+  assert.deepEqual(ids('döviz'), ['dolar']);
+  assert.deepEqual(ids('dizi'), ['netflix']);
+  assert.deepEqual(ids('akaryakıt'), ['motorin', 'benzin']);
+  // Names still win as before; an alias never hides a direct name match.
+  assert.deepEqual(ids('benzin'), ['benzin']);
+});
+
+test('every alias key is a real product id', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { ALIASES } = await import('../js/search.js');
+  const data = JSON.parse(readFileSync(new URL('../data/prices.json', import.meta.url), 'utf8'));
+  const ids = new Set(data.products.map((p) => p.id));
+  for (const id of Object.keys(ALIASES)) assert.ok(ids.has(id), `unknown product id in ALIASES: ${id}`);
+});
