@@ -795,6 +795,10 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
 .hint-row strong { font-weight: 700; }
 
 
+/* Theme switch with View Transitions: the new page is revealed by a growing circle (clip-path set from
+   main.js), so both snapshots must stay still and fully opaque instead of the default cross-fade. */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
 /* Short colour fade when the theme is switched by hand (class is set for ~400ms by main.js) */
 html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
     transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, fill 0.35s ease !important;
