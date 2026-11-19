@@ -599,7 +599,8 @@ function renderResult(q, r) {
   $('r-current-row').hidden = !hasCurrent;
   $('r-increase-row').hidden = !hasCurrent;
   if (hasCurrent) {
-    $('r-current-label').textContent = `${q.current.label || 'Güncel'} (${formatPeriod(q.current.date)})`;
+    // The month and year stay together on narrow screens: "Güncel / (Kasım 2026)", never "(Kasım / 2026)".
+    $('r-current-label').textContent = `${q.current.label || 'Güncel'} (${formatPeriod(q.current.date).replace(/ /g, ' ')})`;
     $('r-current').textContent = formatPrice(q.current.price);
     // A newer model ("En yeni iPhone 17") is a different item, so "Değişim" would read as if this one got pricier.
     const ratio = q.current.price / q.price;
