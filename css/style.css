@@ -1645,6 +1645,14 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 }
 .intro-row-price.landed {
   color: var(--accent-on-paper);
+  /* Each price "clunks" into place as it reaches today, one row after another (stagger set in intro.js). */
+  display: inline-block;
+  transform-origin: right center;
+  animation: intro-price-land 0.26s cubic-bezier(.2,1.4,.4,1);
+}
+@keyframes intro-price-land {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.14); }
 }
 .intro-stamp {
   margin: 14px auto 0;

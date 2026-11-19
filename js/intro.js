@@ -204,7 +204,8 @@ export function playIntro(dialogEl, rows, { sound = null } = {}) {
       const el = priceEls[i];
       if (!el) return;
       const yearDone = lastYearShown >= r.toYear;
-      if (yearDone && elapsed > 2400) {
+      // Rows land 90 ms apart so the three prices arrive in a 1-2-3 beat.
+      if (yearDone && elapsed > 2400 + i * 90) {
         if (!el.classList.contains('landed')) {
           el.textContent = formatPrice(r.to);
           el.classList.add('landed');
@@ -214,7 +215,7 @@ export function playIntro(dialogEl, rows, { sound = null } = {}) {
       }
     });
 
-    if (elapsed < 2600) {
+    if (elapsed < 2700) { // the last row lands at ~2.58 s
       rafId = requestAnimationFrame(step);
     } else {
       rafId = null;
