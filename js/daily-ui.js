@@ -1,7 +1,7 @@
 // Günün Fişi UI: storage, the menu card, the #gunun-fisi route and the end-of-run receipt card.
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPeriod, escapeHTML } from './format.js';
-import { FOLLOW_UP_IDS, streakAlive } from './game.js';
+import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
@@ -133,13 +133,24 @@ export function startOrShareDaily() {
   }
 }
 
-// Rows with date, product, real price and score; shared by the end-of-run card and the review dialog.
-function dailyLines(all, ids, scores) {
+// Rows with date, product, real price, score and colour tier; shared by the end-of-run card and the review dialog.
+export function dailyLines(all, ids, scores) {
   return ids.map((id, i) => {
+    const raw = scores?.[i];
+    const score = Number.isFinite(raw) ? raw : 0;
+    const tier = score > 0 ? scoreTier(score) : null;
     const dq = all.find((x) => x.id === id);
-    if (!dq) return { label: 'Soru', detail: `${scores[i] ?? 0} puan` };
-    return dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score: scores[i] ?? 0 });
+    if (!dq) return { label: 'Soru', detail: `${score} puan`, tier };
+    return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score }), tier };
   });
+}
+
+function renderDailyRows(lines) {
+  return lines.map((l, i) => {
+    const tierAttr = l.tier ? ` data-tier="${escapeHTML(l.tier)}"` : '';
+    const dot = `<span class="tally-dot"${tierAttr} aria-hidden="true"></span>`;
+    return `<li style="--row-i:${i}"><span>${dot}${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`;
+  }).join('');
 }
 
 // Finished receipt from the menu: show the five rows again; sharing stays one tap away inside.
@@ -159,8 +170,7 @@ function openDailyReview(saved) {
   reviewSaved = saved;
   const total = saved.scores.reduce((s, n) => s + n, 0);
   $('daily-review-title').textContent = dailyTitle(saved.key);
-  $('daily-review-lines').innerHTML = dailyLines(state.all, saved.ids, saved.scores)
-    .map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`).join('');
+  $('daily-review-lines').innerHTML = renderDailyRows(dailyLines(state.all, saved.ids, saved.scores));
   $('daily-review-total').textContent = dailyReviewTotalLine(total, reviewStreak());
   $('daily-review-next').textContent = nextReceiptIn();
   // A fresh open must not inherit "kopyalandı" from a share made just before closing.
@@ -236,7 +246,7 @@ export function renderDailyCard() {
   const total = scores.reduce((s, n) => s + n, 0);
   state.reportCard = { daily: true, key, scores };
   $('r-card-title').textContent = dailyTitle(key);
-  $('r-card-lines').innerHTML = lines.map((l) => `<li><span>${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`).join('');
+  $('r-card-lines').innerHTML = renderDailyRows(lines);
   $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
   // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
   dailyEndTurn = true;

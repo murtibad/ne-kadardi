@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine } from '../js/daily.js';
+import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
 const sampleQuestions = [
@@ -191,4 +192,26 @@ test('dailyReviewTotalLine adds the streak only from 2 days up', () => {
   assert.equal(dailyReviewTotalLine(156, 0), 'Toplam: 156/500');
   assert.equal(dailyReviewTotalLine(156, 1), 'Toplam: 156/500');
   assert.equal(dailyReviewTotalLine(156, 3), 'Toplam: 156/500 · 🔥 3 gün üst üste');
+});
+
+test('dailyLines maps answered scores to their colour tier and skipped/unanswered rows to null', () => {
+  const all = [
+    { id: 'benzin@2016-01', productId: 'benzin', name: 'Benzin', date: '2016-01', price: 4.28 },
+    { id: 'dolar@2015-01', productId: 'dolar', name: 'Dolar', date: '2015-01', price: 2.33 },
+    { id: 'ekmek@2014-01', productId: 'ekmek', name: 'Halk Ekmek', date: '2014-01', price: 0.6 },
+    { id: 'simit@2018-01', productId: 'simit', name: 'Simit', date: '2018-01', price: 1.5 },
+    { id: 'cay@2019-01', productId: 'cay', name: 'Çay', date: '2019-01', price: 25 },
+  ];
+  const ids = all.map((q) => q.id);
+  const answered = dailyLines(all, ids, [90, 75, 50, 25, 10]);
+  assert.deepEqual(answered.map((l) => l.tier), ['great', 'good', 'mid', 'poor', 'bad']);
+  assert.equal(answered[0].label, 'Ocak 2016 · Benzin');
+  assert.equal(answered[0].detail, '₺4,28 · 90 puan');
+
+  const withSkips = dailyLines(all, ['benzin@2016-01', 'dolar@2015-01', 'missing@2020-01'], [0, null]);
+  assert.deepEqual(withSkips, [
+    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 0 puan', tier: null },
+    { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: null },
+    { label: 'Soru', detail: '0 puan', tier: null },
+  ]);
 });
