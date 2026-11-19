@@ -319,6 +319,7 @@ function onGuess(event) {
     hintProductId: state.hintProductId,
     streakBump: firstToday && state.streak.count >= 2 ? state.streak.count : 0,
   };
+  if (state.result.streakBump) streakFlarePending = true;
   // Günün Fişi keeps its own total out of 500; the free-play counters ("N soru · ortalama")
   // only count free questions, so the two never mix.
   if (!state.daily) {
@@ -890,6 +891,7 @@ async function renderTimelineScreen(focusProductId = null) {
 
 // Day the menu was last drawn for: the streak lines ("Serini koru", "🔥 N gün") go stale after midnight.
 let homeDay = null;
+let streakFlarePending = false;
 function refreshHomeIfNewDay() {
   if (document.visibilityState !== 'visible' || $('home-screen').hidden || homeDay === null) return;
   if (dayKey() !== homeDay) renderHome();
@@ -933,6 +935,10 @@ function renderHome() {
   $('m-go').textContent = !state.question ? 'Başla →'
     : state.lastGameScreen === 'result-screen' ? `Sonuca dön · Soru ${state.round} →` : `Devam et · Soru ${state.round} →`;
   show('home-screen');
+  if (streakFlarePending) {
+    motion($('m-tahmin'), [{ backgroundColor: 'rgba(224,160,32,0)' }, { backgroundColor: 'rgba(224,160,32,.28)' }, { backgroundColor: 'rgba(224,160,32,0)' }], 900, 'ease-out');
+    streakFlarePending = false;
+  }
 }
 
 // A tiny gold-price line on the archive card hints at what is inside; decorative only.

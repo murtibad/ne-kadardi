@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.5] - 2026-11-19
+### Changed
+- The day your streak grows, the "🔥 N gün üst üste" line on the menu card lights up once in warm gold (text stays still).
+
 ## [0.141.4] - 2026-11-19
 ### Added
 - After 3 or more questions in one sitting, the menu greets you once with a short wrap-up: "Bu sefer 7 soru çözdün, ortalaman 64. İyi gidiyorsun!" (kind wording for low averages too).
