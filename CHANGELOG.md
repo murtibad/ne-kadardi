@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.20] - 2026-11-19
+### Fixed
+- Uzun tahminler (99.999.999 gibi) 360 px telefonda son hanesi ₺ işaretinin altında kesiliyordu; taşan sayıda yazı bir-iki kademe küçülüyor. Maaş/miktar sorusunda 'o kadar da kötü değildi durum' 0 puanlık tahmine övgü gibi okunuyordu → 'o günler o kadar da kötü değildi'.
+
 ## [0.141.19] - 2026-11-19
 ### Fixed
 - Screen readers now hear one clear sentence after a guess ("Gerçek fiyat ₺4,44. Biraz az tahmin ettin. Puanın 99.") instead of the whole receipt read out as two dozen fragments in page order.
