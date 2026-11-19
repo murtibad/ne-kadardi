@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.17] - 2026-11-19
+### Changed
+- First-visit intro: the skip button says "Tanıtımı atla" instead of "Geç →", and "Ana menüye geç" is a full-width outlined button instead of a small link.
+
 ## [0.140.16] - 2026-11-19
 ### Changed
 - Dark mode: keyboard focus rings on the page itself (header buttons, menu cards, footer links) use the brighter page red (5.0:1 instead of 3.5:1).
