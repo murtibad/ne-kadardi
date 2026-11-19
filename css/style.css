@@ -27,12 +27,13 @@
   --tier-mid: #8a5300;
   --tier-poor: #a8420a;
   --tier-bad: #9b1c1c;
-  /* Vivid versions for the meter fill and box tint (never used for text) */
-  --fill-great: #1f9d55;
-  --fill-good: #84cc16;
-  --fill-mid: #f5b301;
-  --fill-poor: #f97316;
-  --fill-bad: #dc2626;
+  /* Fill versions for the meter, tally dots and box tint (never used for text). Warm stamp-pad inks
+     instead of the old neon lime/orange, so they sit with the cream receipt paper. */
+  --fill-great: #23935a;
+  --fill-good: #74a62c;
+  --fill-mid: #e0a020;
+  --fill-poor: #df6a2b;
+  --fill-bad: #cc3333;
   
   --font-ui: 'DM Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'Space Mono', ui-monospace, monospace;

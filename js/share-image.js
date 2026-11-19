@@ -4,14 +4,14 @@ import { refLabelAtStart } from './price-chart.js';
 const W = 1080;
 
 export const COLORS = {
-  bg: '#f4f1ea',
+  bg: '#e4ded1', // same warm greige as the page (--bg), so the paper stands out
   paper: '#fffcf5',
   ink: '#181818',
   muted: '#737068',
   accent: '#d32f2f',
   // Dark enough to read on the cream receipt paper (>= 4.5:1)
   tier: { great: '#14532d', good: '#2f6b1f', mid: '#8a5300', poor: '#a8420a', bad: '#9b1c1c' },
-  fill: { great: '#1f9d55', good: '#84cc16', mid: '#f5b301', poor: '#f97316', bad: '#dc2626' },
+  fill: { great: '#23935a', good: '#74a62c', mid: '#e0a020', poor: '#df6a2b', bad: '#cc3333' },
 };
 
 export function loadFonts() {
