@@ -15,7 +15,7 @@ test('skipRevealText is empty without a usable question', () => {
 });
 
 test('sessionBadge: record needs a second answer and a higher score', () => {
-  assert.match(sessionBadge({ prevBest: 80, score: 90, playedAfter: 2, recent: [50, 90] }), /Yeni rekor/);
+  assert.match(sessionBadge({ prevBest: 80, score: 90, playedAfter: 2, recent: [50, 90] }), /Yeni rekor! \(öncekisi 80\)/);
   assert.equal(sessionBadge({ prevBest: 0, score: 90, playedAfter: 1, recent: [90] }), '');
   assert.equal(sessionBadge({ prevBest: 90, score: 90, playedAfter: 3, recent: [50, 60, 90] }), '');
 });
@@ -23,7 +23,7 @@ test('sessionBadge: record needs a second answer and a higher score', () => {
 test('sessionBadge: three close guesses, record takes precedence', () => {
   assert.match(sessionBadge({ prevBest: 99, score: 80, playedAfter: 5, recent: [10, 75, 80, 80] }), /Üst üste 3/);
   assert.equal(sessionBadge({ prevBest: 99, score: 80, playedAfter: 5, recent: [74, 80, 80] }), '');
-  assert.equal(sessionBadge({ prevBest: 70, score: 80, playedAfter: 5, recent: [80, 80, 80] }), ' · 🎯 Yeni rekor!');
+  assert.equal(sessionBadge({ prevBest: 70, score: 80, playedAfter: 5, recent: [80, 80, 80] }), ' · 🎯 Yeni rekor! (öncekisi 70)');
 });
 
 test('sessionBadge: a low score is never a record; the close run is counted in full', () => {
