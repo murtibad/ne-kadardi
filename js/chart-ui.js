@@ -84,7 +84,7 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
       ${refLine}${dots}${priceLabels}${ticks}
-      <g class="pc-tip" hidden><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
+      <g class="pc-tip" hidden><line class="pc-cursor"/><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
     <span class="visually-hidden" aria-live="polite"></span>
     <figcaption>Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}</figcaption>`;
@@ -111,6 +111,7 @@ export function bindPriceChart(fig, chart, onActive) {
   const svgEl = fig.querySelector('svg');
   const tip = svgEl.querySelector('.pc-tip');
   const rect = tip.querySelector('rect');
+  const cursor = tip.querySelector('.pc-cursor');
   const periodTspan = tip.querySelector('.pc-tip-period');
   const priceTspan = tip.querySelector('.pc-tip-price');
   const dotEls = svgEl.querySelectorAll('.pc-dot, .pc-now, .pc-mark');
@@ -159,6 +160,15 @@ export function bindPriceChart(fig, chart, onActive) {
     periodTspan.setAttribute('y', boxY + fontPx + 1);
     priceTspan.setAttribute('x', boxX + 6);
     priceTspan.setAttribute('y', boxY + fontPx * 2 + 3);
+    // A thin guide from the label down through the point ties the label to its year while a finger scrubs.
+    if (cursor) {
+      const boxBottom = boxY + fontPx * 2 + 8;
+      const below = boxBottom <= p.y;
+      cursor.setAttribute('x1', p.x);
+      cursor.setAttribute('x2', p.x);
+      cursor.setAttribute('y1', below ? boxBottom : p.y);
+      cursor.setAttribute('y2', chart.height - 22);
+    }
     document.addEventListener('pointerdown', onOutsideDown);
     if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
     onActive?.(p, source);
@@ -202,7 +212,11 @@ export function bindPriceChart(fig, chart, onActive) {
       if (idx < 0 || idx === dismissedIdx) return;
       dismissedIdx = -1;
       // 'hover' while the finger moves: the archive must not scroll its table away from under the finger.
-      if (tip.hidden || idx !== activeIdx) showTip(idx, false, 'hover', e.pointerType);
+      if (tip.hidden || idx !== activeIdx) {
+        // A tiny tick each time the finger reaches a new year, like the notches of a dial.
+        if (e.pointerType === 'touch' && !tip.hidden) deps?.onScrubTick?.();
+        showTip(idx, false, 'hover', e.pointerType);
+      }
     } else if (e.type === 'pointercancel') {
       // The browser took the touch for a vertical page scroll: do not leave the label stuck on the chart.
       dismissedIdx = -1;
