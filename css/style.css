@@ -2175,3 +2175,19 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 .timeline-order { align-items: center; margin-bottom: 4px; }
 .timeline-count { min-width: 7ch; text-align: right; font-variant-numeric: tabular-nums; flex: none; } /* wide enough for "81 ürün", so the search box edge stays put while typing */
 .timeline-empty { margin: 4px 4px 12px; font-size: 0.9375rem; color: var(--muted); }
+
+/* Result receipt polish: one 12px rhythm between the blocks under the rows (was a mix of 10/12/16),
+   one 4px corner radius for verdict, context, chart and follow-up button, one quiet tint for the
+   context box in both themes (the paper stays light in dark mode, so the old 10% dark tint looked dirty),
+   and a lighter follow-up button border so it no longer outweighs "Sonraki soru". */
+#r-receipt .verdict-box { margin: 12px 0; border-radius: 4px; }
+#r-receipt .score-box { margin: 12px 0; }
+#r-receipt .cashier-line { margin-bottom: 12px; }
+#r-receipt #r-context,
+:root[data-theme="dark"] #r-receipt #r-context { margin-bottom: 12px; border-radius: 4px; background: rgba(0, 0, 0, 0.04); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #r-receipt #r-context { background: rgba(0, 0, 0, 0.04); }
+}
+#r-receipt #r-chart.price-chart { margin: 12px 0; }
+#r-receipt .source .followup-btn { margin: 12px 0 4px; border-width: 1.5px; border-radius: 4px; }
+/* end result receipt polish */

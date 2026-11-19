@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.12] - 2026-11-19
+### Changed
+- Result receipt tidier: the blocks under the prices share one 12 px rhythm, the verdict, context, chart and follow-up boxes share the same corner radius, the context box tint matches in dark mode, and the follow-up button is a little lighter than "Sonraki soru".
+
 ## [0.141.11] - 2026-11-19
 ### Changed
 - The session wrap-up says "Bu oturumda …" so its average is not confused with the all-time one on the card, with warmer closing words ("Eski fiyatları hatırlamak kolay değil, olsun.", "Harika, dün gibi aklında!").
