@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.7] - 2026-11-19
+### Changed
+- The "Çevrimdışı" badge pops in when the connection drops and explains on hover that the game keeps working; it is more compact on small phones. The "ana ekrana ekle" button joins the menu's entrance cascade.
+
 ## [0.140.6] - 2026-11-19
 ### Changed
 - Günün Fişi receipt (end card and "Fişini gör"): each row starts with a dot in its score colour (an empty ring when it earned no points), and the five rows print in one after another.
