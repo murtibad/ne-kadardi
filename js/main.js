@@ -665,7 +665,7 @@ function renderResult(q, r) {
   renderTaxDetails(q);
 
   $('r-archive').textContent = isAmount(q.productId) ? 'Yıllar içindeki tutarları →' : 'Bu ürünün fiyat geçmişi →';
-  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; state.archiveFromResult = true; };
+  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; state.archiveFromResult = true; state.archivePin = { productId: q.productId, date: q.date }; };
   $('r-source').href = q.source.url;
   // Publisher + year keeps "Kaynak: …" on one row; the full headline stays in title/aria-label.
   $('r-source').textContent = sourceLinkText(q.source, q.date) || shortTitle(q.source.title);

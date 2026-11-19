@@ -7,6 +7,7 @@ import { renderPriceChart } from './chart-ui.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
+const pinScrolled = new WeakSet(); // pins already scrolled to
 let tableMod = null; // archive-table.js, set once the lazy modules are loaded
 let expandedFor = null; // product id whose long table is fully open
 const getState = () => deps.getState();
@@ -94,11 +95,20 @@ export async function renderTimelineScreen(focusProductId = null) {
   const seenDates = new Set(
     product.rows.filter((r) => getState().seen.has(`${product.id}@${r.date}`)).map((r) => r.date),
   );
+  // Opened from a result: pin the date the player just answered (only for that same product).
+  const pin = getState().archiveFromResult && getState().archivePin?.productId === product.id ? getState().archivePin : null;
+  if (pin && tableMod.pinHiddenByCollapse(product.rows, pin.date)) expandedFor = product.id;
   $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
-    newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id,
+    newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id, pinnedDate: pin?.date ?? null,
   });
-  renderPriceChart('t-chart', product.id);
+  renderPriceChart('t-chart', product.id, pin?.date ?? null);
   linkRowsToChart();
+  if (pin && !pinScrolled.has(pin)) {
+    pinScrolled.add(pin); // once per opening; later re-renders (order, search) must not jump
+    const row = $('t-rows-container').querySelector('tr.is-pinned');
+    const r = row?.getBoundingClientRect();
+    if (r && (r.top < 0 || r.bottom > window.innerHeight)) row.scrollIntoView({ block: 'center' });
+  }
 }
 
 function renderCategoryChips() {

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.0] - 2026-11-19
+### Added
+- Opening the price history from a result pins the date you just played: its point is marked on the chart, its row is outlined, and older years open up if it was hidden among them.
+
 ## [0.139.0] - 2026-11-19
 ### Added
 - Price archive search understands everyday words: "mazot", "akbil", "istanbulkart", "döviz", "araba", "maaş", "telefon", "dizi", "müzik", "öğrenci" and more find the products they mean.
