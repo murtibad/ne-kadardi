@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.136.2] - 2026-11-19
+### Changed
+- First tap no longer freezes: the audio engine starts and decodes the sounds in idle time after the menu appears (creating it took 70-500 ms on the first tap); the tap only wakes it.
+
 ## [0.136.1] - 2026-11-19
 ### Changed
 - Home menu arrives in a quick cascade: title, the three cards and the fact card rise in 50 ms steps.

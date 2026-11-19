@@ -634,3 +634,33 @@ test('prefetch() skips the download when the browser has no Web Audio', () => {
   assert.equal(player.prefetch(), false);
   assert.equal(getTotalCalls(), 0);
 });
+
+test('prime() builds the context and decodes in idle time without resuming; the first gesture only resumes', async () => {
+  const { FakeAudioContext, getConstructorCallCount, getInstances } = createFakeAudioContextClass();
+  const { fetchFn, getTotalCalls } = createFakeFetch();
+  const player = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: FakeAudioContext, fetchFn, now: () => 0 });
+
+  assert.equal(player.prime(), true);
+  await flushAsync();
+  assert.equal(getConstructorCallCount(), 1);
+  const [ctx] = getInstances();
+  assert.equal(ctx.resumed, false, 'no resume before a user gesture');
+  assert.equal(ctx.decodedBuffers.length, 4, 'all samples decoded ahead of time');
+  assert.equal(player.prime(), false, 'second call is a no-op');
+
+  player.unlock();
+  await flushAsync();
+  assert.equal(getConstructorCallCount(), 1, 'the gesture reuses the primed context');
+  assert.equal(ctx.resumed, true);
+  assert.equal(getTotalCalls(), 4, 'nothing fetched twice');
+});
+
+test('prime() does nothing while muted or without Web Audio', () => {
+  const { FakeAudioContext, getConstructorCallCount } = createFakeAudioContextClass();
+  const { fetchFn } = createFakeFetch();
+  const muted = createSoundPlayer({ storage: createMemoryStorage({ 'ne-kadardi-sound': '0' }), AudioContextCtor: FakeAudioContext, fetchFn });
+  assert.equal(muted.prime(), false);
+  assert.equal(getConstructorCallCount(), 0);
+  const noAudio = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: null, fetchFn });
+  assert.equal(noAudio.prime(), false);
+});
