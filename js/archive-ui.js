@@ -89,6 +89,8 @@ export async function renderTimelineScreen(focusProductId = null) {
   const product = pool.find(t => t.id === getState().selectedTimelineProduct);
 
   renderSearchState(visible.length, filterByQuery);
+  productChanged = lastShownProduct !== null && lastShownProduct !== product.id;
+  lastShownProduct = product.id;
   renderProductChips(visible, product.id, focusProductId);
   renderTimelineHeader(product);
   renderArchiveOrder();
@@ -101,6 +103,7 @@ export async function renderTimelineScreen(focusProductId = null) {
   $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
     newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id, pinnedDate: pin?.date ?? null,
   });
+  if (productChanged) playOnce($('t-rows-container'), [{ opacity: 0 }, { opacity: 1 }], 180);
   renderPriceChart('t-chart', product.id, pin?.date ?? null);
   linkRowsToChart();
   if (pin && !pinScrolled.has(pin)) {
@@ -154,8 +157,19 @@ function renderSearchState(hits, filterByQuery) {
   };
 }
 
+// Product shown by the previous render: motion plays only when the product actually changes.
+let lastShownProduct = null;
+let productChanged = false;
+let diceSpin = false;
+
+function playOnce(el, frames, ms) {
+  el?.getAnimations?.().forEach((a) => a.cancel());
+  el?.animate?.(frames, { duration: ms, easing: 'ease-out' });
+}
+
 function renderProductChips(visible, selectedId, focusProductId) {
   const picker = $('timeline-picker');
+  const prevLeft = picker.scrollLeft; // the rebuild resets it; restoring lets a tap glide from where the row was
   picker.textContent = '';
   if (visible.length > 1) {
     const dice = document.createElement('button');
@@ -163,16 +177,21 @@ function renderProductChips(visible, selectedId, focusProductId) {
     dice.className = 'picker-chip';
     dice.dataset.random = 'true';
     dice.setAttribute('aria-label', 'Rastgele bir ürün aç');
-    dice.innerHTML = '<span aria-hidden="true">🎲 </span><span>Rastgele</span>';
+    dice.innerHTML = '<span aria-hidden="true" class="dice-emoji">🎲</span> <span>Rastgele</span>';
     dice.onclick = () => {
       const id = tableMod.pickRandomId(visible.map((t) => t.id), selectedId);
       if (!id) return;
+      diceSpin = true;
       const target = visible.find((t) => t.id === id);
       getState().selectedTimelineProduct = id;
       renderTimelineScreen(id);
       if (target?.name) announce(`${target.name} açıldı`);
     };
     picker.appendChild(dice);
+    if (diceSpin) {
+      diceSpin = false;
+      playOnce(dice.firstElementChild, [{ transform: 'rotate(0) scale(1)' }, { transform: 'rotate(180deg) scale(1.2)' }, { transform: 'rotate(360deg) scale(1)' }], 450);
+    }
   }
   for (const t of visible) {
     const btn = document.createElement('button');
@@ -199,12 +218,18 @@ function renderProductChips(visible, selectedId, focusProductId) {
 
   const chosen = picker.querySelector('[aria-pressed="true"]');
   if (!chosen) return;
+  if (productChanged) picker.scrollLeft = prevLeft;
   if (focusProductId) chosen.focus({ preventScroll: true });
   // Centre the chosen chip inside its own row (the right edge fades out) without moving the page.
   const row = picker.getBoundingClientRect();
   const chip = chosen.getBoundingClientRect();
-  picker.scrollBy({ left: chip.left - row.left - (row.width - chip.width) / 2,
-    behavior: 'auto' });
+  const left = chip.left - row.left - (row.width - chip.width) / 2;
+  if (!productChanged) { picker.scrollBy({ left, behavior: 'auto' }); return; }
+  // scroll-snap would pull the glide (and the settled chip) to the chip's start edge; suspend it until
+  // the player grabs the row again.
+  picker.style.scrollSnapType = 'none';
+  picker.addEventListener('pointerdown', () => { picker.style.scrollSnapType = ''; }, { once: true });
+  picker.scrollBy({ left, behavior: 'smooth' });
 }
 
 function renderTimelineHeader(product) {
@@ -215,6 +240,10 @@ function renderTimelineHeader(product) {
   const tImg = $('t-image');
   tImg.hidden = !product.image;
   if (product.image) { tImg.src = product.image.src; tImg.onerror = () => { tImg.hidden = true; }; }
+  if (productChanged) {
+    if (product.image) playOnce(tImg, [{ transform: 'scale(0.9)', opacity: 0 }, { transform: 'none', opacity: 1 }], 220);
+    playOnce($('t-summary'), [{ opacity: 0 }, { opacity: 1 }], 180);
+  }
   // One-line takeaway above the chart: oldest sourced price against the current one.
   const firstRow = product.rows[0];
   const nowRow = product.rows.find((r) => r.isCurrent);
