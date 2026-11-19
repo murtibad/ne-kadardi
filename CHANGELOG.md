@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.6] - 2026-11-19
+### Fixed
+- Long receipt labels ("En yeni iPhone 17 (Eylül 2025)") wrap beside their price again at 390 px.
+- Coming back to a result from the archive or menu no longer replays the stamp, ring, shine and tally animations.
+- Menu cards answer a press right away (the entrance animation held them for half a second).
+- Chart guide line only fills the gap between label and dot; verdict box tinted in the tier colour; dark-mode glow is translucent and no longer fixed; friend-challenge line stays on very short screens; menu card text no longer squeezed narrow.
+
 ## [0.138.5] - 2026-11-19
 ### Changed
 - The result's hand-over slide stays smooth: the share image is now drawn only after the slide ends, in idle time (it used to land in the slide's last frames).

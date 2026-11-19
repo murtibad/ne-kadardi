@@ -62,7 +62,7 @@
     --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 20px -8px rgba(0, 0, 0, 0.7);
     --card-shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.07), 0 12px 26px -8px rgba(0, 0, 0, 0.8);
     --card-shadow-press: 0 1px 0 rgba(255, 255, 255, 0.03), 0 2px 6px -2px rgba(0, 0, 0, 0.7);
-    --page-glow: radial-gradient(circle at 50% 0, #24211c 0, #1a1917 60%);
+    --page-glow: radial-gradient(circle at 50% 0, rgba(255, 236, 200, 0.045) 0, transparent 70%);
   }
 }
 :root[data-theme="dark"] {
@@ -87,7 +87,7 @@
     --card-shadow: 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 20px -8px rgba(0, 0, 0, 0.7);
     --card-shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.07), 0 12px 26px -8px rgba(0, 0, 0, 0.8);
     --card-shadow-press: 0 1px 0 rgba(255, 255, 255, 0.03), 0 2px 6px -2px rgba(0, 0, 0, 0.7);
-    --page-glow: radial-gradient(circle at 50% 0, #24211c 0, #1a1917 60%);
+    --page-glow: radial-gradient(circle at 50% 0, rgba(255, 236, 200, 0.045) 0, transparent 70%);
 }
 
 * { box-sizing: border-box; }
@@ -97,8 +97,8 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: var(--page-glow), var(--bg);
-  background-attachment: fixed;
+  /* Translucent glow over the colour (so the colour can still fade); sized, not fixed: iOS ignores fixed backgrounds. */
+  background: var(--page-glow) no-repeat top center / 100% 520px, var(--bg);
   color: var(--text);
   font-family: var(--font-ui);
   line-height: 1.5;
@@ -345,7 +345,6 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   height: 100%;
   width: var(--score, 0%);
   background: var(--fill, var(--accent));
-  transition: width 0.4s ease-out;
 }
 
 
@@ -1120,7 +1119,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 
 /* Verdict: thin border, faint tint, single calm line */
 .result-receipt .verdict-box { border: 1.5px solid var(--accent-on-paper); background: color-mix(in srgb, var(--accent-on-paper) 6%, transparent); padding: 10px 14px; border-radius: 2px; }
-.result-receipt .verdict-box[data-tier] { border-color: var(--tier, var(--accent-on-paper)); background: color-mix(in srgb, var(--tier, var(--accent-on-paper)) 6%, transparent); }
+.result-receipt .verdict-box[data-tier] { border-color: var(--tier, var(--accent-on-paper)); background: color-mix(in srgb, var(--fill, var(--accent-on-paper)) 11%, transparent); }
 .result-receipt .verdict { font: 700 1.125rem/1.35 var(--font-mono); color: var(--accent-on-paper); }
 
 /* Rows */
@@ -1262,7 +1261,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 #home-screen.screen-enter .home-intro,
 #home-screen.screen-enter .mode-list > .mode-card,
 #home-screen.screen-enter #fact-card {
-  animation: home-rise 0.32s cubic-bezier(.2, .8, .2, 1) both;
+  animation: home-rise 0.32s cubic-bezier(.2, .8, .2, 1) backwards; /* backwards: covers the delay only, so :hover/:active transforms work at once */
 }
 #home-screen.screen-enter .home-intro { animation-delay: 0ms; }
 #home-screen.screen-enter .mode-list > :nth-child(1) { animation-delay: 50ms; }
@@ -1893,6 +1892,10 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   margin-left: auto;
   text-align: right;
 }
+/* A small flex basis lets a long label ("En yeni iPhone 17 (Eylül 2025)") wrap its own words beside the
+   price; only when even its longest word cannot sit next to the value does the value drop a line. */
+.result-receipt .row dt,
+#r-receipt .row dt { flex: 1 1 8ch; }
 
 /* The stats line is filled only after prices.json arrives; keeping its box (invisible) meanwhile stops the
    menu cards from jumping down a few pixels. Beats the global [hidden] rule on purpose. */
@@ -2004,14 +2007,14 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* Extra-short viewports (<= 480 px with keypad open): hide the decorative year anecdote
    so two-line product names and jargon glosses still leave "Tahmin et" above the keypad. */
 @media (max-height: 480px) {
-  .year-anchor {
+  .year-anchor:not(.friend-line) {
     display: none;
   }
 }
 
 /* Headings and short centred lines wrap evenly instead of leaving one word alone on the last line
    (e.g. "Geçmişin fiyatlarını tahmin / et." at 320 px). Progressive: older browsers wrap as before. */
-h1, h2, h3, .intro-final p, .home-intro p, .verdict, .mode-desc, .product { text-wrap: balance; }
+h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balance; }
 .cashier-line, .context-line, .explain { text-wrap: pretty; }
 
 /* Every secondary button answers a press the same way the main buttons do, so no tap feels dead. */
@@ -2021,3 +2024,10 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .mode-desc, .product { text
 }
 .fact-play:active, .install-btn:active, .link-btn:active, .picker-chip:active, .send-opt:active, .hint-btn:active, .skip-btn:active { transform: scale(0.97); }
 .fact-next:active { transform: scale(0.94); }
+
+/* Coming back to a finished result (from the archive or the menu) must not replay the stamp slam, ring,
+   shine, tally pop and hand-over: zero duration jumps every one-shot animation straight to its end state. */
+#result-screen.revisit *, #result-screen.revisit::before, #result-screen.revisit *::before, #result-screen.revisit *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+}
