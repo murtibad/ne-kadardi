@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.2] - 2026-11-19
+### Changed
+- The hint slip unrolls like a till slip and the second hint's rows slide in; skipping a question brings the new card in from the side and the "Geçtiğin soru" answer strip drops in just after it.
+
 ## [0.140.1] - 2026-11-19
 ### Changed
 - Archive: "Tüm yılları göster" looks like a button (dashed frame, light tint, ▾ arrow that turns when opened).
