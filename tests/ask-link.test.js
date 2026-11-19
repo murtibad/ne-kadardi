@@ -67,3 +67,12 @@ test('friendIntroText and compareFriendScore format challenge prompts and outcom
   assert.equal(compareFriendScore(86, 70), 'Arkadaşın: 86 puan · Sen: 70 puan — bu sefer o kazandı');
   assert.equal(compareFriendScore(null, 92), null);
 });
+
+test('resolveFriendLink picks exact, product-only or random', async () => {
+  const { resolveFriendLink } = await import('../js/ask-link.js');
+  const qs = [{ productId: 'benzin', date: '2016-07' }, { productId: 'ekmek', date: '2010-01' }];
+  assert.deepEqual(resolveFriendLink({ productId: 'benzin', date: '2016-07', score: 80 }, qs), { mode: 'exact', productId: 'benzin', date: '2016-07' });
+  assert.deepEqual(resolveFriendLink({ productId: 'benzin', date: '1999-01' }, qs), { mode: 'product', productId: 'benzin' });
+  assert.deepEqual(resolveFriendLink({ productId: 'yokboyle', date: '2016-07' }, qs), { mode: 'random' });
+  assert.deepEqual(resolveFriendLink(null, qs), { mode: 'random' });
+});
