@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.17] - 2026-11-19
+### Changed
+- Tax breakdown: a plain line explains KDV and ÖTV, and its sources are listed one per line (no lone "·" lines on phones).
+
 ## [0.141.16] - 2026-11-19
 ### Changed
 - Installed app: long-pressing the icon offers "Günün Fişi" and "Fiyat Arşivi" shortcuts; link previews carry an image description, the site URL and Turkish locale.

@@ -1,2 +1,2 @@
 // Keep in sync with package.json (tests/version.test.js checks it).
-export const VERSION = '0.141.16';
+export const VERSION = '0.141.17';

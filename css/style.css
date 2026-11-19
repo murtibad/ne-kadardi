@@ -2194,3 +2194,4 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 
 /* Source type ("haberlerden", "resmî kayıt") as a caption line under the result's source link. */
 #r-source-kind { display: block; margin-top: 2px; }
+.tax-period-sources a { display: block; margin-top: 4px; }

@@ -776,16 +776,21 @@ function renderTaxDetails(q) {
   tableHtml += `</tbody></table>`;
 
   const caveatHtml = `<p class="tax-caveat">Vergi payı tahminidir; mağazanın kârı ayrıca hesaplanmadı.</p>`;
+  // Plain words for the two taxes most people only know by their initials (general definitions, no numbers).
+  const gloss = [tb.rates.kdv > 0 && 'KDV her alışverişte fiyata eklenen vergidir', tb.rates.otv > 0 && 'ÖTV bazı mallara konan ek vergidir']
+    .filter(Boolean).join('; ');
+  const glossHtml = gloss ? `<p class="tax-caveat">${gloss}.</p>` : '';
 
   let sourcesHtml = '';
   if (Array.isArray(tb.period.sources) && tb.period.sources.length > 0) {
     const links = tb.period.sources
       .map((s) => `<a href="${escapeHTML(s.url)}" target="_blank" rel="noopener">${escapeHTML(s.title)}</a>`)
-      .join(' · ');
+      .join('');
+    // One source per line (CSS): joined with " · " they wrapped into lone dots on phones.
     sourcesHtml = `<p class="tax-period-sources">Kaynaklar: ${links}</p>`;
   }
 
-  body.innerHTML = tableHtml + caveatHtml + sourcesHtml;
+  body.innerHTML = tableHtml + glossHtml + caveatHtml + sourcesHtml;
   details.hidden = false;
   details.open = false;
 }
