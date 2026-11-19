@@ -101,6 +101,11 @@ function saveSession() {
   } catch(e) {}
 }
 
+// One-shot micro-motion (WAAPI): runs once, leaves no inline style or transform behind.
+function motion(el, frames, ms, easing, delay = 0) {
+  if (el && el.animate) el.animate(frames, { duration: ms, easing, delay, fill: 'backwards' });
+}
+
 function show(screenId) {
   syncFooter(screenId);
   clearTimeout(handTimer);
@@ -249,11 +254,14 @@ function nextQuestion(productId = null, date = null) {
       slip.innerHTML = `<p class="hint-cashier">“${escapeHTML(slip.dataset.line)}”</p><p class="hint-slip-title">İpucu</p>`
         + (everyday ? row(everyday) : rateRows());
       slip.hidden = false;
+      // Unrolls like a register slip.
+      motion(slip, [{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }, { clipPath: 'inset(0 0 0 0)', opacity: 1 }], 220, 'ease-out');
       // Say the price of the second hint too, or it looks free after the first one's "%20".
       if (everyday && rates) hintBtn.textContent = 'Bir ipucu daha: dolar ve asgari ücret (toplam %40 düşer)';
       else hintBtn.hidden = true;
     } else {
       slip.insertAdjacentHTML('beforeend', rateRows());
+      [...slip.querySelectorAll('.hint-row')].slice(-rates.length).forEach((r, i) => motion(r, [{ opacity: 0, transform: 'translateY(-4px)' }, { opacity: 1, transform: 'none' }], 200, 'ease-out', i * 40));
       hintBtn.hidden = true;
     }
     // On a phone the keyboard would rise over the hint the player just paid for; refocus only with a mouse.
@@ -1237,6 +1245,9 @@ async function init() {
     if (handled) { state.pendingSkip = null; return; }
     state.skips += 1;
     nextQuestion(); // its barcode beep doubles as the skip sound
+    // The screen is already visible, so give the fresh card its own entrance, then the skipped-answer strip.
+    motion(document.querySelector('#question-screen .question-card'), [{ opacity: 0, transform: 'translateX(12px)' }, { opacity: 1, transform: 'none' }], 220, 'cubic-bezier(.2,.8,.2,1)');
+    if (!$('q-skipped').hidden) motion($('q-skipped'), [{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], 250, 'ease-out', 80);
   });
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();
