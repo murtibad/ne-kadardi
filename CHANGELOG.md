@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.8] - 2026-11-19
+### Changed
+- While prices load on a slow connection, a light sweep runs over the placeholder lines so the page does not look frozen (the text itself stays still).
+
 ## [0.140.7] - 2026-11-19
 ### Changed
 - The "Çevrimdışı" badge pops in when the connection drops and explains on hover that the game keeps working; it is more compact on small phones. The "ana ekrana ekle" button joins the menu's entrance cascade.

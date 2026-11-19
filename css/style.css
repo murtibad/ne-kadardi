@@ -1255,7 +1255,17 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .loading-card #message-text { text-align: center; font-family: var(--font-mono); }
 .skeleton { display: grid; gap: 10px; margin-top: 16px; }
 .skeleton[hidden] { display: none; }
-.skeleton span { height: 12px; border-radius: 3px; background: var(--line); }
+.skeleton span {
+  height: 12px; border-radius: 3px; background: var(--line);
+  /* A light sweep while prices load on a slow line, so the receipt does not look frozen (no text moves). */
+  background-image: linear-gradient(90deg, transparent 0, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-sweep 1.3s ease-in-out infinite;
+}
+.skeleton span:nth-child(2) { animation-delay: 0.12s; }
+.skeleton span:nth-child(3) { animation-delay: 0.24s; }
+@keyframes skeleton-sweep { from { background-position: 150% 0; } to { background-position: -50% 0; } }
 .skeleton .short { width: 55%; }
 .loading-card #message-retry {
   display: block;
