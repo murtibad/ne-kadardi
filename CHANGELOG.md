@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.23] - 2026-11-19
+### Fixed
+- Dört dil düzeltmesi daha (Flash 2. tur, 14 öneriden 4'ü kabul): 'fiyattaki vergi payı', aynı cümlede iki kez 'yaklaşık' yerine bir, 'Kopyalandı!' → 'Metin kopyalandı ✓' (diğer bildirimlerle aynı), 'tekrar dene' → 'yeniden dene' (düğmeyle aynı).
+
 ## [0.141.22] - 2026-11-19
 ### Fixed
 - On Türkçe dil düzeltmesi (Flash denetimi, tek tek elendi): 'tahminden utandı', 'nesilden nesle', 'uzun sürelisini', 'içimizi ısıtır', 'bugüne kadarki artış', 'eve varmadan arabada', 'bütün sülalesini', 'bedeli yatırmaya', 'fulleyelim mi', son soruda 'bir soru daha var' diyen kasiyer cümlesi. Arşivde 320 px'te renk açıklaması 68 px'lik dar sütuna sıkışıyordu; sıra düğmesi artık alt satıra geçiyor.
