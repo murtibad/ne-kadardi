@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.19] - 2026-11-19
+### Fixed
+- A phone left on the menu overnight shows the new day's streak line when it comes back (it kept yesterday's "Serini koru" until a reload).
+
 ## [0.140.18] - 2026-11-19
 ### Changed
 - Wording: "Çok yüksek tahmin ettin" / "Çok düşük tahmin ettin" for wildly off guesses (same pattern as the other verdicts); the error says "Fiyatı rakamla yaz, örneğin 4,5."; the offline badge explains "İnternet yok ama oynayabilirsin".
