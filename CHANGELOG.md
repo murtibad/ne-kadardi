@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.16] - 2026-11-19
+### Changed
+- Installed app: long-pressing the icon offers "Günün Fişi" and "Fiyat Arşivi" shortcuts; link previews carry an image description, the site URL and Turkish locale.
+
 ## [0.141.15] - 2026-11-19
 ### Fixed
 - A friend link that no longer matches (cut by a messenger, wrong date) opens a question anyway — the same product if it exists, otherwise a random one — with the line "Bağlantıdaki soru bulunamadı, sana başka bir soru seçtik." instead of silently dropping to the menu; no friend score is compared for the substitute question.
