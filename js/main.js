@@ -16,7 +16,7 @@ import { VERSION } from './version.js';
 import { pickFact } from './fact.js';
 import { buildPriceChart } from './price-chart.js';
 import { initChartUi, renderPriceChart } from './chart-ui.js';
-import { countUpFrames } from './count-up.js';
+import { countUpFrames, easeOutCubic } from './count-up.js';
 import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
 import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey } from './daily.js';
@@ -320,10 +320,12 @@ function onGuess(event) {
 // a tap on the receipt finishes it at once.
 const PRINT_MS = 1100;
 const ROLL_MS = 950;
+const SCORE_ROLL_MS = 520;
 let printTimer = null;
 let handTimer = null;
 let cancelPrint = null;
 let countUpRaf = null;
+let scoreRaf = null;
 
 // Stops the price count-up, leaves the real price on the receipt, and reveals the current/change rows.
 function stopCountUp() {
@@ -344,10 +346,48 @@ function stopCountUp() {
   $('r-increase-row')?.classList.remove('awaiting-roll');
 }
 
+// Settles the post-tear score roll in place so the live region does not re-announce the score.
+function stopScoreRoll() {
+  if (scoreRaf !== null) {
+    cancelAnimationFrame(scoreRaf);
+    scoreRaf = null;
+  }
+  const numEl = $('r-score')?.querySelector('.score-num');
+  if (numEl && state.result) numEl.textContent = String(state.result.score);
+}
+
+// Counts the score up from 0 after the receipt tears so the score does not spoil the price roll while printing.
+function startScoreRoll(target) {
+  if (scoreRaf !== null) {
+    cancelAnimationFrame(scoreRaf);
+    scoreRaf = null;
+  }
+  const numEl = $('r-score')?.querySelector('.score-num');
+  if (!numEl) return;
+  if (typeof requestAnimationFrame !== 'function' || !(target > 0)) {
+    numEl.textContent = String(target);
+    return;
+  }
+  numEl.textContent = '0';
+  const startMs = typeof performance !== 'undefined' ? performance.now() : Date.now();
+  const nowFn = () => (typeof performance !== 'undefined' ? performance.now() : Date.now());
+  const tick = () => {
+    const elapsed = nowFn() - startMs;
+    if (elapsed < SCORE_ROLL_MS) {
+      numEl.textContent = String(Math.round(target * easeOutCubic(elapsed / SCORE_ROLL_MS)));
+      scoreRaf = requestAnimationFrame(tick);
+    } else {
+      stopScoreRoll();
+    }
+  };
+  scoreRaf = requestAnimationFrame(tick);
+}
+
 // Cancel any in-flight print timer, click listener, and printer audio when leaving the result screen early.
 function stopPrinting() {
   sound.stop('print');
   stopCountUp();
+  stopScoreRoll();
   clearTimeout(printTimer);
   printTimer = null;
   // Torn but not yet handed over (left during the 0.3 s tear): finish the hand-over now.
@@ -418,12 +458,12 @@ function printReceipt(extraSound) {
   wrap.classList.remove('printing', 'torn');
   $('result-screen').classList.remove('handed');
   $('next-btn').classList.remove('nudge');
-  const finish = () => {
+  const finish = ({ skipped = false } = {}) => {
     sound.stop('print');
     stopCountUp();
     clearTimeout(printTimer);
     printTimer = null;
-    wrap.removeEventListener('click', finish);
+    wrap.removeEventListener('click', skipPrint);
     cancelPrint = null;
     if ($('result-screen').hidden || !wrap.classList.contains('printing')) return;
     wrap.classList.remove('printing');
@@ -434,6 +474,8 @@ function printReceipt(extraSound) {
     if (state.played <= 3) $('next-btn').classList.add('nudge');
     // The product icon bounces after a close guess and shakes after a way-off one once the receipt is out.
     if (state.result) {
+      if (skipped) stopScoreRoll();
+      else startScoreRoll(state.result.score);
       $('r-meter').style.setProperty('--score', `${state.result.score}%`);
       const tier = scoreTier(state.result.score);
       if (tier === 'great') $('r-image').classList.add('bounce');
@@ -446,9 +488,11 @@ function printReceipt(extraSound) {
     // The till takes 0.38 s to leave; then the report card would still sit behind the sticky bar.
     setTimeout(revealReportCard, 760);
   };
+  const skipPrint = () => finish({ skipped: true });
   cancelPrint = () => {
     stopCountUp();
-    wrap.removeEventListener('click', finish);
+    stopScoreRoll();
+    wrap.removeEventListener('click', skipPrint);
     wrap.classList.remove('printing');
     // Leaving mid-print (e.g. to the archive) must not strand an empty meter and a hidden stamp
     // on the receipt the player can come back to.
@@ -458,6 +502,23 @@ function printReceipt(extraSound) {
   };
   turnIntoMachine();
   sound.play('print');
+  if (state.result && typeof requestAnimationFrame === 'function') {
+    const scoreEl = $('r-score');
+    const numEl = scoreEl?.querySelector('.score-num');
+    if (numEl) {
+      // Hold the visible score at "—" while printing so it does not spoil the price roll;
+      // the visually-hidden span gives screen readers the final score once.
+      numEl.setAttribute('aria-hidden', 'true');
+      numEl.textContent = '—';
+      let srScore = scoreEl.querySelector('.visually-hidden');
+      if (!srScore) {
+        srScore = document.createElement('span');
+        srScore.className = 'visually-hidden';
+        numEl.after(srScore);
+      }
+      srScore.textContent = String(state.result.score);
+    }
+  }
   const frames = countUpFrames(state.question.price, { frames: 60 });
   if (frames.length > 0 && typeof requestAnimationFrame === 'function') {
     const actualEl = $('r-actual');
@@ -489,7 +550,7 @@ function printReceipt(extraSound) {
   }
   void wrap.offsetWidth; // restart the CSS animation for back-to-back results
   wrap.classList.add('printing');
-  wrap.addEventListener('click', finish);
+  wrap.addEventListener('click', skipPrint);
   printTimer = setTimeout(finish, PRINT_MS);
 }
 
@@ -506,6 +567,7 @@ function renderResultImage(q) {
 // Decorative before/after bars under the context sentence (the sentence stays the accessible text).
 function renderResult(q, r) {
   stopCountUp();
+  stopScoreRoll();
   $('r-stamp').classList.remove('stamped');
   $('r-title').textContent = `${formatPeriod(q.date)} · ${questionTitle(q)}`;
   renderResultImage(q);
@@ -528,11 +590,13 @@ function renderResult(q, r) {
   $('r-verdict').textContent = verdictText(r);
   // Number, "/100" and the hint note are separate spans so CSS can size them; the text reads the same.
   const scoreEl = $('r-score');
-  scoreEl.textContent = String(r.score);
+  const num = document.createElement('span');
+  num.className = 'score-num';
+  num.textContent = String(r.score);
   const max = document.createElement('span');
   max.className = 'score-max';
   max.textContent = '/100';
-  scoreEl.append(max);
+  scoreEl.replaceChildren(num, max);
   if (r.hinted && r.score > 0) { // "%20 düştü" means nothing on a zero
     const hint = document.createElement('span');
     hint.className = 'score-hint';
