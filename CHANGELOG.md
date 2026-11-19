@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.19] - 2026-11-19
+### Fixed
+- Screen readers now hear one clear sentence after a guess ("Gerçek fiyat ₺4,44. Biraz az tahmin ettin. Puanın 99.") instead of the whole receipt read out as two dozen fragments in page order.
+
 ## [0.141.18] - 2026-11-19
 ### Fixed
 - Tax breakdown on phones: long labels such as "Kültür Bakanlığı payı (%1)" no longer touch their amount.
