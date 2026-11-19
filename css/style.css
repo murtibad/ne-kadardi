@@ -1257,6 +1257,16 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .skeleton[hidden] { display: none; }
 .skeleton span { height: 12px; border-radius: 3px; background: var(--line); }
 .skeleton .short { width: 55%; }
+.loading-card #message-retry {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 16px;
+}
+.loading-card #message-retry:focus-visible {
+  outline: 3px solid var(--accent-on-paper, var(--ink));
+  outline-offset: 2px;
+}
 
 /* Logo mark and the install button on the home screen */
 .logo { gap: 8px; }

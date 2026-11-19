@@ -150,9 +150,11 @@ function showGameScreen(screenId) {
   show(screenId);
 }
 
-function showMessage(text) {
+function showMessage(text, { retry = false } = {}) {
   $('message-text').textContent = text;
   document.querySelector('#message-screen .skeleton').hidden = true; // only the first load shows the placeholder
+  const retryBtn = $('message-retry');
+  if (retryBtn) retryBtn.hidden = !retry;
   show('message-screen');
 }
 
@@ -1146,6 +1148,7 @@ async function init() {
   $('theme-toggle').addEventListener('click', toggleTheme);
   $('fact-next').addEventListener('click', swapFact);
   setupInstallButton();
+  $('message-retry')?.addEventListener('click', () => location.reload());
   // Chip rows fade at the right edge; once scrolled, the left edge fades too.
   for (const row of document.querySelectorAll('.timeline-scroll')) {
     row.addEventListener('scroll', () => row.classList.toggle('scrolled', row.scrollLeft > 4), { passive: true });
@@ -1177,7 +1180,7 @@ async function init() {
     state.timelines = buildTimelines(rawData);
   } catch (err) {
     console.error(err);
-    showMessage('Fiyatlar yüklenemedi. İnternet bağlantını kontrol edip sayfayı yenile.');
+    showMessage('Fiyatlar yüklenemedi. İnternet bağlantını kontrol edip tekrar dene.', { retry: true });
     return;
   }
   if (state.all.length === 0) {
