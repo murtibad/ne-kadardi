@@ -1248,13 +1248,17 @@ async function init() {
   // Skipping is free: no score and no stats, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
     state.pendingSkip = state.question;
+    // The screen is already visible, so give the fresh card its own entrance, then the skipped-answer strip.
+    const enterCard = () => {
+      if ($('question-screen').hidden) return; // the last daily skip goes to the result instead
+      motion(document.querySelector('#question-screen .question-card'), [{ opacity: 0, transform: 'translateX(12px)' }, { opacity: 1, transform: 'none' }], 220, 'cubic-bezier(.2,.8,.2,1)');
+      if (!$('q-skipped').hidden) motion($('q-skipped'), [{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], 250, 'ease-out', 80);
+    };
     const handled = skipDaily();
-    if (handled) { state.pendingSkip = null; return; }
+    if (handled) { state.pendingSkip = null; enterCard(); return; }
     state.skips += 1;
     nextQuestion(); // its barcode beep doubles as the skip sound
-    // The screen is already visible, so give the fresh card its own entrance, then the skipped-answer strip.
-    motion(document.querySelector('#question-screen .question-card'), [{ opacity: 0, transform: 'translateX(12px)' }, { opacity: 1, transform: 'none' }], 220, 'cubic-bezier(.2,.8,.2,1)');
-    if (!$('q-skipped').hidden) motion($('q-skipped'), [{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], 250, 'ease-out', 80);
+    enterCard();
   });
   $('next-btn').addEventListener('click', () => {
     resetShareBtn();

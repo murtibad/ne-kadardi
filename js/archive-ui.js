@@ -161,6 +161,7 @@ function renderSearchState(hits, filterByQuery) {
 let lastShownProduct = null;
 let productChanged = false;
 let diceSpin = false;
+let snapTimer = null;
 
 function playOnce(el, frames, ms) {
   el?.getAnimations?.().forEach((a) => a.cancel());
@@ -228,7 +229,12 @@ function renderProductChips(visible, selectedId, focusProductId) {
   // scroll-snap would pull the glide (and the settled chip) to the chip's start edge; suspend it until
   // the player grabs the row again.
   picker.style.scrollSnapType = 'none';
-  picker.addEventListener('pointerdown', () => { picker.style.scrollSnapType = ''; }, { once: true });
+  // Back on when the glide ends (scrollend), or after a short wait where scrollend is missing; keyboard and
+  // wheel users never send the pointerdown the first version waited for. One pending timer at a time.
+  clearTimeout(snapTimer);
+  const restore = () => { clearTimeout(snapTimer); picker.style.scrollSnapType = ''; };
+  if ('onscrollend' in picker) picker.addEventListener('scrollend', restore, { once: true });
+  snapTimer = setTimeout(restore, 700);
   picker.scrollBy({ left, behavior: 'smooth' });
 }
 

@@ -129,3 +129,16 @@ test('every alias key is a real product id', async () => {
   const ids = new Set(data.products.map((p) => p.id));
   for (const id of Object.keys(ALIASES)) assert.ok(ids.has(id), `unknown product id in ALIASES: ${id}`);
 });
+
+test('aliases match from the start of a word, not inside one', () => {
+  const items = [
+    { id: 'motorin', name: 'Motorin' },
+    { id: 'netflix', name: 'Netflix aboneliği' },
+    { id: 'dolar', name: 'Amerikan doları' },
+  ];
+  const ids = (q) => filterByQuery(items, q).map((i) => i.id);
+  assert.deepEqual(ids('dizi'), ['netflix']);
+  assert.deepEqual(ids('dize'), ['motorin']);
+  assert.deepEqual(ids('kurt'), []); // no fuzzy hop from "kurt" to the alias "kur"
+  assert.deepEqual(ids('kur'), ['dolar']);
+});
