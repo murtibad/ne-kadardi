@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.137.2] - 2026-11-19
+### Changed
+- Warmer score colours: meter, tally dots, verdict tint and confetti use stamp-pad inks (olive, ochre, terracotta) instead of neon lime and orange; the shared image sits on the same warm greige as the page.
+
 ## [0.137.1] - 2026-11-19
 ### Changed
 - Price chart: a thin dashed guide drops from the label to its point, dots grow with a small spring, and on phones a tiny vibration ticks as the finger reaches each new year (only when sound is on).

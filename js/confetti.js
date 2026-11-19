@@ -1,5 +1,5 @@
 // Small CSS confetti burst for an exact guess. No library.
-const COLORS = ['#d32f2f', '#f5b301', '#1f9d55', '#1e4fa3', '#f97316', '#84cc16'];
+const COLORS = ['#d32f2f', '#e0a020', '#23935a', '#1e4fa3', '#df6a2b', '#74a62c'];
 
 export function burstConfetti(count = 70) {
   if (typeof window === 'undefined') return;
