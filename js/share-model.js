@@ -122,9 +122,11 @@ const WRAP_MIN = 3;
 export function sessionWrapText(count, avg) {
   if (!Number.isFinite(count) || count < WRAP_MIN || !Number.isFinite(avg)) return '';
   const a = Math.round(avg);
-  const close = a < 30 ? 'Fiyatlar zor, ama her soruda biraz daha alışıyorsun.'
-    : a < 60 ? 'Fena değil, bir dahakine daha da yaklaşırsın.'
-    : a < 80 ? 'İyi gidiyorsun!'
-    : 'Çok iyi, fiyatları ezberlemişsin!';
-  return `Bu sefer ${count} soru çözdün, ortalaman ${a}. ${close}`;
+  // Words for people who lived through those prices: never a lesson, never mockery.
+  const close = a < 30 ? 'Eski fiyatları hatırlamak kolay değil, olsun.'
+    : a < 60 ? 'Fena değil, bir dahakine daha iyi olur.'
+    : a < 80 ? 'Gayet iyi!'
+    : 'Harika, dün gibi aklında!';
+  // "Bu oturumda": the card below shows the all-time average, so this one must say it is just today's.
+  return `Bu oturumda ${count} soru çözdün, ortalaman ${a}. ${close}`;
 }
