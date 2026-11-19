@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.9] - 2026-11-19
+### Changed
+- README and AGENTS.md describe tonight's features and the technical lessons (translate for entrance animations, no replay on revisit, double-submit guard, search aliases).
+
 ## [0.141.8] - 2026-11-19
 ### Changed
 - Archive tidier on phones: the "Kaynak ve not" links line up in one column, rows sit tighter under their dates, the red takeaway line breaks evenly ("…: / 123 katına çıktı"), the product count no longer jumps while typing, and the no-match message is a bit larger.
