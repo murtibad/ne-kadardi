@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.5] - 2026-11-19
+### Changed
+- Archive: the 🎲 dice spins when tapped, the chosen product chip glides to the middle of its row, and the new product's picture, summary and rows fade in.
+
 ## [0.140.4] - 2026-11-19
 ### Added
 - If the prices cannot be loaded (weak connection), a big "Yeniden dene" button appears under the message instead of asking the player to refresh the page.
