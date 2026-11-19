@@ -33,7 +33,7 @@ export const AMOUNT_UNDER_COMMENTS = [
   'O kadarla ay sonu değil, hafta sonu gelmezdi.',
   'Bu kadar az olsa annem bizi dayıya yollardı.',
   'O parayla ev geçinmez, bakkal defteri taşardı.',
-  'Az demişsin, o kadar da kötü değildi durum!',
+  'Az demişsin, o günler o kadar da kötü değildi!',
 ]
 
 export const PRODUCT_POOLS = {

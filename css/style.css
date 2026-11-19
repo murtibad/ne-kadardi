@@ -1405,6 +1405,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .question-card .guess-field input { padding-left: 46px; }
 /* At 2rem "Fiyatı yaz" ran into the ₺ sign on 360 px phones; the hint text can be smaller than the typed number. */
 .question-card .guess-field input::placeholder { font-size: 1.5rem; }
+.question-card .guess-field input.long { font-size: 1.5rem; }
+.question-card .guess-field input.longer { font-size: 1.125rem; }
 
 /* Two-way link between the archive price chart and the timeline table rows */
 .timeline-table tr.is-pinned,
@@ -2100,6 +2102,12 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   }
   .question-card .guess-field input::placeholder {
     font-size: 1.25rem;
+  }
+  .question-card .guess-field input.long {
+    font-size: 1.125rem;
+  }
+  .question-card .guess-field input.longer {
+    font-size: 0.9375rem;
   }
   #guess-readout {
     margin: 2px 0 4px;
