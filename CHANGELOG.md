@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.6] - 2026-11-19
+### Changed
+- Günün Fişi receipt (end card and "Fişini gör"): each row starts with a dot in its score colour (an empty ring when it earned no points), and the five rows print in one after another.
+
 ## [0.140.5] - 2026-11-19
 ### Changed
 - Archive: the 🎲 dice spins when tapped, the chosen product chip glides to the middle of its row, and the new product's picture, summary and rows fade in.
