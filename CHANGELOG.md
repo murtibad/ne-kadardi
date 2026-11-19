@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.137.4] - 2026-11-19
+### Changed
+- After the price stops counting, "Güncel" and "Değişim" rise in one after the other; the newest score dot in the bottom bar pops in when the receipt is handed over.
+
 ## [0.137.3] - 2026-11-19
 ### Changed
 - Short screens (landscape phones, small windows, up to 560 px tall): the question card tightens so the date, product, price box and "Tahmin et" fit without scrolling; under 480 px the year anecdote is left out.
