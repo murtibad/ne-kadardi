@@ -16,33 +16,37 @@ The game is one mode, plus a price archive:
   The receipt prints out of a receipt printer and is torn off.
 - **Fiyat Arşivi:** browse the verified price history of 82 products with their sources, filtered by category; long
   histories show the newest 8 rows with "Tüm yılları göster", a "🎲 Rastgele" chip opens a random product, and the
-  result screen links straight to each product's history.
+  result screen links straight to each product's history (opened pinned at the date just played, with its chart point marked, row outlined, and older years auto-expanded).
 
 Also:
 
 - First-visit cinematic intro (year counter with real sourced prices of that year)
 - First-visit opener questions with well-known benchmark prices before the random pool
+- First-question input hint in the readout line (`Sadece rakam yaz, ör. 4,5`) before typing
 - "Bilemedin mi? Arkadaşına sor" share links (`?soru=`) that open one question without its answer
 - Product-specific cashier jokes on the receipt in everyday Turkish tone
-- Turkish number input (`4,5`, `1.250,75`) with automatic thousands grouping as you type and words readout under the box (`4 lira 50 kuruş`)
+- Turkish number input (`4,5`, `1.250,75`) with automatic thousands grouping as you type and words readout under the box (`4 lira 50 kuruş`); on phones, focusing the box scrolls "Tahmin et" into view above the keypad
 - Interactive price charts on the receipt and archive with finger scrubbing (slide sideways to inspect any year's price) and keyboard navigation
 - Skipping a question reveals its answer on the next card (`Geçtiğin soru: ...`)
 - House button in the header for a direct return to the main menu
 - Fair, ratio-based scoring on a log scale: being 2× too high costs the same as 2× too low
+- New session record moment: previous best shown in the badge and a one-shot gold ring on the score box
 - Shareable result image (Canvas 2D) with a score stamp, to download or post directly
 - Installable app (PWA) that works offline after the first visit; new prices arrive on the
   next visit (stale-while-revalidate, cache versioned with the release)
 - Recorded sound effects with a mute button: an old receipt printer, the receipt being torn off, a checkout beep and a counter bell for an exact guess (CC0 recordings by Joseph Sardin, [BigSoundBank](https://bigsoundbank.com/), trimmed to ~30 KB in total in `sounds/`); light vibration on phones
 - The result icon bounces or shakes with your score
-- Light/dark theme toggle, keyboard friendly
+- Light/dark theme toggle with a circular reveal animation (View Transitions), keyboard friendly
 - Every price is sourced and labelled by source type (official, dataset, news, derived);
   unverified data never reaches the game
 - "Günün Fişi" daily receipt: the same 5 everyday questions for everyone each day, reviewable from the menu via "Fişini gör" once completed, with a spoiler-free share of coloured squares
 - Daily streak ("🔥 3 gün üst üste") on the menu and receipt for answering at least one question every day
+- Menu stats tracking: shows how many different products you have tried (`sen N ürün denedin`), with a warm wrap-up line after 3+ questions in a sitting
 - Unanswered questions first: prefers product years you haven't seen yet before repeating
 - Friend challenge score in "Arkadaşına sor" links to compare results with a friend without spoiling the price
 - Same-year follow-up hook on the receipt jumping straight to another everyday product from that year
-- Typo-tolerant archive search that forgives a single typo when no exact match is found
+- Typo-tolerant archive search understands everyday words ("mazot", "akbil", "döviz", "araba", "maaş") and forgives a single typo when no exact match is found
+- "Yeniden dene" retry button if price data fails to load on a weak connection
 
 ## Tech
 

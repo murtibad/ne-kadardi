@@ -42,6 +42,9 @@ result: guess, real price, how many times off ("2,7 kat az"), today's price and 
   (split into more UI modules if it grows).
 - Scoring is ratio-based on a log scale (see `scoreGuess`). Do not switch to difference-based.
 - Turkish number input must keep working: `"4,5"`, `"1.250"`, `"1.250,75"`. Covered by tests.
+- `onGuess` ignores a second submit for the same question object (`lastScoredQuestion`, reset in `nextQuestion`).
+- Home menu redraws itself on a new day (`refreshHomeIfNewDay`).
+- Search aliases live in `js/search.js` `ALIASES`, matched from the start of a word; tests enforce real product IDs (`tests/search.test.js`).
 
 ### 3. Language
 - **Game UI text: Turkish.** Use correct Turkish characters (ı, ğ, ş, ç, ö, ü, İ).
@@ -53,6 +56,8 @@ result: guess, real price, how many times off ("2,7 kat az"), today's price and 
 - Accessible: semantic HTML, labels for inputs, visible focus, `aria-live` for results,
   contrast ≥ 4.5:1, works with keyboard only. Respect `prefers-color-scheme`; animations
   are the same for everyone, do not add `prefers-reduced-motion` checks (owner's decision, 2026-10-26).
+- Entrance animations on elements that also have `:active`/`:hover` transforms must animate the separate `translate` property, not `transform` (so presses/taps register during entrance).
+- One-shot result animations must not replay on revisit: `#result-screen` gets class `.revisit` (CSS animation durations zeroed); WAAPI ones must only start from the fresh print path.
 - `npm test` must pass before every commit.
 - Check the page in a browser via a local server (`npm start` → http://localhost:8000).
   Opening `index.html` directly (`file://`) does not work because `fetch` is blocked.
@@ -66,6 +71,7 @@ result: guess, real price, how many times off ("2,7 kat az"), today's price and 
 - Commit messages in English, imperative mood ("Add receipt result screen").
 - Do not write temp files (logs, screenshots, scratch scripts, Stitch captures) into the repo.
   Use the OS temp folder. Leave no untracked files when you finish.
+- Headless agent runs (`agy`): give agents "ONLY file tools, no shell command".
 - Version: bump `package.json` `version` and add a `CHANGELOG.md` entry per PR
   (feature/design → minor, fix → patch).
 
