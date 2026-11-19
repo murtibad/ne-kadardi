@@ -290,11 +290,20 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   padding: 3px 0; 
   font-size: 1rem;
   line-height: 1.3;
-  transition: opacity 0.22s ease-out, transform 0.22s ease-out;
 }
-.row.awaiting-roll {
+/* Revealed comparison rows arrive in a 1-2 beat when the price count-up finishes */
+#r-current-row,
+#r-increase-row {
+  transition: opacity 0.26s ease-out, transform 0.26s ease-out;
+}
+#r-increase-row {
+  transition-delay: 90ms;
+}
+.row.awaiting-roll,
+#r-current-row.awaiting-roll,
+#r-increase-row.awaiting-roll {
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(4px);
   pointer-events: none;
   transition: none;
 }
@@ -1209,6 +1218,15 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .tally { display: inline-flex; gap: 4px; align-items: center; }
 .tally-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--fill); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25); }
 .tally-last { width: 13px; height: 13px; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--text); }
+/* Newest score dot stays hidden while the receipt prints, then pops in once handed over */
+#result-screen:not(.handed) .tally-last { opacity: 0; transform: scale(0); }
+#result-screen.handed .tally-last {
+  animation: tally-pop 0.34s cubic-bezier(.2, 1.5, .4, 1) both;
+}
+@keyframes tally-pop {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
 /* First-load placeholder: three printed lines on the receipt while the data arrives */
 .loading-card #message-text { text-align: center; font-family: var(--font-mono); }
