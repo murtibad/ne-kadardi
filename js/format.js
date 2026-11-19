@@ -52,7 +52,8 @@ export function formatNumber(value, options = {}, locale = 'tr-TR') {
  */
 export function parseGuess(input) {
   if (typeof input !== 'string') return null;
-  const s = input.trim().replace(/₺|tl/gi, '').replace(/\s+/g, '');
+  // People write the unit by habit ("4,5 lira", "20 TL"); the box already shows ₺, so the word is dropped.
+  const s = input.trim().replace(/₺|t\.?l\.?|lira/gi, '').replace(/\s+/g, '');
   if (s === '') return null;
 
   let normalized;

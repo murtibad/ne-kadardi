@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.10] - 2026-11-19
+### Fixed
+- A quick double tap on "Tahmin et" no longer scores the same question twice (it inflated the question count and average).
+- Guesses written with the unit by habit ("4,5 lira", "20 TL", "20 t.l.") are accepted; the error now says "Sadece rakam yaz, örneğin 4,5."
+
 ## [0.140.9] - 2026-11-19
 ### Fixed
 - On a phone, Back with the "Arkadaşına gönder" sheet open now just closes the sheet and stays on the result.

@@ -203,3 +203,12 @@ test('formatInputThousands regroups after typing or deleting inside a grouped nu
   assert.equal(formatInputThousands('1.50.000'), '150.000');
   assert.equal(formatInputThousands('1.2500,5'), '12.500,5');
 });
+
+test('parseGuess ignores the unit people type by habit', () => {
+  assert.equal(parseGuess('4,5 lira'), 4.5);
+  assert.equal(parseGuess('4 Lira'), 4);
+  assert.equal(parseGuess('20 TL'), 20);
+  assert.equal(parseGuess('20 t.l.'), 20);
+  assert.equal(parseGuess('1.250 lira'), 1250);
+  assert.equal(parseGuess('lira'), null);
+});
