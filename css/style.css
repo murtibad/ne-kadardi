@@ -1391,6 +1391,9 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .mode-spark svg { display: block; overflow: visible; }
 .mode-spark path { fill: none; stroke: var(--accent-on-paper); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .mode-spark circle { fill: var(--accent-on-paper); }
+/* pathLength=1 on the path: the draw-in animation in renderHomeSpark animates dashoffset 1 → 0. */
+.mode-spark path { stroke-dasharray: 1; }
+.mode-spark circle { transform-box: fill-box; transform-origin: center; }
 
 /* Skip note, left fade on scrolled chip rows, and the guess text centred on the field rather than the input */
 .skip-note { font-weight: 400; }

@@ -951,7 +951,10 @@ function renderHomeSpark() {
   const chart = t && buildPriceChart(t.rows, { width: 44, height: 18, pad: { top: 3, right: 3, bottom: 3, left: 3 } });
   if (!chart) return;
   const last = chart.points[chart.points.length - 1];
-  el.innerHTML = `<svg viewBox="0 0 44 18" width="44" height="18" focusable="false"><path d="${chart.line}"/><circle cx="${last.x}" cy="${last.y}" r="2.5"/></svg>`;
+  el.innerHTML = `<svg viewBox="0 0 44 18" width="44" height="18" focusable="false"><path d="${chart.line}" pathLength="1"/><circle cx="${last.x}" cy="${last.y}" r="2.5"/></svg>`;
+  // Drawn once per visit to the site: the line writes itself left to right, then its end dot lands.
+  el.querySelector('path').animate?.([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 600, delay: 300, easing: 'ease-out', fill: 'backwards' });
+  el.querySelector('circle').animate?.([{ transform: 'scale(0)' }, { transform: 'scale(1)' }], { duration: 240, delay: 860, easing: 'cubic-bezier(.2,1.4,.4,1)', fill: 'backwards' });
 }
 
 let lastFactId = null;
