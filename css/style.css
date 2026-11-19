@@ -1205,6 +1205,27 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   to { opacity: 1; transform: none; }
 }
 
+/* Extends screen-in to cover the cascade before main.js drops .screen-enter, keeping the shell stationary */
+#home-screen.screen-enter { animation: home-screen-in 0.52s ease-out both; }
+@keyframes home-screen-in {
+  0% { opacity: 0; }
+  40%, 100% { opacity: 1; }
+}
+#home-screen.screen-enter .home-intro,
+#home-screen.screen-enter .mode-list > .mode-card,
+#home-screen.screen-enter #fact-card {
+  animation: home-rise 0.32s cubic-bezier(.2, .8, .2, 1) both;
+}
+#home-screen.screen-enter .home-intro { animation-delay: 0ms; }
+#home-screen.screen-enter .mode-list > :nth-child(1) { animation-delay: 50ms; }
+#home-screen.screen-enter .mode-list > :nth-child(2) { animation-delay: 100ms; }
+#home-screen.screen-enter .mode-list > :nth-child(3) { animation-delay: 150ms; }
+#home-screen.screen-enter #fact-card { animation-delay: 200ms; }
+@keyframes home-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
 /* "Bunu tahmin et" on the fact card: straight from curiosity into a round */
 .fact-play { display: block; width: 100%; margin-top: 12px; min-height: 44px; padding: 10px 14px; background: transparent; color: var(--ink); border: 2px solid var(--ink); border-radius: 6px; font: 700 0.9375rem var(--font-ui); cursor: pointer; }
 .fact-play:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
