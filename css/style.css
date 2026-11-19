@@ -2173,5 +2173,5 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 #t-summary { text-wrap: balance; line-height: 1.35; }
 .timeline-legend { text-wrap: balance; }
 .timeline-order { align-items: center; margin-bottom: 4px; }
-.timeline-count { min-width: 4.5ch; text-align: right; }
+.timeline-count { min-width: 7ch; text-align: right; font-variant-numeric: tabular-nums; flex: none; } /* wide enough for "81 ürün", so the search box edge stays put while typing */
 .timeline-empty { margin: 4px 4px 12px; font-size: 0.9375rem; color: var(--muted); }

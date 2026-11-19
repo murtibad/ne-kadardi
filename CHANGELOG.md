@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.10] - 2026-11-19
+### Fixed
+- Archive search box no longer twitches by a few pixels as the product count changes while typing.
+
 ## [0.141.9] - 2026-11-19
 ### Changed
 - README and AGENTS.md describe tonight's features and the technical lessons (translate for entrance animations, no replay on revisit, double-submit guard, search aliases).
