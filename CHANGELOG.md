@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.15] - 2026-11-19
+### Fixed
+- A friend link that no longer matches (cut by a messenger, wrong date) opens a question anyway — the same product if it exists, otherwise a random one — with the line "Bağlantıdaki soru bulunamadı, sana başka bir soru seçtik." instead of silently dropping to the menu; no friend score is compared for the substitute question.
+
 ## [0.141.14] - 2026-11-19
 ### Changed
 - "Puan nasıl hesaplanır?" now has a worked example (real price 100, you wrote 200 or 50 → 61 points) and mentions that two hints cost 40 %.
