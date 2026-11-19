@@ -101,8 +101,12 @@ export function warmShareImage() {
     entry.promise.catch(() => { if (warm === entry) warm = null; });
     warm = entry;
   };
-  if (typeof requestIdleCallback === 'function') requestIdleCallback(run, { timeout: 1500 });
-  else setTimeout(run, 300);
+  // Wait for the 0.38 s hand-over slide to finish first: the canvas draw is one long task and landed in
+  // the slide's tail (measured ~250 ms at 4x CPU slowdown). Then only in real idle time.
+  setTimeout(() => {
+    if (typeof requestIdleCallback === 'function') requestIdleCallback(run, { timeout: 3000 });
+    else setTimeout(run, 300);
+  }, 600);
 }
 
 async function prepareShareImage(btnId) {

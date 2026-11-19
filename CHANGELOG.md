@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.5] - 2026-11-19
+### Changed
+- The result's hand-over slide stays smooth: the share image is now drawn only after the slide ends, in idle time (it used to land in the slide's last frames).
+
 ## [0.138.4] - 2026-11-19
 ### Changed
 - Secondary buttons ("Bunu tahmin et", "Başka", chips, hint, skip, send options, install) shrink slightly when pressed, like the main buttons.
