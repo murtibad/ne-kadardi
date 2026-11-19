@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.136.4] - 2026-11-19
+### Changed
+- Dark mode depth: menu cards get a soft shadow instead of a cream block, the handed-over receipt keeps a visible shadow, a faint warm glow at the top of the page; the next-question nudge is calmer (5 px ring, twice).
+
 ## [0.136.3] - 2026-11-19
 ### Changed
 - Sharing the result image is instant: the image is drawn in idle time after the receipt is handed over (tap to ready ~380 ms → ~18 ms at 4x CPU slowdown).
