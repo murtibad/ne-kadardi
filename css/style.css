@@ -2150,3 +2150,13 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
   animation-duration: 0s !important;
   animation-delay: 0s !important;
 }
+
+/* Readability for older players */
+.site-footer { font-size: 0.875rem; }
+.score-box .score,
+.score-box .score-hint { font-size: 0.8125rem; }
+.hint-slip-title { font-size: 0.8125rem; }
+.pc-label,
+.pc-tick { font-size: 12px; }
+.fact-head h3 { font-size: 0.8125rem; }
+
