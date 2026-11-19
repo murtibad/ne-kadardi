@@ -871,6 +871,13 @@ async function renderTimelineScreen(focusProductId = null) {
   return mod.renderTimelineScreen(focusProductId);
 }
 
+// Day the menu was last drawn for: the streak lines ("Serini koru", "🔥 N gün") go stale after midnight.
+let homeDay = null;
+function refreshHomeIfNewDay() {
+  if (document.visibilityState !== 'visible' || $('home-screen').hidden || homeDay === null) return;
+  if (dayKey() !== homeDay) renderHome();
+}
+
 function renderHome() {
   state.archiveFromResult = false;
   // After the daily receipt the question is spent; keeping it would offer "Sonuca dön" into a finished fiş.
@@ -879,6 +886,7 @@ function renderHome() {
     setDailyEndTurn(false);
   }
   const today = dayKey();
+  homeDay = today;
   const alive = streakAlive(state.streak, today) && state.streak.count >= 2;
   const streakMeta = alive ? ` · 🔥 ${state.streak.count} gün üst üste` : '';
   $('m-tahmin').textContent = state.played > 0
@@ -1174,6 +1182,9 @@ async function init() {
     window.addEventListener(type, () => sound.wake(), { capture: true, passive: true });
   }
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') sound.wake(); });
+  // A phone left on the menu overnight: redraw it for the new day when it comes back (or at midnight if open).
+  document.addEventListener('visibilitychange', refreshHomeIfNewDay);
+  setInterval(refreshHomeIfNewDay, 60000);
   // Sounds are small, but fetching them at load shared the slow link with prices.json and delayed the
   // menu. They are fetched once the menu is up (see scheduleSoundPrefetch); the first gesture's unlock() fetches them too.
   try {
