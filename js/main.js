@@ -17,7 +17,7 @@ import { pickFact } from './fact.js';
 import { buildPriceChart } from './price-chart.js';
 import { initChartUi, renderPriceChart } from './chart-ui.js';
 import { countUpFrames, easeOutCubic } from './count-up.js';
-import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
+import { parseQuestionParam, resolveFriendLink, LINK_NOT_FOUND_TEXT, friendIntroText, compareFriendScore } from './ask-link.js';
 import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey } from './daily.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview } from './daily-ui.js';
@@ -1350,13 +1350,14 @@ async function init() {
   const rawSoru = searchParams.get('soru');
   const rawP = searchParams.get('p');
   const parsedSoru = parseQuestionParam(rawSoru, rawP);
-  const askedQuestion = parsedSoru && state.all.find((x) => x.productId === parsedSoru.productId && x.date === parsedSoru.date);
-  if (askedQuestion) {
+  const link = rawSoru !== null ? resolveFriendLink(parsedSoru, state.all) : null;
+  if (link) {
     // Drop ?soru and &p so a reload does not repeat the shared question, and open it right away.
     history.replaceState(null, '', location.pathname + '#tahmin');
-    nextQuestion(parsedSoru.productId, parsedSoru.date);
-    state.friendScore = parsedSoru.score ?? null;
-    $('q-anchor').textContent = friendIntroText(state.friendScore);
+    nextQuestion(link.productId ?? null, link.date ?? null);
+    // A score was earned on another question, so it is only kept for the exact one.
+    state.friendScore = link.mode === 'exact' ? (parsedSoru.score ?? null) : null;
+    $('q-anchor').textContent = link.mode === 'exact' ? friendIntroText(state.friendScore) : LINK_NOT_FOUND_TEXT;
     $('q-anchor').hidden = false;
     $('q-anchor').classList.add('friend-line'); // kept even on very short screens, unlike the year anecdote
     return;

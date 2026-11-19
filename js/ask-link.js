@@ -22,6 +22,17 @@ export function parseQuestionParam(value, scoreParam) {
   return score !== null ? { productId: m[1], date: m[2], score } : { productId: m[1], date: m[2] };
 }
 
+// Decides what a shared link opens: the exact question, the same product on another date, or a random one.
+export function resolveFriendLink(parsed, questions) {
+  if (!parsed) return { mode: 'random' };
+  const { productId, date } = parsed;
+  if (questions.some((x) => x.productId === productId && x.date === date)) return { mode: 'exact', productId, date };
+  if (questions.some((x) => x.productId === productId)) return { mode: 'product', productId };
+  return { mode: 'random' };
+}
+
+export const LINK_NOT_FOUND_TEXT = 'Bağlantıdaki soru bulunamadı, sana başka bir soru seçtik.';
+
 export function askUrl(q, base, score = null) {
   const s = parseScoreParam(score);
   const p = s !== null ? `&p=${s}` : '';
