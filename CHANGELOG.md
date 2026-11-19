@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.18] - 2026-11-19
+### Changed
+- Wording: "Çok yüksek tahmin ettin" / "Çok düşük tahmin ettin" for wildly off guesses (same pattern as the other verdicts); the error says "Fiyatı rakamla yaz, örneğin 4,5."; the offline badge explains "İnternet yok ama oynayabilirsin".
+
 ## [0.140.17] - 2026-11-19
 ### Changed
 - First-visit intro: the skip button says "Tanıtımı atla" instead of "Geç →", and "Ana menüye geç" is a full-width outlined button instead of a small link.
