@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.2] - 2026-11-19
+### Changed
+- The first time the price box holds a real number, "Tahmin et" swells once, quietly saying it is ready.
+
 ## [0.138.1] - 2026-11-19
 ### Changed
 - Headings and short centred lines wrap evenly (no single word left alone on the last line, e.g. the intro title at 320 px).

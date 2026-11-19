@@ -221,6 +221,7 @@ function nextQuestion(productId = null, date = null) {
   $('q-explain').textContent = q.explain ?? '';
   $('q-explain').hidden = !q.explain;
   $('guess-input').value = '';
+  delete $('guess-input').dataset.valid;
   $('guess-readout').textContent = '';
   document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
   state.hintsUsed = 0;
@@ -1172,6 +1173,16 @@ async function init() {
     // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
     if (v !== null) $('guess-error').textContent = '';
     $('guess-readout').textContent = readoutText(v);
+    // The first time the box holds a real price, "Tahmin et" swells once: a quiet "ready when you are".
+    const valid = v !== null;
+    if (valid && e.target.dataset.valid !== '1') {
+      e.target.form?.querySelector('button[type="submit"]')?.animate?.(
+        [{ transform: 'scale(1)' }, { transform: 'scale(1.035)' }, { transform: 'scale(1)' }],
+        { duration: 320, easing: 'cubic-bezier(.3,.7,.3,1)' },
+      );
+    }
+    if (valid) e.target.dataset.valid = '1';
+    else delete e.target.dataset.valid;
   });
   // Skipping is free: no score and no stats, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
