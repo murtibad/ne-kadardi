@@ -707,7 +707,9 @@ function renderResult(q, r) {
   $('r-source').title = q.source.title;
   $('r-source').setAttribute('aria-label', `${$('r-source').textContent} kaynağı: ${q.source.title}`);
   const kindLabel = sourceKindLabel(q.source.kind);
-  $('r-source-kind').textContent = kindLabel ? ` · ${kindLabel}` : '';
+  // Its own small line under the source (see CSS): the link is an inline-block, so an inline " · haberlerden"
+  // wrapped alone with a dangling dot on phones.
+  $('r-source-kind').textContent = kindLabel || '';
   $('r-source-kind').hidden = !kindLabel;
   // One line on a 360 px phone: the best score already sits on the home menu.
   const streakHint = r.streakBump >= 2 ? ` · 🔥 ${r.streakBump} gün` : '';
