@@ -317,7 +317,14 @@ function initSendSheet() {
     const r = dlg.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
   });
-  dlg.addEventListener('close', () => { if (!$('result-screen').hidden) opener.focus(); });
+  dlg.addEventListener('close', () => {
+    // Closed by a button, Escape or the backdrop: drop the history entry the sheet added, so Back later
+    // leaves the result as before. (Closed by Back itself: that entry is already gone.)
+    if (history.state?.sendSheet) history.back();
+    if (!$('result-screen').hidden) opener.focus();
+  });
+  // On a phone, Back should close the sheet and stay on the result instead of leaving the screen.
+  window.addEventListener('popstate', () => { if (dlg.open) dlg.close(); });
   opener.addEventListener('click', (e) => {
     if (deps.isDailyEndTurn()) {
       opener.dataset.label = shareBtnLabel(); // shareTextWithStatus restores this after its message
@@ -327,6 +334,8 @@ function initSendSheet() {
     if (opener.hasAttribute('aria-busy')) return;
     if (typeof dlg.showModal !== 'function') { share(); return; }
     dlg.showModal();
+    // Same URL, so no hashchange: Back only pops this entry (see popstate above).
+    history.pushState({ sendSheet: true }, '', location.href);
     $('send-result').focus();
   });
 }

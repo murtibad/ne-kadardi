@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.9] - 2026-11-19
+### Fixed
+- On a phone, Back with the "Arkadaşına gönder" sheet open now just closes the sheet and stays on the result.
+- Menu cards respond to a press even while they are still rising in.
+
 ## [0.140.8] - 2026-11-19
 ### Changed
 - While prices load on a slow connection, a light sweep runs over the placeholder lines so the page does not look frozen (the text itself stays still).
