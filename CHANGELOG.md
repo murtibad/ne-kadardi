@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.25] - 2026-11-19
+### Changed
+- Ürün adları dengeli satırlara bölünüyor: 320 px'te 'Benzin (kurşunsuz / 95)' gibi son satırı tek kelime kalan ad sayısı 30'dan 6'ya indi. 'kaç liraydı? →' okunun ve Günün Fişi başlığındaki '· 19 KASIM' kısmının tek başına alt satıra düşmesi önlendi.
+
 ## [0.141.24] - 2026-11-19
 ### Fixed
 - Dar ekranda iki çakışma (ölçümlü 320/360 taraması buldu): menüdeki Fiyat Arşivi kartında açıklama 96 px'lik 4 satırlık sütuna sıkışıyordu, artık başlığın altına geçiyor; arşivde uzun birim satırı ('Yurt dışından getirilen 1 telefon') altındaki açıklamanın üstüne biniyordu.

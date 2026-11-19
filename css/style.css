@@ -2155,6 +2155,9 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
    (e.g. "Geçmişin fiyatlarını tahmin / et." at 320 px). Progressive: older browsers wrap as before. */
 h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balance; }
 .cashier-line, .context-line, .explain { text-wrap: pretty; }
+/* Product names are <p>, not headings, so they missed the rule above: "iPhone / 14" left a lone word. */
+.receipt-title, .followup-btn { text-wrap: balance; }
+.timeline-source, .tax-period-sources a { text-wrap: pretty; }
 
 /* Every secondary button answers a press the same way the main buttons do, so no tap feels dead. */
 .fact-play, .install-btn, .fact-next, .link-btn, .picker-chip, .send-opt, .hint-btn, .skip-btn {

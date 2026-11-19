@@ -170,7 +170,7 @@ function openDailyReview(saved) {
   const dlg = $('daily-review');
   reviewSaved = saved;
   const total = saved.scores.reduce((s, n) => s + n, 0);
-  $('daily-review-title').textContent = dailyTitle(saved.key);
+  $('daily-review-title').textContent = dailyTitle(saved.key).replace(' · ', ' · '); // '· 19 KASIM' never starts a line
   $('daily-review-lines').innerHTML = renderDailyRows(dailyLines(state.all, saved.ids, saved.scores));
   $('daily-review-total').textContent = dailyReviewTotalLine(total, reviewStreak());
   $('daily-review-next').textContent = nextReceiptIn();
