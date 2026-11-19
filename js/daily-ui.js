@@ -138,7 +138,8 @@ export function dailyLines(all, ids, scores) {
   return ids.map((id, i) => {
     const raw = scores?.[i];
     const score = Number.isFinite(raw) ? raw : 0;
-    const tier = score > 0 ? scoreTier(score) : null;
+    // Same colour as the shared squares: a 0-point row is red there too (🟥).
+    const tier = scoreTier(score);
     const dq = all.find((x) => x.id === id);
     if (!dq) return { label: 'Soru', detail: `${score} puan`, tier };
     return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score }), tier };

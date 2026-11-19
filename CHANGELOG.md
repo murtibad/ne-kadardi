@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.12] - 2026-11-19
+### Fixed
+- Archive chip row snaps again after the glide also for keyboard and mouse-wheel users.
+- Search aliases match from the start of a word only ("diz" no longer finds Motorin through the inside of a word; "kurt" no longer finds currencies).
+- Skipping in Günün Fişi gets the same card entrance as in normal play.
+- Günün Fişi receipt: a 0-point row is red, matching the red square in the shared text.
+
 ## [0.140.11] - 2026-11-19
 ### Changed
 - A wildly off guess (100 times or more) no longer shows a meaningless "350.661 kat fazla": the verdict simply says "Çok fazla yazdın, çok daha azdı" (or "Çok az yazdın, çok daha fazlaydı").

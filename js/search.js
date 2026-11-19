@@ -95,19 +95,29 @@ export const ALIASES = {
   yks: 'universite',
 };
 
-/** The text a product is searched by: its name plus its everyday aliases. */
-export function searchText(item) {
-  return `${item?.name ?? ''} ${ALIASES[item?.id] ?? ''}`;
+/** True when a query word starts one of the product's alias words ("diz" must not reach "dizel"
+ * through a substring, so aliases match from the start of a word and need at least 3 letters). */
+function aliasHit(item, w) {
+  if (w.length < 3) return false;
+  return (ALIASES[item?.id] ?? '').split(' ').some((a) => a.startsWith(w));
+}
+
+/** Name match first, then an alias that starts with the word. */
+function itemMatches(item, query) {
+  const words = foldTr(query).split(/\s+/).filter(Boolean);
+  if (words.length === 0) return true;
+  const haystack = foldTr(item?.name);
+  return words.every((w) => haystack.includes(w) || aliasHit(item, w));
 }
 
 /** Items (with a `name`) that match the query, in their original order. */
 export function filterByQuery(items, query) {
-  const exact = items.filter((item) => matchesQuery(searchText(item), query));
+  const exact = items.filter((item) => itemMatches(item, query));
   if (exact.length > 0) return exact;
   const words = foldTr(query).split(/\s+/).filter(Boolean);
   if (words.length === 0) return [];
   return items.filter((item) => {
-    const haystack = foldTr(searchText(item));
+    const haystack = foldTr(item.name);
     const nameWords = haystack.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
     return words.every((w) => {
       if (w.length < 4) return haystack.includes(w);

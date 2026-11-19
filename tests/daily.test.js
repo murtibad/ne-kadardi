@@ -194,7 +194,7 @@ test('dailyReviewTotalLine adds the streak only from 2 days up', () => {
   assert.equal(dailyReviewTotalLine(156, 3), 'Toplam: 156/500 · 🔥 3 gün üst üste');
 });
 
-test('dailyLines maps answered scores to their colour tier and skipped/unanswered rows to null', () => {
+test('dailyLines maps scores to their colour tier; 0 points is red like the shared square', () => {
   const all = [
     { id: 'benzin@2016-01', productId: 'benzin', name: 'Benzin', date: '2016-01', price: 4.28 },
     { id: 'dolar@2015-01', productId: 'dolar', name: 'Dolar', date: '2015-01', price: 2.33 },
@@ -210,8 +210,8 @@ test('dailyLines maps answered scores to their colour tier and skipped/unanswere
 
   const withSkips = dailyLines(all, ['benzin@2016-01', 'dolar@2015-01', 'missing@2020-01'], [0, null]);
   assert.deepEqual(withSkips, [
-    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 0 puan', tier: null },
-    { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: null },
-    { label: 'Soru', detail: '0 puan', tier: null },
+    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 0 puan', tier: 'bad' },
+    { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: 'bad' },
+    { label: 'Soru', detail: '0 puan', tier: 'bad' },
   ]);
 });

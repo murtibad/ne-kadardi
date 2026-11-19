@@ -225,7 +225,7 @@ export function createSoundPlayer(options = {}) {
     if (!enabled || !AudioContextCtor || typeof fetchFn !== 'function') return false;
     // Reuse an existing context (e.g. when the first-visit intro plays 'print' before idle prime runs)
     // so the remaining samples still get decoded ahead of time.
-    if (!ctx) {
+    if (!ctx || ctx.state === 'closed') {
       try {
         ctx = new AudioContextCtor();
       } catch {
