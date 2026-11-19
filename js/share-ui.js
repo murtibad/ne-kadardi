@@ -186,7 +186,7 @@ async function share() {
       await navigator.share({ text });
     } else {
       await navigator.clipboard.writeText(text);
-      setBtnStatus('share-btn', filesSupported ? 'Görsel hazırlanamadı, metin kopyalandı.' : 'Kopyalandı!');
+      setBtnStatus('share-btn', filesSupported ? 'Görsel hazırlanamadı, metin kopyalandı.' : 'Metin kopyalandı ✓');
     }
   } catch (err) {
     if (err.name !== 'AbortError') console.warn(err);
