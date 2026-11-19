@@ -684,7 +684,7 @@ function renderResult(q, r) {
   if (followBtn) {
     followBtn.hidden = !followUp;
     if (followUp) {
-      followBtn.textContent = `Peki ${inPeriod(formatPeriod(followUp.date))} ${questionTitle(followUp).replace(/\s*\(.*\)$/, '')} kaç liraydı? →`;
+      followBtn.textContent = `Peki ${inPeriod(formatPeriod(followUp.date))} ${questionTitle(followUp).replace(/\s*\(.*\)$/, '')} kaç liraydı? →`; // the arrow never sits alone on the last line
       followBtn.onclick = () => nextQuestion(followUp.productId, followUp.date);
     } else {
       followBtn.textContent = '';
