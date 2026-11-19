@@ -56,7 +56,7 @@ export const PRODUCT_POOLS = {
     'Yeni yıl kararı yine şubata kadar dayandı, hacı.',
   ],
   benzin: [
-    'Pompacı "fulle mi abi?" der, sen "şöyle biraz koy" dersin.',
+    'Pompacı "fulleyelim mi abi?" der, sen "şöyle biraz koy" dersin.',
     'Pompacı camı silerken sen göstergeye dua edersin.',
     'Bayramda memlekete giderken depo hesabı baştan yapılır.',
     'Dayım hâlâ "eskiden bununla İstanbul\'a giderdik" der.',
@@ -71,7 +71,7 @@ export const PRODUCT_POOLS = {
     'Annem "evde köfte var" der, biz yine de buraya geliriz.',
     'Dayım bir ısırdı, "bizim köfteci daha iyi" dedi.',
     'Turşusunu ayıklayan arkadaşın turşusu hep bana kalır.',
-    'Patatesi araba yolunda bitirmeyen yoktur.',
+    'Patatesi eve varmadan arabada bitirmeyen yoktur.',
   ],
   dolar: [
     'Kahvehanede okey bırakılır, dolar konuşulur.',
@@ -146,7 +146,7 @@ export const PRODUCT_POOLS = {
     'Atari salonunda jeton biriktirdiğimiz günler geldi aklıma.',
   ],
   'pasaport-harci': [
-    'Uzun süreliğini alalım da bir daha uğraşmayalım dedik.',
+    'Uzun sürelisini alalım da bir daha uğraşmayalım dedik.',
     'Vesikalık fotoğrafta hep aranan şahıs gibi çıkarız.',
     'Pasaport çıktı, gidecek yer daha belli değil.',
     'Nüfus müdürlüğünde sıra beklerken simit de alınır.',
@@ -178,7 +178,7 @@ export const PRODUCT_POOLS = {
   'yht-bilet': [
     'Bayram öncesi bilet bulana helal olsun valla.',
     'Pencereden bozkırı seyrederken çay da gelirse tadından yenmez.',
-    'Yan koltuktaki teyze bütün aile ağacını anlatır.',
+    'Yan koltuktaki teyze bütün sülalesini anlatır.',
     'Otobüsteki muavinin kolonyasını özleyen çok, gardaş.',
   ],
   dgs: [
@@ -287,7 +287,7 @@ export const PRODUCT_POOLS = {
     'Davul zurna yok, asker uğurlaması banka şubesinde yapıldı.',
     'Dayı söylendi: "Biz şafak sayardık, siz taksit sayıyorsunuz."',
     'Askerlik anısı sorulunca anlatılacak tek şey: tıraş.',
-    'Kınayı yaktılar, kuzu kuzu dekontu yatırmaya gitti.',
+    'Kınayı yaktılar, kuzu kuzu bedeli yatırmaya gitti.',
   ],
   'ehliyet-harci': [
     'Daha direksiyona dokunmadan vezne sırasında terledik.',
@@ -302,7 +302,7 @@ export const PRODUCT_POOLS = {
     'Telefona pasaport yetmedi, bir de kimlik çıkardık.',
   ],
   'kurban-vekalet-bedeli': [
-    'Bayram sabahı gelen "kurbanınız kesildi" mesajı içi ısıtır.',
+    'Bayram sabahı gelen "kurbanınız kesildi" mesajı içimizi ısıtır.',
     'Bizim payımız da uzaktaki bir sofraya sıcak bir aş olur.',
     'Babaannem "Allah kabul etsin" demeden kahvaltıya oturmazdı.',
     'Vekâleti verdin, gönlün rahat; bayramlaşmaya geçelim.',
@@ -412,12 +412,12 @@ export const PRODUCT_POOLS = {
   'okul-servisi': [
     'Korna sesini duyan çocuk tek ayakkabıyla kapıya fırlar.',
     'Ev okulun dibinde olsa bile o servise binilecek, o kadar.',
-    'Arka koltuk kapma yarışı nesilden nesile sürüyor.',
+    'Arka koltuk kapma yarışı nesilden nesle sürüyor.',
     'Servis ablası "kemerler takılsın" deyince herkes hizaya girer.',
   ],
   'firin-ekmegi': [
     'Eve varana kadar ucu koparılmamış ekmek görülmemiştir.',
-    'Annem "ekmeği yere düşürme" derdi, öper başına koyardık.',
+    'Annem "ekmeği yere düşürme" derdi, öper başımıza koyardık.',
     'Fırıncı abi "sıcak geldi" dedi mi, sıra kapıya uzanır.',
     'Akşam "bir ekmek al gel" diye yollanan çocuk hep bizdik.',
   ],

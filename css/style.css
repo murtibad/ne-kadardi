@@ -2181,6 +2181,10 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 #t-summary { text-wrap: balance; line-height: 1.35; }
 .timeline-legend { text-wrap: balance; }
 .timeline-order { align-items: center; margin-bottom: 4px; }
+/* At 320 px the sort button squeezed the legend into a 68 px column of four one-word lines;
+   below ~10rem of room the button drops to its own line instead. */
+.timeline-order { flex-wrap: wrap; row-gap: 6px; }
+.timeline-legend { flex: 1 1 10rem; }
 .timeline-count { min-width: 7ch; text-align: right; font-variant-numeric: tabular-nums; flex: none; } /* wide enough for "81 ürün", so the search box edge stays put while typing */
 .timeline-empty { margin: 4px 4px 12px; font-size: 0.9375rem; color: var(--muted); }
 
