@@ -1571,14 +1571,18 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   position: absolute;
   top: 12px;
   right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 44px;
   min-width: 44px;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border: 1.5px solid #57534c;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
   color: #d6d1c7; /* 10.7:1 on #141311 */
   font: 700 0.875rem var(--font-ui);
+  white-space: nowrap;
   cursor: pointer;
   z-index: 3;
 }
@@ -1752,7 +1756,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .intro-actions {
   width: 100%;
   display: grid;
-  gap: 6px;
+  gap: 8px;
   justify-items: center;
 }
 .intro-final .btn.next-btn {
@@ -1767,13 +1771,34 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   outline: 3px solid #fffcf5;
   outline-offset: 3px;
 }
+.intro-final .intro-close-btn,
+.intro-final #intro-close,
 .intro-final .link-btn {
-  color: #c9c4ba; /* 9.6:1 on #141311 */
-  font-size: 0.9375rem;
-  padding: 0 8px;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 2px solid #fffcf5;
+  border-radius: 8px;
+  color: #fffcf5;
+  font: 700 1rem var(--font-ui);
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s, background-color 0.15s, color 0.15s;
 }
+.intro-final .intro-close-btn:hover,
+.intro-final #intro-close:hover,
+.intro-final .link-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.intro-final .intro-close-btn:focus-visible,
+.intro-final #intro-close:focus-visible,
 .intro-final .link-btn:focus-visible {
-  outline: 3px solid #ef5350;
+  outline: 3px solid #fffcf5;
   outline-offset: 2px;
 }
 .footer-link-btn {

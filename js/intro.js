@@ -248,7 +248,7 @@ function ensureStage(dialogEl, list, fromYear, toYear) {
     const closeBtn = dialogEl.querySelector('#intro-close');
     dialogEl.innerHTML = `
       <div class="intro-stage">
-        <button type="button" id="intro-skip" class="intro-skip">Geç →</button>
+        <button type="button" id="intro-skip" class="intro-skip" aria-label="Tanıtımı atla">Tanıtımı atla</button>
         <div class="intro-year" aria-hidden="true">
           <span class="intro-year-label">YIL</span>
           <span class="intro-year-slot"><span class="intro-year-value">${escapeHTML(String(toYear))}</span></span>
