@@ -485,3 +485,11 @@ test('isFirstAnswerOfDay is false when the clock moved back', async () => {
   assert.equal(isFirstAnswerOfDay({ last: '2026-11-05', count: 3 }, '2026-11-05'), false);
   assert.equal(isFirstAnswerOfDay({ last: '2026-11-07', count: 3 }, '2026-11-05'), false);
 });
+
+test('the worked example in "Puan nasıl hesaplanır?" matches the formula', async () => {
+  const { readFileSync } = await import('node:fs');
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(html, /gerçek fiyat 100 lira, sen 200 ya da 50 yazdıysan 61 puan/);
+  assert.equal(scoreGuess(200, 100).score, 61);
+  assert.equal(scoreGuess(50, 100).score, 61);
+});
