@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.3] - 2026-11-19
+### Added
+- Before the very first answer, the empty line under the price box says "Sadece rakam yaz, ör. 4,5"; typing replaces it with the usual reading ("4 lira 50 kuruş"), so nothing moves.
+
 ## [0.141.2] - 2026-11-19
 ### Changed
 - Easier to read for older eyes: the footer, the "PUAN" label and score note, the hint slip title, the fact card title and the archive chart labels are a little larger.
