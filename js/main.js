@@ -1263,7 +1263,7 @@ async function init() {
     state.timelines = buildTimelines(rawData);
   } catch (err) {
     console.error(err);
-    showMessage('Fiyatlar yüklenemedi. İnternet bağlantını kontrol edip tekrar dene.', { retry: true });
+    showMessage('Fiyatlar yüklenemedi. İnternet bağlantını kontrol edip yeniden dene.', { retry: true });
     return;
   }
   if (state.all.length === 0) {

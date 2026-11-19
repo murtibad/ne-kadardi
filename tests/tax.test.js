@@ -132,7 +132,7 @@ test('buildTaxLine builds correct Turkish sentences without the word "en az"', (
   assert.ok(line.includes('yaklaşık'));
   assert.equal(
     line,
-    'Bu fiyatın vergi payı yaklaşık %51 (yaklaşık ₺33.000). Bugünkü ₺77.999 fiyatta vergi payı yaklaşık ₺39.700.'
+    'Bu fiyatın vergi payı yaklaşık %51 (₺33.000). Bugünkü ₺77.999 fiyattaki vergi payı yaklaşık ₺39.700.'
   );
 
   const qWithoutCurrent = {
@@ -146,7 +146,7 @@ test('buildTaxLine builds correct Turkish sentences without the word "en az"', (
   assert.ok(lineWithoutCurrent.includes('yaklaşık'));
   assert.equal(
     lineWithoutCurrent,
-    'Bu fiyatın vergi payı yaklaşık %51 (yaklaşık ₺33.000).'
+    'Bu fiyatın vergi payı yaklaşık %51 (₺33.000).'
   );
 
   const qOutOfPeriod = {

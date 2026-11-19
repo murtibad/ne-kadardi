@@ -73,7 +73,7 @@ export function taxBreakdown(price, date, taxModel) {
 
 /**
  * Result receipt sentence explaining the tax estimate.
- * e.g. "Bu fiyatın vergi payı yaklaşık %51 (yaklaşık ₺15.800). Bugünkü ₺77.999 fiyatta vergi payı yaklaşık ₺35.600."
+ * e.g. "Bu fiyatın vergi payı yaklaşık %51 (₺15.800). Bugünkü ₺77.999 fiyattaki vergi payı yaklaşık ₺35.600."
  */
 export function buildTaxLine(q) {
   if (!q?.tax || !q?.price || !q?.date) return null;
@@ -84,7 +84,7 @@ export function buildTaxLine(q) {
   const roundedAmount = Math.round(tb.total / 100) * 100;
   const formattedAmount = formatPrice(roundedAmount);
 
-  let sentence = `Bu fiyatın vergi payı yaklaşık %${sharePercent} (yaklaşık ${formattedAmount}).`;
+  let sentence = `Bu fiyatın vergi payı yaklaşık %${sharePercent} (${formattedAmount}).`;
 
   if (q.current?.price && q.current?.date && !(q.current.date === q.date && q.current.price === q.price)) {
     const currentTb = taxBreakdown(q.current.price, q.current.date, q.tax);
@@ -92,7 +92,7 @@ export function buildTaxLine(q) {
       const currentPriceStr = formatPrice(q.current.price);
       const roundedCurrentAmount = Math.round(currentTb.total / 100) * 100;
       const currentAmountStr = formatPrice(roundedCurrentAmount);
-      sentence += ` Bugünkü ${currentPriceStr} fiyatta vergi payı yaklaşık ${currentAmountStr}.`;
+      sentence += ` Bugünkü ${currentPriceStr} fiyattaki vergi payı yaklaşık ${currentAmountStr}.`;
     }
   }
 
