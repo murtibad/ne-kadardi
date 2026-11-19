@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.135.6] - 2026-11-19
+### Changed
+- Menu cards press down into their shadow on tap and lift slightly on hover; header icon buttons shrink on press (tactile feedback).
+
 ## [0.135.5] - 2026-11-18
 ### Changed
 - Question screen: removed the "Bilemedin mi? Soruyu arkadaşına gönder" row; the result screen's send sheet does the same job with the score (owner decision).
