@@ -112,11 +112,11 @@ test('sessionWrapText stays silent below 3 answers and picks a kind close by ave
   assert.equal(sessionWrapText(2, 90), '');
   assert.equal(sessionWrapText(0, 0), '');
   assert.equal(sessionWrapText(5, NaN), '');
-  assert.match(sessionWrapText(3, 12), /^Bu sefer 3 soru çözdün, ortalaman 12\. Fiyatlar zor/);
-  assert.match(sessionWrapText(4, 29.4), /Fiyatlar zor/);
+  assert.match(sessionWrapText(3, 12), /^Bu oturumda 3 soru çözdün, ortalaman 12\. Eski fiyatları/);
+  assert.match(sessionWrapText(4, 29.4), /Eski fiyatları/);
   assert.match(sessionWrapText(4, 30), /Fena değil/);
   assert.match(sessionWrapText(4, 59.4), /Fena değil/);
-  assert.match(sessionWrapText(7, 63.6), /ortalaman 64\. İyi gidiyorsun!$/);
-  assert.match(sessionWrapText(7, 79), /İyi gidiyorsun/);
-  assert.match(sessionWrapText(7, 80), /ezberlemişsin/);
+  assert.match(sessionWrapText(7, 63.6), /ortalaman 64\. Gayet iyi!$/);
+  assert.match(sessionWrapText(7, 79), /Gayet iyi/);
+  assert.match(sessionWrapText(7, 80), /dün gibi aklında/);
 });

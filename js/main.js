@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText, formatInputThousands, keyboardFitDelta } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, seenProductCount } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
@@ -284,7 +284,7 @@ let lastScoredQuestion = null;
 // readout's reserved line, so nothing moves when it is replaced by "4 lira 50 kuruş" while typing.
 function emptyReadout() {
   // Günün Fişi answers do not count in played, but they do mark seen: a daily player is not new any more.
-  return state.played === 0 && state.seen.size === 0 ? 'Sadece rakam yaz, ör. 4,5' : '';
+  return state.played === 0 && state.seen.size === 0 ? 'Rakamla yaz, örneğin 4,5' : '';
 }
 function onGuess(event) {
   event.preventDefault();
@@ -916,9 +916,7 @@ function renderHome() {
     : alive ? `🔥 ${state.streak.count} gün üst üste` : '';
   renderDailyMenu();
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
-  // A small collection count gives a reason to come back: how many of the products the player has met.
-  const tried = Math.min(seenProductCount(state.seen), state.timelines.length);
-  $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat` + (tried > 0 ? ` · sen ${tried} ürün denedin` : '');
+  $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   const needsToday = alive && state.streak.last !== today;
   // A streak of 2+ that is no longer alive was broken: say so once, with the record to beat.

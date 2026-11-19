@@ -535,13 +535,3 @@ export function updateStreak(prev, todayKey) {
   const count = diff === 1 ? prevCount + 1 : 1;
   return { last: todayKey, count, best: Math.max(prevBest, count) };
 }
-
-/** How many different products the player has answered (seen ids look like "benzin@2016-07"). */
-export function seenProductCount(seen) {
-  const products = new Set();
-  for (const id of seen ?? []) {
-    const at = typeof id === 'string' ? id.indexOf('@') : -1;
-    if (at > 0) products.add(id.slice(0, at));
-  }
-  return products.size;
-}

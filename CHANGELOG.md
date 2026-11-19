@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.11] - 2026-11-19
+### Changed
+- The session wrap-up says "Bu oturumda …" so its average is not confused with the all-time one on the card, with warmer closing words ("Eski fiyatları hatırlamak kolay değil, olsun.", "Harika, dün gibi aklında!").
+- Removed the menu's "sen N ürün denedin" count: it counted Günün Fişi too and read as contradicting the card's question count.
+- First-question hint reads "Rakamla yaz, örneğin 4,5" (fits one line at 320 px).
+
 ## [0.141.10] - 2026-11-19
 ### Fixed
 - Archive search box no longer twitches by a few pixels as the product count changes while typing.
