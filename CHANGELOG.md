@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.1] - 2026-11-19
+### Changed
+- A new record is a moment now: the score box glows gold once after the score finishes counting, and the bottom line says "🎯 Yeni rekor! (öncekisi 82)".
+
 ## [0.141.0] - 2026-11-19
 ### Added
 - The menu's stats line also says how many different products you have tried so far ("· sen 23 ürün denedin").

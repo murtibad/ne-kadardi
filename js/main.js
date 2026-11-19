@@ -344,6 +344,7 @@ let handTimer = null;
 let cancelPrint = null;
 let countUpRaf = null;
 let scoreRaf = null;
+let recordRing = null;
 
 // Stops the price count-up, leaves the real price on the receipt, and reveals the current/change rows.
 function stopCountUp() {
@@ -471,6 +472,7 @@ function handOver() {
 }
 
 function printReceipt(extraSound) {
+  recordRing?.cancel();
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
@@ -494,6 +496,12 @@ function printReceipt(extraSound) {
     if (state.result) {
       if (skipped) stopScoreRoll();
       else startScoreRoll(state.result.score);
+      // A new session record gets a one-shot gold ring once the score has landed (fresh print only).
+      if (state.result.badge?.includes('Yeni rekor')) {
+        recordRing = $('r-receipt').querySelector('.score-box')?.animate(
+          [{ boxShadow: '0 0 0 0 rgba(224,160,32,.55)' }, { boxShadow: '0 0 0 8px rgba(224,160,32,0)' }],
+          { duration: 900, easing: 'ease-out', delay: skipped ? 0 : SCORE_ROLL_MS, fill: 'backwards' });
+      }
       $('r-meter').style.setProperty('--score', `${state.result.score}%`);
       const tier = scoreTier(state.result.score);
       if (tier === 'great') $('r-image').classList.add('bounce');
@@ -508,6 +516,7 @@ function printReceipt(extraSound) {
   };
   const skipPrint = () => finish({ skipped: true });
   cancelPrint = () => {
+    recordRing?.cancel();
     stopCountUp();
     stopScoreRoll();
     wrap.removeEventListener('click', skipPrint);
