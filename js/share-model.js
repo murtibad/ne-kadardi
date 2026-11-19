@@ -24,8 +24,8 @@ export function verdictText(r) {
   if (r.factor < 1.5) return `Biraz ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
   if (r.factor >= HUGE_RATIO) {
     return r.direction === 'over'
-      ? 'Çok fazla yazdın, çok daha azdı'
-      : 'Çok az yazdın, çok daha fazlaydı';
+      ? 'Çok yüksek tahmin ettin'
+      : 'Çok düşük tahmin ettin';
   }
   return `${formatRatio(r.factor)} kat ${r.direction === 'over' ? 'fazla' : 'az'} tahmin ettin`;
 }

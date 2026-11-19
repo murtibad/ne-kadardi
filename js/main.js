@@ -287,7 +287,7 @@ function onGuess(event) {
   // The dearest answer is a car (about 1,5 million); a longer number only breaks the receipt layout.
   const tooBig = guess !== null && guess >= 1e10;
   if (guess === null || tooBig) {
-    $('guess-error').textContent = tooBig ? 'Bu sayı çok büyük, daha küçük bir fiyat yaz.' : 'Sadece rakam yaz, örneğin 4,5.';
+    $('guess-error').textContent = tooBig ? 'Bu sayı çok büyük, daha küçük bir fiyat yaz.' : 'Fiyatı rakamla yaz, örneğin 4,5.';
     const field = document.querySelector('#question-screen .guess-field');
     if (field) {
       field.classList.remove('invalid');

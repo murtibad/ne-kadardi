@@ -27,11 +27,11 @@ test('verdictText handles over, under and exact', () => {
 });
 
 test('verdictText drops the number for absurd ratios', () => {
-  assert.equal(verdictText({ direction: 'over', factor: 350661 }), 'Çok fazla yazdın, çok daha azdı');
-  assert.equal(verdictText({ direction: 'under', factor: 333333 }), 'Çok az yazdın, çok daha fazlaydı');
+  assert.equal(verdictText({ direction: 'over', factor: 350661 }), 'Çok yüksek tahmin ettin');
+  assert.equal(verdictText({ direction: 'under', factor: 333333 }), 'Çok düşük tahmin ettin');
   assert.equal(verdictText({ direction: 'over', factor: 2.7 }), '2,7 kat fazla tahmin ettin');
   assert.equal(verdictText({ direction: 'over', factor: 99.9 }), '99,9 kat fazla tahmin ettin');
-  assert.equal(verdictText({ direction: 'over', factor: 100 }), 'Çok fazla yazdın, çok daha azdı');
+  assert.equal(verdictText({ direction: 'over', factor: 100 }), 'Çok yüksek tahmin ettin');
 });
 
 test('buildShareFileName generates ascii lowercase hyphenated names', () => {
