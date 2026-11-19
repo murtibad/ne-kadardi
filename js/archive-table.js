@@ -30,7 +30,14 @@ export function pickRandomId(ids, currentId, rand = Math.random) {
   return others.length ? others[Math.min(others.length - 1, Math.floor(rand() * others.length))] : null;
 }
 
-function rowHtml(r, seen, extra, hidden) {
+/** True when `pinDate` is a row that the collapsed table would hide (so the archive must open the old rows). */
+export function pinHiddenByCollapse(rows, pinDate) {
+  if (!pinDate) return false;
+  const i = rows.findIndex((r) => r.date === pinDate);
+  return i >= 0 && i < visibleRowRange(rows.length).firstVisible;
+}
+
+function rowHtml(r, seen, extra, hidden, pinned = false) {
   const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
   const ratio = r.ratioToCurrent ? `<span class="timeline-ratio">${formatIncrease(r.ratioToCurrent)}</span>` : '';
   const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
@@ -47,7 +54,9 @@ function rowHtml(r, seen, extra, hidden) {
     ? `<details class="timeline-note"><summary aria-label="${escapeHTML(period)} kaynak ve not">Kaynak ve not</summary><div class="timeline-note-body">${sourceLink}${noteHtml}</div></details>`
     : '';
   const date = escapeHTML(r.date);
-  return `<tr role="row" data-date="${date}"${r.isCurrent ? ' class="is-current"' : ''}${extra ? ' data-extra' : ''}${hidden ? ' hidden' : ''}>
+  const classes = [r.isCurrent && 'is-current', pinned && 'is-pinned'].filter(Boolean).join(' ');
+  const rowClass = classes ? ` class="${classes}"` : '';
+  return `<tr role="row" data-date="${date}"${rowClass}${extra ? ' data-extra' : ''}${hidden ? ' hidden' : ''}>
       <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${date}" aria-label="${escapeHTML(period)}: grafikte göster">${escapeHTML(period)}</button></th>
       <td role="cell" class="timeline-price-cell"><span class="timeline-price">${formatPrice(r.price)}</span></td>
       <td role="cell" class="timeline-detail-cell">
@@ -58,11 +67,11 @@ function rowHtml(r, seen, extra, hidden) {
 
 /** The whole table for a product's rows, oldest first unless newestFirst. */
 /** `seenDates` (optional Set of dates) marks rows the player has already answered in the game. */
-export function timelineTableHtml(rows, { newestFirst = false, seenDates = null, expanded = false } = {}) {
+export function timelineTableHtml(rows, { newestFirst = false, seenDates = null, expanded = false, pinnedDate = null } = {}) {
   const { collapsible, firstVisible } = visibleRowRange(rows.length, { expanded });
   // Hidden rows stay in the DOM so the chart can still link to them and open the table.
   const extraCount = collapsible ? rows.length - COLLAPSED_ROWS : 0;
-  const flagged = rows.map((r, i) => rowHtml(r, Boolean(seenDates?.has(r.date)), i < extraCount, i < firstVisible));
+  const flagged = rows.map((r, i) => rowHtml(r, Boolean(seenDates?.has(r.date)), i < extraCount, i < firstVisible, r.date === pinnedDate));
   if (newestFirst) flagged.reverse();
   const toggle = collapsible
     ? `<button type="button" class="rows-toggle" aria-expanded="${expanded}">${rowsToggleLabel(rows.length, expanded)}</button>` : '';

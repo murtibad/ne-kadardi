@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { timelineTableHtml, visibleRowRange, rowsToggleLabel, pickRandomId } from '../js/archive-table.js';
+import { timelineTableHtml, visibleRowRange, rowsToggleLabel, pickRandomId, pinHiddenByCollapse } from '../js/archive-table.js';
 
 const rows = [
   { date: '2010-01', price: 10, ratioToCurrent: 5, source: { url: 'https://a.example/?x=1&y=2', title: 'A "kaynak"', kind: 'news' }, note: null },
@@ -60,4 +60,21 @@ test('pickRandomId never returns the current id', () => {
   assert.equal(pickRandomId(['a', 'b', 'c'], 'b', () => 0), 'a');
   assert.equal(pickRandomId(['a', 'b', 'c'], 'b', () => 0.99), 'c');
   assert.equal(pickRandomId(['a'], 'a'), null);
+});
+
+test('pinHiddenByCollapse is true only for a row behind the collapsed toggle', () => {
+  const list = many(20); // 2000-01 .. 2019-01
+  assert.equal(pinHiddenByCollapse(list, '2000-01'), true);
+  assert.equal(pinHiddenByCollapse(list, '2019-01'), false);
+  assert.equal(pinHiddenByCollapse(list, '1999-01'), false);
+  assert.equal(pinHiddenByCollapse(list, null), false);
+  assert.equal(pinHiddenByCollapse(many(5), '2000-01'), false);
+});
+
+test('the pinned row gets is-pinned, alongside is-current', () => {
+  const html = timelineTableHtml(many(20), { expanded: true, pinnedDate: '2000-01' });
+  assert.match(html, /<tr role="row" data-date="2000-01" class="is-pinned"/);
+  assert.equal((html.match(/is-pinned/g) || []).length, 1);
+  assert.doesNotMatch(timelineTableHtml(many(20)), /is-pinned/);
+  assert.match(timelineTableHtml(rows, { pinnedDate: '2026-01' }), /class="is-current is-pinned"/);
 });
