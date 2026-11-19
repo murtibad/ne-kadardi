@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.4] - 2026-11-19
+### Added
+- After 3 or more questions in one sitting, the menu greets you once with a short wrap-up: "Bu sefer 7 soru çözdün, ortalaman 64. İyi gidiyorsun!" (kind wording for low averages too).
+
 ## [0.141.3] - 2026-11-19
 ### Added
 - Before the very first answer, the empty line under the price box says "Sadece rakam yaz, ör. 4,5"; typing replaces it with the usual reading ("4 lira 50 kuruş"), so nothing moves.
