@@ -2013,3 +2013,11 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
    (e.g. "Geçmişin fiyatlarını tahmin / et." at 320 px). Progressive: older browsers wrap as before. */
 h1, h2, h3, .intro-final p, .home-intro p, .verdict, .mode-desc, .product { text-wrap: balance; }
 .cashier-line, .context-line, .explain { text-wrap: pretty; }
+
+/* Every secondary button answers a press the same way the main buttons do, so no tap feels dead. */
+.fact-play, .install-btn, .fact-next, .link-btn, .picker-chip, .send-opt, .hint-btn, .skip-btn {
+  transition: transform 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.fact-play:active, .install-btn:active, .link-btn:active, .picker-chip:active, .send-opt:active, .hint-btn:active, .skip-btn:active { transform: scale(0.97); }
+.fact-next:active { transform: scale(0.94); }

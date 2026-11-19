@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.4] - 2026-11-19
+### Changed
+- Secondary buttons ("Bunu tahmin et", "Başka", chips, hint, skip, send options, install) shrink slightly when pressed, like the main buttons.
+
 ## [0.138.3] - 2026-11-19
 ### Changed
 - "Başka ↻" on the menu's fact card: the arrow turns once and the old fact slides out before the new one fades in; rapid taps no longer stack.
