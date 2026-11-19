@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildShareText, verdictText, buildShareFileName, buildShareImageModel, questionTitle, shareImageKey } from '../js/share-model.js';
+import { buildShareText, verdictText, buildShareFileName, buildShareImageModel, questionTitle, shareImageKey, sessionWrapText } from '../js/share-model.js';
 import { formatPrice } from '../js/format.js';
 
 test('buildShareText formats exactly like the old share text', () => {
@@ -106,4 +106,17 @@ test('shareImageKey changes with the round and is null without a result', () => 
   assert.notEqual(base, shareImageKey(q, { ...r, guess: 5 }, { played: 1, total: 90, round: 2 }));
   assert.notEqual(base, shareImageKey(q, r, { played: 2, total: 180, round: 3 }));
   assert.equal(shareImageKey(q, null), null);
+});
+
+test('sessionWrapText stays silent below 3 answers and picks a kind close by average band', () => {
+  assert.equal(sessionWrapText(2, 90), '');
+  assert.equal(sessionWrapText(0, 0), '');
+  assert.equal(sessionWrapText(5, NaN), '');
+  assert.match(sessionWrapText(3, 12), /^Bu sefer 3 soru çözdün, ortalaman 12\. Fiyatlar zor/);
+  assert.match(sessionWrapText(4, 29.4), /Fiyatlar zor/);
+  assert.match(sessionWrapText(4, 30), /Fena değil/);
+  assert.match(sessionWrapText(4, 59.4), /Fena değil/);
+  assert.match(sessionWrapText(7, 63.6), /ortalaman 64\. İyi gidiyorsun!$/);
+  assert.match(sessionWrapText(7, 79), /İyi gidiyorsun/);
+  assert.match(sessionWrapText(7, 80), /ezberlemişsin/);
 });

@@ -7,7 +7,7 @@ import { CATEGORIES, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { sourceLinkText } from './source-name.js';
 import { burstConfetti } from './confetti.js';
-import { verdictText, questionTitle, skipRevealText, sessionBadge } from './share-model.js';
+import { verdictText, questionTitle, skipRevealText, sessionBadge, sessionWrapText } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
@@ -37,7 +37,8 @@ const state = {
   played: 0, skips: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
-  archiveFromResult: false 
+  archiveFromResult: false,
+  wrap: { count: 0, sum: 0 } // this sitting only, free play only; cleared once the menu line is shown
 };
 
 // The result screen shows the last few scores as coloured ticks, like a till roll tally.
@@ -325,6 +326,8 @@ function onGuess(event) {
     state.played += 1;
     state.total += state.result.score;
     state.best = Math.max(state.best, state.result.score);
+    state.wrap.count += 1;
+    state.wrap.sum += state.result.score;
     state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
     state.result.badge = sessionBadge({ prevBest, score: state.result.score, playedAfter: state.played, recent: state.recentScores });
   }
@@ -919,6 +922,11 @@ function renderHome() {
   $('home-streak').textContent = needsToday ? 'Serini koru: bugün bir soru çöz.'
     : broken ? `Serin bozuldu (en uzun: ${state.streak.best || state.streak.count} gün). Bugün yeniden başla.` : '';
   $('home-streak').hidden = !needsToday && !broken;
+  // One warm line after a run of free questions; shown once, then the sitting counter restarts.
+  const wrapText = sessionWrapText(state.wrap.count, state.wrap.count ? state.wrap.sum / state.wrap.count : 0);
+  $('home-wrap').textContent = wrapText;
+  $('home-wrap').hidden = !wrapText;
+  if (wrapText) state.wrap = { count: 0, sum: 0 };
   if (!$('fact-body').hasChildNodes()) renderFact();
   renderHomeSpark();
   // Coming back to the menu does not reset the game, so say so instead of "Başla".
