@@ -2,7 +2,7 @@
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPeriod } from './format.js';
 import { buildContextLine, streakAlive } from './game.js';
-import { buildShareText, buildShareImageModel, buildShareFileName, questionTitle } from './share-model.js';
+import { buildShareText, buildShareImageModel, shareImageKey, buildShareFileName, questionTitle } from './share-model.js';
 import { stampTitle } from './banter.js';
 import { buildPriceChart } from './price-chart.js';
 import { askUrl, askText } from './ask-link.js';
@@ -60,28 +60,73 @@ function setBtnStatus(btnId, text) {
   }, 2000);
 }
 
+// One cached blob promise for the current result; a different key means the player moved on.
+let warm = null;
+
+function currentShareKey() {
+  const st = getState();
+  return shareImageKey(st.question, st.result, { played: st.played, total: st.total, round: st.round });
+}
+
+async function buildShareBlob() {
+  const q = getState().question;
+  const r = getState().result;
+  const contextText = buildContextLine(q, getState().all);
+  const model = buildShareImageModel(q, r, { contextLine: contextText });
+  const t = getState().timelines.find((t) => t.id === q.productId);
+  model.chart = t
+    ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, refPrice: r.guess, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
+    : null;
+  // After a few rounds the stamp rates the whole session instead of this one guess.
+  if (getState().played >= 3) model.stamp = stampTitle(getState().total / getState().played) ?? model.stamp;
+  const { renderShareImage } = await import('./share-image.js');
+  return await renderShareImage(model);
+}
+
+// Draws the image in idle time after the receipt is handed over, so the share tap has nothing left to wait for.
+export function warmShareImage() {
+  if (!deps) return;
+  const key = currentShareKey();
+  if (!key || warm?.key === key) return;
+  warm = null;
+  // The module itself is worth loading even if the image is skipped later.
+  import('./share-image.js').catch(() => {});
+  const run = () => {
+    if (currentShareKey() !== key || $('result-screen').hidden) return;
+    const entry = { key, promise: null };
+    entry.promise = buildShareBlob().then((b) => {
+      if (!b) throw new Error('empty blob');
+      return b;
+    });
+    entry.promise.catch(() => { if (warm === entry) warm = null; });
+    warm = entry;
+  };
+  if (typeof requestIdleCallback === 'function') requestIdleCallback(run, { timeout: 1500 });
+  else setTimeout(run, 300);
+}
+
 async function prepareShareImage(btnId) {
   const btn = $(btnId);
   if (btn.hasAttribute('aria-busy')) return null;
-  
+
+  const key = currentShareKey();
+  if (warm && warm.key === key) {
+    // A ready (or nearly ready) warm image skips the "Hazırlanıyor…" flash; a failed one falls back below.
+    const entry = warm;
+    try {
+      return await entry.promise;
+    } catch {
+      if (warm === entry) warm = null;
+    }
+  }
+
   btn.setAttribute('aria-busy', 'true');
   btn.textContent = 'Hazırlanıyor…';
   announce('Hazırlanıyor…');
 
   // Everything after the busy mark sits in the try, so a failure never leaves the button stuck on "Hazırlanıyor…".
   try {
-    const q = getState().question;
-    const r = getState().result;
-    const contextText = buildContextLine(q, getState().all);
-    const model = buildShareImageModel(q, r, { contextLine: contextText });
-    const t = getState().timelines.find((t) => t.id === q.productId);
-    model.chart = t
-      ? buildPriceChart(t.rows, { width: 760, height: 260, highlightDate: q.date, refPrice: r.guess, pad: { top: 40, right: 24, bottom: 44, left: 24 } })
-      : null;
-    // After a few rounds the stamp rates the whole session instead of this one guess.
-    if (getState().played >= 3) model.stamp = stampTitle(getState().total / getState().played) ?? model.stamp;
-    const { renderShareImage } = await import('./share-image.js');
-    return await renderShareImage(model);
+    return await buildShareBlob();
   } catch (err) {
     console.warn('Görsel hazırlanamadı', err);
     return null;

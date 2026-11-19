@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildShareText, verdictText, buildShareFileName, buildShareImageModel, questionTitle } from '../js/share-model.js';
+import { buildShareText, verdictText, buildShareFileName, buildShareImageModel, questionTitle, shareImageKey } from '../js/share-model.js';
 import { formatPrice } from '../js/format.js';
 
 test('buildShareText formats exactly like the old share text', () => {
@@ -88,4 +88,14 @@ test('a model-named question leads with the model and says what it is', () => {
   assert.equal(questionTitle({ productId: 'airpods', name: 'AirPods kablosuz kulaklık (temel model)', label: 'AirPods 5' }), 'AirPods 5 (kablosuz kulaklık, temel model)');
   assert.equal(questionTitle({ productId: 'iphone', name: 'Yeni iPhone', label: 'iPhone 11' }), 'iPhone 11');
   assert.equal(questionTitle({ productId: 'simit', name: 'Simit', label: null }), 'Simit');
+});
+
+test('shareImageKey changes with the round and is null without a result', () => {
+  const q = { id: 'a', productId: 'p', date: '2015-01' };
+  const r = { guess: 4, score: 90 };
+  const base = shareImageKey(q, r, { played: 1, total: 90, round: 2 });
+  assert.equal(base, shareImageKey(q, { ...r }, { played: 1, total: 90, round: 2 }));
+  assert.notEqual(base, shareImageKey(q, { ...r, guess: 5 }, { played: 1, total: 90, round: 2 }));
+  assert.notEqual(base, shareImageKey(q, r, { played: 2, total: 180, round: 3 }));
+  assert.equal(shareImageKey(q, null), null);
 });

@@ -43,6 +43,12 @@ export function buildShareFileName(q) {
   return `ne-kadardi-${safeName}-${q.date}.png`;
 }
 
+// Identifies one finished round, so a prewarmed share image is reused only for that exact result.
+export function shareImageKey(q, r, { played = 0, total = 0, round = 0 } = {}) {
+  if (!q || !r) return null;
+  return [q.id, q.productId, q.date, r.guess, r.score, played, total, round].join('|');
+}
+
 export function buildShareImageModel(q, r, { contextLine = null, taxLine = null } = {}) {
   const hasCurrent = q.current !== null && q.current !== undefined &&
     !(q.current.date === q.date && q.current.price === q.price);
