@@ -1819,10 +1819,16 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .report-card-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.875rem; }
 .report-card-avg { margin: 10px 0 4px; font-size: 0.875rem; font-weight: 700; }
 /* Two lines per row: on a 360 px phone a side-by-side price squeezed product names into three lines. */
-.report-card-lines li { display: block; padding-bottom: 6px; border-bottom: 1px dashed var(--line); }
+.report-card-lines li { display: block; padding-bottom: 6px; border-bottom: 1px dashed var(--line); animation: report-row-in 0.25s ease-out backwards; animation-delay: calc(var(--row-i, 0) * 45ms); }
 .report-card-lines li:last-child { border-bottom: 0; padding-bottom: 0; }
-.report-card-lines li span { display: block; }
+.report-card-lines li > span { display: block; }
+.report-card-lines .tally-dot { display: inline-block; vertical-align: -1px; margin-right: 6px; }
+.report-card-lines .tally-dot:not([data-tier]) { background: transparent; box-shadow: inset 0 0 0 1.5px var(--muted-on-paper); }
 .report-card-lines li strong { display: block; text-align: right; white-space: nowrap; }
+@keyframes report-row-in {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .daily-review .report-card-title { font-size: 1.125rem; }
 .report-card-next { margin: 0; font-size: 0.8125rem; color: var(--muted-on-paper); }
 .daily-review .report-card { margin-top: 0; }
