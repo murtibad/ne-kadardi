@@ -1053,6 +1053,9 @@ function renderFact() {
 }
 
 function onHashChange() {
+  // A focused control that hides itself on the new screen (the header house button on the menu)
+  // drops focus to <body> before rescueFocus runs; only a real starting point may stay on <body>.
+  const hadFocus = document.activeElement && document.activeElement !== document.body;
   closeDailyReview();
   closePreview(); // Back while the preview is open must not leave the modal over another screen
   const hash = location.hash;
@@ -1079,7 +1082,7 @@ function onHashChange() {
   } else {
     renderHome();
   }
-  rescueFocus();
+  rescueFocus({ includeBody: hadFocus });
 }
 
 // After in-app navigation the focused link ("Ana menüye dön", a menu card) is inside a now
