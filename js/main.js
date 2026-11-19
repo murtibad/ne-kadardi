@@ -18,7 +18,7 @@ import { buildPriceChart } from './price-chart.js';
 import { initChartUi, renderPriceChart } from './chart-ui.js';
 import { countUpFrames } from './count-up.js';
 import { parseQuestionParam, friendIntroText, compareFriendScore } from './ask-link.js';
-import { initShareUi, resetShareBtn, closePreview } from './share-ui.js';
+import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey } from './daily.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview } from './daily-ui.js';
 
@@ -394,6 +394,7 @@ function revealReportCard() {
 
 function handOver() {
   handTimer = null;
+  warmShareImage();
   const qs = $('question-screen');
   $('result-screen').classList.add('handed');
   if (qs.hidden || !qs.classList.contains('as-machine')) return;
