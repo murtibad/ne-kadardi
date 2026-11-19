@@ -554,10 +554,17 @@ main { flex: 1; display: flex; flex-direction: column; justify-content: flex-sta
   border-radius: 4px;
 }
 .share-preview-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+/* On a 320x640 phone the daily review and the share preview outgrow the dialog and "Kapat" scrolled
+   out of sight: the buttons stay pinned to the dialog's bottom edge, and short screens put them on one row. */
+.share-preview-actions { position: sticky; bottom: -16px; margin-bottom: -16px; padding: 10px 0 16px; background: var(--paper); z-index: 1; }
 .share-preview .btn { min-height: 44px; padding: 10px 16px; font-size: 1rem; color: var(--ink); border-color: var(--ink); flex: 1 1 100px; }
 .share-preview .btn[hidden] { display: none; }
 .share-preview .btn.primary { background: var(--ink); color: var(--paper); flex: 1 1 100%; }
 .share-preview .btn:focus-visible { outline: 3px solid var(--accent-on-paper, var(--ink)); outline-offset: 2px; }
+@media (max-height: 700px) {
+  .share-preview .btn { padding: 10px 8px; }
+  .share-preview .btn.primary { flex: 2 1 120px; }
+}
 .share-preview[open] { animation: share-preview-in 0.18s ease-out; }
 .share-preview[open]::backdrop { animation: share-preview-fade 0.18s ease-out; }
 @keyframes share-preview-in { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
