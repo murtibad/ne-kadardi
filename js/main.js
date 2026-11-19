@@ -162,6 +162,7 @@ function showMessage(text, { retry = false } = {}) {
 // `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
 // adding `date` pins the exact question from a shared `?soru=` link.
 function nextQuestion(productId = null, date = null) {
+  lastScoredQuestion = null; // the same question can come back (fact card, friend link): it must be answerable again
   $('next-btn').textContent = 'Sonraki soru →';
   setDailyEndTurn(false);
   stopPrinting();
@@ -282,7 +283,8 @@ let lastScoredQuestion = null;
 // Before the very first answer, the empty line under the box says how to write a price; it sits in the
 // readout's reserved line, so nothing moves when it is replaced by "4 lira 50 kuruş" while typing.
 function emptyReadout() {
-  return state.played === 0 ? 'Sadece rakam yaz, ör. 4,5' : '';
+  // Günün Fişi answers do not count in played, but they do mark seen: a daily player is not new any more.
+  return state.played === 0 && state.seen.size === 0 ? 'Sadece rakam yaz, ör. 4,5' : '';
 }
 function onGuess(event) {
   event.preventDefault();

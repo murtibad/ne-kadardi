@@ -109,7 +109,7 @@ const CLOSE_STREAK = 3;
 // `recent` already includes it. A new record wins over the 3-close-guesses note.
 export function sessionBadge({ prevBest, score, playedAfter, recent }) {
   // "Yeni rekor" for 5 puan reads like mockery: only a genuinely good score counts as a record.
-  if (playedAfter >= 2 && score > prevBest && score >= RECORD_MIN) return ` · 🎯 Yeni rekor! (öncekisi ${prevBest})`;
+  if (playedAfter >= 2 && score > prevBest && score >= RECORD_MIN) return ` · 🎯 Yeni rekor!${prevBest > 0 ? ` (öncekisi ${prevBest})` : ''}`; // old saves may have no best yet
   let run = 0;
   for (let i = recent.length - 1; i >= 0 && recent[i] >= CLOSE_SCORE; i -= 1) run += 1;
   if (run >= CLOSE_STREAK) return ` · Üst üste ${run} yakın tahmin!`;

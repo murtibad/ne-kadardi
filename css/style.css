@@ -2154,8 +2154,7 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 
 /* Readability for older players */
 .site-footer { font-size: 0.875rem; }
-.score-box .score,
-.score-box .score-hint { font-size: 0.8125rem; }
+.score-box .score { font-size: 0.8125rem; } /* the score hint is already 0.875rem above */
 .hint-slip-title { font-size: 0.8125rem; }
 .pc-label,
 .pc-tick { font-size: 12px; }

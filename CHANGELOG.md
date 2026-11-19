@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.6] - 2026-11-19
+### Fixed
+- A question that comes back later (fact card, friend link) can be answered again; the double-tap guard no longer blocks it.
+- Günün Fişi players no longer see the first-question hint on every question.
+- The score note under PUAN is back to 14 px (the readability pass had shrunk it); no "(öncekisi 0)" on old saves.
+
 ## [0.141.5] - 2026-11-19
 ### Changed
 - The day your streak grows, the "🔥 N gün üst üste" line on the menu card lights up once in warm gold (text stays still).
