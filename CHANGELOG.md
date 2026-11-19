@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.14] - 2026-11-19
+### Fixed
+- Receipt on narrow phones: "Güncel (Kasım 2026)" breaks before the date instead of splitting "Kasım" from "2026".
+
 ## [0.140.13] - 2026-11-19
 ### Changed
 - Send sheet: "Soruyu arkadaşına sor — Cevabı görmeden o da tahmin etsin" instead of the terse "Bu soruyu sor".
