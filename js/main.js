@@ -482,7 +482,21 @@ function handOver() {
   };
 }
 
+// One sentence for screen readers. #r-receipt is not a live region: the whole card is rewritten at once,
+// which would read out as a dozen fragments. Clear first so an identical sentence announces again.
+let resultAnnounceTimer = null;
+function announceResult() {
+  const el = $('sr-status');
+  if (!el || !state.question || !state.result) return;
+  const verdict = verdictText(state.result).replace(/[^\p{L}\p{N}\s!?.,']/gu, '').replace(/[!?.\s]+$/, '');
+  const text = `Gerçek fiyat ${formatPrice(state.question.price)}. ${verdict}. Puanın ${state.result.score}.`;
+  el.textContent = '';
+  clearTimeout(resultAnnounceTimer);
+  resultAnnounceTimer = setTimeout(() => { el.textContent = text; }, 60);
+}
+
 function printReceipt(extraSound) {
+  announceResult();
   recordRing?.cancel();
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
   stopPrinting();
