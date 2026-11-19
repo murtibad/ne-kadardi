@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.13] - 2026-11-19
+### Changed
+- Send sheet: "Soruyu arkadaşına sor — Cevabı görmeden o da tahmin etsin" instead of the terse "Bu soruyu sor".
+
 ## [0.140.12] - 2026-11-19
 ### Fixed
 - Archive chip row snaps again after the glide also for keyboard and mouse-wheel users.
