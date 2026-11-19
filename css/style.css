@@ -2007,3 +2007,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
     display: none;
   }
 }
+
+/* Headings and short centred lines wrap evenly instead of leaving one word alone on the last line
+   (e.g. "Geçmişin fiyatlarını tahmin / et." at 320 px). Progressive: older browsers wrap as before. */
+h1, h2, h3, .intro-final p, .home-intro p, .verdict, .mode-desc, .product { text-wrap: balance; }
+.cashier-line, .context-line, .explain { text-wrap: pretty; }

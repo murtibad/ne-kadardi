@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.1] - 2026-11-19
+### Changed
+- Headings and short centred lines wrap evenly (no single word left alone on the last line, e.g. the intro title at 320 px).
+
 ## [0.138.0] - 2026-11-19
 ### Added
 - Switching between day and night view spreads the new colours out from the button in a growing circle (browsers with View Transitions); others keep the short colour fade.
