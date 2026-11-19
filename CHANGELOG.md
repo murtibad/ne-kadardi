@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.136.1] - 2026-11-19
+### Changed
+- Home menu arrives in a quick cascade: title, the three cards and the fact card rise in 50 ms steps.
+
 ## [0.136.0] - 2026-11-19
 ### Changed
 - Result receipt: the stamp lands with a short ring flash in the tier colour, the meter fills with an ease-out after it, and a perfect guess gets a one-off shine across the stamp.
