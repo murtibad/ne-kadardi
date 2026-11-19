@@ -1148,9 +1148,31 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   transform: scale(1.6) rotate(-4deg);
 }
 .receipt-stamp.stamped {
-  animation: stamp-land 0.35s ease-out forwards;
+  /* Land first, then a tier-coloured ring flashes once and fades (box-shadow only, so no layout shift) */
+  animation: stamp-land 0.35s ease-out forwards, stamp-flash 0.5s ease-out 0.15s both;
 }
-.meter > span { transition: width 0.6s cubic-bezier(.2,.8,.2,1); }
+/* Meter grows after the stamp lands: ease-out, ~600 ms */
+.meter > span { transition: width 0.6s cubic-bezier(0.16, 0.8, 0.3, 1) 0.15s; }
+@keyframes stamp-flash {
+  from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--fill) 70%, transparent), 0 0 12px 2px color-mix(in srgb, var(--fill) 55%, transparent); }
+  to { box-shadow: 0 0 0 9px transparent, 0 0 12px 2px transparent; }
+}
+/* Best tier only: one highlight sweep across the stamp, then it rests off to the right */
+.receipt-stamp[data-tier='great'] { position: relative; overflow: hidden; }
+.receipt-stamp[data-tier='great'].stamped::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: translateX(-120%);
+  animation: stamp-shine 0.7s ease-in-out 0.4s both;
+  pointer-events: none;
+}
+@keyframes stamp-shine {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(300%); }
+}
 @keyframes stamp-land {
   from { transform: scale(1.6) rotate(-4deg); opacity: 0; }
   to { transform: scale(1) rotate(-4deg); opacity: 0.9; }

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.136.0] - 2026-11-19
+### Changed
+- Result receipt: the stamp lands with a short ring flash in the tier colour, the meter fills with an ease-out after it, and a perfect guess gets a one-off shine across the stamp.
+
 ## [0.135.6] - 2026-11-19
 ### Changed
 - Menu cards press down into their shadow on tap and lift slightly on hover; header icon buttons shrink on press (tactile feedback).
