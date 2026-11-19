@@ -217,6 +217,23 @@ export function createSoundPlayer(options = {}) {
     return true;
   }
 
+  // Creating an AudioContext can block the main thread for a few hundred ms (audio device start-up);
+  // done on the first tap it froze the screen switch. Browsers allow creating it before a gesture
+  // (it just starts suspended), so this runs in idle time; the first tap's unlock() then only resumes it.
+  // Decoding works on a suspended context, so the samples are ready too.
+  function prime() {
+    if (!enabled || ctx || !AudioContextCtor || typeof fetchFn !== 'function') return false;
+    try {
+      ctx = new AudioContextCtor();
+    } catch {
+      return false;
+    }
+    for (const name of Object.keys(SOUND_FILES)) {
+      load(ctx, name);
+    }
+    return true;
+  }
+
   function play(name, { delay = 0 } = {}) {
     if (!enabled) return false;
     const spec = typeof name === 'string' && Object.hasOwn(SOUND_FILES, name)
@@ -301,6 +318,7 @@ export function createSoundPlayer(options = {}) {
     toggle,
     unlock,
     prefetch,
+    prime,
     wake,
     play,
     stop,

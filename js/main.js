@@ -980,7 +980,7 @@ function toggleTheme() {
 // compete with the critical path. play() still fetches on demand if a sound is needed earlier.
 function scheduleSoundPrefetch() {
   const run = () => {
-    const later = () => sound.prefetch();
+    const later = () => { sound.prefetch(); sound.prime(); };
     if (typeof requestIdleCallback === 'function') requestIdleCallback(later, { timeout: 3000 });
     else setTimeout(later, 500);
   };
