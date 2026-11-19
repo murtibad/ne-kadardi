@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.0] - 2026-11-19
+### Added
+- The menu's stats line also says how many different products you have tried so far ("· sen 23 ürün denedin").
+
 ## [0.140.19] - 2026-11-19
 ### Fixed
 - A phone left on the menu overnight shows the new day's streak line when it comes back (it kept yesterday's "Serini koru" until a reload).

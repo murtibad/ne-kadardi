@@ -485,3 +485,11 @@ test('isFirstAnswerOfDay is false when the clock moved back', async () => {
   assert.equal(isFirstAnswerOfDay({ last: '2026-11-05', count: 3 }, '2026-11-05'), false);
   assert.equal(isFirstAnswerOfDay({ last: '2026-11-07', count: 3 }, '2026-11-05'), false);
 });
+
+test('seenProductCount counts distinct products, not dates', async () => {
+  const { seenProductCount } = await import('../js/game.js');
+  assert.equal(seenProductCount(new Set(['benzin@2016-07', 'benzin@2020-01', 'dolar@2015-01'])), 2);
+  assert.equal(seenProductCount(new Set()), 0);
+  assert.equal(seenProductCount(undefined), 0);
+  assert.equal(seenProductCount(['bad', 5, '@x']), 0);
+});
