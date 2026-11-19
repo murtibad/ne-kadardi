@@ -26,6 +26,14 @@ test('verdictText handles over, under and exact', () => {
   assert.equal(verdictText({ direction: 'under', factor: 1.2 }), 'Biraz az tahmin ettin');
 });
 
+test('verdictText drops the number for absurd ratios', () => {
+  assert.equal(verdictText({ direction: 'over', factor: 350661 }), 'Çok fazla yazdın, fiyat çok düşük');
+  assert.equal(verdictText({ direction: 'under', factor: 333333 }), 'Çok az yazdın, fiyat çok yüksek');
+  assert.equal(verdictText({ direction: 'over', factor: 2.7 }), '2,7 kat fazla tahmin ettin');
+  assert.equal(verdictText({ direction: 'over', factor: 99.9 }), '99,9 kat fazla tahmin ettin');
+  assert.equal(verdictText({ direction: 'over', factor: 100 }), 'Çok fazla yazdın, fiyat çok düşük');
+});
+
 test('buildShareFileName generates ascii lowercase hyphenated names', () => {
   assert.equal(buildShareFileName({ name: 'Benzin (Kurşunsuz)', date: '2016-01' }), 'ne-kadardi-benzin-kursunsuz-2016-01.png');
   assert.equal(buildShareFileName({ name: 'Çeyrek Altın', date: '2010-05' }), 'ne-kadardi-ceyrek-altin-2010-05.png');
