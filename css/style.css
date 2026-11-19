@@ -1848,3 +1848,21 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 }
 .timeline-receipt hr { margin: 6px 0 4px; }
 .timeline-play { justify-content: center; }
+
+/* Result receipt rows: keep >=12px between label and value; let long values wrap onto their own line aligned right on narrow screens (320 px). */
+.result-receipt .row,
+#r-receipt .row {
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 2px;
+}
+.result-receipt .row dd,
+#r-receipt .row dd {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* The stats line is filled only after prices.json arrives; keeping its box (invisible) meanwhile stops the
+   menu cards from jumping down a few pixels. Beats the global [hidden] rule on purpose. */
+#home-stats { min-height: 1.5em; }
+#home-stats[hidden] { display: block !important; visibility: hidden; }
