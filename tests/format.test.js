@@ -212,3 +212,21 @@ test('parseGuess ignores the unit people type by habit', () => {
   assert.equal(parseGuess('1.250 lira'), 1250);
   assert.equal(parseGuess('lira'), null);
 });
+
+import { keyboardFitDelta } from '../js/format.js';
+
+test('keyboardFitDelta: 0 when the button is already visible with margin', () => {
+  assert.equal(keyboardFitDelta({ bottom: 300 }, { top: 200 }, 0, 400), 0);
+  assert.equal(keyboardFitDelta({ bottom: 388 }, { top: 200 }, 0, 400), 0);
+});
+
+test('keyboardFitDelta: scrolls exactly the missing amount plus margin', () => {
+  assert.equal(keyboardFitDelta({ bottom: 450 }, { top: 250 }, 0, 400), 62);
+  assert.equal(keyboardFitDelta({ bottom: 450 }, { top: 250 }, 50, 400, 0), 0);
+  assert.equal(keyboardFitDelta({ bottom: 500 }, { top: 300 }, 50, 400), 62);
+});
+
+test('keyboardFitDelta: never hides the input above the visible top', () => {
+  assert.equal(keyboardFitDelta({ bottom: 700 }, { top: 100 }, 0, 300), 100);
+  assert.equal(keyboardFitDelta({ bottom: 700 }, { top: 40 }, 60, 300), 0);
+});

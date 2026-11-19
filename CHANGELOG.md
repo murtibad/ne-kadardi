@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.15] - 2026-11-19
+### Changed
+- On phones, tapping the price box also brings the "Tahmin et" button into view when the keyboard or a landscape screen would hide it (only scrolls as much as needed; the box itself stays visible).
+
 ## [0.140.14] - 2026-11-19
 ### Fixed
 - Receipt on narrow phones: "Güncel (Kasım 2026)" breaks before the date instead of splitting "Kasım" from "2026".

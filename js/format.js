@@ -231,3 +231,12 @@ export function shortTitle(text, max = 48) {
 export function unitLine(unit, region) {
   return region ? `${unit} ·\u00A0${region}` : unit;
 }
+
+// How far to scroll down so the submit button's bottom clears the visible (visual) viewport by
+// `margin` px, without pushing the input above its top. Rects are getBoundingClientRect() values.
+export function keyboardFitDelta(buttonRect, inputRect, viewTop, viewHeight, margin = 12) {
+  const missing = buttonRect.bottom + margin - (viewTop + viewHeight);
+  if (!(missing > 0)) return 0;
+  const room = inputRect.top - viewTop; // scrolling more than this hides the input
+  return Math.max(0, Math.min(missing, room));
+}
