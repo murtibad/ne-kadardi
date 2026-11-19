@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.137.3] - 2026-11-19
+### Changed
+- Short screens (landscape phones, small windows, up to 560 px tall): the question card tightens so the date, product, price box and "Tahmin et" fit without scrolling; under 480 px the year anecdote is left out.
+
 ## [0.137.2] - 2026-11-19
 ### Changed
 - Warmer score colours: meter, tally dots, verdict tint and confetti use stamp-pad inks (olive, ochre, terracotta) instead of neon lime and orange; the shared image sits on the same warm greige as the page.
