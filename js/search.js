@@ -64,14 +64,50 @@ export function matchesQuery(name, query) {
   return words.every((w) => haystack.includes(w));
 }
 
+// Everyday words people actually type, by product id. Searched like extra words of the name, so
+// "mazot" finds Motorin and "akbil" finds the Istanbul fares. Only words that clearly mean that product.
+export const ALIASES = {
+  motorin: 'mazot dizel akaryakit',
+  benzin: 'akaryakit',
+  otogaz: 'tup akaryakit',
+  'istanbul-ulasim': 'akbil istanbulkart metro otobus metrobus vapur',
+  'istanbul-ogrenci-bileti': 'akbil istanbulkart metro otobus metrobus ogrenci',
+  'ankara-ulasim': 'ankarakart metro otobus',
+  'izmir-ulasim': 'izmirim kart metro otobus vapur',
+  dolar: 'doviz kur',
+  euro: 'doviz kur avro',
+  sterlin: 'doviz kur pound',
+  bitcoin: 'kripto',
+  'fiat-egea-easy': 'araba otomobil',
+  'togg-t10x': 'araba otomobil elektrikli',
+  'arac-muayene-ucreti': 'araba',
+  'asgari-ucret': 'maas',
+  'emekli-en-dusuk-aylik': 'maas',
+  iphone: 'telefon',
+  'imei-kayit-harci': 'telefon',
+  netflix: 'dizi film',
+  'disney-plus': 'dizi film',
+  'amazon-prime': 'dizi film',
+  spotify: 'muzik',
+  'youtube-premium': 'muzik',
+  'kyk-burs': 'ogrenci universite',
+  'kyk-yurt-ucreti': 'ogrenci universite',
+  yks: 'universite',
+};
+
+/** The text a product is searched by: its name plus its everyday aliases. */
+export function searchText(item) {
+  return `${item?.name ?? ''} ${ALIASES[item?.id] ?? ''}`;
+}
+
 /** Items (with a `name`) that match the query, in their original order. */
 export function filterByQuery(items, query) {
-  const exact = items.filter((item) => matchesQuery(item.name, query));
+  const exact = items.filter((item) => matchesQuery(searchText(item), query));
   if (exact.length > 0) return exact;
   const words = foldTr(query).split(/\s+/).filter(Boolean);
   if (words.length === 0) return [];
   return items.filter((item) => {
-    const haystack = foldTr(item.name);
+    const haystack = foldTr(searchText(item));
     const nameWords = haystack.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
     return words.every((w) => {
       if (w.length < 4) return haystack.includes(w);
