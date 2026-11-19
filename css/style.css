@@ -2191,3 +2191,6 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 #r-receipt #r-chart.price-chart { margin: 12px 0; }
 #r-receipt .source .followup-btn { margin: 12px 0 4px; border-width: 1.5px; border-radius: 4px; }
 /* end result receipt polish */
+
+/* Source type ("haberlerden", "resmî kayıt") as a caption line under the result's source link. */
+#r-source-kind { display: block; margin-top: 2px; }

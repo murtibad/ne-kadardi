@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.13] - 2026-11-19
+### Fixed
+- Result source line: the source type ("haberlerden", "resmî kayıt") sits as a small caption under the source link instead of wrapping alone with a dangling "·" on phones.
+
 ## [0.141.12] - 2026-11-19
 ### Changed
 - Result receipt tidier: the blocks under the prices share one 12 px rhythm, the verdict, context, chart and follow-up boxes share the same corner radius, the context box tint matches in dark mode, and the follow-up button is a little lighter than "Sonraki soru".
