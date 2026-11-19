@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.137.1] - 2026-11-19
+### Changed
+- Price chart: a thin dashed guide drops from the label to its point, dots grow with a small spring, and on phones a tiny vibration ticks as the finger reaches each new year (only when sound is on).
+
 ## [0.137.0] - 2026-11-19
 ### Changed
 - The score no longer gives the answer away while the receipt prints: it shows "—" until the tear, then counts up from 0 (a tap on the receipt shows it at once). The "Arkadaşına gönder" sheet slides up from the bottom edge.

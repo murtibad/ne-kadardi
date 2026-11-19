@@ -1105,7 +1105,7 @@ async function init() {
     showMessage('Henüz doğrulanmış fiyat yok. Kaynaklı veri eklendiğinde sorular burada görünecek.');
     return;
   }
-  initChartUi({ getState: () => state });
+  initChartUi({ getState: () => state, onScrubTick: () => hapticIfAllowed(5) });
   initDailyUi({ getState: () => state, nextQuestion, renderHome });
   initShareUi({ getState: () => state, isDailyEndTurn });
   $('guess-form').addEventListener('submit', onGuess);
