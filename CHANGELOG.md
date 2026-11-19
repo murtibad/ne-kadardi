@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.137.0] - 2026-11-19
+### Changed
+- The score no longer gives the answer away while the receipt prints: it shows "—" until the tear, then counts up from 0 (a tap on the receipt shows it at once). The "Arkadaşına gönder" sheet slides up from the bottom edge.
+
 ## [0.136.5] - 2026-11-19
 ### Fixed
 - 320 px result receipt: a long value ("16,6 katına çıktı") moves to its own line instead of touching its label; the menu stats line keeps its space while prices load.
