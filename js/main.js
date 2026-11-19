@@ -232,7 +232,7 @@ function nextQuestion(productId = null, date = null) {
   $('q-explain').hidden = !q.explain;
   $('guess-input').value = '';
   delete $('guess-input').dataset.valid;
-  $('guess-readout').textContent = '';
+  $('guess-readout').textContent = emptyReadout();
   document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
   state.hintsUsed = 0;
   state.hintProductId = null;
@@ -278,6 +278,11 @@ function nextQuestion(productId = null, date = null) {
 }
 
 let lastScoredQuestion = null;
+// Before the very first answer, the empty line under the box says how to write a price; it sits in the
+// readout's reserved line, so nothing moves when it is replaced by "4 lira 50 kuruş" while typing.
+function emptyReadout() {
+  return state.played === 0 ? 'Sadece rakam yaz, ör. 4,5' : '';
+}
 function onGuess(event) {
   event.preventDefault();
   if (!state.question) return; // a stray submit before a question is shown has nothing to score
@@ -1267,7 +1272,7 @@ async function init() {
     const v = parseGuess(e.target.value);
     // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
     if (v !== null) $('guess-error').textContent = '';
-    $('guess-readout').textContent = readoutText(v);
+    $('guess-readout').textContent = e.target.value.trim() === '' ? emptyReadout() : readoutText(v);
     // The first time the box holds a real price, "Tahmin et" swells once: a quiet "ready when you are".
     const valid = v !== null;
     if (valid && e.target.dataset.valid !== '1') {
