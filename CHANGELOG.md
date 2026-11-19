@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.7] - 2026-11-19
+### Changed
+- On the menu, the little gold-price line on the "Fiyat Arşivi" card draws itself left to right once per visit and its end dot pops in.
+
 ## [0.141.6] - 2026-11-19
 ### Fixed
 - A question that comes back later (fact card, friend link) can be answered again; the double-tap guard no longer blocks it.
