@@ -646,13 +646,34 @@ test('prime() builds the context and decodes in idle time without resuming; the 
   const [ctx] = getInstances();
   assert.equal(ctx.resumed, false, 'no resume before a user gesture');
   assert.equal(ctx.decodedBuffers.length, 4, 'all samples decoded ahead of time');
-  assert.equal(player.prime(), false, 'second call is a no-op');
+  assert.equal(player.prime(), true);
+  await flushAsync();
+  assert.equal(getConstructorCallCount(), 1, 'second call does not construct a second context');
+  assert.equal(getTotalCalls(), 4, 'second call does not fetch again');
 
   player.unlock();
   await flushAsync();
   assert.equal(getConstructorCallCount(), 1, 'the gesture reuses the primed context');
   assert.equal(ctx.resumed, true);
   assert.equal(getTotalCalls(), 4, 'nothing fetched twice');
+});
+
+test('prime() after play("print") reuses the existing context and decodes all four samples', async () => {
+  const { FakeAudioContext, getConstructorCallCount, getInstances } = createFakeAudioContextClass();
+  const { fetchFn, getTotalCalls } = createFakeFetch();
+  const player = createSoundPlayer({ storage: createMemoryStorage(), AudioContextCtor: FakeAudioContext, fetchFn, now: () => 0 });
+
+  assert.equal(player.play('print'), true);
+  await flushAsync();
+  assert.equal(getConstructorCallCount(), 1);
+  const [ctx] = getInstances();
+  assert.equal(ctx.decodedBuffers.length, 1);
+
+  assert.equal(player.prime(), true);
+  await flushAsync();
+  assert.equal(getConstructorCallCount(), 1, 'still one context');
+  assert.equal(ctx.decodedBuffers.length, 4, 'all 4 samples decoded');
+  assert.equal(getTotalCalls(), 4);
 });
 
 test('prime() does nothing while muted or without Web Audio', () => {

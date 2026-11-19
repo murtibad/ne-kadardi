@@ -85,14 +85,15 @@ async function buildShareBlob() {
 
 // Draws the image in idle time after the receipt is handed over, so the share tap has nothing left to wait for.
 export function warmShareImage() {
-  if (!deps) return;
+  // On the Günün Fişi end turn the share button shares the text report card, so the single-question image is unreachable.
+  if (!deps || deps.isDailyEndTurn?.()) return;
   const key = currentShareKey();
   if (!key || warm?.key === key) return;
   warm = null;
   // The module itself is worth loading even if the image is skipped later.
   import('./share-image.js').catch(() => {});
   const run = () => {
-    if (currentShareKey() !== key || $('result-screen').hidden) return;
+    if (warm?.key === key || currentShareKey() !== key || $('result-screen').hidden) return;
     const entry = { key, promise: null };
     entry.promise = buildShareBlob().then((b) => {
       if (!b) throw new Error('empty blob');
@@ -129,9 +130,19 @@ async function prepareShareImage(btnId) {
   announce('Hazırlanıyor…');
 
   // Everything after the busy mark sits in the try, so a failure never leaves the button stuck on "Hazırlanıyor…".
+  // Record the in-flight render in `warm` so a pending idle warm run sees `warm.key === key` and skips.
+  let entry = null;
   try {
-    return await buildShareBlob();
+    const promise = buildShareBlob();
+    if (key) {
+      entry = { key, promise };
+      warm = entry;
+    }
+    const blob = await promise;
+    if (!blob && warm === entry) warm = null;
+    return blob;
   } catch (err) {
+    if (warm === entry) warm = null;
     console.warn('Görsel hazırlanamadı', err);
     return null;
   }
@@ -223,7 +234,10 @@ let previewFile = null;
 
 function closePreview() {
   const dlg = $('share-preview');
-  if (dlg.open) dlg.close();
+  if (dlg?.open) dlg.close();
+  // Also close the send sheet so browser Back (onHashChange) never leaves it open over the next screen.
+  const sheet = $('send-sheet');
+  if (sheet?.open) sheet.close();
 }
 
 function cleanupPreview() {

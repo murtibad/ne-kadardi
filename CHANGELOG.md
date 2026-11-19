@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.7] - 2026-11-19
+### Fixed
+- First visit: all sounds are decoded ahead of time even after the intro already made a sound.
+
 ## [0.138.6] - 2026-11-19
 ### Fixed
 - Long receipt labels ("En yeni iPhone 17 (Eylül 2025)") wrap beside their price again at 390 px.
