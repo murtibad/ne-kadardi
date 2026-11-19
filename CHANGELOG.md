@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.18] - 2026-11-19
+### Fixed
+- Tax breakdown on phones: long labels such as "Kültür Bakanlığı payı (%1)" no longer touch their amount.
+
 ## [0.141.17] - 2026-11-19
 ### Changed
 - Tax breakdown: a plain line explains KDV and ÖTV, and its sources are listed one per line (no lone "·" lines on phones).
