@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.136.3] - 2026-11-19
+### Changed
+- Sharing the result image is instant: the image is drawn in idle time after the receipt is handed over (tap to ready ~380 ms → ~18 ms at 4x CPU slowdown).
+
 ## [0.136.2] - 2026-11-19
 ### Changed
 - First tap no longer freezes: the audio engine starts and decodes the sounds in idle time after the menu appears (creating it took 70-500 ms on the first tap); the tap only wakes it.
