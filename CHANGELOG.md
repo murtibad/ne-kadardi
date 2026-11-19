@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.3] - 2026-11-19
+### Changed
+- "Başka ↻" on the menu's fact card: the arrow turns once and the old fact slides out before the new one fades in; rapid taps no longer stack.
+
 ## [0.138.2] - 2026-11-19
 ### Changed
 - The first time the price box holds a real number, "Tahmin et" swells once, quietly saying it is ready.
