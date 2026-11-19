@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.140.4] - 2026-11-19
+### Added
+- If the prices cannot be loaded (weak connection), a big "Yeniden dene" button appears under the message instead of asking the player to refresh the page.
+
 ## [0.140.3] - 2026-11-19
 ### Changed
 - First-visit intro: when the year reaches today, the three prices clunk into place one after another with a small pop.
