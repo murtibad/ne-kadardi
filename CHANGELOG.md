@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.138.0] - 2026-11-19
+### Added
+- Switching between day and night view spreads the new colours out from the button in a growing circle (browsers with View Transitions); others keep the short colour fade.
+
 ## [0.137.4] - 2026-11-19
 ### Changed
 - After the price stops counting, "Güncel" and "Değişim" rise in one after the other; the newest score dot in the bottom bar pops in when the receipt is handed over.

@@ -1026,19 +1026,43 @@ function setupInstallButton() {
 
 // A second tap within the fade restarts the timer instead of cutting the new fade short.
 let themeAnimTimer = null;
-function toggleTheme() {
-  const next = currentTheme() === 'dark' ? 'light' : 'dark';
-  const root = document.documentElement;
-  root.classList.add('theme-anim');
+function applyTheme(next) {
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  renderThemeToggle();
+}
+function spinThemeToggle() {
   $('theme-toggle').classList.add('spin');
   clearTimeout(themeAnimTimer);
   themeAnimTimer = setTimeout(() => {
-    root.classList.remove('theme-anim');
+    document.documentElement.classList.remove('theme-anim');
     $('theme-toggle').classList.remove('spin');
   }, 450);
-  root.dataset.theme = next;
-  try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
-  renderThemeToggle();
+}
+function toggleTheme() {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  const root = document.documentElement;
+  // Where the browser can snapshot the page, the new theme spreads out from the button as a circle,
+  // like a light being switched on. The colour fade is the fallback (and must stay off here: the new
+  // snapshot would otherwise catch colours halfway through their transition).
+  if (typeof document.startViewTransition === 'function' && typeof root.animate === 'function') {
+    const b = $('theme-toggle').getBoundingClientRect();
+    const x = Math.round(b.left + b.width / 2);
+    const y = Math.round(b.top + b.height / 2);
+    const r = Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)));
+    spinThemeToggle();
+    const t = document.startViewTransition(() => applyTheme(next));
+    t.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+        { duration: 600, easing: 'cubic-bezier(.45,0,.2,1)', pseudoElement: '::view-transition-new(root)' },
+      );
+    }).catch(() => {});
+    return;
+  }
+  root.classList.add('theme-anim');
+  spinThemeToggle();
+  applyTheme(next);
 }
 
 // Starts the sound downloads after the menu had its first frame and the page has loaded, so they never
