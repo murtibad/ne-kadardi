@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.136.5] - 2026-11-19
+### Fixed
+- 320 px result receipt: a long value ("16,6 katına çıktı") moves to its own line instead of touching its label; the menu stats line keeps its space while prices load.
+
 ## [0.136.4] - 2026-11-19
 ### Changed
 - Dark mode depth: menu cards get a soft shadow instead of a cream block, the handed-over receipt keeps a visible shadow, a faint warm glow at the top of the page; the next-question nudge is calmer (5 px ring, twice).
