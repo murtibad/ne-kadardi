@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.26] - 2026-11-19
+### Fixed
+- 320x640 telefonda Günün Fişi özeti ve paylaşılacak görsel penceresinde 'Kapat' ekranın altında kalıyordu; düğmeler artık pencerenin altına sabit, kısa ekranda tek satırda yan yana (paylaşım önizlemesi kaydırmadan sığıyor).
+
 ## [0.141.25] - 2026-11-19
 ### Changed
 - Ürün adları dengeli satırlara bölünüyor: 320 px'te 'Benzin (kurşunsuz / 95)' gibi son satırı tek kelime kalan ad sayısı 30'dan 6'ya indi. 'kaç liraydı? →' okunun ve Günün Fişi başlığındaki '· 19 KASIM' kısmının tek başına alt satıra düşmesi önlendi.
