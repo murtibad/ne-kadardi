@@ -277,14 +277,17 @@ function nextQuestion(productId = null, date = null) {
   if (state.questionsShown++ > 0) $('guess-input').focus();
 }
 
+let lastScoredQuestion = null;
 function onGuess(event) {
   event.preventDefault();
   if (!state.question) return; // a stray submit before a question is shown has nothing to score
+  // A quick double tap on "Tahmin et" submitted twice and scored the same question twice.
+  if (state.question === lastScoredQuestion) return;
   const guess = parseGuess($('guess-input').value);
   // The dearest answer is a car (about 1,5 million); a longer number only breaks the receipt layout.
   const tooBig = guess !== null && guess >= 1e10;
   if (guess === null || tooBig) {
-    $('guess-error').textContent = tooBig ? 'Bu sayı çok büyük, daha küçük bir fiyat yaz.' : 'Geçerli bir fiyat yaz (ör. 4,5).';
+    $('guess-error').textContent = tooBig ? 'Bu sayı çok büyük, daha küçük bir fiyat yaz.' : 'Sadece rakam yaz, örneğin 4,5.';
     const field = document.querySelector('#question-screen .guess-field');
     if (field) {
       field.classList.remove('invalid');
@@ -295,6 +298,7 @@ function onGuess(event) {
     return;
   }
   const q = state.question;
+  lastScoredQuestion = q;
   const scored = scoreGuess(guess, q.price);
   const today = dayKey();
   const firstToday = isFirstAnswerOfDay(state.streak, today);
