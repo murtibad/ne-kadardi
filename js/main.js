@@ -1,5 +1,5 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
-import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText, formatInputThousands } from './format.js';
+import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText, formatInputThousands, keyboardFitDelta } from './format.js';
 import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
@@ -1200,6 +1200,17 @@ async function init() {
   guessField?.addEventListener('animationend', () => {
     guessField.classList.remove('invalid');
   });
+  // On touch devices the keyboard can hide "Tahmin et" while the input stays in view: scroll it into the visual viewport.
+  const vv = window.visualViewport;
+  const fitGuessButton = () => {
+    const btn = document.querySelector('#guess-form button[type=submit]');
+    const dy = keyboardFitDelta(btn.getBoundingClientRect(), $('guess-input').getBoundingClientRect(), vv.offsetTop, vv.height);
+    if (dy > 0) window.scrollBy({ top: dy, behavior: 'smooth' });
+  };
+  if (vv && matchMedia('(pointer: coarse)').matches) {
+    $('guess-input').addEventListener('focus', () => { fitGuessButton(); vv.addEventListener('resize', fitGuessButton); });
+    $('guess-input').addEventListener('blur', () => vv.removeEventListener('resize', fitGuessButton));
+  }
   let guessPrev = '';
   // True while the dots in the box are ones we inserted: then they are always thousands, so deleting a
   // digit from "1.250" gives "150", not "1.50" (which would read as 1,5 TL).
