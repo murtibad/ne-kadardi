@@ -67,9 +67,9 @@ export const CASHIER_COMMENTS = {
     'Bu tahmini görünce ben bile güldüm',
     'Çay ocağında bunu anlatsam sabaha kadar gülerler',
     'Abi, sen bu soruyu rüyanda mı gördün?',
-    'Kaçırdın ama dert etme, bir soru daha var',
+    'Kaçırdın ama dert etme, her fiyat akılda kalmaz',
     'Hesap makinesi bile şaştı bu işe',
-    'Fiş bile utandı bu tahmine',
+    'Fiş bile utandı bu tahminden',
   ],
 };
 
