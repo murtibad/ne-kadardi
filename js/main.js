@@ -233,6 +233,7 @@ function nextQuestion(productId = null, date = null) {
   $('q-explain').textContent = q.explain ?? '';
   $('q-explain').hidden = !q.explain;
   $('guess-input').value = '';
+  $('guess-input').classList.remove('long', 'longer');
   delete $('guess-input').dataset.valid;
   $('guess-readout').textContent = emptyReadout();
   document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
@@ -484,6 +485,15 @@ function handOver() {
 
 // One sentence for screen readers. #r-receipt is not a live region: the whole card is rewritten at once,
 // which would read out as a dozen fragments. Clear first so an identical sentence announces again.
+// "99.999.999" lost its last digit under the ₺ sign on 360 px phones: a number that overflows the box
+// steps the font down (twice at most), measured rather than counted because widths differ per phone.
+function fitGuessFont(el) {
+  el.classList.remove('long', 'longer');
+  if (el.scrollWidth <= el.clientWidth) return;
+  el.classList.add('long');
+  if (el.scrollWidth > el.clientWidth) el.classList.add('longer');
+}
+
 let resultAnnounceTimer = null;
 function announceResult() {
   const el = $('sr-status');
@@ -1307,6 +1317,7 @@ async function init() {
       }
       guessPrev = el.value;
     }
+    fitGuessFont(e.target);
     const v = parseGuess(e.target.value);
     // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
     if (v !== null) $('guess-error').textContent = '';
