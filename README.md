@@ -112,4 +112,4 @@ See [docs/DATA.md](docs/DATA.md). Found a wrong price? Please open an issue.
 
 ## License
 
-Code: [MIT](LICENSE). Price data belongs to its cited sources.
+Copyright (c) 2026 Murat Tokaç. All rights reserved; see [LICENSE](LICENSE). Individual prices belong to their cited sources. Versions up to 0.141.26 were released under the MIT License.

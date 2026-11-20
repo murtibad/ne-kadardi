@@ -1,6 +1,6 @@
 {
   "name": "ne-kadardi",
-  "version": "0.141.26",
+  "version": "0.141.27",
   "private": true,
   "description": "A static browser game: guess past prices in Turkey, compare with today.",
   "type": "module",
@@ -8,5 +8,5 @@
     "test": "node --test",
     "start": "python -m http.server 8000"
   },
-  "license": "MIT"
+  "license": "SEE LICENSE IN LICENSE"
 }
