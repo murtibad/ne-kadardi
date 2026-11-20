@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.27] - 2026-11-20
+### Changed
+- License: MIT replaced with 'All rights reserved' (owner's decision). Versions up to 0.141.26 stay MIT.
+
 ## [0.141.26] - 2026-11-19
 ### Fixed
 - 320x640 telefonda Günün Fişi özeti ve paylaşılacak görsel penceresinde 'Kapat' ekranın altında kalıyordu; düğmeler artık pencerenin altına sabit, kısa ekranda tek satırda yan yana (paylaşım önizlemesi kaydırmadan sığıyor).
