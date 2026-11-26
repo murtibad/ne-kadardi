@@ -6,6 +6,7 @@ import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus, shareDailyImage } from './share-ui.js';
 import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, lastSevenDays, weekStripVisible } from './daily.js';
+import { dailyIconUrls, preloadIcons } from './icon-preload.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -162,6 +163,7 @@ export function startOrShareDaily() {
       ? saved.ids
       // Everyone compares the same receipt, so it is built from everyday products only.
       : dailyQuestions(state.all.filter((q) => FOLLOW_UP_IDS.includes(q.productId)), key, categoryOf).map((q) => q.id);
+    preloadIcons(dailyIconUrls(state.all, ids));
     const scores = saved ? [...saved.scores] : [];
     state.daily = { key, ids, index: scores.length, scores };
     lastDotsCount = scores.length;

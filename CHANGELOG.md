@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.149.1] - 2026-11-26
+### Changed
+- Günün Fişi başlarken 5 ürünün, sonuç ekranında 'aynı yıldan bir soru daha' ürününün simgesi önceden yükleniyor; yavaş bağlantıda simge geç belirmiyor.
+
 ## [0.149.0] - 2026-11-26
 ### Added
 - Günün Fişi satırlarına dokununca o ürünün fiyat geçmişi açılıyor, sorudaki tarih işaretli. Bitiş kartından gelince geri tuşu sonuca, menüdeki 'Fişini gör' penceresinden gelince ana menüye dönüyor.
