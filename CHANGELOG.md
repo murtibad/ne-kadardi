@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.162.0] - 2026-11-26
+### Added
+- Fiyat Arşivi'nde daha önce cevapladığın satırlarda 'Tahminin: ₺4,50' yazıyor (son 500 tahmin cihazda saklanıyor). Menüdeki 'En iyi tahminin' satırına dokununca o ürünün arşivi o tarihte işaretli açılıyor.
+
 ## [0.161.0] - 2026-11-26
 ### Added
 - 'Biliyor muydun?' kartındaki 'Bunu tahmin et' artık kartta az önce gösterilen fiyatı sormuyor (aynı ürünün başka bir tarihi). Hatıra yılı seçiliyse düğme '2014 yılından bir soru çöz →' oluyor ve o yıldan bir soru açıyor.
