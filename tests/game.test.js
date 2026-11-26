@@ -828,3 +828,111 @@ test('homeStreakText greets returning players warmly at 5+ days and keeps short-
     'Yeniden hoş geldin! Bugün yeni bir seri başlat.',
   );
 });
+
+test('pickForProduct excludes the shown date, prefers older than 12 months, and returns null when none left', async () => {
+  const { pickForProduct } = await import('../js/game.js');
+  const today = new Date(2026, 9, 26); // cutoff: 2025-10-26
+  const qs = [
+    { id: 'dolar@2010-01', productId: 'dolar', date: '2010-01' },
+    { id: 'dolar@2018-01', productId: 'dolar', date: '2018-01' },
+    { id: 'dolar@2026-07', productId: 'dolar', date: '2026-07' },
+    { id: 'solo@2015-01', productId: 'solo', date: '2015-01' },
+  ];
+
+  // Excludes the shown 2010-01 date and prefers 2018-01 over recent 2026-07.
+  for (let i = 0; i < 10; i += 1) {
+    const picked = pickForProduct(qs, 'dolar', { excludeDate: '2010-01', today, rng: () => i / 10 });
+    assert.equal(picked.id, 'dolar@2018-01');
+  }
+
+  // When excluding the only older date, falls back to the remaining recent date.
+  const recentOnly = [qs[0], qs[2]];
+  assert.equal(pickForProduct(recentOnly, 'dolar', { excludeDate: '2010-01', today, rng: () => 0 }).id, 'dolar@2026-07');
+
+  // Prefers unseen dates and avoids previousId when multiple older dates remain.
+  const multi = [
+    { id: 'dolar@2010-01', productId: 'dolar', date: '2010-01' },
+    { id: 'dolar@2015-01', productId: 'dolar', date: '2015-01' },
+    { id: 'dolar@2018-01', productId: 'dolar', date: '2018-01' },
+  ];
+  assert.equal(
+    pickForProduct(multi, 'dolar', { excludeDate: '2010-01', seen: new Set(['dolar@2015-01']), today, rng: () => 0 }).id,
+    'dolar@2018-01',
+  );
+  assert.equal(
+    pickForProduct(multi, 'dolar', { excludeDate: '2010-01', previousId: 'dolar@2015-01', today, rng: () => 0 }).id,
+    'dolar@2018-01',
+  );
+
+  // Returns null when no other date exists for the product, or on missing inputs.
+  assert.equal(pickForProduct(qs, 'solo', { excludeDate: '2015-01', today }), null);
+  assert.equal(pickForProduct(qs, 'missing', { excludeDate: '2015-01', today }), null);
+  assert.equal(pickForProduct([], 'dolar', { excludeDate: '2010-01', today }), null);
+  assert.equal(pickForProduct(qs, null, { today }), null);
+});
+
+test('pickForYear asks from the chosen year, prefers another product, and never returns the shown product@date', async () => {
+  const { pickForYear, yearOf } = await import('../js/game.js');
+  const qs = [
+    { id: 'benzin@2014-01', productId: 'benzin', date: '2014-01' },
+    { id: 'benzin@2014-07', productId: 'benzin', date: '2014-07' },
+    { id: 'ekmek@2014-01', productId: 'ekmek', date: '2014-01' },
+    { id: 'dolar@2014-06', productId: 'dolar', date: '2014-06' },
+    { id: 'ekmek@2015-01', productId: 'ekmek', date: '2015-01' },
+  ];
+
+  // Prefers another product from 2014 over benzin@2014-07.
+  for (let i = 0; i < 10; i += 1) {
+    const picked = pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', rng: () => i / 10 });
+    assert.equal(yearOf(picked.date), 2014);
+    assert.ok(picked.productId === 'ekmek' || picked.productId === 'dolar');
+  }
+
+  // Prefers unseen questions and avoids previousId when all are seen.
+  assert.equal(
+    pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', seen: new Set(['ekmek@2014-01']), rng: () => 0 }).id,
+    'dolar@2014-06',
+  );
+  assert.equal(
+    pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', previousId: 'ekmek@2014-01', seen: new Set(['ekmek@2014-01', 'dolar@2014-06']), rng: () => 0 }).id,
+    'dolar@2014-06',
+  );
+
+  // Falls back to another date of the same product when no other product exists in that year.
+  const sameProductOnly = [qs[0], qs[1], qs[4]];
+  assert.equal(
+    pickForYear(sameProductOnly, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', rng: () => 0 }).id,
+    'benzin@2014-07',
+  );
+
+  // Never returns the exact shown product@date even when it is the only question in that year.
+  assert.equal(pickForYear([qs[0], qs[4]], 2014, { excludeProductId: 'benzin', excludeDate: '2014-01' }), null);
+  assert.equal(pickForYear(qs, 2010, { excludeProductId: 'benzin', excludeDate: '2014-01' }), null);
+  assert.equal(pickForYear(qs, NaN), null);
+  assert.equal(pickForYear(null, 2014), null);
+});
+
+test('fact card play helpers never spoil the shown fact on real data', async () => {
+  const { pickForProduct, pickForYear, yearOf } = await import('../js/game.js');
+  const { pickFact, factYears } = await import('../js/fact.js');
+  const { buildTimelines } = await import('../js/timeline.js');
+  const data = JSON.parse(readFileSync(new URL('../data/prices.json', import.meta.url), 'utf8'));
+  const all = buildQuestions(data);
+  const tls = buildTimelines(data);
+  const today = new Date(2026, 9, 26);
+
+  const randomFact = pickFact(tls, { random: () => 0.3 });
+  const prodQ = pickForProduct(all, randomFact.productId, { excludeDate: randomFact.date, today, rng: () => 0 });
+  if (prodQ) {
+    assert.equal(prodQ.productId, randomFact.productId);
+    assert.notEqual(prodQ.date, randomFact.date);
+  }
+
+  for (const y of factYears(tls)) {
+    const f = pickFact(tls, { random: () => 0, year: y });
+    const q = pickForYear(all, y, { excludeProductId: f.productId, excludeDate: f.date, rng: () => 0 });
+    assert.ok(q, `expected a non-spoiling question for year ${y}`);
+    assert.equal(yearOf(q.date), y);
+    assert.notEqual(q.id, `${f.productId}@${f.date}`);
+  }
+});

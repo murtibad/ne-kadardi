@@ -2299,7 +2299,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balance; }
 .cashier-line, .context-line, .explain { text-wrap: pretty; }
 /* Product names are <p>, not headings, so they missed the rule above: "iPhone / 14" left a lone word. */
-.receipt-title, .followup-btn { text-wrap: balance; }
+.receipt-title, .followup-btn, .fact-play { text-wrap: balance; }
 .timeline-source, .tax-period-sources a { text-wrap: pretty; }
 
 /* Every secondary button answers a press the same way the main buttons do, so no tap feels dead. */
