@@ -195,12 +195,8 @@ async function share() {
       setBtnStatus('share-btn', filesSupported ? 'Görsel hazırlanamadı, metin kopyalandı.' : 'Metin kopyalandı ✓');
     }
   } catch (err) {
-    if (err?.name === 'NotAllowedError') {
-      setBtnStatus('share-btn', 'Hazır, bir daha dokun');
-    } else {
-      if (err?.name !== 'AbortError') console.warn(err);
-      resetShareBtn();
-    }
+    if (err?.name !== 'AbortError') console.warn(err);
+    resetShareBtn();
   }
 }
 
@@ -258,7 +254,10 @@ function cleanupPreview() {
   previewUrl = null;
   previewFile = null;
   previewText = null;
-  $('share-preview-text').hidden = true;
+  const textBtn = $('share-preview-text');
+  clearTimeout(textBtn.restoreTimer);
+  if (textBtn.dataset.label) textBtn.textContent = textBtn.dataset.label;
+  textBtn.hidden = true;
   $('share-preview-img').removeAttribute('src');
 }
 
@@ -395,7 +394,9 @@ async function shareTextWithStatus(text, btn) {
 // so the caller falls back to the text share.
 async function shareDailyImage({ key, ids, scores, streak, btn }) {
   const dlg = $('share-preview');
-  if (typeof dlg.showModal !== 'function' || btn?.hasAttribute('aria-busy')) return false;
+  if (typeof dlg.showModal !== 'function') return false;
+  // A second tap while the image renders is already handled; false would trigger the text fallback.
+  if (btn?.hasAttribute('aria-busy')) return true;
   const label = btn?.textContent;
   btn?.setAttribute('aria-busy', 'true');
   if (btn) btn.textContent = 'Hazırlanıyor…';
@@ -408,6 +409,7 @@ async function shareDailyImage({ key, ids, scores, streak, btn }) {
     });
     const { renderDailyShareImage } = await import('./share-image.js');
     const blob = await renderDailyShareImage(dailyImageModel({ key, names, scores, streak }));
+    if (btn && btn.offsetParent === null) return true;
     const url = location.origin + location.pathname;
     cleanupPreview();
     previewFile = new File([blob], `ne-kadardi-gunun-fisi-${key}.png`, { type: 'image/png' });
@@ -428,7 +430,8 @@ async function shareDailyImage({ key, ids, scores, streak, btn }) {
   } finally {
     if (btn) {
       btn.removeAttribute('aria-busy');
-      btn.textContent = label;
+      // Only undo our own label; a reset after leaving the screen already set the right one.
+      if (btn.textContent === 'Hazırlanıyor…') btn.textContent = label;
     }
   }
 }

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.150.2] - 2026-11-26
+### Fixed
+- Yeni sürüm yüklendikten sonraki tek seferlik yenileme artık yalnız ana menüye dönerken oluyor; sabitli arşiv bağlantısında veya 'Sonuca dön'de yenilenip yerini kaybetmiyor.
+- Günün Fişi görseli hazırlanırken düğmeye ikinci kez basınca metin de paylaşılıyordu; ekrandan çıkınca önizleme yeni ekranın üstüne açılıyordu.
+- Menüdeki Günün Fişi penceresinden bir satıra basınca odak (klavye/ekran okuyucu) sayfanın başında kayboluyordu; artık arşiv başlığında.
+- Kopyalama izni verilmeyince yanlışlıkla 'Hazır, bir daha dokun' yazıyordu; önizlemedeki 'Metni kopyala' yeniden açılışta eski 'kopyalandı' yazısını taşımıyor.
+- × ile kutu silinince eski hata yazısı da gidiyor. Eğilim notu daha sade: 'eski fiyatlar sandığından pahalıymış'.
+
 ## [0.150.1] - 2026-11-26
 ### Changed
 - README bu gecenin özellikleriyle güncellendi.

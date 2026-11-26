@@ -5,7 +5,7 @@ export const TENDENCY_STEP = 5;
 export const TENDENCY_NUM = 7; // 70% threshold expressed as 7/10 for exact integer comparison
 export const TENDENCY_DEN = 10;
 
-export const TENDENCY_UNDER_LINE = 'Bu oturumda genelde az tahmin ettin: eski fiyatlar sandığından yüksekmiş.';
+export const TENDENCY_UNDER_LINE = 'Bu oturumda genelde az tahmin ettin: eski fiyatlar sandığından pahalıymış.';
 export const TENDENCY_OVER_LINE = 'Bu oturumda genelde fazla tahmin ettin: o zamanlar her şey daha ucuzmuş.';
 
 export const COLD_STREAK_THRESHOLD = 3;
