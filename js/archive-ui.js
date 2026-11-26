@@ -5,6 +5,7 @@ import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
 import { pickFromCategory } from './game.js';
 import { renderPriceChart } from './chart-ui.js';
 import { guessedProductIds, progressText } from './progress.js';
+import { guessFor } from './guess-memory.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -114,6 +115,7 @@ export async function renderTimelineScreen(focusProductId = null) {
   $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
     newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id, pinnedDate: pin?.date ?? null,
     wageTexts: showWage ? wageRows : null,
+    guesses: product.rows.map((r) => guessFor(getState().guesses, `${product.id}@${r.date}`)),
   });
   if (productChanged) playOnce($('t-rows-container'), [{ opacity: 0 }, { opacity: 1 }], 180);
   renderPriceChart('t-chart', product.id, pin?.date ?? null);

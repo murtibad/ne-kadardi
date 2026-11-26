@@ -61,7 +61,7 @@ export function buildWageRows(product, wageRows) {
   });
 }
 
-function rowHtml(r, seen, extra, hidden, pinned = false, wageText = undefined) {
+function rowHtml(r, seen, extra, hidden, pinned = false, wageText = undefined, guess = null) {
   const period = r.isCurrent ? `${r.currentLabel || 'Güncel'} (${formatPeriod(r.date)})` : formatPeriod(r.date);
   const ratio = r.ratioToCurrent ? `<span class="timeline-ratio">${formatIncrease(r.ratioToCurrent)}</span>` : '';
   const kindLabel = r.source ? sourceKindLabel(r.source.kind) : '';
@@ -78,13 +78,14 @@ function rowHtml(r, seen, extra, hidden, pinned = false, wageText = undefined) {
     ? `<details class="timeline-note"><summary aria-label="${escapeHTML(period)} kaynak ve not">Kaynak ve not</summary><div class="timeline-note-body">${sourceLink}${noteHtml}</div></details>`
     : '';
   const date = escapeHTML(r.date);
+  const guessLine = guess ? `<span class="timeline-guess">Tahminin: ${formatPrice(guess)}</span>` : '';
   const classes = [r.isCurrent && 'is-current', pinned && 'is-pinned'].filter(Boolean).join(' ');
   const rowClass = classes ? ` class="${classes}"` : '';
   return `<tr role="row" data-date="${date}"${rowClass}${extra ? ' data-extra' : ''}${hidden ? ' hidden' : ''}>
       <th scope="row" role="rowheader"><button type="button" class="row-to-chart" data-date="${date}" aria-label="${escapeHTML(period)}: grafikte göster">${escapeHTML(period)}</button></th>
       <td role="cell" class="timeline-price-cell">${wageText === undefined
-        ? `<span class="timeline-price">${formatPrice(r.price)}</span>`
-        : `<span class="timeline-price">${escapeHTML(wageText ?? '–')}</span><span class="timeline-price-sub">${formatPrice(r.price)}</span>`}</td>
+        ? `<span class="timeline-price">${formatPrice(r.price)}</span>${guessLine}`
+        : `<span class="timeline-price">${escapeHTML(wageText ?? '–')}</span><span class="timeline-price-sub">${formatPrice(r.price)}</span>${guessLine}`}</td>
       <td role="cell" class="timeline-detail-cell">
         <div class="timeline-meta">${ratio}${seenMark}${more}</div>
       </td>
@@ -92,12 +93,12 @@ function rowHtml(r, seen, extra, hidden, pinned = false, wageText = undefined) {
 }
 
 /** The whole table for a product's rows, oldest first unless newestFirst. */
-/** `seenDates` (optional Set of dates) marks rows the player has already answered in the game. */
-export function timelineTableHtml(rows, { newestFirst = false, seenDates = null, expanded = false, pinnedDate = null, wageTexts = null } = {}) {
+/** `seenDates` (optional Set of dates) marks rows the player has already answered in the game; `guesses` (same order as rows, number or null) adds the remembered guess. */
+export function timelineTableHtml(rows, { newestFirst = false, seenDates = null, expanded = false, pinnedDate = null, wageTexts = null, guesses = null } = {}) {
   const { collapsible, firstVisible } = visibleRowRange(rows.length, { expanded });
   // Hidden rows stay in the DOM so the chart can still link to them and open the table.
   const extraCount = collapsible ? rows.length - COLLAPSED_ROWS : 0;
-  const flagged = rows.map((r, i) => rowHtml(r, Boolean(seenDates?.has(r.date)), i < extraCount, i < firstVisible, r.date === pinnedDate, wageTexts ? wageTexts[i] : undefined));
+  const flagged = rows.map((r, i) => rowHtml(r, Boolean(seenDates?.has(r.date)), i < extraCount, i < firstVisible, r.date === pinnedDate, wageTexts ? wageTexts[i] : undefined, guesses ? guesses[i] : null));
   if (newestFirst) flagged.reverse();
   const toggle = collapsible
     ? `<button type="button" class="rows-toggle" aria-expanded="${expanded}">${rowsToggleLabel(rows.length, expanded)}</button>` : '';
