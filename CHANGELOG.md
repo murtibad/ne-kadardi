@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.159.3] - 2026-11-26
+### Fixed
+- Aynı sonuçta hem ipucu hem eğilim notu çıkabiliyordu (5. soru aynı zamanda üst üste 3. sıfırsa); artık ipucu çıkıyor, eğilim notu sonraki uygun soruya kalıyor.
+
 ## [0.159.2] - 2026-11-26
 ### Changed
 - Günün Fişi satırları daha kolay okunuyor: üstte ürün, altta 'Sen ₺20 · Gerçek ₺2,50', sağda puan rengiyle küçük bir puan rozeti.
