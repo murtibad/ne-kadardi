@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.159.0] - 2026-11-26
+### Added
+- Soru kartındaki yıl hatırlatıcıları 3 yıldan 15 yıla çıktı (2010-2025, 2019 hariç): 'maNga'nın Eurovision'da Türkiye'yi ikinciliğe taşıdığı yıl.', 'Marmaray ile Avrupa ile Asya'nın denizin altından birleştiği yıl.' gibi; her biri kaynakla kontrol edildi, siyaset ve acı olay yok.
+
 ## [0.158.2] - 2026-11-26
 ### Changed
 - README'ye 0.150.2-0.158.1 özellikleri eklendi.
