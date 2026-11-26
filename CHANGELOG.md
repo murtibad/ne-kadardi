@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.150.0] - 2026-11-26
+### Added
+- Serbest oyunda iki küçük yol gösterici: her 5 soruda bir, tahminlerin çoğu aynı yöndeyse kısa not ('Bu oturumda genelde az tahmin ettin: eski fiyatlar sandığından yüksekmiş.'); üst üste 3 kez 0 puan alınca oturumda bir kez ipucu (asgari ücretle kıyasla, ipucu düğmesini dene).
+
 ## [0.149.1] - 2026-11-26
 ### Changed
 - Günün Fişi başlarken 5 ürünün, sonuç ekranında 'aynı yıldan bir soru daha' ürününün simgesi önceden yükleniyor; yavaş bağlantıda simge geç belirmiyor.

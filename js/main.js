@@ -22,6 +22,7 @@ import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './shar
 import { dayKey, dailyProductIds } from './daily.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview, renderDailyRound } from './daily-ui.js';
 import { questionIconUrl, preloadIcon } from './icon-preload.js';
+import { sessionTendencyLine, advanceColdStreak } from './tendency.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -39,7 +40,9 @@ const state = {
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false,
-  wrap: { count: 0, sum: 0 } // this sitting only, free play only; cleared once the menu line is shown
+  wrap: { count: 0, sum: 0 }, // this sitting only, free play only; cleared once the menu line is shown
+  sessionDirections: [], // this sitting only, free play only: 'under' | 'over' | 'exact'
+  coldStreak: { zeros: 0, shown: false } // this sitting only, free play only
 };
 
 // The result screen shows the last few scores as coloured ticks, like a till roll tally.
@@ -358,6 +361,11 @@ function onGuess(event) {
     state.wrap.sum += state.result.score;
     state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
     state.result.badge = sessionBadge({ prevBest, score: state.result.score, playedAfter: state.played, recent: state.recentScores });
+    state.sessionDirections.push(state.result.direction);
+    state.result.tendencyLine = sessionTendencyLine(state.sessionDirections);
+    const cold = advanceColdStreak(state.coldStreak, state.result.score);
+    state.coldStreak = cold.state;
+    state.result.coldTip = cold.text;
   }
   state.seen.delete(q.id);
   state.seen.add(q.id);
@@ -706,6 +714,14 @@ function renderResult(q, r) {
     ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId), recent: state.recentLines });
   state.recentLines = rememberLine(state.recentLines, line);
   $('r-cashier').textContent = `“${line}”`;
+  if ($('r-tendency')) {
+    $('r-tendency').textContent = r.tendencyLine || '';
+    $('r-tendency').hidden = !r.tendencyLine;
+  }
+  if ($('r-tip')) {
+    $('r-tip').textContent = r.coldTip || '';
+    $('r-tip').hidden = !r.coldTip;
+  }
   // The slip already showed its everyday product; dollar and wage only if hint 2 (or the rates-only hint) was used.
   const ratesSeen = r.hintsUsed >= 2 || (r.hinted && !r.hintProductId);
   const hintSeen = new Set([r.hintProductId, ...(ratesSeen ? ['dolar', 'asgari-ucret'] : [])]);
