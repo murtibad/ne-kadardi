@@ -2355,3 +2355,14 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
   text-wrap: balance;
   overflow-wrap: break-word;
 }
+
+/* Discovery hint under the chart title until the player scrubs or uses arrow keys once. */
+.pc-hint {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted-on-paper);
+}

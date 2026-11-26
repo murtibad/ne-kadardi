@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.154.0] - 2026-11-26
+### Added
+- Grafikte ilk kez kaydırana kadar küçük bir ipucu ('parmağınla kaydırıp yıllara bak'; bilgisayarda 'fareyle üstüne gel ya da ok tuşlarını kullan'). 5 gün ve üstü aradan dönen oyuncuya menüde 'Serin bozuldu' yerine 'Yeniden hoş geldin! En uzun serin N gündü; bugün yeni bir seri başlat.'
+
 ## [0.153.0] - 2026-11-26
 ### Added
 - Çok uzak tahminlerde kararın altında kısa bir 'zaman yolculuğu' satırı: 'Yazdığın ₺20 aslında Ocak 2023'ün fiyatıydı.' ya da 'Yazdığın fiyat bugünkünden bile yüksek!'. Yalnız o ürünün gerçek, doğrulanmış kayıtlarından seçiliyor; tahmin uydurulmuyor.

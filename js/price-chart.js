@@ -228,3 +228,10 @@ export function nearestPointIndex(points, x) {
   }
   return best;
 }
+
+/** Caption under the chart title explaining how to inspect points before the first scrub. */
+export function chartHintText(isCoarse) {
+  return isCoarse
+    ? 'parmağınla kaydırıp yıllara bak'
+    : 'fareyle üstüne gel ya da ok tuşlarını kullan';
+}
