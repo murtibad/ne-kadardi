@@ -7,6 +7,9 @@ const MONTHS_TR = [
   'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık',
 ];
 
+// Indexed by Date#getDay() (0 = Sunday).
+const WEEKDAYS_TR = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
+
 const TIER_SQUARE = {
   great: '🟩',
   good: '🟩',
@@ -265,4 +268,26 @@ export function dailyImageLayout(rowCount, hasStreak) {
   const streakY = totalY + 100;
   const bottom = hasStreak ? streakY + 60 : totalY + 40;
   return { rowH, rowsTop, totalY, streakY, height: bottom + 80 + 80 + 70 };
+}
+
+/**
+ * The 7 local days ending on `todayKey` (oldest first) with their logged total or null.
+ * Walks back with prevDayKey so month/year boundaries match how the log keys are written.
+ */
+export function lastSevenDays(log, todayKey) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(todayKey))) return [];
+  const clean = trimLog(log, Infinity);
+  const keys = [todayKey];
+  while (keys.length < 7) keys.unshift(prevDayKey(keys[0]));
+  return keys.map((key) => {
+    const [y, m, d] = key.split('-').map(Number);
+    // Noon, like prevDayKey, so the weekday never slips across a DST jump.
+    const label = WEEKDAYS_TR[new Date(y, m - 1, d, 12).getDay()];
+    return { key, label, total: clean[key] ?? null };
+  });
+}
+
+/** The week strip is noise with a single day; show it from 2 played days on. */
+export function weekStripVisible(days) {
+  return Array.isArray(days) && days.filter((d) => d.total !== null).length >= 2;
 }
