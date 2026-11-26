@@ -40,7 +40,8 @@ export function resolveSavedDaily(data, todayKey, validIds = null) {
   const scores = ids.length === 0 ? [] : data.scores.filter(Number.isFinite).slice(0, ids.length);
   // Guesses (number, or null for a skip) are kept only when they line up with the scores; older saves have none.
   const guessesOk = Array.isArray(data.guesses) && data.guesses.length === scores.length
-    && data.guesses.every((g) => g === null || Number.isFinite(g));
+    && data.guesses.length === data.scores.length
+    && data.guesses.every((g) => g === null || (Number.isFinite(g) && g > 0));
   const finished = ids.length > 0 && scores.length >= ids.length;
   const resumable = !finished && scores.length > 0 && data.key === prevDayKey(todayKey);
   if (data.key !== todayKey && !resumable) return null;

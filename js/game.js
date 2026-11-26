@@ -360,14 +360,12 @@ function isVerified(x) {
   return Boolean(x) && Number.isFinite(x.price) && x.price > 0 && (x.status == null || x.status === 'verified');
 }
 
-// The item's price on a wage date: the latest verified row of the same year up to that month.
-// Same year only, like wageInForce: an older price would make the old wage look stronger than it was.
+// The item's price on a wage date: a verified row of the same month (a July wage divided by a
+// January gold price would overstate what it bought). A year-only wage date matches year-only rows.
 function itemPriceInForce(rows, date) {
-  const year = date.slice(0, 4);
-  // A year-only date counts the whole year, like priceInForce does.
-  const limit = date.length < 7 ? `${year}-12` : date.slice(0, 7);
+  const key = date.length < 7 ? date.slice(0, 4) : date.slice(0, 7);
   return rows
-    .filter((x) => isVerified(x) && x.date.slice(0, 4) === year && x.date.slice(0, 7) <= limit)
+    .filter((x) => isVerified(x) && (date.length < 7 ? x.date === key : x.date.slice(0, 7) === key))
     .sort((a, b) => (a.date < b.date ? 1 : -1))[0] ?? null;
 }
 
@@ -393,10 +391,11 @@ export function buildWageBasketLine(q, allQuestions) {
   for (const id of WAGE_BASKET_IDS) {
     if (!COUNT_UNITS[id]) continue;
     const rows = allQuestions.filter((x) => x.productId === id);
-    const then = itemPriceInForce(rows, q.date);
+    const then = today ? null : itemPriceInForce(rows, q.date);
     const now = rows.find((x) => x.current)?.current;
-    if (!then || !isVerified(now)) continue;
-    const thenAmount = basketAmount(q.price, then.price);
+    if (!today && !then) continue;
+    if (nowWage && !isVerified(now)) continue;
+    const thenAmount = then ? basketAmount(q.price, then.price) : null;
     const nowAmount = nowWage ? basketAmount(nowWage, now.price) : null;
     // "0 gram altın" reads like an error; skip the item instead.
     if (thenAmount === 0 || nowAmount === 0) continue;
@@ -727,8 +726,10 @@ export function matchGuessedPeriod(guess, productRows, askedDate, current = null
 export function timeWarpText(guess, match, { amount = false } = {}) {
   if (!match || !Number.isFinite(guess) || guess <= 0) return '';
   if (match.kind === 'period') {
-    const noun = amount ? 'tutarıydı' : 'fiyatıydı';
-    return `Yazdığın ${formatPrice(guess)} aslında ${ofPeriod(formatPeriod(match.date))} ${noun}.`;
+    const when = ofPeriod(formatPeriod(match.date));
+    // Within 5% reads as the same price; otherwise say "close to" and show the real one.
+    if (match.factor <= 1.05) return `Yazdığın ${formatPrice(guess)} aslında ${when} ${amount ? 'tutarıydı' : 'fiyatıydı'}.`;
+    return `Yazdığın ${formatPrice(guess)}, ${when} ${amount ? 'tutarına' : 'fiyatına'} yakın (${formatPrice(match.price)}).`;
   }
   if (match.kind === 'current') {
     return amount ? 'Yazdığın tutar, bugünkü tutara yakın.' : 'Yazdığın fiyat, bugünkü fiyata yakın.';
