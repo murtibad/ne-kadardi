@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.6] - 2026-11-26
+### Fixed
+- Soru seçiminde dört küçük açık kapandı: 'Biliyor muydun?' kartında yazan iki fiyat serbest oyunda hemen sorulmuyor; ilk ziyaretteki tanıtım soruları az önce cevaplanan soruyu tekrar etmiyor; hatıra yılı düğmesi o yılda yalnız Günün Fişi ürünleri kaldıysa serbest oyuna geçiyor; kart düğmesi az önceki soruyu tekrar sormuyor.
+
 ## [0.163.5] - 2026-11-26
 ### Fixed
 - Tanıtımın sonundaki 'Hemen oyna' / 'Ana menüye geç' düğmeleri basılabilir olduğu anda hâlâ 12 px yukarı kayıyordu (hızlı dokunuş ıskalayabiliyordu); artık yerinde beliriyorlar, yazılar eskisi gibi kayarak geliyor.

@@ -271,7 +271,14 @@ function nextQuestion(productId = null, date = null, { excludeDate = null, exclu
   // Someone who has never played starts with the openers (game.js OPENER_IDS), skips included.
   let opener = null;
   // The curated openers stay as they are: a first-time player has not seen today's daily yet.
-  while (!productId && spoiledIds.size === 0 && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
+  const factPath = Boolean(excludeId || excludeIds?.length || excludedDateList.length);
+  // 2. An opener the player just answered (e.g. arrived via a ?soru= link) is skipped, not repeated.
+  while (!productId && !factPath && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) {
+    const o = openerFor(state.all, state.openerIndex++);
+    if (o && !state.seen.has(o.id) && o.id !== state.question?.id && !(state.factSpoiled ?? []).includes(o.id)) opener = o;
+  }
+  // Soft: the home fact card's printed prices stay out of the random pick while others exist.
+  for (const id of state.factSpoiled ?? []) spoiledIds.add(id);
   const fallbackPool = spoiledIds.size > 0 ? state.all.filter((x) => !spoiledIds.has(x.id)) : state.all;
   const q = exact ?? opener ?? forProduct ?? pickByCategory(fallbackPool, state.recentProducts, state.question?.id, Math.random, state.seen, today, dailyExclude);
   if (!q) {
@@ -1234,6 +1241,8 @@ function renderFact() {
   if (!f) return;
   const chosenYear = yearFact ? state.factYear : null;
   lastFactId = f.productId;
+  // Its two printed prices must not come back as a free-play question (normal play skips them too).
+  state.factSpoiled = [f.date, f.currentDate].filter(Boolean).map((d) => `${f.productId}@${d}`);
   const img = f.image ? `<img src="${escapeHTML(f.image.src)}" alt="" width="40" height="40" class="fact-img">` : '';
   const playLabel = factPlayLabel(chosenYear);
   $('fact-body').innerHTML = `
