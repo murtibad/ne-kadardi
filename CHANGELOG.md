@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.5] - 2026-11-26
+### Fixed
+- Tanıtımın sonundaki 'Hemen oyna' / 'Ana menüye geç' düğmeleri basılabilir olduğu anda hâlâ 12 px yukarı kayıyordu (hızlı dokunuş ıskalayabiliyordu); artık yerinde beliriyorlar, yazılar eskisi gibi kayarak geliyor.
+
 ## [0.163.4] - 2026-11-26
 ### Fixed
 - 'Biliyor muydun?' kartı artık kartta yazan güncel fiyatı da sormuyor; hatıra yılı düğmesi bugünkü Günün Fişi ürünlerini (henüz oynanmadıysa) sormuyor.
