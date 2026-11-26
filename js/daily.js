@@ -1,5 +1,5 @@
 // "Günün fişi": the same 5 questions for every player on a given day. Pure, no DOM.
-import { scoreTier, cutoffKey, preferOlder } from './game.js';
+import { scoreTier, cutoffKey, preferOlder, FOLLOW_UP_IDS } from './game.js';
 import { formatPeriod, formatPrice } from './format.js';
 
 const MONTHS_TR = [
@@ -82,6 +82,16 @@ export function dailyQuestions(questions, key, categoryOf, count = 5) {
     chosen.push(own[Math.floor(rng() * own.length)]);
   }
   return chosen;
+}
+
+/**
+ * Product ids in the "Günün Fişi" set for `key`, matching the everyday pool used by daily-ui.js.
+ * Pass `everydayIds = null` to consider all `questions` without filtering.
+ */
+export function dailyProductIds(questions, key, categoryOf, everydayIds = FOLLOW_UP_IDS) {
+  if (!Array.isArray(questions) || questions.length === 0) return new Set();
+  const pool = everydayIds ? questions.filter((q) => everydayIds.includes(q.productId)) : questions;
+  return new Set(dailyQuestions(pool, key, categoryOf).map((q) => q.productId));
 }
 
 function formatDay(key) {

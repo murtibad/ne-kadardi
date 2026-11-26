@@ -19,7 +19,7 @@ import { initChartUi, renderPriceChart } from './chart-ui.js';
 import { countUpFrames, easeOutCubic } from './count-up.js';
 import { parseQuestionParam, resolveFriendLink, LINK_NOT_FOUND_TEXT, friendIntroText, compareFriendScore } from './ask-link.js';
 import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
-import { dayKey } from './daily.js';
+import { dayKey, dailyProductIds } from './daily.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview, renderDailyRound } from './daily-ui.js';
 
 const DATA_URL = 'data/prices.json';
@@ -181,10 +181,14 @@ function nextQuestion(productId = null, date = null) {
   // Avoid repeating the last question, unless it is the product's only one.
   const fresh = ofProduct.filter((x) => x.id !== state.question?.id);
   const pool = fresh.length ? fresh : ofProduct;
+  const today = new Date();
+  // Free play skips products reserved for today's "Günün Fişi" so the two modes do not repeat each other.
+  const dailyExclude = !productId ? dailyProductIds(state.all, dayKey(today), categoryOf) : null;
   // Someone who has never played starts with the openers (game.js OPENER_IDS), skips included.
   let opener = null;
+  // The curated openers stay as they are: a first-time player has not seen today's daily yet.
   while (!productId && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
-  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id, Math.random, state.seen, new Date()));
+  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id, Math.random, state.seen, today, dailyExclude));
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;

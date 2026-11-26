@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.145.0] - 2026-11-26
+### Changed
+- Serbest oyun daha çeşitli: o günün Günün Fişi ürünleri serbest oyunda o gün sorulmuyor; aynı aileden ürünler (iki ekmek, iki akaryakıt, iki sınav ücreti, iki abonelik vb.) 8 soru içinde arka arkaya gelmiyor. Seçenek kalmazsa eski davranışa dönüyor.
+
 ## [0.144.0] - 2026-11-26
 ### Added
 - Günün Fişi artık görsel olarak da paylaşılıyor: fiş kâğıdında 5 ürün, puan renkli kareler, toplam ve seri; fiyat yok (arkadaşın aynı soruları çözebilsin). Önizlemede 'Kaydet', telefonda 'Paylaş' ve 'Metni kopyala' var.

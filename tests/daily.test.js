@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout, dailyProductIds } from '../js/daily.js';
 import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
@@ -318,4 +318,19 @@ test('fitText ellipsizes to the measured width and layout grows with rows', () =
   assert.equal(fitText('Abcdef', 5, measure), 'A…');
   assert.equal(fitText('Asgari ücret (ele geçen, bekâr)', 130, measure), 'Asgari ücret');
   assert.ok(dailyImageLayout(5, true).height > dailyImageLayout(5, false).height);
+});
+
+test('dailyProductIds returns the product ids in today\'s daily receipt from the everyday pool', () => {
+  const withNonEveryday = [
+    ...sampleQuestions,
+    { id: 'motorin@2018-01', productId: 'motorin', date: '2018-01' },
+  ];
+  const expected = new Set(dailyQuestions(sampleQuestions, '2026-10-26', categoryOf).map((q) => q.productId));
+  const got = dailyProductIds(withNonEveryday, '2026-10-26', categoryOf);
+  assert.deepEqual(got, expected);
+  assert.equal(got.has('motorin'), false);
+  // Passing null for everydayIds uses the whole list without filtering.
+  const allMode = dailyProductIds([{ id: 'motorin@2018-01', productId: 'motorin', date: '2018-01' }], '2026-10-26', categoryOf, null);
+  assert.deepEqual(allMode, new Set(['motorin']));
+  assert.deepEqual(dailyProductIds([], '2026-10-26', categoryOf), new Set());
 });

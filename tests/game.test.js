@@ -493,3 +493,70 @@ test('the worked example in "Puan nasıl hesaplanır?" matches the formula', asy
   assert.equal(scoreGuess(200, 100).score, 61);
   assert.equal(scoreGuess(50, 100).score, 61);
 });
+
+test('pickByCategory skips excluded (daily) products unless excluding them would empty the pool', () => {
+  const qs = [
+    { id: 'dolar@2015-01', productId: 'dolar', date: '2015-01' },
+    { id: 'benzin@2016-01', productId: 'benzin', date: '2016-01' },
+    { id: 'ekmek@2014-01', productId: 'ekmek', date: '2014-01' },
+  ];
+  const today = new Date(2026, 9, 26);
+  const exclude = new Set(['dolar', 'benzin']);
+  for (let i = 0; i < 10; i += 1) {
+    assert.equal(pickByCategory(qs, [], null, () => i / 10, new Set(), today, exclude).productId, 'ekmek');
+  }
+  // Even if the only non-excluded product was recently played, it still beats an excluded daily product.
+  assert.equal(pickByCategory(qs, ['ekmek'], null, () => 0, new Set(), today, exclude).productId, 'ekmek');
+  // When every product is excluded, fall back gracefully instead of returning null.
+  const allExcluded = new Set(['dolar', 'benzin', 'ekmek']);
+  const fallback = pickByCategory(qs, ['dolar'], null, () => 0, new Set(), today, allExcluded);
+  assert.ok(fallback && fallback.productId !== 'dolar');
+});
+
+test('pickByCategory avoids the same product family within FAMILY_WINDOW and falls back softly', async () => {
+  const { FAMILY_WINDOW } = await import('../js/game.js');
+  const today = new Date(2026, 9, 26);
+  const breadAndFuel = [
+    { id: 'firin-ekmegi@2014-01', productId: 'firin-ekmegi', date: '2014-01' },
+    { id: 'dolar@2015-01', productId: 'dolar', date: '2015-01' },
+    { id: 'ekmek@2014-01', productId: 'ekmek', date: '2014-01' },
+  ];
+  // With Halk Ekmek in the last 8, firin-ekmegi (same bread family) is skipped in favour of dolar.
+  for (let i = 0; i < 10; i += 1) {
+    assert.equal(pickByCategory(breadAndFuel, ['ekmek'], null, () => i / 10, new Set(), today).productId, 'dolar');
+  }
+  // Still avoided when ekmek is at the oldest slot of FAMILY_WINDOW (8th from last).
+  const pad = Array.from({ length: FAMILY_WINDOW - 1 }, (_, i) => `other-${i}`);
+  assert.equal(pickByCategory(breadAndFuel, ['ekmek', ...pad], null, () => 0, new Set(), today).productId, 'dolar');
+  // Once ekmek drops out of FAMILY_WINDOW, firin-ekmegi is eligible again (rng=0 picks it before dolar).
+  assert.equal(pickByCategory(breadAndFuel, ['ekmek', ...pad, 'extra'], null, () => 0, new Set(), today).productId, 'firin-ekmegi');
+  // Soft fallback: when only a sibling remains, pick it rather than returning null.
+  const onlyFuel = [
+    { id: 'benzin@2016-01', productId: 'benzin', date: '2016-01' },
+    { id: 'motorin@2016-01', productId: 'motorin', date: '2016-01' },
+  ];
+  assert.equal(pickByCategory(onlyFuel, ['benzin'], null, () => 0, new Set(), today).productId, 'motorin');
+});
+
+test('free play on real data avoids today\'s Günün Fişi products and recent product families', async () => {
+  const { FAMILY_WINDOW } = await import('../js/game.js');
+  const { categoryOf, familyOf } = await import('../js/categories.js');
+  const { dayKey, dailyProductIds } = await import('../js/daily.js');
+  const data = JSON.parse(readFileSync(new URL('../data/prices.json', import.meta.url), 'utf8'));
+  const all = buildQuestions(data);
+  const today = new Date(2026, 9, 26);
+  const dailyExclude = dailyProductIds(all, dayKey(today), categoryOf);
+  assert.equal(dailyExclude.size, 5);
+
+  let s = 424242;
+  const rng = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+  const recent = [];
+  for (let i = 0; i < 100; i += 1) {
+    const q = pickByCategory(all, recent, null, rng, new Set(), today, dailyExclude);
+    assert.ok(!dailyExclude.has(q.productId), `picked daily product ${q.productId} at ${i}`);
+    assert.ok(!recent.slice(-15).includes(q.productId), `repeated product ${q.productId} within 15 at ${i}`);
+    const recentFams = recent.slice(-FAMILY_WINDOW).map(familyOf);
+    assert.ok(!recentFams.includes(familyOf(q.productId)), `repeated family ${familyOf(q.productId)} within ${FAMILY_WINDOW} at ${i}`);
+    recent.push(q.productId);
+  }
+});

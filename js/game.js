@@ -1,6 +1,6 @@
 // Game logic: question selection and scoring. Pure functions, no DOM access.
 import { formatRatio, formatNumber } from './format.js';
-import { categoryOf } from './categories.js';
+import { categoryOf, familyOf } from './categories.js';
 
 const PERFECT_FACTOR = 1.1; // within 10% counts as a perfect guess
 const ZERO_FACTOR = 5; // 5x off (either way) scores zero
@@ -75,9 +75,11 @@ export function scoreTier(score) {
   return 'bad';
 }
 
-// Free play: a product is not shown again within RECENT_WINDOW questions, and no category fills
-// more than CATEGORY_CAP of the last CATEGORY_WINDOW questions (when another category exists).
+// Free play: a product is not shown again within RECENT_WINDOW questions, no product family
+// repeats within FAMILY_WINDOW questions, and no category fills more than CATEGORY_CAP of the
+// last CATEGORY_WINDOW questions (each soft: falls back when filtering would empty the pool).
 export const RECENT_WINDOW = 15;
+export const FAMILY_WINDOW = 8;
 export const CATEGORY_WINDOW = 10;
 export const CATEGORY_CAP = 3;
 export const RECENT_MONTHS = 12;
@@ -100,15 +102,33 @@ export function preferOlder(own, cutoff) {
 
 // Every question should feel like a new category: pick a product that was not shown recently
 // (all products take turns), then a random year of that product. Products with many entries
-// (e.g. 17 yearly values) therefore do not dominate. `recent` holds the latest product ids.
-export function pickByCategory(questions, recent = [], previousId = null, rng = Math.random, seen = new Set(), today = new Date()) {
+// (e.g. 17 yearly values) therefore do not dominate. `recent` holds the latest product ids;
+// `excludeProducts` (optional Set/iterable) softly skips products reserved for e.g. today's Günün Fişi.
+export function pickByCategory(
+  questions,
+  recent = [],
+  previousId = null,
+  rng = Math.random,
+  seen = new Set(),
+  today = new Date(),
+  excludeProducts = null,
+) {
   const products = [...new Set(questions.map((q) => q.productId))];
   const cutoff = cutoffKey(today);
   let own = questions;
   if (products.length >= 2) {
-    const keep = Math.min(products.length - 1, RECENT_WINDOW);
-    const blocked = new Set(recent.slice(-keep));
-    let pool = products.filter((id) => !blocked.has(id));
+    let pool = products;
+    const excluded = excludeProducts ? (excludeProducts instanceof Set ? excludeProducts : new Set(excludeProducts)) : null;
+    if (excluded && excluded.size > 0) {
+      const allowed = pool.filter((id) => !excluded.has(id));
+      if (allowed.length > 0) pool = allowed;
+    }
+    if (pool.length >= 2) {
+      const keep = Math.min(pool.length - 1, RECENT_WINDOW);
+      const blocked = new Set(recent.slice(-keep));
+      const notRecent = pool.filter((id) => !blocked.has(id));
+      if (notRecent.length > 0) pool = notRecent;
+    }
     // Soft category cap over the latest questions.
     const counts = {};
     for (const id of recent.slice(-CATEGORY_WINDOW)) {
@@ -117,6 +137,12 @@ export function pickByCategory(questions, recent = [], previousId = null, rng = 
     }
     const capped = pool.filter((id) => (counts[categoryOf(id)] ?? 0) < CATEGORY_CAP);
     if (capped.length > 0) pool = capped;
+    // Soft product-family cooldown over the last FAMILY_WINDOW questions (e.g. bread, fuel, exams).
+    const recentFamilies = new Set(recent.slice(-FAMILY_WINDOW).map(familyOf).filter(Boolean));
+    if (recentFamilies.size > 0) {
+      const freshFamily = pool.filter((id) => !recentFamilies.has(familyOf(id)));
+      if (freshFamily.length > 0) pool = freshFamily;
+    }
     const productId = pool[Math.floor(rng() * pool.length)];
     own = questions.filter((q) => q.productId === productId);
   }

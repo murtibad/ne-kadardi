@@ -14,6 +14,33 @@ export function categoryOf(productId) {
   return CATEGORIES.find((c) => c.products.includes(productId))?.id ?? null;
 }
 
+// Products that feel like the same topic back-to-back (e.g. two breads, two fuels, two exams).
+// Free play keeps a family out for FAMILY_WINDOW questions when another product is available.
+export const FAMILIES = [
+  { id: 'doviz', products: ['dolar', 'euro', 'sterlin'] },
+  { id: 'altin', products: ['gram-altin', 'ceyrek-altin'] },
+  { id: 'yakit', products: ['benzin', 'motorin', 'otogaz'] },
+  { id: 'gecis', products: ['kopru', 'osmangazi-koprusu', 'avrasya-tuneli', 'anadolu-otoyolu'] },
+  { id: 'toplu-tasima', products: ['istanbul-ulasim', 'istanbul-ogrenci-bileti', 'ankara-ulasim', 'izmir-ulasim'] },
+  { id: 'otomobil', products: ['fiat-egea-easy', 'togg-t10x'] },
+  { id: 'ekmek', products: ['ekmek', 'firin-ekmegi'] },
+  { id: 'tarim', products: ['tmo-bugday', 'findik-alim', 'cig-sut'] },
+  { id: 'abonelik', products: ['spotify', 'amazon-prime', 'disney-plus', 'netflix', 'youtube-premium'] },
+  { id: 'emekli', products: ['emekli-en-dusuk-aylik', 'emekli-bayram-ikramiyesi'] },
+  { id: 'sinav', products: ['yks', 'kpss-lisans', 'kpss-onlisans', 'ales', 'yds', 'dgs', 'msu'] },
+  { id: 'trafik-cezasi', products: ['trafik-cezasi', 'alkol-cezasi'] },
+  { id: 'ehliyet', products: ['ehliyet-harci', 'ehliyet-esinav', 'surucu-belgesi-bedeli'] },
+  { id: 'yurtdisi', products: ['pasaport-harci', 'yurtdisi-cikis-harci', 'schengen-vize'] },
+  { id: 'resmi-belge', products: ['aile-cuzdani', 'arac-tescil-belgesi', 'kimlik-karti'] },
+  { id: 'diyanet', products: ['fitre', 'kurban-vekalet-bedeli'] },
+];
+
+/** Family key of a product (shared for close siblings like bread or fuel; otherwise its own id). */
+export function familyOf(productId) {
+  if (!productId) return null;
+  return FAMILIES.find((f) => f.products.includes(productId))?.id ?? productId;
+}
+
 /** Timelines of one category; an unknown or empty id (or 'all') returns everything. */
 export function filterTimelines(timelines, categoryId) {
   const cat = CATEGORIES.find((c) => c.id === categoryId);
