@@ -6,24 +6,15 @@ import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { sourceLinkText } from './source-name.js';
-import { burstConfetti } from './confetti.js';
-import { verdictText, questionTitle, skipRevealText, sessionBadge, sessionWrapText, bestGuessText, bestGuessBelowSessionBest } from './share-model.js';
-import { buildTaxLine, taxBreakdown } from './tax.js';
-import { cashierComment, rememberLine } from './cashier.js';
-import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
-import { buildHint, buildEverydayHint, applyHintPenalty } from './hint.js';
+import { verdictText, questionTitle, skipRevealText, sessionBadge, sessionWrapText, bestGuessText, bestGuessBelowSessionBest } from './share-text.js';
 import { VERSION } from './version.js';
+import { R, loadResultModules, loadResultModulesWhenIdle, setResultInit } from './result-lazy.js';
 import { pickFact, factYears, factPlayLabel } from './fact.js';
 import { buildPriceChart } from './price-chart.js';
-import { initChartUi, renderPriceChart } from './chart-ui.js';
-import { countUpFrames, easeOutCubic } from './count-up.js';
 import { parseQuestionParam, resolveFriendLink, LINK_NOT_FOUND_TEXT, friendIntroText, compareFriendScore } from './ask-link.js';
-import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey, dailyProductIds } from './daily.js';
 import { sanitizeGuesses, rememberGuess } from './guess-memory.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, endDailyDetour, closeDailyReview, renderDailyRound } from './daily-ui.js';
-import { questionIconUrl, preloadIcon } from './icon-preload.js';
-import { sessionTendencyLine, advanceColdStreak } from './tendency.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -239,7 +230,14 @@ function pinArchive(productId, date, fromResult) {
 // adding `date` pins the exact question from a shared `?soru=` link. `excludeDate` / `excludeDates`
 // avoid asking the dates just shown on the fact card; `excludeId` / `excludeIds` avoid spoiled
 // `product@date` entries on fallback.
-function nextQuestion(productId = null, date = null, { excludeDate = null, excludeDates = null, excludeId = null, excludeIds = null } = {}) {
+// The first question needs banter/hint/tendency (and the result needs the rest). They load at idle after the
+// menu paints; a tap that beats them waits here, so a question or receipt never renders half-wired.
+function nextQuestion(...args) {
+  if (R.ready) return showNextQuestion(...args);
+  loadResultModules().then(() => showNextQuestion(...args), () => showMessage('Oyun dosyaları yüklenemedi. İnternet bağlantını kontrol edip yeniden dene.', { retry: true }));
+}
+
+function showNextQuestion(productId = null, date = null, { excludeDate = null, excludeDates = null, excludeId = null, excludeIds = null } = {}) {
   lastScoredQuestion = null; // the same question can come back (fact card, friend link): it must be answerable again
   $('next-btn').textContent = 'Sonraki soru →';
   setDailyEndTurn(false);
@@ -247,7 +245,7 @@ function nextQuestion(productId = null, date = null, { excludeDate = null, exclu
   state.archiveFromResult = false;
   state.archivePin = null;
   state.friendScore = null;
-  resetShareBtn();
+  R.resetShareBtn?.();
   if ($('r-tax-details')) {
     $('r-tax-details').hidden = true;
     $('r-tax-details').open = false;
@@ -309,7 +307,7 @@ function nextQuestion(productId = null, date = null, { excludeDate = null, exclu
   $('q-skipped').hidden = !skippedLine;
   $('q-period').textContent = formatPeriod(q.date);
   state.questionCounter += 1;
-  const gated = gatedYearAnchor(yearOf(q.date), state.anchorShown, state.questionCounter);
+  const gated = R.gatedYearAnchor(yearOf(q.date), state.anchorShown, state.questionCounter);
   state.anchorShown = gated.shown;
   const anchor = gated.text;
   $('q-anchor').textContent = anchor || '';
@@ -345,8 +343,8 @@ function nextQuestion(productId = null, date = null, { excludeDate = null, exclu
   document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
   state.hintsUsed = 0;
   state.hintProductId = null;
-  const everyday = buildEverydayHint(q, state.all);
-  const rates = buildHint(q, state.all);
+  const everyday = R.buildEverydayHint(q, state.all);
+  const rates = R.buildHint(q, state.all);
   const hintBtn = $('hint-btn');
   const slip = $('hint-text');
   // Each row carries its own date: hint prices may come from a different month or the year before.
@@ -359,8 +357,8 @@ function nextQuestion(productId = null, date = null, { excludeDate = null, exclu
     sound.play('beep');
     state.hintsUsed += 1;
     if (state.hintsUsed === 1) {
-      slip.dataset.line = hintComment(Math.random, state.recentLines);
-      state.recentLines = rememberLine(state.recentLines, slip.dataset.line);
+      slip.dataset.line = R.hintComment(Math.random, state.recentLines);
+      state.recentLines = R.rememberLine(state.recentLines, slip.dataset.line);
       state.hintProductId = everyday ? everyday.id : null;
       slip.innerHTML = `<p class="hint-cashier">“${escapeHTML(slip.dataset.line)}”</p><p class="hint-slip-title">İpucu</p>`
         + (everyday ? row(everyday) : rateRows());
@@ -422,7 +420,7 @@ function onGuess(event) {
   state.result = {
     guess,
     ...scored,
-    score: applyHintPenalty(scored.score, state.hintsUsed),
+    score: R.applyHintPenalty(scored.score, state.hintsUsed),
     hinted: state.hintsUsed > 0,
     hintsUsed: state.hintsUsed,
     hintProductId: state.hintProductId,
@@ -441,12 +439,12 @@ function onGuess(event) {
     state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
     state.result.badge = sessionBadge({ prevBest, score: state.result.score, playedAfter: state.played, recent: state.recentScores });
     state.sessionDirections.push(state.result.direction);
-    const cold = advanceColdStreak(state.coldStreak, state.result.score);
+    const cold = R.advanceColdStreak(state.coldStreak, state.result.score);
     state.coldStreak = cold.state;
     state.result.coldTip = cold.text;
     // Once per sitting: by the second time it is just another line between the verdict and the quote.
     // One extra note per receipt: on a tip's turn the tendency waits for its next 5th answer.
-    state.result.tendencyLine = state.tendencyShown || cold.text ? '' : sessionTendencyLine(state.sessionDirections);
+    state.result.tendencyLine = state.tendencyShown || cold.text ? '' : R.sessionTendencyLine(state.sessionDirections);
     if (state.result.tendencyLine) state.tendencyShown = true;
   }
   state.seen.delete(q.id);
@@ -527,7 +525,7 @@ function startScoreRoll(target) {
   const tick = () => {
     const elapsed = nowFn() - startMs;
     if (elapsed < SCORE_ROLL_MS) {
-      numEl.textContent = String(Math.round(target * easeOutCubic(elapsed / SCORE_ROLL_MS)));
+      numEl.textContent = String(Math.round(target * R.easeOutCubic(elapsed / SCORE_ROLL_MS)));
       scoreRaf = requestAnimationFrame(tick);
     } else {
       stopScoreRoll();
@@ -587,7 +585,7 @@ function revealReportCard() {
 
 function handOver() {
   handTimer = null;
-  warmShareImage();
+  R.warmShareImage();
   const qs = $('question-screen');
   $('result-screen').classList.add('handed');
   if (qs.hidden || !qs.classList.contains('as-machine')) return;
@@ -673,7 +671,7 @@ function printReceipt(extraSound) {
     }
     $('r-stamp').classList.add('stamped');
     // Same moment as the counter bell: a 100-point guess (within 10%), not only an exact kuruş match.
-    if (state.result?.direction === 'exact') burstConfetti();
+    if (state.result?.direction === 'exact') R.burstConfetti();
     // Let the tear finish (0.3 s) before the till leaves.
     handTimer = setTimeout(handOver, 320);
     // The till takes 0.38 s to leave; then the report card would still sit behind the sticky bar.
@@ -712,7 +710,7 @@ function printReceipt(extraSound) {
       srScore.textContent = String(state.result.score);
     }
   }
-  const frames = countUpFrames(state.question.price, { frames: 60 });
+  const frames = R.countUpFrames(state.question.price, { frames: 60 });
   if (frames.length > 0 && typeof requestAnimationFrame === 'function') {
     const actualEl = $('r-actual');
     // Hold today's price and the multiplier until the real price lands so they do not spoil the roll.
@@ -809,9 +807,9 @@ function renderResult(q, r) {
     scoreEl.append(hint);
   }
   const tier = scoreTier(r.score);
-  const line = contextComment({ direction: r.direction, factor: r.factor, productId: q.productId, amount: isAmount(q.productId) }, Math.random, state.recentLines)
-    ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId), recent: state.recentLines });
-  state.recentLines = rememberLine(state.recentLines, line);
+  const line = R.contextComment({ direction: r.direction, factor: r.factor, productId: q.productId, amount: isAmount(q.productId) }, Math.random, state.recentLines)
+    ?? R.cashierComment(tier, Math.random, { amount: isAmount(q.productId), recent: state.recentLines });
+  state.recentLines = R.rememberLine(state.recentLines, line);
   $('r-cashier').textContent = `“${line}”`;
   $('r-cashier').hidden = Boolean(r.tendencyLine || r.coldTip);
   if ($('r-tendency')) {
@@ -836,7 +834,7 @@ function renderResult(q, r) {
     if (followUp) {
       followBtn.textContent = `Peki ${inPeriod(formatPeriod(followUp.date))} ${questionTitle(followUp).replace(/\s*\(.*\)$/, '')} kaç liraydı? →`; // the arrow never sits alone on the last line
       followBtn.onclick = () => nextQuestion(followUp.productId, followUp.date);
-      preloadIcon(questionIconUrl(followUp));
+      R.preloadIcon(R.questionIconUrl(followUp));
     } else {
       followBtn.textContent = '';
       followBtn.onclick = null;
@@ -845,12 +843,12 @@ function renderResult(q, r) {
   // renderReportCard ends a finished daily run, so read the run first for the line under the receipt.
   const dailyRun = state.daily ? { done: state.daily.scores.length, of: state.daily.ids.length, total: state.daily.scores.reduce((s, n) => s + n, 0) } : null;
   renderReportCard();
-  const ytl = ytlNote(yearOf(q.date), q.price);
+  const ytl = R.ytlNote(yearOf(q.date), q.price);
   $('r-ytl').textContent = ytl || '';
   $('r-ytl').hidden = !ytl;
   document.querySelector('.verdict-box').dataset.tier = tier;
   document.querySelector('.score-box').dataset.tier = tier;
-  const stamp = stampTitle(r.score);
+  const stamp = R.stampTitle(r.score);
   $('r-stamp').textContent = stamp || '';
   $('r-stamp').hidden = !stamp;
   $('r-stamp').dataset.tier = tier;
@@ -867,9 +865,9 @@ function renderResult(q, r) {
   $('r-context').textContent = contextText || '';
   $('r-context').hidden = !contextText;
 
-  renderPriceChart('r-chart', q.productId, q.date, r.guess);
+  R.renderPriceChart('r-chart', q.productId, q.date, r.guess);
 
-  const taxText = buildTaxLine(q);
+  const taxText = R.buildTaxLine(q);
   $('r-tax').textContent = taxText || '';
   $('r-tax').hidden = !taxText;
   renderTaxDetails(q);
@@ -907,7 +905,7 @@ function renderTaxDetails(q) {
   const body = $('r-tax-body');
   if (!details || !body) return;
 
-  const tb = (q?.tax && q?.price && q?.date) ? taxBreakdown(q.price, q.date, q.tax) : null;
+  const tb = (q?.tax && q?.price && q?.date) ? R.taxBreakdown(q.price, q.date, q.tax) : null;
   if (!tb) {
     details.hidden = true;
     details.open = false;
@@ -1021,7 +1019,7 @@ function renderReportCard() {
   }
   if (renderDailyCard()) return;
   setDailyEndTurn(false);
-  resetShareBtn();
+  R.resetShareBtn?.();
 }
 
 function initIntro() {
@@ -1283,7 +1281,7 @@ function onHashChange() {
   // drops focus to <body> before rescueFocus runs; only a real starting point may stay on <body>.
   const hadFocus = document.activeElement && document.activeElement !== document.body;
   closeDailyReview();
-  closePreview(); // Back while the preview is open must not leave the modal over another screen
+  R.closePreview?.(); // Back while the preview is open must not leave the modal over another screen
   const hash = location.hash;
   if (state.all.length === 0) return;
   // Back from the archive during a daily run lands on #gunun-fisi, which must resume the screen
@@ -1502,9 +1500,11 @@ async function init() {
     showMessage('Henüz doğrulanmış fiyat yok. Kaynaklı veri eklendiğinde sorular burada görünecek.');
     return;
   }
-  initChartUi({ getState: () => state, onScrubTick: () => hapticIfAllowed(5) });
+  setResultInit(() => {
+    R.initChartUi({ getState: () => state, onScrubTick: () => hapticIfAllowed(5) });
+    R.initShareUi({ getState: () => state, isDailyEndTurn });
+  });
   initDailyUi({ getState: () => state, nextQuestion, renderHome, pinArchive });
-  initShareUi({ getState: () => state, isDailyEndTurn });
   $('guess-form').addEventListener('submit', onGuess);
   // Runs before the browser follows href="#arsiv", so the archive opens pinned; Back leads to the menu.
   $('home-best').addEventListener('click', (e) => {
@@ -1602,7 +1602,7 @@ async function init() {
     enterCard();
   });
   $('next-btn').addEventListener('click', () => {
-    resetShareBtn();
+    R.resetShareBtn?.();
     const dailyId = dailyNextId();
     if (dailyId) {
       const [productId, date] = dailyId.split('@');
@@ -1628,7 +1628,10 @@ async function init() {
   });
   initIntro();
   scheduleSoundPrefetch();
+  loadResultModulesWhenIdle();
 
+  // A shared link or #tahmin opens a question straight away: have the modules before it sets its own anchor line.
+  if (location.search || location.hash === '#tahmin') await loadResultModules().catch(() => {});
   const searchParams = new URLSearchParams(location.search);
   const rawSoru = searchParams.get('soru');
   const rawP = searchParams.get('p');

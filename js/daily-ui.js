@@ -3,10 +3,9 @@
 import { formatPeriod, escapeHTML } from './format.js';
 import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
-import { questionTitle } from './share-model.js';
-import { resetShareBtn, shareTextWithStatus, shareDailyImage } from './share-ui.js';
+import { questionTitle } from './share-text.js';
+import { R, loadResultModules } from './result-lazy.js';
 import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, dailyProgressMenuText, reviewNextLine, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, lastSevenDays, weekStripVisible, dailyBiggestJump, dailyBiggestJumpLine } from './daily.js';
-import { dailyIconUrls, preloadIcons } from './icon-preload.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -165,7 +164,7 @@ export function startOrShareDaily() {
       ? saved.ids
       // Everyone compares the same receipt, so it is built from everyday products only.
       : dailyQuestions(state.all.filter((q) => FOLLOW_UP_IDS.includes(q.productId)), key, categoryOf).map((q) => q.id);
-    preloadIcons(dailyIconUrls(state.all, ids));
+    loadResultModules().then(() => R.preloadIcons(R.dailyIconUrls(state.all, ids))).catch(() => {});
     const scores = saved ? [...saved.scores] : [];
     // A run resumed from an old save has no guesses for its first answers: track none rather than mislabel them as skips.
     const guesses = !saved || scores.length === 0 ? [] : saved.guesses && [...saved.guesses];
@@ -355,8 +354,9 @@ export function initDailyReview() {
     const saved = reviewSaved;
     if (!saved || saved.ids.length === 0) return;
     // Image preview first; the text share stays the fallback when the image cannot be drawn.
-    if (await shareDailyImage({ key: saved.key, ids: saved.ids, scores: saved.scores, streak: reviewStreak(), btn: $('daily-review-share') })) return;
-    shareTextWithStatus(dailyShareText({
+    try { await loadResultModules(); } catch { return; }
+    if (await R.shareDailyImage({ key: saved.key, ids: saved.ids, scores: saved.scores, streak: reviewStreak(), btn: $('daily-review-share') })) return;
+    R.shareTextWithStatus(dailyShareText({
       key: saved.key,
       scores: saved.scores,
       url: location.origin + location.pathname,
@@ -415,7 +415,7 @@ export function renderDailyCard() {
   }
   // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
   dailyEndTurn = true;
-  resetShareBtn();
+  R.resetShareBtn?.();
   // The receipt is done: say that the next tap leaves it, instead of a plain "Sonraki soru".
   $('next-btn').textContent = 'Sonraki soru →';
   $('r-card').hidden = false;
