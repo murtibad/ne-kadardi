@@ -316,5 +316,6 @@ test('fitText ellipsizes to the measured width and layout grows with rows', () =
   const cut = fitText('Çok uzun bir ürün adı burada', 100, measure);
   assert.ok(cut.endsWith('…') && measure(cut) <= 100);
   assert.equal(fitText('Abcdef', 5, measure), 'A…');
+  assert.equal(fitText('Asgari ücret (ele geçen, bekâr)', 130, measure), 'Asgari ücret');
   assert.ok(dailyImageLayout(5, true).height > dailyImageLayout(5, false).height);
 });

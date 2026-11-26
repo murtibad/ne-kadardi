@@ -239,7 +239,10 @@ export function dailyImageModel({ key, names, scores, streak = 0 }) {
 /** Cuts `text` with an ellipsis until `measure(text)` fits `maxWidth`; keeps at least one character. */
 export function fitText(text, maxWidth, measure) {
   if (measure(text) <= maxWidth) return text;
-  let cut = text;
+  // "Asgari ücret (ele geçen, …)": dropping the bracketed detail reads better than cutting mid-word.
+  const short = text.replace(/\s*\(.*$/, '');
+  if (short && short !== text && measure(short) <= maxWidth) return short;
+  let cut = short || text;
   while (cut.length > 1 && measure(`${cut.trimEnd()}…`) > maxWidth) cut = cut.slice(0, -1);
   return `${cut.trimEnd()}…`;
 }
@@ -250,6 +253,6 @@ export function dailyImageLayout(rowCount, hasStreak) {
   const rowsTop = 360;
   const totalY = rowsTop + rowCount * rowH + 90;
   const streakY = totalY + 100;
-  const bottom = (hasStreak ? streakY : totalY) + 150;
+  const bottom = hasStreak ? streakY + 60 : totalY + 40;
   return { rowH, rowsTop, totalY, streakY, height: bottom + 80 + 80 + 70 };
 }
