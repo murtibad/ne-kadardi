@@ -1383,7 +1383,7 @@ async function init() {
     fitGuessFont(e.target);
     const v = parseGuess(e.target.value);
     // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
-    if (v !== null) $('guess-error').textContent = '';
+    if (v !== null || e.target.value === '') $('guess-error').textContent = '';
     $('guess-readout').textContent = e.target.value.trim() === '' ? emptyReadout() : readoutText(v);
     // The first time the box holds a real price, "Tahmin et" swells once: a quiet "ready when you are".
     const valid = v !== null;
@@ -1515,7 +1515,8 @@ function registerServiceWorker() {
     reloadIfHidden();
   });
   document.addEventListener('visibilitychange', reloadIfHidden);
-  window.addEventListener('hashchange', reloadOnce);
+  // Only on the way to the menu: a pinned archive or a result lives in memory and would be lost.
+  window.addEventListener('hashchange', () => { if (!location.hash || location.hash === '#') reloadOnce(); });
   const register = () => navigator.serviceWorker.register('sw.js')
     .catch(err => console.warn('Service worker:', err));
   const later = () => {

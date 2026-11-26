@@ -23,15 +23,14 @@ export function initDailyUi(d) {
 // Runs before the browser follows href="#arsiv", so the archive renders with this product pinned.
 function onDailyRowClick(e) {
   const link = e.target.closest('a.daily-row-link');
-  if (!link) return;
+  if (!link || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
   const fromReview = e.currentTarget.id === 'daily-review-lines';
   // From the menu's review dialog, Back must lead to the menu, not to an old result.
   deps.pinArchive(link.dataset.product, link.dataset.date, !fromReview);
   if (fromReview) {
-    const dlg = $('daily-review');
     // The opener sits on the menu, which the archive is about to hide: don't send focus there.
+    // The hash change closes the dialog (closeDailyReview) after it has noted where focus was.
     reviewOpener = null;
-    if (dlg?.open) dlg.close();
   }
 }
 
@@ -343,7 +342,7 @@ export function initDailyReview() {
     reviewSaved = null;
     // Touch or URL opens leave no useful opener; fall back to the menu's daily card.
     if (opener && opener !== document.body && opener.isConnected && opener.offsetParent !== null) opener.focus();
-    else document.querySelector('a.mode-daily')?.focus();
+    else if (!$('home-screen').hidden) document.querySelector('a.mode-daily')?.focus();
   });
 }
 
