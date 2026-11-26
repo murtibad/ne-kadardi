@@ -20,7 +20,7 @@ import { countUpFrames, easeOutCubic } from './count-up.js';
 import { parseQuestionParam, resolveFriendLink, LINK_NOT_FOUND_TEXT, friendIntroText, compareFriendScore } from './ask-link.js';
 import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey } from './daily.js';
-import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview } from './daily-ui.js';
+import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview, renderDailyRound } from './daily-ui.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -114,6 +114,7 @@ function show(screenId) {
   clearTimeout(handTimer);
   handTimer = null; // a stale id would make the next stopPrinting() hand over a receipt that was never torn
   if (screenId !== 'result-screen') stopPrinting();
+  if (screenId !== 'question-screen') $('q-round')?.querySelector('.daily-dot-pop')?.classList.remove('daily-dot-pop');
   $('question-screen').classList.remove('as-machine', 'folded');
   // Cancelled animations never reach onfinish, so undo their inline clipping here too.
   $('question-screen').getAnimations?.({ subtree: true })?.forEach((a) => a.cancel());
@@ -197,9 +198,13 @@ function nextQuestion(productId = null, date = null) {
   // Counts questions shown (answered + skipped this visit) so a skip never repeats the number;
   // stats still use state.played only.
   state.round = state.played + state.skips + 1;
-  $('q-round').textContent = state.daily
-    ? `Günün fişi · ${state.daily.index + 1}/${state.daily.ids.length}`
-    : cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
+  const roundEl = $('q-round');
+  if (state.daily) {
+    renderDailyRound(roundEl);
+  } else {
+    roundEl.classList.remove('is-daily');
+    roundEl.textContent = cat ? `Soru ${state.round} · ${cat.label}` : `Soru ${state.round}`;
+  }
   syncSkipBtn();
   // Shown for exactly one card: a normal next question clears it.
   const skippedLine = skipRevealText(state.pendingSkip);

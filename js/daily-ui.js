@@ -5,7 +5,7 @@ import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -102,6 +102,7 @@ export function skipDaily() {
   // Skipping the last one has no result screen for the card, so show the finished receipt on the menu.
   const finished = { key: state.daily.key, ids: [...state.daily.ids], scores: [...state.daily.scores] };
   state.daily = null;
+  lastDotsCount = null;
   state.question = null; // otherwise "Fiyat Tahmini" would reopen the skipped daily question
   syncSkipBtn();
   history.replaceState(null, '', '#');
@@ -127,6 +128,7 @@ export function startOrShareDaily() {
       : dailyQuestions(state.all.filter((q) => FOLLOW_UP_IDS.includes(q.productId)), key, categoryOf).map((q) => q.id);
     const scores = saved ? [...saved.scores] : [];
     state.daily = { key, ids, index: scores.length, scores };
+    lastDotsCount = scores.length;
     const [productId, date] = (ids[state.daily.index] ?? '').split('@');
     // The address stays #gunun-fisi during the run, so a reload picks the run up from storage.
     deps.nextQuestion(productId, date);
@@ -144,6 +146,36 @@ export function dailyLines(all, ids, scores) {
     if (!dq) return { label: 'Soru', detail: `${score} puan`, tier };
     return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score }), tier };
   });
+}
+
+// Tracks how many daily scores were already shown as dots so only a newly answered or skipped dot pops.
+let lastDotsCount = null;
+
+/** Renders the question screen's Günün Fişi progress row with 5 tier-coloured/ring dots. */
+export function renderDailyRound(el) {
+  const daily = getState().daily;
+  if (!el || !daily) return;
+  const total = daily.ids.length;
+  const dots = dailyProgressDots(daily.scores, total);
+  const done = dots.filter((d) => d.status === 'done').length;
+  const step = Math.min(done + 1, total);
+  const popIndex = lastDotsCount !== null && done > lastDotsCount ? done - 1 : -1;
+  lastDotsCount = done;
+
+  const dotsHtml = dots.map((d, i) => {
+    if (d.status === 'done') {
+      const pop = i === popIndex ? ' daily-dot-pop' : '';
+      return `<span class="tally-dot${pop}" data-tier="${escapeHTML(d.tier)}" title="${d.score} puan"></span>`;
+    }
+    const cls = d.status === 'current' ? 'daily-dot-current' : 'daily-dot-upcoming';
+    return `<span class="tally-dot ${cls}"></span>`;
+  }).join('');
+
+  el.classList.add('is-daily');
+  el.innerHTML = `<span>Günün fişi · ${step}/${total}</span><span class="daily-dots" aria-hidden="true">${dotsHtml}</span>`;
+  el.querySelector('.daily-dot-pop')?.addEventListener('animationend', (e) => {
+    e.currentTarget.classList.remove('daily-dot-pop');
+  }, { once: true });
 }
 
 function renderDailyRows(lines) {
@@ -240,6 +272,7 @@ export function renderDailyCard() {
   if (state.daily.scores.length < state.daily.ids.length) return true;
   const { key, ids, scores } = state.daily;
   state.daily = null;
+  lastDotsCount = null;
   syncSkipBtn();
   // The run is over: a reload now should not reopen #gunun-fisi (that would share again).
   if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
@@ -276,6 +309,7 @@ export function renderDailyMenu() {
   const state = getState();
   if (state.daily) {
     state.daily = null;
+    lastDotsCount = null;
     state.question = null;
     syncSkipBtn();
   }

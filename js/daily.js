@@ -173,3 +173,19 @@ export function dailyRowText({ date, title, price, score }) {
 export function dailyReviewTotalLine(total, streak) {
   return `Toplam: ${total}/500${streak >= 2 ? ` · 🔥 ${streak} gün üst üste` : ''}`;
 }
+
+/**
+ * Progress dots for a running Günün Fişi: answered questions carry their score tier,
+ * the active question is marked 'current', and remaining ones are 'upcoming'.
+ */
+export function dailyProgressDots(scores, total = 5) {
+  const count = Math.max(0, Math.floor(total));
+  const answered = Array.isArray(scores) ? scores.filter(Number.isFinite) : [];
+  return Array.from({ length: count }, (_, i) => {
+    if (i < answered.length) {
+      const score = answered[i];
+      return { status: 'done', score, tier: scoreTier(score) };
+    }
+    return { status: i === answered.length ? 'current' : 'upcoming', score: null, tier: null };
+  });
+}

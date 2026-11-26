@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots } from '../js/daily.js';
 import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
@@ -214,4 +214,38 @@ test('dailyLines maps scores to their colour tier; 0 points is red like the shar
     { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: 'bad' },
     { label: 'Soru', detail: '0 puan', tier: 'bad' },
   ]);
+});
+
+test('dailyProgressDots marks answered tiers, current question, and upcoming slots', () => {
+  assert.deepEqual(dailyProgressDots([], 5), [
+    { status: 'current', score: null, tier: null },
+    { status: 'upcoming', score: null, tier: null },
+    { status: 'upcoming', score: null, tier: null },
+    { status: 'upcoming', score: null, tier: null },
+    { status: 'upcoming', score: null, tier: null },
+  ]);
+
+  assert.deepEqual(dailyProgressDots([90, 50], 5), [
+    { status: 'done', score: 90, tier: 'great' },
+    { status: 'done', score: 50, tier: 'mid' },
+    { status: 'current', score: null, tier: null },
+    { status: 'upcoming', score: null, tier: null },
+    { status: 'upcoming', score: null, tier: null },
+  ]);
+
+  assert.deepEqual(dailyProgressDots([90, 75, 50, 25, 0], 5), [
+    { status: 'done', score: 90, tier: 'great' },
+    { status: 'done', score: 75, tier: 'good' },
+    { status: 'done', score: 50, tier: 'mid' },
+    { status: 'done', score: 25, tier: 'poor' },
+    { status: 'done', score: 0, tier: 'bad' },
+  ]);
+
+  assert.deepEqual(dailyProgressDots([80, NaN, 'x'], 3), [
+    { status: 'done', score: 80, tier: 'good' },
+    { status: 'current', score: null, tier: null },
+    { status: 'upcoming', score: null, tier: null },
+  ]);
+
+  assert.deepEqual(dailyProgressDots(null, 0), []);
 });
