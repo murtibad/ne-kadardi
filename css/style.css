@@ -1127,6 +1127,9 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   white-space: nowrap;
 }
 .timeline-scroll .picker-chip img { flex: none; }
+.timeline-scroll .picker-chip .chip-done { flex: none; overflow: visible; font-size: 0.75rem; line-height: 1; color: var(--muted-on-paper); }
+.timeline-scroll .picker-chip[aria-pressed="true"] .chip-done { color: #fff; }
+.timeline-progress { margin: 0 4px 8px; color: var(--muted); font-size: 0.875rem; }
 
 /* Live magnitude readout under the guess input and invalid-guess shake feedback */
 .guess-readout {

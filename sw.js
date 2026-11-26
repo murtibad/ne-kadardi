@@ -33,6 +33,7 @@ const PRECACHE = [
   'js/chart-ui.js',
   'js/main.js',
   'js/price-chart.js',
+  'js/progress.js',
   'js/share-image.js',
   'js/share-model.js',
   'js/search.js',
