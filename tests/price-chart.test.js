@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPriceChart, nearestPointIndex } from '../js/price-chart.js';
+import { buildPriceChart, nearestPointIndex, stepText } from '../js/price-chart.js';
 
 test('buildPriceChart returns null for non-array input or fewer than 2 valid rows', () => {
   assert.equal(buildPriceChart(null), null);
@@ -332,4 +332,26 @@ test('chartHintText chooses touch or pointer/keyboard discovery text', async () 
   const { chartHintText } = await import('../js/price-chart.js');
   assert.equal(chartHintText(true), 'parmağınla kaydırıp yıllara bak');
   assert.equal(chartHintText(false), 'fareyle üstüne gel ya da ok tuşlarını kullan');
+});
+
+test('stepText shows the jump from the previous point within 18 months', () => {
+  const pts = [
+    { date: '2020-01', price: 100 },
+    { date: '2021-07', price: 150 },
+    { date: '2023-02', price: 600 },
+    { date: '2023-08', price: 528 },
+    { date: '2024-02', price: 600 },
+  ];
+  assert.equal(stepText(pts, 0), 'Ocak 2020: ₺100');
+  assert.equal(stepText(pts, 1), 'Temmuz 2021: ₺150 · bir önceki kayda göre %50 arttı');
+  // 18 months still counts (index 1 from 2020-01 is 18); this gap is 19
+  assert.equal(stepText(pts, 2), 'Şubat 2023: ₺600');
+  assert.equal(stepText(pts, 3), 'Ağustos 2023: ₺528 · bir önceki kayda göre %12 düştü');
+  assert.match(stepText(pts, 4), /bir önceki kayda göre %14 arttı$/);
+  assert.equal(stepText(pts, 9), '');
+});
+
+test('stepText uses the "katına çıktı" wording from 2x and handles year-only dates', () => {
+  const pts = [{ date: '2021', price: 10 }, { date: '2022', price: 25 }];
+  assert.equal(stepText(pts, 1), '2022: ₺25,00 · bir önceki kayda göre 2,5 katına çıktı');
 });

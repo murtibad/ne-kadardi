@@ -1,4 +1,5 @@
 // Pure SVG geometry builder for per-product logarithmic price charts. No DOM access here.
+import { formatPeriod, formatPrice, formatIncrease } from './format.js';
 
 const DEFAULT_WIDTH = 320;
 const DEFAULT_HEIGHT = 140;
@@ -234,4 +235,28 @@ export function chartHintText(isCoarse) {
   return isCoarse
     ? 'parmağınla kaydırıp yıllara bak'
     : 'fareyle üstüne gel ya da ok tuşlarını kullan';
+}
+
+const STEP_MAX_MONTHS = 18;
+
+function monthIndex(dateStr) {
+  const [y, m] = String(dateStr).split('-');
+  return Number(y) * 12 + (m !== undefined ? Number(m) - 1 : 0);
+}
+
+/**
+ * Caption while a point is active: "Ocak 2022: ₺12,91 · bir önceki kayda göre %91 arttı".
+ * The jump is shown only when the previous point is at most 18 months earlier; across a longer gap
+ * the change would hide how long it took.
+ */
+export function stepText(points, idx) {
+  const p = points[idx];
+  if (!p) return '';
+  const base = `${formatPeriod(p.date)}: ${formatPrice(p.price)}`;
+  const prev = points[idx - 1];
+  if (!prev || !(prev.price > 0) || !(p.price > 0)) return base;
+  const gap = monthIndex(p.date) - monthIndex(prev.date);
+  if (!(gap > 0 && gap <= STEP_MAX_MONTHS)) return base;
+  const change = formatIncrease(p.price / prev.price);
+  return change ? `${base} · bir önceki kayda göre ${change}` : base;
 }
