@@ -44,6 +44,7 @@ const PRECACHE = [
   'js/source-kind.js',
   'js/source-name.js',
   'js/tax.js',
+  'js/tendency.js',
   'js/timeline.js',
   'js/version.js',
   'sounds/beep.mp3',
