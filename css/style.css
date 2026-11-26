@@ -1884,13 +1884,22 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .intro-stage.shake .intro-receipt {
   animation: intro-receipt-shake 0.28s ease-out;
 }
+/* The CTA card only fades in: sliding it (as it used to, 12px) moved the buttons under a finger that
+   tapped right as they became active. The text above them still slides, buttons never move. */
 .intro-stage:not(.is-done) .intro-final {
   opacity: 0;
-  transform: translateY(12px);
   pointer-events: none;
+}
+.intro-stage:not(.is-done) .intro-tagline,
+.intro-stage:not(.is-done) .intro-trust-line {
+  translate: 0 12px;
 }
 .intro-stage.is-done .intro-final {
   animation: intro-final-in 0.35s ease-out both;
+}
+.intro-stage.is-done .intro-tagline,
+.intro-stage.is-done .intro-trust-line {
+  animation: intro-final-text-in 0.35s ease-out both;
 }
 .intro-stage.is-done .btn.next-btn {
   animation: intro-btn-pulse 1.8s ease-in-out 0.35s 2;
@@ -1924,8 +1933,12 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   80% { transform: translate(-2px, 1px); }
 }
 @keyframes intro-final-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: none; }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes intro-final-text-in {
+  from { translate: 0 12px; }
+  to { translate: 0 0; }
 }
 @keyframes intro-btn-pulse {
   0%, 100% { transform: none; box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
