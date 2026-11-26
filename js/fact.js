@@ -65,6 +65,7 @@ export function pickFact(timelines, { random = Math.random, skipId = null, year 
   return {
     productId: t.id,
     date: picked.date,
+    currentDate: current.date ?? null,
     name: t.name,
     unit: unitLine(t.unit, t.region),
     image: t.image,

@@ -124,14 +124,16 @@ test('real data yields eligible fact years and cycles within a chosen year', () 
   }
 });
 
-test('pickFact returns the shown date for both random and year-filtered picks', () => {
+test('pickFact returns the shown date and currentDate for both random and year-filtered picks', () => {
   const oldest = pickFact(timelines, { random: () => 0 });
   assert.equal(oldest.productId, 'gold');
   assert.equal(oldest.date, '2010-01');
+  assert.equal(oldest.currentDate, '2026-09');
 
   const fromYear = pickFact(yearTimelines, { random: () => 0, year: 2015 });
   assert.equal(fromYear.productId, 'a');
   assert.equal(fromYear.date, '2015-01');
+  assert.equal(fromYear.currentDate, '2026');
 });
 
 test('factPlayLabel names the chosen year or keeps the default label for Rastgele', () => {

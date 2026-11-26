@@ -236,9 +236,10 @@ function pinArchive(productId, date, fromResult) {
 }
 
 // `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
-// adding `date` pins the exact question from a shared `?soru=` link. `excludeDate` avoids asking
-// the exact date just shown on the fact card; `excludeId` avoids a spoiled `product@date` on fallback.
-function nextQuestion(productId = null, date = null, { excludeDate = null, excludeId = null } = {}) {
+// adding `date` pins the exact question from a shared `?soru=` link. `excludeDate` / `excludeDates`
+// avoid asking the dates just shown on the fact card; `excludeId` / `excludeIds` avoid spoiled
+// `product@date` entries on fallback.
+function nextQuestion(productId = null, date = null, { excludeDate = null, excludeDates = null, excludeId = null, excludeIds = null } = {}) {
   lastScoredQuestion = null; // the same question can come back (fact card, friend link): it must be answerable again
   $('next-btn').textContent = 'Sonraki soru →';
   setDailyEndTurn(false);
@@ -252,18 +253,26 @@ function nextQuestion(productId = null, date = null, { excludeDate = null, exclu
     $('r-tax-details').open = false;
   }
   const today = new Date();
+  const excludedDateList = [
+    ...(excludeDate ? [excludeDate] : []),
+    ...(excludeDates ?? []),
+  ].filter(Boolean);
   const exact = productId && date ? state.all.find((x) => x.productId === productId && x.date === date) : null;
   const forProduct = !exact && productId
-    ? pickForProduct(state.all, productId, { excludeDate, previousId: state.question?.id, seen: state.seen, today })
+    ? pickForProduct(state.all, productId, { excludeDates: excludedDateList, previousId: state.question?.id, seen: state.seen, today })
     : null;
   // Free play skips products reserved for today's "Günün Fişi" so the two modes do not repeat each other.
   const dailyExclude = !exact && !forProduct ? dailyProductIds(state.all, dayKey(today), categoryOf) : null;
+  const spoiledIds = new Set([
+    ...(excludeId ? [excludeId] : []),
+    ...(excludeIds ?? []),
+    ...(productId ? excludedDateList.map((d) => `${productId}@${d}`) : []),
+  ].filter(Boolean));
   // Someone who has never played starts with the openers (game.js OPENER_IDS), skips included.
   let opener = null;
   // The curated openers stay as they are: a first-time player has not seen today's daily yet.
-  while (!productId && !excludeId && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
-  const spoiledId = excludeId ?? (productId && excludeDate ? `${productId}@${excludeDate}` : null);
-  const fallbackPool = spoiledId ? state.all.filter((x) => x.id !== spoiledId) : state.all;
+  while (!productId && spoiledIds.size === 0 && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
+  const fallbackPool = spoiledIds.size > 0 ? state.all.filter((x) => !spoiledIds.has(x.id)) : state.all;
   const q = exact ?? opener ?? forProduct ?? pickByCategory(fallbackPool, state.recentProducts, state.question?.id, Math.random, state.seen, today, dailyExclude);
   if (!q) {
     showMessage('Gösterilecek soru yok.');
@@ -1239,17 +1248,19 @@ function renderFact() {
   $('fact-body').querySelector('.fact-play').onclick = () => {
     // pushState keeps Back working without firing hashchange, which would show the old question.
     history.pushState(null, '', '#tahmin');
+    const excludeDates = [f.date, f.currentDate].filter(Boolean);
     if (chosenYear !== null) {
       const q = pickForYear(state.all, chosenYear, {
         excludeProductId: f.productId,
-        excludeDate: f.date,
+        excludeDates,
+        excludeProducts: dailyProductIds(state.all, dayKey(), categoryOf),
         previousId: state.question?.id,
         seen: state.seen,
       });
       if (q) nextQuestion(q.productId, q.date);
-      else nextQuestion(null, null, { excludeId: `${f.productId}@${f.date}` });
+      else nextQuestion(null, null, { excludeIds: excludeDates.map((d) => `${f.productId}@${d}`) });
     } else {
-      nextQuestion(f.productId, null, { excludeDate: f.date });
+      nextQuestion(f.productId, null, { excludeDates });
     }
   };
   $('fact-body').querySelector('a').onclick = () => { state.selectedTimelineProduct = f.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; };

@@ -100,18 +100,32 @@ export function preferOlder(own, cutoff) {
   return older.length > 0 ? older : own;
 }
 
+// Normalizes an optional single string or iterable of strings (e.g. excluded dates/products) into a Set.
+function toExcludedSet(single, many) {
+  const set = new Set();
+  for (const val of [single, many]) {
+    if (typeof val === 'string') {
+      if (val) set.add(val);
+    } else if (val && typeof val[Symbol.iterator] === 'function') {
+      for (const item of val) if (typeof item === 'string' && item) set.add(item);
+    }
+  }
+  return set;
+}
+
 /**
- * Pick a question for `productId`, excluding `excludeDate` when given (e.g. the price just
- * shown on the home fact card). Prefers dates older than 12 months and unseen questions,
+ * Pick a question for `productId`, excluding `excludeDate` / `excludeDates` when given (e.g.
+ * both dates shown on the home fact card). Prefers dates older than 12 months and unseen questions,
  * avoiding `previousId` when alternatives exist. Returns null when no other date qualifies.
  */
 export function pickForProduct(
   questions,
   productId,
-  { excludeDate = null, previousId = null, seen = new Set(), today = new Date(), rng = Math.random } = {},
+  { excludeDate = null, excludeDates = null, previousId = null, seen = new Set(), today = new Date(), rng = Math.random } = {},
 ) {
   if (!Array.isArray(questions) || !productId) return null;
-  let own = questions.filter((q) => q.productId === productId && (!excludeDate || q.date !== excludeDate));
+  const excluded = toExcludedSet(excludeDate, excludeDates);
+  let own = questions.filter((q) => q.productId === productId && !excluded.has(q.date));
   if (own.length === 0) return null;
   own = preferOlder(own, cutoffKey(today));
   const unseen = own.filter((q) => !seen.has(q.id) && q.id !== previousId);
@@ -119,22 +133,27 @@ export function pickForProduct(
 }
 
 /**
- * Pick a question from `year`, never returning `excludeProductId`@`excludeDate` (the price
- * just shown on the home fact card). Prefers a different product from that year, then another
- * date of the same product; prefers unseen questions and avoids `previousId` when alternatives
- * exist. Returns null when no other question exists in `year`.
+ * Pick a question from `year`, never returning `excludeProductId` at `excludeDate` / `excludeDates`
+ * (the prices just shown on the home fact card). Softly avoids `excludeProducts` (e.g. today's
+ * Günün Fişi products) and `excludeProductId`, falling back when the year has no other product;
+ * prefers unseen questions and avoids `previousId` when alternatives exist. Returns null when no
+ * other question exists in `year`.
  */
 export function pickForYear(
   questions,
   year,
-  { excludeProductId = null, excludeDate = null, previousId = null, seen = new Set(), rng = Math.random } = {},
+  { excludeProductId = null, excludeDate = null, excludeDates = null, excludeProducts = null, previousId = null, seen = new Set(), rng = Math.random } = {},
 ) {
   if (!Array.isArray(questions) || !Number.isInteger(year)) return null;
+  const excludedDates = toExcludedSet(excludeDate, excludeDates);
   const inYear = questions.filter((q) => typeof q.date === 'string' && yearOf(q.date) === year
-    && !(excludeProductId && excludeDate && q.productId === excludeProductId && q.date === excludeDate));
+    && !(excludeProductId && excludedDates.size > 0 && q.productId === excludeProductId && excludedDates.has(q.date)));
   if (inYear.length === 0) return null;
-  const otherProduct = excludeProductId ? inYear.filter((q) => q.productId !== excludeProductId) : inYear;
-  const pool = otherProduct.length > 0 ? otherProduct : inYear;
+  const avoidedProducts = toExcludedSet(null, excludeProducts);
+  const notAvoided = avoidedProducts.size > 0 ? inYear.filter((q) => !avoidedProducts.has(q.productId)) : inYear;
+  const base = notAvoided.length > 0 ? notAvoided : inYear;
+  const otherProduct = excludeProductId ? base.filter((q) => q.productId !== excludeProductId) : base;
+  const pool = otherProduct.length > 0 ? otherProduct : base;
   const unseen = pool.filter((q) => !seen.has(q.id) && q.id !== previousId);
   const notPrev = pool.filter((q) => q.id !== previousId);
   const candidates = unseen.length > 0 ? unseen : (notPrev.length > 0 ? notPrev : pool);
