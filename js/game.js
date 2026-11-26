@@ -279,7 +279,7 @@ export const COUNT_UNITS = {
 };
 
 // Fees, fines and tolls are paid, not bought: "3 ehliyet harcı ödenebiliyordu".
-const PAID = new Set([
+export const PAID = new Set([
   'yks', 'ales', 'yds', 'dgs', 'msu', 'kpss-onlisans', 'osmangazi-koprusu', 'avrasya-tuneli', 'trafik-cezasi', 'alkol-cezasi', 'fitre', 'kopru', 'taksi-acilis', 'ispark-otopark', 'kpss-lisans', 'pasaport-harci', 'ehliyet-harci',
   'schengen-vize', 'imei-kayit-harci', 'istanbul-ulasim', 'istanbul-ogrenci-bileti', 'ankara-ulasim', 'izmir-ulasim', 'kurban-vekalet-bedeli', 'arac-muayene-ucreti',
   'noter-asgari-ucret', 'yurtdisi-cikis-harci', 'basvurma-harci', 'bedelli-askerlik', 'kyk-yurt-ucreti',

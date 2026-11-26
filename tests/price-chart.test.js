@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPriceChart, nearestPointIndex, stepText } from '../js/price-chart.js';
+import { buildPriceChart, nearestPointIndex, placePointLabel, stepText } from '../js/price-chart.js';
 
 test('buildPriceChart returns null for non-array input or fewer than 2 valid rows', () => {
   assert.equal(buildPriceChart(null), null);
@@ -401,4 +401,59 @@ test('buildPriceChart preserves optional point labels and stepText uses them ins
     { date: '2022-01', price: 20 },
   ]);
   assert.equal('label' in plain.points[0], false);
+  assert.equal(plain.kind, null);
+});
+
+test('stepText omits the percent change suffix for share-kind series and keeps it for count/wages', () => {
+  const shareChart = buildPriceChart(
+    [
+      { date: '2021-01', price: 20, isCurrent: false, label: '%20' },
+      { date: '2022-01', price: 24, isCurrent: true, label: '%24' },
+    ],
+    { scale: 'linear', kind: 'share' }
+  );
+  assert.equal(shareChart.kind, 'share');
+  assert.equal(stepText(shareChart.points, 0, { kind: shareChart.kind }), 'Ocak 2021: %20');
+  assert.equal(stepText(shareChart.points, 1, { kind: shareChart.kind }), 'Ocak 2022: %24');
+
+  const countChart = buildPriceChart(
+    [
+      { date: '2021-01', price: 200, isCurrent: false, label: '200 litre' },
+      { date: '2022-01', price: 300, isCurrent: true, label: '300 litre' },
+    ],
+    { scale: 'linear', kind: 'count' }
+  );
+  assert.equal(stepText(countChart.points, 1, { kind: countChart.kind }), 'Ocak 2022: 300 litre · bir önceki kayda göre %50 arttı');
+});
+
+test('placePointLabel keeps labels that fit and flips or clamps labels that would cross chart edges', () => {
+  // Short TL label leaning left: stays unchanged.
+  assert.deepEqual(
+    placePointLabel({ pointX: 120, anchor: 'middle', side: 'left', textWidth: 52, chartWidth: 320 }),
+    { x: 114, anchor: 'end' }
+  );
+  // Long wage label leaning left near x=90 would cross x<0: flips to the right side.
+  assert.deepEqual(
+    placePointLabel({ pointX: 90, anchor: 'middle', side: 'left', textWidth: 116, chartWidth: 320 }),
+    { x: 96, anchor: 'start' }
+  );
+  // Long wage label leaning right near x=230 would cross x>320: flips to the left side.
+  assert.deepEqual(
+    placePointLabel({ pointX: 230, anchor: 'middle', side: 'right', textWidth: 116, chartWidth: 320 }),
+    { x: 224, anchor: 'end' }
+  );
+  // Very wide label where neither leaning side fits: centres on pointX when that fits.
+  assert.deepEqual(
+    placePointLabel({ pointX: 160, anchor: 'middle', side: 'left', textWidth: 200, chartWidth: 320 }),
+    { x: 160, anchor: 'middle' }
+  );
+  // Label that still crosses left/right edge even centred: clamps inside [0, chartWidth].
+  assert.deepEqual(
+    placePointLabel({ pointX: 85, anchor: 'middle', side: 'left', textWidth: 260, chartWidth: 320 }),
+    { x: 0, anchor: 'start' }
+  );
+  assert.deepEqual(
+    placePointLabel({ pointX: 235, anchor: 'middle', side: 'right', textWidth: 260, chartWidth: 320 }),
+    { x: 320, anchor: 'end' }
+  );
 });

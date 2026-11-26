@@ -160,6 +160,7 @@ export function buildPriceChart(rows, options = {}) {
     minPrice,
     maxPrice,
     ref,
+    kind: options.kind ?? null,
   };
 }
 
@@ -172,6 +173,41 @@ export function labelSide(points, index) {
   if (!p || !prev || !next) return 'middle';
   // SVG y grows downwards: the lower neighbour has the larger y.
   return next.y < prev.y ? 'left' : 'right';
+}
+
+/**
+ * Choose `{ x, anchor }` for a point's price label so its `[x0, x1]` span stays within `[0, chartWidth]`.
+ * Keeps the preferred placement when it fits; if a leaning middle label would cross an edge, tries the
+ * opposite side first, then centred on `pointX`, and finally clamps to the crossed edge.
+ */
+export function placePointLabel({ pointX, anchor, side = 'middle', textWidth, chartWidth, offset = 6 }) {
+  const fits = (lx, la) => {
+    const x0 = la === 'start' ? lx : la === 'end' ? lx - textWidth : lx - textWidth / 2;
+    return x0 >= 0 && x0 + textWidth <= chartWidth;
+  };
+  const preferred = side === 'left'
+    ? { x: pointX - offset, anchor: 'end' }
+    : side === 'right'
+      ? { x: pointX + offset, anchor: 'start' }
+      : { x: pointX, anchor };
+  if (fits(preferred.x, preferred.anchor)) return preferred;
+
+  if (side === 'left') {
+    const flipped = { x: pointX + offset, anchor: 'start' };
+    if (fits(flipped.x, flipped.anchor)) return flipped;
+  } else if (side === 'right') {
+    const flipped = { x: pointX - offset, anchor: 'end' };
+    if (fits(flipped.x, flipped.anchor)) return flipped;
+  }
+
+  if (fits(pointX, 'middle')) return { x: pointX, anchor: 'middle' };
+
+  const x0 = preferred.anchor === 'start'
+    ? preferred.x
+    : preferred.anchor === 'end'
+      ? preferred.x - textWidth
+      : preferred.x - textWidth / 2;
+  return x0 < 0 ? { x: 0, anchor: 'start' } : { x: chartWidth, anchor: 'end' };
 }
 
 // The data line's y at x (straight segments between points), or null outside the line.
@@ -251,12 +287,14 @@ function monthIndex(dateStr) {
 /**
  * Caption while a point is active: "Ocak 2022: ₺12,91 · bir önceki kayda göre %91 arttı".
  * The jump is shown only when the previous point is at most 18 months earlier; across a longer gap
- * the change would hide how long it took.
+ * the change would hide how long it took. For `kind: 'share'` (already a percentage), omit the
+ * percent-of-a-percent suffix.
  */
-export function stepText(points, idx) {
+export function stepText(points, idx, { kind = null } = {}) {
   const p = points[idx];
   if (!p) return '';
   const base = `${formatPeriod(p.date)}: ${p.label ?? formatPrice(p.price)}`;
+  if (kind === 'share') return base;
   const prev = points[idx - 1];
   if (!prev || !(prev.price > 0) || !(p.price > 0)) return base;
   const gap = monthIndex(p.date) - monthIndex(prev.date);
