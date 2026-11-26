@@ -176,6 +176,24 @@ test('resolveSavedDaily drops scores that have no matching ids (corrupt storage)
   assert.deepEqual(extra.scores, [1, 2]);
 });
 
+test('resolveSavedDaily keeps guesses only when they line up with the scores', () => {
+  const run = (guesses) => ({ key: '2026-11-05', ids: ['a', 'b'], scores: [80, 0], guesses });
+  assert.deepEqual(resolveSavedDaily(run([5, null]), '2026-11-05').guesses, [5, null]);
+  assert.equal('guesses' in resolveSavedDaily(run([5]), '2026-11-05'), false);
+  assert.equal('guesses' in resolveSavedDaily(run(['x', null]), '2026-11-05'), false);
+  assert.equal('guesses' in resolveSavedDaily({ key: '2026-11-05', ids: ['a'], scores: [1] }, '2026-11-05'), false);
+});
+
+test('dailyRowText shows guess, real price and score; a skip reads "Geçtin"; no guess falls back', () => {
+  const base = { date: '2016-01', title: 'Benzin', price: 4.28 };
+  assert.equal(dailyRowText({ ...base, score: 86, guess: 5 }).detail, 'Sen ₺5,00 · Gerçek ₺4,28 · 86 puan');
+  assert.equal(dailyRowText({ ...base, score: 0, guess: null }).detail, 'Geçtin · Gerçek ₺4,28');
+  assert.equal(dailyRowText({ ...base, score: 0, guess: 0.5 }).detail, 'Sen ₺0,50 · Gerçek ₺4,28 · 0 puan');
+  assert.equal(dailyRowText({ ...base, price: null, score: 0, guess: null }).detail, 'Geçtin');
+  assert.equal(dailyRowText({ ...base, price: null, score: 50, guess: 7 }).detail, 'Sen ₺7,00 · 50 puan');
+  assert.equal(dailyRowText({ ...base, score: 86 }).detail, '₺4,28 · 86 puan');
+});
+
 test('dailyRowText shows date, product, real price and score; a zero reads "0 puan"', () => {
   assert.deepEqual(dailyRowText({ date: '2016-01', title: 'Benzin', price: 4.28, score: 86 }),
     { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 86 puan' });
@@ -214,6 +232,16 @@ test('dailyLines maps scores to their colour tier; 0 points is red like the shar
     { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: 'bad', productId: 'dolar', date: '2015-01' },
     { label: 'Soru', detail: '0 puan', tier: 'bad' },
   ]);
+});
+
+test('dailyLines shows guesses and skips when stored, old text otherwise', () => {
+  const all = [
+    { id: 'benzin@2016-01', productId: 'benzin', name: 'Benzin', date: '2016-01', price: 4.28 },
+    { id: 'dolar@2015-01', productId: 'dolar', name: 'Dolar', date: '2015-01', price: 2.33 },
+  ];
+  const lines = dailyLines(all, all.map((q) => q.id), [86, 0], [5, null]);
+  assert.deepEqual(lines.map((l) => l.detail), ['Sen ₺5,00 · Gerçek ₺4,28 · 86 puan', 'Geçtin · Gerçek ₺2,33']);
+  assert.deepEqual(dailyLines(all, all.map((q) => q.id), [86, 0]).map((l) => l.detail), ['₺4,28 · 86 puan', '₺2,33 · 0 puan']);
 });
 
 test('dailyLines rows carry productId and date for the archive link; unknown ids get none', () => {

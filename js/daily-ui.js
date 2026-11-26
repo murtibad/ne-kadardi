@@ -58,6 +58,7 @@ function saveDaily(daily) {
       key: daily.key,
       ids: daily.ids,
       scores: daily.scores,
+      ...(daily.guesses ? { guesses: daily.guesses } : {}),
     }));
   } catch(e) {}
   // Both finish paths (5th answer, last skip) save here, so the history is written once per run.
@@ -108,10 +109,11 @@ export function syncSkipBtn() {
 }
 
 // Records a scored answer of the running daily receipt (no-op outside a run).
-export function recordDailyAnswer(score) {
+export function recordDailyAnswer(score, guess) {
   const state = getState();
   if (!state.daily) return;
   state.daily.scores.push(score);
+  state.daily.guesses?.push(Number.isFinite(guess) ? guess : null);
   state.daily.index = state.daily.scores.length;
   saveDaily(state.daily);
 }
@@ -128,6 +130,7 @@ export function skipDaily() {
   const state = getState();
   if (!state.daily) return false;
   state.daily.scores.push(0);
+  state.daily.guesses?.push(null);
   state.daily.index = state.daily.scores.length;
   saveDaily(state.daily);
   if (state.daily.index < state.daily.ids.length) {
@@ -136,7 +139,7 @@ export function skipDaily() {
     return true;
   }
   // Skipping the last one has no result screen for the card, so show the finished receipt on the menu.
-  const finished = { key: state.daily.key, ids: [...state.daily.ids], scores: [...state.daily.scores] };
+  const finished = { key: state.daily.key, ids: [...state.daily.ids], scores: [...state.daily.scores], guesses: state.daily.guesses ? [...state.daily.guesses] : undefined };
   state.daily = null;
   lastDotsCount = null;
   state.question = null; // otherwise "Fiyat Tahmini" would reopen the skipped daily question
@@ -164,7 +167,9 @@ export function startOrShareDaily() {
       : dailyQuestions(state.all.filter((q) => FOLLOW_UP_IDS.includes(q.productId)), key, categoryOf).map((q) => q.id);
     preloadIcons(dailyIconUrls(state.all, ids));
     const scores = saved ? [...saved.scores] : [];
-    state.daily = { key, ids, index: scores.length, scores };
+    // A run resumed from an old save has no guesses for its first answers: track none rather than mislabel them as skips.
+    const guesses = !saved || scores.length === 0 ? [] : saved.guesses && [...saved.guesses];
+    state.daily = { key, ids, index: scores.length, scores, guesses: guesses ?? null };
     lastDotsCount = scores.length;
     const [productId, date] = (ids[state.daily.index] ?? '').split('@');
     // The address stays #gunun-fisi during the run, so a reload picks the run up from storage.
@@ -173,7 +178,7 @@ export function startOrShareDaily() {
 }
 
 // Rows with date, product, real price, score and colour tier; shared by the end-of-run card and the review dialog.
-export function dailyLines(all, ids, scores) {
+export function dailyLines(all, ids, scores, guesses) {
   return ids.map((id, i) => {
     const raw = scores?.[i];
     const score = Number.isFinite(raw) ? raw : 0;
@@ -182,7 +187,7 @@ export function dailyLines(all, ids, scores) {
     const dq = all.find((x) => x.id === id);
     if (!dq) return { label: 'Soru', detail: `${score} puan`, tier };
     // productId + date let the UI link the row to the archive, pinned at the question's date.
-    return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score }), tier, productId: dq.productId, date: dq.date };
+    return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score, guess: guesses?.[i] }), tier, productId: dq.productId, date: dq.date };
   });
 }
 
@@ -216,17 +221,24 @@ export function renderDailyRound(el) {
   }, { once: true });
 }
 
+// Each " · " part stays on one line; the arrow rides with the last part so it never wraps alone.
+function detailHtml(detail, tail = '') {
+  const parts = String(detail).split(' · ');
+  // The dot stays with the part before it, so a wrapped line never starts with "·".
+  return parts.map((p, i) => `<span class="nw">${escapeHTML(p)}${i === parts.length - 1 ? tail : ' ·'}</span>`).join(' ');
+}
+
 function renderDailyRows(lines) {
   return lines.map((l, i) => {
     const tierAttr = l.tier ? ` data-tier="${escapeHTML(l.tier)}"` : '';
     const dot = `<span class="tally-dot"${tierAttr} aria-hidden="true"></span>`;
     if (!l.productId) {
-      return `<li style="--row-i:${i}"><span>${dot}${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`;
+      return `<li style="--row-i:${i}"><span>${dot}${escapeHTML(l.label)}</span><strong>${detailHtml(l.detail)}</strong></li>`;
     }
     // The whole row is the tap target; the arrow is decoration, the aria-label says where it goes.
     const aria = escapeHTML(`${l.label}, ${l.detail}. Fiyat geçmişini aç`);
     return `<li style="--row-i:${i}"><a class="daily-row-link" href="#arsiv" data-product="${escapeHTML(l.productId)}" data-date="${escapeHTML(l.date)}" aria-label="${aria}">`
-      + `<span>${dot}${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}<span class="daily-row-go" aria-hidden="true">→</span></strong></a></li>`;
+      + `<span>${dot}${escapeHTML(l.label)}</span><strong>${detailHtml(l.detail, '<span class="daily-row-go" aria-hidden="true">→</span>')}</strong></a></li>`;
   }).join('');
 }
 
@@ -269,7 +281,7 @@ function openDailyReview(saved) {
   const total = saved.scores.reduce((s, n) => s + n, 0);
   const milestone = takeDailyMilestone(saved.key);
   $('daily-review-title').textContent = dailyTitle(saved.key).replace(' · ', ' · '); // '· 19 KASIM' never starts a line
-  $('daily-review-lines').innerHTML = renderDailyRows(dailyLines(state.all, saved.ids, saved.scores));
+  $('daily-review-lines').innerHTML = renderDailyRows(dailyLines(state.all, saved.ids, saved.scores, saved.guesses));
   $('daily-review-total').textContent = dailyReviewTotalLine(total, reviewStreak());
   const milestoneEl = $('daily-review-milestone');
   if (milestoneEl) {
@@ -351,13 +363,13 @@ export function renderDailyCard() {
   const state = getState();
   if (!state.daily) return false;
   if (state.daily.scores.length < state.daily.ids.length) return true;
-  const { key, ids, scores } = state.daily;
+  const { key, ids, scores, guesses } = state.daily;
   state.daily = null;
   lastDotsCount = null;
   syncSkipBtn();
   // The run is over: a reload now should not reopen #gunun-fisi (that would share again).
   if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
-  const lines = dailyLines(state.all, ids, scores);
+  const lines = dailyLines(state.all, ids, scores, guesses ?? undefined);
   const total = scores.reduce((s, n) => s + n, 0);
   state.reportCard = { daily: true, key, scores, ids };
   const milestone = takeDailyMilestone(key);
