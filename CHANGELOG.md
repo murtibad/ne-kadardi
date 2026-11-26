@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.156.0] - 2026-11-26
+### Added
+- Fiyat Arşivi'nde 'TL fiyatı / 1 maaşla kaç tane?' düğmesi: maaş görünümünde her satır o tarihte 1 asgari ücretle kaç tane alınabildiğini (pahalı ürünlerde kaç asgari ücret ettiğini) gösteriyor; TL fiyatı küçük olarak altında.
+
 ## [0.155.0] - 2026-11-26
 ### Added
 - Günün Fişi satırlarında artık kendi tahminin de var: 'Sen ₺5,00 · Gerçek ₺4,28 · 86 puan'; geçtiğin soru '0 puan' yerine 'Geçtin · Gerçek ₺99,00'. Paylaşılan görsel ve metin yine fiyatsız.
