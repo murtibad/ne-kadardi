@@ -1,6 +1,6 @@
 // Pure HTML for the archive's price table: one row per sourced price. No DOM access here.
 import { formatPrice, formatPeriod, formatIncrease, formatNumber, formatRatio, escapeHTML } from './format.js';
-import { buildContextModel, getShortUnit, percentOf, WAGE_SHARE, wageInForce } from './game.js';
+import { buildContextModel, COUNT_UNITS, PAID, percentOf, WAGE_SHARE, wageInForce } from './game.js';
 import { sourceKindLabel } from './source-kind.js';
 import { linkifyNote } from './linkify.js';
 
@@ -40,19 +40,50 @@ export function pinHiddenByCollapse(rows, pinDate) {
 
 export const WAGE_CHART_CAPTIONS = {
   count: 'Yıllar içinde 1 asgari ücretle alınabilen',
+  countPaid: 'Yıllar içinde 1 asgari ücretle ödenebilen',
   wages: 'Yıllar içinde kaç asgari ücret',
   share: 'Yıllar içinde asgari ücrete oranı',
 };
 
 const WAGE_CHART_MIN_POINTS = 3;
 
-function shortWageUnit(unit) {
-  if (!unit) return 'adet';
-  const lower = unit.toLowerCase();
-  if (/\b(kg|kilo)\b/i.test(lower)) return 'kg';
-  if (lower.includes('eur')) return 'euro';
-  if (lower.includes('gbp')) return 'sterlin';
-  return getShortUnit(unit);
+// Order matters: "1 paket, 20 adet" picks paket; "1 adet, 250 gr" picks adet over gr.
+const WAGE_UNIT_TOKENS = [
+  ['litre', 'litre'],
+  ['kg', 'kg'],
+  ['kilo', 'kg'],
+  ['ton', 'ton'],
+  ['m³', 'ton'],
+  ['m3', 'ton'],
+  ['saat', 'saat'],
+  ['paket', 'paket'],
+  ['ay', 'ay'],
+  ['aylık', 'ay'],
+  ['yıl', 'yıl'],
+  ['yıllık', 'yıl'],
+  ['gün', 'gün'],
+  ['günlük', 'gün'],
+  ['adet', 'adet'],
+  ['gram', 'gram'],
+  ['gr', 'gram'],
+  ['g', 'gram'],
+  ['dolar', 'dolar'],
+  ['usd', 'dolar'],
+  ['euro', 'euro'],
+  ['eur', 'euro'],
+  ['sterlin', 'sterlin'],
+  ['gbp', 'sterlin'],
+];
+
+// Derives the chart's short unit from COUNT_UNITS (same source the table prints) before falling back to the raw unit.
+function shortWageUnit(productId, unit) {
+  const source = COUNT_UNITS[productId] || unit;
+  if (!source) return 'adet';
+  const tokens = source.toLocaleLowerCase('tr').split(/[\s,()\/]+/).filter(Boolean);
+  for (const [token, short] of WAGE_UNIT_TOKENS) {
+    if (tokens.includes(token)) return short;
+  }
+  return 'adet';
 }
 
 function formatShareLabel(share) {
@@ -123,7 +154,7 @@ export function buildWageChartSeries(product, wageRows) {
     let label;
     if (kind === 'count') {
       value = m.kind === 'count' ? m.then : Math.floor(baseWage / r.price);
-      label = `${formatNumber(value)} ${shortWageUnit(r.unit ?? product.unit)}`;
+      label = `${formatNumber(value)} ${shortWageUnit(product.id, r.unit ?? product.unit)}`;
     } else if (kind === 'wages') {
       value = m.kind === 'wages' || m.kind === 'share' ? m.then : r.price / baseWage;
       label = formatWagesLabel(value);
@@ -137,7 +168,10 @@ export function buildWageChartSeries(product, wageRows) {
   }
 
   if (rows.length < WAGE_CHART_MIN_POINTS) return null;
-  return { kind, caption: WAGE_CHART_CAPTIONS[kind], rows };
+  const caption = kind === 'count' && PAID.has(product.id)
+    ? WAGE_CHART_CAPTIONS.countPaid
+    : WAGE_CHART_CAPTIONS[kind];
+  return { kind, caption, rows };
 }
 
 function rowHtml(r, seen, extra, hidden, pinned = false, wageText = undefined, guess = null) {

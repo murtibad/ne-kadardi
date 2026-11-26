@@ -2,7 +2,7 @@
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPrice, formatPeriod, escapeHTML } from './format.js';
 import { isAmount } from './game.js';
-import { buildPriceChart, chartHintText, labelSide, nearestPointIndex, placeRefLabel, refLabelAtStart, stepText } from './price-chart.js';
+import { buildPriceChart, chartHintText, labelSide, nearestPointIndex, placePointLabel, placeRefLabel, refLabelAtStart, stepText } from './price-chart.js';
 
 const $ = (id) => document.getElementById(id);
 const SCRUBBED_KEY = 'ne-kadardi-chart-scrubbed';
@@ -53,7 +53,7 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const t = hasCustomSeries ? null : getState().timelines.find((x) => x.id === productId);
   const pad = { top: 22, right: 14, bottom: 22, left: 14 };
   const chart = hasCustomSeries
-    ? (series && buildPriceChart(series.rows, { width: 320, height: 132, highlightDate, pad, scale: 'linear' }))
+    ? (series && buildPriceChart(series.rows, { width: 320, height: 132, highlightDate, pad, scale: 'linear', kind: series.kind }))
     : (t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, refPrice: guess, pad }));
   fig.hidden = !chart;
   if (!chart) { fig.innerHTML = ''; delete fig._activateDate; delete fig._cleanupChart; delete fig.dataset.key; return; }
@@ -61,17 +61,25 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const first = chart.points[0];
   const last = chart.points[chart.points.length - 1];
   const marked = chart.points.find((p) => p.highlight);
-  // Keep end labels inside the box: anchor them towards the middle.
-  const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
-  // A marked point in the middle leans its label away from the steeper side of the line.
-  const markSide = marked && anchor(marked) === 'middle' ? labelSide(chart.points, chart.points.indexOf(marked)) : 'middle';
-  const labelX = (p) => (p !== marked || markSide === 'middle' ? p.x : markSide === 'left' ? p.x - 6 : p.x + 6);
-  const labelAnchor = (p) => (p !== marked || markSide === 'middle' ? anchor(p) : markSide === 'left' ? 'end' : 'start');
   // Labels are monospace, 14px on the receipt chart and 11px in the archive (css/style.css):
   // a character is about 0,62 em wide and capitals about 0,75 em tall.
   const fontSize = figId === 'r-chart' ? 14 : 11;
   const textWidth = (s) => s.length * fontSize * 0.62;
   const capHeight = fontSize * 0.75;
+  // Keep end labels inside the box: anchor them towards the middle.
+  const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
+  // A marked point in the middle leans its label away from the steeper side of the line,
+  // flipping or clamping when a long label (e.g. "52,4 asgari ücret") would cross a chart edge.
+  const markSide = marked && anchor(marked) === 'middle' ? labelSide(chart.points, chart.points.indexOf(marked)) : 'middle';
+  const labelPos = (p) => placePointLabel({
+    pointX: p.x,
+    anchor: anchor(p),
+    side: p === marked ? markSide : 'middle',
+    textWidth: textWidth(fmt(p)),
+    chartWidth: chart.width,
+  });
+  const labelX = (p) => labelPos(p).x;
+  const labelAnchor = (p) => labelPos(p).anchor;
   const labelSpan = (p) => {
     const w = textWidth(fmt(p));
     const a = labelAnchor(p);
@@ -98,9 +106,11 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
     const b = labelBox(p);
     return b.x0 - 4 < markBox.x1 && b.x1 + 4 > markBox.x0 && b.y0 - 2 < markBox.y1 && b.y1 + 2 > markBox.y0;
   };
+  const markAnchor = marked ? labelAnchor(marked) : 'middle';
+  const effectiveMarkSide = markSide === 'middle' ? 'middle' : markAnchor === 'end' ? 'left' : markAnchor === 'start' ? 'right' : 'middle';
   // The question's own price wins when an end label would collide with it; a leaning label
   // covers about twice as much room on its side.
-  const room = (p) => ((markSide === 'left' && p.x < marked.x) || (markSide === 'right' && p.x > marked.x) ? 104 : 52);
+  const room = (p) => ((effectiveMarkSide === 'left' && p.x < marked.x) || (effectiveMarkSide === 'right' && p.x > marked.x) ? 104 : 52);
   const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i
     && (!marked || p === marked || (Math.abs(p.x - marked.x) > room(p) && !overlapsMark(p))));
 
@@ -237,7 +247,7 @@ export function bindPriceChart(fig, chart, onActive) {
       cursor.setAttribute('y2', gapEnd);
     }
     const cap = fig.querySelector('figcaption');
-    if (cap) cap.textContent = stepText(points, idx);
+    if (cap) cap.textContent = stepText(points, idx, { kind: chart.kind });
     document.addEventListener('pointerdown', onOutsideDown);
     if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
     onActive?.(p, source);

@@ -217,3 +217,60 @@ test('buildWageChartSeries keeps mixed-kind products on one consistent y-axis', 
   assert.deepEqual(series.rows.map((r) => Math.round(r.price * 100) / 100), [0.2, 0.5, 2]);
   assert.deepEqual(series.rows.map((r) => r.label), ['0,2 asgari ücret', '0,5 asgari ücret', '2 asgari ücret']);
 });
+
+test('buildWageChartSeries matches table units for ton, saat, paket, ay, kg and uses ödenebilen for PAID products', () => {
+  const sampleRows = (prices) => [
+    { date: '2020-01', price: prices[0], isCurrent: false },
+    { date: '2022-01', price: prices[1], isCurrent: false },
+    { date: '2026-01', price: prices[2], isCurrent: true },
+  ];
+
+  // Water (PAID, COUNT_UNITS: 'ton musluk suyu', raw unit: '1 m³')
+  const water = buildWageChartSeries(
+    { id: 'iski-su', name: 'İSKİ su', unit: '1 m³', rows: sampleRows([4, 8, 40]) },
+    wageRowsSeries,
+  );
+  assert.equal(water.kind, 'count');
+  assert.equal(water.caption, 'Yıllar içinde 1 asgari ücretle ödenebilen');
+  assert.deepEqual(water.rows.map((r) => r.label), ['581 ton', '687 ton', '700 ton']);
+
+  // Parking (PAID, COUNT_UNITS: 'saat otopark ücreti')
+  const parking = buildWageChartSeries(
+    { id: 'ispark-otopark', name: 'İSPARK', unit: '0-1 saat', rows: sampleRows([10, 20, 100]) },
+    wageRowsSeries,
+  );
+  assert.equal(parking.caption, 'Yıllar içinde 1 asgari ücretle ödenebilen');
+  assert.deepEqual(parking.rows.map((r) => r.label), ['232 saat', '275 saat', '280 saat']);
+
+  // Cigarettes (not PAID, COUNT_UNITS: 'paket sigara')
+  const cigs = buildWageChartSeries(
+    { id: 'sigara-marlboro', name: 'Sigara', unit: '1 paket', rows: sampleRows([20, 25, 100]) },
+    wageRowsSeries,
+  );
+  assert.equal(cigs.caption, 'Yıllar içinde 1 asgari ücretle alınabilen');
+  assert.deepEqual(cigs.rows.map((r) => r.label), ['116 paket', '220 paket', '280 paket']);
+
+  // Monthly subscription (PAID, COUNT_UNITS: 'aylık Netflix aboneliği')
+  const sub = buildWageChartSeries(
+    { id: 'netflix', name: 'Netflix', unit: 'aylık temel plan', rows: sampleRows([20, 40, 200]) },
+    wageRowsSeries,
+  );
+  assert.equal(sub.caption, 'Yıllar içinde 1 asgari ücretle ödenebilen');
+  assert.deepEqual(sub.rows.map((r) => r.label), ['116 ay', '137 ay', '140 ay']);
+
+  // Tea (not PAID, COUNT_UNITS: 'kilo çay' — must not match 'ay' inside 'çay')
+  const tea = buildWageChartSeries(
+    { id: 'cay', name: 'Çay', unit: '1 kg', rows: sampleRows([40, 80, 280]) },
+    wageRowsSeries,
+  );
+  assert.equal(tea.caption, 'Yıllar içinde 1 asgari ücretle alınabilen');
+  assert.deepEqual(tea.rows.map((r) => r.label), ['58 kg', '68 kg', '100 kg']);
+
+  // Unknown product falls back to raw unit ('1 m³' -> 'ton')
+  const customWater = buildWageChartSeries(
+    { id: 'x-su', name: 'Su', unit: '1 m³', rows: sampleRows([10, 20, 100]) },
+    wageRowsSeries,
+  );
+  assert.equal(customWater.caption, 'Yıllar içinde 1 asgari ücretle alınabilen');
+  assert.deepEqual(customWater.rows.map((r) => r.label), ['232 ton', '275 ton', '280 ton']);
+});

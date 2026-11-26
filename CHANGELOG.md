@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.3] - 2026-11-26
+### Fixed
+- Arşivin maaş grafiğinde birimler tabloyla aynı (ton, saat, paket, ay; önce 'adet' yazıyordu), ödenen ürünlerde (abonelik, harç, ceza) başlık 'ödenebilen'. 320 px'te uzun etiketler grafikten taşmıyor; emekli aylığı gibi yüzde değerlerinde kaydırırken 'yüzdenin yüzdesi' yazmıyor.
+
 ## [0.163.2] - 2026-11-26
 ### Fixed
 - Pahalı bir ürün bugün yarım maaşın altına düştüyse cümle 'bugün .' diye boş bitiyordu; artık 'bugün 0,3 asgari ücret'.
