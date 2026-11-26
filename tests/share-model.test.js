@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildShareText, verdictText, buildShareFileName, buildShareImageModel, questionTitle, shareImageKey, sessionWrapText } from '../js/share-model.js';
+import { buildShareText, verdictText, buildShareFileName, buildShareImageModel, questionTitle, shareImageKey, sessionWrapText, bestGuessBelowSessionBest } from '../js/share-model.js';
 import { formatPrice } from '../js/format.js';
 
 test('buildShareText formats exactly like the old share text', () => {
@@ -137,4 +137,13 @@ test('bestGuessText formats period, product title and score, or returns empty on
   );
   assert.equal(bestGuessText(null, 96), '');
   assert.equal(bestGuessText({ productId: 'benzin', name: 'Benzin', date: '2015-01' }, NaN), '');
+});
+
+test('bestGuessBelowSessionBest hides a best guess lower than the shown session best', () => {
+  assert.equal(bestGuessBelowSessionBest(80, 95, 6), true);
+  assert.equal(bestGuessBelowSessionBest(95, 95, 6), false);
+  assert.equal(bestGuessBelowSessionBest(99, 95, 6), false);
+  // One question: the menu shows no "en yüksek", so nothing contradicts.
+  assert.equal(bestGuessBelowSessionBest(10, 95, 1), false);
+  assert.equal(bestGuessBelowSessionBest(10, 0, 5), false);
 });

@@ -131,6 +131,11 @@ export function sessionWrapText(count, avg) {
   return `Bu oturumda ${count} soru çözdün, ortalaman ${a}. ${close}`;
 }
 
+/** True when the menu's session stat ("en yüksek M") is shown and beats the saved best guess (older saves). */
+export function bestGuessBelowSessionBest(score, sessionBest, played) {
+  return played > 1 && sessionBest > 0 && Number.isFinite(score) && score < sessionBest;
+}
+
 /** Format the player's all-time best guess as one calm menu line. */
 export function bestGuessText(question, score) {
   // A 0-point "best" reads like a joke on the menu; show it once there is something to be proud of.

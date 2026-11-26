@@ -5,7 +5,7 @@ import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus, shareDailyImage } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, lastSevenDays, weekStripVisible, dailyBiggestJump, dailyBiggestJumpLine } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, dailyProgressMenuText, reviewNextLine, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, lastSevenDays, weekStripVisible, dailyBiggestJump, dailyBiggestJumpLine } from './daily.js';
 import { dailyIconUrls, preloadIcons } from './icon-preload.js';
 
 const $ = (id) => document.getElementById(id);
@@ -259,6 +259,8 @@ function renderDailyRows(lines) {
 let reviewOpener = null;
 // Kept for the share button: after midnight loadDaily() returns null and the tap would do nothing.
 let reviewSaved = null;
+// Day the dialog was opened on: only a day change after that closes it (a run that crossed midnight opens as yesterday's).
+let reviewDay = null;
 
 // A lapsed streak (every receipt skipped) must not be advertised as a live one.
 function reviewStreak() {
@@ -291,6 +293,7 @@ function openDailyReview(saved) {
   const state = getState();
   const dlg = $('daily-review');
   reviewSaved = saved;
+  reviewDay = dayKey();
   const total = saved.scores.reduce((s, n) => s + n, 0);
   const milestone = takeDailyMilestone(saved.key);
   $('daily-review-title').textContent = dailyTitle(saved.key).replace(' · ', ' · '); // '· 19 KASIM' never starts a line
@@ -308,7 +311,7 @@ function openDailyReview(saved) {
     jumpEl.hidden = !jumpText;
   }
   renderWeekStrip(lastSevenDays(loadDailyLog(), saved.key));
-  $('daily-review-next').textContent = nextReceiptIn();
+  $('daily-review-next').textContent = reviewNextLine(saved.key, dayKey());
   // A fresh open must not inherit "kopyalandı" from a share made just before closing.
   const shareBtn = $('daily-review-share');
   clearTimeout(shareBtn.restoreTimer);
@@ -339,8 +342,8 @@ export function closeDailyReview() {
 function refreshDailyReview() {
   const dlg = document.getElementById('daily-review');
   if (!dlg?.open) return;
-  if (reviewSaved?.key !== dayKey()) { dlg.close(); return; }
-  $('daily-review-next').textContent = nextReceiptIn();
+  if (!reviewSaved || reviewDay !== dayKey()) { dlg.close(); return; }
+  $('daily-review-next').textContent = reviewNextLine(reviewSaved.key, dayKey());
 }
 
 export function initDailyReview() {
@@ -371,6 +374,7 @@ export function initDailyReview() {
     const opener = reviewOpener;
     reviewOpener = null;
     reviewSaved = null;
+    reviewDay = null;
     // Touch or URL opens leave no useful opener; fall back to the menu's daily card.
     if (opener && opener !== document.body && opener.isConnected && opener.offsetParent !== null) opener.focus();
     else if (!$('home-screen').hidden) document.querySelector('a.mode-daily')?.focus();
@@ -432,14 +436,17 @@ function watchDailyMenu() {
 }
 
 // Menu card: leaving a daily run for the menu ends it; the card picks the run up from storage.
-export function renderDailyMenu() {
+export function endDailyDetour() {
   const state = getState();
-  if (state.daily) {
-    state.daily = null;
-    lastDotsCount = null;
-    state.question = null;
-    syncSkipBtn();
-  }
+  if (!state.daily) return;
+  state.daily = null;
+  lastDotsCount = null;
+  state.question = null;
+  syncSkipBtn();
+}
+
+export function renderDailyMenu() {
+  endDailyDetour();
   watchDailyMenu();
   const daily = loadDaily();
   const dailyDone = daily && daily.ids.length > 0 && daily.scores.length >= daily.ids.length;
@@ -447,7 +454,7 @@ export function renderDailyMenu() {
   $('m-daily').textContent = dailyDone
     // The countdown wraps as one piece ("Yeni fiş 17 saat sonra"), never "Yeni fiş" alone at a line end.
     ? `Bugünkü fişin ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn().replaceAll(' ', '\u00a0')}`
-    : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru çözdün`
+    : dailyInProgress ? dailyProgressMenuText(daily, dayKey())
       : dailyMenuMeta(dailyStats(loadDailyLog(), dayKey()));
   const dailyGo = dailyDone ? 'Fişini gör →' : dailyInProgress ? 'Devam et →' : '5 soruya başla →'; // tells it apart from the endless "Fiyat Tahmini"
   $('m-daily-go').textContent = dailyGo;
