@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.155.0] - 2026-11-26
+### Added
+- Günün Fişi satırlarında artık kendi tahminin de var: 'Sen ₺5,00 · Gerçek ₺4,28 · 86 puan'; geçtiğin soru '0 puan' yerine 'Geçtin · Gerçek ₺99,00'. Paylaşılan görsel ve metin yine fiyatsız.
+
 ## [0.154.0] - 2026-11-26
 ### Added
 - Grafikte ilk kez kaydırana kadar küçük bir ipucu ('parmağınla kaydırıp yıllara bak'; bilgisayarda 'fareyle üstüne gel ya da ok tuşlarını kullan'). 5 gün ve üstü aradan dönen oyuncuya menüde 'Serin bozuldu' yerine 'Yeniden hoş geldin! En uzun serin N gündü; bugün yeni bir seri başlat.'
