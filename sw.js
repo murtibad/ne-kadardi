@@ -25,6 +25,7 @@ const PRECACHE = [
   'js/fact.js',
   'js/format.js',
   'js/game.js',
+  'js/guess-memory.js',
   'js/hint.js',
   'js/icon-preload.js',
   'js/intro.js',

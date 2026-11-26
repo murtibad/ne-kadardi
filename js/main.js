@@ -20,6 +20,7 @@ import { countUpFrames, easeOutCubic } from './count-up.js';
 import { parseQuestionParam, resolveFriendLink, LINK_NOT_FOUND_TEXT, friendIntroText, compareFriendScore } from './ask-link.js';
 import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey, dailyProductIds } from './daily.js';
+import { sanitizeGuesses, rememberGuess } from './guess-memory.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview, renderDailyRound } from './daily-ui.js';
 import { questionIconUrl, preloadIcon } from './icon-preload.js';
 import { sessionTendencyLine, advanceColdStreak } from './tendency.js';
@@ -34,7 +35,7 @@ const hapticIfAllowed = (ms) => {
 };
 
 const state = {
-  recentProducts: [], seen: new Set(), anchorShown: {}, questionCounter: 0, lastFollow: null,
+  recentProducts: [], seen: new Set(), guesses: {}, anchorShown: {}, questionCounter: 0, lastFollow: null,
   hintsUsed: 0, hintProductId: null, questionsShown: 0, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
   played: 0, skips: 0, total: 0, best: 0, bestGuess: null, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
@@ -51,6 +52,7 @@ const state = {
 const RECENT_MAX = 8;
 const SEEN_KEY = 'ne-kadardi-seen';
 const SEEN_MAX = 2000;
+const GUESSES_KEY = 'ne-kadardi-guesses';
 const STREAK_KEY = 'ne-kadardi-streak';
 const BEST_GUESS_KEY = 'ne-kadardi-best-guess';
 const FACT_YEAR_KEY = 'ne-kadardi-fact-year';
@@ -101,6 +103,18 @@ function loadSeen() {
 function saveSeen() {
   try {
     localStorage.setItem(SEEN_KEY, JSON.stringify([...state.seen].slice(-SEEN_MAX)));
+  } catch(e) {}
+}
+
+function loadGuesses() {
+  try {
+    state.guesses = sanitizeGuesses(JSON.parse(localStorage.getItem(GUESSES_KEY)));
+  } catch(e) {}
+}
+
+function saveGuesses() {
+  try {
+    localStorage.setItem(GUESSES_KEY, JSON.stringify(state.guesses));
   } catch(e) {}
 }
 
@@ -418,6 +432,8 @@ function onGuess(event) {
     if (state.result.tendencyLine) state.tendencyShown = true;
   }
   state.seen.delete(q.id);
+  state.guesses = rememberGuess(state.guesses, q.id, guess);
+  saveGuesses();
   state.seen.add(q.id);
   saveSeen();
   const currentBest = resolveBestGuess(state.bestGuess, state.all);
@@ -1081,8 +1097,22 @@ function renderHome() {
   const bestLine = best ? bestGuessText(best.question, best.score) : '';
   const bestEl = $('home-best');
   if (bestEl) {
-    bestEl.textContent = bestLine;
+    // A link to that product's archive pinned on the date; the arrow is decoration.
     bestEl.hidden = !bestLine;
+    bestEl.replaceChildren();
+    if (bestLine) {
+      const a = document.createElement('a');
+      a.href = '#arsiv';
+      a.className = 'home-best-link';
+      a.dataset.product = best.question.productId;
+      a.dataset.date = best.question.date;
+      a.append(bestLine + '\u00a0'); // the arrow never starts a line on its own
+      const arrow = document.createElement('span');
+      arrow.setAttribute('aria-hidden', 'true');
+      arrow.textContent = '→';
+      a.append(arrow);
+      bestEl.append(a);
+    }
   }
   const streakLine = homeStreakText(state.streak, today);
   $('home-streak').textContent = streakLine;
@@ -1393,6 +1423,7 @@ async function init() {
   if (versionEl) versionEl.textContent = VERSION;
   loadSession();
   loadSeen();
+  loadGuesses();
   loadStreak();
   loadBestGuess();
   // Decided once at load: a returning player never gets the opener list again.
@@ -1449,6 +1480,12 @@ async function init() {
   initDailyUi({ getState: () => state, nextQuestion, renderHome, pinArchive });
   initShareUi({ getState: () => state, isDailyEndTurn });
   $('guess-form').addEventListener('submit', onGuess);
+  // Runs before the browser follows href="#arsiv", so the archive opens pinned; Back leads to the menu.
+  $('home-best').addEventListener('click', (e) => {
+    const link = e.target.closest('a.home-best-link');
+    if (!link || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    pinArchive(link.dataset.product, link.dataset.date, false);
+  });
   const guessField = document.querySelector('#question-screen .guess-field');
   guessField?.addEventListener('animationend', () => {
     guessField.classList.remove('invalid');

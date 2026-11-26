@@ -2442,6 +2442,20 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
   overflow-wrap: break-word;
 }
 
+/* Inline flow keeps the arrow right after the last word; padding gives a 40px tap target. */
+.home-best-link {
+  display: inline-block;
+  padding: 10px 6px;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.home-best-link:hover { text-decoration: underline; }
+.home-best-link:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* The player's remembered guess under an archive row's price; quiet on purpose. */
+.timeline-guess { display: block; font: 400 0.8125rem/1.3 var(--font-ui); color: var(--muted-on-paper); white-space: nowrap; }
+
 /* Time-warp line under the verdict on far-off guesses; stays readable on the tinted receipt in both themes. */
 .timewarp-line {
   margin: 6px 0 0;
