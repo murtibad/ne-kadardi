@@ -78,3 +78,46 @@ test('the pinned row gets is-pinned, alongside is-current', () => {
   assert.doesNotMatch(timelineTableHtml(many(20)), /is-pinned/);
   assert.match(timelineTableHtml(rows, { pinnedDate: '2026-01' }), /class="is-current is-pinned"/);
 });
+
+import { buildWageRows } from '../js/archive-table.js';
+
+const wageRows = [
+  { date: '2022-01', price: 5500, isCurrent: false },
+  { date: '2022-07', price: 6500, isCurrent: false },
+  { date: '2026-01', price: 28000, isCurrent: true },
+];
+
+test('buildWageRows counts cheap items and expresses dear ones in wages', () => {
+  const product = { id: 'x-cheap', name: 'Ucuz', unit: '1 adet', rows: [
+    { date: '2022-08', price: 5, isCurrent: false },
+    { date: '2026-01', price: 20, isCurrent: true, currentLabel: null },
+  ] };
+  const out = buildWageRows(product, wageRows);
+  assert.equal(out[0], '1.300 adet'); // 6500 / 5, July 2022 wage
+  assert.equal(out[1], '1.400 adet'); // 28000 / 20
+  const dear = { id: 'x-dear', name: 'Pahalı', unit: '1 adet', rows: [
+    { date: '2022-02', price: 14000, isCurrent: false },
+    { date: '2026-01', price: 28000 * 2.5, isCurrent: true },
+  ] };
+  const d = buildWageRows(dear, wageRows);
+  assert.equal(d[0], '2,5 asgari ücret'); // 14000 / 5500 = 2.54
+  assert.equal(d[1], '2,5 asgari ücret');
+});
+
+test('buildWageRows gives null where no wage of that year exists, and for the wage itself', () => {
+  const product = { id: 'ekmek', name: 'Ekmek', unit: '1 adet', rows: [
+    { date: '2015-03', price: 2, isCurrent: false },
+    { date: '2022-01', price: 5, isCurrent: false },
+    { date: '2022-07', price: 5, isCurrent: false },
+  ] };
+  assert.deepEqual(buildWageRows(product, wageRows).map((x) => x === null), [true, false, false]);
+  const wage = { id: 'asgari-ucret', name: 'Asgari ücret', unit: 'TL', rows: [{ date: '2022-01', price: 5500 }] };
+  assert.deepEqual(buildWageRows(wage, wageRows), [null]);
+  assert.deepEqual(buildWageRows(product, []), [null, null, null]);
+});
+
+test('the table prints wage texts, with "–" for rows without a wage', () => {
+  const html = timelineTableHtml(rows, { wageTexts: ['102 adet', null] });
+  assert.match(html, /<span class="timeline-price">102 adet<\/span>/);
+  assert.match(html, /<span class="timeline-price">–<\/span>/);
+});

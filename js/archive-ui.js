@@ -11,6 +11,7 @@ let deps = null;
 const pinScrolled = new WeakSet(); // pins already scrolled to
 let tableMod = null; // archive-table.js, set once the lazy modules are loaded
 let expandedFor = null; // product id whose long table is fully open
+let wageView = false; // "1 maaşla kaç tane?" table view; session only, no storage
 const getState = () => deps.getState();
 
 // Announces polite status updates (e.g. random product selection) for screen readers.
@@ -104,8 +105,15 @@ export async function renderTimelineScreen(focusProductId = null) {
   // archivePin is cleared in nextQuestion/renderHome; archiveFromResult only controls the Back target.
   const pin = getState().archivePin?.productId === product.id ? getState().archivePin : null;
   if (pin && tableMod.pinHiddenByCollapse(product.rows, pin.date)) expandedFor = product.id;
+  // The toggle only exists where at least one row can be computed.
+  const wageRows = tableMod.buildWageRows(product, getState().timelines.find((t) => t.id === 'asgari-ucret')?.rows);
+  const canWage = wageRows.some((t) => t !== null);
+  const showWage = canWage && wageView;
+  $('t-view').hidden = !canWage;
+  for (const b of $('t-view').querySelectorAll('button')) b.setAttribute('aria-pressed', String((b.dataset.view === 'wage') === showWage));
   $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
     newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id, pinnedDate: pin?.date ?? null,
+    wageTexts: showWage ? wageRows : null,
   });
   if (productChanged) playOnce($('t-rows-container'), [{ opacity: 0 }, { opacity: 1 }], 180);
   renderPriceChart('t-chart', product.id, pin?.date ?? null);
@@ -377,6 +385,13 @@ export function initArchiveUi(d) {
   $('product-search-clear').addEventListener('click', clearSearch);
   $('product-search').addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && e.target.value !== '') { e.preventDefault(); clearSearch(); }
+  });
+  $('t-view').addEventListener('click', (e) => {
+    const btn = e.target instanceof Element ? e.target.closest('button[data-view]') : null;
+    if (!btn) return;
+    wageView = btn.dataset.view === 'wage';
+    renderTimelineScreen();
+    $('t-view').querySelector(`[data-view="${btn.dataset.view}"]`).focus({ preventScroll: true });
   });
   state.archiveNewestFirst = loadArchiveNewestFirst();
   $('archive-order').addEventListener('click', () => {

@@ -31,6 +31,9 @@ export function buildTimelines(data) {
         date: entry.date,
         price: entry.price,
         ratioToCurrent: currentPrice !== null && !isCurrent ? currentPrice / entry.price : null,
+        // The wage view needs the model name and a per-entry unit, like the game's question.
+        label: entry.label ?? null,
+        unit: entry.unit ?? null,
         note: entry.note || null,
         source: entry.source || null,
         isCurrent,
