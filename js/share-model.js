@@ -130,3 +130,11 @@ export function sessionWrapText(count, avg) {
   // "Bu oturumda": the card below shows the all-time average, so this one must say it is just today's.
   return `Bu oturumda ${count} soru çözdün, ortalaman ${a}. ${close}`;
 }
+
+/** Format the player's all-time best guess as one calm menu line. */
+export function bestGuessText(question, score) {
+  // A 0-point "best" reads like a joke on the menu; show it once there is something to be proud of.
+  if (!question || !question.date || !Number.isFinite(score) || score < 1) return '';
+  // Score first: product names can end in their own brackets ("Benzin (kurşunsuz 95)").
+  return `En iyi tahminin ${Math.round(score)} puan: ${formatPeriod(question.date).replace(' ', '\u00a0')} · ${questionTitle(question)}`;
+}

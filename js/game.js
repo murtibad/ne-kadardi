@@ -561,3 +561,28 @@ export function updateStreak(prev, todayKey) {
   const count = diff === 1 ? prevCount + 1 : 1;
   return { last: todayKey, count, best: Math.max(prevBest, count) };
 }
+
+/**
+ * Decide whether a new score should replace the stored best guess.
+ * Replaces when nothing valid is stored (even for a 0 score) or when `score` beats `prev.score`.
+ */
+export function shouldReplaceBestGuess(prev, score) {
+  if (!Number.isFinite(score) || score < 0) return false;
+  if (!prev || typeof prev !== 'object' || !Number.isFinite(prev.score) || prev.score < 0) return true;
+  return score > prev.score;
+}
+
+/**
+ * Validate a stored `{ productId, date, score }` record against playable `questions`.
+ * Returns `{ question, score }` or null when absent, malformed, or no longer in `questions`.
+ */
+export function resolveBestGuess(saved, questions) {
+  if (!saved || typeof saved !== 'object') return null;
+  if (typeof saved.productId !== 'string' || !saved.productId) return null;
+  if (typeof saved.date !== 'string' || !saved.date) return null;
+  if (!Number.isFinite(saved.score) || saved.score < 0) return null;
+  if (!Array.isArray(questions) || questions.length === 0) return null;
+  const question = questions.find((q) => q.productId === saved.productId && q.date === saved.date) ?? null;
+  if (!question) return null;
+  return { question, score: saved.score };
+}

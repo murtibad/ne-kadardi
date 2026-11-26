@@ -560,3 +560,33 @@ test('free play on real data avoids today\'s Günün Fişi products and recent p
     recent.push(q.productId);
   }
 });
+
+test('shouldReplaceBestGuess replaces when nothing valid is stored or when score is strictly higher', async () => {
+  const { shouldReplaceBestGuess } = await import('../js/game.js');
+  assert.equal(shouldReplaceBestGuess(null, 0), true);
+  assert.equal(shouldReplaceBestGuess(undefined, 96), true);
+  assert.equal(shouldReplaceBestGuess({ bad: true }, 50), true);
+  assert.equal(shouldReplaceBestGuess({ productId: 'benzin', date: '2015-01', score: 0 }, 0), false);
+  assert.equal(shouldReplaceBestGuess({ productId: 'benzin', date: '2015-01', score: 90 }, 90), false);
+  assert.equal(shouldReplaceBestGuess({ productId: 'benzin', date: '2015-01', score: 90 }, 89), false);
+  assert.equal(shouldReplaceBestGuess({ productId: 'benzin', date: '2015-01', score: 90 }, 96), true);
+  assert.equal(shouldReplaceBestGuess({ productId: 'benzin', date: '2015-01', score: 90 }, NaN), false);
+  assert.equal(shouldReplaceBestGuess({ productId: 'benzin', date: '2015-01', score: 90 }, -1), false);
+});
+
+test('resolveBestGuess matches stored productId and date against playable questions', async () => {
+  const { resolveBestGuess } = await import('../js/game.js');
+  const qs = [
+    { id: 'benzin@2015-01', productId: 'benzin', name: 'Benzin', date: '2015-01', price: 4.2 },
+    { id: 'ekmek@2014-01', productId: 'ekmek', name: 'Ekmek', date: '2014-01', price: 0.75 },
+  ];
+  assert.deepEqual(resolveBestGuess({ productId: 'benzin', date: '2015-01', score: 96 }, qs), {
+    question: qs[0],
+    score: 96,
+  });
+  assert.equal(resolveBestGuess(null, qs), null);
+  assert.equal(resolveBestGuess({ productId: 'removed', date: '2015-01', score: 96 }, qs), null);
+  assert.equal(resolveBestGuess({ productId: 'benzin', date: '2011-01', score: 96 }, qs), null);
+  assert.equal(resolveBestGuess({ productId: 'benzin', date: '2015-01', score: -1 }, qs), null);
+  assert.equal(resolveBestGuess({ productId: 'benzin', date: '2015-01', score: 96 }, []), null);
+});

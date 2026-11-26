@@ -120,3 +120,21 @@ test('sessionWrapText stays silent below 3 answers and picks a kind close by ave
   assert.match(sessionWrapText(7, 79), /Gayet iyi/);
   assert.match(sessionWrapText(7, 80), /dün gibi aklında/);
 });
+
+test('bestGuessText formats period, product title and score, or returns empty on missing data', async () => {
+  const { bestGuessText } = await import('../js/share-model.js');
+  assert.equal(
+    bestGuessText({ productId: 'benzin', name: 'Benzin', date: '2015-01' }, 96),
+    'En iyi tahminin 96 puan: Ocak 2015 · Benzin',
+  );
+  assert.equal(
+    bestGuessText({ productId: 'iphone', name: 'Yeni iPhone', label: 'iPhone 11', date: '2019-10' }, 100),
+    'En iyi tahminin 100 puan: Ekim 2019 · iPhone 11',
+  );
+  assert.equal(
+    bestGuessText({ productId: 'airpods', name: 'AirPods', label: 'AirPods 5', date: '2025' }, 88),
+    'En iyi tahminin 88 puan: 2025 · AirPods 5 (kablosuz kulaklık, temel model)',
+  );
+  assert.equal(bestGuessText(null, 96), '');
+  assert.equal(bestGuessText({ productId: 'benzin', name: 'Benzin', date: '2015-01' }, NaN), '');
+});

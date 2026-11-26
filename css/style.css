@@ -2335,3 +2335,12 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
   text-align: left;
   text-wrap: pretty;
 }
+
+/* Calm menu line for the player's best guess; fits 320 px and both themes. */
+.home-intro .home-best {
+  margin-top: 6px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--muted);
+  overflow-wrap: break-word;
+}
