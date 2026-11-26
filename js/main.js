@@ -109,6 +109,8 @@ function motion(el, frames, ms, easing, delay = 0) {
 
 function show(screenId) {
   syncFooter(screenId);
+  // Leaving mid-tear: finish the hand-over now, or Back would return to a receipt still in the till.
+  if (handTimer !== null) $('result-screen').classList.add('handed');
   clearTimeout(handTimer);
   handTimer = null; // a stale id would make the next stopPrinting() hand over a receipt that was never torn
   if (screenId !== 'result-screen') stopPrinting();
@@ -920,6 +922,8 @@ async function renderTimelineScreen(focusProductId = null) {
     console.warn('Arşiv yüklenemedi', err);
     return;
   }
+  // On a slow first load the player may have pressed Back meanwhile; do not pull the archive over the menu.
+  if ($('timeline-screen').hidden) return;
   return mod.renderTimelineScreen(focusProductId);
 }
 

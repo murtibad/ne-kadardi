@@ -162,6 +162,7 @@ let lastShownProduct = null;
 let productChanged = false;
 let diceSpin = false;
 let snapTimer = null;
+let pendingRestore = null;
 
 function playOnce(el, frames, ms) {
   el?.getAnimations?.().forEach((a) => a.cancel());
@@ -232,8 +233,16 @@ function renderProductChips(visible, selectedId, focusProductId) {
   // Back on when the glide ends (scrollend), or after a short wait where scrollend is missing; keyboard and
   // wheel users never send the pointerdown the first version waited for. One pending timer at a time.
   clearTimeout(snapTimer);
-  const restore = () => { clearTimeout(snapTimer); picker.style.scrollSnapType = ''; };
-  if ('onscrollend' in picker) picker.addEventListener('scrollend', restore, { once: true });
+  // A 0 px glide sends no scrollend, so drop the previous listener instead of letting them pile up.
+  if (pendingRestore) picker.removeEventListener('scrollend', pendingRestore);
+  const restore = () => {
+    clearTimeout(snapTimer);
+    picker.removeEventListener('scrollend', restore);
+    if (pendingRestore === restore) pendingRestore = null;
+    picker.style.scrollSnapType = '';
+  };
+  pendingRestore = restore;
+  if ('onscrollend' in picker) picker.addEventListener('scrollend', restore);
   snapTimer = setTimeout(restore, 700);
   picker.scrollBy({ left, behavior: 'smooth' });
 }

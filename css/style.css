@@ -1520,6 +1520,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 #question-screen.as-machine .question-card::after { display: none; }
 #question-screen.as-machine #q-anchor,
 #question-screen.folded #guess-form { display: none; }
+/* The 220 ms fold keeps the buttons hit-testable; a tap there would skip the next, unseen question. */
+#question-screen.as-machine #guess-form { pointer-events: none; }
 #question-screen.as-machine + #result-screen .printer { margin-top: 0; border-radius: 0 0 6px 6px; }
 #result-screen .printer { transition: height 0.35s ease, opacity 0.35s ease, margin 0.35s ease; }
 #result-screen.handed .printer { height: 0; opacity: 0; margin-top: 0; box-shadow: none; }
