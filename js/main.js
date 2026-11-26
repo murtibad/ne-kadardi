@@ -543,7 +543,8 @@ function printReceipt(extraSound) {
       else if (tier === 'bad') $('r-image').classList.add('shake');
     }
     $('r-stamp').classList.add('stamped');
-    if (state.result?.factor === 1) burstConfetti();
+    // Same moment as the counter bell: a 100-point guess (within 10%), not only an exact kuruş match.
+    if (state.result?.direction === 'exact') burstConfetti();
     // Let the tear finish (0.3 s) before the till leaves.
     handTimer = setTimeout(handOver, 320);
     // The till takes 0.38 s to leave; then the report card would still sit behind the sticky bar.

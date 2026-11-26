@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.28] - 2026-11-26
+### Changed
+- Konfeti artık zil ile aynı anda: 100 puanlık her tahminde (gerçek fiyata %10 yakın) çıkıyor; önceden yalnız kuruşu kuruşuna doğru tahminde çıktığı için neredeyse hiç görülmüyordu.
+
 ## [0.141.27] - 2026-11-20
 ### Changed
 - License: MIT replaced with 'All rights reserved' (owner's decision). Versions up to 0.141.26 stay MIT.
