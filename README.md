@@ -26,10 +26,12 @@ Also:
 - "Bilemedin mi? Arkadaşına sor" share links (`?soru=`) that open one question without its answer
 - Product-specific cashier jokes on the receipt in everyday Turkish tone
 - Turkish number input (`4,5`, `1.250,75`) with automatic thousands grouping as you type and words readout under the box (`4 lira 50 kuruş`); on phones, focusing the box scrolls "Tahmin et" into view above the keypad
-- Interactive price charts on the receipt and archive with finger scrubbing (slide sideways to inspect any year's price) and keyboard navigation
+- Interactive price charts on the receipt and archive with finger scrubbing (slide sideways to inspect any year's price) and keyboard navigation, plus a one-time hint ("parmağınla kaydırıp yıllara bak") until your first scrub
 - Skipping a question reveals its answer on the next card (`Geçtiğin soru: ...`)
 - House button in the header for a direct return to the main menu
 - Fair, ratio-based scoring on a log scale: being 2× too high costs the same as 2× too low
+- Time-warp line under the verdict for far-off guesses: matches your number to another verified date for that product ("Yazdığın ₺20 aslında Ocak 2023'ün fiyatıydı.") or notes when it exceeds today's price
+- Minimum-wage receipts include a purchasing-power basket showing what one wage bought then vs. today in everyday items ("12 gram altın ya da 304 litre benzin") using same-month verified prices
 - New session record moment: previous best shown in the badge and a one-shot gold ring on the score box
 - Shareable result image (Canvas 2D) with a score stamp, to download or post directly
 - Installable app (PWA) that works offline after the first visit; new prices arrive on the
@@ -41,13 +43,17 @@ Also:
   unverified data never reaches the game
 - "Günün Fişi" daily receipt: the same 5 everyday questions for everyone each day, with five tier-coloured progress dots while playing, reviewable from the menu via "Fişini gör" once completed; shared as a spoiler-free receipt image (no prices) or coloured squares
 - Daily records and milestones: a new all-time best and the 3rd/7th/10th/25th/50th/100th receipt get a one-time celebration line; the review shows a "Son 7 gün" strip
-- Günün Fişi rows link to each product's price history, pinned at the question's date
-- Daily streak ("🔥 3 gün üst üste") on the menu and receipt for answering at least one question every day
+- Günün Fişi rows show your guess alongside the real price and score ("Sen ₺5,00 · Gerçek ₺4,28 · 86 puan", or "Geçtin" when skipped) and link to each product's price history, pinned at the question's date
+- Finished Günün Fişi card highlights the biggest riser ("Bugünkü fişte en çok artan: Çeyrek altın. 2013'ten bugüne 89 katına çıktı.", omitted when sharing)
+- Daily streak ("🔥 3 gün üst üste") on the menu and receipt for answering at least one question every day, with a warm return greeting ("Yeniden hoş geldin!") after 5+ days away
 - Warm wrap-up line on the menu after 3+ questions in a sitting
+- Best guess on the menu ("En iyi tahminin 96 puan: Ocak 2016 · Benzin (kurşunsuz 95)") across free play and Günün Fişi
+- "Biliyor muydun?" fact card on the menu with a "Hatıra yılın" year picker to browse sourced then-and-now prices from a chosen year (saved across visits)
 - Free-play nudges: a tendency note every 5 answers when most guesses lean one way, and a one-time tip after three zero scores in a row
 - Unanswered questions first: prefers product years you haven't seen yet before repeating; free play skips today's Günün Fişi products and keeps product families (two breads, two fuels, two exams) apart for 8 questions
 - One-tap clear (×) in the price box; confetti and a bell for every 100-point guess
 - Archive progress ("81 üründen 19'unu tahmin ettin", correct Turkish suffixes) and a ✓ on guessed products
+- "1 maaşla kaç tane?" view in Fiyat Arşivi: toggle the price table between TL prices and minimum-wage purchasing power for each date
 - Friend challenge score in "Arkadaşına sor" links to compare results with a friend without spoiling the price
 - Same-year follow-up hook on the receipt jumping straight to another everyday product from that year
 - Typo-tolerant archive search understands everyday words ("mazot", "akbil", "döviz", "araba", "maaş") and forgives a single typo when no exact match is found
