@@ -59,7 +59,8 @@ function buildXTicks(firstYear, lastYear, firstX, minTime, toX) {
 
 /**
  * Compute SVG path strings, point coordinates, and axis ticks for a product timeline.
- * Prices use a logarithmic y-scale so multi-decade inflation remains legible across the whole range.
+ * Prices default to a logarithmic y-scale so multi-decade inflation remains legible across the whole range;
+ * pass `{ scale: 'linear' }` for small-range series such as purchasing power in minimum wages.
  */
 export function buildPriceChart(rows, options = {}) {
   if (!Array.isArray(rows)) return null;
@@ -69,7 +70,7 @@ export function buildPriceChart(rows, options = {}) {
     if (!isValidRow(row)) continue;
     const { year, time } = parseDate(row.date);
     if (!Number.isFinite(year) || !Number.isFinite(time)) continue;
-    valid.push({ row, year, time, logPrice: Math.log(row.price) });
+    valid.push({ row, year, time });
   }
 
   if (valid.length < 2) return null;
@@ -79,6 +80,7 @@ export function buildPriceChart(rows, options = {}) {
   const pad = { ...DEFAULT_PAD, ...options.pad };
   const highlightDate = options.highlightDate ?? null;
   const refPrice = options.refPrice ?? null;
+  const linear = options.scale === 'linear';
   const hasRef = typeof refPrice === 'number' && Number.isFinite(refPrice) && refPrice > 0;
 
   const plotLeft = pad.left;
@@ -105,25 +107,27 @@ export function buildPriceChart(rows, options = {}) {
   const refShown = hasRef ? Math.min(highLimit, Math.max(lowLimit, refPrice)) : null;
   const scaleMin = hasRef ? Math.min(minPrice, refShown) : minPrice;
   const scaleMax = hasRef ? Math.max(maxPrice, refShown) : maxPrice;
-  const minLog = Math.log(scaleMin);
-  const maxLog = Math.log(scaleMax);
-  const logSpan = maxLog - minLog;
-  const toY = (logPrice) => {
-    const yRatio = logSpan === 0 ? 0.5 : (logPrice - minLog) / logSpan;
+  const project = (v) => (linear ? v : Math.log(v));
+  const minScaled = project(scaleMin);
+  const maxScaled = project(scaleMax);
+  const scaledSpan = maxScaled - minScaled;
+  const toY = (value) => {
+    const yRatio = scaledSpan === 0 ? 0.5 : (project(value) - minScaled) / scaledSpan;
     return round1(plotBottom - yRatio * plotHeight);
   };
 
-  const points = valid.map(({ row, time, logPrice }, index) => {
+  const points = valid.map(({ row, time }, index) => {
     const xRatio = timeSpan === 0 ? index / (valid.length - 1) : (time - minTime) / timeSpan;
-
-    return {
+    const pt = {
       x: round1(plotLeft + xRatio * plotWidth),
-      y: toY(logPrice),
+      y: toY(row.price),
       date: row.date,
       price: row.price,
       isCurrent: Boolean(row.isCurrent),
       highlight: highlightDate !== null && row.date === highlightDate,
     };
+    if (row.label !== undefined) pt.label = row.label;
+    return pt;
   });
 
   const line = points
@@ -143,7 +147,7 @@ export function buildPriceChart(rows, options = {}) {
   };
   const xTicks = buildXTicks(firstYear, lastYear, firstX, minTime, toX);
   const ref = hasRef
-    ? { y: toY(Math.log(refShown)), price: refPrice, off: refPrice > highLimit ? 'above' : refPrice < lowLimit ? 'below' : null }
+    ? { y: toY(refShown), price: refPrice, off: refPrice > highLimit ? 'above' : refPrice < lowLimit ? 'below' : null }
     : null;
 
   return {
@@ -252,7 +256,7 @@ function monthIndex(dateStr) {
 export function stepText(points, idx) {
   const p = points[idx];
   if (!p) return '';
-  const base = `${formatPeriod(p.date)}: ${formatPrice(p.price)}`;
+  const base = `${formatPeriod(p.date)}: ${p.label ?? formatPrice(p.price)}`;
   const prev = points[idx - 1];
   if (!prev || !(prev.price > 0) || !(p.price > 0)) return base;
   const gap = monthIndex(p.date) - monthIndex(prev.date);

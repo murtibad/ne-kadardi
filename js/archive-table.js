@@ -1,6 +1,6 @@
 // Pure HTML for the archive's price table: one row per sourced price. No DOM access here.
 import { formatPrice, formatPeriod, formatIncrease, formatNumber, formatRatio, escapeHTML } from './format.js';
-import { buildContextModel, percentOf } from './game.js';
+import { buildContextModel, getShortUnit, percentOf, WAGE_SHARE, wageInForce } from './game.js';
 import { sourceKindLabel } from './source-kind.js';
 import { linkifyNote } from './linkify.js';
 
@@ -38,6 +38,54 @@ export function pinHiddenByCollapse(rows, pinDate) {
   return i >= 0 && i < visibleRowRange(rows.length).firstVisible;
 }
 
+export const WAGE_CHART_CAPTIONS = {
+  count: 'Yıllar içinde 1 asgari ücretle alınabilen',
+  wages: 'Yıllar içinde kaç asgari ücret',
+  share: 'Yıllar içinde asgari ücrete oranı',
+};
+
+const WAGE_CHART_MIN_POINTS = 3;
+
+function shortWageUnit(unit) {
+  if (!unit) return 'adet';
+  const lower = unit.toLowerCase();
+  if (/\b(kg|kilo)\b/i.test(lower)) return 'kg';
+  if (lower.includes('eur')) return 'euro';
+  if (lower.includes('gbp')) return 'sterlin';
+  return getShortUnit(unit);
+}
+
+function formatShareLabel(share) {
+  const v = share < 0.1 ? Math.round(share * 1000) / 10 : Math.round(share * 100);
+  return `%${formatNumber(v, { maximumFractionDigits: 1 })}`;
+}
+
+function formatWagesLabel(wages) {
+  if (wages < 0.1) {
+    const rounded = Math.round(wages * 100) / 100;
+    return rounded > 0 ? `${formatNumber(rounded, { maximumFractionDigits: 2 })} asgari ücret` : '<0,01 asgari ücret';
+  }
+  return `${formatRatio(wages)} asgari ücret`;
+}
+
+function buildWageModels(product, wageRows) {
+  const wages = wageRows.map((w) => ({ productId: 'asgari-ucret', date: w.date, price: w.price, current: w.isCurrent ? { date: w.date, price: w.price } : null }));
+  const cur = product.rows.find((r) => r.isCurrent);
+  const current = cur ? { date: cur.date, price: cur.price, label: cur.currentLabel ?? cur.label ?? null } : null;
+  const currentWage = wages.find((x) => x.current)?.current.price ?? null;
+  return product.rows.map((r) => {
+    const q = {
+      productId: product.id, name: product.name, label: r.label ?? null, unit: r.unit ?? product.unit,
+      date: r.date, price: r.price, current,
+    };
+    const model = buildContextModel(q, wages);
+    const baseWage = model
+      ? (model.today && currentWage ? currentWage : wageInForce(r.date, wages)?.price ?? null)
+      : null;
+    return { row: r, model, baseWage };
+  });
+}
+
 /**
  * "1 maaşla kaç tane?" values per row, reusing the game's purchasing-power model (same wage-in-force rule).
  * `wageRows` are the asgari-ucret timeline rows. Returns one entry per row, same order: a text such as
@@ -45,20 +93,51 @@ export function pinHiddenByCollapse(rows, pinDate) {
  */
 export function buildWageRows(product, wageRows) {
   if (!product || product.id === 'asgari-ucret' || !wageRows?.length) return product ? product.rows.map(() => null) : [];
-  const wages = wageRows.map((w) => ({ productId: 'asgari-ucret', date: w.date, price: w.price, current: w.isCurrent ? { date: w.date, price: w.price } : null }));
-  const cur = product.rows.find((r) => r.isCurrent);
-  const current = cur ? { date: cur.date, price: cur.price, label: cur.currentLabel ?? cur.label ?? null } : null;
-  return product.rows.map((r) => {
-    const q = {
-      productId: product.id, name: product.name, label: r.label ?? null, unit: r.unit ?? product.unit,
-      date: r.date, price: r.price, current,
-    };
-    const m = buildContextModel(q, wages);
+  return buildWageModels(product, wageRows).map(({ model: m }) => {
     if (!m) return null;
     if (m.kind === 'share') return `asgari ücretin ${percentOf(m.then)}`;
     if (m.kind === 'count') return `${formatNumber(m.then)} ${m.unit}`;
     return `${formatRatio(m.then)} asgari ücret`;
   });
+}
+
+/**
+ * Purchasing-power series for the archive chart in wage view.
+ * Skips rows without a wage value and returns null when fewer than 3 points have values.
+ * Picks one consistent kind across all points so the linear y-axis never mixes units or directions.
+ */
+export function buildWageChartSeries(product, wageRows) {
+  if (!product || product.id === 'asgari-ucret' || !wageRows?.length) return null;
+  const entries = buildWageModels(product, wageRows).filter((e) => e.model && e.baseWage > 0);
+  if (entries.length < WAGE_CHART_MIN_POINTS) return null;
+
+  let kind;
+  if (WAGE_SHARE[product.id]) kind = 'share';
+  else if (entries.some((e) => e.model.kind === 'wages')) kind = 'wages';
+  else if (entries.filter((e) => e.model.kind === 'share').length >= entries.length / 2) kind = 'share';
+  else kind = 'count';
+
+  const rows = [];
+  for (const { row: r, model: m, baseWage } of entries) {
+    let value;
+    let label;
+    if (kind === 'count') {
+      value = m.kind === 'count' ? m.then : Math.floor(baseWage / r.price);
+      label = `${formatNumber(value)} ${shortWageUnit(r.unit ?? product.unit)}`;
+    } else if (kind === 'wages') {
+      value = m.kind === 'wages' || m.kind === 'share' ? m.then : r.price / baseWage;
+      label = formatWagesLabel(value);
+    } else {
+      const share = m.kind === 'share' || m.kind === 'wages' ? m.then : r.price / baseWage;
+      value = share * 100;
+      label = formatShareLabel(share);
+    }
+    if (!(value > 0)) continue;
+    rows.push({ date: r.date, price: value, isCurrent: Boolean(r.isCurrent), label });
+  }
+
+  if (rows.length < WAGE_CHART_MIN_POINTS) return null;
+  return { kind, caption: WAGE_CHART_CAPTIONS[kind], rows };
 }
 
 function rowHtml(r, seen, extra, hidden, pinned = false, wageText = undefined, guess = null) {
