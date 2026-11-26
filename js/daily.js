@@ -215,3 +215,41 @@ export function dailyMilestoneLine(stats, total, prevBest) {
   if (milestone) parts.push(milestone);
   return parts.join(' ');
 }
+
+/**
+ * Model for the spoiler-free share image: tier per row and product names, but no prices
+ * (a friend solves the same questions). `names` and `scores` are in question order.
+ */
+export function dailyImageModel({ key, names, scores, streak = 0 }) {
+  const rows = (names ?? []).map((name, i) => {
+    const raw = scores?.[i];
+    const score = Number.isFinite(raw) ? raw : 0;
+    return { name: String(name ?? ''), score, tier: scoreTier(score) };
+  });
+  const total = rows.reduce((s, r) => s + r.score, 0);
+  return {
+    title: dailyTitle(key),
+    rows,
+    total: `${total}/500`,
+    streakLine: streak >= 2 ? `🔥 ${streak} gün` : null,
+    siteAddress: 'murtibad.github.io/ne-kadardi',
+  };
+}
+
+/** Cuts `text` with an ellipsis until `measure(text)` fits `maxWidth`; keeps at least one character. */
+export function fitText(text, maxWidth, measure) {
+  if (measure(text) <= maxWidth) return text;
+  let cut = text;
+  while (cut.length > 1 && measure(`${cut.trimEnd()}…`) > maxWidth) cut = cut.slice(0, -1);
+  return `${cut.trimEnd()}…`;
+}
+
+/** Vertical layout of the daily image (px), so the canvas height follows from the row count. */
+export function dailyImageLayout(rowCount, hasStreak) {
+  const rowH = 96;
+  const rowsTop = 360;
+  const totalY = rowsTop + rowCount * rowH + 90;
+  const streakY = totalY + 100;
+  const bottom = (hasStreak ? streakY : totalY) + 150;
+  return { rowH, rowsTop, totalY, streakY, height: bottom + 80 + 80 + 70 };
+}

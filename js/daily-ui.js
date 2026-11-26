@@ -4,7 +4,7 @@ import { formatPeriod, escapeHTML } from './format.js';
 import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
-import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
+import { resetShareBtn, shareTextWithStatus, shareDailyImage } from './share-ui.js';
 import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
@@ -269,9 +269,11 @@ export function initDailyReview() {
   $('daily-review-close').addEventListener('click', () => dlg.close());
   // Back on a phone should close the dialog first; a same-hash history step fires popstate but no hashchange.
   window.addEventListener('popstate', () => { if (dlg.open) dlg.close(); });
-  $('daily-review-share').addEventListener('click', () => {
+  $('daily-review-share').addEventListener('click', async () => {
     const saved = reviewSaved;
     if (!saved || saved.ids.length === 0) return;
+    // Image preview first; the text share stays the fallback when the image cannot be drawn.
+    if (await shareDailyImage({ key: saved.key, ids: saved.ids, scores: saved.scores, streak: reviewStreak(), btn: $('daily-review-share') })) return;
     shareTextWithStatus(dailyShareText({
       key: saved.key,
       scores: saved.scores,
@@ -309,7 +311,7 @@ export function renderDailyCard() {
   if (location.hash === '#gunun-fisi') history.replaceState(null, '', '#tahmin');
   const lines = dailyLines(state.all, ids, scores);
   const total = scores.reduce((s, n) => s + n, 0);
-  state.reportCard = { daily: true, key, scores };
+  state.reportCard = { daily: true, key, scores, ids };
   const milestone = takeDailyMilestone(key);
   $('r-card-title').textContent = dailyTitle(key);
   $('r-card-lines').innerHTML = renderDailyRows(lines);

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout } from '../js/daily.js';
 import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
@@ -298,4 +298,23 @@ test('trimLog default keeps at least 100 days so the 100-receipt milestone is re
     log[dayKey(d)] = 200 + i;
   }
   assert.equal(Object.keys(trimLog(log)).length, 110);
+});
+
+test('dailyImageModel is spoiler-free: names, tiers and total, no prices', () => {
+  const m = dailyImageModel({ key: '2026-11-26', names: ['Benzin', 'Dolar', 'Ekmek', 'Simit', 'Çay'], scores: [90, 75, 50, 25, null], streak: 3 });
+  assert.equal(m.title, 'GÜNÜN FİŞİ · 26 KASIM');
+  assert.deepEqual(m.rows.map((r) => r.tier), ['great', 'good', 'mid', 'poor', 'bad']);
+  assert.equal(m.total, '240/500');
+  assert.equal(m.streakLine, '🔥 3 gün');
+  assert.ok(!/₺/.test(JSON.stringify(m)));
+  assert.equal(dailyImageModel({ key: '2026-11-26', names: ['A'], scores: [10], streak: 1 }).streakLine, null);
+});
+
+test('fitText ellipsizes to the measured width and layout grows with rows', () => {
+  const measure = (s) => s.length * 10;
+  assert.equal(fitText('Kısa', 100, measure), 'Kısa');
+  const cut = fitText('Çok uzun bir ürün adı burada', 100, measure);
+  assert.ok(cut.endsWith('…') && measure(cut) <= 100);
+  assert.equal(fitText('Abcdef', 5, measure), 'A…');
+  assert.ok(dailyImageLayout(5, true).height > dailyImageLayout(5, false).height);
 });

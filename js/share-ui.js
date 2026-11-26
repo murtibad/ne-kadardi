@@ -6,7 +6,7 @@ import { buildShareText, buildShareImageModel, shareImageKey, buildShareFileName
 import { stampTitle } from './banter.js';
 import { buildPriceChart } from './price-chart.js';
 import { askUrl, askText } from './ask-link.js';
-import { dailyShareText, dayKey } from './daily.js';
+import { dailyShareText, dayKey, dailyImageModel } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -241,6 +241,9 @@ async function askFriend({ btn }) {
 
 let previewUrl = null;
 let previewFile = null;
+// Set while the preview shows a daily receipt: its own caption text and the element to refocus on close.
+let previewText = null;
+let previewReturnFocus = null;
 
 function closePreview() {
   const dlg = $('share-preview');
@@ -254,6 +257,8 @@ function cleanupPreview() {
   if (previewUrl) URL.revokeObjectURL(previewUrl);
   previewUrl = null;
   previewFile = null;
+  previewText = null;
+  $('share-preview-text').hidden = true;
   $('share-preview-img').removeAttribute('src');
 }
 
@@ -270,7 +275,7 @@ function saveFromPreview() {
 
 async function sharePreviewFile() {
   if (!previewFile) return;
-  const text = buildShareText(getState().question, getState().result, location.href);
+  const text = previewText ?? buildShareText(getState().question, getState().result, location.href);
   try {
     if (navigator.canShare({ files: [previewFile] })) await navigator.share({ files: [previewFile], text });
   } catch (err) {
@@ -354,6 +359,7 @@ function initSharePreview() {
   const dlg = $('share-preview');
   $('share-preview-save').addEventListener('click', saveFromPreview);
   $('share-preview-share').addEventListener('click', sharePreviewFile);
+  $('share-preview-text').addEventListener('click', () => { if (previewText) shareTextWithStatus(previewText, $('share-preview-text')); });
   $('share-preview-close').addEventListener('click', closePreview);
   // Backdrop clicks target the dialog itself, but so do clicks on its padding: check the box.
   dlg.addEventListener('click', (e) => {
@@ -362,8 +368,11 @@ function initSharePreview() {
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closePreview();
   });
   dlg.addEventListener('close', () => {
+    const back = previewReturnFocus;
     cleanupPreview();
-    if (!$('result-screen').hidden) $('share-btn').focus();
+    previewReturnFocus = null;
+    if (back?.isConnected) back.focus();
+    else if (!$('result-screen').hidden) $('share-btn').focus();
   });
 }
 
@@ -382,14 +391,57 @@ async function shareTextWithStatus(text, btn) {
   btn.restoreTimer = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2000);
 }
 
+// Spoiler-free daily image in the shared preview dialog. Returns false when it could not be shown,
+// so the caller falls back to the text share.
+async function shareDailyImage({ key, ids, scores, streak, btn }) {
+  const dlg = $('share-preview');
+  if (typeof dlg.showModal !== 'function' || btn?.hasAttribute('aria-busy')) return false;
+  const label = btn?.textContent;
+  btn?.setAttribute('aria-busy', 'true');
+  if (btn) btn.textContent = 'Hazırlanıyor…';
+  announce('Hazırlanıyor…');
+  try {
+    const all = getState().all;
+    const names = ids.map((id) => {
+      const q = all.find((x) => x.id === id);
+      return q ? questionTitle(q) : 'Soru';
+    });
+    const { renderDailyShareImage } = await import('./share-image.js');
+    const blob = await renderDailyShareImage(dailyImageModel({ key, names, scores, streak }));
+    const url = location.origin + location.pathname;
+    cleanupPreview();
+    previewFile = new File([blob], `ne-kadardi-gunun-fisi-${key}.png`, { type: 'image/png' });
+    previewUrl = URL.createObjectURL(blob);
+    previewText = dailyShareText({ key, scores, url, streak });
+    previewReturnFocus = btn ?? null;
+    $('share-preview-img').src = previewUrl;
+    $('share-preview-img').alt = 'Paylaşılacak Günün Fişi görseli';
+    $('share-preview-share').hidden = !canShareImageFiles();
+    $('share-preview-text').hidden = false;
+    dlg.showModal();
+    $('share-preview-save').focus();
+    announce('Görsel hazır.');
+    return true;
+  } catch (err) {
+    console.warn('Günün Fişi görseli hazırlanamadı', err);
+    return false;
+  } finally {
+    if (btn) {
+      btn.removeAttribute('aria-busy');
+      btn.textContent = label;
+    }
+  }
+}
+
 async function shareReportCard(e) {
   const btn = e.currentTarget;
   const card = getState().reportCard;
   if (!card) return;
   const url = location.origin + location.pathname;
   if (card.daily) {
-    const text = dailyShareText({ key: card.key, scores: card.scores, url, streak: streakAlive(getState().streak, dayKey()) ? (getState().streak?.count ?? 0) : 0 });
-    await shareTextWithStatus(text, btn);
+    const streak = streakAlive(getState().streak, dayKey()) ? (getState().streak?.count ?? 0) : 0;
+    if (card.ids && await shareDailyImage({ key: card.key, ids: card.ids, scores: card.scores, streak, btn })) return;
+    await shareTextWithStatus(dailyShareText({ key: card.key, scores: card.scores, url, streak }), btn);
   }
 }
 
@@ -401,4 +453,4 @@ export function initShareUi(d) {
   initSharePreview();
 }
 
-export { resetShareBtn, closePreview, shareReportCard, shareTextWithStatus };
+export { resetShareBtn, closePreview, shareReportCard, shareTextWithStatus, shareDailyImage };
