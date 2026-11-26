@@ -143,6 +143,19 @@ export function inPeriod(periodText) {
   return `${periodText}'${suffix}`;
 }
 
+// Genitive after a year follows how its last word is read aloud: 2022'nin (iki), 2016'nın (altı),
+// 2023'ün (üç), 2010'un (on), 2020'nin (yirmi), 2040'ın (kırk). Years only, so 0 means "bin".
+const GEN_ONES = ['', 'in', 'nin', 'ün', 'ün', 'in', 'nın', 'nin', 'in', 'un'];
+const GEN_TENS = ['', 'un', 'nin', 'un', 'ın', 'nin', 'ın', 'in', 'in', 'ın'];
+
+/** "Haziran 2022" -> "Haziran 2022'nin", "2016" -> "2016'nın". */
+export function ofPeriod(periodText) {
+  const n = Number(periodText.match(/(\d+)\s*$/)?.[1]);
+  if (!Number.isFinite(n)) return periodText;
+  const suffix = n % 10 ? GEN_ONES[n % 10] : n % 100 ? GEN_TENS[(n % 100) / 10] : 'in';
+  return `${periodText}'${suffix}`;
+}
+
 /** Format a data date: "2012" -> "2012", "2012-01" or "2012-01-15" -> "Ocak 2012". */
 export function formatPeriod(date) {
   const [year, month] = date.split('-');

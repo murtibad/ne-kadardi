@@ -1,5 +1,5 @@
 // Game logic: question selection and scoring. Pure functions, no DOM access.
-import { formatRatio, formatNumber } from './format.js';
+import { formatRatio, formatNumber, formatPrice, formatPeriod, ofPeriod } from './format.js';
 import { categoryOf, familyOf } from './categories.js';
 
 const PERFECT_FACTOR = 1.1; // within 10% counts as a perfect guess
@@ -649,4 +649,68 @@ export function resolveBestGuess(saved, questions) {
   const question = questions.find((q) => q.productId === saved.productId && q.date === saved.date) ?? null;
   if (!question) return null;
   return { question, score: saved.score };
+}
+
+export const TIME_WARP_MIN_FACTOR = 1.4; // only show the time-warp line when off by 40%+
+const TIME_WARP_MATCH_FACTOR = 1.2; // within ±20% in ratio terms
+
+function isVerifiedPrice(row) {
+  return Boolean(
+    row
+    && (row.status === undefined || row.status === 'verified')
+    && Number.isFinite(row.price) && row.price > 0
+  );
+}
+
+/**
+ * Find the closest verified price row of the same product (including `current`) to `guess`
+ * in ratio terms, within ±20% (factor <= 1.2), excluding `askedDate`. Falls back to
+ * `{ kind: 'above-current' }` when `guess` exceeds `current.price` by more than 20%.
+ * Never interpolates or invents prices.
+ */
+export function matchGuessedPeriod(guess, productRows, askedDate, current = null) {
+  if (!Number.isFinite(guess) || guess <= 0) return null;
+  const rows = Array.isArray(productRows) ? productRows : [];
+  const validCurrent = isVerifiedPrice(current) && (!current.date || current.date !== askedDate) ? current : null;
+
+  let best = null;
+  if (validCurrent) {
+    const factor = Math.max(guess / validCurrent.price, validCurrent.price / guess);
+    if (factor <= TIME_WARP_MATCH_FACTOR) {
+      best = { kind: 'current', date: validCurrent.date ?? null, price: validCurrent.price, factor };
+    }
+  }
+
+  for (const row of rows) {
+    if (!isVerifiedPrice(row) || typeof row.date !== 'string' || !row.date) continue;
+    if (row.date === askedDate) continue;
+    if (validCurrent && validCurrent.date && row.date === validCurrent.date) continue;
+    const factor = Math.max(guess / row.price, row.price / guess);
+    if (factor > TIME_WARP_MATCH_FACTOR) continue;
+    if (!best || factor < best.factor || (factor === best.factor && best.kind !== 'current' && row.date > best.date)) {
+      best = { kind: 'period', date: row.date, price: row.price, factor };
+    }
+  }
+
+  if (best) return best;
+  if (validCurrent && guess / validCurrent.price > TIME_WARP_MATCH_FACTOR) {
+    return { kind: 'above-current', date: validCurrent.date ?? null, price: validCurrent.price, factor: guess / validCurrent.price };
+  }
+  return null;
+}
+
+/** Format a matchGuessedPeriod result into one plain-Turkish receipt line, or '' when absent. */
+export function timeWarpText(guess, match, { amount = false } = {}) {
+  if (!match || !Number.isFinite(guess) || guess <= 0) return '';
+  if (match.kind === 'period') {
+    const noun = amount ? 'tutarıydı' : 'fiyatıydı';
+    return `Yazdığın ${formatPrice(guess)} aslında ${ofPeriod(formatPeriod(match.date))} ${noun}.`;
+  }
+  if (match.kind === 'current') {
+    return amount ? 'Yazdığın tutar, bugünkü tutara yakın.' : 'Yazdığın fiyat, bugünkü fiyata yakın.';
+  }
+  if (match.kind === 'above-current') {
+    return amount ? 'Yazdığın tutar bugünkünden bile yüksek!' : 'Yazdığın fiyat bugünkünden bile yüksek!';
+  }
+  return '';
 }

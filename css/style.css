@@ -2344,3 +2344,14 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
   color: var(--muted);
   overflow-wrap: break-word;
 }
+
+/* Time-warp line under the verdict on far-off guesses; stays readable on the tinted receipt in both themes. */
+.timewarp-line {
+  margin: 6px 0 0;
+  padding-top: 6px;
+  border-top: 1px dashed var(--line);
+  font: 500 0.875rem/1.4 var(--font-ui);
+  color: var(--ink);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}

@@ -639,3 +639,110 @@ test('resolveBestGuess matches stored productId and date against playable questi
   assert.equal(resolveBestGuess({ productId: 'benzin', date: '2015-01', score: -1 }, qs), null);
   assert.equal(resolveBestGuess({ productId: 'benzin', date: '2015-01', score: 96 }, []), null);
 });
+
+test('matchGuessedPeriod finds the closest verified row within ±20% in ratio terms and excludes askedDate', async () => {
+  const { matchGuessedPeriod } = await import('../js/game.js');
+  const rows = [
+    { date: '2016-01', price: 4.3, status: 'verified' },
+    { date: '2020-01', price: 7.0, status: 'verified' },
+    { date: '2022-06', price: 21.0, status: 'verified' },
+    { date: '2023-01', price: 20.5, status: 'todo' }, // unverified must be ignored
+    { date: '2024-01', price: 40.0, status: 'verified' },
+  ];
+  const current = { date: '2026-10', price: 50.0, status: 'verified' };
+
+  // Matches closest verified historical row within ±20% (ignoring closer unverified 'todo' row).
+  const m1 = matchGuessedPeriod(20, rows, '2016-01', current);
+  assert.equal(m1?.kind, 'period');
+  assert.equal(m1?.date, '2022-06');
+  assert.equal(m1?.price, 21.0);
+
+  // Asked date is excluded even when guess matches it exactly.
+  assert.equal(matchGuessedPeriod(4.3, rows, '2016-01', current), null);
+
+  // No match when guess falls in a gap >20% away from every verified row and below current.
+  assert.equal(matchGuessedPeriod(12, rows, '2016-01', current), null);
+
+  // Multiple close rows: closest in ratio terms wins (not linear difference).
+  // Guess 100 vs 85 (ratio 100/85 = 1.1765) vs 116 (ratio 116/100 = 1.16) -> 116 is closer in ratio.
+  const closeRows = [
+    { date: '2021-01', price: 85 },
+    { date: '2022-01', price: 116 },
+  ];
+  const mRatio = matchGuessedPeriod(100, closeRows, '2015-01', { date: '2026-10', price: 300 });
+  assert.equal(mRatio?.kind, 'period');
+  assert.equal(mRatio?.date, '2022-01');
+
+  // Boundary: exactly 1.2x ratio matches; >1.2x does not.
+  assert.equal(matchGuessedPeriod(12, [{ date: '2021-01', price: 10 }], '2015-01', null)?.date, '2021-01');
+  assert.equal(matchGuessedPeriod(12.01, [{ date: '2021-01', price: 10 }], '2015-01', null), null);
+});
+
+test('matchGuessedPeriod handles current price matches, above-current guesses, and invalid inputs', async () => {
+  const { matchGuessedPeriod } = await import('../js/game.js');
+  const rows = [
+    { date: '2016-01', price: 4.3 },
+    { date: '2022-06', price: 20.0 },
+    { date: '2026-10', price: 50.0 }, // same date as current
+  ];
+  const current = { date: '2026-10', price: 50.0 };
+
+  // Within ±20% of current returns kind 'current' even when a historical row shares current.date.
+  const mCur = matchGuessedPeriod(55, rows, '2016-01', current);
+  assert.equal(mCur?.kind, 'current');
+  assert.equal(mCur?.price, 50.0);
+
+  // At exact +20% of current (60 vs 50) -> still within ±20% ('current').
+  assert.equal(matchGuessedPeriod(60, rows, '2016-01', current)?.kind, 'current');
+
+  // Above current by more than 20% -> 'above-current'.
+  const mAbove = matchGuessedPeriod(65, rows, '2016-01', current);
+  assert.equal(mAbove?.kind, 'above-current');
+  assert.equal(mAbove?.price, 50.0);
+
+  // If the asked question IS today's price, current is excluded (neither 'current' nor 'above-current').
+  assert.equal(matchGuessedPeriod(65, rows, '2026-10', current), null);
+  assert.equal(matchGuessedPeriod(50, rows, '2026-10', current), null);
+
+  // Invalid inputs return null.
+  assert.equal(matchGuessedPeriod(0, rows, '2016-01', current), null);
+  assert.equal(matchGuessedPeriod(-5, rows, '2016-01', current), null);
+  assert.equal(matchGuessedPeriod(NaN, rows, '2016-01', current), null);
+  assert.equal(matchGuessedPeriod(20, null, '2016-01', null), null);
+});
+
+test('timeWarpText formats regular prices and amount products with receipt price formatting', async () => {
+  const { timeWarpText, isAmount } = await import('../js/game.js');
+  const { formatPrice } = await import('../js/format.js');
+
+  assert.equal(
+    timeWarpText(20, { kind: 'period', date: '2022-06', price: 21, factor: 1.05 }),
+    `Yazdığın ${formatPrice(20)} aslında Haziran 2022'nin fiyatıydı.`,
+  );
+  assert.equal(
+    timeWarpText(50, { kind: 'current', date: '2026-10', price: 50, factor: 1 }),
+    'Yazdığın fiyat, bugünkü fiyata yakın.',
+  );
+  assert.equal(
+    timeWarpText(80, { kind: 'above-current', date: '2026-10', price: 50, factor: 1.6 }),
+    'Yazdığın fiyat bugünkünden bile yüksek!',
+  );
+
+  // Amount products (wages, pensions, grants) say "tutar" instead of "fiyat".
+  const amt = { amount: isAmount('asgari-ucret') };
+  assert.equal(
+    timeWarpText(5500, { kind: 'period', date: '2022-07', price: 5500, factor: 1 }, amt),
+    `Yazdığın ${formatPrice(5500)} aslında Temmuz 2022'nin tutarıydı.`,
+  );
+  assert.equal(
+    timeWarpText(28000, { kind: 'current', date: '2026-01', price: 28075, factor: 1.003 }, amt),
+    'Yazdığın tutar, bugünkü tutara yakın.',
+  );
+  assert.equal(
+    timeWarpText(40000, { kind: 'above-current', date: '2026-01', price: 28075, factor: 1.42 }, amt),
+    'Yazdığın tutar bugünkünden bile yüksek!',
+  );
+
+  assert.equal(timeWarpText(20, null), '');
+  assert.equal(timeWarpText(0, { kind: 'current', price: 50, factor: 1 }), '');
+});

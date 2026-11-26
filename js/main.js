@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText, formatInputThousands, keyboardFitDelta } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, shouldReplaceBestGuess, resolveBestGuess } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, shouldReplaceBestGuess, resolveBestGuess, matchGuessedPeriod, timeWarpText, TIME_WARP_MIN_FACTOR } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
@@ -723,6 +723,16 @@ function renderResult(q, r) {
     $('r-increase').textContent = q.current.label && ratio >= 2 ? `${formatRatio(ratio)} kat pahalı` : formatIncrease(ratio);
   }
   $('r-verdict').textContent = verdictText(r);
+  const timewarpEl = $('r-timewarp');
+  if (timewarpEl) {
+    const productRows = state.all.filter((x) => x.productId === q.productId);
+    const warp = r.direction !== 'exact' && r.factor >= TIME_WARP_MIN_FACTOR
+      ? matchGuessedPeriod(r.guess, productRows, q.date, q.current)
+      : null;
+    const warpText = timeWarpText(r.guess, warp, { amount: isAmount(q.productId) });
+    timewarpEl.textContent = warpText;
+    timewarpEl.hidden = !warpText;
+  }
   // Number, "/100" and the hint note are separate spans so CSS can size them; the text reads the same.
   const scoreEl = $('r-score');
   const num = document.createElement('span');

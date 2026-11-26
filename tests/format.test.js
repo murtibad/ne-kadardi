@@ -84,6 +84,20 @@ test('inPeriod adds the locative that matches how the year is read', async () =>
   assert.equal(inPeriod('Eylül 2040'), "Eylül 2040'ta");
 });
 
+test('ofPeriod adds the genitive that matches how the year is read', async () => {
+  const { ofPeriod } = await import('../js/format.js');
+  assert.equal(ofPeriod('Haziran 2022'), "Haziran 2022'nin");
+  assert.equal(ofPeriod('2016'), "2016'nın");
+  assert.equal(ofPeriod('Ocak 2023'), "Ocak 2023'ün");
+  assert.equal(ofPeriod('2010'), "2010'un");
+  assert.equal(ofPeriod('Temmuz 2020'), "Temmuz 2020'nin");
+  assert.equal(ofPeriod('2019'), "2019'un");
+  assert.equal(ofPeriod('2014'), "2014'ün");
+  assert.equal(ofPeriod('2021'), "2021'in");
+  assert.equal(ofPeriod('2000'), "2000'in");
+  assert.equal(ofPeriod('Eylül 2040'), "Eylül 2040'ın");
+});
+
 test('formatRatio drops the decimal from 100 up', async () => {
   const { formatRatio } = await import('../js/format.js');
   assert.equal(formatRatio(12.43), '12,4');
