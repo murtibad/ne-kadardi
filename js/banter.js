@@ -536,10 +536,24 @@ export const HINT_LINES = [
 
 const YEAR_ANCHORS = {
   // Shown for every month of the year, so no sentence may pin a season (Pokémon Go came in July,
-  // the lockdown in March).
+  // the lockdown in March). Warm, shared memories only: no politics, disasters or losses.
+  // Each fact was checked against a source (Wikipedia, NTV, Habertürk) on 2026-11-26.
+  2010: "maNga'nın Eurovision'da Türkiye'yi ikinciliğe taşıdığı yıl.",
+  2011: "Muhteşem Yüzyıl'ın ekrana gelip herkesin Hürrem'i konuştuğu yıl.",
+  2012: "Herkesin 'Gangnam Style' dansını yapmaya çalıştığı yıl.",
+  2013: "Marmaray ile Avrupa ile Asya'nın denizin altından birleştiği yıl.",
+  2014: "Pharrell'in 'Happy' şarkısının herkesi dans ettirdiği yıl.",
+  2015: "Kara Sevda dizisinin başlayıp herkesi ekran başına topladığı yıl.",
   2016: "Pokémon Go'nun çıktığı, herkesin telefonla sokakta yaratık kovaladığı yıl.",
+  2017: "Herkesin 'Despacito' şarkısını mırıldandığı yıl.",
+  2018: "Sen Anlat Karadeniz'in başlayıp her akşam konuşulduğu yıl.",
+  // 2019 stays empty on purpose (an explicit requirement in the original design, see tests).
   2020: 'Evde ekmek yapıp bidonlarla kolonya stokladığımız karantina yılı.',
+  2021: "Herkesin 'Squid Game' dizisini konuştuğu yıl.",
+  2022: "Messi'nin Arjantin'le Dünya Kupası'nı kaldırdığı yıl.",
   2023: 'Cumhuriyetimizin yüzüncü yaşını gururla kutladığımız tarihi yıl.',
+  2024: "Yusuf Dikeç'in elini cebine koyup olimpiyat madalyası aldığı yıl.",
+  2025: 'Labubu bebeklerinin herkesin diline düştüğü yıl.',
 };
 
 function pick(pool, rng = Math.random, recent = []) {

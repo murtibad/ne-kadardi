@@ -130,7 +130,7 @@ test('hintComment returns line from HINT_LINES and is deterministic', () => {
 
 test('yearAnchor returns verified time capsules and null for 2019 / unverified years', () => {
   // Verified years
-  assert.equal(yearAnchor(2015), null);
+  assert.ok(yearAnchor(2015).includes('Kara Sevda'));
   assert.ok(typeof yearAnchor(2016) === 'string' && yearAnchor(2016).includes('Pokémon'));
   assert.ok(typeof yearAnchor(2020) === 'string' && yearAnchor(2020).includes('ekmek'));
   assert.ok(typeof yearAnchor(2023) === 'string' && yearAnchor(2023).includes('Cumhuriyet'));
@@ -141,11 +141,17 @@ test('yearAnchor returns verified time capsules and null for 2019 / unverified y
   // Explicitly required check: null for 2019
   assert.equal(yearAnchor(2019), null);
 
-  // Other unverified years or invalid inputs return null
-  assert.equal(yearAnchor(2010), null);
-  assert.equal(yearAnchor(2014), null);
-  assert.equal(yearAnchor(2022), null);
-  assert.equal(yearAnchor(2024), null);
+  // Sourced everyday memories for the other years (2026-11-26), every month of the year
+  assert.ok(yearAnchor(2010).includes('Eurovision'));
+  assert.ok(yearAnchor(2022).includes('Dünya Kupası'));
+  for (let y = 2010; y <= 2025; y += 1) {
+    if (y === 2019) continue;
+    const a = yearAnchor(y);
+    assert.ok(typeof a === 'string' && /yılı?\.$/.test(a) && a.length <= 85, `${y}: ${a}`);
+  }
+  // Years without a line or invalid inputs return null
+  assert.equal(yearAnchor(2009), null);
+  assert.equal(yearAnchor(2026), null);
   assert.equal(yearAnchor(null), null);
   assert.equal(yearAnchor(undefined), null);
   assert.equal(yearAnchor('bilinmeyen'), null);
@@ -253,5 +259,5 @@ test('gatedYearAnchor shows a year anchor at most once per 10 questions', async 
   assert.equal(gatedYearAnchor(2016, shown, 10).text, null);
   assert.ok(gatedYearAnchor(2016, shown, 11).text);
   assert.ok(gatedYearAnchor(2020, shown, 2).text); // other years are independent
-  assert.equal(gatedYearAnchor(2017, shown, 3).text, null); // no anchor for the year
+  assert.equal(gatedYearAnchor(2019, shown, 3).text, null); // no anchor for the year
 });
