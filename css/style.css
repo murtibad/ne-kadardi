@@ -2283,3 +2283,28 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 .daily-dots .tally-dot.daily-dot-pop {
   animation: tally-pop 0.34s cubic-bezier(.2, 1.5, .4, 1) 0.12s both;
 }
+
+/* One-tap clear button inside the question price box; mirrors .timeline-search-clear. */
+.guess-clear {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted-on-paper);
+  cursor: pointer;
+  transition: color 0.12s ease, background-color 0.12s ease, transform 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.guess-clear[hidden] { display: none; }
+.guess-clear:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.guess-clear:active { transform: scale(0.92); }
+.guess-clear:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+/* Drop the right padding when the clear button sits beside the input (its 44px hit box already leaves 13px around the X),
+   and reclaim left padding on long numbers so digits stay readable without touching the button or ₺ at 320 px. */
+.question-card .guess-field:has(.guess-clear:not([hidden])) input { padding-right: 0; }
+.question-card .guess-field:has(.guess-clear:not([hidden])) input:is(.long, .longer) { padding-left: 12px; }

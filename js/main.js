@@ -246,6 +246,7 @@ function nextQuestion(productId = null, date = null) {
   $('guess-input').value = '';
   $('guess-input').classList.remove('long', 'longer');
   delete $('guess-input').dataset.valid;
+  if ($('guess-clear')) $('guess-clear').hidden = true;
   $('guess-readout').textContent = emptyReadout();
   document.querySelector('#question-screen .guess-field')?.classList.remove('invalid');
   state.hintsUsed = 0;
@@ -1347,6 +1348,8 @@ async function init() {
       }
       guessPrev = el.value;
     }
+    const clearBtn = $('guess-clear');
+    if (clearBtn) clearBtn.hidden = e.target.value === '';
     fitGuessFont(e.target);
     const v = parseGuess(e.target.value);
     // An old "Geçerli bir fiyat yaz" next to a valid number reads like the game rejects it.
@@ -1362,6 +1365,16 @@ async function init() {
     }
     if (valid) e.target.dataset.valid = '1';
     else delete e.target.dataset.valid;
+  });
+  const clearGuess = () => {
+    const input = $('guess-input');
+    input.value = '';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.focus({ preventScroll: true });
+  };
+  $('guess-clear')?.addEventListener('click', clearGuess);
+  $('guess-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && e.target.value !== '') { e.preventDefault(); clearGuess(); }
   });
   // Skipping is free: no score and no stats, so players can drop a product they do not know.
   $('skip-btn').addEventListener('click', () => {
