@@ -474,7 +474,9 @@ export function formatWageDuration(wages) {
 // repeated "asgari ücret" noun in the trailing "bugün" clause ("...ediyordu, bugün 4 yıl 5 aylık.").
 // `asDuration` forces the duration form so both halves of one sentence use the same unit.
 function wageAmountText(wages, includeNoun = true, asDuration = wages >= 12) {
-  if (asDuration) return `${formatWageDuration(wages)}${includeNoun ? ' asgari ücret' : ''}`;
+  const duration = asDuration ? formatWageDuration(wages) : '';
+  // Under half a month rounds to nothing; then the plain multiple reads right ("0,3 asgari ücret").
+  if (duration) return `${duration}${includeNoun ? ' asgari ücret' : ''}`;
   return `${formatRatio(wages)} asgari ücret`;
 }
 
