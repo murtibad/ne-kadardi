@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.29] - 2026-11-26
+### Fixed
+- Yavaş bağlantıda Fiyat Arşivi yüklenirken geri dönülürse arşiv biraz sonra menünün üstüne yeniden açılıyordu.
+- Tahmin sonrası form kapanırken (0,2 sn) 'Bu soruyu geç' ve ipucu düğmelerine basılabiliyordu; Günün Fişi'nde bu, görülmemiş sonraki soruyu 0 puanla geçiyordu.
+- Fiş yırtılırken (0,3 sn) başka ekrana geçip geri dönünce fiş yazarkasada kalmış görünüyordu.
+- Arşivde ürünler arasında gezinirken kaydırma dinleyicileri birikiyordu (sonradan kaydırmada yakalama erken açılıyordu).
+
 ## [0.141.28] - 2026-11-26
 ### Changed
 - Konfeti artık zil ile aynı anda: 100 puanlık her tahminde (gerçek fiyata %10 yakın) çıkıyor; önceden yalnız kuruşu kuruşuna doğru tahminde çıktığı için neredeyse hiç görülmüyordu.
