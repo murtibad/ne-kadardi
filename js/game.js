@@ -351,12 +351,76 @@ function wageInForce(date, wages) {
   return sameYear.filter((x) => x.date <= date).sort((a, b) => (a.date < b.date ? 1 : -1))[0] ?? null;
 }
 
+// What one minimum wage bought, in things most people know the price of. Order is preference:
+// the first two that have sourced prices on the wage's date are used.
+export const WAGE_BASKET_IDS = ['gram-altin', 'benzin', 'ekmek', 'dolar'];
+
+// Only real, sourced numbers: a todo row (price null) or a non-verified row never enters the line.
+function isVerified(x) {
+  return Boolean(x) && Number.isFinite(x.price) && x.price > 0 && (x.status == null || x.status === 'verified');
+}
+
+// The item's price on a wage date: the latest verified row of the same year up to that month.
+// Same year only, like wageInForce: an older price would make the old wage look stronger than it was.
+function itemPriceInForce(rows, date) {
+  const year = date.slice(0, 4);
+  // A year-only date counts the whole year, like priceInForce does.
+  const limit = date.length < 7 ? `${year}-12` : date.slice(0, 7);
+  return rows
+    .filter((x) => isVerified(x) && x.date.slice(0, 4) === year && x.date.slice(0, 7) <= limit)
+    .sort((a, b) => (a.date < b.date ? 1 : -1))[0] ?? null;
+}
+
+// Under 10 the decimal matters ("7,4 gram altın"); above it whole units read easier.
+// Rounded down so the line never promises more than the wage really bought.
+function basketAmount(wage, price) {
+  const n = wage / price;
+  return n < 10 ? Math.floor((wage * 10) / price) / 10 : Math.floor(n);
+}
+
+/**
+ * Receipt line for a minimum wage question: what one wage bought then and buys today,
+ * e.g. "O tarihte 1 asgari ücretle 7,4 gram altın ya da 158 litre benzin alınabiliyordu; bugün ...".
+ * Returns null when no basket item has a verified price on that date and a current price.
+ */
+export function buildWageBasketLine(q, allQuestions) {
+  if (q.productId !== 'asgari-ucret' || !isVerified(q)) return null;
+  const nowWage = isVerified(q.current) ? q.current.price : null;
+  // The newest wage is also "today": saying "then X, today X" would say nothing.
+  const today = Boolean(nowWage && q.current.date === q.date && q.current.price === q.price);
+
+  const items = [];
+  for (const id of WAGE_BASKET_IDS) {
+    if (!COUNT_UNITS[id]) continue;
+    const rows = allQuestions.filter((x) => x.productId === id);
+    const then = itemPriceInForce(rows, q.date);
+    const now = rows.find((x) => x.current)?.current;
+    if (!then || !isVerified(now)) continue;
+    const thenAmount = basketAmount(q.price, then.price);
+    const nowAmount = nowWage ? basketAmount(nowWage, now.price) : null;
+    // "0 gram altın" reads like an error; skip the item instead.
+    if (thenAmount === 0 || nowAmount === 0) continue;
+    items.push({ unit: COUNT_UNITS[id], thenAmount, nowAmount });
+    if (items.length === 2) break;
+  }
+  if (items.length === 0) return null;
+
+  const list = (key) => items
+    .map((it) => `${formatNumber(it[key], { maximumFractionDigits: 1 })} ${it.unit}`)
+    .join(' ya da ');
+  if (today) return `Bugün 1 asgari ücretle ${list('nowAmount')} alınabiliyor.`;
+  const past = `O tarihte 1 asgari ücretle ${list('thenAmount')} alınabiliyordu`;
+  return nowWage ? `${past}; bugün ${list('nowAmount')}.` : `${past}.`;
+}
+
 /**
  * Purchasing-power line for the result receipt, based on the net minimum wage in force
  * on that date. Cheap items are counted ("102 adet"); items costing more than a wage
  * are expressed as wage multiples ("2,6 asgari ücret"), so the line never says "0 adet".
  */
 export function buildContextLine(q, allQuestions) {
+  // The wage itself gets a basket line; buildContextModel stays null for it so no receipt bars show.
+  if (q.productId === 'asgari-ucret') return buildWageBasketLine(q, allQuestions);
   const m = buildContextModel(q, allQuestions);
   if (!m) return null;
 
