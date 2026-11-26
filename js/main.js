@@ -43,6 +43,7 @@ const state = {
   wrap: { count: 0, sum: 0 }, // this sitting only, free play only; cleared once the menu line is shown
   sessionDirections: [], // this sitting only, free play only: 'under' | 'over' | 'exact'
   coldStreak: { zeros: 0, shown: false }, // this sitting only, free play only
+  tendencyShown: false, // this sitting only: the tendency note appears once
   factYear: null
 };
 
@@ -406,7 +407,9 @@ function onGuess(event) {
     state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
     state.result.badge = sessionBadge({ prevBest, score: state.result.score, playedAfter: state.played, recent: state.recentScores });
     state.sessionDirections.push(state.result.direction);
-    state.result.tendencyLine = sessionTendencyLine(state.sessionDirections);
+    // Once per sitting: by the second time it is just another line between the verdict and the quote.
+    state.result.tendencyLine = state.tendencyShown ? '' : sessionTendencyLine(state.sessionDirections);
+    if (state.result.tendencyLine) state.tendencyShown = true;
     const cold = advanceColdStreak(state.coldStreak, state.result.score);
     state.coldStreak = cold.state;
     state.result.coldTip = cold.text;
@@ -749,7 +752,7 @@ function renderResult(q, r) {
     const warp = r.direction !== 'exact' && r.factor >= TIME_WARP_MIN_FACTOR
       ? matchGuessedPeriod(r.guess, productRows, q.date, q.current)
       : null;
-    const warpText = timeWarpText(r.guess, warp, { amount: isAmount(q.productId) });
+    const warpText = warp?.kind === 'above-current' ? '' : timeWarpText(r.guess, warp, { amount: isAmount(q.productId) });
     timewarpEl.textContent = warpText;
     timewarpEl.hidden = !warpText;
   }
@@ -773,6 +776,7 @@ function renderResult(q, r) {
     ?? cashierComment(tier, Math.random, { amount: isAmount(q.productId), recent: state.recentLines });
   state.recentLines = rememberLine(state.recentLines, line);
   $('r-cashier').textContent = `“${line}”`;
+  $('r-cashier').hidden = Boolean(r.tendencyLine || r.coldTip);
   if ($('r-tendency')) {
     $('r-tendency').textContent = r.tendencyLine || '';
     $('r-tendency').hidden = !r.tendencyLine;
