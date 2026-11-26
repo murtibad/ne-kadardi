@@ -389,7 +389,7 @@ export function getShortUnit(unit) {
 // The wage in force on a date: the latest raise of the same year on or before it. Every raise
 // since 2010 is in prices.json (some years had only a January raise), so a gap means missing data
 // and gives null. A year-only date is safe only when that year had a single raise.
-function wageInForce(date, wages) {
+export function wageInForce(date, wages) {
   const year = date.slice(0, 4);
   const sameYear = wages.filter((x) => x.date.slice(0, 4) === year);
   if (date.length < 7) return sameYear.length === 1 ? sameYear[0] : null;

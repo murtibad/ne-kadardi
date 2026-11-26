@@ -43,16 +43,21 @@ export function initChartUi(d) {
   deps = d;
 }
 
-// Draws the product's sourced price history as a small log-scale line. The highlighted
-// point is the question's date; the figcaption carries the same story for screen readers.
-export function renderPriceChart(figId, productId, highlightDate = null, guess = null) {
+// Draws the product's sourced price history (log scale) or purchasing-power series (linear scale).
+// The highlighted point is the question's date; the figcaption carries the same story for screen readers.
+export function renderPriceChart(figId, productId, highlightDate = null, guess = null, options = null) {
   const fig = $(figId);
   fig._cleanupChart?.();
-  const t = getState().timelines.find((x) => x.id === productId);
+  const hasCustomSeries = Boolean(options && 'series' in options);
+  const series = hasCustomSeries ? options.series : null;
+  const t = hasCustomSeries ? null : getState().timelines.find((x) => x.id === productId);
   const pad = { top: 22, right: 14, bottom: 22, left: 14 };
-  const chart = t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, refPrice: guess, pad });
+  const chart = hasCustomSeries
+    ? (series && buildPriceChart(series.rows, { width: 320, height: 132, highlightDate, pad, scale: 'linear' }))
+    : (t && buildPriceChart(t.rows, { width: 320, height: 132, highlightDate, refPrice: guess, pad }));
   fig.hidden = !chart;
-  if (!chart) { fig.innerHTML = ''; delete fig._activateDate; delete fig._cleanupChart; return; }
+  if (!chart) { fig.innerHTML = ''; delete fig._activateDate; delete fig._cleanupChart; delete fig.dataset.key; return; }
+  const fmt = (p) => p.label ?? formatPrice(p.price);
   const first = chart.points[0];
   const last = chart.points[chart.points.length - 1];
   const marked = chart.points.find((p) => p.highlight);
@@ -60,13 +65,6 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const anchor = (p) => (p.x < chart.width * 0.25 ? 'start' : p.x > chart.width * 0.75 ? 'end' : 'middle');
   // A marked point in the middle leans its label away from the steeper side of the line.
   const markSide = marked && anchor(marked) === 'middle' ? labelSide(chart.points, chart.points.indexOf(marked)) : 'middle';
-  // The question's own price wins when an end label would collide with it; a leaning label
-  // covers about twice as much room on its side.
-  const room = (p) => ((markSide === 'left' && p.x < marked.x) || (markSide === 'right' && p.x > marked.x) ? 104 : 52);
-  const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i
-    && (!marked || p === marked || Math.abs(p.x - marked.x) > room(p)));
-
-  const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
   const labelX = (p) => (p !== marked || markSide === 'middle' ? p.x : markSide === 'left' ? p.x - 6 : p.x + 6);
   const labelAnchor = (p) => (p !== marked || markSide === 'middle' ? anchor(p) : markSide === 'left' ? 'end' : 'start');
   // Labels are monospace, 14px on the receipt chart and 11px in the archive (css/style.css):
@@ -74,13 +72,27 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const fontSize = figId === 'r-chart' ? 14 : 11;
   const textWidth = (s) => s.length * fontSize * 0.62;
   const capHeight = fontSize * 0.75;
-  const labelBoxes = labels.map((p) => {
-    const w = textWidth(formatPrice(p.price));
+  const labelBox = (p) => {
+    const w = textWidth(fmt(p));
     const a = labelAnchor(p);
     const x0 = a === 'start' ? labelX(p) : a === 'end' ? labelX(p) - w : labelX(p) - w / 2;
     const y = Math.max(11, p.y - 9);
     return { x0, x1: x0 + w, y0: y - capHeight, y1: y + 2 };
-  });
+  };
+  const markBox = marked ? labelBox(marked) : null;
+  const overlapsMark = (p) => {
+    if (!markBox) return false;
+    const b = labelBox(p);
+    return b.x0 - 4 < markBox.x1 && b.x1 + 4 > markBox.x0 && b.y0 - 2 < markBox.y1 && b.y1 + 2 > markBox.y0;
+  };
+  // The question's own price wins when an end label would collide with it; a leaning label
+  // covers about twice as much room on its side.
+  const room = (p) => ((markSide === 'left' && p.x < marked.x) || (markSide === 'right' && p.x > marked.x) ? 104 : 52);
+  const labels = [first, last, marked].filter((p, i, a) => p && a.indexOf(p) === i
+    && (!marked || p === marked || (Math.abs(p.x - marked.x) > room(p) && !overlapsMark(p))));
+
+  const dots = chart.points.map((p) => `<circle cx="${p.x}" cy="${p.y}" r="${p.highlight ? 5.5 : 2.5}" class="${p.highlight ? 'pc-mark' : p.isCurrent ? 'pc-now' : 'pc-dot'}"/>`).join('');
+  const labelBoxes = labels.map(labelBox);
   // The guess label tries both ends, above and below its line, and takes the spot that covers
   // no price label and no stretch of the data line; a close guess starts at the end whose points
   // are farther away.
@@ -91,7 +103,7 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const refLine = chart.ref
     ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refSpot.atStart ? pad.left : chart.width - pad.right}" y="${refSpot.y}" text-anchor="${refSpot.atStart ? 'start' : 'end'}" class="pc-ref-label">${escapeHTML(refText)}</text>`
     : '';
-  const priceLabels = labels.map((p) => `<text x="${labelX(p)}" y="${Math.max(11, p.y - 9)}" text-anchor="${labelAnchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(formatPrice(p.price))}</text>`).join('');
+  const priceLabels = labels.map((p) => `<text x="${labelX(p)}" y="${Math.max(11, p.y - 9)}" text-anchor="${labelAnchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(fmt(p))}</text>`).join('');
   // Drop a year label that would touch the one shown before it or the last one (which always stays).
   // A year label is about 36 units wide: centred ones take half each side, the first grows right and the last left.
   const gap = (aEdge, bEdge) => (aEdge ? 36 : 18) + (bEdge ? 36 : 18) + 4;
@@ -104,20 +116,21 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
       && all[all.length - 1].x - tk.x >= gap(i === 0, true))) shownTicks.push(tk);
   });
   const ticks = shownTicks.map((tk, i, a) => `<text x="${tk.x}" y="${chart.height - 6}" text-anchor="${i === 0 ? 'start' : i === a.length - 1 ? 'end' : 'middle'}" class="pc-tick">${tk.label}</text>`).join('');
-  const story = `${formatPeriod(first.date)}: ${formatPrice(first.price)}, ${formatPeriod(last.date)}: ${formatPrice(last.price)}`
-    + (marked && marked !== first && marked !== last ? `; işaretli ${formatPeriod(marked.date)}: ${formatPrice(marked.price)}` : '')
+  const story = `${formatPeriod(first.date)}: ${fmt(first)}, ${formatPeriod(last.date)}: ${fmt(last)}`
+    + (marked && marked !== first && marked !== last ? `; işaretli ${formatPeriod(marked.date)}: ${fmt(marked)}` : '')
     + (chart.ref ? `; tahminin: ${formatPrice(guess)}` : '');
-  // Redraw the line only for a new product, not on every archive re-render (search keystrokes, chips).
-  const key = `${productId}|${highlightDate}`;
+  // Redraw the line only for a new product or view mode, not on every archive re-render (search keystrokes, chips).
+  const key = `${productId}|${highlightDate}|${series ? `wage:${series.kind}` : 'tl'}`;
   const fresh = fig.dataset.key !== key;
   fig.dataset.key = key;
   const isCoarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
-  const captionTitle = `Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}`;
+  const captionTitle = series ? series.caption : `Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}`;
   const hintHtml = hasScrubbed() ? '' : ` <span class="pc-hint">${escapeHTML(chartHintText(isCoarse))}</span>`;
   const captionHtml = captionTitle + hintHtml;
   // Rebuilt on hide, so a hint removed mid-scrub does not come back.
   const restCaption = () => captionTitle + (hasScrubbed() ? '' : hintHtml);
-  fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" tabindex="0" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
+  const svgLabel = series ? `${captionTitle}. ${story}` : `Fiyat grafiği. ${story}`;
+  fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" tabindex="0" role="img" aria-label="${escapeHTML(svgLabel)}">
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
       ${refLine}${dots}${priceLabels}${ticks}
@@ -176,7 +189,7 @@ export function bindPriceChart(fig, chart, onActive) {
     dotEls.forEach((d, i) => d.classList.toggle('pc-active', i === idx));
     activeIdx = idx;
     const period = formatPeriod(p.date) + (p.isCurrent ? ' · güncel' : '');
-    const price = formatPrice(p.price);
+    const price = p.label ?? formatPrice(p.price);
     periodTspan.textContent = period;
     priceTspan.textContent = price;
     tip.hidden = false;

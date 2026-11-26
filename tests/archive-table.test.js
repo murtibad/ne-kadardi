@@ -79,7 +79,7 @@ test('the pinned row gets is-pinned, alongside is-current', () => {
   assert.match(timelineTableHtml(rows, { pinnedDate: '2026-01' }), /class="is-current is-pinned"/);
 });
 
-import { buildWageRows } from '../js/archive-table.js';
+import { buildWageRows, buildWageChartSeries } from '../js/archive-table.js';
 
 const wageRows = [
   { date: '2022-01', price: 5500, isCurrent: false },
@@ -120,4 +120,100 @@ test('the table prints wage texts, with "–" for rows without a wage', () => {
   const html = timelineTableHtml(rows, { wageTexts: ['102 adet', null] });
   assert.match(html, /<span class="timeline-price">102 adet<\/span>/);
   assert.match(html, /<span class="timeline-price">–<\/span>/);
+});
+
+const wageRowsSeries = [
+  { date: '2020-01', price: 2324, isCurrent: false },
+  { date: '2022-01', price: 5500, isCurrent: false },
+  { date: '2022-07', price: 6500, isCurrent: false },
+  { date: '2026-01', price: 28000, isCurrent: true },
+];
+
+test('buildWageChartSeries builds count series, skips rows without wages, and sets count caption', () => {
+  const product = {
+    id: 'benzin',
+    name: 'Benzin',
+    unit: '1 litre',
+    rows: [
+      { date: '2015-01', price: 4, isCurrent: false },
+      { date: '2020-01', price: 7.64, isCurrent: false },
+      { date: '2022-08', price: 20, isCurrent: false },
+      { date: '2026-01', price: 56, isCurrent: true },
+    ],
+  };
+  const series = buildWageChartSeries(product, wageRowsSeries);
+  assert.equal(series.kind, 'count');
+  assert.equal(series.caption, 'Yıllar içinde 1 asgari ücretle alınabilen');
+  assert.deepEqual(series.rows.map((r) => r.date), ['2020-01', '2022-08', '2026-01']);
+  assert.deepEqual(series.rows.map((r) => r.price), [304, 325, 500]);
+  assert.deepEqual(series.rows.map((r) => r.label), ['304 litre', '325 litre', '500 litre']);
+});
+
+test('buildWageChartSeries builds wages and share series with matching captions and labels', () => {
+  const dear = {
+    id: 'x-dear',
+    name: 'Pahalı',
+    unit: '1 adet',
+    rows: [
+      { date: '2020-01', price: 2324 * 40, isCurrent: false },
+      { date: '2022-01', price: 5500 * 38.4, isCurrent: false },
+      { date: '2026-01', price: 28000 * 42.5, isCurrent: true },
+    ],
+  };
+  const wSeries = buildWageChartSeries(dear, wageRowsSeries);
+  assert.equal(wSeries.kind, 'wages');
+  assert.equal(wSeries.caption, 'Yıllar içinde kaç asgari ücret');
+  assert.deepEqual(wSeries.rows.map((r) => r.price), [40, 38.4, 42.5]);
+  assert.deepEqual(wSeries.rows.map((r) => r.label), ['40 asgari ücret', '38,4 asgari ücret', '42,5 asgari ücret']);
+
+  const grant = {
+    id: 'kyk-burs',
+    name: 'KYK bursu',
+    unit: 'aylık',
+    rows: [
+      { date: '2020-01', price: 550, isCurrent: false },
+      { date: '2022-01', price: 850, isCurrent: false },
+      { date: '2026-01', price: 2000, isCurrent: true },
+    ],
+  };
+  const sSeries = buildWageChartSeries(grant, wageRowsSeries);
+  assert.equal(sSeries.kind, 'share');
+  assert.equal(sSeries.caption, 'Yıllar içinde asgari ücrete oranı');
+  assert.ok(Math.abs(sSeries.rows[0].price - (550 / 2324) * 100) < 1e-9);
+  assert.deepEqual(sSeries.rows.map((r) => r.label), ['%24', '%15', '%7,1']);
+});
+
+test('buildWageChartSeries returns null with fewer than 3 valid points or for asgari-ucret', () => {
+  const shortProduct = {
+    id: 'ekmek',
+    name: 'Ekmek',
+    unit: '1 adet',
+    rows: [
+      { date: '2015-01', price: 1, isCurrent: false },
+      { date: '2020-01', price: 2, isCurrent: false },
+      { date: '2026-01', price: 10, isCurrent: true },
+    ],
+  };
+  assert.equal(buildWageChartSeries(shortProduct, wageRowsSeries), null);
+
+  const wage = { id: 'asgari-ucret', name: 'Asgari ücret', unit: 'TL', rows: wageRowsSeries };
+  assert.equal(buildWageChartSeries(wage, wageRowsSeries), null);
+});
+
+test('buildWageChartSeries keeps mixed-kind products on one consistent y-axis', () => {
+  const mixed = {
+    id: 'imei-kayit-harci',
+    name: 'IMEI kayıt harcı',
+    unit: '1 telefon',
+    rows: [
+      { date: '2020-01', price: 464.8, isCurrent: false }, // 0.2 wages (count in table)
+      { date: '2022-01', price: 2750, isCurrent: false },  // 0.5 wages (share in table)
+      { date: '2026-01', price: 56000, isCurrent: true },  // 2 wages (wages in table)
+    ],
+  };
+  const series = buildWageChartSeries(mixed, wageRowsSeries);
+  assert.equal(series.kind, 'wages');
+  assert.equal(series.caption, 'Yıllar içinde kaç asgari ücret');
+  assert.deepEqual(series.rows.map((r) => Math.round(r.price * 100) / 100), [0.2, 0.5, 2]);
+  assert.deepEqual(series.rows.map((r) => r.label), ['0,2 asgari ücret', '0,5 asgari ücret', '2 asgari ücret']);
 });

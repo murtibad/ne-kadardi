@@ -355,3 +355,50 @@ test('stepText uses the "katına çıktı" wording from 2x and handles year-only
   const pts = [{ date: '2021', price: 10 }, { date: '2022', price: 25 }];
   assert.equal(stepText(pts, 1), '2022: ₺25,00 · bir önceki kayda göre 2,5 katına çıktı');
 });
+
+test('buildPriceChart supports a linear y-scale without changing the default log scale', () => {
+  const pad = { top: 10, right: 10, bottom: 30, left: 10 };
+  const rows = [
+    { date: '2010', price: 10, isCurrent: false },
+    { date: '2015', price: 55, isCurrent: false },
+    { date: '2020', price: 100, isCurrent: true },
+  ];
+  const linear = buildPriceChart(rows, { width: 320, height: 140, pad, scale: 'linear' });
+  const log = buildPriceChart(rows, { width: 320, height: 140, pad });
+
+  const verticalMiddle = pad.top + (140 - pad.top - pad.bottom) / 2;
+  assert.equal(linear.points[0].y, 140 - pad.bottom);
+  assert.equal(linear.points[1].y, verticalMiddle);
+  assert.equal(linear.points[2].y, pad.top);
+  assert.notEqual(log.points[1].y, verticalMiddle);
+
+  const flat = buildPriceChart(
+    [
+      { date: '2015', price: 5, isCurrent: false },
+      { date: '2020', price: 5, isCurrent: true },
+    ],
+    { width: 320, height: 140, pad, scale: 'linear' }
+  );
+  assert.equal(flat.points[0].y, verticalMiddle);
+  assert.equal(flat.points[1].y, verticalMiddle);
+});
+
+test('buildPriceChart preserves optional point labels and stepText uses them instead of TL', () => {
+  const labeled = buildPriceChart(
+    [
+      { date: '2021-01', price: 200, isCurrent: false, label: '200 litre' },
+      { date: '2022-01', price: 300, isCurrent: true, label: '300 litre' },
+    ],
+    { scale: 'linear' }
+  );
+  assert.equal(labeled.points[0].label, '200 litre');
+  assert.equal(labeled.points[1].label, '300 litre');
+  assert.equal(stepText(labeled.points, 0), 'Ocak 2021: 200 litre');
+  assert.equal(stepText(labeled.points, 1), 'Ocak 2022: 300 litre · bir önceki kayda göre %50 arttı');
+
+  const plain = buildPriceChart([
+    { date: '2021-01', price: 10 },
+    { date: '2022-01', price: 20 },
+  ]);
+  assert.equal('label' in plain.points[0], false);
+});

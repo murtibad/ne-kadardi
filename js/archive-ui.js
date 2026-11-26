@@ -107,7 +107,8 @@ export async function renderTimelineScreen(focusProductId = null) {
   const pin = getState().archivePin?.productId === product.id ? getState().archivePin : null;
   if (pin && tableMod.pinHiddenByCollapse(product.rows, pin.date)) expandedFor = product.id;
   // The toggle only exists where at least one row can be computed.
-  const wageRows = tableMod.buildWageRows(product, getState().timelines.find((t) => t.id === 'asgari-ucret')?.rows);
+  const wageTimelineRows = getState().timelines.find((t) => t.id === 'asgari-ucret')?.rows;
+  const wageRows = tableMod.buildWageRows(product, wageTimelineRows);
   const canWage = wageRows.some((t) => t !== null);
   const showWage = canWage && wageView;
   $('t-view').hidden = !canWage;
@@ -118,7 +119,12 @@ export async function renderTimelineScreen(focusProductId = null) {
     guesses: product.rows.map((r) => guessFor(getState().guesses, `${product.id}@${r.date}`)),
   });
   if (productChanged) playOnce($('t-rows-container'), [{ opacity: 0 }, { opacity: 1 }], 180);
-  renderPriceChart('t-chart', product.id, pin?.date ?? null);
+  if (showWage) {
+    const wageSeries = tableMod.buildWageChartSeries(product, wageTimelineRows);
+    renderPriceChart('t-chart', product.id, pin?.date ?? null, null, { series: wageSeries });
+  } else {
+    renderPriceChart('t-chart', product.id, pin?.date ?? null);
+  }
   linkRowsToChart();
   if (pin && !pinScrolled.has(pin)) {
     pinScrolled.add(pin); // once per opening; later re-renders (order, search) must not jump
