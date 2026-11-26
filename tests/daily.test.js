@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout, dailyProductIds, lastSevenDays, weekStripVisible } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout, dailyProductIds, lastSevenDays, weekStripVisible, dailyBiggestJump, dailyBiggestJumpLine } from '../js/daily.js';
 import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
@@ -420,4 +420,50 @@ test('weekStripVisible: needs at least 2 played days', () => {
   assert.equal(weekStripVisible(lastSevenDays({}, '2026-11-26')), false);
   assert.equal(weekStripVisible(lastSevenDays({ '2026-11-26': 412, '2026-11-20': 0 }, '2026-11-26')), true);
   assert.equal(weekStripVisible([]), false);
+});
+
+test('dailyBiggestJump picks the product with the largest current/question price ratio', () => {
+  const all = [
+    { id: 'benzin@2016-01', productId: 'benzin', name: 'Benzin', date: '2016-01', price: 4.28, current: { date: '2026-10', price: 53.2, status: 'verified' } },
+    { id: 'ceyrek-altin@2013-07', productId: 'ceyrek-altin', name: 'Çeyrek altın', date: '2013-07', price: 130, current: { date: '2026-10', price: 11570, status: 'verified' } },
+    { id: 'ekmek@2020-01', productId: 'ekmek', name: 'Halk Ekmek', date: '2020-01', price: 1, current: { date: '2026-10', price: 10, status: 'verified' } },
+  ];
+  const jump = dailyBiggestJump(all, ['benzin@2016-01', 'ceyrek-altin@2013-07', 'ekmek@2020-01']);
+  assert.deepEqual(jump, { title: 'Çeyrek altın', fromYear: 2013, factor: 89 });
+  assert.equal(dailyBiggestJumpLine(jump), "Bugünkü fişte en çok artan: Çeyrek altın. 2013'ten bugüne 89 katına çıktı.");
+});
+
+test('dailyBiggestJump uses questionTitle for labelled/model products', () => {
+  const all = [
+    { id: 'iphone@2019-10', productId: 'iphone', name: 'Yeni iPhone', label: 'iPhone 11', date: '2019-10', price: 7299, current: { date: '2025-09', price: 77999, status: 'verified' } },
+    { id: 'airpods@2020-01', productId: 'airpods', name: 'AirPods', label: 'AirPods 2', date: '2020-01', price: 1000, current: { date: '2025-09', price: 2000, status: 'verified' } },
+  ];
+  const jump = dailyBiggestJump(all, ['iphone@2019-10', 'airpods@2020-01']);
+  assert.equal(jump.title, 'iPhone 11');
+  assert.equal(jump.fromYear, 2019);
+  assert.equal(dailyBiggestJumpLine(jump), "Bugünkü fişte en çok artan: iPhone 11. 2019'dan bugüne 10,7 katına çıktı.");
+});
+
+test('dailyBiggestJump skips products lacking current price, unverified entries, or factor < 1.5; returns null when none qualify', () => {
+  const all = [
+    { id: 'no-cur@2015-01', productId: 'a', name: 'A', date: '2015-01', price: 10, current: null },
+    { id: 'todo-cur@2015-01', productId: 'b', name: 'B', date: '2015-01', price: 10, current: { date: '2026-10', price: 500, status: 'todo' } },
+    { id: 'small@2025-01', productId: 'c', name: 'C', date: '2025-01', price: 100, current: { date: '2026-10', price: 149, status: 'verified' } },
+    { id: 'drop@2025-01', productId: 'd', name: 'D', date: '2025-01', price: 100, current: { date: '2026-10', price: 80, status: 'verified' } },
+  ];
+  assert.equal(dailyBiggestJump(all, ['no-cur@2015-01', 'todo-cur@2015-01', 'small@2025-01', 'drop@2025-01', 'missing@2020']), null);
+  assert.equal(dailyBiggestJump([], ['a@2020']), null);
+  assert.equal(dailyBiggestJump(all, []), null);
+  assert.equal(dailyBiggestJumpLine(null), '');
+});
+
+test('dailyBiggestJumpLine formats 1.5x–1.99x rises as percentages and >=100x without decimals', () => {
+  assert.equal(
+    dailyBiggestJumpLine({ title: 'Simit', fromYear: 2024, factor: 1.65 }),
+    "Bugünkü fişte en çok artan: Simit. 2024'ten bugüne %65 arttı.",
+  );
+  assert.equal(
+    dailyBiggestJumpLine({ title: 'Gram altın', fromYear: 2010, factor: 123.4 }),
+    "Bugünkü fişte en çok artan: Gram altın. 2010'dan bugüne 123 katına çıktı.",
+  );
 });

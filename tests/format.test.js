@@ -98,6 +98,17 @@ test('ofPeriod adds the genitive that matches how the year is read', async () =>
   assert.equal(ofPeriod('Eylül 2040'), "Eylül 2040'ın");
 });
 
+test('fromPeriod adds the ablative that matches how the year is read', async () => {
+  const { fromPeriod } = await import('../js/format.js');
+  assert.equal(fromPeriod('2013'), "2013'ten");
+  assert.equal(fromPeriod(2016), "2016'dan");
+  assert.equal(fromPeriod('2020'), "2020'den");
+  assert.equal(fromPeriod('2010'), "2010'dan");
+  assert.equal(fromPeriod('2005'), "2005'ten");
+  assert.equal(fromPeriod('2000'), "2000'den");
+  assert.equal(fromPeriod('2040'), "2040'tan");
+});
+
 test('formatRatio drops the decimal from 100 up', async () => {
   const { formatRatio } = await import('../js/format.js');
   assert.equal(formatRatio(12.43), '12,4');

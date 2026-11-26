@@ -1,6 +1,7 @@
 // "Günün fişi": the same 5 questions for every player on a given day. Pure, no DOM.
-import { scoreTier, cutoffKey, preferOlder, FOLLOW_UP_IDS } from './game.js';
-import { formatPeriod, formatPrice } from './format.js';
+import { scoreTier, cutoffKey, preferOlder, FOLLOW_UP_IDS, yearOf } from './game.js';
+import { formatPeriod, formatPrice, formatIncrease, fromPeriod } from './format.js';
+import { questionTitle } from './share-model.js';
 
 const MONTHS_TR = [
   'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
@@ -302,4 +303,41 @@ export function lastSevenDays(log, todayKey) {
 /** The week strip is noise with a single day; show it from 2 played days on. */
 export function weekStripVisible(days) {
   return Array.isArray(days) && days.filter((d) => d.total !== null).length >= 2;
+}
+
+const MIN_JUMP_FACTOR = 1.5;
+
+/**
+ * Find the daily receipt question whose verified price rose the most from its date to its
+ * verified current price. Skips entries with missing current prices or factor < 1.5.
+ */
+export function dailyBiggestJump(all, ids) {
+  if (!Array.isArray(all) || !Array.isArray(ids) || ids.length === 0) return null;
+  let best = null;
+  for (const id of ids) {
+    const q = all.find((x) => x.id === id);
+    if (!q || (q.status !== undefined && q.status !== 'verified')) continue;
+    if (!Number.isFinite(q.price) || q.price <= 0) continue;
+    const cur = q.current;
+    if (!cur || (cur.status !== undefined && cur.status !== 'verified')) continue;
+    if (!Number.isFinite(cur.price) || cur.price <= 0) continue;
+    const fromYear = yearOf(String(q.date ?? ''));
+    if (!Number.isFinite(fromYear) || fromYear <= 0) continue;
+    const factor = cur.price / q.price;
+    if (!Number.isFinite(factor) || factor < MIN_JUMP_FACTOR) continue;
+    if (!best || factor > best.factor) {
+      best = { title: questionTitle(q), fromYear, factor };
+    }
+  }
+  return best;
+}
+
+/**
+ * Dinner-table summary line for the biggest price rise in today's daily receipt, e.g.
+ * "Bugünkü fişte en çok artan: Çeyrek altın. 2013'ten bugüne 89 katına çıktı."
+ */
+export function dailyBiggestJumpLine(jump) {
+  if (!jump || !jump.title || !Number.isFinite(jump.fromYear) || !Number.isFinite(jump.factor) || jump.factor < MIN_JUMP_FACTOR) return '';
+  // Two sentences: product titles often end in their own brackets ("Asgari ücret (ele geçen, aylık)").
+  return `Bugünkü fişte en çok artan: ${jump.title}. ${fromPeriod(jump.fromYear)} bugüne ${formatIncrease(jump.factor)}.`;
 }

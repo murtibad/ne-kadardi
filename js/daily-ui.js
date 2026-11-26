@@ -5,7 +5,7 @@ import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus, shareDailyImage } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, lastSevenDays, weekStripVisible } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, lastSevenDays, weekStripVisible, dailyBiggestJump, dailyBiggestJumpLine } from './daily.js';
 import { dailyIconUrls, preloadIcons } from './icon-preload.js';
 
 const $ = (id) => document.getElementById(id);
@@ -288,6 +288,12 @@ function openDailyReview(saved) {
     milestoneEl.textContent = milestone;
     milestoneEl.hidden = !milestone;
   }
+  const jumpText = dailyBiggestJumpLine(dailyBiggestJump(state.all, saved.ids));
+  const jumpEl = $('daily-review-jump');
+  if (jumpEl) {
+    jumpEl.textContent = jumpText;
+    jumpEl.hidden = !jumpText;
+  }
   renderWeekStrip(lastSevenDays(loadDailyLog(), saved.key));
   $('daily-review-next').textContent = nextReceiptIn();
   // A fresh open must not inherit "kopyalandı" from a share made just before closing.
@@ -380,6 +386,12 @@ export function renderDailyCard() {
   if (milestoneEl) {
     milestoneEl.textContent = milestone;
     milestoneEl.hidden = !milestone;
+  }
+  const jumpText = dailyBiggestJumpLine(dailyBiggestJump(state.all, ids));
+  const jumpEl = $('r-card-jump');
+  if (jumpEl) {
+    jumpEl.textContent = jumpText;
+    jumpEl.hidden = !jumpText;
   }
   // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
   dailyEndTurn = true;

@@ -135,12 +135,22 @@ export function formatIncrease(ratio) {
 const LOC_ONES = ['', 'de', 'de', 'te', 'te', 'te', 'da', 'de', 'de', 'da'];
 const LOC_TENS = ['', 'da', 'de', 'da', 'ta', 'de', 'ta', 'te', 'de', 'da'];
 
+function locativeSuffix(periodText) {
+  const n = Number(String(periodText).match(/(\d+)\s*$/)?.[1]);
+  if (!Number.isFinite(n)) return null;
+  return n % 10 ? LOC_ONES[n % 10] : n % 100 ? LOC_TENS[(n % 100) / 10] : 'de';
+}
+
 /** "Temmuz 2020" -> "Temmuz 2020'de", "2016" -> "2016'da". */
 export function inPeriod(periodText) {
-  const n = Number(periodText.match(/(\d+)\s*$/)?.[1]);
-  if (!Number.isFinite(n)) return periodText;
-  const suffix = n % 10 ? LOC_ONES[n % 10] : n % 100 ? LOC_TENS[(n % 100) / 10] : 'de';
-  return `${periodText}'${suffix}`;
+  const suffix = locativeSuffix(periodText);
+  return suffix ? `${periodText}'${suffix}` : periodText;
+}
+
+/** "2013" -> "2013'ten", "2016" -> "2016'dan", "2020" -> "2020'den". */
+export function fromPeriod(periodText) {
+  const suffix = locativeSuffix(periodText);
+  return suffix ? `${periodText}'${suffix}n` : periodText;
 }
 
 // Genitive after a year follows how its last word is read aloud: 2022'nin (iki), 2016'nın (altı),
