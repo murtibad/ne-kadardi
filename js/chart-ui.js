@@ -72,12 +72,25 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const fontSize = figId === 'r-chart' ? 14 : 11;
   const textWidth = (s) => s.length * fontSize * 0.62;
   const capHeight = fontSize * 0.75;
-  const labelBox = (p) => {
+  const labelSpan = (p) => {
     const w = textWidth(fmt(p));
     const a = labelAnchor(p);
     const x0 = a === 'start' ? labelX(p) : a === 'end' ? labelX(p) - w : labelX(p) - w / 2;
-    const y = Math.max(11, p.y - 9);
-    return { x0, x1: x0 + w, y0: y - capHeight, y1: y + 2 };
+    return [x0, x0 + w];
+  };
+  // Above the point by default; below it when the line climbs higher inside the label's span
+  // (a wage-view end point after a peak), so the text does not sit on the line.
+  const labelY = (p) => {
+    const above = Math.max(11, p.y - 9);
+    const [x0, x1] = labelSpan(p);
+    const blocked = chart.points.some((q) => q !== p && q.x >= x0 - 4 && q.x <= x1 + 4 && q.y < above + 2);
+    const below = p.y + capHeight + 7;
+    return blocked && below < chart.height - pad.bottom ? below : above;
+  };
+  const labelBox = (p) => {
+    const [x0, x1] = labelSpan(p);
+    const y = labelY(p);
+    return { x0, x1, y0: y - capHeight, y1: y + 2 };
   };
   const markBox = marked ? labelBox(marked) : null;
   const overlapsMark = (p) => {
@@ -103,7 +116,7 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const refLine = chart.ref
     ? `<line x1="${pad.left}" y1="${chart.ref.y}" x2="${chart.width - pad.right}" y2="${chart.ref.y}" class="pc-ref"/><text x="${refSpot.atStart ? pad.left : chart.width - pad.right}" y="${refSpot.y}" text-anchor="${refSpot.atStart ? 'start' : 'end'}" class="pc-ref-label">${escapeHTML(refText)}</text>`
     : '';
-  const priceLabels = labels.map((p) => `<text x="${labelX(p)}" y="${Math.max(11, p.y - 9)}" text-anchor="${labelAnchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(fmt(p))}</text>`).join('');
+  const priceLabels = labels.map((p) => `<text x="${labelX(p)}" y="${labelY(p)}" text-anchor="${labelAnchor(p)}" class="${p.highlight ? 'pc-label pc-label-mark' : 'pc-label'}">${escapeHTML(fmt(p))}</text>`).join('');
   // Drop a year label that would touch the one shown before it or the last one (which always stays).
   // A year label is about 36 units wide: centred ones take half each side, the first grows right and the last left.
   const gap = (aEdge, bEdge) => (aEdge ? 36 : 18) + (bEdge ? 36 : 18) + 4;

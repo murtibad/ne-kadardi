@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.1] - 2026-11-26
+### Fixed
+- Grafikte uç noktadaki değer etiketi, çizgi o bölgede noktadan daha yukarıdaysa noktanın altına yazılıyor (maaş görünümünde '394 litre' çizginin üstüne biniyordu).
+
 ## [0.163.0] - 2026-11-26
 ### Added
 - Fiyat Arşivi'nde '1 maaşla kaç tane?' seçiliyken grafik de maaş cinsinden çiziliyor ('Yıllar içinde 1 asgari ücretle alınabilen': 304 litre → 394 litre); TL'ye dönünce normal grafik geri geliyor.
