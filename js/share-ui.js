@@ -254,6 +254,7 @@ function cleanupPreview() {
   previewUrl = null;
   previewFile = null;
   previewText = null;
+  $('share-preview-img').alt = 'Paylaşılacak sonuç görseli';
   const textBtn = $('share-preview-text');
   clearTimeout(textBtn.restoreTimer);
   if (textBtn.dataset.label) textBtn.textContent = textBtn.dataset.label;

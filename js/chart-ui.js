@@ -63,7 +63,7 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const marked = chart.points.find((p) => p.highlight);
   // Labels are monospace, 14px on the receipt chart and 11px in the archive (css/style.css):
   // a character is about 0,62 em wide and capitals about 0,75 em tall.
-  const fontSize = figId === 'r-chart' ? 14 : 11;
+  const fontSize = figId === 'r-chart' ? 14 : 12; // matches css: 14px receipt, 12px archive
   const textWidth = (s) => s.length * fontSize * 0.62;
   const capHeight = fontSize * 0.75;
   // Keep end labels inside the box: anchor them towards the middle.

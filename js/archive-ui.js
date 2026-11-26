@@ -2,7 +2,7 @@
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPeriod, formatIncrease, unitLine } from './format.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
-import { pickFromCategory } from './game.js';
+import { pickFromCategory, isAmount } from './game.js';
 import { renderPriceChart } from './chart-ui.js';
 import { guessedProductIds, progressText } from './progress.js';
 import { guessFor } from './guess-memory.js';
@@ -112,6 +112,10 @@ export async function renderTimelineScreen(focusProductId = null) {
   const canWage = wageRows.some((t) => t !== null);
   const showWage = canWage && wageView;
   $('t-view').hidden = !canWage;
+  // Amounts (pensions, grants) are not bought: compare them with the wage instead of counting.
+  const amountProduct = isAmount(product.id);
+  $('t-view').querySelector('[data-view="tl"]').textContent = amountProduct ? 'TL tutarı' : 'TL fiyatı';
+  $('t-view').querySelector('[data-view="wage"]').textContent = amountProduct ? 'Asgari ücrete oranı' : '1 maaşla kaç tane?';
   for (const b of $('t-view').querySelectorAll('button')) b.setAttribute('aria-pressed', String((b.dataset.view === 'wage') === showWage));
   $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
     newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id, pinnedDate: pin?.date ?? null,

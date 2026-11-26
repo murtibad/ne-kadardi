@@ -336,6 +336,8 @@ function nextQuestion(productId = null, date = null, { excludeDate = null, exclu
   $('q-explain').textContent = q.explain ?? '';
   $('q-explain').hidden = !q.explain;
   $('guess-input').value = '';
+  // Run the input handler on the empty box so its grouping memory (autoGrouped, previous value) resets.
+  $('guess-input').dispatchEvent(new Event('input'));
   $('guess-input').classList.remove('long', 'longer');
   delete $('guess-input').dataset.valid;
   if ($('guess-clear')) $('guess-clear').hidden = true;
@@ -1242,7 +1244,7 @@ function renderFact() {
   const chosenYear = yearFact ? state.factYear : null;
   lastFactId = f.productId;
   // Its two printed prices must not come back as a free-play question (normal play skips them too).
-  state.factSpoiled = [f.date, f.currentDate].filter(Boolean).map((d) => `${f.productId}@${d}`);
+  state.factSpoiled = [...new Set([...(state.factSpoiled ?? []), ...[f.date, f.currentDate].filter(Boolean).map((d) => `${f.productId}@${d}`)])];
   const img = f.image ? `<img src="${escapeHTML(f.image.src)}" alt="" width="40" height="40" class="fact-img">` : '';
   const playLabel = factPlayLabel(chosenYear);
   $('fact-body').innerHTML = `
