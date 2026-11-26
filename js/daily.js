@@ -1,7 +1,7 @@
 // "Günün fişi": the same 5 questions for every player on a given day. Pure, no DOM.
 import { scoreTier, cutoffKey, preferOlder, FOLLOW_UP_IDS, yearOf } from './game.js';
 import { formatPeriod, formatPrice, formatIncrease, fromPeriod } from './format.js';
-import { questionTitle } from './share-model.js';
+import { questionTitle } from './share-text.js';
 
 const MONTHS_TR = [
   'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
