@@ -1,5 +1,6 @@
 import { formatPrice } from './format.js';
 import { refLabelAtStart } from './price-chart.js';
+import { fitText, dailyImageLayout } from './daily.js';
 
 const W = 1080;
 
@@ -426,5 +427,115 @@ export async function renderShareImage(model) {
       if (blob) resolve(blob);
       else reject(new Error('Canvas toBlob failed'));
     }, 'image/png');
+  });
+}
+
+// Spoiler-free "Günün Fişi" image: tier squares and product names, never prices.
+export async function renderDailyShareImage(model) {
+  await loadFonts();
+  const icon = await loadIcon('img/icon-192.png');
+  const lay = dailyImageLayout(model.rows.length, Boolean(model.streakLine));
+  const H = lay.height;
+  const mono = (size, bold) => `${bold ? 'bold ' : ''}${size}px "Space Mono", ui-monospace, monospace`;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext('2d', { alpha: false });
+  ctx.fillStyle = COLORS.bg;
+  ctx.fillRect(0, 0, W, H);
+
+  const startX = 80;
+  const endX = W - 80;
+  const startY = 80;
+  const endY = H - 80;
+  const cx = W / 2;
+  drawReceiptPaper(ctx, startX, startY, endX, endY);
+
+  const left = startX + 80;
+  const right = endX - 80;
+  const divider = (dy) => {
+    ctx.beginPath();
+    ctx.setLineDash([12, 12]);
+    ctx.moveTo(left, dy);
+    ctx.lineTo(right, dy);
+    ctx.strokeStyle = COLORS.muted;
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.setLineDash([]);
+  };
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = COLORS.ink;
+  ctx.font = mono(36, true);
+  ctx.fillText('*** NE KADARDI? ***', cx, startY + 90);
+
+  // The title ("GÜNÜN FİŞİ · 26 KASIM") shrinks to fit the paper.
+  let titleSize = 52;
+  ctx.font = mono(titleSize, true);
+  while (ctx.measureText(model.title).width > right - left && titleSize > 30) {
+    titleSize -= 2;
+    ctx.font = mono(titleSize, true);
+  }
+  ctx.fillText(model.title, cx, startY + 200);
+  divider(startY + 260);
+
+  const sq = 56;
+  ctx.textBaseline = 'alphabetic';
+  model.rows.forEach((row, i) => {
+    const mid = lay.rowsTop + i * lay.rowH + lay.rowH / 2;
+    ctx.fillStyle = COLORS.fill[row.tier] || COLORS.accent;
+    ctx.fillRect(left, mid - sq / 2, sq, sq);
+    ctx.strokeStyle = COLORS.tier[row.tier] || COLORS.ink;
+    ctx.lineWidth = 4;
+    ctx.strokeRect(left, mid - sq / 2, sq, sq);
+
+    ctx.font = mono(40, true);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = COLORS.tier[row.tier] || COLORS.ink;
+    const scoreText = String(row.score);
+    ctx.fillText(scoreText, right, mid + 14);
+    const scoreW = ctx.measureText(scoreText).width;
+
+    ctx.font = mono(38, false);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = COLORS.ink;
+    const nameX = left + sq + 28;
+    ctx.fillText(fitText(row.name, right - scoreW - 24 - nameX, (s) => ctx.measureText(s).width), nameX, mid + 13);
+  });
+
+  divider(lay.totalY - 70);
+  ctx.font = mono(44, true);
+  ctx.fillStyle = COLORS.ink;
+  ctx.textAlign = 'left';
+  ctx.fillText('TOPLAM', left, lay.totalY);
+  ctx.textAlign = 'right';
+  ctx.font = mono(64, true);
+  ctx.fillText(model.total, right, lay.totalY + 6);
+
+  if (model.streakLine) {
+    ctx.textAlign = 'center';
+    ctx.font = mono(44, true);
+    ctx.fillStyle = COLORS.accent;
+    ctx.fillText(model.streakLine, cx, lay.streakY);
+  }
+
+  const bottomY = endY - 70;
+  ctx.font = mono(36, true);
+  ctx.fillStyle = COLORS.muted;
+  if (icon) {
+    const iconSize = 64;
+    const totalW = iconSize + 24 + ctx.measureText(model.siteAddress).width;
+    const x0 = cx - totalW / 2;
+    ctx.textAlign = 'left';
+    ctx.drawImage(icon, x0, bottomY - iconSize + 10, iconSize, iconSize);
+    ctx.fillText(model.siteAddress, x0 + iconSize + 24, bottomY);
+  } else {
+    ctx.textAlign = 'center';
+    ctx.fillText(model.siteAddress, cx, bottomY);
+  }
+
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error('Canvas toBlob failed'))), 'image/png');
   });
 }
