@@ -100,6 +100,51 @@ export function preferOlder(own, cutoff) {
   return older.length > 0 ? older : own;
 }
 
+/**
+ * Pick a question for `productId`, excluding `excludeDate` when given (e.g. the price just
+ * shown on the home fact card). Prefers dates older than 12 months and unseen questions,
+ * avoiding `previousId` when alternatives exist. Returns null when no other date qualifies.
+ */
+export function pickForProduct(
+  questions,
+  productId,
+  { excludeDate = null, previousId = null, seen = new Set(), today = new Date(), rng = Math.random } = {},
+) {
+  if (!Array.isArray(questions) || !productId) return null;
+  let own = questions.filter((q) => q.productId === productId && (!excludeDate || q.date !== excludeDate));
+  if (own.length === 0) return null;
+  own = preferOlder(own, cutoffKey(today));
+  const unseen = own.filter((q) => !seen.has(q.id) && q.id !== previousId);
+  return pickRandom(unseen.length > 0 ? unseen : own, previousId, rng);
+}
+
+/**
+ * Pick a question from `year`, never returning `excludeProductId`@`excludeDate` (the price
+ * just shown on the home fact card). Prefers a different product from that year, then another
+ * date of the same product; prefers unseen questions and avoids `previousId` when alternatives
+ * exist. Returns null when no other question exists in `year`.
+ */
+export function pickForYear(
+  questions,
+  year,
+  { excludeProductId = null, excludeDate = null, previousId = null, seen = new Set(), rng = Math.random } = {},
+) {
+  if (!Array.isArray(questions) || !Number.isInteger(year)) return null;
+  const inYear = questions.filter((q) => typeof q.date === 'string' && yearOf(q.date) === year
+    && !(excludeProductId && excludeDate && q.productId === excludeProductId && q.date === excludeDate));
+  if (inYear.length === 0) return null;
+  const otherProduct = excludeProductId ? inYear.filter((q) => q.productId !== excludeProductId) : inYear;
+  const pool = otherProduct.length > 0 ? otherProduct : inYear;
+  const unseen = pool.filter((q) => !seen.has(q.id) && q.id !== previousId);
+  const notPrev = pool.filter((q) => q.id !== previousId);
+  const candidates = unseen.length > 0 ? unseen : (notPrev.length > 0 ? notPrev : pool);
+  // Pick the product first so products with multiple entries in that year do not dominate.
+  const ids = [...new Set(candidates.map((q) => q.productId))];
+  const chosenId = ids[Math.floor(rng() * ids.length)];
+  const own = candidates.filter((q) => q.productId === chosenId);
+  return pickRandom(own, previousId, rng);
+}
+
 // Every question should feel like a new category: pick a product that was not shown recently
 // (all products take turns), then a random year of that product. Products with many entries
 // (e.g. 17 yearly values) therefore do not dominate. `recent` holds the latest product ids;

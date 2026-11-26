@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { pickFact, factYears } from '../js/fact.js';
+import { pickFact, factYears, factPlayLabel } from '../js/fact.js';
 import { buildTimelines } from '../js/timeline.js';
 
 const row = (date, price, isCurrent = false, currentLabel = null) => ({ date, price, isCurrent, currentLabel });
@@ -116,8 +116,29 @@ test('real data yields eligible fact years and cycles within a chosen year', () 
   for (const y of [years[0], years[years.length - 1]]) {
     const first = pickFact(tls, { random: () => 0, year: y });
     assert.ok(first && first.thenLabel.includes(String(y)));
+    assert.ok(typeof first.date === 'string' && first.date.startsWith(String(y)));
     const second = pickFact(tls, { random: () => 0, year: y, skipId: first.productId });
     assert.ok(second && second.thenLabel.includes(String(y)));
+    assert.ok(typeof second.date === 'string' && second.date.startsWith(String(y)));
     assert.notEqual(second.productId, first.productId);
   }
+});
+
+test('pickFact returns the shown date for both random and year-filtered picks', () => {
+  const oldest = pickFact(timelines, { random: () => 0 });
+  assert.equal(oldest.productId, 'gold');
+  assert.equal(oldest.date, '2010-01');
+
+  const fromYear = pickFact(yearTimelines, { random: () => 0, year: 2015 });
+  assert.equal(fromYear.productId, 'a');
+  assert.equal(fromYear.date, '2015-01');
+});
+
+test('factPlayLabel names the chosen year or keeps the default label for Rastgele', () => {
+  assert.equal(factPlayLabel(null), 'Bunu tahmin et →');
+  assert.equal(factPlayLabel(undefined), 'Bunu tahmin et →');
+  assert.equal(factPlayLabel(''), 'Bunu tahmin et →');
+  assert.equal(factPlayLabel('not-a-year'), 'Bunu tahmin et →');
+  assert.equal(factPlayLabel(2014), '2014 yılından bir soru çöz →');
+  assert.equal(factPlayLabel('2014'), '2014 yılından bir soru çöz →');
 });

@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText, formatInputThousands, keyboardFitDelta } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, shouldReplaceBestGuess, resolveBestGuess, matchGuessedPeriod, timeWarpText, TIME_WARP_MIN_FACTOR, homeStreakText } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickForProduct, pickForYear, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, shouldReplaceBestGuess, resolveBestGuess, matchGuessedPeriod, timeWarpText, TIME_WARP_MIN_FACTOR, homeStreakText } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
@@ -13,7 +13,7 @@ import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
 import { buildHint, buildEverydayHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
-import { pickFact, factYears } from './fact.js';
+import { pickFact, factYears, factPlayLabel } from './fact.js';
 import { buildPriceChart } from './price-chart.js';
 import { initChartUi, renderPriceChart } from './chart-ui.js';
 import { countUpFrames, easeOutCubic } from './count-up.js';
@@ -222,8 +222,9 @@ function pinArchive(productId, date, fromResult) {
 }
 
 // `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
-// adding `date` pins the exact question from a shared `?soru=` link.
-function nextQuestion(productId = null, date = null) {
+// adding `date` pins the exact question from a shared `?soru=` link. `excludeDate` avoids asking
+// the exact date just shown on the fact card; `excludeId` avoids a spoiled `product@date` on fallback.
+function nextQuestion(productId = null, date = null, { excludeDate = null, excludeId = null } = {}) {
   lastScoredQuestion = null; // the same question can come back (fact card, friend link): it must be answerable again
   $('next-btn').textContent = 'Sonraki soru →';
   setDailyEndTurn(false);
@@ -236,19 +237,20 @@ function nextQuestion(productId = null, date = null) {
     $('r-tax-details').hidden = true;
     $('r-tax-details').open = false;
   }
-  const exact = productId && date ? state.all.find((x) => x.productId === productId && x.date === date) : null;
-  const ofProduct = productId ? state.all.filter((x) => x.productId === productId) : [];
-  // Avoid repeating the last question, unless it is the product's only one.
-  const fresh = ofProduct.filter((x) => x.id !== state.question?.id);
-  const pool = fresh.length ? fresh : ofProduct;
   const today = new Date();
+  const exact = productId && date ? state.all.find((x) => x.productId === productId && x.date === date) : null;
+  const forProduct = !exact && productId
+    ? pickForProduct(state.all, productId, { excludeDate, previousId: state.question?.id, seen: state.seen, today })
+    : null;
   // Free play skips products reserved for today's "Günün Fişi" so the two modes do not repeat each other.
-  const dailyExclude = !productId ? dailyProductIds(state.all, dayKey(today), categoryOf) : null;
+  const dailyExclude = !exact && !forProduct ? dailyProductIds(state.all, dayKey(today), categoryOf) : null;
   // Someone who has never played starts with the openers (game.js OPENER_IDS), skips included.
   let opener = null;
   // The curated openers stay as they are: a first-time player has not seen today's daily yet.
-  while (!productId && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
-  const q = exact ?? opener ?? (pool.length ? pool[Math.floor(Math.random() * pool.length)] : pickByCategory(state.all, state.recentProducts, state.question?.id, Math.random, state.seen, today, dailyExclude));
+  while (!productId && !excludeId && state.firstVisit && !opener && state.openerIndex < OPENER_IDS.length) opener = openerFor(state.all, state.openerIndex++);
+  const spoiledId = excludeId ?? (productId && excludeDate ? `${productId}@${excludeDate}` : null);
+  const fallbackPool = spoiledId ? state.all.filter((x) => x.id !== spoiledId) : state.all;
+  const q = exact ?? opener ?? forProduct ?? pickByCategory(fallbackPool, state.recentProducts, state.question?.id, Math.random, state.seen, today, dailyExclude);
   if (!q) {
     showMessage('Gösterilecek soru yok.');
     return;
@@ -1187,12 +1189,14 @@ function swapFact({ spin = true } = {}) {
 }
 
 function renderFact() {
-  const f = pickFact(state.timelines, { skipId: lastFactId, year: state.factYear })
-    ?? (state.factYear !== null ? pickFact(state.timelines, { skipId: lastFactId }) : null);
+  const yearFact = state.factYear !== null ? pickFact(state.timelines, { skipId: lastFactId, year: state.factYear }) : null;
+  const f = yearFact ?? pickFact(state.timelines, { skipId: lastFactId });
   $('fact-card').hidden = !f;
   if (!f) return;
+  const chosenYear = yearFact ? state.factYear : null;
   lastFactId = f.productId;
   const img = f.image ? `<img src="${escapeHTML(f.image.src)}" alt="" width="40" height="40" class="fact-img">` : '';
+  const playLabel = factPlayLabel(chosenYear);
   $('fact-body').innerHTML = `
     <p class="fact-product">${img}<span><strong>${escapeHTML(f.name)}</strong><small>${escapeHTML(f.unit)}</small></span></p>
     <div class="fact-pair">
@@ -1201,11 +1205,22 @@ function renderFact() {
       <p class="fact-now"><span>${escapeHTML(f.nowLabel)}</span><strong>${escapeHTML(f.nowPrice)}</strong></p>
     </div>
     <p class="fact-ratio"><strong>${escapeHTML(f.ratio)}</strong> çıktı · <a href="#arsiv" data-product="${escapeHTML(f.productId)}">fiyat geçmişi</a></p>
-    <button type="button" class="fact-play">Bunu tahmin et →</button>`;
+    <button type="button" class="fact-play">${escapeHTML(playLabel)}</button>`;
   $('fact-body').querySelector('.fact-play').onclick = () => {
     // pushState keeps Back working without firing hashchange, which would show the old question.
     history.pushState(null, '', '#tahmin');
-    nextQuestion(f.productId);
+    if (chosenYear !== null) {
+      const q = pickForYear(state.all, chosenYear, {
+        excludeProductId: f.productId,
+        excludeDate: f.date,
+        previousId: state.question?.id,
+        seen: state.seen,
+      });
+      if (q) nextQuestion(q.productId, q.date);
+      else nextQuestion(null, null, { excludeId: `${f.productId}@${f.date}` });
+    } else {
+      nextQuestion(f.productId, null, { excludeDate: f.date });
+    }
   };
   $('fact-body').querySelector('a').onclick = () => { state.selectedTimelineProduct = f.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; };
 }

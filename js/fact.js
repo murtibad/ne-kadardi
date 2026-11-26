@@ -64,6 +64,7 @@ export function pickFact(timelines, { random = Math.random, skipId = null, year 
   const { t, picked, current, ratio } = pool[Math.floor(random() * pool.length) % pool.length];
   return {
     productId: t.id,
+    date: picked.date,
     name: t.name,
     unit: unitLine(t.unit, t.region),
     image: t.image,
@@ -73,4 +74,10 @@ export function pickFact(timelines, { random = Math.random, skipId = null, year 
     nowPrice: formatPrice(current.price),
     ratio: `${formatRatio(ratio)} katına`,
   };
+}
+
+/** Button label on the home fact card: names the chosen year, or invites guessing the product. */
+export function factPlayLabel(year) {
+  const y = year === null || year === undefined || year === '' ? null : Number(year);
+  return Number.isInteger(y) ? `${y} yılından bir soru çöz →` : 'Bunu tahmin et →';
 }
