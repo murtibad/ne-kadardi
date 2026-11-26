@@ -387,7 +387,10 @@ export function renderDailyCard() {
     milestoneEl.textContent = milestone;
     milestoneEl.hidden = !milestone;
   }
-  const jumpText = dailyBiggestJumpLine(dailyBiggestJump(state.all, ids));
+  const jump = dailyBiggestJump(state.all, ids);
+  const lastQ = state.all.find((x) => x.id === ids[ids.length - 1]);
+  // The last question's receipt (with its own change line) is right above the card.
+  const jumpText = jump && lastQ && jump.title === questionTitle(lastQ) ? '' : dailyBiggestJumpLine(jump);
   const jumpEl = $('r-card-jump');
   if (jumpEl) {
     jumpEl.textContent = jumpText;

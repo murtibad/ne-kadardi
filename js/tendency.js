@@ -9,7 +9,7 @@ export const TENDENCY_UNDER_LINE = 'Bu oturumda genelde az tahmin ettin: eski fi
 export const TENDENCY_OVER_LINE = 'Bu oturumda genelde fazla tahmin ettin: o zamanlar her şey daha ucuzmuş.';
 
 export const COLD_STREAK_THRESHOLD = 3;
-export const COLD_STREAK_TIP = 'İpucu: önce o yılın asgari ücretini düşün, sonra ürünü ona göre tahmin et. İpucu düğmesi de işe yarar.';
+export const COLD_STREAK_TIP = 'İpucu: önce o yılın asgari ücretini düşün, ürünü ona göre tahmin et.';
 
 /**
  * Return a session tendency line on every 5th scored free-play question (5, 10, 15, ...)
