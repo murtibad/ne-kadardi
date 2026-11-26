@@ -412,10 +412,32 @@ export function buildWageBasketLine(q, allQuestions) {
   return nowWage ? `${past}; bugün ${list('nowAmount')}.` : `${past}.`;
 }
 
+/** Express monthly minimum wages as years and months, e.g. 38.4 -> "3 yıl 2 aylık", 24 -> "2 yıllık", 11.9 -> "12 aylık". */
+export function formatWageDuration(wages) {
+  if (!Number.isFinite(wages) || wages <= 0) return '';
+  const totalMonths = Math.round(wages);
+  if (totalMonths <= 0) return '';
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  if (years === 0) return `${months} aylık`;
+  // No "tam": the value is rounded to the month, so "tam 4 yıllık" would overstate the precision.
+  if (months === 0) return `${years} yıllık`;
+  return `${years} yıl ${months} aylık`;
+}
+
+// Below 12 wages keep decimals ("2,6 asgari ücret"); at 12+ express as years and months, dropping the
+// repeated "asgari ücret" noun in the trailing "bugün" clause ("...ediyordu, bugün 4 yıl 5 aylık.").
+// `asDuration` forces the duration form so both halves of one sentence use the same unit.
+function wageAmountText(wages, includeNoun = true, asDuration = wages >= 12) {
+  if (asDuration) return `${formatWageDuration(wages)}${includeNoun ? ' asgari ücret' : ''}`;
+  return `${formatRatio(wages)} asgari ücret`;
+}
+
 /**
  * Purchasing-power line for the result receipt, based on the net minimum wage in force
  * on that date. Cheap items are counted ("102 adet"); items costing more than a wage
- * are expressed as wage multiples ("2,6 asgari ücret"), so the line never says "0 adet".
+ * are expressed as wage multiples ("2,6 asgari ücret") or years and months at 12+,
+ * so the line never says "0 adet".
  */
 export function buildContextLine(q, allQuestions) {
   // The wage itself gets a basket line; buildContextModel stays null for it so no receipt bars show.
@@ -429,7 +451,7 @@ export function buildContextLine(q, allQuestions) {
   if (m.today) {
     if (m.kind === 'share') return `${m.name} bugün asgari ücretin ${percentOf(m.then)} kadar.`;
     if (m.kind === 'count') return `Bugün 1 asgari ücretle ${count(m.then)} ${m.unit} ${PAID.has(q.productId) ? 'ödenebiliyor' : 'alınabiliyor'}.`;
-    return `Bugün bir ${m.name} ${formatRatio(m.then)} asgari ücret ediyor.`;
+    return `Bugün bir ${m.name} ${wageAmountText(m.then)} ediyor.`;
   }
 
   if (m.kind === 'share') {
@@ -446,10 +468,11 @@ export function buildContextLine(q, allQuestions) {
       : `${past}; bugün 1 asgari ücretle bir tane bile ${paid ? 'ödenemiyor' : 'alınamıyor'}.`;
   }
 
-  const past = `O tarihte bir ${m.name} ${formatRatio(m.then)} asgari ücret ediyordu`;
+  const duration = m.then >= 12 || (m.now != null && m.now >= 12);
+  const past = `O tarihte bir ${m.name} ${wageAmountText(m.then, true, duration)} ediyordu`;
   if (m.now == null) return `${past}.`;
   const nowName = m.nowName ? `${m.nowName} ise ` : '';
-  return `${past}, bugün ${nowName}${formatRatio(m.now)} asgari ücret.`;
+  return `${past}, bugün ${nowName}${wageAmountText(m.now, !duration, duration)}.`;
 }
 
 /**

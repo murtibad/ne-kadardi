@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE, percentOf, actualLabel, buildWageBasketLine, WAGE_BASKET_IDS } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE, percentOf, actualLabel, buildWageBasketLine, WAGE_BASKET_IDS, formatWageDuration } from '../js/game.js';
 import { readFileSync } from 'node:fs';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
@@ -115,6 +115,35 @@ test('buildContextLine counts cheap items and compares with today', () => {
 test('buildContextLine expresses expensive items as wage multiples, never "0 adet"', () => {
   const q = { productId: 'x', name: 'iPhone', unit: '1 adet', date: '2010-05', price: 1300, current: { price: 60000 } };
   assert.equal(buildContextLine(q, wages), 'O tarihte bir iPhone 2,6 asgari ücret ediyordu, bugün 3 asgari ücret.');
+});
+
+test('formatWageDuration formats wage counts as rounded years and months', () => {
+  assert.equal(formatWageDuration(12.0), '1 yıllık');
+  assert.equal(formatWageDuration(24), '2 yıllık');
+  assert.equal(formatWageDuration(13), '1 yıl 1 aylık');
+  assert.equal(formatWageDuration(38.4), '3 yıl 2 aylık');
+  assert.equal(formatWageDuration(53.4), '4 yıl 5 aylık');
+  assert.equal(formatWageDuration(23.6), '2 yıllık');
+  assert.equal(formatWageDuration(12.4), '1 yıllık');
+  assert.equal(formatWageDuration(12.5), '1 yıl 1 aylık');
+});
+
+test('buildContextLine expresses 12+ wages as years and months while keeping <12 as ratios', () => {
+  const car = { productId: 'fiat-egea-easy', name: 'Fiat Egea', unit: '1 araç', date: '2010-03', price: 19200, current: { price: 1068000 } };
+  assert.equal(buildContextLine(car, wages), 'O tarihte bir Fiat Egea 3 yıl 2 aylık asgari ücret ediyordu, bugün 4 yıl 5 aylık.');
+  assert.equal(buildContextLine({ ...car, price: 12000, current: null }, wages), 'O tarihte bir Fiat Egea 2 yıllık asgari ücret ediyordu.');
+
+  // Mixed <12 and >=12 halves.
+  assert.equal(buildContextLine({ ...car, price: 5000, current: { price: 260000 } }, wages), 'O tarihte bir Fiat Egea 10 aylık asgari ücret ediyordu, bugün 1 yıl 1 aylık.');
+  assert.equal(buildContextLine({ ...car, price: 6000, current: { price: 160000 } }, wages), 'O tarihte bir Fiat Egea 1 yıllık asgari ücret ediyordu, bugün 8 aylık.');
+
+  // Just below 12 keeps the decimal ratio wording.
+  assert.equal(buildContextLine({ ...car, price: 5950, current: { price: 238000 } }, wages), 'O tarihte bir Fiat Egea 11,9 asgari ücret ediyordu, bugün 11,9 asgari ücret.');
+
+  // Present-only 12+ wages.
+  const todayCar = { productId: 'fiat-egea-easy', name: 'Fiat Egea', unit: '1 araç', date: '2015-03', price: 540000, current: { date: '2015-03', price: 540000 } };
+  assert.equal(buildContextLine(todayCar, wages), 'Bugün bir Fiat Egea 2 yıl 3 aylık asgari ücret ediyor.');
+  assert.equal(buildContextLine({ ...todayCar, price: 240000, current: { date: '2015-03', price: 240000 } }, wages), 'Bugün bir Fiat Egea 1 yıllık asgari ücret ediyor.');
 });
 
 test('buildContextLine uses the wage in force on the date, from the same year only', () => {

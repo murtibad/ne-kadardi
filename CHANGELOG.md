@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.160.1] - 2026-11-26
+### Changed
+- Pahalı ürünlerde (12 ve üstü asgari ücret) alım gücü yıl ve ay olarak: 'O tarihte bir Togg T10X 9 yıl 4 aylık asgari ücret ediyordu, bugün 5 yıl 8 aylık.' Cümlenin iki yarısı aynı birimle yazılıyor.
+
 ## [0.160.0] - 2026-11-26
 ### Added
 - Grafikte bir noktaya gelince başlıkta bir önceki kayda göre değişim: 'Ocak 2022: ₺12,91 · bir önceki kayda göre 2,1 katına çıktı' (kayıtlar 18 aydan uzak aralıklıysa yalnız tarih ve fiyat). Başlığın yeri sabit, grafik parmağın altında kaymıyor.
