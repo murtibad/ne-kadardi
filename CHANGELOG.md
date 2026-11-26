@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.161.0] - 2026-11-26
+### Added
+- 'Biliyor muydun?' kartındaki 'Bunu tahmin et' artık kartta az önce gösterilen fiyatı sormuyor (aynı ürünün başka bir tarihi). Hatıra yılı seçiliyse düğme '2014 yılından bir soru çöz →' oluyor ve o yıldan bir soru açıyor.
+
 ## [0.160.1] - 2026-11-26
 ### Changed
 - Pahalı ürünlerde (12 ve üstü asgari ücret) alım gücü yıl ve ay olarak: 'O tarihte bir Togg T10X 9 yıl 4 aylık asgari ücret ediyordu, bugün 5 yıl 8 aylık.' Cümlenin iki yarısı aynı birimle yazılıyor.
