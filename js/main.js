@@ -399,7 +399,7 @@ function onGuess(event) {
     state.bestGuess = { productId: q.productId, date: q.date, score: state.result.score };
     saveBestGuess();
   }
-  recordDailyAnswer(state.result.score);
+  recordDailyAnswer(state.result.score, state.result.guess);
   saveSession();
   hapticIfAllowed(10);
   renderResult(q, state.result);

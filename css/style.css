@@ -1932,7 +1932,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .report-card-lines .daily-row-go { margin-left: 6px; font-weight: 400; color: var(--muted-on-paper); }
 .report-card-lines .tally-dot { display: inline-block; vertical-align: -1px; margin-right: 6px; }
 .report-card-lines .tally-dot:not([data-tier]) { background: transparent; box-shadow: inset 0 0 0 1.5px var(--muted-on-paper); }
-.report-card-lines li strong { display: block; text-align: right; white-space: nowrap; }
+.report-card-lines li strong { display: block; text-align: right; }
+.report-card-lines li strong .nw { white-space: nowrap; }
 @keyframes report-row-in {
   from { opacity: 0; transform: translateY(3px); }
   to { opacity: 1; transform: translateY(0); }

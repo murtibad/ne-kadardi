@@ -37,11 +37,14 @@ export function resolveSavedDaily(data, todayKey, validIds = null) {
   const ids = data.ids.filter((x) => typeof x === 'string');
   // Scores without ids, or more scores than ids, are corrupt storage ("6/5", 580/500): drop the surplus.
   const scores = ids.length === 0 ? [] : data.scores.filter(Number.isFinite).slice(0, ids.length);
+  // Guesses (number, or null for a skip) are kept only when they line up with the scores; older saves have none.
+  const guessesOk = Array.isArray(data.guesses) && data.guesses.length === scores.length
+    && data.guesses.every((g) => g === null || Number.isFinite(g));
   const finished = ids.length > 0 && scores.length >= ids.length;
   const resumable = !finished && scores.length > 0 && data.key === prevDayKey(todayKey);
   if (data.key !== todayKey && !resumable) return null;
   if (validIds && ids.some((id) => !validIds.has(id))) return { key: data.key, ids: [], scores: [] };
-  return { key: data.key, ids, scores };
+  return guessesOk ? { key: data.key, ids, scores, guesses: [...data.guesses] } : { key: data.key, ids, scores };
 }
 
 /** Deterministic PRNG seeded from a string key (FNV-1a hash feeding mulberry32). */
@@ -172,13 +175,22 @@ export function dailyTotalLine(total, yesterday) {
 }
 
 /**
- * One receipt line for the daily review: label "Ocak 2016 · Benzin", detail "4,28 ₺ · 86 puan".
- * Skips are stored as 0, same as a wildly-off guess, so a 0 reads "0 puan" rather than claiming a skip.
- * Prices live only here, never in the share text (a friend solves the same questions).
+ * One receipt line for the daily review: label "Ocak 2016 · Benzin", detail "Sen ₺5 · Gerçek ₺4,28 · 86 puan".
+ * `guess` is the player's number, null for a skip, undefined for an old save that never stored it
+ * (then the detail is just "₺4,28 · 86 puan"). Parts are joined by " · " so the UI can keep each unbroken.
+ * Guesses and prices live only here, never in the share text (a friend solves the same questions).
  */
-export function dailyRowText({ date, title, price, score }) {
+export function dailyRowText({ date, title, price, score, guess }) {
   const label = `${formatPeriod(date)} · ${title}`;
-  const priced = Number.isFinite(price) ? `${formatPrice(price)} · ` : '';
+  const hasPrice = Number.isFinite(price);
+  if (guess === null) {
+    return { label, detail: hasPrice ? `Geçtin · Gerçek ${formatPrice(price)}` : 'Geçtin' };
+  }
+  if (Number.isFinite(guess)) {
+    const real = hasPrice ? ` · Gerçek ${formatPrice(price)}` : '';
+    return { label, detail: `Sen ${formatPrice(guess)}${real} · ${score} puan` };
+  }
+  const priced = hasPrice ? `${formatPrice(price)} · ` : '';
   return { label, detail: `${priced}${score} puan` };
 }
 
