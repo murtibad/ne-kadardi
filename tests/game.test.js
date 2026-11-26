@@ -919,10 +919,10 @@ test('pickForYear asks from the chosen year, prefers another product, and never 
     pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', excludeProducts: new Set(['ekmek', 'dolar']), rng: () => 0 }).id,
     'benzin@2014-07',
   );
-  // Falls back to daily products when the year has no non-daily question left.
+  // A year holding only today's daily products returns null; the caller falls back to free play.
   assert.equal(
-    pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', excludeProducts: new Set(['benzin', 'ekmek', 'dolar']), rng: () => 0 }).productId,
-    'ekmek',
+    pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', excludeProducts: new Set(['benzin', 'ekmek', 'dolar']), rng: () => 0 }),
+    null,
   );
 
   // Falls back to another date of the same product when no other product exists in that year.

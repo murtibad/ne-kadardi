@@ -127,6 +127,11 @@ export function pickForProduct(
   const excluded = toExcludedSet(excludeDate, excludeDates);
   let own = questions.filter((q) => q.productId === productId && !excluded.has(q.date));
   if (own.length === 0) return null;
+  if (excluded.size > 0 && previousId) {
+    // Fact-card path: with only the previous question left, let the caller pick something else.
+    own = own.filter((q) => q.id !== previousId);
+    if (own.length === 0) return null;
+  }
   own = preferOlder(own, cutoffKey(today));
   const unseen = own.filter((q) => !seen.has(q.id) && q.id !== previousId);
   return pickRandom(unseen.length > 0 ? unseen : own, previousId, rng);
@@ -151,7 +156,9 @@ export function pickForYear(
   if (inYear.length === 0) return null;
   const avoidedProducts = toExcludedSet(null, excludeProducts);
   const notAvoided = avoidedProducts.size > 0 ? inYear.filter((q) => !avoidedProducts.has(q.productId)) : inYear;
-  const base = notAvoided.length > 0 ? notAvoided : inYear;
+  // Strict: a year holding only today's daily products returns null, the caller falls back to free play.
+  if (avoidedProducts.size > 0 && notAvoided.length === 0) return null;
+  const base = notAvoided;
   const otherProduct = excludeProductId ? base.filter((q) => q.productId !== excludeProductId) : base;
   const pool = otherProduct.length > 0 ? otherProduct : base;
   const unseen = pool.filter((q) => !seen.has(q.id) && q.id !== previousId);
