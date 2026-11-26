@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.144.0] - 2026-11-26
+### Added
+- Günün Fişi artık görsel olarak da paylaşılıyor: fiş kâğıdında 5 ürün, puan renkli kareler, toplam ve seri; fiyat yok (arkadaşın aynı soruları çözebilsin). Önizlemede 'Kaydet', telefonda 'Paylaş' ve 'Metni kopyala' var.
+
 ## [0.143.0] - 2026-11-26
 ### Added
 - Günün Fişi bitince kutlama: bugüne kadarki en iyi toplamını geçersen 'Yeni rekor!' (önceki en iyinle), 3., 7., 10., 25., 50. ve 100. fişinde kısa bir tebrik; kart bir kez altın parlıyor, yeniden açınca tekrar etmiyor. Günlük kayıt artık 60 yerine 365 gün tutuluyor.
