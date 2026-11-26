@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE, percentOf, actualLabel } from '../js/game.js';
+import { buildQuestions, pickRandom, pickByCategory, scoreGuess, buildContextLine, buildContextModel, getShortUnit, getCountUnit, scoreTier, COUNT_UNITS, WAGE_SHARE, percentOf, actualLabel, buildWageBasketLine, WAGE_BASKET_IDS } from '../js/game.js';
 import { readFileSync } from 'node:fs';
 
 // Fixture prices are fake and exist only for tests. Never copy them into data/prices.json.
@@ -135,6 +135,55 @@ test("buildContextLine tells a question about today's price in the present, agai
   const pension = { productId: 'kyk-burs', name: 'KYK bursu', unit: '1 ay', date: '2015-03', price: 5000, current: { date: '2015-03', price: 5000 } };
   assert.match(buildContextLine(pension, wages), /^.+ bugün asgari ücretin %25'i kadar\.$/);
 });
+// Basket fixtures are fake and exist only for tests. Never copy them into data/prices.json.
+const basketWageNow = { date: '2026-07', price: 28000, status: 'verified' };
+const basketWage = { productId: 'asgari-ucret', name: 'Asgari ücret', unit: '1 ay', date: '2010-01', price: 740, status: 'verified', current: basketWageNow };
+const basketRow = (productId, date, price, current) => ({ productId, name: productId, unit: '1', date, price, status: 'verified', current });
+const goldNow = { date: '2026-11', price: 4800, status: 'verified' };
+const fuelNow = { date: '2026-11', price: 54.9, status: 'verified' };
+const gold2010 = basketRow('gram-altin', '2010-01', 100, goldNow);
+const fuel2010 = basketRow('benzin', '2010-01', 4.68, fuelNow);
+
+test('every wage basket item has a count unit', () => {
+  for (const id of WAGE_BASKET_IDS) assert.ok(COUNT_UNITS[id], id);
+});
+
+test('buildWageBasketLine compares one wage then and today with the first two basket items', () => {
+  const dollar = basketRow('dolar', '2010-01', 1.5, { date: '2026-11', price: 40, status: 'verified' });
+  const all = [basketWage, gold2010, fuel2010, dollar];
+  const line = 'O tarihte 1 asgari ücretle 7,4 gram altın ya da 158 litre benzin alınabiliyordu; bugün 5,8 gram altın ya da 510 litre benzin.';
+  assert.equal(buildWageBasketLine(basketWage, all), line);
+  assert.equal(buildContextLine(basketWage, all), line);
+  // Receipt bars stay off for the wage itself.
+  assert.equal(buildContextModel(basketWage, all), null);
+});
+
+test('buildWageBasketLine uses the item price in force on the wage date, from the same year', () => {
+  const july = { ...basketWage, date: '2010-07' };
+  const all = [july, gold2010, fuel2010, basketRow('benzin', '2010-06', 5, fuelNow), basketRow('benzin', '2010-09', 9, fuelNow)];
+  assert.equal(buildWageBasketLine(july, all), 'O tarihte 1 asgari ücretle 7,4 gram altın ya da 148 litre benzin alınabiliyordu; bugün 5,8 gram altın ya da 510 litre benzin.');
+});
+
+test('buildWageBasketLine skips unverified, other-year and no-current items', () => {
+  const todoBread = { productId: 'ekmek', date: '2010-01', price: null, status: 'todo', current: { date: '2026-11', price: 20, status: 'verified' } };
+  const oldDollar = basketRow('dolar', '2009-12', 1.5, { date: '2026-11', price: 40, status: 'verified' });
+  const goldNoCurrent = basketRow('gram-altin', '2010-01', 100, undefined);
+  const all = [basketWage, goldNoCurrent, fuel2010, todoBread, oldDollar];
+  assert.equal(buildWageBasketLine(basketWage, all), 'O tarihte 1 asgari ücretle 158 litre benzin alınabiliyordu; bugün 510 litre benzin.');
+  assert.equal(buildWageBasketLine(basketWage, [basketWage, todoBread, oldDollar, goldNoCurrent]), null);
+});
+
+test('buildWageBasketLine tells the newest wage only in the present', () => {
+  const wageToday = { ...basketWage, date: '2026-07', price: 28000 };
+  const all = [wageToday, basketRow('gram-altin', '2026-07', 4800, goldNow), basketRow('benzin', '2026-07', 54.9, fuelNow)];
+  assert.equal(buildWageBasketLine(wageToday, all), 'Bugün 1 asgari ücretle 5,8 gram altın ya da 510 litre benzin alınabiliyor.');
+});
+
+test('buildWageBasketLine leaves out "bugün" without a current wage', () => {
+  const noNow = { ...basketWage, current: null };
+  assert.equal(buildWageBasketLine(noNow, [noNow, fuel2010]), 'O tarihte 1 asgari ücretle 158 litre benzin alınabiliyordu.');
+});
+
 test('scoreTier maps scores to five colour tiers', () => {
   assert.equal(scoreTier(100), 'great');
   assert.equal(scoreTier(85), 'great');
