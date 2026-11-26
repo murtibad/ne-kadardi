@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine } from '../js/daily.js';
 import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
@@ -248,4 +248,54 @@ test('dailyProgressDots marks answered tiers, current question, and upcoming slo
   ]);
 
   assert.deepEqual(dailyProgressDots(null, 0), []);
+});
+
+test('dailyMilestoneLine never claims a record on the first-ever daily receipt', () => {
+  assert.equal(dailyMilestoneLine({ played: 1, best: 450, yesterday: null }, 450, null), '');
+  assert.equal(dailyMilestoneLine({ played: 1, best: 450, yesterday: null }, 450, undefined), '');
+  assert.equal(dailyMilestoneLine({ played: 1, best: 450, yesterday: null }, 450, 200), '');
+});
+
+test('dailyMilestoneLine celebrates a new all-time daily best with the previous best', () => {
+  assert.equal(
+    dailyMilestoneLine({ played: 2, best: 380, yesterday: 340 }, 380, 340),
+    "Yeni rekor! Bugüne kadarki en iyi Günün Fişi'n. Önceki en iyin 340.",
+  );
+  // Prior best of 0 omits "Önceki en iyin 0".
+  assert.equal(
+    dailyMilestoneLine({ played: 2, best: 210, yesterday: 0 }, 210, 0),
+    "Yeni rekor! Bugüne kadarki en iyi Günün Fişi'n.",
+  );
+  // Ties and lower totals are not records.
+  assert.equal(dailyMilestoneLine({ played: 4, best: 340, yesterday: 300 }, 340, 340), '');
+  assert.equal(dailyMilestoneLine({ played: 4, best: 340, yesterday: 300 }, 290, 340), '');
+});
+
+test('dailyMilestoneLine celebrates played-count milestones 3, 7, 10, 25, 50, 100', () => {
+  assert.equal(dailyMilestoneLine({ played: 3, best: 400, yesterday: 300 }, 250, 400), "3. Günün Fişi'n! Alışkanlık başlıyor.");
+  assert.equal(dailyMilestoneLine({ played: 7, best: 400, yesterday: 300 }, 250, 400), "7. Günün Fişi'n! Tam bir haftalık fiş oldu.");
+  assert.equal(dailyMilestoneLine({ played: 10, best: 400, yesterday: 300 }, 250, 400), "10. Günün Fişi'n! Bırakmadın.");
+  assert.equal(dailyMilestoneLine({ played: 25, best: 400, yesterday: 300 }, 250, 400), "25. Günün Fişi'n! Artık müdavim oldun.");
+  assert.equal(dailyMilestoneLine({ played: 50, best: 400, yesterday: 300 }, 250, 400), "50. Günün Fişi'n! Elli fiş oldu, helal olsun.");
+  assert.equal(dailyMilestoneLine({ played: 100, best: 400, yesterday: 300 }, 250, 400), "100. Günün Fişi'n! Yüz fiş, büyük emek.");
+
+  for (const n of [1, 2, 4, 6, 8, 9, 11, 24, 26, 49, 51, 99, 101]) {
+    assert.equal(dailyMilestoneLine({ played: n, best: 400, yesterday: 300 }, 250, 400), '', `played=${n}`);
+  }
+});
+
+test('dailyMilestoneLine combines a new all-time best and a milestone count on the same day', () => {
+  assert.equal(
+    dailyMilestoneLine({ played: 10, best: 420, yesterday: 310 }, 420, 390),
+    "Yeni rekor! Bugüne kadarki en iyi Günün Fişi'n. Önceki en iyin 390. 10. Günün Fişi'n! Bırakmadın.",
+  );
+});
+
+test('trimLog default keeps at least 100 days so the 100-receipt milestone is reachable', () => {
+  const log = {};
+  for (let i = 1; i <= 110; i += 1) {
+    const d = new Date(2026, 0, i, 12);
+    log[dayKey(d)] = 200 + i;
+  }
+  assert.equal(Object.keys(trimLog(log)).length, 110);
 });

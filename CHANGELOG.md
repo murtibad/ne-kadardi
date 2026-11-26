@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.143.0] - 2026-11-26
+### Added
+- Günün Fişi bitince kutlama: bugüne kadarki en iyi toplamını geçersen 'Yeni rekor!' (önceki en iyinle), 3., 7., 10., 25., 50. ve 100. fişinde kısa bir tebrik; kart bir kez altın parlıyor, yeniden açınca tekrar etmiyor. Günlük kayıt artık 60 yerine 365 gün tutuluyor.
+
 ## [0.142.0] - 2026-11-26
 ### Added
 - Günün Fişi sırasında soru kartının üstünde 5 nokta: çözdüğün sorular puan rengiyle doluyor, sıradaki soru halkalı, kalanlar boş. '3/5' yazısı da yerinde duruyor.

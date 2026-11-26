@@ -5,7 +5,7 @@ import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -47,6 +47,8 @@ function saveDaily(daily) {
 }
 
 const DAILY_LOG_KEY = 'ne-kadardi-daily-log';
+// One-shot celebration queued when a daily receipt is first logged; consumed once by the summary card.
+let pendingMilestone = null;
 
 function loadDailyLog() {
   try {
@@ -58,9 +60,25 @@ function loadDailyLog() {
 function recordDailyTotal(key, scores) {
   try {
     const log = loadDailyLog();
-    log[key] = scores.reduce((s, n) => s + n, 0);
-    localStorage.setItem(DAILY_LOG_KEY, JSON.stringify(trimLog(log)));
+    // Exclude today's key so prevBest reflects prior days only and re-logging never double-counts.
+    const { [key]: existing, ...prior } = log;
+    const prevBest = dailyStats(prior, key).best;
+    const total = scores.reduce((s, n) => s + n, 0);
+    log[key] = total;
+    const trimmed = trimLog(log);
+    localStorage.setItem(DAILY_LOG_KEY, JSON.stringify(trimmed));
+    if (existing === undefined) {
+      const text = dailyMilestoneLine(dailyStats(trimmed, key), total, prevBest);
+      pendingMilestone = text ? { key, text } : null;
+    }
   } catch(e) {}
+}
+
+function takeDailyMilestone(key) {
+  if (!pendingMilestone || pendingMilestone.key !== key) return '';
+  const text = pendingMilestone.text;
+  pendingMilestone = null;
+  return text;
 }
 
 export function syncSkipBtn() {
@@ -202,9 +220,15 @@ function openDailyReview(saved) {
   const dlg = $('daily-review');
   reviewSaved = saved;
   const total = saved.scores.reduce((s, n) => s + n, 0);
+  const milestone = takeDailyMilestone(saved.key);
   $('daily-review-title').textContent = dailyTitle(saved.key).replace(' · ', ' · '); // '· 19 KASIM' never starts a line
   $('daily-review-lines').innerHTML = renderDailyRows(dailyLines(state.all, saved.ids, saved.scores));
   $('daily-review-total').textContent = dailyReviewTotalLine(total, reviewStreak());
+  const milestoneEl = $('daily-review-milestone');
+  if (milestoneEl) {
+    milestoneEl.textContent = milestone;
+    milestoneEl.hidden = !milestone;
+  }
   $('daily-review-next').textContent = nextReceiptIn();
   // A fresh open must not inherit "kopyalandı" from a share made just before closing.
   const shareBtn = $('daily-review-share');
@@ -215,6 +239,13 @@ function openDailyReview(saved) {
   if (!dlg.open) {
     reviewOpener = document.activeElement;
     dlg.showModal();
+  }
+  if (milestone) {
+    // One-shot gold ring matching new session records; never replays when reopening the review card.
+    dlg.querySelector('.report-card')?.animate?.(
+      [{ boxShadow: '0 0 0 0 rgba(224,160,32,.55)' }, { boxShadow: '0 0 0 8px rgba(224,160,32,0)' }],
+      { duration: 900, easing: 'ease-out', delay: 180, fill: 'backwards' },
+    );
   }
   shareBtn.focus();
 }
@@ -279,9 +310,15 @@ export function renderDailyCard() {
   const lines = dailyLines(state.all, ids, scores);
   const total = scores.reduce((s, n) => s + n, 0);
   state.reportCard = { daily: true, key, scores };
+  const milestone = takeDailyMilestone(key);
   $('r-card-title').textContent = dailyTitle(key);
   $('r-card-lines').innerHTML = renderDailyRows(lines);
   $('r-card-avg').textContent = dailyTotalLine(total, dailyStats(loadDailyLog(), key).yesterday);
+  const milestoneEl = $('r-card-milestone');
+  if (milestoneEl) {
+    milestoneEl.textContent = milestone;
+    milestoneEl.hidden = !milestone;
+  }
   // The bar button shares the receipt on this turn, so the card's own link would be a second button for it.
   dailyEndTurn = true;
   resetShareBtn();

@@ -1926,6 +1926,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
   to { opacity: 1; transform: translateY(0); }
 }
 .daily-review .report-card-title { font-size: 1.125rem; }
+.report-card-milestone { margin: 8px 0 6px; padding: 8px 10px; border: 1.5px solid var(--tier-mid); border-radius: 4px; background: color-mix(in srgb, var(--fill-mid) 14%, transparent); color: var(--tier-mid); font: 700 0.875rem/1.4 var(--font-ui); text-wrap: balance; }
+.report-card-milestone:last-child { margin-bottom: 0; }
 .report-card-next { margin: 0; font-size: 0.8125rem; color: var(--muted-on-paper); }
 .daily-review .report-card { margin-top: 0; }
 .report-card .link-btn { font-family: var(--font-mono); }
