@@ -1429,16 +1429,20 @@ function registerServiceWorker() {
   // Wait for 'load' and then a quiet moment, so it does not compete with the menu, the intro
   // and the fonts on a slow phone; offline support only matters from the second visit on.
   // sw.js claims open pages right away, so an old page could lazy-load new modules with a changed API.
-  // When a new worker takes over a page that already had one, reload once, but only while the tab
-  // is hidden: the takeover lands a few seconds after opening, often mid-guess, and a visible reload
-  // would wipe what the player is typing. A first install has no controller yet, so nothing reloads.
+  // When a new worker takes over a page that already had one, reload once on the next safe moment:
+  // while the tab is hidden, or on the next in-app navigation (the player is not typing then).
+  // A first install has no controller yet, so nothing reloads.
   const hadController = !!navigator.serviceWorker.controller;
   let updated = false;
   let reloaded = false;
-  const reloadIfHidden = () => {
-    if (!updated || reloaded || document.visibilityState !== 'hidden') return;
+  const reloadOnce = () => {
+    if (!updated || reloaded) return;
     reloaded = true;
     location.reload();
+  };
+  const reloadIfHidden = () => {
+    if (document.visibilityState !== 'hidden') return;
+    reloadOnce();
   };
   navigator.serviceWorker.addEventListener('controllerchange', () => {
     if (!hadController) return;
@@ -1446,6 +1450,7 @@ function registerServiceWorker() {
     reloadIfHidden();
   });
   document.addEventListener('visibilitychange', reloadIfHidden);
+  window.addEventListener('hashchange', reloadOnce);
   const register = () => navigator.serviceWorker.register('sw.js')
     .catch(err => console.warn('Service worker:', err));
   const later = () => {

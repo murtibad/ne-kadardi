@@ -173,7 +173,13 @@ async function share() {
       try {
         await navigator.share({ files: [file], text });
       } catch (err) {
-        if (err.name !== 'AbortError') console.warn(err);
+        // Slow image rendering can consume the tap's user activation; the blob stays cached in `warm`
+        // so a second tap shares immediately.
+        if (err?.name === 'NotAllowedError') {
+          setBtnStatus('share-btn', 'Hazır, bir daha dokun');
+        } else if (err?.name !== 'AbortError') {
+          console.warn(err);
+        }
       }
       return;
     }
@@ -189,8 +195,12 @@ async function share() {
       setBtnStatus('share-btn', filesSupported ? 'Görsel hazırlanamadı, metin kopyalandı.' : 'Metin kopyalandı ✓');
     }
   } catch (err) {
-    if (err.name !== 'AbortError') console.warn(err);
-    resetShareBtn();
+    if (err?.name === 'NotAllowedError') {
+      setBtnStatus('share-btn', 'Hazır, bir daha dokun');
+    } else {
+      if (err?.name !== 'AbortError') console.warn(err);
+      resetShareBtn();
+    }
   }
 }
 
