@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.151.1] - 2026-11-26
+### Changed
+- Menüdeki Günün Fişi satırı daha anlaşılır: 'Bugünkü fişin 412/500 · Yeni fiş 17 saat sonra' (geri sayım bölünmeden alt satıra geçiyor), yarım kalan için 'Bugün 2/5 soru çözdün'.
+
 ## [0.151.0] - 2026-11-26
 ### Added
 - Menüde en iyi tahminin: 'En iyi tahminin 96 puan: Ocak 2016 · Benzin (kurşunsuz 95)'. Serbest oyun ve Günün Fişi tahminleri sayılıyor; 0 puanken görünmüyor.
