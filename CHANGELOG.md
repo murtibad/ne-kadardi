@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.141.30] - 2026-11-26
+### Fixed
+- Yeni sürüm arka planda yüklendiğinde sayfa artık bir sonraki ekran geçişinde bir kez yenileniyor (önceden yalnız sekme gizlenince); eski ve yeni dosyaların karışıp arşiv/paylaşımı bozması önlendi.
+- Yavaş telefonda görsel hazırlanırken paylaşım izni düşerse düğme artık sessiz kalmıyor: 'Hazır, bir daha dokun' yazıyor, ikinci dokunuş hemen paylaşıyor.
+
 ## [0.141.29] - 2026-11-26
 ### Fixed
 - Yavaş bağlantıda Fiyat Arşivi yüklenirken geri dönülürse arşiv biraz sonra menünün üstüne yeniden açılıyordu.
