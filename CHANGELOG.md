@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.157.0] - 2026-11-26
+### Added
+- Günün Fişi bitince sohbetlik bir satır: 'Bugünkü fişte en çok artan: Çeyrek altın. 2013'ten bugüne 89 katına çıktı.' (paylaşılan görselde ve metinde yok).
+
 ## [0.156.0] - 2026-11-26
 ### Added
 - Fiyat Arşivi'nde 'TL fiyatı / 1 maaşla kaç tane?' düğmesi: maaş görünümünde her satır o tarihte 1 asgari ücretle kaç tane alınabildiğini (pahalı ürünlerde kaç asgari ücret ettiğini) gösteriyor; TL fiyatı küçük olarak altında.

@@ -954,6 +954,10 @@ function renderReportCard() {
     $('r-card-milestone').textContent = '';
     $('r-card-milestone').hidden = true;
   }
+  if ($('r-card-jump')) {
+    $('r-card-jump').textContent = '';
+    $('r-card-jump').hidden = true;
+  }
   if (renderDailyCard()) return;
   setDailyEndTurn(false);
   resetShareBtn();
