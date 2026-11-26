@@ -13,7 +13,7 @@ import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
 import { buildHint, buildEverydayHint, applyHintPenalty } from './hint.js';
 import { VERSION } from './version.js';
-import { pickFact } from './fact.js';
+import { pickFact, factYears } from './fact.js';
 import { buildPriceChart } from './price-chart.js';
 import { initChartUi, renderPriceChart } from './chart-ui.js';
 import { countUpFrames, easeOutCubic } from './count-up.js';
@@ -42,7 +42,8 @@ const state = {
   archiveFromResult: false,
   wrap: { count: 0, sum: 0 }, // this sitting only, free play only; cleared once the menu line is shown
   sessionDirections: [], // this sitting only, free play only: 'under' | 'over' | 'exact'
-  coldStreak: { zeros: 0, shown: false } // this sitting only, free play only
+  coldStreak: { zeros: 0, shown: false }, // this sitting only, free play only
+  factYear: null
 };
 
 // The result screen shows the last few scores as coloured ticks, like a till roll tally.
@@ -51,6 +52,25 @@ const SEEN_KEY = 'ne-kadardi-seen';
 const SEEN_MAX = 2000;
 const STREAK_KEY = 'ne-kadardi-streak';
 const BEST_GUESS_KEY = 'ne-kadardi-best-guess';
+const FACT_YEAR_KEY = 'ne-kadardi-fact-year';
+
+function loadFactYear() {
+  try {
+    const raw = localStorage.getItem(FACT_YEAR_KEY);
+    if (!raw) return null;
+    const y = Number(raw);
+    return Number.isInteger(y) ? y : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function saveFactYear(year) {
+  try {
+    if (year === null) localStorage.removeItem(FACT_YEAR_KEY);
+    else localStorage.setItem(FACT_YEAR_KEY, String(year));
+  } catch (e) {}
+}
 
 function loadStreak() {
   try {
@@ -1094,11 +1114,38 @@ function renderHomeSpark() {
 let lastFactId = null;
 let factSwapping = false;
 
+// Populate the optional "Hatıra yılın" select from eligible years and restore any saved choice.
+function initFactYearPicker() {
+  const row = $('fact-year-row');
+  const select = $('fact-year');
+  if (!row || !select) return;
+  const years = factYears(state.timelines);
+  if (years.length === 0) {
+    row.hidden = true;
+    state.factYear = null;
+    return;
+  }
+  const opts = [new Option('Rastgele', '')];
+  for (const y of years) opts.push(new Option(String(y), String(y)));
+  select.replaceChildren(...opts);
+  const saved = loadFactYear();
+  state.factYear = saved !== null && years.includes(saved) ? saved : null;
+  select.value = state.factYear === null ? '' : String(state.factYear);
+  row.hidden = false;
+  select.addEventListener('change', () => {
+    const next = select.value === '' ? null : Number(select.value);
+    state.factYear = Number.isInteger(next) ? next : null;
+    saveFactYear(state.factYear);
+    lastFactId = null; // allow any product from the newly chosen year
+    swapFact({ spin: false });
+  });
+}
+
 // Spin the arrow once and slide the old fact out before rendering the new one;
 // ignore double-clicks during the 120ms exit to prevent card height flickering.
-function swapFact() {
+function swapFact({ spin = true } = {}) {
   if (factSwapping) return;
-  const icon = $('fact-next')?.querySelector('.fact-spin');
+  const icon = spin ? $('fact-next')?.querySelector('.fact-spin') : null;
   if (icon?.animate) {
     icon.animate(
       [
@@ -1135,7 +1182,8 @@ function swapFact() {
 }
 
 function renderFact() {
-  const f = pickFact(state.timelines, { skipId: lastFactId });
+  const f = pickFact(state.timelines, { skipId: lastFactId, year: state.factYear })
+    ?? (state.factYear !== null ? pickFact(state.timelines, { skipId: lastFactId }) : null);
   $('fact-card').hidden = !f;
   if (!f) return;
   lastFactId = f.productId;
@@ -1332,7 +1380,7 @@ async function init() {
   state.openerIndex = 0;
   renderThemeToggle();
   $('theme-toggle').addEventListener('click', toggleTheme);
-  $('fact-next').addEventListener('click', swapFact);
+  $('fact-next').addEventListener('click', () => swapFact());
   setupInstallButton();
   $('message-retry')?.addEventListener('click', () => location.reload());
   // Chip rows fade at the right edge; once scrolled, the left edge fades too.
@@ -1367,6 +1415,7 @@ async function init() {
     state.raw = rawData;
     state.all = buildQuestions(rawData);
     state.timelines = buildTimelines(rawData);
+    initFactYearPicker();
   } catch (err) {
     console.error(err);
     showMessage('Fiyatlar yüklenemedi. İnternet bağlantını kontrol edip yeniden dene.', { retry: true });

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.158.0] - 2026-11-26
+### Added
+- Ana sayfadaki 'Biliyor muydun?' kartında 'Hatıra yılın' seçici: düğün, ilk araba ya da emeklilik yılını seç, kart o yıldan fiyatlar göstersin ('Başka ↻' o yıl içinde dolaşıyor). Seçim hatırlanıyor.
+
 ## [0.157.0] - 2026-11-26
 ### Added
 - Günün Fişi bitince sohbetlik bir satır: 'Bugünkü fişte en çok artan: Çeyrek altın. 2013'ten bugüne 89 katına çıktı.' (paylaşılan görselde ve metinde yok).
