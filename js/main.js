@@ -1,13 +1,13 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText, formatInputThousands, keyboardFitDelta } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, shouldReplaceBestGuess, resolveBestGuess } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { sourceLinkText } from './source-name.js';
 import { burstConfetti } from './confetti.js';
-import { verdictText, questionTitle, skipRevealText, sessionBadge, sessionWrapText } from './share-model.js';
+import { verdictText, questionTitle, skipRevealText, sessionBadge, sessionWrapText, bestGuessText } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
@@ -36,7 +36,7 @@ const hapticIfAllowed = (ms) => {
 const state = {
   recentProducts: [], seen: new Set(), anchorShown: {}, questionCounter: 0, lastFollow: null,
   hintsUsed: 0, hintProductId: null, questionsShown: 0, friendScore: null, daily: null, raw: null, all: [], timelines: [], question: null, result: null, 
-  played: 0, skips: 0, total: 0, best: 0, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
+  played: 0, skips: 0, total: 0, best: 0, bestGuess: null, round: 0, recentScores: [], recentLines: [], // in-memory only: last ~12 comment lines shown
   streak: { last: null, count: 0, best: 0 },
   lastGameScreen: 'question-screen', selectedTimelineProduct: null, timelineCategory: 'all', timelineQuery: '',
   archiveFromResult: false,
@@ -50,6 +50,7 @@ const RECENT_MAX = 8;
 const SEEN_KEY = 'ne-kadardi-seen';
 const SEEN_MAX = 2000;
 const STREAK_KEY = 'ne-kadardi-streak';
+const BEST_GUESS_KEY = 'ne-kadardi-best-guess';
 
 function loadStreak() {
   try {
@@ -102,6 +103,29 @@ function saveSession() {
       total: state.total,
       best: state.best,
       recent: state.recentScores
+    }));
+  } catch(e) {}
+}
+
+function loadBestGuess() {
+  try {
+    const data = JSON.parse(localStorage.getItem(BEST_GUESS_KEY));
+    if (data && typeof data === 'object'
+      && typeof data.productId === 'string' && data.productId
+      && typeof data.date === 'string' && data.date
+      && Number.isFinite(data.score) && data.score >= 0) {
+      state.bestGuess = { productId: data.productId, date: data.date, score: data.score };
+    }
+  } catch(e) {}
+}
+
+function saveBestGuess() {
+  if (!state.bestGuess) return;
+  try {
+    localStorage.setItem(BEST_GUESS_KEY, JSON.stringify({
+      productId: state.bestGuess.productId,
+      date: state.bestGuess.date,
+      score: state.bestGuess.score,
     }));
   } catch(e) {}
 }
@@ -370,6 +394,11 @@ function onGuess(event) {
   state.seen.delete(q.id);
   state.seen.add(q.id);
   saveSeen();
+  const currentBest = resolveBestGuess(state.bestGuess, state.all);
+  if (shouldReplaceBestGuess(currentBest, state.result.score)) {
+    state.bestGuess = { productId: q.productId, date: q.date, score: state.result.score };
+    saveBestGuess();
+  }
   recordDailyAnswer(state.result.score);
   saveSession();
   hapticIfAllowed(10);
@@ -1007,6 +1036,13 @@ function renderHome() {
   const prices = state.timelines.reduce((n, t) => n + t.rows.length, 0);
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
+  const best = resolveBestGuess(state.bestGuess, state.all);
+  const bestLine = best ? bestGuessText(best.question, best.score) : '';
+  const bestEl = $('home-best');
+  if (bestEl) {
+    bestEl.textContent = bestLine;
+    bestEl.hidden = !bestLine;
+  }
   const needsToday = alive && state.streak.last !== today;
   // A streak of 2+ that is no longer alive was broken: say so once, with the record to beat.
   const broken = !streakAlive(state.streak, today) && state.streak.count >= 2;
@@ -1279,6 +1315,7 @@ async function init() {
   loadSession();
   loadSeen();
   loadStreak();
+  loadBestGuess();
   // Decided once at load: a returning player never gets the opener list again.
   state.firstVisit = state.played === 0;
   state.openerIndex = 0;

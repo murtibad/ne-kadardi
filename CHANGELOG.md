@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.151.0] - 2026-11-26
+### Added
+- Menüde en iyi tahminin: 'En iyi tahminin 96 puan: Ocak 2016 · Benzin (kurşunsuz 95)'. Serbest oyun ve Günün Fişi tahminleri sayılıyor; 0 puanken görünmüyor.
+
 ## [0.150.2] - 2026-11-26
 ### Fixed
 - Yeni sürüm yüklendikten sonraki tek seferlik yenileme artık yalnız ana menüye dönerken oluyor; sabitli arşiv bağlantısında veya 'Sonuca dön'de yenilenip yerini kaybetmiyor.
