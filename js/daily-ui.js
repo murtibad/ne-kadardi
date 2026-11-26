@@ -405,8 +405,9 @@ export function renderDailyMenu() {
   const dailyDone = daily && daily.ids.length > 0 && daily.scores.length >= daily.ids.length;
   const dailyInProgress = daily && daily.scores.length > 0 && daily.scores.length < daily.ids.length;
   $('m-daily').textContent = dailyDone
-    ? `Bugün ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn()}`
-    : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru`
+    // The countdown wraps as one piece ("Yeni fiş 17 saat sonra"), never "Yeni fiş" alone at a line end.
+    ? `Bugünkü fişin ${daily.scores.reduce((s, n) => s + n, 0)}/500 · ${nextReceiptIn().replaceAll(' ', '\u00a0')}`
+    : dailyInProgress ? `Bugün ${daily.scores.length}/${daily.ids.length} soru çözdün`
       : dailyMenuMeta(dailyStats(loadDailyLog(), dayKey()));
   const dailyGo = dailyDone ? 'Fişini gör →' : dailyInProgress ? 'Devam et →' : '5 soruya başla →'; // tells it apart from the endless "Fiyat Tahmini"
   $('m-daily-go').textContent = dailyGo;
