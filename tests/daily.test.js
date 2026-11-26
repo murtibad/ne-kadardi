@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout, dailyProductIds } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout, dailyProductIds, lastSevenDays, weekStripVisible } from '../js/daily.js';
 import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
@@ -333,4 +333,52 @@ test('dailyProductIds returns the product ids in today\'s daily receipt from the
   const allMode = dailyProductIds([{ id: 'motorin@2018-01', productId: 'motorin', date: '2018-01' }], '2026-10-26', categoryOf, null);
   assert.deepEqual(allMode, new Set(['motorin']));
   assert.deepEqual(dailyProductIds([], '2026-10-26', categoryOf), new Set());
+});
+
+test('lastSevenDays: oldest first, today last, local weekday labels', () => {
+  const days = lastSevenDays({ '2026-11-26': 412, '2026-11-24': 300 }, '2026-11-26');
+  assert.deepEqual(days.map((d) => d.key), [
+    '2026-11-20', '2026-11-21', '2026-11-22', '2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26',
+  ]);
+  assert.deepEqual(days.map((d) => d.label), ['Cum', 'Cmt', 'Paz', 'Pzt', 'Sal', 'Çar', 'Per']);
+  assert.deepEqual(days.map((d) => d.total), [null, null, null, null, 300, null, 412]);
+});
+
+test('lastSevenDays: crosses a month boundary (non-leap February)', () => {
+  const days = lastSevenDays({ '2026-02-28': 250, '2026-03-02': 400 }, '2026-03-02');
+  assert.deepEqual(days.map((d) => d.key), [
+    '2026-02-24', '2026-02-25', '2026-02-26', '2026-02-27', '2026-02-28', '2026-03-01', '2026-03-02',
+  ]);
+  assert.deepEqual(days.map((d) => d.label), ['Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz', 'Pzt']);
+  assert.deepEqual(days.map((d) => d.total), [null, null, null, null, 250, null, 400]);
+});
+
+test('lastSevenDays: crosses a year boundary', () => {
+  const days = lastSevenDays({ '2025-12-31': 333 }, '2026-01-03');
+  assert.equal(days[0].key, '2025-12-28');
+  assert.equal(days[0].label, 'Paz');
+  assert.equal(days[6].label, 'Cmt');
+  assert.equal(days[3].total, 333);
+});
+
+test('lastSevenDays: ignores bad entries and days outside the window', () => {
+  const log = { '2026-11-25': 'x', '2026-11-19': 500, 'bad': 5, '2026-11-26': 0 };
+  const days = lastSevenDays(log, '2026-11-26');
+  assert.deepEqual(days.map((d) => d.total), [null, null, null, null, null, null, 0]);
+  assert.equal(lastSevenDays(null, '2026-11-26').length, 7);
+  assert.deepEqual(lastSevenDays({}, 'nope'), []);
+});
+
+test('lastSevenDays: matches dayKey/prevDayKey for today', () => {
+  const today = dayKey();
+  const days = lastSevenDays({}, today);
+  assert.equal(days[6].key, today);
+  assert.equal(days[5].key, prevDayKey(today));
+});
+
+test('weekStripVisible: needs at least 2 played days', () => {
+  assert.equal(weekStripVisible(lastSevenDays({ '2026-11-26': 412 }, '2026-11-26')), false);
+  assert.equal(weekStripVisible(lastSevenDays({}, '2026-11-26')), false);
+  assert.equal(weekStripVisible(lastSevenDays({ '2026-11-26': 412, '2026-11-20': 0 }, '2026-11-26')), true);
+  assert.equal(weekStripVisible([]), false);
 });

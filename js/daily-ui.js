@@ -5,7 +5,7 @@ import { FOLLOW_UP_IDS, scoreTier, streakAlive } from './game.js';
 import { categoryOf } from './categories.js';
 import { questionTitle } from './share-model.js';
 import { resetShareBtn, shareTextWithStatus, shareDailyImage } from './share-ui.js';
-import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine } from './daily.js';
+import { dayKey, resolveSavedDaily, dailyQuestions, dailyTitle, dailyShareText, nextReceiptIn, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, lastSevenDays, weekStripVisible } from './daily.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -215,6 +215,27 @@ function reviewStreak() {
   return streakAlive(streak, dayKey()) ? streak.count ?? 0 : 0;
 }
 
+// Tier comes from the per-question average so a 500-point day uses the same scale as one answer.
+function renderWeekStrip(days) {
+  const box = $('daily-review-week');
+  const list = $('daily-review-week-days');
+  if (!weekStripVisible(days)) {
+    box.hidden = true;
+    list.innerHTML = '';
+    return;
+  }
+  const last = days.length - 1;
+  list.innerHTML = days.map((d, i) => {
+    const tier = d.total === null ? '' : ` data-tier="${scoreTier(Math.round(d.total / 5))}"`;
+    const current = i === last ? ' aria-current="date"' : '';
+    const total = d.total === null
+      ? '<span class="daily-week-total" aria-hidden="true">–</span><span class="daily-week-sr">oynanmadı</span>'
+      : `<span class="daily-week-total">${d.total}</span>`;
+    return `<li class="daily-week-day"${tier}${current}><span class="daily-week-label">${escapeHTML(d.label)}</span>${total}</li>`;
+  }).join('');
+  box.hidden = false;
+}
+
 function openDailyReview(saved) {
   const state = getState();
   const dlg = $('daily-review');
@@ -229,6 +250,7 @@ function openDailyReview(saved) {
     milestoneEl.textContent = milestone;
     milestoneEl.hidden = !milestone;
   }
+  renderWeekStrip(lastSevenDays(loadDailyLog(), saved.key));
   $('daily-review-next').textContent = nextReceiptIn();
   // A fresh open must not inherit "kopyalandı" from a share made just before closing.
   const shareBtn = $('daily-review-share');
