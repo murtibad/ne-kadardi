@@ -364,6 +364,7 @@ let cancelPrint = null;
 let countUpRaf = null;
 let scoreRaf = null;
 let recordRing = null;
+let dailyRing = null;
 
 // Stops the price count-up, leaves the real price on the receipt, and reveals the current/change rows.
 function stopCountUp() {
@@ -515,6 +516,7 @@ function announceResult() {
 function printReceipt(extraSound) {
   announceResult();
   recordRing?.cancel();
+  dailyRing?.cancel();
   const wrap = document.querySelector('#result-screen .receipt-wrapper');
   stopPrinting();
   wrap.classList.remove('printing', 'torn');
@@ -544,6 +546,12 @@ function printReceipt(extraSound) {
           [{ boxShadow: '0 0 0 0 rgba(224,160,32,.55)' }, { boxShadow: '0 0 0 8px rgba(224,160,32,0)' }],
           { duration: 900, easing: 'ease-out', delay: skipped ? 0 : SCORE_ROLL_MS, fill: 'backwards' });
       }
+      // A new all-time daily best or played-count milestone gets the same gold ring on the summary card.
+      if (isDailyEndTurn() && $('r-card-milestone') && !$('r-card-milestone').hidden) {
+        dailyRing = $('r-card')?.animate(
+          [{ boxShadow: '0 0 0 0 rgba(224,160,32,.55)' }, { boxShadow: '0 0 0 8px rgba(224,160,32,0)' }],
+          { duration: 900, easing: 'ease-out', delay: skipped ? 0 : 760, fill: 'backwards' });
+      }
       $('r-meter').style.setProperty('--score', `${state.result.score}%`);
       const tier = scoreTier(state.result.score);
       if (tier === 'great') $('r-image').classList.add('bounce');
@@ -560,6 +568,7 @@ function printReceipt(extraSound) {
   const skipPrint = () => finish({ skipped: true });
   cancelPrint = () => {
     recordRing?.cancel();
+    dailyRing?.cancel();
     stopCountUp();
     stopScoreRoll();
     wrap.removeEventListener('click', skipPrint);
@@ -868,6 +877,10 @@ function closeIntro() {
 // owner's call 2026-10-26: the daily receipt does the same job better).
 function renderReportCard() {
   $('r-card').hidden = true;
+  if ($('r-card-milestone')) {
+    $('r-card-milestone').textContent = '';
+    $('r-card-milestone').hidden = true;
+  }
   if (renderDailyCard()) return;
   setDailyEndTurn(false);
   resetShareBtn();

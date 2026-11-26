@@ -116,7 +116,7 @@ export function dailyShareText({ key, scores, url, streak = 0 }) {
 }
 
 /** Keep only the newest `max` days of the receipt log so storage stays tiny. Ignores bad entries. */
-export function trimLog(log, max = 60) {
+export function trimLog(log, max = 365) {
   const keys = Object.keys(log ?? {})
     .filter((k) => /^\d{4}-\d{2}-\d{2}$/.test(k) && Number.isFinite(log[k]))
     .sort()
@@ -188,4 +188,30 @@ export function dailyProgressDots(scores, total = 5) {
     }
     return { status: i === answered.length ? 'current' : 'upcoming', score: null, tier: null };
   });
+}
+
+const DAILY_MILESTONES = {
+  3: "3. Günün Fişi'n! Alışkanlık başlıyor.",
+  7: "7. Günün Fişi'n! Tam bir haftalık fiş oldu.",
+  10: "10. Günün Fişi'n! Bırakmadın.",
+  25: "25. Günün Fişi'n! Artık müdavim oldun.",
+  50: "50. Günün Fişi'n! Elli fiş oldu, helal olsun.",
+  100: "100. Günün Fişi'n! Yüz fiş, büyük emek.",
+};
+
+/**
+ * Warm celebration line for a finished Günün Fişi: new all-time daily best (never on the first
+ * receipt ever) and/or a played-count milestone (3, 7, 10, 25, 50, 100). Returns '' otherwise.
+ */
+export function dailyMilestoneLine(stats, total, prevBest) {
+  const played = stats?.played ?? 0;
+  const parts = [];
+  if (played >= 2 && Number.isFinite(prevBest) && Number.isFinite(total) && total > prevBest) {
+    parts.push(prevBest > 0
+      ? `Yeni rekor! Bugüne kadarki en iyi Günün Fişi'n. Önceki en iyin ${prevBest}.`
+      : `Yeni rekor! Bugüne kadarki en iyi Günün Fişi'n.`);
+  }
+  const milestone = DAILY_MILESTONES[played];
+  if (milestone) parts.push(milestone);
+  return parts.join(' ');
 }
