@@ -39,10 +39,15 @@ Also:
 - Light/dark theme toggle with a circular reveal animation (View Transitions), keyboard friendly
 - Every price is sourced and labelled by source type (official, dataset, news, derived);
   unverified data never reaches the game
-- "Günün Fişi" daily receipt: the same 5 everyday questions for everyone each day, reviewable from the menu via "Fişini gör" once completed, with a spoiler-free share of coloured squares
+- "Günün Fişi" daily receipt: the same 5 everyday questions for everyone each day, with five tier-coloured progress dots while playing, reviewable from the menu via "Fişini gör" once completed; shared as a spoiler-free receipt image (no prices) or coloured squares
+- Daily records and milestones: a new all-time best and the 3rd/7th/10th/25th/50th/100th receipt get a one-time celebration line; the review shows a "Son 7 gün" strip
+- Günün Fişi rows link to each product's price history, pinned at the question's date
 - Daily streak ("🔥 3 gün üst üste") on the menu and receipt for answering at least one question every day
-- Menu stats tracking: shows how many different products you have tried (`sen N ürün denedin`), with a warm wrap-up line after 3+ questions in a sitting
-- Unanswered questions first: prefers product years you haven't seen yet before repeating
+- Warm wrap-up line on the menu after 3+ questions in a sitting
+- Free-play nudges: a tendency note every 5 answers when most guesses lean one way, and a one-time tip after three zero scores in a row
+- Unanswered questions first: prefers product years you haven't seen yet before repeating; free play skips today's Günün Fişi products and keeps product families (two breads, two fuels, two exams) apart for 8 questions
+- One-tap clear (×) in the price box; confetti and a bell for every 100-point guess
+- Archive progress ("81 üründen 19'unu tahmin ettin", correct Turkish suffixes) and a ✓ on guessed products
 - Friend challenge score in "Arkadaşına sor" links to compare results with a friend without spoiling the price
 - Same-year follow-up hook on the receipt jumping straight to another everyday product from that year
 - Typo-tolerant archive search understands everyday words ("mazot", "akbil", "döviz", "araba", "maaş") and forgives a single typo when no exact match is found
@@ -78,6 +83,9 @@ js/linkify.js       turns URLs in notes into link buttons (pure, tested)
 js/fact.js          the home page "Biliyor muydun?" card (pure, tested)
 js/intro.js         animated first-visit intro (pure data helpers and stage runner)
 js/hint.js          hint values and exclusions
+js/progress.js      archive progress line with Turkish number suffixes (pure, tested)
+js/tendency.js      free-play tendency note and cold-streak tip (pure, tested)
+js/icon-preload.js  warms product icons for upcoming questions (tested)
 js/count-up.js      price count-up frames on the receipt
 js/confetti.js      confetti on an exact guess
 js/share-model.js   share text and image model (pure, tested)
