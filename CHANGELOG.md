@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.158.2] - 2026-11-26
+### Changed
+- README'ye 0.150.2-0.158.1 özellikleri eklendi.
+
 ## [0.158.1] - 2026-11-26
 ### Fixed
 - Asgari ücret sepeti artık yalnız aynı ayın fiyatlarını kullanıyor: Temmuz 2022 maaşı Ocak benzin fiyatıyla eşleşip '329 litre' diyordu, doğrusu 201 litre.
