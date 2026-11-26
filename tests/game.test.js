@@ -869,6 +869,14 @@ test('pickForProduct excludes the shown date, prefers older than 12 months, and 
   assert.equal(pickForProduct(qs, 'missing', { excludeDate: '2015-01', today }), null);
   assert.equal(pickForProduct([], 'dolar', { excludeDate: '2010-01', today }), null);
   assert.equal(pickForProduct(qs, null, { today }), null);
+
+  // Excludes both the picked date and currentDate (excludeDates) so neither printed price is asked.
+  for (let i = 0; i < 10; i += 1) {
+    const picked = pickForProduct(qs, 'dolar', { excludeDates: ['2010-01', '2026-07'], today, rng: () => i / 10 });
+    assert.equal(picked.id, 'dolar@2018-01');
+  }
+  assert.equal(pickForProduct(recentOnly, 'dolar', { excludeDates: ['2010-01', '2026-07'], today }), null);
+  assert.equal(pickForProduct(recentOnly, 'dolar', { excludeDate: '2010-01', excludeDates: ['2026-07'], today }), null);
 });
 
 test('pickForYear asks from the chosen year, prefers another product, and never returns the shown product@date', async () => {
@@ -898,11 +906,36 @@ test('pickForYear asks from the chosen year, prefers another product, and never 
     'dolar@2014-06',
   );
 
+  // Softly avoids excludeProducts (today's Günün Fişi products) and falls back when none else exist.
+  const daily = new Set(['ekmek']);
+  for (let i = 0; i < 10; i += 1) {
+    assert.equal(
+      pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', excludeProducts: daily, rng: () => i / 10 }).productId,
+      'dolar',
+    );
+  }
+  // If the only other product is in daily, prefers another date of the fact product over spoiling daily.
+  assert.equal(
+    pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', excludeProducts: new Set(['ekmek', 'dolar']), rng: () => 0 }).id,
+    'benzin@2014-07',
+  );
+  // Falls back to daily products when the year has no non-daily question left.
+  assert.equal(
+    pickForYear(qs, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', excludeProducts: new Set(['benzin', 'ekmek', 'dolar']), rng: () => 0 }).productId,
+    'ekmek',
+  );
+
   // Falls back to another date of the same product when no other product exists in that year.
   const sameProductOnly = [qs[0], qs[1], qs[4]];
   assert.equal(
     pickForYear(sameProductOnly, 2014, { excludeProductId: 'benzin', excludeDate: '2014-01', rng: () => 0 }).id,
     'benzin@2014-07',
+  );
+
+  // Never returns any excluded date (excludeDates) of excludeProductId.
+  assert.equal(
+    pickForYear(sameProductOnly, 2014, { excludeProductId: 'benzin', excludeDates: ['2014-01', '2014-07'] }),
+    null,
   );
 
   // Never returns the exact shown product@date even when it is the only question in that year.
@@ -916,23 +949,36 @@ test('fact card play helpers never spoil the shown fact on real data', async () 
   const { pickForProduct, pickForYear, yearOf } = await import('../js/game.js');
   const { pickFact, factYears } = await import('../js/fact.js');
   const { buildTimelines } = await import('../js/timeline.js');
+  const { categoryOf } = await import('../js/categories.js');
+  const { dayKey, dailyProductIds } = await import('../js/daily.js');
   const data = JSON.parse(readFileSync(new URL('../data/prices.json', import.meta.url), 'utf8'));
   const all = buildQuestions(data);
   const tls = buildTimelines(data);
   const today = new Date(2026, 9, 26);
+  const dailyExclude = dailyProductIds(all, dayKey(today), categoryOf);
 
   const randomFact = pickFact(tls, { random: () => 0.3 });
-  const prodQ = pickForProduct(all, randomFact.productId, { excludeDate: randomFact.date, today, rng: () => 0 });
+  const prodQ = pickForProduct(all, randomFact.productId, { excludeDates: [randomFact.date, randomFact.currentDate], today, rng: () => 0 });
   if (prodQ) {
     assert.equal(prodQ.productId, randomFact.productId);
     assert.notEqual(prodQ.date, randomFact.date);
+    assert.notEqual(prodQ.date, randomFact.currentDate);
   }
 
   for (const y of factYears(tls)) {
     const f = pickFact(tls, { random: () => 0, year: y });
-    const q = pickForYear(all, y, { excludeProductId: f.productId, excludeDate: f.date, rng: () => 0 });
+    const q = pickForYear(all, y, {
+      excludeProductId: f.productId,
+      excludeDates: [f.date, f.currentDate],
+      excludeProducts: dailyExclude,
+      rng: () => 0,
+    });
     assert.ok(q, `expected a non-spoiling question for year ${y}`);
     assert.equal(yearOf(q.date), y);
     assert.notEqual(q.id, `${f.productId}@${f.date}`);
+    assert.notEqual(q.id, `${f.productId}@${f.currentDate}`);
+    const hasNonDaily = all.some((x) => yearOf(x.date) === y && !dailyExclude.has(x.productId)
+      && !(x.productId === f.productId && (x.date === f.date || x.date === f.currentDate)));
+    if (hasNonDaily) assert.ok(!dailyExclude.has(q.productId), `year ${y} picked daily product ${q.productId}`);
   }
 });
