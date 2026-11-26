@@ -19,14 +19,24 @@ function hasScrubbed() {
   }
 }
 
-function markScrubbed() {
-  if (hasScrubbed()) return;
-  try {
-    localStorage.setItem(SCRUBBED_KEY, '1');
-  } catch {
-    scrubbedFallback = true;
-  }
+let hintRemovalPending = false;
+
+function removeChartHints() {
+  hintRemovalPending = false;
   document.querySelectorAll('.pc-hint').forEach((el) => el.remove());
+}
+
+// `deferRemoval`: mid-scrub, so the caption goes on pointerup/cancel, not under the moving finger.
+function markScrubbed(deferRemoval = false) {
+  if (!hasScrubbed()) {
+    try {
+      localStorage.setItem(SCRUBBED_KEY, '1');
+    } catch {
+      scrubbedFallback = true;
+    }
+  }
+  if (deferRemoval) hintRemovalPending = true;
+  else removeChartHints();
 }
 
 export function initChartUi(d) {
@@ -242,18 +252,21 @@ export function bindPriceChart(fig, chart, onActive) {
         // A tiny tick each time the finger reaches a new year, like the notches of a dial.
         if (e.pointerType === 'touch' && changed) deps?.onScrubTick?.();
         showTip(idx, false, 'hover', e.pointerType);
-        if (changed) markScrubbed();
+        if (changed) markScrubbed(true);
       }
     } else if (e.type === 'pointercancel') {
       // The browser took the touch for a vertical page scroll: do not leave the label stuck on the chart.
       dismissedIdx = -1;
+      if (hintRemovalPending) removeChartHints();
       if (e.pointerType !== 'mouse') hideTip();
     } else if (e.type === 'pointerup') {
       dismissedIdx = -1;
+      if (hintRemovalPending) removeChartHints();
       // Finger lifted on a point: now the linked table row may scroll into view.
       if (e.pointerType !== 'mouse' && !tip.hidden) onActive?.(points[activeIdx], 'pointer');
     } else if (e.type === 'pointerleave') {
       dismissedIdx = -1;
+      if (hintRemovalPending) removeChartHints();
       if (e.pointerType !== 'touch' && e.target === svgEl) hideTip();
     } else if (e.type === 'blur') {
       hideTip();

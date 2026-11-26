@@ -158,10 +158,13 @@ test('buildWageBasketLine compares one wage then and today with the first two ba
   assert.equal(buildContextModel(basketWage, all), null);
 });
 
-test('buildWageBasketLine uses the item price in force on the wage date, from the same year', () => {
+test('buildWageBasketLine pairs a wage only with item prices of the same month', () => {
   const july = { ...basketWage, date: '2010-07' };
+  // January gold and June/September fuel are not July prices: a July wage must not use them.
   const all = [july, gold2010, fuel2010, basketRow('benzin', '2010-06', 5, fuelNow), basketRow('benzin', '2010-09', 9, fuelNow)];
-  assert.equal(buildWageBasketLine(july, all), 'O tarihte 1 asgari ücretle 7,4 gram altın ya da 148 litre benzin alınabiliyordu; bugün 5,8 gram altın ya da 510 litre benzin.');
+  assert.equal(buildWageBasketLine(july, all), null);
+  const withJuly = [...all, basketRow('benzin', '2010-07', 5, fuelNow)];
+  assert.equal(buildWageBasketLine(july, withJuly), 'O tarihte 1 asgari ücretle 148 litre benzin alınabiliyordu; bugün 510 litre benzin.');
 });
 
 test('buildWageBasketLine skips unverified, other-year and no-current items', () => {
