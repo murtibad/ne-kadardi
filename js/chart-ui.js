@@ -2,7 +2,7 @@
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPrice, formatPeriod, escapeHTML } from './format.js';
 import { isAmount } from './game.js';
-import { buildPriceChart, chartHintText, labelSide, nearestPointIndex, placeRefLabel, refLabelAtStart } from './price-chart.js';
+import { buildPriceChart, chartHintText, labelSide, nearestPointIndex, placeRefLabel, refLabelAtStart, stepText } from './price-chart.js';
 
 const $ = (id) => document.getElementById(id);
 const SCRUBBED_KEY = 'ne-kadardi-chart-scrubbed';
@@ -112,7 +112,11 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const fresh = fig.dataset.key !== key;
   fig.dataset.key = key;
   const isCoarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
+  const captionTitle = `Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}`;
   const hintHtml = hasScrubbed() ? '' : ` <span class="pc-hint">${escapeHTML(chartHintText(isCoarse))}</span>`;
+  const captionHtml = captionTitle + hintHtml;
+  // Rebuilt on hide, so a hint removed mid-scrub does not come back.
+  const restCaption = () => captionTitle + (hasScrubbed() ? '' : hintHtml);
   fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" tabindex="0" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
@@ -120,8 +124,10 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
       <g class="pc-tip" hidden><line class="pc-cursor"/><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
     <span class="visually-hidden" aria-live="polite"></span>
-    <figcaption>Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}${hintHtml}</figcaption>`;
-  bindPriceChart(fig, chart, figId === 't-chart' ? (point, source) => {
+    <figcaption aria-live="off">${captionHtml}</figcaption>`;
+  bindPriceChart(fig, chart, (point, source) => {
+    if (point === null) fig.querySelector('figcaption').innerHTML = restCaption();
+    if (figId !== 't-chart') return;
     fig.dataset.source = source; // the archive reads it: no scrolling while a finger slides
     const rows = $('t-rows-container').querySelectorAll('tr[data-date]');
     let match = null;
@@ -135,7 +141,7 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
     if (match && source === 'pointer' && (rect.top < 0 || rect.bottom > window.innerHeight)) {
       match.scrollIntoView({ block: 'nearest' });
     }
-  } : undefined);
+  });
 }
 
 // Wires pointer and keyboard inspection onto the rendered chart SVG without global state.
@@ -204,6 +210,8 @@ export function bindPriceChart(fig, chart, onActive) {
       cursor.setAttribute('y1', boxBottom);
       cursor.setAttribute('y2', gapEnd);
     }
+    const cap = fig.querySelector('figcaption');
+    if (cap) cap.textContent = stepText(points, idx);
     document.addEventListener('pointerdown', onOutsideDown);
     if (viaKeyboard && live) live.textContent = `${period}: ${price}`;
     onActive?.(p, source);

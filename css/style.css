@@ -1574,6 +1574,10 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .score-box .score-hint { font-size: 0.875rem; }
 .price-chart figcaption { font-size: 0.75rem; }
 #r-chart figcaption { font-size: 0.8125rem; }
+/* Room for the two-line scrub caption, so the chart does not move under a scrubbing finger. */
+.price-chart figcaption { line-height: 1.35; min-height: 2.7em; }
+/* The framed receipt chart is narrowest at 320px, where the longest caption needs three lines. */
+@media (max-width: 359px) { #r-chart figcaption { min-height: 4.05em; } }
 .pc-label, .pc-tick, .pc-ref-label, .pc-tip text { font-size: 11px; }
 
 .link-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; font: inherit; font-weight: 700; color: inherit; text-decoration: underline; cursor: pointer; }
