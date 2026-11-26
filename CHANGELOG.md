@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.159.2] - 2026-11-26
+### Changed
+- Günün Fişi satırları daha kolay okunuyor: üstte ürün, altta 'Sen ₺20 · Gerçek ₺2,50', sağda puan rengiyle küçük bir puan rozeti.
+
 ## [0.159.1] - 2026-11-26
 ### Changed
 - Fiş sadeleşti (55 yaş gözüyle yapılan denetim): bir sonuçta en fazla bir ek not; ipucu ya da eğilim notu çıkınca kasiyer yorumu o sonuçta gizleniyor. Eğilim notu oturumda bir kez. 'Yazdığın fiyat bugünkünden bile yüksek!' kalktı ('Çok yüksek tahmin ettin' zaten söylüyor). İpucu kısaldı. Günün Fişi bitiş kartında 'en çok artan' son soruyla aynıysa gösterilmiyor (hemen üstünde zaten yazıyor).

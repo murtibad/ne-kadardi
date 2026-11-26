@@ -186,19 +186,50 @@ test('resolveSavedDaily keeps guesses only when they line up with the scores', (
 
 test('dailyRowText shows guess, real price and score; a skip reads "Geçtin"; no guess falls back', () => {
   const base = { date: '2016-01', title: 'Benzin', price: 4.28 };
-  assert.equal(dailyRowText({ ...base, score: 86, guess: 5 }).detail, 'Sen ₺5,00 · Gerçek ₺4,28 · 86 puan');
-  assert.equal(dailyRowText({ ...base, score: 0, guess: null }).detail, 'Geçtin · Gerçek ₺4,28');
-  assert.equal(dailyRowText({ ...base, score: 0, guess: 0.5 }).detail, 'Sen ₺0,50 · Gerçek ₺4,28 · 0 puan');
-  assert.equal(dailyRowText({ ...base, price: null, score: 0, guess: null }).detail, 'Geçtin');
-  assert.equal(dailyRowText({ ...base, price: null, score: 50, guess: 7 }).detail, 'Sen ₺7,00 · 50 puan');
-  assert.equal(dailyRowText({ ...base, score: 86 }).detail, '₺4,28 · 86 puan');
+  assert.deepEqual(dailyRowText({ ...base, score: 86, guess: 5 }), {
+    label: 'Ocak 2016 · Benzin',
+    detail: 'Sen ₺5,00 · Gerçek ₺4,28 · 86 puan',
+    guessPart: 'Sen ₺5,00 · Gerçek ₺4,28',
+    scorePart: '86 puan',
+  });
+  assert.deepEqual(dailyRowText({ ...base, score: 0, guess: null }), {
+    label: 'Ocak 2016 · Benzin',
+    detail: 'Geçtin · Gerçek ₺4,28',
+    guessPart: 'Geçtin · Gerçek ₺4,28',
+    scorePart: '0 puan',
+  });
+  assert.deepEqual(dailyRowText({ ...base, score: 0, guess: 0.5 }), {
+    label: 'Ocak 2016 · Benzin',
+    detail: 'Sen ₺0,50 · Gerçek ₺4,28 · 0 puan',
+    guessPart: 'Sen ₺0,50 · Gerçek ₺4,28',
+    scorePart: '0 puan',
+  });
+  assert.deepEqual(dailyRowText({ ...base, price: null, score: 0, guess: null }), {
+    label: 'Ocak 2016 · Benzin',
+    detail: 'Geçtin',
+    guessPart: 'Geçtin',
+    scorePart: '0 puan',
+  });
+  assert.deepEqual(dailyRowText({ ...base, price: null, score: 50, guess: 7 }), {
+    label: 'Ocak 2016 · Benzin',
+    detail: 'Sen ₺7,00 · 50 puan',
+    guessPart: 'Sen ₺7,00',
+    scorePart: '50 puan',
+  });
+  assert.deepEqual(dailyRowText({ ...base, score: 86 }), {
+    label: 'Ocak 2016 · Benzin',
+    detail: '₺4,28 · 86 puan',
+    guessPart: '₺4,28',
+    scorePart: '86 puan',
+  });
 });
 
 test('dailyRowText shows date, product, real price and score; a zero reads "0 puan"', () => {
   assert.deepEqual(dailyRowText({ date: '2016-01', title: 'Benzin', price: 4.28, score: 86 }),
-    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 86 puan' });
+    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 86 puan', guessPart: '₺4,28', scorePart: '86 puan' });
   assert.equal(dailyRowText({ date: '2016-01', title: 'Benzin', price: 4.28, score: 0 }).detail, '₺4,28 · 0 puan');
-  assert.equal(dailyRowText({ date: '2016-01', title: 'Benzin', price: null, score: 50 }).detail, '50 puan');
+  assert.deepEqual(dailyRowText({ date: '2016-01', title: 'Benzin', price: null, score: 50 }),
+    { label: 'Ocak 2016 · Benzin', detail: '50 puan', guessPart: '', scorePart: '50 puan' });
 });
 
 test('share text never contains prices', () => {
@@ -228,9 +259,9 @@ test('dailyLines maps scores to their colour tier; 0 points is red like the shar
 
   const withSkips = dailyLines(all, ['benzin@2016-01', 'dolar@2015-01', 'missing@2020-01'], [0, null]);
   assert.deepEqual(withSkips, [
-    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 0 puan', tier: 'bad', productId: 'benzin', date: '2016-01' },
-    { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: 'bad', productId: 'dolar', date: '2015-01' },
-    { label: 'Soru', detail: '0 puan', tier: 'bad' },
+    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 0 puan', guessPart: '₺4,28', scorePart: '0 puan', tier: 'bad', productId: 'benzin', date: '2016-01' },
+    { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', guessPart: '₺2,33', scorePart: '0 puan', tier: 'bad', productId: 'dolar', date: '2015-01' },
+    { label: 'Soru', detail: '0 puan', guessPart: '', scorePart: '0 puan', tier: 'bad' },
   ]);
 });
 
