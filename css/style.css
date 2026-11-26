@@ -1920,7 +1920,16 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 /* Two lines per row: on a 360 px phone a side-by-side price squeezed product names into three lines. */
 .report-card-lines li { display: block; padding-bottom: 6px; border-bottom: 1px dashed var(--line); animation: report-row-in 0.25s ease-out backwards; animation-delay: calc(var(--row-i, 0) * 45ms); }
 .report-card-lines li:last-child { border-bottom: 0; padding-bottom: 0; }
-.report-card-lines li > span { display: block; }
+.report-card-lines li > span,
+.report-card-lines .daily-row-link > span { display: block; }
+/* Linked row: looks like the plain row, whole row is the tap target (>= 40px). */
+.report-card-lines .daily-row-link { display: block; min-height: 40px; padding: 2px 4px; margin: 0 -4px; border-radius: 6px; color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.report-card-lines .daily-row-link:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (hover: hover) {
+  .report-card-lines .daily-row-link:hover { background: color-mix(in srgb, currentColor 7%, transparent); }
+}
+.report-card-lines .daily-row-link:active { background: color-mix(in srgb, currentColor 10%, transparent); }
+.report-card-lines .daily-row-go { margin-left: 6px; font-weight: 400; color: var(--muted-on-paper); }
 .report-card-lines .tally-dot { display: inline-block; vertical-align: -1px; margin-right: 6px; }
 .report-card-lines .tally-dot:not([data-tier]) { background: transparent; box-shadow: inset 0 0 0 1.5px var(--muted-on-paper); }
 .report-card-lines li strong { display: block; text-align: right; white-space: nowrap; }

@@ -162,6 +162,16 @@ function showMessage(text, { retry = false } = {}) {
   show('message-screen');
 }
 
+// Opens the archive on one product with `date` pinned. `fromResult` only decides where Back goes:
+// the result screen (true) or the menu (false, e.g. the Günün Fişi review dialog).
+function pinArchive(productId, date, fromResult) {
+  state.selectedTimelineProduct = productId;
+  state.timelineCategory = 'all';
+  state.timelineQuery = '';
+  state.archiveFromResult = fromResult;
+  state.archivePin = { productId, date };
+}
+
 // `productId` starts with a question about one product (the home fact card's "Bunu tahmin et");
 // adding `date` pins the exact question from a shared `?soru=` link.
 function nextQuestion(productId = null, date = null) {
@@ -170,6 +180,7 @@ function nextQuestion(productId = null, date = null) {
   setDailyEndTurn(false);
   stopPrinting();
   state.archiveFromResult = false;
+  state.archivePin = null;
   state.friendScore = null;
   resetShareBtn();
   if ($('r-tax-details')) {
@@ -746,7 +757,7 @@ function renderResult(q, r) {
   renderTaxDetails(q);
 
   $('r-archive').textContent = isAmount(q.productId) ? 'Yıllar içindeki tutarları →' : 'Bu ürünün fiyat geçmişi →';
-  $('r-archive').onclick = () => { state.selectedTimelineProduct = q.productId; state.timelineCategory = 'all'; state.timelineQuery = ''; state.archiveFromResult = true; state.archivePin = { productId: q.productId, date: q.date }; };
+  $('r-archive').onclick = () => pinArchive(q.productId, q.date, true);
   $('r-source').href = q.source.url;
   // Publisher + year keeps "Kaynak: …" on one row; the full headline stays in title/aria-label.
   $('r-source').textContent = sourceLinkText(q.source, q.date) || shortTitle(q.source.title);
@@ -960,6 +971,7 @@ function refreshHomeIfNewDay() {
 
 function renderHome() {
   state.archiveFromResult = false;
+  state.archivePin = null;
   // After the daily receipt the question is spent; keeping it would offer "Sonuca dön" into a finished fiş.
   if (isDailyEndTurn()) {
     state.question = null;
@@ -1299,7 +1311,7 @@ async function init() {
     return;
   }
   initChartUi({ getState: () => state, onScrubTick: () => hapticIfAllowed(5) });
-  initDailyUi({ getState: () => state, nextQuestion, renderHome });
+  initDailyUi({ getState: () => state, nextQuestion, renderHome, pinArchive });
   initShareUi({ getState: () => state, isDailyEndTurn });
   $('guess-form').addEventListener('submit', onGuess);
   const guessField = document.querySelector('#question-screen .guess-field');
