@@ -325,6 +325,8 @@ export function dailyBiggestJump(all, ids) {
     if (!Number.isFinite(q.price) || q.price <= 0) continue;
     const cur = q.current;
     if (!cur || (cur.status !== undefined && cur.status !== 'verified')) continue;
+    // A newer model today (PlayStation 4 vs 5 Pro) is not the same thing getting dearer.
+    if (cur.label && cur.label !== q.label) continue;
     if (!Number.isFinite(cur.price) || cur.price <= 0) continue;
     const fromYear = yearOf(String(q.date ?? ''));
     if (!Number.isFinite(fromYear) || fromYear <= 0) continue;

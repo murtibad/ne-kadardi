@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.8] - 2026-11-26
+### Fixed
+- Önceki soruda '1.250' gibi binlik ayraçlı bir sayı yazdıktan sonra yeni soruda '4.5' yazınca 45'e dönüşüyordu; artık her soruda kutu sıfırdan başlıyor.
+- 360-719 px telefonlarda uzun durum yazısı ('Görsel hazırlanamadı, metin kopyalandı.') düğmeyi ekrandan taşırıyordu; artık alt satıra iniyor.
+- Arşivde emekli aylığı, burs gibi tutarlarda görünüm düğmeleri 'TL tutarı / Asgari ücrete oranı'. Günün Fişi'nde farklı modelli ürünler (PlayStation 4 → 5 Pro) 'en çok artan' sayılmıyor. 'Başka ↻' ile gösterilen fiyatların hepsi serbest oyunda hemen sorulmuyor. Önizleme görsel metni ve arşiv grafiği etiket ölçümü düzeltildi.
+
 ## [0.163.7] - 2026-11-26
 ### Changed
 - README'ye 0.159.0-0.163.6 özellikleri eklendi.
