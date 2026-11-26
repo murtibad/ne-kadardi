@@ -185,7 +185,7 @@ export function dailyLines(all, ids, scores, guesses) {
     // Same colour as the shared squares: a 0-point row is red there too (🟥).
     const tier = scoreTier(score);
     const dq = all.find((x) => x.id === id);
-    if (!dq) return { label: 'Soru', detail: `${score} puan`, tier };
+    if (!dq) return { label: 'Soru', detail: `${score} puan`, guessPart: '', scorePart: `${score} puan`, tier };
     // productId + date let the UI link the row to the archive, pinned at the question's date.
     return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score, guess: guesses?.[i] }), tier, productId: dq.productId, date: dq.date };
   });
@@ -221,24 +221,37 @@ export function renderDailyRound(el) {
   }, { once: true });
 }
 
-// Each " · " part stays on one line; the arrow rides with the last part so it never wraps alone.
-function detailHtml(detail, tail = '') {
-  const parts = String(detail).split(' · ');
-  // The dot stays with the part before it, so a wrapped line never starts with "·".
-  return parts.map((p, i) => `<span class="nw">${escapeHTML(p)}${i === parts.length - 1 ? tail : ' ·'}</span>`).join(' ');
+// Each " · " part stays on one line; the dot stays with the part before it so a wrapped line never starts with "·".
+function detailHtml(text) {
+  const parts = String(text).split(' · ');
+  return parts.map((p, i) => `<span class="nw">${escapeHTML(p)}${i === parts.length - 1 ? '' : ' ·'}</span>`).join(' ');
+}
+
+// Splits "86 puan" into the number and unit so the right-aligned badge can stack them.
+function scoreBadgeHtml(scorePart, tierAttr) {
+  const text = String(scorePart ?? '').trim();
+  const space = text.indexOf(' ');
+  const pts = space > 0 ? text.slice(0, space) : text;
+  const unit = space > 0 ? text.slice(space + 1) : '';
+  return `<span class="daily-row-score"${tierAttr}><strong class="daily-row-pts">${escapeHTML(pts)}</strong>`
+    + (unit ? `<span class="daily-row-unit">${escapeHTML(unit)}</span>` : '')
+    + '</span>';
 }
 
 function renderDailyRows(lines) {
   return lines.map((l, i) => {
     const tierAttr = l.tier ? ` data-tier="${escapeHTML(l.tier)}"` : '';
     const dot = `<span class="tally-dot"${tierAttr} aria-hidden="true"></span>`;
+    const labelHtml = `<span class="daily-row-label">${dot}${escapeHTML(l.label)}</span>`;
+    const guessHtml = l.guessPart ? `<span class="daily-row-guess">${detailHtml(l.guessPart)}</span>` : '';
+    const badgeHtml = scoreBadgeHtml(l.scorePart ?? l.detail, tierAttr);
     if (!l.productId) {
-      return `<li style="--row-i:${i}"><span>${dot}${escapeHTML(l.label)}</span><strong>${detailHtml(l.detail)}</strong></li>`;
+      return `<li class="daily-row-plain" style="--row-i:${i}">${labelHtml}${guessHtml}${badgeHtml}</li>`;
     }
     // The whole row is the tap target; the arrow is decoration, the aria-label says where it goes.
     const aria = escapeHTML(`${l.label}, ${l.detail}. Fiyat geçmişini aç`);
     return `<li style="--row-i:${i}"><a class="daily-row-link" href="#arsiv" data-product="${escapeHTML(l.productId)}" data-date="${escapeHTML(l.date)}" aria-label="${aria}">`
-      + `<span>${dot}${escapeHTML(l.label)}</span><strong>${detailHtml(l.detail, '<span class="daily-row-go" aria-hidden="true">→</span>')}</strong></a></li>`;
+      + `${labelHtml}${guessHtml}${badgeHtml}<span class="daily-row-go" aria-hidden="true">→</span></a></li>`;
   }).join('');
 }
 

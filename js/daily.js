@@ -177,23 +177,27 @@ export function dailyTotalLine(total, yesterday) {
 }
 
 /**
- * One receipt line for the daily review: label "Ocak 2016 · Benzin", detail "Sen ₺5 · Gerçek ₺4,28 · 86 puan".
+ * One receipt line for the daily review: label "Ocak 2016 · Benzin", guessPart "Sen ₺5,00 · Gerçek ₺4,28",
+ * scorePart "86 puan", and the combined `detail` string ("Sen ₺5,00 · Gerçek ₺4,28 · 86 puan") for aria/back-compat.
  * `guess` is the player's number, null for a skip, undefined for an old save that never stored it
- * (then the detail is just "₺4,28 · 86 puan"). Parts are joined by " · " so the UI can keep each unbroken.
+ * (then guessPart is "₺4,28"). Parts are joined by " · " so the UI can keep each unbroken.
  * Guesses and prices live only here, never in the share text (a friend solves the same questions).
  */
 export function dailyRowText({ date, title, price, score, guess }) {
   const label = `${formatPeriod(date)} · ${title}`;
   const hasPrice = Number.isFinite(price);
+  const pts = Number.isFinite(score) ? score : 0;
+  const scorePart = `${pts} puan`;
   if (guess === null) {
-    return { label, detail: hasPrice ? `Geçtin · Gerçek ${formatPrice(price)}` : 'Geçtin' };
+    const guessPart = hasPrice ? `Geçtin · Gerçek ${formatPrice(price)}` : 'Geçtin';
+    return { label, detail: guessPart, guessPart, scorePart };
   }
   if (Number.isFinite(guess)) {
-    const real = hasPrice ? ` · Gerçek ${formatPrice(price)}` : '';
-    return { label, detail: `Sen ${formatPrice(guess)}${real} · ${score} puan` };
+    const guessPart = hasPrice ? `Sen ${formatPrice(guess)} · Gerçek ${formatPrice(price)}` : `Sen ${formatPrice(guess)}`;
+    return { label, detail: `${guessPart} · ${scorePart}`, guessPart, scorePart };
   }
-  const priced = hasPrice ? `${formatPrice(price)} · ` : '';
-  return { label, detail: `${priced}${score} puan` };
+  const guessPart = hasPrice ? formatPrice(price) : '';
+  return { label, detail: guessPart ? `${guessPart} · ${scorePart}` : scorePart, guessPart, scorePart };
 }
 
 /** Review dialog total line; the streak is appended only when it is 2+ days and still alive. */

@@ -1935,23 +1935,95 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .report-card-title { margin: 0 0 8px; text-align: center; font-weight: 700; letter-spacing: 1px; }
 .report-card-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.875rem; }
 .report-card-avg { margin: 10px 0 4px; font-size: 0.875rem; font-weight: 700; }
-/* Two lines per row: on a 360 px phone a side-by-side price squeezed product names into three lines. */
-.report-card-lines li { display: block; padding-bottom: 6px; border-bottom: 1px dashed var(--line); animation: report-row-in 0.25s ease-out backwards; animation-delay: calc(var(--row-i, 0) * 45ms); }
+/* Two-line grid per row: dot+label on line 1, guess/real price on line 2, tier score badge + arrow spanning both lines. */
+.report-card-lines li { padding-bottom: 6px; border-bottom: 1px dashed var(--line); animation: report-row-in 0.25s ease-out backwards; animation-delay: calc(var(--row-i, 0) * 45ms); }
 .report-card-lines li:last-child { border-bottom: 0; padding-bottom: 0; }
-.report-card-lines li > span,
-.report-card-lines .daily-row-link > span { display: block; }
-/* Linked row: looks like the plain row, whole row is the tap target (>= 40px). */
-.report-card-lines .daily-row-link { display: block; min-height: 40px; padding: 2px 4px; margin: 0 -4px; border-radius: 6px; color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+/* Linked and plain rows share the two-line grid; whole linked row is the tap target (>= 44px). */
+.report-card-lines .daily-row-link,
+.report-card-lines .daily-row-plain {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 2px;
+  min-height: 44px;
+}
+.report-card-lines .daily-row-link {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  padding: 4px;
+  margin: 0 -4px;
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
 .report-card-lines .daily-row-link:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 @media (hover: hover) {
   .report-card-lines .daily-row-link:hover { background: color-mix(in srgb, currentColor 7%, transparent); }
 }
 .report-card-lines .daily-row-link:active { background: color-mix(in srgb, currentColor 10%, transparent); }
-.report-card-lines .daily-row-go { margin-left: 6px; font-weight: 400; color: var(--muted-on-paper); }
-.report-card-lines .tally-dot { display: inline-block; vertical-align: -1px; margin-right: 6px; }
+.report-card-lines .daily-row-label {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  font: 600 0.875rem/1.3 var(--font-ui);
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+.report-card-lines .daily-row-label:not(:has(+ .daily-row-guess)) { grid-row: 1 / -1; align-self: center; }
+.report-card-lines .daily-row-guess {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+  font: 500 0.8125rem/1.35 var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-on-paper);
+}
+.report-card-lines .daily-row-guess .nw { white-space: nowrap; }
+.report-card-lines .daily-row-score {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1.5px solid color-mix(in srgb, var(--tier, var(--muted-on-paper)) 45%, transparent);
+  background: color-mix(in srgb, var(--fill, transparent) 14%, transparent);
+  color: var(--tier, var(--ink));
+  text-align: center;
+  line-height: 1;
+}
+.report-card-lines .daily-row-pts {
+  display: block;
+  font: 700 1rem/1.05 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.report-card-lines .daily-row-unit {
+  display: block;
+  margin-top: 2px;
+  font: 600 0.6875rem/1 var(--font-ui);
+}
+.report-card-lines .daily-row-go {
+  grid-column: 3;
+  grid-row: 1 / -1;
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--muted-on-paper);
+}
+.report-card-lines .tally-dot { display: inline-block; vertical-align: 0; margin-right: 6px; }
 .report-card-lines .tally-dot:not([data-tier]) { background: transparent; box-shadow: inset 0 0 0 1.5px var(--muted-on-paper); }
-.report-card-lines li strong { display: block; text-align: right; }
-.report-card-lines li strong .nw { white-space: nowrap; }
+@media (max-width: 359px) {
+  .report-card { padding: 10px; }
+  .report-card-lines .daily-row-link { column-gap: 6px; }
+}
 @keyframes report-row-in {
   from { opacity: 0; transform: translateY(3px); }
   to { opacity: 1; transform: translateY(0); }
