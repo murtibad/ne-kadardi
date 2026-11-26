@@ -7,7 +7,7 @@ import { CATEGORIES, categoryOf } from './categories.js';
 import { sourceKindLabel } from './source-kind.js';
 import { sourceLinkText } from './source-name.js';
 import { burstConfetti } from './confetti.js';
-import { verdictText, questionTitle, skipRevealText, sessionBadge, sessionWrapText, bestGuessText } from './share-model.js';
+import { verdictText, questionTitle, skipRevealText, sessionBadge, sessionWrapText, bestGuessText, bestGuessBelowSessionBest } from './share-model.js';
 import { buildTaxLine, taxBreakdown } from './tax.js';
 import { cashierComment, rememberLine } from './cashier.js';
 import { contextComment, hintComment, gatedYearAnchor, ytlNote, stampTitle } from './banter.js';
@@ -21,7 +21,7 @@ import { parseQuestionParam, resolveFriendLink, LINK_NOT_FOUND_TEXT, friendIntro
 import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey, dailyProductIds } from './daily.js';
 import { sanitizeGuesses, rememberGuess } from './guess-memory.js';
-import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview, renderDailyRound } from './daily-ui.js';
+import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, endDailyDetour, closeDailyReview, renderDailyRound } from './daily-ui.js';
 import { questionIconUrl, preloadIcon } from './icon-preload.js';
 import { sessionTendencyLine, advanceColdStreak } from './tendency.js';
 
@@ -1112,7 +1112,8 @@ function renderHome() {
   $('home-stats').textContent = `${state.timelines.length} ürün · ${prices} gerçek fiyat`;
   $('home-stats').hidden = state.timelines.length === 0;
   const best = resolveBestGuess(state.bestGuess, state.all);
-  const bestLine = best ? bestGuessText(best.question, best.score) : '';
+  // An older session best can beat a best guess that only started being tracked later; two different bests would contradict.
+  const bestLine = best && !bestGuessBelowSessionBest(best.score, state.best, state.played) ? bestGuessText(best.question, best.score) : '';
   const bestEl = $('home-best');
   if (bestEl) {
     // A link to that product's archive pinned on the date; the arrow is decoration.
@@ -1288,6 +1289,9 @@ function onHashChange() {
   // Back from the archive during a daily run lands on #gunun-fisi, which must resume the screen
   // the player left instead of advancing to the next question.
   const resumeDaily = hash === '#gunun-fisi' && state.daily && state.question;
+  // Free play entered while a run is active (intro "Hemen oyna", a typed address): the run stays resumable
+  // from the menu, but this must be a plain free question that never touches the saved receipt.
+  if (hash === '#tahmin' && state.daily) endDailyDetour();
   if ((hash !== '#tahmin' && !resumeDaily) || !state.question || state.lastGameScreen !== 'result-screen') {
     stopPrinting();
   }

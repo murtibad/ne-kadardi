@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout, dailyProductIds, lastSevenDays, weekStripVisible, dailyBiggestJump, dailyBiggestJumpLine } from '../js/daily.js';
+import { dayKey, prevDayKey, resolveSavedDaily, seededRng, dailyQuestions, dailyTitle, dailyShareText, trimLog, dailyStats, dailyMenuMeta, dailyTotalLine, dailyRowText, dailyReviewTotalLine, dailyProgressDots, dailyMilestoneLine, dailyImageModel, fitText, dailyImageLayout, dailyProductIds, lastSevenDays, weekStripVisible, dailyBiggestJump, dailyBiggestJumpLine, dailyProgressMenuText, reviewNextLine } from '../js/daily.js';
 import { dailyLines } from '../js/daily-ui.js';
 import { categoryOf } from '../js/categories.js';
 
@@ -497,4 +497,16 @@ test('dailyBiggestJumpLine formats 1.5x–1.99x rises as percentages and >=100x 
     dailyBiggestJumpLine({ title: 'Gram altın', fromYear: 2010, factor: 123.4 }),
     "Bugünkü fişte en çok artan: Gram altın. 2010'dan bugüne 123 katına çıktı.",
   );
+});
+
+test('dailyProgressMenuText calls a run that crossed midnight yesterday as a name', () => {
+  const run = { key: '2026-11-25', ids: ['a', 'b', 'c', 'd', 'e'], scores: [10, 20] };
+  assert.equal(dailyProgressMenuText(run, '2026-11-26'), 'Dünkü fişin: 2/5 soru');
+  assert.equal(dailyProgressMenuText({ ...run, key: '2026-11-26' }, '2026-11-26'), 'Bugün 2/5 soru çözdün');
+});
+
+test('reviewNextLine shows the countdown only for the current receipt', () => {
+  const now = new Date(2026, 10, 26, 10, 0);
+  assert.equal(reviewNextLine('2026-11-26', '2026-11-26', now), 'Yeni fiş 14 saat sonra');
+  assert.equal(reviewNextLine('2026-11-25', '2026-11-26', now), 'Bugünün fişi hazır');
 });

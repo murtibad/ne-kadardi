@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.9] - 2026-11-26
+### Fixed
+- Gece yarısından önce başlayan Günün Fişi ertesi gün 'Bugün 2/5' yerine 'Dünkü fişin: 2/5 soru' diyor; bitince 'Yeni fiş 12 saat sonra' yerine 'Bugünün fişi hazır'; inceleme penceresi bir dakika sonra kendiliğinden kapanmıyor.
+- Günün Fişi yarıdayken 'Nasıl oynanır?' → 'Hemen oyna' ile serbest oyuna geçince cevaplar Günün Fişi'ne yazılıyordu; artık normal soru açılıyor, yarım fiş menüden devam ediyor.
+- Eski kayıtlarda menüdeki 'En iyi tahminin' satırı 'en yüksek' puandan düşükse gösterilmiyor.
+
 ## [0.163.8] - 2026-11-26
 ### Fixed
 - Önceki soruda '1.250' gibi binlik ayraçlı bir sayı yazdıktan sonra yeni soruda '4.5' yazınca 45'e dönüşüyordu; artık her soruda kutu sıfırdan başlıyor.

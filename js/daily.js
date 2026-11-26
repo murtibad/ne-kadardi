@@ -119,6 +119,17 @@ export function nextReceiptIn(now = new Date()) {
   return minutes >= 60 ? `Yeni fiş ${Math.floor(minutes / 60)} saat sonra` : `Yeni fiş ${minutes} dakika sonra`;
 }
 
+/** Menu line for an unfinished run; a run that crossed midnight is called yesterday's, not today's. */
+export function dailyProgressMenuText(daily, todayKey) {
+  const n = `${daily.scores.length}/${daily.ids.length}`;
+  return daily.key === todayKey ? `Bugün ${n} soru çözdün` : `Dünkü fişin: ${n} soru`;
+}
+
+/** Review footer: the countdown only makes sense for today's receipt; yesterday's means today's is ready. */
+export function reviewNextLine(key, todayKey, now = new Date()) {
+  return key === todayKey ? nextReceiptIn(now) : 'Bugünün fişi hazır';
+}
+
 /** Spoiler-free share text: coloured squares and total score, no product names or prices. */
 export function dailyShareText({ key, scores, url, streak = 0 }) {
   const list = scores ?? [];
