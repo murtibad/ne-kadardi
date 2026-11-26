@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.142.0] - 2026-11-26
+### Added
+- Günün Fişi sırasında soru kartının üstünde 5 nokta: çözdüğün sorular puan rengiyle doluyor, sıradaki soru halkalı, kalanlar boş. '3/5' yazısı da yerinde duruyor.
+
 ## [0.141.30] - 2026-11-26
 ### Fixed
 - Yeni sürüm arka planda yüklendiğinde sayfa artık bir sonraki ekran geçişinde bir kez yenileniyor (önceden yalnız sekme gizlenince); eski ve yeni dosyaların karışıp arşiv/paylaşımı bozması önlendi.

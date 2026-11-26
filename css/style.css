@@ -2231,3 +2231,30 @@ h1, h2, h3, .intro-final p, .home-intro p, .verdict, .product { text-wrap: balan
 /* Tax table: a long label ("Kültür Bakanlığı payı (%1)") must not touch its amount on phones. */
 .tax-details-table th { padding-right: 12px; }
 .tax-details-table td { white-space: nowrap; }
+
+/* Günün Fişi question-screen progress dots */
+#q-round.is-daily {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 10px;
+  flex-wrap: wrap;
+}
+.daily-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* Keeps the row height equal to the label line so dot state changes never shift the card. */
+  min-height: 1.25em;
+}
+.daily-dots .tally-dot.daily-dot-current {
+  background: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 2px var(--paper), 0 0 0 3.5px var(--ink);
+}
+.daily-dots .tally-dot.daily-dot-upcoming {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--muted-on-paper);
+}
+.daily-dots .tally-dot.daily-dot-pop {
+  animation: tally-pop 0.34s cubic-bezier(.2, 1.5, .4, 1) 0.12s both;
+}
