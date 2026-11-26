@@ -407,12 +407,13 @@ function onGuess(event) {
     state.recentScores = [...state.recentScores, state.result.score].slice(-RECENT_MAX);
     state.result.badge = sessionBadge({ prevBest, score: state.result.score, playedAfter: state.played, recent: state.recentScores });
     state.sessionDirections.push(state.result.direction);
-    // Once per sitting: by the second time it is just another line between the verdict and the quote.
-    state.result.tendencyLine = state.tendencyShown ? '' : sessionTendencyLine(state.sessionDirections);
-    if (state.result.tendencyLine) state.tendencyShown = true;
     const cold = advanceColdStreak(state.coldStreak, state.result.score);
     state.coldStreak = cold.state;
     state.result.coldTip = cold.text;
+    // Once per sitting: by the second time it is just another line between the verdict and the quote.
+    // One extra note per receipt: on a tip's turn the tendency waits for its next 5th answer.
+    state.result.tendencyLine = state.tendencyShown || cold.text ? '' : sessionTendencyLine(state.sessionDirections);
+    if (state.result.tendencyLine) state.tendencyShown = true;
   }
   state.seen.delete(q.id);
   state.seen.add(q.id);
