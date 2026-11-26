@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.146.0] - 2026-11-26
+### Added
+- Günün Fişi inceleme penceresinde 'Son 7 gün' şeridi: her gün için kısa gün adı ve toplam puan, puan rengine göre renkli; oynanmayan gün '–'. En az 2 gün oynanınca görünür.
+
 ## [0.145.0] - 2026-11-26
 ### Changed
 - Serbest oyun daha çeşitli: o günün Günün Fişi ürünleri serbest oyunda o gün sorulmuyor; aynı aileden ürünler (iki ekmek, iki akaryakıt, iki sınav ücreti, iki abonelik vb.) 8 soru içinde arka arkaya gelmiyor. Seçenek kalmazsa eski davranışa dönüyor.
