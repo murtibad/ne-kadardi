@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.160.0] - 2026-11-26
+### Added
+- Grafikte bir noktaya gelince başlıkta bir önceki kayda göre değişim: 'Ocak 2022: ₺12,91 · bir önceki kayda göre 2,1 katına çıktı' (kayıtlar 18 aydan uzak aralıklıysa yalnız tarih ve fiyat). Başlığın yeri sabit, grafik parmağın altında kaymıyor.
+
 ## [0.159.3] - 2026-11-26
 ### Fixed
 - Aynı sonuçta hem ipucu hem eğilim notu çıkabiliyordu (5. soru aynı zamanda üst üste 3. sıfırsa); artık ipucu çıkıyor, eğilim notu sonraki uygun soruya kalıyor.
