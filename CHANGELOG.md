@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.147.0] - 2026-11-26
+### Added
+- Fiyat kutusunda tek dokunuşla silme düğmesi (×): yazınca beliriyor, basınca kutu boşalıyor ve klavye açık kalıyor. Klavyede Esc de siliyor.
+
 ## [0.146.0] - 2026-11-26
 ### Added
 - Günün Fişi inceleme penceresinde 'Son 7 gün' şeridi: her gün için kısa gün adı ve toplam puan, puan rengine göre renkli; oynanmayan gün '–'. En az 2 gün oynanınca görünür.
