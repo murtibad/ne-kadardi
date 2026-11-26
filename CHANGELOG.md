@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.153.0] - 2026-11-26
+### Added
+- Çok uzak tahminlerde kararın altında kısa bir 'zaman yolculuğu' satırı: 'Yazdığın ₺20 aslında Ocak 2023'ün fiyatıydı.' ya da 'Yazdığın fiyat bugünkünden bile yüksek!'. Yalnız o ürünün gerçek, doğrulanmış kayıtlarından seçiliyor; tahmin uydurulmuyor.
+
 ## [0.152.0] - 2026-11-26
 ### Added
 - Asgari ücret sorularının fişinde de alım gücü satırı: 'O tarihte 1 asgari ücretle 12 gram altın ya da 304 litre benzin alınabiliyordu; bugün 4,3 gram altın ya da 394 litre benzin.' Yalnız o yılın doğrulanmış fiyatları kullanılıyor (benzin verisi olmayan yıllarda dolar).
