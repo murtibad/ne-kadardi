@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.158.1] - 2026-11-26
+### Fixed
+- Asgari ücret sepeti artık yalnız aynı ayın fiyatlarını kullanıyor: Temmuz 2022 maaşı Ocak benzin fiyatıyla eşleşip '329 litre' diyordu, doğrusu 201 litre.
+- Zaman yolculuğu satırı yakın ama aynı olmayan fiyatı kesin gibi söylemiyor: 'Yazdığın ₺10, Ocak 2022'nin fiyatına yakın (₺12,00).' (yüzde 5 içindeyse 'aslında … fiyatıydı').
+- Grafik ipucu, parmak kaydırırken değil parmak kalkınca kayboluyor (grafik parmağın altında kaymıyor). Bozuk kayıtlı Günün Fişi tahminleri yok sayılıyor.
+
 ## [0.158.0] - 2026-11-26
 ### Added
 - Ana sayfadaki 'Biliyor muydun?' kartında 'Hatıra yılın' seçici: düğün, ilk araba ya da emeklilik yılını seç, kart o yıldan fiyatlar göstersin ('Başka ↻' o yıl içinde dolaşıyor). Seçim hatırlanıyor.
