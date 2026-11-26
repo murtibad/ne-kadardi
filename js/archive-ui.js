@@ -100,8 +100,9 @@ export async function renderTimelineScreen(focusProductId = null) {
   const seenDates = new Set(
     product.rows.filter((r) => getState().seen.has(`${product.id}@${r.date}`)).map((r) => r.date),
   );
-  // Opened from a result: pin the date the player just answered (only for that same product).
-  const pin = getState().archiveFromResult && getState().archivePin?.productId === product.id ? getState().archivePin : null;
+  // Opened from a result or a Günün Fişi row: pin that question's date (only for that same product).
+  // archivePin is cleared in nextQuestion/renderHome; archiveFromResult only controls the Back target.
+  const pin = getState().archivePin?.productId === product.id ? getState().archivePin : null;
   if (pin && tableMod.pinHiddenByCollapse(product.rows, pin.date)) expandedFor = product.id;
   $('t-rows-container').innerHTML = tableMod.timelineTableHtml(product.rows, {
     newestFirst: getState().archiveNewestFirst, seenDates, expanded: expandedFor === product.id, pinnedDate: pin?.date ?? null,

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.149.0] - 2026-11-26
+### Added
+- Günün Fişi satırlarına dokununca o ürünün fiyat geçmişi açılıyor, sorudaki tarih işaretli. Bitiş kartından gelince geri tuşu sonuca, menüdeki 'Fişini gör' penceresinden gelince ana menüye dönüyor.
+
 ## [0.148.0] - 2026-11-26
 ### Added
 - Fiyat Arşivi'nde ilerleme satırı ('81 üründen 19'unu tahmin ettin') ve tahmin ettiğin ürünlerin düğmesinde küçük bir ✓ işareti.

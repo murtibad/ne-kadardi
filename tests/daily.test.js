@@ -210,10 +210,21 @@ test('dailyLines maps scores to their colour tier; 0 points is red like the shar
 
   const withSkips = dailyLines(all, ['benzin@2016-01', 'dolar@2015-01', 'missing@2020-01'], [0, null]);
   assert.deepEqual(withSkips, [
-    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 0 puan', tier: 'bad' },
-    { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: 'bad' },
+    { label: 'Ocak 2016 · Benzin', detail: '₺4,28 · 0 puan', tier: 'bad', productId: 'benzin', date: '2016-01' },
+    { label: 'Ocak 2015 · Dolar', detail: '₺2,33 · 0 puan', tier: 'bad', productId: 'dolar', date: '2015-01' },
     { label: 'Soru', detail: '0 puan', tier: 'bad' },
   ]);
+});
+
+test('dailyLines rows carry productId and date for the archive link; unknown ids get none', () => {
+  const all = [
+    { id: 'ekmek@2014-01', productId: 'ekmek', name: 'Halk Ekmek', date: '2014-01', price: 0.6 },
+    { id: 'simit@2018-01', productId: 'simit', name: 'Simit', date: '2018-01', price: 1.5 },
+  ];
+  const lines = dailyLines(all, ['simit@2018-01', 'ekmek@2014-01', 'gone@2020-01'], [40, 80, 10]);
+  assert.deepEqual(lines.map((l) => [l.productId, l.date]), [['simit', '2018-01'], ['ekmek', '2014-01'], [undefined, undefined]]);
+  // A missing question must not become a link to a product that doesn't exist.
+  assert.equal('productId' in lines[2], false);
 });
 
 test('dailyProgressDots marks answered tiers, current question, and upcoming slots', () => {

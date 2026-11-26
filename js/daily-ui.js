@@ -14,6 +14,24 @@ const getState = () => deps.getState();
 export function initDailyUi(d) {
   deps = d;
   initDailyReview();
+  // One delegated listener per list: rows are re-rendered with innerHTML on every show.
+  $('r-card-lines')?.addEventListener('click', onDailyRowClick);
+  $('daily-review-lines')?.addEventListener('click', onDailyRowClick);
+}
+
+// Runs before the browser follows href="#arsiv", so the archive renders with this product pinned.
+function onDailyRowClick(e) {
+  const link = e.target.closest('a.daily-row-link');
+  if (!link) return;
+  const fromReview = e.currentTarget.id === 'daily-review-lines';
+  // From the menu's review dialog, Back must lead to the menu, not to an old result.
+  deps.pinArchive(link.dataset.product, link.dataset.date, !fromReview);
+  if (fromReview) {
+    const dlg = $('daily-review');
+    // The opener sits on the menu, which the archive is about to hide: don't send focus there.
+    reviewOpener = null;
+    if (dlg?.open) dlg.close();
+  }
 }
 
 // True on the turn that shows the daily receipt: the bar button then shares it directly.
@@ -162,7 +180,8 @@ export function dailyLines(all, ids, scores) {
     const tier = scoreTier(score);
     const dq = all.find((x) => x.id === id);
     if (!dq) return { label: 'Soru', detail: `${score} puan`, tier };
-    return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score }), tier };
+    // productId + date let the UI link the row to the archive, pinned at the question's date.
+    return { ...dailyRowText({ date: dq.date, title: questionTitle(dq), price: dq.price, score }), tier, productId: dq.productId, date: dq.date };
   });
 }
 
@@ -200,7 +219,13 @@ function renderDailyRows(lines) {
   return lines.map((l, i) => {
     const tierAttr = l.tier ? ` data-tier="${escapeHTML(l.tier)}"` : '';
     const dot = `<span class="tally-dot"${tierAttr} aria-hidden="true"></span>`;
-    return `<li style="--row-i:${i}"><span>${dot}${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`;
+    if (!l.productId) {
+      return `<li style="--row-i:${i}"><span>${dot}${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}</strong></li>`;
+    }
+    // The whole row is the tap target; the arrow is decoration, the aria-label says where it goes.
+    const aria = escapeHTML(`${l.label}, ${l.detail}. Fiyat geçmişini aç`);
+    return `<li style="--row-i:${i}"><a class="daily-row-link" href="#arsiv" data-product="${escapeHTML(l.productId)}" data-date="${escapeHTML(l.date)}" aria-label="${aria}">`
+      + `<span>${dot}${escapeHTML(l.label)}</span><strong>${escapeHTML(l.detail)}<span class="daily-row-go" aria-hidden="true">→</span></strong></a></li>`;
   }).join('');
 }
 
