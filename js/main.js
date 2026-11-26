@@ -1,6 +1,6 @@
 // UI wiring: loads data, renders screens, handles input. Logic lives in game.js and format.js.
 import { parseGuess, formatPrice, formatPeriod, formatIncrease, escapeHTML, inPeriod, shortTitle, unitLine, formatRatio, readoutText, formatInputThousands, keyboardFitDelta } from './format.js';
-import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, shouldReplaceBestGuess, resolveBestGuess, matchGuessedPeriod, timeWarpText, TIME_WARP_MIN_FACTOR } from './game.js';
+import { actualLabel, buildQuestions, isAmount, openerFor, OPENER_IDS, buildContextLine, pickByCategory, pickFollowUp, scoreGuess, scoreTier, streakAlive, updateStreak, isFirstAnswerOfDay, yearOf, shouldReplaceBestGuess, resolveBestGuess, matchGuessedPeriod, timeWarpText, TIME_WARP_MIN_FACTOR, homeStreakText } from './game.js';
 import { createSoundPlayer, soundForResult, haptic } from './sound.js';
 import { buildTimelines } from './timeline.js';
 import { CATEGORIES, categoryOf } from './categories.js';
@@ -1053,12 +1053,9 @@ function renderHome() {
     bestEl.textContent = bestLine;
     bestEl.hidden = !bestLine;
   }
-  const needsToday = alive && state.streak.last !== today;
-  // A streak of 2+ that is no longer alive was broken: say so once, with the record to beat.
-  const broken = !streakAlive(state.streak, today) && state.streak.count >= 2;
-  $('home-streak').textContent = needsToday ? 'Serini koru: bugün bir soru çöz.'
-    : broken ? `Serin bozuldu (en uzun: ${state.streak.best || state.streak.count} gün). Bugün yeniden başla.` : '';
-  $('home-streak').hidden = !needsToday && !broken;
+  const streakLine = homeStreakText(state.streak, today);
+  $('home-streak').textContent = streakLine;
+  $('home-streak').hidden = !streakLine;
   // One warm line after a run of free questions; shown once, then the sitting counter restarts.
   const wrapText = sessionWrapText(state.wrap.count, state.wrap.count ? state.wrap.sum / state.wrap.count : 0);
   $('home-wrap').textContent = wrapText;

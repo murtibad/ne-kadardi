@@ -2,11 +2,32 @@
 // main.js owns `state`; it is read through getters so there is never a second copy.
 import { formatPrice, formatPeriod, escapeHTML } from './format.js';
 import { isAmount } from './game.js';
-import { buildPriceChart, labelSide, nearestPointIndex, placeRefLabel, refLabelAtStart } from './price-chart.js';
+import { buildPriceChart, chartHintText, labelSide, nearestPointIndex, placeRefLabel, refLabelAtStart } from './price-chart.js';
 
 const $ = (id) => document.getElementById(id);
+const SCRUBBED_KEY = 'ne-kadardi-chart-scrubbed';
+let scrubbedFallback = false;
 let deps = null;
 const getState = () => deps.getState();
+
+function hasScrubbed() {
+  if (scrubbedFallback) return true;
+  try {
+    return localStorage.getItem(SCRUBBED_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function markScrubbed() {
+  if (hasScrubbed()) return;
+  try {
+    localStorage.setItem(SCRUBBED_KEY, '1');
+  } catch {
+    scrubbedFallback = true;
+  }
+  document.querySelectorAll('.pc-hint').forEach((el) => el.remove());
+}
 
 export function initChartUi(d) {
   deps = d;
@@ -80,6 +101,8 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
   const key = `${productId}|${highlightDate}`;
   const fresh = fig.dataset.key !== key;
   fig.dataset.key = key;
+  const isCoarse = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
+  const hintHtml = hasScrubbed() ? '' : ` <span class="pc-hint">${escapeHTML(chartHintText(isCoarse))}</span>`;
   fig.innerHTML = `<svg class="${fresh ? 'pc-draw' : ''}" viewBox="0 0 ${chart.width} ${chart.height}" tabindex="0" role="img" aria-label="Fiyat grafiği. ${escapeHTML(story)}">
       <path d="${chart.area}" class="pc-area"/>
       <path d="${chart.line}" class="pc-line"/>
@@ -87,7 +110,7 @@ export function renderPriceChart(figId, productId, highlightDate = null, guess =
       <g class="pc-tip" hidden><line class="pc-cursor"/><rect rx="3" height="30"/><text><tspan class="pc-tip-period"></tspan><tspan class="pc-tip-price"></tspan></text></g>
     </svg>
     <span class="visually-hidden" aria-live="polite"></span>
-    <figcaption>Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}</figcaption>`;
+    <figcaption>Yıllar içinde ${isAmount(productId) ? 'tutarı' : 'fiyatı'}${hintHtml}</figcaption>`;
   bindPriceChart(fig, chart, figId === 't-chart' ? (point, source) => {
     fig.dataset.source = source; // the archive reads it: no scrolling while a finger slides
     const rows = $('t-rows-container').querySelectorAll('tr[data-date]');
@@ -215,9 +238,11 @@ export function bindPriceChart(fig, chart, onActive) {
       dismissedIdx = -1;
       // 'hover' while the finger moves: the archive must not scroll its table away from under the finger.
       if (tip.hidden || idx !== activeIdx) {
+        const changed = !tip.hidden && idx !== activeIdx;
         // A tiny tick each time the finger reaches a new year, like the notches of a dial.
-        if (e.pointerType === 'touch' && !tip.hidden) deps?.onScrubTick?.();
+        if (e.pointerType === 'touch' && changed) deps?.onScrubTick?.();
         showTip(idx, false, 'hover', e.pointerType);
+        if (changed) markScrubbed();
       }
     } else if (e.type === 'pointercancel') {
       // The browser took the touch for a vertical page scroll: do not leave the label stuck on the chart.
@@ -238,6 +263,7 @@ export function bindPriceChart(fig, chart, onActive) {
         const step = e.key === 'ArrowRight' ? 1 : -1;
         const next = Math.max(0, Math.min(points.length - 1, activeIdx + step));
         showTip(next, true, 'keyboard');
+        markScrubbed();
       } else if (e.key === 'Home') {
         // Home jumps to the first point of the price series.
         e.preventDefault();

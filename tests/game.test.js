@@ -746,3 +746,53 @@ test('timeWarpText formats regular prices and amount products with receipt price
   assert.equal(timeWarpText(20, null), '');
   assert.equal(timeWarpText(0, { kind: 'current', price: 50, factor: 1 }), '');
 });
+
+test('homeStreakText greets returning players warmly at 5+ days and keeps short-gap messages', async () => {
+  const { homeStreakText } = await import('../js/game.js');
+
+  assert.equal(homeStreakText(null, '2026-01-10'), '');
+  assert.equal(homeStreakText({ last: null, count: 0, best: 0 }, '2026-01-10'), '');
+  assert.equal(homeStreakText({ last: 'bad', count: 3, best: 3 }, '2026-01-10'), '');
+  assert.equal(homeStreakText({ last: '2026-01-10', count: 3, best: 3 }, 'bad'), '');
+
+  // Played today or yesterday.
+  assert.equal(homeStreakText({ last: '2026-01-10', count: 3, best: 3 }, '2026-01-10'), '');
+  assert.equal(homeStreakText({ last: '2026-01-09', count: 3, best: 3 }, '2026-01-10'), 'Serini koru: bugün bir soru çöz.');
+  assert.equal(homeStreakText({ last: '2026-01-09', count: 1, best: 5 }, '2026-01-10'), '');
+
+  // Clock moved back: keep alive rather than breaking or welcoming back.
+  assert.equal(homeStreakText({ last: '2026-01-10', count: 3, best: 3 }, '2026-01-09'), 'Serini koru: bugün bir soru çöz.');
+
+  // 2 to 4 days since last play: broken-streak message only when count >= 2.
+  assert.equal(
+    homeStreakText({ last: '2026-01-08', count: 3, best: 7 }, '2026-01-10'),
+    'Serin bozuldu (en uzun: 7 gün). Bugün yeniden başla.',
+  );
+  assert.equal(
+    homeStreakText({ last: '2026-01-06', count: 4, best: 0 }, '2026-01-10'),
+    'Serin bozuldu (en uzun: 4 gün). Bugün yeniden başla.',
+  );
+  assert.equal(homeStreakText({ last: '2026-01-06', count: 1, best: 5 }, '2026-01-10'), '');
+
+  // Exactly 5 days and > 5 days (including month/year boundary): warm welcome back.
+  assert.equal(
+    homeStreakText({ last: '2026-01-05', count: 4, best: 9 }, '2026-01-10'),
+    'Yeniden hoş geldin! En uzun serin 9 gündü; bugün yeni bir seri başlat.',
+  );
+  assert.equal(
+    homeStreakText({ last: '2026-01-05', count: 1, best: 4 }, '2026-01-10'),
+    'Yeniden hoş geldin! En uzun serin 4 gündü; bugün yeni bir seri başlat.',
+  );
+  assert.equal(
+    homeStreakText({ last: '2025-12-27', count: 2, best: 2 }, '2026-01-01'),
+    'Yeniden hoş geldin! En uzun serin 2 gündü; bugün yeni bir seri başlat.',
+  );
+  assert.equal(
+    homeStreakText({ last: '2026-01-05', count: 1, best: 1 }, '2026-01-10'),
+    'Yeniden hoş geldin! Bugün yeni bir seri başlat.',
+  );
+  assert.equal(
+    homeStreakText({ last: '2026-01-01', count: 0, best: 0 }, '2026-01-10'),
+    'Yeniden hoş geldin! Bugün yeni bir seri başlat.',
+  );
+});

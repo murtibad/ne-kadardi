@@ -327,3 +327,9 @@ test('nearestPointIndex finds the closest point by x and returns -1 for invalid 
   assert.equal(nearestPointIndex(points, NaN), -1);
   assert.equal(nearestPointIndex(points, Infinity), -1);
 });
+
+test('chartHintText chooses touch or pointer/keyboard discovery text', async () => {
+  const { chartHintText } = await import('../js/price-chart.js');
+  assert.equal(chartHintText(true), 'parmağınla kaydırıp yıllara bak');
+  assert.equal(chartHintText(false), 'fareyle üstüne gel ya da ok tuşlarını kullan');
+});

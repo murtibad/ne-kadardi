@@ -588,6 +588,7 @@ export function pickFromCategory(questions, categoryId, excludeProductId, catOf 
 }
 
 const DAY_MS = 86_400_000;
+const RETURN_GREETING_DAYS = 5;
 
 function parseUtcDay(key) {
   if (typeof key !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(key)) return NaN;
@@ -624,6 +625,29 @@ export function updateStreak(prev, todayKey) {
   }
   const count = diff === 1 ? prevCount + 1 : 1;
   return { last: todayKey, count, best: Math.max(prevBest, count) };
+}
+
+/**
+ * Home menu streak line for `todayKey` ('YYYY-MM-DD').
+ * After 5+ days away, greets returning players warmly instead of scolding a broken streak.
+ */
+export function homeStreakText(prev, todayKey) {
+  if (!prev?.last) return '';
+  const diff = dayDiff(prev.last, todayKey);
+  if (!Number.isFinite(diff)) return '';
+  const count = Number.isFinite(prev.count) && prev.count > 0 ? prev.count : 0;
+  const best = Math.max(Number.isFinite(prev.best) && prev.best > 0 ? prev.best : 0, count);
+  if (diff >= RETURN_GREETING_DAYS) {
+    return best >= 2
+      ? `Yeniden hoş geldin! En uzun serin ${best} gündü; bugün yeni bir seri başlat.`
+      : 'Yeniden hoş geldin! Bugün yeni bir seri başlat.';
+  }
+  const alive = streakAlive(prev, todayKey) && count >= 2;
+  if (alive && prev.last !== todayKey) return 'Serini koru: bugün bir soru çöz.';
+  if (!streakAlive(prev, todayKey) && count >= 2) {
+    return `Serin bozuldu (en uzun: ${best} gün). Bugün yeniden başla.`;
+  }
+  return '';
 }
 
 /**
