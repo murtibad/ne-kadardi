@@ -4,6 +4,7 @@ import { formatPeriod, formatIncrease, unitLine } from './format.js';
 import { CATEGORIES, filterTimelines, categoryOf } from './categories.js';
 import { pickFromCategory } from './game.js';
 import { renderPriceChart } from './chart-ui.js';
+import { guessedProductIds, progressText } from './progress.js';
 
 const $ = (id) => document.getElementById(id);
 let deps = null;
@@ -79,6 +80,8 @@ export async function renderTimelineScreen(focusProductId = null) {
 
   $('archive-error')?.remove();
   renderCategoryChips();
+  guessed = guessedProductIds(getState().seen, getState().timelines.map((t) => t.id));
+  renderProgress();
   const inCategory = filterTimelines(getState().timelines, getState().timelineCategory);
   const visible = filterByQuery(inCategory, getState().timelineQuery);
   // With no search hit the chips are empty but the table keeps showing a product of the category.
@@ -112,6 +115,15 @@ export async function renderTimelineScreen(focusProductId = null) {
     const r = row?.getBoundingClientRect();
     if (r && (r.top < 0 || r.bottom > window.innerHeight)) row.scrollIntoView({ block: 'center' });
   }
+}
+
+// Products the player has answered at least once; refreshed on every render.
+let guessed = new Set();
+function renderProgress() {
+  const el = $('archive-progress');
+  const text = progressText(getState().timelines.length, guessed.size);
+  el.textContent = text;
+  el.hidden = text === '';
 }
 
 function renderCategoryChips() {
@@ -211,6 +223,16 @@ function renderProductChips(visible, selectedId, focusProductId) {
     const nameSpan = document.createElement('span');
     nameSpan.textContent = t.name;
     btn.appendChild(nameSpan);
+    if (guessed.has(t.id)) {
+      // The mark is decorative; the accessible name says it instead.
+      const mark = document.createElement('span');
+      mark.className = 'chip-done';
+      mark.setAttribute('aria-hidden', 'true');
+      mark.textContent = '✓';
+      btn.appendChild(mark);
+      btn.setAttribute('aria-label', `${t.name}, tahmin ettin`);
+      btn.title = `${t.name}, tahmin ettin`;
+    }
     btn.onclick = () => {
       getState().selectedTimelineProduct = t.id;
       renderTimelineScreen(t.id); // the picker is rebuilt, so put keyboard focus back on the chosen chip

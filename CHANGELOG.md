@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.148.0] - 2026-11-26
+### Added
+- Fiyat Arşivi'nde ilerleme satırı ('81 üründen 19'unu tahmin ettin') ve tahmin ettiğin ürünlerin düğmesinde küçük bir ✓ işareti.
+
 ## [0.147.0] - 2026-11-26
 ### Added
 - Fiyat kutusunda tek dokunuşla silme düğmesi (×): yazınca beliriyor, basınca kutu boşalıyor ve klavye açık kalıyor. Klavyede Esc de siliyor.
