@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.0] - 2026-11-26
+### Added
+- Fiyat Arşivi'nde '1 maaşla kaç tane?' seçiliyken grafik de maaş cinsinden çiziliyor ('Yıllar içinde 1 asgari ücretle alınabilen': 304 litre → 394 litre); TL'ye dönünce normal grafik geri geliyor.
+
 ## [0.162.0] - 2026-11-26
 ### Added
 - Fiyat Arşivi'nde daha önce cevapladığın satırlarda 'Tahminin: ₺4,50' yazıyor (son 500 tahmin cihazda saklanıyor). Menüdeki 'En iyi tahminin' satırına dokununca o ürünün arşivi o tarihte işaretli açılıyor.
