@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.163.2] - 2026-11-26
+### Fixed
+- Pahalı bir ürün bugün yarım maaşın altına düştüyse cümle 'bugün .' diye boş bitiyordu; artık 'bugün 0,3 asgari ücret'.
+- 360-479 px telefonlarda sonuç grafiğinde uzun değişim başlığı üç satıra çıkınca grafik parmağın altında kayıyordu; yer önceden ayrılıyor.
+- Arşivin maaş görünümünde grafikte noktası olmayan bir satıra dokununca önceki noktanın ipucu açık kalıyordu.
+
 ## [0.163.1] - 2026-11-26
 ### Fixed
 - Grafikte uç noktadaki değer etiketi, çizgi o bölgede noktadan daha yukarıdaysa noktanın altına yazılıyor (maaş görünümünde '394 litre' çizginin üstüne biniyordu).

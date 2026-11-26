@@ -368,8 +368,8 @@ function linkRowsToChart() {
     const btn = e.target instanceof Element ? e.target.closest('.row-to-chart') : null;
     if (!btn) return;
     const fig = $('t-chart');
-    fig._activateDate?.(btn.dataset.date);
-    if (!fig.hidden) {
+    const shown = fig._activateDate?.(btn.dataset.date);
+    if (!fig.hidden && shown) {
       fig.scrollIntoView({ block: 'nearest' });
     }
   });

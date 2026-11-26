@@ -255,7 +255,9 @@ export function bindPriceChart(fig, chart, onActive) {
   // Lets the archive table highlight and announce a chart point by date when a row is tapped.
   fig._activateDate = (date) => {
     const idx = points.findIndex((p) => p.date === date);
-    if (idx >= 0) showTip(idx, true, 'keyboard');
+    if (idx >= 0) { showTip(idx, true, 'keyboard'); return true; }
+    hideTip();
+    return false;
   };
 
   // Maps clientX into the SVG viewBox width so horizontal scrubbing picks the closest year.
