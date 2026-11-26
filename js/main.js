@@ -21,6 +21,7 @@ import { parseQuestionParam, resolveFriendLink, LINK_NOT_FOUND_TEXT, friendIntro
 import { initShareUi, resetShareBtn, closePreview, warmShareImage } from './share-ui.js';
 import { dayKey, dailyProductIds } from './daily.js';
 import { initDailyUi, isDailyEndTurn, setDailyEndTurn, syncSkipBtn, recordDailyAnswer, dailyNextId, skipDaily, startOrShareDaily, renderDailyCard, renderDailyMenu, closeDailyReview, renderDailyRound } from './daily-ui.js';
+import { questionIconUrl, preloadIcon } from './icon-preload.js';
 
 const DATA_URL = 'data/prices.json';
 const $ = (id) => document.getElementById(id);
@@ -719,6 +720,7 @@ function renderResult(q, r) {
     if (followUp) {
       followBtn.textContent = `Peki ${inPeriod(formatPeriod(followUp.date))} ${questionTitle(followUp).replace(/\s*\(.*\)$/, '')} kaç liraydı? →`; // the arrow never sits alone on the last line
       followBtn.onclick = () => nextQuestion(followUp.productId, followUp.date);
+      preloadIcon(questionIconUrl(followUp));
     } else {
       followBtn.textContent = '';
       followBtn.onclick = null;
